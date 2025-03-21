@@ -1,0 +1,466 @@
+# Supprimer la ligne ci-dessous si vous voulez hériter les paramètres .editorconfig des répertoires supérieurs
+root = true
+
+# Fichiers C#
+[*.cs]
+
+#### Options EditorConfig principales ####
+
+# Indentation et espacement
+indent_size = 4
+indent_style = space
+tab_width = 4
+charset = utf-8
+
+# Préférences de nouvelle ligne
+end_of_line = crlf
+insert_final_newline = false
+
+#### Conventions de codage .NET ####
+
+# Organiser les instructions Using
+dotnet_separate_import_directive_groups = true
+dotnet_sort_system_directives_first = true
+file_header_template = unset
+
+# Préférences de this. et Me.
+dotnet_style_qualification_for_event = false
+dotnet_style_qualification_for_field = false
+dotnet_style_qualification_for_method = false
+dotnet_style_qualification_for_property = false
+
+# Préférences des mots clés de langage par rapport aux types BCL
+dotnet_style_predefined_type_for_locals_parameters_members = true
+dotnet_style_predefined_type_for_member_access = true
+
+# Préférences de parenthèses
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_operators = always_for_clarity
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity
+
+# Préférences de modificateur
+dotnet_style_require_accessibility_modifiers = for_non_interface_members
+
+# Préférences de niveau expression
+dotnet_style_coalesce_expression = false
+dotnet_style_collection_initializer = true
+dotnet_style_explicit_tuple_names = true
+dotnet_style_namespace_match_folder = true
+dotnet_style_null_propagation = true
+dotnet_style_object_initializer = true
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+dotnet_style_prefer_auto_properties = true
+dotnet_style_prefer_compound_assignment = true
+dotnet_style_prefer_conditional_expression_over_assignment = true
+dotnet_style_prefer_conditional_expression_over_return = true
+dotnet_style_prefer_inferred_anonymous_type_member_names = true
+dotnet_style_prefer_inferred_tuple_names = true
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true
+dotnet_style_prefer_simplified_boolean_expressions = true
+dotnet_style_prefer_simplified_interpolation = true
+
+# Préférences de champ
+dotnet_style_readonly_field = true
+
+# Préférences de paramètre
+dotnet_code_quality_unused_parameters = all
+
+# Préférences de suppression
+dotnet_remove_unnecessary_suppression_exclusions = all
+
+# Préférences de nouvelle ligne
+dotnet_style_allow_multiple_blank_lines_experimental = true
+dotnet_style_allow_statement_immediately_after_block_experimental = true
+
+#### Conventions de codage C# ####
+
+# Préférences de var
+csharp_style_var_elsewhere = false
+csharp_style_var_for_built_in_types = false
+csharp_style_var_when_type_is_apparent = false
+
+# Membres expression-bodied
+csharp_style_expression_bodied_accessors = true
+csharp_style_expression_bodied_constructors = false
+csharp_style_expression_bodied_indexers = true
+csharp_style_expression_bodied_lambdas = true
+csharp_style_expression_bodied_local_functions = false
+csharp_style_expression_bodied_methods = false
+csharp_style_expression_bodied_operators = false
+csharp_style_expression_bodied_properties = true
+
+# Préférences correspondants au modèle
+csharp_style_pattern_matching_over_as_with_null_check = true
+csharp_style_pattern_matching_over_is_with_cast_check = true
+csharp_style_prefer_not_pattern = true
+csharp_style_prefer_pattern_matching = true
+csharp_style_prefer_switch_expression = true
+
+# Préférences de vérification de valeur Null
+csharp_style_conditional_delegate_call = true
+    
+# Préférences de modificateur
+csharp_prefer_static_local_function = false
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
+
+# Préférences de bloc de code
+csharp_prefer_braces = true
+csharp_prefer_simple_using_statement = true
+
+# Préférences de niveau expression
+csharp_prefer_simple_default_expression = true
+csharp_style_deconstructed_variable_declaration = true
+csharp_style_implicit_object_creation_when_type_is_apparent = true
+csharp_style_inlined_variable_declaration = true
+csharp_style_pattern_local_over_anonymous_function = true
+csharp_style_prefer_index_operator = true
+csharp_style_prefer_range_operator = true
+csharp_style_throw_expression = true
+csharp_style_unused_value_assignment_preference = discard_variable
+csharp_style_unused_value_expression_statement_preference = discard_variable
+
+# Préférences pour la directive 'using'
+csharp_using_directive_placement = outside_namespace
+
+# Préférences de nouvelle ligne
+csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = true
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = true
+csharp_style_allow_embedded_statements_on_same_line_experimental = true
+
+#### Règles de formatage C# ####
+
+# Préférences de nouvelle ligne
+csharp_new_line_before_catch = true
+csharp_new_line_before_else = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_open_brace = all
+csharp_new_line_between_query_expression_clauses = true
+
+# Préférences de mise en retrait
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_case_contents_when_block = true
+csharp_indent_labels = one_less_than_current
+csharp_indent_switch_labels = true
+
+# Préférences d'espace
+csharp_space_after_cast = false
+csharp_space_after_colon_in_inheritance_clause = true
+csharp_space_after_comma = true
+csharp_space_after_dot = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_after_semicolon_in_for_statement = true
+csharp_space_around_binary_operators = before_and_after
+csharp_space_around_declaration_statements = false
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_before_comma = false
+csharp_space_before_dot = false
+csharp_space_before_open_square_brackets = false
+csharp_space_before_semicolon_in_for_statement = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_parentheses = false
+csharp_space_between_square_brackets = false
+
+# Préférences d'enveloppement
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = true
+
+#### Styles de nommage ####
+
+# Règles de nommage
+
+# Spécifications de symboles
+
+# Styles de nommage
+
+max_line_length = 200
+
+
+#Types that own disposable fields should be disposable : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1001
+dotnet_diagnostic.CA1001.severity = warning
+#Avoid excessive parameters on generic types : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1005
+dotnet_diagnostic.CA1005.severity = warning
+#Enums should have zero value : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1008
+dotnet_diagnostic.CA1008.severity = warning
+#Abstract types should not have public constructors : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1012
+dotnet_diagnostic.CA1012.severity = warning
+#Use events where appropriate : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1030
+dotnet_diagnostic.CA1030.severity = warning
+#Nested types should not be visible : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1034
+dotnet_diagnostic.CA1034.severity = none
+#Override methods on comparable types : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1036
+dotnet_diagnostic.CA1036.severity = warning
+#Avoid empty interfaces : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1040
+dotnet_diagnostic.CA1040.severity = none
+#Provide ObsoleteAttribute message : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1041
+dotnet_diagnostic.CA1041.severity = none
+#Use integral or string argument for indexers : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1043
+dotnet_diagnostic.CA1043.severity = warning
+#Properties should not be write only : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1044
+dotnet_diagnostic.CA1044.severity = warning
+#Do not declare visible instance fields : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1051
+dotnet_diagnostic.CA1051.severity = none
+#Static holder types should not have default constructors : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1053
+dotnet_diagnostic.CA1053.severity = warning
+#Types should not extend certain base types : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1058
+dotnet_diagnostic.CA1058.severity = warning
+#Do not hide base class methods : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1061
+dotnet_diagnostic.CA1061.severity = warning
+#Implement IDisposable correctly : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1063
+dotnet_diagnostic.CA1063.severity = warning
+#Do not raise exceptions in unexpected locations : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1065
+dotnet_diagnostic.CA1065.severity = warning
+#Implement IEquatable when overriding Equals : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1066
+dotnet_diagnostic.CA1066.severity = warning
+#Override Equals when implementing IEquatable : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1067
+dotnet_diagnostic.CA1067.severity = warning
+#CancellationToken parameters must come last : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1068
+dotnet_diagnostic.CA1068.severity = warning
+#Enums should not have duplicate values : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1069
+dotnet_diagnostic.CA1069.severity = warning
+#Do not declare event fields as virtual : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1070
+dotnet_diagnostic.CA1070.severity = warning
+#Avoid excessive inheritance : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1501
+dotnet_diagnostic.CA1501.severity = none
+#Avoid excessive complexity : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1502
+dotnet_diagnostic.CA1502.severity = warning
+#Avoid unmaintainable code : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1505
+dotnet_diagnostic.CA1505.severity = warning
+#Avoid excessive class coupling : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1506
+dotnet_diagnostic.CA1506.severity = warning
+#Use nameof in place of string : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1507
+dotnet_diagnostic.CA1507.severity = warning
+#Avoid dead conditional code : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1508
+dotnet_diagnostic.CA1508.severity = warning
+#Invalid entry in code metrics configuration file : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1509
+dotnet_diagnostic.CA1509.severity = warning
+#Do not name enum values 'Reserved' : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1700
+dotnet_diagnostic.CA1700.severity = warning
+#Identifiers should differ by more than case : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1708
+dotnet_diagnostic.CA1708.severity = warning
+#Events should not have before or after prefix : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1713
+dotnet_diagnostic.CA1713.severity = warning
+#Identifiers should have correct prefix : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1715
+dotnet_diagnostic.CA1715.severity = warning
+#Identifiers should not match keywords : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1716
+dotnet_diagnostic.CA1716.severity = warning
+#Property names should not match get methods : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1721
+dotnet_diagnostic.CA1721.severity = warning
+#Type names should not match namespaces : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1724
+dotnet_diagnostic.CA1724.severity = warning
+#Parameter names should match base declaration : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1725
+dotnet_diagnostic.CA1725.severity = warning
+#Do not ignore method results : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1806
+dotnet_diagnostic.CA1806.severity = warning
+#Properties should not return arrays : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1819
+dotnet_diagnostic.CA1819.severity = none
+#Test for empty strings using string length : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1820
+dotnet_diagnostic.CA1820.severity = warning
+#Remove empty finalizers : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1821
+dotnet_diagnostic.CA1821.severity = warning
+#Mark members as static : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1822
+dotnet_diagnostic.CA1822.severity = warning
+#Avoid unused private fields : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1823
+dotnet_diagnostic.CA1823.severity = warning
+#Avoid zero-length array allocations : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1825
+dotnet_diagnostic.CA1825.severity = warning
+#Use property instead of Linq Enumerable method : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1826
+dotnet_diagnostic.CA1826.severity = warning
+#Do not use Count/LongCount when Any can be used : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1827
+dotnet_diagnostic.CA1827.severity = warning
+#Use Length/Count property instead of Enumerable.Count method : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1829
+dotnet_diagnostic.CA1829.severity = warning
+#Prefer strongly-typed Append and Insert method overloads on StringBuilder. : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1830
+dotnet_diagnostic.CA1830.severity = warning
+#Use StringBuilder.Append(char) for single character strings : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1834
+dotnet_diagnostic.CA1834.severity = warning
+#Prefer Dictionary Contains methods : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1841
+dotnet_diagnostic.CA1841.severity = warning
+#Do not assign property within its setter : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2011
+dotnet_diagnostic.CA2011.severity = warning
+#Do not use ReferenceEquals with value types : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2013
+dotnet_diagnostic.CA2013.severity = warning
+#Use explicitly provided tuple name : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0033
+dotnet_diagnostic.IDE0033.severity = warning
+#Add readonly modifier : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0044
+dotnet_diagnostic.IDE0044.severity = warning
+#Use 'System.HashCode.Combine' : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0070
+dotnet_diagnostic.IDE0070.severity = warning
+#Remove unnecessary cast : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0004
+dotnet_diagnostic.IDE0004.severity = warning
+#Remove unnecessary using directives : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0005
+dotnet_diagnostic.IDE0005.severity = warning
+#'var' preferences : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0007
+dotnet_diagnostic.IDE0007.severity = warning
+#'var' preferences : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0007-ide0008
+dotnet_diagnostic.IDE0008.severity = none
+#this and Me preferences : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0009
+dotnet_diagnostic.IDE0009.severity = warning
+#Add missing cases to switch statement : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0010
+dotnet_diagnostic.IDE0010.severity = warning
+#Add braces : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0011
+dotnet_diagnostic.IDE0011.severity = warning
+#Use throw expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0016
+dotnet_diagnostic.IDE0016.severity = warning
+#Use object initializers : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0017
+dotnet_diagnostic.IDE0017.severity = warning
+#Inline variable declaration : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0018
+dotnet_diagnostic.IDE0018.severity = warning
+#Use pattern matching to avoid 'as' followed by a 'null' check : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0019
+dotnet_diagnostic.IDE0019.severity = warning
+#Use expression body for constructors : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0021
+dotnet_diagnostic.IDE0021.severity = warning
+#Use expression body for methods : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0022
+dotnet_diagnostic.IDE0022.severity = warning
+#Use expression body for operators : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0023
+dotnet_diagnostic.IDE0023.severity = warning
+#Use expression body for operators: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0023-ide0024
+dotnet_diagnostic.IDE0024.severity = warning
+#Use expression body for properties : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0025
+dotnet_diagnostic.IDE0025.severity = warning
+#Use expression body for indexers : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0026
+dotnet_diagnostic.IDE0026.severity = warning
+#Use expression body for accessors : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0027
+dotnet_diagnostic.IDE0027.severity = warning
+#Use collection initializers : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0028
+dotnet_diagnostic.IDE0028.severity = warning
+#Use coalesce expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0029
+dotnet_diagnostic.IDE0029.severity = warning
+#Use coalesce expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0029-ide0030
+dotnet_diagnostic.IDE0030.severity = warning
+#Use null propagation : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0031
+dotnet_diagnostic.IDE0031.severity = warning
+#Use auto-implemented property : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0032
+dotnet_diagnostic.IDE0032.severity = none
+#Simplify 'default' expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0034
+dotnet_diagnostic.IDE0034.severity = warning
+#Order modifiers : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0036
+dotnet_diagnostic.IDE0036.severity = warning
+#Use inferred member names : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0037
+dotnet_diagnostic.IDE0037.severity = warning
+#Use local function instead of lambda : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0039
+dotnet_diagnostic.IDE0039.severity = warning
+#Add accessibility modifiers : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0040
+dotnet_diagnostic.IDE0040.severity = warning
+#Use 'is null' check : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0041
+dotnet_diagnostic.IDE0041.severity = warning
+#Deconstruct variable declaration : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0042
+dotnet_diagnostic.IDE0042.severity = warning
+#Use conditional expression for assignment : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0045
+dotnet_diagnostic.IDE0045.severity = none
+#Use conditional expression for return : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0046
+dotnet_diagnostic.IDE0046.severity = none
+#Parentheses preferences : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0047
+dotnet_diagnostic.IDE0047.severity = none
+#Parentheses preference : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0047-ide0048
+dotnet_diagnostic.IDE0048.severity = none
+#Convert anonymous type to tuple : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0050
+dotnet_diagnostic.IDE0050.severity = warning
+#Use compound assignment : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0054
+dotnet_diagnostic.IDE0054.severity = warning
+#Formatting rule : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0055
+dotnet_diagnostic.IDE0055.severity = none
+#Use index operator : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0056
+dotnet_diagnostic.IDE0056.severity = warning
+#Use range operator : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0057
+dotnet_diagnostic.IDE0057.severity = warning
+#Remove unnecessary expression value : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0058
+dotnet_diagnostic.IDE0058.severity = warning
+#Remove unnecessary value assignment : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0059
+dotnet_diagnostic.IDE0059.severity = warning
+#Remove unused parameter : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0060
+dotnet_diagnostic.IDE0060.severity = none
+#Use expression body for local functions : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0061
+dotnet_diagnostic.IDE0061.severity = warning
+#Make local function static : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0062
+dotnet_diagnostic.IDE0062.severity = warning
+#Use simple 'using' statement : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0063
+dotnet_diagnostic.IDE0063.severity = warning
+#'using' directive placement : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0065
+dotnet_diagnostic.IDE0065.severity = warning
+#Use switch expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0066
+dotnet_diagnostic.IDE0066.severity = warning
+#Simplify interpolation : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0071
+dotnet_diagnostic.IDE0071.severity = warning
+#Add missing cases to switch expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0072
+dotnet_diagnostic.IDE0072.severity = warning
+#Require file header : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0073
+dotnet_diagnostic.IDE0073.severity = warning
+#Use compound assignment : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0074
+dotnet_diagnostic.IDE0074.severity = warning
+#Simplify conditional expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0075
+dotnet_diagnostic.IDE0075.severity = warning
+#Simplify conditional expression : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0075
+dotnet_diagnostic.IDE1006.severity = warning
+#Use pattern matching : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0078
+dotnet_diagnostic.IDE0078.severity = warning
+#Remove unnecessary suppression operator : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0080
+dotnet_diagnostic.IDE0080.severity = warning
+#Convert typeof to nameof : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0082
+dotnet_diagnostic.IDE0082.severity = warning
+#Use pattern matching (not operator) : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide0083
+dotnet_diagnostic.IDE0083.severity = warning
+#Simplify new statements
+dotnet_diagnostic.IDE0090.severity = none
+#Use conditional delegate call : https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ide1005
+dotnet_diagnostic.IDE1005.severity = warning
+
+
+dotnet_naming_symbols.public_symbols.applicable_kinds           = property,method,field,event,delegate
+dotnet_naming_symbols.public_symbols.applicable_accessibilities = public
+#dotnet_naming_symbols.public_symbols.required_modifiers         = readonly
+
+dotnet_naming_symbols.methods_symbols.applicable_kinds           = method, local_function
+dotnet_naming_symbols.methods_symbols.applicable_accessibilities = *
+
+dotnet_naming_style.first_word_upper_case_style.capitalization = first_word_upper
+
+dotnet_naming_rule.public_members_must_be_capitalized.symbols   = public_symbols
+dotnet_naming_rule.public_members_must_be_capitalized.style    = first_word_upper_case_style
+dotnet_naming_rule.public_members_must_be_capitalized.severity = warning
+
+dotnet_naming_rule.methods_must_be_capitalized.symbols   = methods_symbols
+dotnet_naming_rule.methods_must_be_capitalized.style    = first_word_upper_case_style
+dotnet_naming_rule.methods_must_be_capitalized.severity = warning
+
+dotnet_naming_style.m_camel_case_Style.capitalization = camel_case
+dotnet_naming_style.m_camel_case_Style.required_prefix = m_
+
+dotnet_naming_rule.private_internal_fields_should_use_m_underscore.severity = warning
+dotnet_naming_rule.private_internal_fields_should_use_m_underscore.style = m_camel_case_Style
+dotnet_naming_rule.private_internal_fields_should_use_m_underscore.symbols = private_fields
+dotnet_naming_symbols.private_fields.applicable_kinds            = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities  = private
+
+dotnet_naming_rule.constant_fields_should_be_all_upper.severity = warning
+dotnet_naming_rule.constant_fields_should_be_all_upper.symbols  = constant_fields
+dotnet_naming_rule.constant_fields_should_be_all_upper.style    = all_upper_style
+dotnet_naming_symbols.constant_fields.applicable_kinds   = field
+dotnet_naming_symbols.constant_fields.required_modifiers = const
+dotnet_naming_style.all_upper_style.capitalization = all_upper
+
+dotnet_naming_style.s_camel_case_Style.capitalization = camel_case
+dotnet_naming_style.s_camel_case_Style.required_prefix = s_
+
+dotnet_naming_rule.private_static_field_should_use_s_underscore.severity = warning
+dotnet_naming_rule.private_static_field_should_use_s_underscore.style = s_camel_case_Style
+dotnet_naming_rule.private_static_field_should_use_s_underscore.symbols = private_static_fields
+dotnet_naming_symbols.private_static_fields.applicable_kinds            = field
+dotnet_naming_symbols.private_static_fields.applicable_accessibilities  = private
+dotnet_naming_symbols.private_static_fields.required_modifiers  = static
+
+dotnet_naming_rule.namespace_naming.symbols = namespace_symbol
+dotnet_naming_rule.namespace_naming.style = pascal_case_style
+dotnet_naming_rule.namespace_naming.severity = none
+dotnet_naming_symbols.namespace_symbol.applicable_kinds = namespace
+dotnet_naming_symbols.namespace_symbol.applicable_accessibilities = *
