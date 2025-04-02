@@ -8,13 +8,11 @@ public class InputManagerTester : MonoBehaviour
     private bool m_bIsInitialized = false;
 
     [Header("Event Input Key Assignments")]
-    [SerializeField] private KeyCode CheckGameState;
-    [SerializeField] private KeyCode CheckMusicState;
     [SerializeField] private KeyCode StartMainMusic;
     [SerializeField] private KeyCode StopMainMusic;
 
     [Header("GameState Input Key Assignments")]
-    [SerializeField] private KeyCode Game_MainMenu;
+    [SerializeField] private KeyCode Game_GameOver;
     [SerializeField] private KeyCode Game_Gameplay;
     [SerializeField] private KeyCode Game_Paused;
 
@@ -61,14 +59,6 @@ public class InputManagerTester : MonoBehaviour
             return;
 
         //Events
-        if(Input.GetKeyDown(CheckGameState))
-        {
-            AudioManager.Instance.PostWwiseEventGlobal(AudioManager.Instance.CheckGameState);
-        }
-        if (Input.GetKeyDown(CheckMusicState))
-        {
-            AudioManager.Instance.PostWwiseEventGlobal(AudioManager.Instance.CheckMusicState);
-        }
         if (Input.GetKeyDown(StartMainMusic))
         {
             AudioManager.Instance.PostWwiseEventGlobal(AudioManager.Instance.MainMusic_Play);
@@ -80,9 +70,9 @@ public class InputManagerTester : MonoBehaviour
 
 
         // Game States
-        if (Input.GetKeyDown(Game_MainMenu))
+        if (Input.GetKeyDown(Game_GameOver))
         {
-            AudioManager.Instance.SetAudioGameState(AudioGameState.MainMenu);
+            AudioManager.Instance.SetAudioGameState(AudioGameState.GameOver);
         }
         if (Input.GetKeyDown(Game_Gameplay))
         {

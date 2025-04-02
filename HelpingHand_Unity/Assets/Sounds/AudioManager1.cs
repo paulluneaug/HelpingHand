@@ -38,7 +38,7 @@ namespace WwiseAudioManager
         [SerializeField] private AK.Wwise.State Game_Gameplay;
         [SerializeField] private AK.Wwise.State Game_MainMenu;
         [SerializeField] private AK.Wwise.State Game_Paused;
-        [SerializeField] private AK.Wwise.State Game_GameOver; 
+        [SerializeField] private AK.Wwise.State Game_GameOver;
         [SerializeField] private AK.Wwise.State Game_None;
 
         [ReadOnly][SerializeField] private AudioGameState currentGameState;
@@ -48,19 +48,19 @@ namespace WwiseAudioManager
         [SerializeField] private AK.Wwise.State Music_Gameplay2ndSection;
         [SerializeField] private AK.Wwise.State Music_Gameplay3rdSection;
         [SerializeField] private AK.Wwise.State Music_MainMenu;
-        [SerializeField] private AK.Wwise.State Music_PauseMenu;
         [SerializeField] private AK.Wwise.State Music_Level_Lose;
         [SerializeField] private AK.Wwise.State Music_Level_Win; 
         [SerializeField] private AK.Wwise.State Music_None;
+
+        [Header("RTPC")]
+        [SerializeField][Range(0f, 1f)] private float Music_FirstLayer = 0;
+        [SerializeField][Range(0f, 1f)] private float Music_SecondLayer = 0;
+
 
         [ReadOnly][SerializeField] private AudioMusicState currentMusicState;
         #endregion
 
         #region Sound Events
-        [Header("Wwise Voice Events")]
-        [SerializeField] public AK.Wwise.Event CheckGameState;
-        [SerializeField] public AK.Wwise.Event CheckMusicState;
-
         [Header("Wwise Music Events")]
         [SerializeField] public AK.Wwise.Event MainMusic_Play;
         [SerializeField] public AK.Wwise.Event MainMusic_Stop;
@@ -100,6 +100,15 @@ namespace WwiseAudioManager
             SetAudioMusicState(AudioMusicState.MainMenu); //On initialise l'état de la musique à MainMenu
 
             MainMusic_Play.Post(gameObject); //On joue la musique principale
+
+            AkSoundEngine.SetRTPCValue("RTPC_Music_FirstLayer", Music_FirstLayer);
+            AkSoundEngine.SetRTPCValue("RTPC_Music_SecondLayer", Music_SecondLayer);
+        }
+
+        private void Update()
+        {
+            AkSoundEngine.SetRTPCValue("RTPC_Music_FirstLayer", Music_FirstLayer);
+            AkSoundEngine.SetRTPCValue("RTPC_Music_SecondLayer", Music_SecondLayer);
         }
 
         void LoadSoundbanks() //Load les soundbanks (pas encore dynamiquement)
@@ -164,9 +173,6 @@ namespace WwiseAudioManager
                     break;
                 case AudioMusicState.GameplayFirstSection:
                     Music_Gameplay1stSection.SetValue();
-                    break;
-                case AudioMusicState.PauseMenu:
-                    Music_PauseMenu.SetValue();
                     break;
                 case AudioMusicState.LevelLose:
                     Music_Level_Lose.SetValue();

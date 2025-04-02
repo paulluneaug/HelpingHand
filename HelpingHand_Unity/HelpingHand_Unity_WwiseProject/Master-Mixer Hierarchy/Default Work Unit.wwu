@@ -9,6 +9,69 @@
 							<ObjectRef Name="System" ID="{549E2B36-4B9D-47B6-B042-A50E3468A426}" WorkUnitID="{2E0CEE89-6486-4652-A0DF-3CD8419C3A77}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="MusicBus" ID="{BD99B950-434B-4A6C-ABFA-A11374C2A0BE}">
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="GameState" ID="{9990CED9-ED9F-4286-970F-93B9EE00A40C}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Paused" ID="{F69F84C5-145C-44A0-A760-13C991AE5AA4}"/>
+										<CustomState Name="" ID="{CD28882E-2642-4D43-B63A-3D3FB7DE493F}" ShortID="947961709">
+											<PropertyList>
+												<Property Name="Highpass" Type="int16" Value="48"/>
+												<Property Name="Lowpass" Type="int16" Value="27"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="MainMenu" ID="{1AE6E78C-D972-4999-8EEA-37F43B3F76CF}"/>
+										<CustomState Name="" ID="{3ECB3311-D2C7-41F8-B1BD-D72AB17E7206}" ShortID="715122971"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="GameOver" ID="{ADB27E88-2BC4-4DAB-8C8B-2144EEA5F9D4}"/>
+										<CustomState Name="" ID="{21C32C8A-FEFC-4090-90A8-01057D65C3D1}" ShortID="216328263">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16" Value="64"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Gameplay" ID="{1F7D27F0-853A-4FBA-BD84-B4A6E0FB254F}"/>
+										<CustomState Name="" ID="{9FA5EAAE-D7DC-416D-87B8-EF47E490BDB8}" ShortID="492130235"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+						</Bus>
+					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="GameState" ID="{9990CED9-ED9F-4286-970F-93B9EE00A40C}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="Paused" ID="{F69F84C5-145C-44A0-A760-13C991AE5AA4}"/>
+								<CustomState Name="" ID="{B399F873-C254-44E8-8795-70D62EED25B4}" ShortID="36048274"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="MainMenu" ID="{1AE6E78C-D972-4999-8EEA-37F43B3F76CF}"/>
+								<CustomState Name="" ID="{59EC0CD7-B39A-408C-BAEE-E7FDE2A97924}" ShortID="672380598"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="GameOver" ID="{ADB27E88-2BC4-4DAB-8C8B-2144EEA5F9D4}"/>
+								<CustomState Name="" ID="{184B6185-CF9A-43B4-9E74-6358D2383324}" ShortID="709285514"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Gameplay" ID="{1F7D27F0-853A-4FBA-BD84-B4A6E0FB254F}"/>
+								<CustomState Name="" ID="{E0B4740B-16D5-4C38-9C55-172F5F61206D}" ShortID="129502438"/>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>
