@@ -1,0 +1,36 @@
+using UnityEditor;
+
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+using UnityUtility.MathU;
+
+#if UNITY_EDITOR
+[InitializeOnLoad]
+#endif
+public class RemapProcessor : InputProcessor<float>
+{
+    public float InitialRangeX;
+    public float InitialRangeY;
+    public float TargetRangeX;
+    public float TargetRangeY;
+
+#if UNITY_EDITOR
+    static RemapProcessor()
+    {
+        Initialize();
+    }
+#endif
+
+    [RuntimeInitializeOnLoadMethod]
+    private static void Initialize()
+    {
+        InputSystem.RegisterProcessor<RemapProcessor>();
+    }
+
+    public override float Process(float value, InputControl control)
+    {
+        return value.Remap(InitialRangeX, InitialRangeY, TargetRangeX, TargetRangeY);
+    }
+
+}
