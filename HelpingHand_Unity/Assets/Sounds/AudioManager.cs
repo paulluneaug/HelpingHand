@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WwiseAudioManager
-{
     public enum AudioGameState
     {
         None,
@@ -22,7 +20,6 @@ namespace WwiseAudioManager
         LevelWin,
         LevelLose
     }
-
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance; //Pour accéder à ce script de partout facilement : une seule instance
@@ -51,23 +48,30 @@ namespace WwiseAudioManager
         [SerializeField] private AK.Wwise.State Music_Level_Lose;
         [SerializeField] private AK.Wwise.State Music_Level_Win; 
         [SerializeField] private AK.Wwise.State Music_None;
-
+        #endregion
+        
+        #region RTPC
         [Header("RTPC")]
         [SerializeField][Range(0f, 1f)] private float Music_FirstLayer = 0;
         [SerializeField][Range(0f, 1f)] private float Music_SecondLayer = 0;
+        public AK.Wwise.RTPC RTPC_Music_FirstLayer;
+        public AK.Wwise.RTPC RTPC_Music_secondLayer;
 
-
-        [ReadOnly][SerializeField] private AudioMusicState currentMusicState;
+    [ReadOnly][SerializeField] private AudioMusicState currentMusicState;
         #endregion
 
         #region Sound Events
         [Header("Wwise Music Events")]
         [SerializeField] public AK.Wwise.Event MainMusic_Play;
         [SerializeField] public AK.Wwise.Event MainMusic_Stop;
-        
-        #endregion
 
-        private void Awake()
+    #endregion
+
+        #region Switches
+        [Header("Switches")]
+        [SerializeField] private AK.Wwise.Switch Material;
+        #endregion
+    private void Awake()
         {
             Initialize(); //Appel de la fonction d'initialisation
         }
@@ -99,17 +103,17 @@ namespace WwiseAudioManager
             SetAudioGameState(AudioGameState.MainMenu); //On initialise l'état du jeu à MainMenu
             SetAudioMusicState(AudioMusicState.MainMenu); //On initialise l'état de la musique à MainMenu
 
-            MainMusic_Play.Post(gameObject); //On joue la musique principale
+        MainMusic_Play.Post(gameObject); //On joue la musique principale
 
-            AkSoundEngine.SetRTPCValue("RTPC_Music_FirstLayer", Music_FirstLayer);
-            AkSoundEngine.SetRTPCValue("RTPC_Music_SecondLayer", Music_SecondLayer);
+        RTPC_Music_FirstLayer.SetValue(null, Music_FirstLayer);
+        RTPC_Music_secondLayer.SetValue(null, Music_SecondLayer);
         }
 
         private void Update()
         {
-            AkSoundEngine.SetRTPCValue("RTPC_Music_FirstLayer", Music_FirstLayer);
-            AkSoundEngine.SetRTPCValue("RTPC_Music_SecondLayer", Music_SecondLayer);
-        }
+        RTPC_Music_FirstLayer.SetValue(null, Music_FirstLayer);
+        RTPC_Music_secondLayer.SetValue(null, Music_SecondLayer);
+    }
 
         void LoadSoundbanks() //Load les soundbanks (pas encore dynamiquement)
         {
@@ -229,8 +233,6 @@ namespace WwiseAudioManager
             
         }
 
+
+
     }
-
-
-
-}

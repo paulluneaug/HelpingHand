@@ -6,27 +6,6 @@ using UnityEngine;
 
 using UnityUtility.Singletons;
 
-namespace MusicManager
-{
-    public enum AudioGameState
-    {
-        None,
-        MainMenu,
-        Gameplay,
-        Paused,
-        GameOver
-    }
-    public enum AudioMusicState
-    {
-        None,
-        MainMenu,
-        GameplayFirstSection,
-        GameplaySecondSection,
-        GameplayThirdSection,
-        PauseMenu,
-        LevelWin,
-        LevelLose
-    }
 
     public class MusicManager : MonoBehaviourSingleton<MusicManager>
     {
@@ -112,8 +91,48 @@ namespace MusicManager
             Debug.Log("New Wwise GameState: " + MusicState + ".");
         }
 
+    public void PostWwiseEventGlobal(AK.Wwise.Event WwiseEvent)
+    {
+        if (WwiseEvent == null)
+        {
+            Debug.LogError(WwiseEvent.Name + " is null (check if it's set correctly and up to date :)");
+            return;
+        }
+
+        if (WwiseEvent.IsValid())
+        {
+            WwiseEvent.Post(gameObject);
+        }
+        else
+        {
+            Debug.LogError(WwiseEvent.Name + " is invalid, check if it's set correctly and up to date");
+        }
     }
 
+    public void PostWwiseEventToObject(AK.Wwise.Event WwiseEvent, GameObject TargetObject)
+    {
+        if (WwiseEvent == null)
+        {
+            Debug.LogError(WwiseEvent.Name + " is null (check if it's set correctly and up to date :)");
+            return;
+        }
+        else if (TargetObject == null)
+        {
+            Debug.LogError(TargetObject.name + " is null. PostWwiseEventToObject requires an existing TargetObject.");
+            return;
+        }
+
+        if (WwiseEvent.IsValid())
+        {
+            WwiseEvent.Post(TargetObject);
+        }
+        else
+        {
+            Debug.LogError(WwiseEvent.Name + " is invalid, check if it's set correctly and up to date");
+        }
+
+
+    }
 
 
 }

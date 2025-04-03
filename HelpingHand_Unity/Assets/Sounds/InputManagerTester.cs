@@ -1,4 +1,3 @@
-using WwiseAudioManager;
 using UnityEngine;
 
 public class InputManagerTester : MonoBehaviour
