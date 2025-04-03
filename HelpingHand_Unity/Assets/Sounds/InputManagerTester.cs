@@ -26,7 +26,7 @@ public class InputManagerTester : MonoBehaviour
     {
         Initialize();
     }
-    void Initialize()
+    private void Initialize()
     {
         //Singleton
         if (Instance == null)
@@ -55,7 +55,9 @@ public class InputManagerTester : MonoBehaviour
     public void CheckInputs()
     {
         if (!Input.anyKey)
+        {
             return;
+        }
 
         //Events
         if (Input.GetKeyDown(StartMainMusic))
