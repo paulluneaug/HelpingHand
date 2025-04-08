@@ -86,6 +86,7 @@ namespace AK
     {
         static const AkUniqueID RTPC_MUSIC_FIRSTLAYER = 2116630962U;
         static const AkUniqueID RTPC_MUSIC_SECONDLAYER = 1485517750U;
+        static const AkUniqueID SLIDERSPEED = 1460444787U;
         static const AkUniqueID SLIDERVALUE = 2333331917U;
     } // namespace GAME_PARAMETERS
 
