@@ -40,6 +40,9 @@ public class AudioManager : MonoBehaviour
     // UI
     [SerializeField] public AK.Wwise.Event UI_Click;
     [SerializeField] public AK.Wwise.Event UI_Hover;
+
+    [SerializeField] public AK.Wwise.Event MenuOpenSound;
+    [SerializeField] public AK.Wwise.Event MenuCloseSound;
     #endregion
 
     #region Soundbanks list
