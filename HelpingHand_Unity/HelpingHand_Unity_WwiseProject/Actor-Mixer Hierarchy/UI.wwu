@@ -140,6 +140,19 @@
 					</ChildrenList>
 				</ActorMixer>
 				<BlendContainer Name="BlenderSliderTrack" ID="{B3E85683-A3A2-4139-839A-69062C06825A}" ShortID="169420937">
+					<PropertyList>
+						<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -149,7 +162,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Fire, Whoosh, Crispy Fire, Fireball, Big 01 SND12029 1" ID="{C322C7AF-66D3-411C-8237-9A44DCC56A2F}" ShortID="297935807">
+						<Sound Name="Track1" ID="{C322C7AF-66D3-411C-8237-9A44DCC56A2F}" ShortID="297935807">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -171,7 +184,7 @@
 								<ActiveSource Name="Fire, Whoosh, Crispy Fire, Fireball, Big 01 SND12029 1" ID="{17F055AF-39C6-42EE-AEC3-B45282F57877}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Swooshes, Whoosh, Low SND11982 1" ID="{A2B1B727-AD19-42E5-BDC6-78485ABB1CED}" ShortID="465747859">
+						<Sound Name="Track2" ID="{A2B1B727-AD19-42E5-BDC6-78485ABB1CED}" ShortID="465747859">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -206,7 +219,7 @@
 							</ReferenceList>
 							<BlendTrackAssocList>
 								<BlendTrackAssoc>
-									<ItemRef Name="Fire, Whoosh, Crispy Fire, Fireball, Big 01 SND12029 1" ID="{C322C7AF-66D3-411C-8237-9A44DCC56A2F}"/>
+									<ItemRef Name="Track1" ID="{C322C7AF-66D3-411C-8237-9A44DCC56A2F}"/>
 									<CrossfadingInfo>
 										<LeftEdgePos>0</LeftEdgePos>
 										<LeftFadingMode>Automatic</LeftFadingMode>
@@ -215,7 +228,7 @@
 									</CrossfadingInfo>
 								</BlendTrackAssoc>
 								<BlendTrackAssoc>
-									<ItemRef Name="Swooshes, Whoosh, Low SND11982 1" ID="{A2B1B727-AD19-42E5-BDC6-78485ABB1CED}"/>
+									<ItemRef Name="Track2" ID="{A2B1B727-AD19-42E5-BDC6-78485ABB1CED}"/>
 									<CrossfadingInfo>
 										<LeftEdgePos>40.00025</LeftEdgePos>
 										<LeftFadingMode>Automatic</LeftFadingMode>
@@ -281,6 +294,58 @@
 						<ActiveSource Name="Rocks, Impact, Concrete Blocks, Bricks, Short Impacts SND75250" ID="{1F62A972-9B53-43FA-9AC4-A39030AD5D63}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<RandomSequenceContainer Name="RockFriction" ID="{BB8E4A47-1981-43BC-866D-7153595E78D1}" ShortID="746110767">
+					<PropertyList>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Rocks, Friction, Bricks, Slide Against, Rotation, Grainy Friction 01 SND46243 1" ID="{AD2DF058-9AD8-4E97-A257-9335DB15B200}" ShortID="229523825">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Rocks, Friction, Bricks, Slide Against, Rotation, Grainy Friction 01 SND46243 1" ID="{C438FFEE-6A09-4775-A6A9-F1F6DC7239B4}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="1.13494554458265"/>
+										<Property Name="TrimEnd" Type="Real64" Value="5.73844781257137"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Rocks, Friction, Bricks, Slide Against, Rotation, Grainy Friction 01 SND46243 1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="818111967"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Rocks, Friction, Bricks, Slide Against, Rotation, Grainy Friction 01 SND46243 1" ID="{C438FFEE-6A09-4775-A6A9-F1F6DC7239B4}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Playlist">
+							<Reference>
+								<ObjectRef Name="Rocks, Friction, Bricks, Slide Against, Rotation, Grainy Friction 01 SND46243 1" ID="{AD2DF058-9AD8-4E97-A257-9335DB15B200}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

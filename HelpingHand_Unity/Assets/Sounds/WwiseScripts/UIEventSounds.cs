@@ -10,8 +10,8 @@ public class UIEventSounds : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public AK.Wwise.Event OnPointerUpSound;
     public AK.Wwise.Event OnPointerEnterSound;
     public AK.Wwise.Event OnPointerExitSound;
-    public AK.Wwise.Event BlendTrack;
-
+    public AK.Wwise.Event PlaySliderSfx;
+    public AK.Wwise.Event StopSliderSfx;
     public AK.Wwise.Event OnSliderMaxValue;
     public AK.Wwise.Event OnSliderMinValue;
 
@@ -47,9 +47,16 @@ public class UIEventSounds : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             Debug.Log(Slider_1.value);
             RTPC_Slider.SetValue(null, Slider_1.value);
-            BlendTrack.Post(gameObject);
+            PlaySliderSfx.Post(gameObject);
 
             previousSliderValue = Slider_1.value;
+        }
+        else
+        {
+            StopSliderSfx.Post(gameObject);
+
+        }
+
 
             if (Slider_1.value == Slider_1.maxValue)
             {
@@ -65,6 +72,6 @@ public class UIEventSounds : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     }
 
 
-}
+
 
 

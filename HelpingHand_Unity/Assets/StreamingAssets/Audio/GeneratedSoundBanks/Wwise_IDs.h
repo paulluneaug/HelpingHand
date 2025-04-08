@@ -22,8 +22,10 @@ namespace AK
         static const AkUniqueID ONPOINTERUP = 3836048698U;
         static const AkUniqueID PLAY_TEST_APPLAUSE_LOOP = 131427293U;
         static const AkUniqueID PLAY_TEST_BEEP = 27511013U;
+        static const AkUniqueID PLAYFADERSFX = 3386389010U;
         static const AkUniqueID SLIDERMAXROCK = 2299486555U;
         static const AkUniqueID SLIDERMINROCK = 1132753153U;
+        static const AkUniqueID STOPFADERSFX = 3561225448U;
     } // namespace EVENTS
 
     namespace STATES
