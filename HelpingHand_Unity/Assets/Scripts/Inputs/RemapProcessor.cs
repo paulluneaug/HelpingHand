@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using UnityUtility.MathU;
+using UnityUtility.Extensions;
 
 #if UNITY_EDITOR
 [InitializeOnLoad]
