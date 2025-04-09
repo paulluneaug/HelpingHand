@@ -2,6 +2,7 @@
 #include <SoftwareSerial.h>
 #include <SerialCommand.h>
 #include <SimpleRotary.h>
+#include <Joystick.h>
 
 #pragma region Type defs
 
@@ -114,13 +115,18 @@ bool UpdateRotaryState(RotaryState* rotaryState, byte newRotation, byte newClick
 const int ROTARY_CLK_PIN = 4;
 const int ROTARY_DT_PIN = 3;
 const int ROTARY_SW_PIN = 2;
-const int FADER_PIN = 5;
+const int FADER_X_PIN = 5;
+const int FADER_Y_PIN = 4;
 
 // Headers
 const byte ROTARY_STATE_HEADER = 10;
 const byte DMX_COMMAND_HEADER = 20;
 const byte ERROR_HEADER = 245;
 const byte DEBUG_MODE_HEADER = 100; // d
+
+const int ROTARY_LEFT_BUTTON_INDEX = 0; 
+const int ROTARY_RIGHT_BUTTON_INDEX = 1; 
+const int ROTARY_CLICK_BUTTON_INDEX = 2; 
 
 
 const int BUFFER_SIZE = 32;
@@ -135,6 +141,7 @@ byte m_writeBuffer[BUFFER_SIZE];
 SimpleRotary m_rotary(ROTARY_CLK_PIN, ROTARY_DT_PIN, ROTARY_SW_PIN);
 RotaryState m_rotaryState;
 
+Joystick_ m_joystick;
 
 Queue m_recieveQueue;
 
@@ -145,16 +152,19 @@ void setup() {
   m_debug = true;
 
   InitializeQueue(&m_recieveQueue);
+  InitJoystick();
   InitRotary();
-  //pinMode(CLICK_PIN, INPUT);
-  //pinMode(DATA_PIN, INPUT);
-  //pinMode(SW_PIN, INPUT);
 
 }
 
 void InitRotary()
 {
   InitializeRotaryState(&m_rotaryState);
+}
+
+void InitJoystick()
+{
+  m_joystick.begin();
 }
 
 void loop() 
@@ -164,6 +174,10 @@ void loop()
   m_wroteBytes = 0;
   UpdateRotary();
   SendDataIfNeeded();
+
+  m_joystick.setXAxis(analogRead(FADER_X_PIN));
+  m_joystick.setYAxis(analogRead(FADER_Y_PIN));
+
   delay(10);
 }
 
@@ -211,6 +225,7 @@ void SendDataIfNeeded()
 {
   if (m_wroteBytes != 0)
   {
+    m_joystick.sendState();
     if (m_debug)
     {
       Serial.println("");
@@ -229,12 +244,15 @@ void UpdateRotary()
 
   if (UpdateRotaryState(&m_rotaryState, rotation, click))
   {
+    m_joystick.setButton(ROTARY_CLICK_BUTTON_INDEX, click);
+    UpdateRotaryDirectionButtons(rotation);
     if (m_debug)
     {
       Serial.print(rotation);
       Serial.print(" ");
       Serial.print(click);
       Serial.print(" ");
+      m_wroteBytes++;
     }
     else
     {
@@ -243,9 +261,28 @@ void UpdateRotary()
       m_writeBuffer[m_wroteBytes++] = click;
     }
   }
-
 }
 
+void UpdateRotaryDirectionButtons(byte rotationCode)
+{
+  switch(rotationCode)
+  {
+    case 0:
+      m_joystick.setButton(ROTARY_LEFT_BUTTON_INDEX, 0);
+      m_joystick.setButton(ROTARY_RIGHT_BUTTON_INDEX, 0);
+      break;
+    case 1:
+      m_joystick.setButton(ROTARY_LEFT_BUTTON_INDEX, 0);
+      m_joystick.setButton(ROTARY_RIGHT_BUTTON_INDEX, 1);
+      break;
+    case 2:
+      m_joystick.setButton(ROTARY_LEFT_BUTTON_INDEX, 1);
+      m_joystick.setButton(ROTARY_RIGHT_BUTTON_INDEX, 0);
+      break;
+    default:
+      break;
+  };
+}
 
 void SendError(byte errorCode) 
 {
