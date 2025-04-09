@@ -25,7 +25,8 @@ namespace AK
         static const AkUniqueID PLAYFADERSFX = 3386389010U;
         static const AkUniqueID SLIDERMAXROCK = 2299486555U;
         static const AkUniqueID SLIDERMINROCK = 1132753153U;
-        static const AkUniqueID STOPFADERSFX = 3561225448U;
+        static const AkUniqueID STOPFADERSFX_FADEOUT = 531241159U;
+        static const AkUniqueID STOPFADERSFX_IMMEDIATE = 217122686U;
     } // namespace EVENTS
 
     namespace STATES
@@ -86,6 +87,7 @@ namespace AK
     {
         static const AkUniqueID RTPC_MUSIC_FIRSTLAYER = 2116630962U;
         static const AkUniqueID RTPC_MUSIC_SECONDLAYER = 1485517750U;
+        static const AkUniqueID RTPC_RANDOMSEEKPOSITION = 2865193319U;
         static const AkUniqueID SLIDERSPEED = 1460444787U;
         static const AkUniqueID SLIDERVALUE = 2333331917U;
     } // namespace GAME_PARAMETERS

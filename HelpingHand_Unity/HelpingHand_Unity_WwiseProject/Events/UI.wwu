@@ -82,24 +82,62 @@
 				</Event>
 				<Event Name="PlayFaderSfx" ID="{F25EDB35-EE85-47D3-BABB-D5B444C285BA}">
 					<ChildrenList>
-						<Action Name="" ID="{76FBB408-3338-4542-85FC-BC09A9D8E407}" ShortID="743605856">
+						<Action Name="" ID="{3DA810C1-8100-4516-8D1F-7664E4D5BAC0}" ShortID="602318456">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="RockFriction" ID="{BB8E4A47-1981-43BC-866D-7153595E78D1}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+									<ObjectRef Name="Fader_Rock_Loop" ID="{61606222-1B22-4504-967A-1342D50CE43C}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{9C73F8F7-8CBA-48E7-A7A1-A6428F47F1D1}" ShortID="169095068">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="36"/>
+								<Property Name="SeekPercent" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{15566E34-1EC9-49C6-82CA-9F71BB571C3D}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fader_Rock_Loop" ID="{61606222-1B22-4504-967A-1342D50CE43C}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="StopFaderSfx" ID="{268D3A73-680A-4BF2-9BDE-52EFF2510793}">
+				<Event Name="StopFaderSfx_Fadeout" ID="{268D3A73-680A-4BF2-9BDE-52EFF2510793}">
 					<ChildrenList>
 						<Action Name="" ID="{392F0C3A-4162-4036-918F-EA4ED7216B35}" ShortID="201835497">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.25"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="RockFriction" ID="{BB8E4A47-1981-43BC-866D-7153595E78D1}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+									<ObjectRef Name="Fader_Rock_Loop" ID="{61606222-1B22-4504-967A-1342D50CE43C}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopFaderSfx_Immediate" ID="{814C58D9-98BA-49A8-A22E-33C26816E2F3}">
+					<ChildrenList>
+						<Action Name="" ID="{1460825E-13B8-4F39-87DF-CC7132D91F50}" ShortID="185397564">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fader_Rock_Loop" ID="{61606222-1B22-4504-967A-1342D50CE43C}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
