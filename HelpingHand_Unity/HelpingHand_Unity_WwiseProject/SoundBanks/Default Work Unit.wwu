@@ -4,14 +4,34 @@
 		<WorkUnit Name="Default Work Unit" ID="{A9249939-8E32-471F-8CBB-AD37D4F09A36}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{E88F5082-7F8A-458A-BE23-93119E4493EE}">
+					<PropertyList>
+						<Property Name="Maximum" Type="int32">
+							<ValueList>
+								<Value>10000000</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ObjectInclusionList>
-						<ObjectRef Name="All_Musics" ID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WU_Voice" ID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WU_Ambience" ID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WU_Foleys" ID="{FCB75BEF-DD01-48BA-8F14-553271772D8B}" WorkUnitID="{FCB75BEF-DD01-48BA-8F14-553271772D8B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WU_Puppet" ID="{6FDF2041-6F47-48DD-A184-5248662B832A}" WorkUnitID="{6FDF2041-6F47-48DD-A184-5248662B832A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WU_MovableObjects" ID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WU_UI" ID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Musics" ID="{BB2C0E02-66E6-4472-8DAB-3A2E4D6CFD85}">
+					<PropertyList>
+						<Property Name="Maximum" Type="int32">
+							<ValueList>
+								<Value>30000000</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="All_Musics" ID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
