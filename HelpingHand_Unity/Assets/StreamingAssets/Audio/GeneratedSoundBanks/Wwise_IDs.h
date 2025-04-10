@@ -17,6 +17,11 @@ namespace AK
         static const AkUniqueID ONPOINTERENTER = 414303029U;
         static const AkUniqueID ONPOINTEREXIT = 3466097449U;
         static const AkUniqueID ONPOINTERUP = 3836048698U;
+        static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
+        static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
+        static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
+        static const AkUniqueID PLAY_FADERMAX = 3224940184U;
+        static const AkUniqueID PLAY_FADERMIN = 3359161110U;
         static const AkUniqueID PLAY_SQUAREROCKLOOP = 2367626798U;
         static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
         static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
