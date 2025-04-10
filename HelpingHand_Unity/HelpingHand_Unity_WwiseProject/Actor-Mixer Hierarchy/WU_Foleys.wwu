@@ -17,7 +17,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<ActorMixer Name="Foley_MC_Gear" ID="{E187D6EE-8767-4029-A434-8E4F7399F1E6}" ShortID="1041006316">
+						<ActorMixer Name="Foley_Gear" ID="{E187D6EE-8767-4029-A434-8E4F7399F1E6}" ShortID="1041006316">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -27,7 +27,7 @@
 								</Reference>
 							</ReferenceList>
 						</ActorMixer>
-						<ActorMixer Name="Foley_MC_Surface" ID="{F9646538-A6E2-4459-813C-4A835EB4D319}" ShortID="397125770">
+						<ActorMixer Name="Foley_Surface" ID="{F9646538-A6E2-4459-813C-4A835EB4D319}" ShortID="397125770">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -37,31 +37,96 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<SwitchContainer Name="Foleys_MC_Movement_Surface_Run_SlopeUp" ID="{C2BBCDC1-0095-45F4-92F9-EC31EEB048C9}" ShortID="263760933">
+								<SwitchContainer Name="Foleys_Movement_Surface_Run_SlopeUp" ID="{C2BBCDC1-0095-45F4-92F9-EC31EEB048C9}" ShortID="263760933">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Material" ID="{9089911A-A5DF-4CAA-BAC3-0C49E75D12B2}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
 										</Reference>
 									</ReferenceList>
 									<GroupingInfo/>
 								</SwitchContainer>
-								<SwitchContainer Name="Foleys_MC_Movement_Surface_Walk" ID="{7CBB2B68-4B40-4A4C-8D9E-40FE8AD48FDD}" ShortID="6041536">
+								<SwitchContainer Name="Foleys_Movement_Surface_Walk" ID="{7CBB2B68-4B40-4A4C-8D9E-40FE8AD48FDD}" ShortID="6041536">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Material" ID="{9089911A-A5DF-4CAA-BAC3-0C49E75D12B2}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Wood_Footsteps" ID="{1C0E965C-3E27-424F-822D-1F6AD1831801}" ShortID="328220109">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Dirt_Footsteps" ID="{44301A8F-1629-4C88-BE6E-59B841F7158D}" ShortID="211560340">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Wood_Footsteps" ID="{1C0E965C-3E27-424F-822D-1F6AD1831801}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Dirt_Footsteps" ID="{44301A8F-1629-4C88-BE6E-59B841F7158D}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
+												<ItemList>
+													<ItemRef Name="Dirt_Footsteps" ID="{44301A8F-1629-4C88-BE6E-59B841F7158D}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Wood" ID="{E6D327EE-7941-49F3-BE58-A140CD7C70DB}"/>
+												<ItemList>
+													<ItemRef Name="Wood_Footsteps" ID="{1C0E965C-3E27-424F-822D-1F6AD1831801}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Foleys_Movement_Surface_Run" ID="{FE613C64-9927-42DD-AE48-E3DBCC0EDE02}" ShortID="746592347">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Material" ID="{9089911A-A5DF-4CAA-BAC3-0C49E75D12B2}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
 										</Reference>
 									</ReferenceList>
 									<GroupingInfo/>
 								</SwitchContainer>
 							</ChildrenList>
 						</ActorMixer>
-						<ActorMixer Name="Foley_MC_Surface_Layers" ID="{D9243B83-45A4-45EE-9F30-4220BD1AD39D}" ShortID="991172601">
+						<ActorMixer Name="Foley_Surface_Layers" ID="{D9243B83-45A4-45EE-9F30-4220BD1AD39D}" ShortID="991172601">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -71,7 +136,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<ActorMixer Name="Foley_MC_Surface_Layers_BranchSnap" ID="{6DBAF612-7DA1-48EE-AD9D-34E28F5A9F8D}" ShortID="503868292">
+								<ActorMixer Name="Foley_Surface_Layers_BranchSnap" ID="{6DBAF612-7DA1-48EE-AD9D-34E28F5A9F8D}" ShortID="503868292">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -81,7 +146,7 @@
 										</Reference>
 									</ReferenceList>
 								</ActorMixer>
-								<ActorMixer Name="Foley_MC_Surface_Layers_SlopeDown" ID="{CD320FA5-022B-46DA-BC00-9C1F18BDA1BC}" ShortID="204776608">
+								<ActorMixer Name="Foley_Surface_Layers_SlopeDown" ID="{CD320FA5-022B-46DA-BC00-9C1F18BDA1BC}" ShortID="204776608">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -91,7 +156,7 @@
 										</Reference>
 									</ReferenceList>
 								</ActorMixer>
-								<ActorMixer Name="Foley_MC_Surface_Layers_Vegetation" ID="{11F7B703-F6ED-419A-8FD1-660A886CC0F0}" ShortID="650106003">
+								<ActorMixer Name="Foley_Surface_Layers_Vegetation" ID="{11F7B703-F6ED-419A-8FD1-660A886CC0F0}" ShortID="650106003">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -101,7 +166,7 @@
 										</Reference>
 									</ReferenceList>
 								</ActorMixer>
-								<ActorMixer Name="Foley_MC_Surface_Layers_Wet" ID="{034829ED-C333-450C-BED1-2108DFB6D2AC}" ShortID="186844055">
+								<ActorMixer Name="Foley_Surface_Layers_Wet" ID="{034829ED-C333-450C-BED1-2108DFB6D2AC}" ShortID="186844055">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -111,7 +176,7 @@
 										</Reference>
 									</ReferenceList>
 								</ActorMixer>
-								<ActorMixer Name="Foley_MC_Surface_Layers_WoodCreaks" ID="{FF123474-BBAC-4FF9-AB51-895B8DE69985}" ShortID="548928028">
+								<ActorMixer Name="Foley_Surface_Layers_WoodCreaks" ID="{FF123474-BBAC-4FF9-AB51-895B8DE69985}" ShortID="548928028">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -122,16 +187,6 @@
 									</ReferenceList>
 								</ActorMixer>
 							</ChildrenList>
-						</ActorMixer>
-						<ActorMixer Name="Foley_Equipments" ID="{5043025E-B8B8-4CA5-97C8-790440FBA4A7}" ShortID="84420507">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-								</Reference>
-							</ReferenceList>
 						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
