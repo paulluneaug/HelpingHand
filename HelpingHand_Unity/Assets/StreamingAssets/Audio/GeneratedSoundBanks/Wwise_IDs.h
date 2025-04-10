@@ -13,6 +13,8 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
+        static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
         static const AkUniqueID ONPOINTERDOWN = 1065012045U;
         static const AkUniqueID ONPOINTERENTER = 414303029U;
         static const AkUniqueID ONPOINTEREXIT = 3466097449U;
@@ -22,11 +24,13 @@ namespace AK
         static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
         static const AkUniqueID PLAY_FADERMAX = 3224940184U;
         static const AkUniqueID PLAY_FADERMIN = 3359161110U;
+        static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
         static const AkUniqueID PLAY_ROOMMACHINIST = 2948635231U;
         static const AkUniqueID PLAY_SQUAREROCKLOOP = 2367626798U;
         static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
         static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
         static const AkUniqueID PLAY_THEATERAMBIENCE = 3213662481U;
+        static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
     } // namespace EVENTS
@@ -83,6 +87,18 @@ namespace AK
             } // namespace SWITCH
         } // namespace MATERIAL
 
+        namespace PLAYERCYCLE
+        {
+            static const AkUniqueID GROUP = 1295475536U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID RUN = 712161704U;
+                static const AkUniqueID STAIRS = 1289942167U;
+                static const AkUniqueID WALK = 2108779966U;
+            } // namespace SWITCH
+        } // namespace PLAYERCYCLE
+
     } // namespace SWITCHES
 
     namespace GAME_PARAMETERS
@@ -98,10 +114,12 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID MAIN = 3161908922U;
+        static const AkUniqueID MUSICS = 1730564753U;
     } // namespace BANKS
 
     namespace BUSSES
     {
+        static const AkUniqueID AMBBUS = 2894416467U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MOVABLEOBJECTSBUS = 2112977367U;
         static const AkUniqueID MUSICBUS = 2886307548U;
