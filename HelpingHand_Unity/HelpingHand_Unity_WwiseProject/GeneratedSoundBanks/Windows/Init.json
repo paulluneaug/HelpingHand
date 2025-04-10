@@ -10,11 +10,21 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{5C1838EB-37B8-8841-95C3-622596F241EC}",
+    "Hash": "{1100F463-276D-DDA7-9136-8C804C6CC5D4}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Plugins": {
+     "Custom": [
+      {
+       "Id": "717527080",
+       "Name": "AK Convolution Reverb (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\Hall\\[Effect Slot [0]: (AK Convolution Reverb)]\\AK Convolution Reverb (Custom)",
+       "GUID": "{AC889852-B791-493A-AF5D-3B1855F5761D}",
+       "LibName": "Wwise Convolution Reverb",
+       "LibId": "8323075"
+      }
+     ],
      "AudioDevices": [
       {
        "Id": "2317455096",
@@ -36,6 +46,40 @@
     },
     "Busses": [
      {
+      "Id": "695384145",
+      "Name": "RVB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB",
+      "GUID": "{4BF5A1F5-63EC-47CA-94DA-534CB41FC8E7}",
+      "Color": "4"
+     },
+     {
+      "Id": "1372881427",
+      "Name": "UIBus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\UIBus",
+      "GUID": "{CA20ED2A-D11E-4DFF-AE57-2E3114B13AA9}",
+      "Color": "16"
+     },
+     {
+      "Id": "1406467327",
+      "Name": "PuppetBus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SfxBus\\PuppetBus",
+      "GUID": "{0C548E98-D102-418C-8456-F1B6C0DB13FC}",
+      "Color": "13"
+     },
+     {
+      "Id": "2045367873",
+      "Name": "VoiceBus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\VoiceBus",
+      "GUID": "{C628C558-A524-4C84-B5EA-B492F58CA446}"
+     },
+     {
+      "Id": "2112977367",
+      "Name": "MovableObjectsBus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SfxBus\\MovableObjectsBus",
+      "GUID": "{14655D3F-C790-42EC-9B70-6531E995B34A}",
+      "Color": "6"
+     },
+     {
       "Id": "2886307548",
       "Name": "MusicBus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\MusicBus",
@@ -46,6 +90,28 @@
       "Name": "Master Audio Bus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     },
+     {
+      "Id": "3803850708",
+      "Name": "SfxBus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SfxBus",
+      "GUID": "{2A04E057-5A03-4B6D-A72F-4641264E8BCB}"
+     }
+    ],
+    "AuxBusses": [
+     {
+      "Id": "3633416828",
+      "Name": "Hall",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\Hall",
+      "GUID": "{168AA74E-F128-4A65-AB94-C40BE7738E4E}",
+      "Color": "4",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "717527080"
+        }
+       ]
+      }
      }
     ],
     "GameParameters": [
@@ -224,6 +290,6 @@
     ]
    }
   ],
-  "FileHash": "{4B40CE69-124E-A1AB-BC80-27A81BF94C4B}"
+  "FileHash": "{DFD9E9B5-878B-1DA1-3249-E1FE9DF0088B}"
  }
 }

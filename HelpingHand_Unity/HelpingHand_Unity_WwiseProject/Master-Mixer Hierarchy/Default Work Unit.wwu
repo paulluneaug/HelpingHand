@@ -46,6 +46,116 @@
 								</CustomStateList>
 							</StateInfo>
 						</Bus>
+						<Bus Name="UIBus" ID="{CA20ED2A-D11E-4DFF-AE57-2E3114B13AA9}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="16"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}">
+							<ChildrenList>
+								<Bus Name="MovableObjectsBus" ID="{14655D3F-C790-42EC-9B70-6531E995B34A}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="6"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="PuppetBus" ID="{0C548E98-D102-418C-8456-F1B6C0DB13FC}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="13"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+							</ChildrenList>
+						</Bus>
+						<Bus Name="RVB" ID="{4BF5A1F5-63EC-47CA-94DA-534CB41FC8E7}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<AuxBus Name="Hall" ID="{168AA74E-F128-4A65-AB94-C40BE7738E4E}">
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{EEC7C85C-5A0B-41DD-B9E8-9FFF7C0F2F54}" ShortID="351210630">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom>
+																	<Effect Name="AK Convolution Reverb (Custom)" ID="{AC889852-B791-493A-AF5D-3B1855F5761D}" ShortID="717527080" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">																		<PluginData>
+	<ConvolutionData>
+		<CurveList Version="1">
+			<CurveInfo Name="IRGraphicEQ">
+				<Curve Name="">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="19"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>20</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>20000</XPos>
+							<YPos>0</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+		</CurveList>
+	</ConvolutionData>
+</PluginData>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+							</ChildrenList>
+						</Bus>
+						<Bus Name="VoiceBus" ID="{C628C558-A524-4C84-B5EA-B492F58CA446}">
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="GameState" ID="{9990CED9-ED9F-4286-970F-93B9EE00A40C}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Paused" ID="{F69F84C5-145C-44A0-A760-13C991AE5AA4}"/>
+										<CustomState Name="" ID="{E2D597D7-5201-4F9E-BA46-DF3305B2493C}" ShortID="431635746">
+											<PropertyList>
+												<Property Name="Highpass" Type="int16" Value="48"/>
+												<Property Name="Lowpass" Type="int16" Value="27"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="MainMenu" ID="{1AE6E78C-D972-4999-8EEA-37F43B3F76CF}"/>
+										<CustomState Name="" ID="{20CBADFD-B989-4E93-BD0E-FB862280B708}" ShortID="811492501"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="GameOver" ID="{ADB27E88-2BC4-4DAB-8C8B-2144EEA5F9D4}"/>
+										<CustomState Name="" ID="{DE1AB6E5-6BD0-412D-A1BB-E69FD45CE6ED}" ShortID="274406070">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16" Value="64"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Gameplay" ID="{1F7D27F0-853A-4FBA-BD84-B4A6E0FB254F}"/>
+										<CustomState Name="" ID="{9831486A-619E-47BB-8B5A-4DE053623BB6}" ShortID="1018653917"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+						</Bus>
 					</ChildrenList>
 					<StateInfo>
 						<StateGroupList>

@@ -13,20 +13,15 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID BLENDTRACK = 4198610215U;
-        static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
-        static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
         static const AkUniqueID ONPOINTERDOWN = 1065012045U;
         static const AkUniqueID ONPOINTERENTER = 414303029U;
         static const AkUniqueID ONPOINTEREXIT = 3466097449U;
         static const AkUniqueID ONPOINTERUP = 3836048698U;
-        static const AkUniqueID PLAY_TEST_APPLAUSE_LOOP = 131427293U;
-        static const AkUniqueID PLAY_TEST_BEEP = 27511013U;
-        static const AkUniqueID PLAYFADERSFX = 3386389010U;
-        static const AkUniqueID SLIDERMAXROCK = 2299486555U;
-        static const AkUniqueID SLIDERMINROCK = 1132753153U;
-        static const AkUniqueID STOPFADERSFX_FADEOUT = 531241159U;
-        static const AkUniqueID STOPFADERSFX_IMMEDIATE = 217122686U;
+        static const AkUniqueID PLAY_SQUAREROCKLOOP = 2367626798U;
+        static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
+        static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
+        static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
+        static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
     } // namespace EVENTS
 
     namespace STATES
@@ -101,8 +96,19 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID MOVABLEOBJECTSBUS = 2112977367U;
         static const AkUniqueID MUSICBUS = 2886307548U;
+        static const AkUniqueID PUPPETBUS = 1406467327U;
+        static const AkUniqueID RVB = 695384145U;
+        static const AkUniqueID SFXBUS = 3803850708U;
+        static const AkUniqueID UIBUS = 1372881427U;
+        static const AkUniqueID VOICEBUS = 2045367873U;
     } // namespace BUSSES
+
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID HALL = 3633416828U;
+    } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {
