@@ -1,7 +1,7 @@
 using UnityEngine;
 
-using UnityUtility.MathU;
 using UnityUtility.Extensions;
+using UnityUtility.MathU;
 
 public class Puppet : MonoBehaviour
 {
@@ -40,7 +40,7 @@ public class Puppet : MonoBehaviour
     }
 
     /// <param name="angle">In radians</param>
-    public void SetRootationY(float angle)
+    public void SetRotationY(float angle)
     {
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.WhereY(angle * MathUf.RAD_2_DEG));
     }

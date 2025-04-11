@@ -6,27 +6,21 @@ using UnityUtility.CustomAttributes;
 public class PuppetSettings : ScriptableObject
 {
     public float TileSize => m_tileSize;
-
-    /// <summary>
-    /// Unit : Tile per second
-    /// </summary>
-    public float PuppetSpeed => m_puppetSpeed;
+    public float ActionDuration => m_puppetActionDuration;
 
     /// <summary>
     /// Unit : Unity unit per second
     /// </summary>
-    public float PuppetAbsoluteSpeed => m_puppetSpeed * m_tileSize;
+    public float MovementSpeed => m_tileSize / m_puppetActionDuration; // A movement action moved the puppet by a tile
 
     /// <summary>
-    /// Unit : Turns per second
+    /// Unit : Turn per second
     /// </summary>
-    public float PuppetRotationSpeed => m_puppetRotationSpeed;
+    public float RotationSpeed => m_puppetActionDuration / 4.0f; // A rotation action rotates the puppet by a quarter turn
 
 
     [SerializeField] private float m_tileSize = 1.0f;
 
-    [HelpBox("Speed in tiles per seconds")]
-    [SerializeField] private float m_puppetSpeed = 1.0f;
-    [HelpBox("Speed in turns per seconds")]
-    [SerializeField] private float m_puppetRotationSpeed = 3.0f;
+    [HelpBox("In seconds")]
+    [SerializeField] private float m_puppetActionDuration = 1.0f;
 }

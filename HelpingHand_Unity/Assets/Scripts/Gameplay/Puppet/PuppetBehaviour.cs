@@ -5,7 +5,15 @@ using UnityEngine;
 
 public class PuppetBehaviour : MonoBehaviour
 {
-    [SerializeReference] private List<PuppetAction> m_actions;
+    private enum PuppetAction
+    {
+        Wait,
+        MoveForward,
+        TurnRight,
+        TurnLeft,
+    }
+
+    [SerializeField] private List<PuppetAction> m_actions;
 
 
     [NonSerialized] private Puppet m_puppet;
@@ -21,8 +29,8 @@ public class PuppetBehaviour : MonoBehaviour
         m_finished = false;
 
 
-        PuppetAction action = m_actions[m_currentAction];
-        action.StartAction(puppet);
+        //PuppetState action = m_actions[m_currentAction];
+        //action.BeginState(puppet);
     }
 
     public void UpdateBehaviour(float deltaTime)
@@ -32,22 +40,22 @@ public class PuppetBehaviour : MonoBehaviour
             return;
         }
 
-        PuppetAction action = m_actions[m_currentAction];
-        if (action.IsFinished)
-        {
-            action.EndAction();
+        //PuppetState action = m_actions[m_currentAction];
+        //if (action.IsFinished)
+        //{
+        //    action.EndState();
 
-            ++m_currentAction;
-            if (m_currentAction >= m_actions.Count)
-            {
-                FinishBheviour();
-                return;
-            }
-            PuppetAction nextAction = m_actions[m_currentAction];
-            nextAction.StartAction(m_puppet);
-        }
+        //    ++m_currentAction;
+        //    if (m_currentAction >= m_actions.Count)
+        //    {
+        //        FinishBheviour();
+        //        return;
+        //    }
+        //    PuppetState nextAction = m_actions[m_currentAction];
+        //    nextAction.BeginState(m_puppet);
+        //}
 
-        action.UpdateAction(deltaTime);
+        //action.UpdateState(deltaTime);
     }
 
     private void FinishBheviour()
