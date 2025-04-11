@@ -24,7 +24,7 @@ public class UISlider : MonoBehaviour
         m_slider.value = value;
     }
 
-    private void OnSliderValueChanged(float value) 
+    private void OnSliderValueChanged(float value)
     {
         OnValueChanged?.Invoke(value);
     }
