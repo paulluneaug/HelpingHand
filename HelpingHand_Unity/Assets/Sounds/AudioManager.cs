@@ -1,8 +1,12 @@
 using System.Collections.Generic;
-using UnityEngine;
+
 using Sirenix.OdinInspector;
-using System.ComponentModel;
-using Unity.VisualScripting;
+
+using UnityEngine;
+
+using UnityUtility.CustomAttributes;
+
+using TitleAlignments = Sirenix.OdinInspector.TitleAlignments;
 
 public enum AudioGameState
 {
@@ -59,13 +63,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.State Game_MainMenu;
     [HorizontalGroup("Line2", Width = 0.4f)]
     [SerializeField] private AK.Wwise.State Game_None;
-[HorizontalGroup("Line2", Width = 0.4f)]
-[SerializeField] private AK.Wwise.State Game_GameOver;
+    [HorizontalGroup("Line2", Width = 0.4f)]
+    [SerializeField] private AK.Wwise.State Game_GameOver;
     [HorizontalGroup("Line3", Width = 0.5f)]
     [SerializeField] private AK.Wwise.State Game_Gameplay;
     [HorizontalGroup("Line3", Width = 0.5f)]
     [SerializeField] private AK.Wwise.State Game_Win;
-    [ReadOnly][SerializeField] private AudioGameState currentGameState;
+    [Disable][SerializeField] private AudioGameState currentGameState;
     [HorizontalGroup("Line4", Width = 0.5f)]
     [SerializeField] private AK.Wwise.State Music_Gameplay1stSection;
     [HorizontalGroup("Line5", Width = 0.5f)]
@@ -80,7 +84,7 @@ public class AudioManager : MonoBehaviour
     [HorizontalGroup("Line6", Width = 0.5f)]
     [SerializeField] private AK.Wwise.State Music_None;
 
-    [ReadOnly][SerializeField] private AudioMusicState currentMusicState;
+    [Disable][SerializeField] private AudioMusicState currentMusicState;
     #endregion
 
 
