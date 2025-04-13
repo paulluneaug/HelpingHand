@@ -10,13 +10,11 @@ public class Puppet : MonoBehaviour
     [SerializeField] private PuppetSettings m_puppetSettings;
     [SerializeField] private PuppetBehaviour m_puppetBehaviour;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         m_puppetBehaviour.StartBehaviour(this);
     }
 
-    // Update is called once per frame
     private void Update()
     {
         m_puppetBehaviour.UpdateBehaviour(Time.deltaTime);
