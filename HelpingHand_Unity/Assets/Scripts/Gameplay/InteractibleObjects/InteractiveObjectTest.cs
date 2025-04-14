@@ -20,7 +20,17 @@ public class InteractiveObjectTest : MonoBehaviour
     public SlidingBehaviourEnum SlidingBehaviour { get => m_slidingBehaviour; set => m_slidingBehaviour = value; }
     public Vector3 StartPosition { get => m_startPosition; set => m_startPosition = value; }
     public Vector3 EndPosition { get => m_endPosition; set => m_endPosition = value; }
-    public float SmoothDiscreetSlidingDuration { get => m_smoothDiscreetSlidingTimer.Duration; set => m_smoothDiscreetSlidingTimer.Duration = value; }
+    public float SmoothDiscreetSlidingDuration 
+    { 
+        get => m_smoothDiscreetSlidingTimer.Duration; 
+        set 
+        {
+            if (m_smoothDiscreetSlidingTimer.Duration != value)
+            {
+                m_smoothDiscreetSlidingTimer.Duration = value;
+            }
+        } 
+    }
     public Easings.EasingFunction SmoothDircreetEasing
     {
         get => m_smoothDircreetEasing;
