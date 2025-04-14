@@ -1,9 +1,10 @@
 using UnityEngine;
 
 using UnityUtility.CustomAttributes;
+using UnityUtility.Singletons;
 
 [CreateAssetMenu(fileName = "PuppetSettings", menuName = "Scriptable Objects/PuppetSettings")]
-public class PuppetSettings : ScriptableObject
+public class PuppetSettings : ScriptableSingleton<PuppetSettings>
 {
     public float TileSize => m_tileSize;
 

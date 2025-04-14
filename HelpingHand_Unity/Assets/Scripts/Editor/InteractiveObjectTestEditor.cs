@@ -3,6 +3,9 @@ using System;
 using UnityEditor;
 
 using UnityEngine;
+using UnityEngine.UIElements;
+
+using UnityUtility.Extensions;
 
 [CustomEditor(typeof(InteractiveObjectTest))]
 public class InteractiveObjectTestEditor : Editor
@@ -17,10 +20,17 @@ public class InteractiveObjectTestEditor : Editor
 
     protected virtual void OnSceneGUI()
     {
+        if (Tools.current == Tool.Move)
+        {
+            Tools.current = Tool.None;
+        }
+
         InteractiveObjectTest interactiveObject = (InteractiveObjectTest)target;
 
+        float gridSize = PuppetSettings.Instance.TileSize;
+
         EditorGUI.BeginChangeCheck();
-        Vector3 newStartPosition = Handles.PositionHandle(interactiveObject.StartPosition, Quaternion.identity);
+        Vector3 newStartPosition = Handles.PositionHandle(interactiveObject.StartPosition, Quaternion.identity).Snap(gridSize);
         if (EditorGUI.EndChangeCheck())
         {
             Undo.RecordObject(interactiveObject, "Change Start Position");
@@ -29,7 +39,7 @@ public class InteractiveObjectTestEditor : Editor
         }
 
         EditorGUI.BeginChangeCheck();
-        Vector3 newEndPosition = Handles.PositionHandle(interactiveObject.EndPosition, Quaternion.identity);
+        Vector3 newEndPosition = Handles.PositionHandle(interactiveObject.EndPosition, Quaternion.identity).Snap(gridSize);
         if (EditorGUI.EndChangeCheck())
         {
             Undo.RecordObject(interactiveObject, "Change End Position");
