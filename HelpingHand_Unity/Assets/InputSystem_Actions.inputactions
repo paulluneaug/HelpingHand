@@ -990,6 +990,94 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Arduino",
+            "id": "9aa83f12-e5b5-4595-93df-2e38e471103e",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "23433e76-ccde-4720-8f53-e2549134830a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "e6372031-e5e9-4490-9514-43b2c8216ca0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "c5b8e318-12e4-43b0-86fe-830ed5a5d9b6",
+                    "expectedControlType": "",
+                    "processors": "Remap",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Potentiometer",
+                    "type": "Value",
+                    "id": "769a2f0c-52a3-43a8-b930-9ce6d499b279",
+                    "expectedControlType": "Axis",
+                    "processors": "Remap(InitialRangeX=-1,InitialRangeY=1,TargetRangeY=1)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0d5d29ae-2283-42e4-934f-4882e2885f8a",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0998aa0-523c-4963-b824-03c7a07279d8",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d767d977-73f5-450e-9ed7-0b3f11732f39",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25a8f70f-6c5e-47eb-bba4-b889457f189a",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/stick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Potentiometer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

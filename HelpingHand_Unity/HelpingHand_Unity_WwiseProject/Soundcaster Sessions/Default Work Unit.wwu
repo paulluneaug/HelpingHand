@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{F4893B91-6F6D-42BF-9B7B-945512DD72DB}" SchemaVersion="123">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{F4893B91-6F6D-42BF-9B7B-945512DD72DB}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{F4893B91-6F6D-42BF-9B7B-945512DD72DB}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="InteractiveMusic" ID="{4F7FD0FA-7224-45D1-A61B-BB1BBAC77351}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="MainMusic_Play" ID="{093201C8-0D66-4519-9906-C54A3A831C8F}" WorkUnitID="{0465E54C-F880-43BF-886F-3AE8333A3470}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MainMusic_Stop" ID="{20E8D54F-1E89-4C1E-85AE-9A38B6AC506C}" WorkUnitID="{0465E54C-F880-43BF-886F-3AE8333A3470}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_Music_SecondLayer" ID="{1FE1F2CC-33D0-4274-81E1-144470087FC5}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}"/>
+							<Value>7.60641144262215</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_RandomSeekPosition" ID="{19DC6B63-1052-468B-A30D-5806FE4CD4DF}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_Music_FirstLayer" ID="{41AC8029-1B19-49A9-AF02-10ABD2F99332}"/>
+							<Value>0</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{E186DF10-74E4-41DD-88F7-86B0DFDD56E1}"/>
+						<CurrentStateRef Name="None" ID="{862F5953-983F-432E-B44E-12484D84D351}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="Faders" ID="{1C7EFD98-E43E-4757-83E8-20C4B9560949}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="PlayFaderSfx" ID="{F25EDB35-EE85-47D3-BABB-D5B444C285BA}" WorkUnitID="{1E54A499-1CE8-4834-8B1F-51D8E9CF2BEB}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="StopFaderSfx_Fadeout" ID="{268D3A73-680A-4BF2-9BDE-52EFF2510793}" WorkUnitID="{1E54A499-1CE8-4834-8B1F-51D8E9CF2BEB}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>
