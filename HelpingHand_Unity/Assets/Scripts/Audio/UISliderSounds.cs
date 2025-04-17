@@ -79,7 +79,7 @@ public class UISliderSounds : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             }
 
             // Detect min value
-            if (Mathf.Approximately(currentValue, 0f) && !m_hasTriggeredMin)
+            if (Mathf.Approximately(currentValue, MasterSlider.MIN_VALUE) && !m_hasTriggeredMin)
             {
                 _ = (OnSliderMinValue?.Post(gameObject));
                 _ = StopSliderSfx_Immediate.Post(gameObject);
@@ -91,7 +91,7 @@ public class UISliderSounds : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             }
 
             // Detect max value
-            if (Mathf.Approximately(currentValue, 100f) && !m_hasTriggeredMax)
+            if (Mathf.Approximately(currentValue, MasterSlider.MAX_VALUE) && !m_hasTriggeredMax)
             {
                 _ = (OnSliderMaxValue?.Post(gameObject));
                 _ = StopSliderSfx_Immediate.Post(gameObject);
