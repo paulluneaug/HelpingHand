@@ -1,5 +1,6 @@
 using UnityEngine;
 
+using UnityUtility.CustomAttributes;
 using UnityUtility.Singletons;
 
 
@@ -10,7 +11,7 @@ public class MusicManager : MonoBehaviourSingleton<MusicManager>
 
     #region GameState variables
     [Header("Game States")]
-    [ReadOnly][SerializeField] private AudioGameState currentGameState;
+    [Disable][SerializeField] private AudioGameState currentGameState;
 
     [Header("Music States")]
     [SerializeField] private AK.Wwise.State Music_Gameplay1stSection;
@@ -26,7 +27,7 @@ public class MusicManager : MonoBehaviourSingleton<MusicManager>
     [SerializeField][Range(0f, 1f)] private float Music_SecondLayer = 0;
 
 
-    [ReadOnly][SerializeField] private AudioMusicState currentMusicState;
+    [Disable][SerializeField] private AudioMusicState currentMusicState;
     #endregion
 
     #region Sound Events
