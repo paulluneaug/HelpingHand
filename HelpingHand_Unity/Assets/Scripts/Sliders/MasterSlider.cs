@@ -8,6 +8,9 @@ using UnityUtility.MathU;
 
 public class MasterSlider : MonoBehaviour
 {
+    public const float MIN_VALUE = 0.0f;
+    public const float MAX_VALUE = 1.0f;
+
     public float Value
     {
         get => m_value;
@@ -16,12 +19,15 @@ public class MasterSlider : MonoBehaviour
             m_value = value;
             m_uiSlider.SetSliderValue(value);
             m_physicalSlider.SetSliderValue(value);
+            OnSliderValueChanged?.Invoke(value);
         }
     }
 
     public float Speed => m_speed;
     public float MovementDirection => m_movementDirection;
 
+    public event Action<float> OnSliderValueChanged;
+    public event Action<bool> OnPointerDown;
 
     [SerializeField] private UISlider m_uiSlider;
     [SerializeField] private PhysicalSlider m_physicalSlider;
@@ -32,17 +38,33 @@ public class MasterSlider : MonoBehaviour
     [SerializeField, Disable] private float m_speed;
     [SerializeField, Disable] private float m_movementDirection;
 
+    [SerializeField, Disable] private int m_pointerDownCount;
+
     [NonSerialized] private float m_previousValue;
     [NonSerialized] private OneEuroFilter m_speedFilter;
 
     private void Awake()
     {
         m_uiSlider.OnValueChanged += OnUISliderValueChanged;
+        m_uiSlider.OnPointerDown += OnSliderPointerDown;
+
         m_physicalSlider.OnValueChanged += OnPhysicalSliderValueChanged;
+        m_physicalSlider.OnPointerDownChanged += OnSliderPointerDown;
 
         m_speedFilter = new OneEuroFilter(m_speedFilterSettings.MinCutoff, m_speedFilterSettings.Beta);
         m_speed = m_speedFilter.Filter(0.0f, 0.0f);
 
+        m_pointerDownCount = 0;
+
+    }
+
+    private void OnDestroy()
+    {
+        m_uiSlider.OnValueChanged -= OnUISliderValueChanged;
+        m_uiSlider.OnPointerDown -= OnSliderPointerDown;
+
+        m_physicalSlider.OnValueChanged -= OnPhysicalSliderValueChanged;
+        m_physicalSlider.OnPointerDownChanged -= OnSliderPointerDown;
     }
 
     private void Update()
@@ -54,12 +76,34 @@ public class MasterSlider : MonoBehaviour
     {
         m_value = newValue;
         m_uiSlider.SetSliderValue(newValue);
+        OnSliderValueChanged?.Invoke(newValue);
     }
 
     private void OnUISliderValueChanged(float newValue)
     {
         m_value = newValue;
         m_physicalSlider.SetSliderValue(newValue);
+        OnSliderValueChanged?.Invoke(newValue);
+    }
+
+    private void OnSliderPointerDown(bool fingerDown)
+    {
+        m_pointerDownCount += fingerDown ? 1 : -1;
+
+
+        switch (m_pointerDownCount, fingerDown)
+        {
+            case (0, _):
+                OnPointerDown?.Invoke(false);
+                break;
+
+            case (1, true):
+                OnPointerDown?.Invoke(true);
+                break;
+
+            default:
+                break;
+        }
     }
 
     private void UpdateSliderSpeed(float deltaTime)
