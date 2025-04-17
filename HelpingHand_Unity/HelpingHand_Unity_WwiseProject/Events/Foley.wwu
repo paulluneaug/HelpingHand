@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E24FBF55-0E77-41A7-A645-4FD57FC5D149}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Foley" ID="{E24FBF55-0E77-41A7-A645-4FD57FC5D149}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="13"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Folder Name="Puppet" ID="{47088B3B-6A5B-45DF-A1B1-ACF254B217B3}" ShortID="809877521">
+					<ChildrenList>
+						<Event Name="Play_Footsteps" ID="{C2293964-757A-46D1-B253-CB5F6AFAD560}">
+							<ChildrenList>
+								<Action Name="" ID="{E517D90C-8C4E-4132-84B5-26C0CDD919DB}" ShortID="627792121">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Foleys_Footsteps" ID="{0A8931EA-89D5-4ED9-9D8E-DB27EB97FD79}" WorkUnitID="{FCB75BEF-DD01-48BA-8F14-553271772D8B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Footsteps" ID="{C4160526-FC41-4460-A5D7-5FD2C9352598}">
+							<ChildrenList>
+								<Action Name="" ID="{BC71D559-7519-4BE2-9881-F44191958407}" ShortID="248803658">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Foleys_Footsteps" ID="{0A8931EA-89D5-4ED9-9D8E-DB27EB97FD79}" WorkUnitID="{FCB75BEF-DD01-48BA-8F14-553271772D8B}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

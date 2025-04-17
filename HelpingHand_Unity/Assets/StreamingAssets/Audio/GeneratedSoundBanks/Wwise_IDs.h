@@ -13,20 +13,26 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID BLENDTRACK = 4198610215U;
         static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
         static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
         static const AkUniqueID ONPOINTERDOWN = 1065012045U;
         static const AkUniqueID ONPOINTERENTER = 414303029U;
         static const AkUniqueID ONPOINTEREXIT = 3466097449U;
         static const AkUniqueID ONPOINTERUP = 3836048698U;
-        static const AkUniqueID PLAY_TEST_APPLAUSE_LOOP = 131427293U;
-        static const AkUniqueID PLAY_TEST_BEEP = 27511013U;
-        static const AkUniqueID PLAYFADERSFX = 3386389010U;
-        static const AkUniqueID SLIDERMAXROCK = 2299486555U;
-        static const AkUniqueID SLIDERMINROCK = 1132753153U;
-        static const AkUniqueID STOPFADERSFX_FADEOUT = 531241159U;
-        static const AkUniqueID STOPFADERSFX_IMMEDIATE = 217122686U;
+        static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
+        static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
+        static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
+        static const AkUniqueID PLAY_FADERMAX = 3224940184U;
+        static const AkUniqueID PLAY_FADERMIN = 3359161110U;
+        static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
+        static const AkUniqueID PLAY_ROOMMACHINIST = 2948635231U;
+        static const AkUniqueID PLAY_SQUAREROCKLOOP = 2367626798U;
+        static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
+        static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
+        static const AkUniqueID PLAY_THEATERAMBIENCE = 3213662481U;
+        static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
+        static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
+        static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
     } // namespace EVENTS
 
     namespace STATES
@@ -81,6 +87,18 @@ namespace AK
             } // namespace SWITCH
         } // namespace MATERIAL
 
+        namespace PLAYERCYCLE
+        {
+            static const AkUniqueID GROUP = 1295475536U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID RUN = 712161704U;
+                static const AkUniqueID STAIRS = 1289942167U;
+                static const AkUniqueID WALK = 2108779966U;
+            } // namespace SWITCH
+        } // namespace PLAYERCYCLE
+
     } // namespace SWITCHES
 
     namespace GAME_PARAMETERS
@@ -96,13 +114,26 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID MAIN = 3161908922U;
+        static const AkUniqueID MUSICS = 1730564753U;
     } // namespace BANKS
 
     namespace BUSSES
     {
+        static const AkUniqueID AMBBUS = 2894416467U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID MOVABLEOBJECTSBUS = 2112977367U;
         static const AkUniqueID MUSICBUS = 2886307548U;
+        static const AkUniqueID PUPPETBUS = 1406467327U;
+        static const AkUniqueID RVB = 695384145U;
+        static const AkUniqueID SFXBUS = 3803850708U;
+        static const AkUniqueID UIBUS = 1372881427U;
+        static const AkUniqueID VOICEBUS = 2045367873U;
     } // namespace BUSSES
+
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID HALL = 3633416828U;
+    } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {
