@@ -8,7 +8,7 @@ using UnityUtility.Extensions;
 using UnityUtility.Timer;
 
 
-public class InteractiveObjectTest : MonoBehaviour
+public class InteractiveObjectTest : SingleSliderInteractiveObject
 {
     public enum SlidingBehaviourEnum
     {
@@ -43,9 +43,6 @@ public class InteractiveObjectTest : MonoBehaviour
         }
     }
 
-
-    [SerializeField] private MasterSlider m_controllingSlider;
-
     [SerializeField] private Vector3 m_startPosition;
     [SerializeField] private Vector3 m_endPosition;
     [SerializeField] private SlidingBehaviourEnum m_slidingBehaviour;
@@ -57,8 +54,9 @@ public class InteractiveObjectTest : MonoBehaviour
     [NonSerialized] private Vector3 m_currentSlidingStart;
 
 
-    private void Awake()
+    protected override void Start()
     {
+        base.Start();
         float gridSize = PuppetSettings.Instance.TileSize;
         m_startPosition = m_startPosition.Snap(gridSize);
         m_endPosition = m_endPosition.Snap(gridSize);
@@ -67,7 +65,7 @@ public class InteractiveObjectTest : MonoBehaviour
     private void Update()
     {
         float gridSize = PuppetSettings.Instance.TileSize;
-        Vector3 targetPosition = Vector3.Lerp(m_startPosition, m_endPosition, m_controllingSlider.Value);
+        Vector3 targetPosition = Vector3.Lerp(m_startPosition, m_endPosition, m_masterSlider.Value);
 
         switch (m_slidingBehaviour)
         {
