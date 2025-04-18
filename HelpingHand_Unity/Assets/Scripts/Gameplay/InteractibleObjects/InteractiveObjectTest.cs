@@ -65,7 +65,7 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
     private void Update()
     {
         float gridSize = PuppetSettings.Instance.TileSize;
-        Vector3 targetPosition = Vector3.Lerp(m_startPosition, m_endPosition, m_masterSlider.Value);
+        Vector3 targetPosition = Vector3.Lerp(m_startPosition, m_endPosition, m_masterSlider.SliderValue);
 
         switch (m_slidingBehaviour)
         {
