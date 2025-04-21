@@ -1,7 +1,7 @@
 using UnityEngine;
 
-using UnityUtility.MathU;
 using UnityUtility.Extensions;
+using UnityUtility.MathU;
 
 public class Puppet : MonoBehaviour
 {
@@ -10,13 +10,11 @@ public class Puppet : MonoBehaviour
     [SerializeField] private PuppetSettings m_puppetSettings;
     [SerializeField] private PuppetBehaviour m_puppetBehaviour;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         m_puppetBehaviour.StartBehaviour(this);
     }
 
-    // Update is called once per frame
     private void Update()
     {
         m_puppetBehaviour.UpdateBehaviour(Time.deltaTime);
@@ -40,7 +38,7 @@ public class Puppet : MonoBehaviour
     }
 
     /// <param name="angle">In radians</param>
-    public void SetRootationY(float angle)
+    public void SetRotationY(float angle)
     {
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.WhereY(angle * MathUf.RAD_2_DEG));
     }

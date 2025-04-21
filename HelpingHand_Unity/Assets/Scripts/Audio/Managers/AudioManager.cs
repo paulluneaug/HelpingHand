@@ -5,8 +5,14 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 using UnityUtility.CustomAttributes;
+using UnityUtility.Singletons;
 
+using Title = UnityUtility.CustomAttributes.TitleAttribute;
 using TitleAlignments = Sirenix.OdinInspector.TitleAlignments;
+
+using WwiseEvent = AK.Wwise.Event;
+using WwiseRTPC = AK.Wwise.RTPC;
+using WwiseState = AK.Wwise.State;
 
 public enum AudioGameState
 {
@@ -27,30 +33,35 @@ public enum AudioMusicState
     LevelWin,
     LevelLose
 }
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
-    public static AudioManager Instance; //Pour accéder à ce script de partout facilement : une seule instance
-    private readonly bool bIsInitialized = false;
+    #region Accessors
+    public MusicManager MusicManager => m_musicManager;
+    #endregion
+
+    [Title("Sub Managers")]
+    [SerializeField] private MusicManager m_musicManager;
 
     #region Sound Events
     [TitleGroup("Events", horizontalLine: true, alignment: TitleAlignments.Centered, boldTitle: true, indent: true)]
     public string EventExplanation;
     //Music
-    [SerializeField] public AK.Wwise.Event MainMusic_Play;
-    [SerializeField] public AK.Wwise.Event MainMusic_Stop;
+    [SerializeField] public WwiseEvent MainMusic_Play;
+    [SerializeField] public WwiseEvent MainMusic_Stop;
     //SFX
-    [SerializeField] public AK.Wwise.Event Footsteps;
-    [SerializeField] public AK.Wwise.Event Block_translation;
+    [SerializeField] public WwiseEvent Footsteps;
+    [SerializeField] public WwiseEvent Block_translation;
     // UI
-    [SerializeField] public AK.Wwise.Event UI_Click;
-    [SerializeField] public AK.Wwise.Event UI_Hover;
+    [SerializeField] public WwiseEvent UI_Click;
+    [SerializeField] public WwiseEvent UI_Hover;
 
-    [SerializeField] public AK.Wwise.Event MenuOpenSound;
-    [SerializeField] public AK.Wwise.Event MenuCloseSound;
+    [SerializeField] public WwiseEvent MenuOpenSound;
+    [SerializeField] public WwiseEvent MenuCloseSound;
     #endregion
 
     #region Soundbanks list
-    [TitleGroup("Startup SoundBanks", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: true), SerializeField] private List<AK.Wwise.Bank> Soundbanks;
+    [TitleGroup("Startup SoundBanks", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: true)]
+    [SerializeField] private List<AK.Wwise.Bank> Soundbanks;
     #endregion
 
     #region GameState variables
@@ -58,31 +69,31 @@ public class AudioManager : MonoBehaviour
     public string GameStates;
 
     [HorizontalGroup("Line1", Width = 0.4f)]
-    [SerializeField] private AK.Wwise.State Game_Paused;
+    [SerializeField] private WwiseState Game_Paused;
     [HorizontalGroup("Line1", Width = 0.4f)]
-    [SerializeField] private AK.Wwise.State Game_MainMenu;
+    [SerializeField] private WwiseState Game_MainMenu;
     [HorizontalGroup("Line2", Width = 0.4f)]
-    [SerializeField] private AK.Wwise.State Game_None;
+    [SerializeField] private WwiseState Game_None;
     [HorizontalGroup("Line2", Width = 0.4f)]
-    [SerializeField] private AK.Wwise.State Game_GameOver;
+    [SerializeField] private WwiseState Game_GameOver;
     [HorizontalGroup("Line3", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Game_Gameplay;
+    [SerializeField] private WwiseState Game_Gameplay;
     [HorizontalGroup("Line3", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Game_Win;
+    [SerializeField] private WwiseState Game_Win;
     [Disable][SerializeField] private AudioGameState currentGameState;
     [HorizontalGroup("Line4", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Music_Gameplay1stSection;
+    [SerializeField] private WwiseState Music_Gameplay1stSection;
     [HorizontalGroup("Line5", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Music_Gameplay2ndSection;
+    [SerializeField] private WwiseState Music_Gameplay2ndSection;
     [HorizontalGroup("Line6", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Music_Gameplay3rdSection;
+    [SerializeField] private WwiseState Music_Gameplay3rdSection;
 
     [HorizontalGroup("Line4", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Music_MainMenu;
+    [SerializeField] private WwiseState Music_MainMenu;
     [HorizontalGroup("Line5", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Music_Level_Lose;
+    [SerializeField] private WwiseState Music_Level_Lose;
     [HorizontalGroup("Line6", Width = 0.5f)]
-    [SerializeField] private AK.Wwise.State Music_None;
+    [SerializeField] private WwiseState Music_None;
 
     [Disable][SerializeField] private AudioMusicState currentMusicState;
     #endregion
@@ -100,9 +111,9 @@ public class AudioManager : MonoBehaviour
     [HorizontalGroup("Line7", Width = 0.25f)]
     [SerializeField][Range(0f, 1f)] private float Music1Layer4 = 0;
     [HorizontalGroup("Line8")]
-    public AK.Wwise.RTPC RTPC_Music_FirstLayer;
+    public WwiseRTPC RTPC_Music_FirstLayer;
     [HorizontalGroup("Line8")]
-    public AK.Wwise.RTPC RTPC_Music_secondLayer;
+    public WwiseRTPC RTPC_Music_secondLayer;
 
     #endregion
 
@@ -111,29 +122,12 @@ public class AudioManager : MonoBehaviour
     [Header("Switches")]
     [SerializeField] private AK.Wwise.Switch Material;
     #endregion
-    private void Awake()
-    {
-        Initialize(); //Appel de la fonction d'initialisation
-    }
 
-    private void Initialize()
-    {
-        //Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Debug.LogWarning("De multiples instances de AudioManager ont été trouvées. Veuillez vous assurer qu'il n'y a qu'une seule instance dans la scène.");
-            Destroy(this);
-        }
 
-        if (!bIsInitialized)
-        {
-            LoadSoundbanks(); //Appel de la fonction de chargement des soundbanks
-        }
+    public override void Initialize()
+    {
+        base.Initialize();
+
         SetAudioGameState(AudioGameState.None); //On initialise l'état du jeu à None (reset)
         SetAudioMusicState(AudioMusicState.None); //On initialise l'état de la musique à None (reset)  
     }
@@ -237,7 +231,7 @@ public class AudioManager : MonoBehaviour
         Debug.Log("New Wwise GameState: " + MusicState + ".");
     }
 
-    public void PostWwiseEventGlobal(AK.Wwise.Event WwiseEvent)
+    public void PostWwiseEventGlobal(WwiseEvent WwiseEvent)
     {
         if (WwiseEvent == null)
         {
@@ -255,7 +249,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PostWwiseEventToObject(AK.Wwise.Event WwiseEvent, GameObject TargetObject)
+    public void PostWwiseEventToObject(WwiseEvent WwiseEvent, GameObject TargetObject)
     {
         if (WwiseEvent == null)
         {

@@ -1023,13 +1023,76 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Potentiometer",
+                    "name": "Fader0_Position",
                     "type": "Value",
-                    "id": "769a2f0c-52a3-43a8-b930-9ce6d499b279",
+                    "id": "e30caa27-c0ae-4fc2-a481-f3c39d4159f5",
                     "expectedControlType": "Axis",
                     "processors": "Remap(InitialRangeX=-1,InitialRangeY=1,TargetRangeY=1)",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Fader0_FingerDown",
+                    "type": "Button",
+                    "id": "2023737a-656c-4b73-b163-7676800bab30",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fader1_Position",
+                    "type": "Value",
+                    "id": "add60bc7-70db-4882-b6d6-5cc1c92c07b1",
+                    "expectedControlType": "Axis",
+                    "processors": "Remap(InitialRangeX=-1,InitialRangeY=1,TargetRangeY=1)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Fader1_FingerDown",
+                    "type": "Button",
+                    "id": "fc78647b-6777-4272-bd8d-3b9c26619e1f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fader2_Position",
+                    "type": "Value",
+                    "id": "2347a39d-7965-48f4-850c-fd5100ebf1a8",
+                    "expectedControlType": "Axis",
+                    "processors": "Remap(InitialRangeX=-1,InitialRangeY=1,TargetRangeY=1)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Fader2_FingerDown",
+                    "type": "Button",
+                    "id": "2a6f811c-c733-48cd-9015-e27082a23acb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fader3_Position",
+                    "type": "Value",
+                    "id": "7b34462f-309e-4760-911b-b09a8e795101",
+                    "expectedControlType": "Axis",
+                    "processors": "Remap(InitialRangeX=-1,InitialRangeY=1,TargetRangeY=1)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Fader3_FingerDown",
+                    "type": "Button",
+                    "id": "35431116-a534-4738-966b-96548837082a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1068,12 +1131,89 @@
                 },
                 {
                     "name": "",
-                    "id": "25a8f70f-6c5e-47eb-bba4-b889457f189a",
-                    "path": "<HID::Arduino LLC Arduino Leonardo>/stick/x",
+                    "id": "9189e14e-f6c6-47ed-9f21-2662010167a6",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Potentiometer",
+                    "action": "Fader0_Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab7524b4-07ac-4fea-8e81-2c14ea1ff24e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader1_Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25d1b706-70a3-4817-aa65-895e4b3aa915",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader2_Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15cc7820-e845-4073-9742-02c18db5db17",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader3_Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98c94fea-4642-4dc6-8fb5-b6109a1b41b9",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader0_FingerDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fca26e8-c831-43ff-95fc-bd14d1be4226",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader1_FingerDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44ad7b0d-d253-48db-a40e-fdf0bf4262cf",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader2_FingerDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2862a62-2b0f-4701-9cb1-0d94b97c37fc",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader3_FingerDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
