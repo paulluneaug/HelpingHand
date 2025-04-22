@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" SchemaVersion="123">
+	<AudioObjects>
+		<WorkUnit Name="WU_Ambience" ID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<ActorMixer Name="Room_Machinist" ID="{B3D58F8C-A0D5-460C-8095-232DC8ADC1F3}" ShortID="92024911">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AmbBus" ID="{1808A7C8-6E5F-4188-ADEF-CF7E64F64B42}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<BlendContainer Name="Room_Machinist_Blend" ID="{09DCF989-CD2C-49EF-B420-9F871B7D85A5}" ShortID="856480190">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732" ID="{95889243-5D78-4AC5-960C-554D6E02AB8E}" ShortID="1026625166">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>8</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732" ID="{D09E1760-3494-4C82-A8B9-E8D279E3DF51}">
+											<Language>SFX</Language>
+											<AudioFile>Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="943847803"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732" ID="{D09E1760-3494-4C82-A8B9-E8D279E3DF51}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</BlendContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Theater" ID="{A17519E3-3B61-4820-97CA-C63E9164356A}" ShortID="738912019">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<BlendContainer Name="Theater_Blend" ID="{651FE094-CC41-4865-BD59-1EE796400970}" ShortID="949782691">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018" ID="{659E9CB9-82E9-4636-8120-50B99A138C0B}" ShortID="256290330">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018" ID="{DBF5C7A1-9830-41EC-89AF-32FD6FA4A677}">
+											<Language>SFX</Language>
+											<AudioFile>Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="871650396"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018" ID="{DBF5C7A1-9830-41EC-89AF-32FD6FA4A677}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</BlendContainer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
