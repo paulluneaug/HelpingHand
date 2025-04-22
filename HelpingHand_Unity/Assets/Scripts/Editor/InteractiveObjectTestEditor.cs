@@ -37,11 +37,6 @@ public class InteractiveObjectTestEditor : Editor
             m_style = GetStyle();
         }
         
-        if (Tools.current == Tool.Move)
-        {
-            Tools.current = Tool.None;
-        }
-
         InteractiveObjectTest interactiveObject = (InteractiveObjectTest)target;
 
         float gridSize = PuppetSettings.Instance.TileSize;

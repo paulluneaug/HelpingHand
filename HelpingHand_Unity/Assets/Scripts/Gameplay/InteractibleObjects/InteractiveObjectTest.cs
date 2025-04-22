@@ -43,6 +43,8 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
         }
     }
 
+    [Range(0, 1)]
+    [SerializeField] private float m_startValue;
     [SerializeField] private Vector3 m_startPosition;
     [SerializeField] private Vector3 m_endPosition;
     [SerializeField] private SlidingBehaviourEnum m_slidingBehaviour;
@@ -58,6 +60,7 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
     {
         base.Start();
         float gridSize = PuppetSettings.Instance.TileSize;
+        m_masterSlider.SliderValue = m_startValue;
         m_startPosition = m_startPosition.Snap(gridSize);
         m_endPosition = m_endPosition.Snap(gridSize);
     }
