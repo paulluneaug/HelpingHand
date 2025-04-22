@@ -42,6 +42,7 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
             }
         }
     }
+    [SerializeField] private Rigidbody m_rigidbody;
 
     [SerializeField] private Vector3 m_startPosition;
     [SerializeField] private Vector3 m_endPosition;
@@ -70,7 +71,7 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
         switch (m_slidingBehaviour)
         {
             case SlidingBehaviourEnum.Continuous:
-                transform.position = targetPosition;
+                m_rigidbody.position = targetPosition;
                 break;
             case SlidingBehaviourEnum.Discreet:
                 transform.position = targetPosition.Snap(gridSize);
