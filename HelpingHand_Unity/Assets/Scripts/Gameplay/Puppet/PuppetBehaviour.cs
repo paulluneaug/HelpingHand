@@ -46,46 +46,26 @@ public class PuppetBehaviour : MonoBehaviour
         m_puppetStates.ForEach(state => state.InitState(puppet));
 
         m_currentActionIndex = -1;
-        _ = StartNextAction();
+        StartNextAction();
     }
 
     public void UpdateBehaviour(float deltaTime)
     {
-        if (m_finished)
-        {
-            return;
-        }
-
         if (m_actionsTimer.Update(deltaTime))
         {
-            if (StartNextAction())
-            {
-                return;
-            }
+            StartNextAction();
         }
 
 
         m_currentState.UpdateState(m_actionsTimer.Progress, deltaTime);
     }
 
-    private void FinishBehaviour()
-    {
-        m_finished = true;
-    }
-
-    private bool StartNextAction()
+    private void StartNextAction()
     {
         m_currentState?.EndState();
-        ++m_currentActionIndex;
-
-        if (m_currentActionIndex >= m_actions.Length)
-        {
-            FinishBehaviour();
-            return true;
-        }
+        m_currentActionIndex = (m_currentActionIndex + 1) % m_actions.Length;
 
         m_currentState = m_puppetStates[(int)m_actions[m_currentActionIndex]];
         m_currentState.BeginState();
-        return false;
     }
 }
