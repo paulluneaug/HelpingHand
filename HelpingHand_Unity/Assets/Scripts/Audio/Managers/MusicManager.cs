@@ -39,7 +39,6 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private WwiseRTPC m_music_SecondLayerRTPC;
     #endregion
 
-
     private void Awake()
     {
         SetAudioMusicState(AudioMusicState.None); //On initialise l'état de la musique à None (reset)  
