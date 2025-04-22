@@ -96,6 +96,8 @@ public class SlidingObjectAudioController : MonoBehaviour
         if (pointerDown)
         {
             m_playingEventID = m_wwiseEvents.PlaySliderSfx.Post(gameObject);
+            m_fadeoutTimer.Reset();
+            m_fadeoutTimer.Start();
         }
         else
         {

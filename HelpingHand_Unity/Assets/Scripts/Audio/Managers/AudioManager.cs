@@ -36,11 +36,11 @@ public enum AudioMusicState
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
     #region Accessors
-    public MusicManager MusicManager => m_musicManager;
+    [field: Title("Sub Managers")]
+    [field: SerializeField]
+    public MusicManager MusicManager { get; }
     #endregion
 
-    [Title("Sub Managers")]
-    [SerializeField] private MusicManager m_musicManager;
 
     #region Sound Events
     [TitleGroup("Events", horizontalLine: true, alignment: TitleAlignments.Centered, boldTitle: true, indent: true)]

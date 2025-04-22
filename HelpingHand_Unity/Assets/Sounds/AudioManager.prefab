@@ -44,57 +44,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fac9dbc609f31541aa792fdd483fac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGameState: 0
-  Music_Gameplay1stSection:
+  m_currentGameState: 0
+  m_music_Gameplay1stSection:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  Music_Gameplay2ndSection:
+  m_music_Gameplay2ndSection:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  Music_Gameplay3rdSection:
+  m_music_Gameplay3rdSection:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  Music_MainMenu:
+  m_music_MainMenu:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  Music_Level_Lose:
+  m_music_Level_Lose:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  Music_Level_Win:
+  m_music_Level_Win:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  Music_None:
+  m_music_None:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  Music_FirstLayer: 0
-  Music_SecondLayer: 0
-  currentMusicState: 0
-  MainMusic_Play:
+  m_music_FirstLayer: 0
+  m_music_SecondLayer: 0
+  m_currentMusicState: 0
+  m_mainMusic_Play:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: d916db692c685394da160e8b7a64a26d, type: 2}
-  MainMusic_Stop:
+    WwiseObjectReference: {fileID: 0}
+  m_mainMusic_Stop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  m_music_FirstLayer_RTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  m_music_SecondLayerRTPC:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
@@ -128,9 +136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7479957837835727794}
   - {fileID: 427927400631498688}
-  - {fileID: 108253242587451931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6724543359347016092
@@ -145,10 +151,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f305b85bede84134e92fee98d4f0d20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EventExplanation: 'Play a sound : AudioManager.Instance.EventName.Post(gameObject);'
+  MainMusic_Play:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d916db692c685394da160e8b7a64a26d, type: 2}
+  MainMusic_Stop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 1782cd48fcfb2f942804767f1a00ad10, type: 2}
+  Footsteps:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8f7405e246813df4f9d32b31b969c912, type: 2}
+  Block_translation:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  UI_Click:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  UI_Hover:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  MenuOpenSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  MenuCloseSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
   Soundbanks:
   - idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 168ce572b0fd5674b9ad104f6b126ad2, type: 2}
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4ee6ae8e426108f4dae08c8cd1ad1281, type: 2}
   GameStates: 'Change a State : AudioManager.Instance.StateName.SetValue();'
   Game_Paused:
     idInternal: 0
@@ -237,182 +279,9 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: a026a69735894314e811e54c85dbc1e5, type: 2}
-  EventExplanation: 'Play a sound : AudioManager.Instance.EventName.Post(gameObject);'
-  MainMusic_Play:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: d916db692c685394da160e8b7a64a26d, type: 2}
-  MainMusic_Stop:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 1782cd48fcfb2f942804767f1a00ad10, type: 2}
   Material:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 949360610247d1743b14a86f92d9b478, type: 2}
---- !u!1 &7760558265539823073
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 108253242587451931}
-  - component: {fileID: 6134037344164674367}
-  m_Layer: 0
-  m_Name: WwiseEvents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &108253242587451931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7760558265539823073}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2993456136828591498}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6134037344164674367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7760558265539823073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fac9dbc609f31541aa792fdd483fac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentGameState: 0
-  Music_Gameplay1stSection:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  Music_Gameplay2ndSection:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  Music_Gameplay3rdSection:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  Music_MainMenu:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  Music_Level_Lose:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  Music_Level_Win:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  Music_None:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  Music_FirstLayer: 0
-  Music_SecondLayer: 0
-  currentMusicState: 0
-  MainMusic_Play:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  MainMusic_Stop:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
---- !u!1001 &5153390282711716097
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2993456136828591498}
-    m_Modifications:
-    - target: {fileID: 1322894905368803927, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_Name
-      value: InputManagerTester
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.8050512
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.10848522
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.8333702
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3034167320044453068, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-      propertyPath: Game_GameOver
-      value: 282
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
---- !u!4 &7479957837835727794 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2326851572885332659, guid: 56c5a7501721e8043a02a48eec892241, type: 3}
-  m_PrefabInstance: {fileID: 5153390282711716097}
-  m_PrefabAsset: {fileID: 0}

@@ -6,6 +6,966 @@
 				<Property Name="Color" Type="int16" Value="5"/>
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
+			<ChildrenList>
+				<SwitchContainer Name="SwitchLocomotion" ID="{47C3CEE7-C54A-4EB1-95A0-E877C301AB3B}" ShortID="760917271">
+					<PropertyList>
+						<Property Name="SwitchBehavior" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="Idle" ID="{2829C491-D6DA-413D-83E1-C9E3C25251F8}" ShortID="628994089">
+							<PropertyList>
+								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{147EE8B0-395C-4D1E-871A-909146EB8C73}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="4"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="idle1" ID="{AC1AA4E3-3459-4DA2-B769-5510E7EDF500}" ShortID="400037087">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="idle1" ID="{72838B95-132F-4FF7-AAAD-6D422D9C5FB6}">
+											<Language>SFX</Language>
+											<AudioFile>idle1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="859391563"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="idle1" ID="{72838B95-132F-4FF7-AAAD-6D422D9C5FB6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="idle2" ID="{19F06C70-FF88-483A-9FF3-4DF550FFADB9}" ShortID="596733998">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="idle2" ID="{72685DAB-AB13-46CB-851A-8478A4FB67C6}">
+											<Language>SFX</Language>
+											<AudioFile>idle2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="144126938"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="idle2" ID="{72685DAB-AB13-46CB-851A-8478A4FB67C6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="idle3" ID="{999B181B-4BB6-44D6-A2FA-684104CCFEDA}" ShortID="823991260">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="idle3" ID="{CED12588-0B50-4D37-ADED-B53A9E31D8B2}">
+											<Language>SFX</Language>
+											<AudioFile>idle3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="878838332"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="idle3" ID="{CED12588-0B50-4D37-ADED-B53A9E31D8B2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="idle4" ID="{EA2DCF3D-7A0C-4A93-AE84-F5E832EA5726}" ShortID="1042735633">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="idle4" ID="{ED69E61B-AB9D-4575-9AA7-9483A36CE119}">
+											<Language>SFX</Language>
+											<AudioFile>idle4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="865209714"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="idle4" ID="{ED69E61B-AB9D-4575-9AA7-9483A36CE119}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="idle5" ID="{BAAC9885-5D1A-4890-8CF0-008E2D802475}" ShortID="387495920">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="idle5" ID="{4FEF5E48-CB77-45A4-AE01-776234FCD2BC}">
+											<Language>SFX</Language>
+											<AudioFile>idle5.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="891691959"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="idle5" ID="{4FEF5E48-CB77-45A4-AE01-776234FCD2BC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<BlendContainer Name="Walking" ID="{389FF34E-B46C-4840-A585-78C25E0181BD}" ShortID="229141862">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Footstep_CLock" ID="{88C0DC6F-3166-45A0-93F4-F6C8DB1A5704}" ShortID="947612801">
+									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>0.23</Value>
+											</ValueList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="4"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Puppet_Footsteps_Clock1" ID="{C77A3E90-0ADA-4CB4-BEE5-1841A9DAA889}" ShortID="311739653">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock1" ID="{D7CF4BD8-2CCF-4FE4-A9F0-2348762350FA}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="472272781"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock1" ID="{D7CF4BD8-2CCF-4FE4-A9F0-2348762350FA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock2" ID="{9F7B8679-A4FE-423D-B37B-FC2961574D58}" ShortID="889085028">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock2" ID="{899CC267-4FDE-4A88-9D4C-33F643DB41C2}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="767653506"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock2" ID="{899CC267-4FDE-4A88-9D4C-33F643DB41C2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock3" ID="{F049A461-EC0F-4E6B-847D-511AEE67B0B2}" ShortID="323883648">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock3" ID="{F404F792-AB22-46D7-84AF-C13C4D17ED88}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="957084913"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock3" ID="{F404F792-AB22-46D7-84AF-C13C4D17ED88}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock4" ID="{A6E164D4-2779-4B73-97F9-B00141572D8F}" ShortID="458089159">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock4" ID="{FFD09EDA-2F82-4A8A-A4A6-26E55CF69961}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock4.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="889522631"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock4" ID="{FFD09EDA-2F82-4A8A-A4A6-26E55CF69961}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock5" ID="{755DBBB8-1971-4730-94F9-9C756799F2A2}" ShortID="859468597">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock5" ID="{FAC30FE4-CD49-48A3-A549-9D7F4B1DD479}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock5.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="632650701"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock5" ID="{FAC30FE4-CD49-48A3-A549-9D7F4B1DD479}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock6" ID="{71DC410B-629E-4F8B-AD73-452FD7A72A22}" ShortID="647094675">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock6" ID="{81FBBA9B-CDDE-4611-9B3D-0205D505CA8D}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock6.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="500766588"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock6" ID="{81FBBA9B-CDDE-4611-9B3D-0205D505CA8D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock7" ID="{19E2E4B2-69CA-41FB-BFA7-2A09DDA33D20}" ShortID="195634708">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock7" ID="{D91849A5-14DC-443A-AC70-AB1E95FF870D}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock7.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="443236034"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock7" ID="{D91849A5-14DC-443A-AC70-AB1E95FF870D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock8" ID="{18FBD736-0B96-4EF5-89EB-A9C55CCE42CB}" ShortID="634575581">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock8" ID="{33F8DC71-B9E0-4BA5-8F96-FDF20E4855DA}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock8.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="642083571"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock8" ID="{33F8DC71-B9E0-4BA5-8F96-FDF20E4855DA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock9" ID="{A7F2CF2E-7A73-4A43-8B7C-1524557C3AC1}" ShortID="653183090">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock9" ID="{679C4D37-47A7-46A8-85AC-63DF123E4E03}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock9.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="345194916"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock9" ID="{679C4D37-47A7-46A8-85AC-63DF123E4E03}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Clock10" ID="{B3639138-535C-42D4-827B-DD8D3986FFF6}" ShortID="551684357">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Clock10" ID="{733A7D3A-9CDA-43C7-819B-92632A21555A}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Clock10.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="495090744"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Clock10" ID="{733A7D3A-9CDA-43C7-819B-92632A21555A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Footstep_Toy_manipulation" ID="{CAD18DA9-3805-40EA-BD42-BD757216FEA6}" ShortID="863659867">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-50</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{902046EA-1950-4E74-B031-14CC3747FF28}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Puppet_Footsteps_Toy_manipulation1" ID="{1C33563C-B042-4CE2-99F6-76C81EFB772F}" ShortID="707412962">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Toy_manipulation1" ID="{7F446867-7DA7-4FF3-807B-D414947311D7}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Toy_manipulation1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="253215976"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Toy_manipulation1" ID="{7F446867-7DA7-4FF3-807B-D414947311D7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Toy_manipulation2" ID="{C58094FC-1722-4301-BC80-393FB6DCED2E}" ShortID="597042410">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Toy_manipulation2" ID="{AD18DF32-8A3B-4D3D-921F-05FD38820117}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Toy_manipulation2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="261644167"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Toy_manipulation2" ID="{AD18DF32-8A3B-4D3D-921F-05FD38820117}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Toy_manipulation3" ID="{EC582E3B-90B7-410E-AAD6-AF88037981F9}" ShortID="70195929">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Toy_manipulation3" ID="{19085D81-9559-4403-A00A-9EDE39637447}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Toy_manipulation3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="953524777"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Toy_manipulation3" ID="{19085D81-9559-4403-A00A-9EDE39637447}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Footstep_Rope_creak" ID="{562FDB92-7AF6-4D30-A35A-9DC71158418D}" ShortID="238309114">
+									<PropertyList>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Puppet_Footsteps_Rope_creak1" ID="{273A02FB-28CB-4AE4-AD68-0298075F3816}" ShortID="487350412">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Rope_creak1" ID="{A536DBFD-8DD7-4B6F-BE7F-0C9D9CF23A7D}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Rope_creak1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="621310984"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Rope_creak1" ID="{A536DBFD-8DD7-4B6F-BE7F-0C9D9CF23A7D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Rope_creak2" ID="{E2E79175-0492-4A07-8D7F-1F593D94FDBA}" ShortID="1000994984">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Rope_creak2" ID="{0BCCC075-4E58-4509-8819-7F0E0E949E97}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Rope_creak2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="517027929"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Rope_creak2" ID="{0BCCC075-4E58-4509-8819-7F0E0E949E97}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Rope_creak3" ID="{74F3408A-A175-4E7F-8F23-54CD80565B9E}" ShortID="281647363">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Rope_creak3" ID="{BC2453B8-692D-439F-8C47-77ED60304F03}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Rope_creak3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="471885334"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Rope_creak3" ID="{BC2453B8-692D-439F-8C47-77ED60304F03}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Rope_creak4" ID="{04854A7D-867B-4381-B2F8-34182F798EC4}" ShortID="387844954">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Rope_creak4" ID="{16388A11-2449-4A21-8726-C0D99EB4A8E1}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Rope_creak4.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="262540845"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Rope_creak4" ID="{16388A11-2449-4A21-8726-C0D99EB4A8E1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Footstep_Toy_squeak" ID="{194D770B-E666-48AE-89F1-281BB78ADA96}" ShortID="543965319">
+									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>0.1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-8</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Puppet_Footsteps_Toy_squeak1" ID="{9B6A280A-1AAB-4F4A-950E-0E28A617ECD7}" ShortID="74453257">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>10</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Toy_squeak1" ID="{D5A69498-6C25-41C6-80DF-771D99DBAB2B}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Toy_squeak1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="536293986"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Toy_squeak1" ID="{D5A69498-6C25-41C6-80DF-771D99DBAB2B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Toy_squeak2" ID="{F10022DE-4B13-40E7-8424-A11C9A4A4317}" ShortID="667597374">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>10</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Toy_squeak2" ID="{FADED132-98A1-4E3F-8793-3D7EC2BDCB77}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Toy_squeak2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="883482733"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Toy_squeak2" ID="{FADED132-98A1-4E3F-8793-3D7EC2BDCB77}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="New Silence" ID="{90ACC8B0-89A1-4233-B615-7D3929C6C44B}" ShortID="701589742">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>80</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{49C09B1B-8EC3-4F17-A6E5-20872EC3FBA9}" ShortID="91632432" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{49C09B1B-8EC3-4F17-A6E5-20872EC3FBA9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="New Silence_01" ID="{CD6AE2C8-35FB-4937-9ED1-9790E269F760}" ShortID="626007185">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{3E2BD407-E598-4F19-B162-3CA47E070234}" ShortID="563542515" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{3E2BD407-E598-4F19-B162-3CA47E070234}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="New Silence_02" ID="{A2BC45A6-E1E2-465A-9CF5-C97B9556DE0D}" ShortID="816010027">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>80</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{A019BF77-0142-4413-8B28-71EB421C1B38}" ShortID="117993776" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{A019BF77-0142-4413-8B28-71EB421C1B38}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Footstep_Wood_creak" ID="{67B9EBC3-B137-4090-BAAC-738A0A3C59B5}" ShortID="859394314">
+									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>0.25</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{8B1B4444-33EF-4603-BA02-54E90DD75367}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="450"/>
+															<Property Name="Min" Type="Real64" Value="-150"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Puppet_Footsteps_Wood_creak1" ID="{0C26065D-06E3-482E-A1A0-767F08DD5EAF}" ShortID="27747311">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Wood_creak1" ID="{AEE99C7E-9BA2-466E-BEC4-2E2318676D57}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Wood_creak1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="96143765"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Wood_creak1" ID="{AEE99C7E-9BA2-466E-BEC4-2E2318676D57}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Wood_creak2" ID="{E26BF1FD-2C26-4D4A-A5FE-3AC8CB455D7D}" ShortID="835129867">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Wood_creak2" ID="{3F9FCA56-1376-47C5-9E0A-F68DE1AF5750}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Wood_creak2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="418953712"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Wood_creak2" ID="{3F9FCA56-1376-47C5-9E0A-F68DE1AF5750}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Wood_creak3" ID="{D20CE70E-97D1-4DAE-9FDC-275D91709E37}" ShortID="98755157">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Wood_creak3" ID="{7B0B8C8E-E2DA-4147-989E-02E8F3694348}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Wood_creak3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="540170009"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Wood_creak3" ID="{7B0B8C8E-E2DA-4147-989E-02E8F3694348}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Footstep_Human" ID="{B2FA64A8-A944-494E-AA3F-EC5BC5B6A1FC}" ShortID="453954879">
+									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>0.2</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Puppet_Footsteps_Human1" ID="{CBDB11AD-9622-4F44-A942-D568116F204A}" ShortID="522331568">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Human1" ID="{054CB61F-B687-48EE-AE19-F2E4D8012945}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Human1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="5181197"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Human1" ID="{054CB61F-B687-48EE-AE19-F2E4D8012945}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Human2" ID="{DB7C83F7-8D20-447F-B7CF-E25E547A934B}" ShortID="963593959">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Human2" ID="{E830D632-7F3E-42DE-ABFF-8D0823EF544D}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Human2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="878518314"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Human2" ID="{E830D632-7F3E-42DE-ABFF-8D0823EF544D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Puppet_Footsteps_Human3" ID="{7C2C0482-6278-4681-9A04-23968B8C968E}" ShortID="456280673">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Puppet_Footsteps_Human3" ID="{AF27D736-20AF-443C-8DB2-DEBF2C282E4A}">
+													<Language>SFX</Language>
+													<AudioFile>Puppet_Footsteps_Human3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="606254623"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Puppet_Footsteps_Human3" ID="{AF27D736-20AF-443C-8DB2-DEBF2C282E4A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</BlendContainer>
+					</ChildrenList>
+					<GroupingInfo>
+						<GroupingBehaviorList>
+							<GroupingBehavior>
+								<ItemRef Name="Walking" ID="{389FF34E-B46C-4840-A585-78C25E0181BD}"/>
+							</GroupingBehavior>
+							<GroupingBehavior>
+								<ItemRef Name="Idle" ID="{2829C491-D6DA-413D-83E1-C9E3C25251F8}"/>
+							</GroupingBehavior>
+						</GroupingBehaviorList>
+					</GroupingInfo>
+				</SwitchContainer>
+			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

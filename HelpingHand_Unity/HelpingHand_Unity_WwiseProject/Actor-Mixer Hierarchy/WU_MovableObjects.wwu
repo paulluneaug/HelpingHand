@@ -12,11 +12,17 @@
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Attenuation_20m" ID="{D4611497-0313-43A7-B599-AED0829A8BB2}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="MovableObjects" ID="{51897EA3-0262-4290-8514-0ED0E17EF86F}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="MovableObjectsBus" ID="{14655D3F-C790-42EC-9B70-6531E995B34A}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="Hall" ID="{168AA74E-F128-4A65-AB94-C40BE7738E4E}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -237,7 +243,7 @@
 																				<Flags>5</Flags>
 																			</Point>
 																			<Point>
-																				<XPos>100</XPos>
+																				<XPos>1</XPos>
 																				<YPos>0</YPos>
 																				<Flags>37</Flags>
 																			</Point>
@@ -257,16 +263,16 @@
 											<CrossfadingInfo>
 												<LeftEdgePos>0</LeftEdgePos>
 												<LeftFadingMode>Automatic</LeftFadingMode>
-												<RightEdgePos>57.9781420765027</RightEdgePos>
+												<RightEdgePos>0.579781420765027</RightEdgePos>
 												<RightFadingMode>Automatic</RightFadingMode>
 											</CrossfadingInfo>
 										</BlendTrackAssoc>
 										<BlendTrackAssoc>
 											<ItemRef Name="Wood" ID="{29D19159-20B7-48DA-8C1A-156486A3893A}"/>
 											<CrossfadingInfo>
-												<LeftEdgePos>41.9128183060109</LeftEdgePos>
+												<LeftEdgePos>0.419128183060109</LeftEdgePos>
 												<LeftFadingMode>Automatic</LeftFadingMode>
-												<RightEdgePos>100</RightEdgePos>
+												<RightEdgePos>1</RightEdgePos>
 												<RightFadingMode>Automatic</RightFadingMode>
 											</CrossfadingInfo>
 										</BlendTrackAssoc>
