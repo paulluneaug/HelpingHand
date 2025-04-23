@@ -10,12 +10,20 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{4CAD19F6-A0F6-3962-FE89-4E62B91BA481}",
+    "Hash": "{2C40B268-7D81-69D4-3413-1108C9251650}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Plugins": {
      "ShareSets": [
+      {
+       "Id": "3216246379",
+       "Name": "Space_Dreaming",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Huge Spaces\\Space_Dreaming",
+       "GUID": "{4FF7C4B2-37B0-4DFF-8E8A-1420102AE2DD}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -107,6 +115,20 @@
      }
     ],
     "AuxBusses": [
+     {
+      "Id": "92103823",
+      "Name": "EnormousRVB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\EnormousRVB",
+      "GUID": "{B7AF91ED-C0D1-4CEB-81D1-F9FEACB72FE8}",
+      "Color": "4",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "3216246379"
+        }
+       ]
+      }
+     },
      {
       "Id": "3633416828",
       "Name": "Hall",
@@ -258,28 +280,39 @@
     ],
     "SwitchGroups": [
      {
-      "Id": "1295475536",
-      "Name": "PlayerCycle",
-      "ObjectPath": "\\Switches\\Default Work Unit\\PlayerCycle",
+      "Id": "748991833",
+      "Name": "Locomotion_Type",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Locomotion_Type",
       "GUID": "{420E22CF-A5C2-4839-9124-99E4AC200830}",
+      "Color": "5",
       "Switches": [
        {
         "Id": "712161704",
         "Name": "Run",
-        "ObjectPath": "\\Switches\\Default Work Unit\\PlayerCycle\\Run",
-        "GUID": "{E279E3A7-7A91-49B2-A682-247F8B5BE2FA}"
+        "ObjectPath": "\\Switches\\Default Work Unit\\Locomotion_Type\\Run",
+        "GUID": "{E279E3A7-7A91-49B2-A682-247F8B5BE2FA}",
+        "Color": "5"
        },
        {
         "Id": "1289942167",
         "Name": "Stairs",
-        "ObjectPath": "\\Switches\\Default Work Unit\\PlayerCycle\\Stairs",
-        "GUID": "{581174D2-7C7E-4004-ADF0-92546EDF0246}"
+        "ObjectPath": "\\Switches\\Default Work Unit\\Locomotion_Type\\Stairs",
+        "GUID": "{581174D2-7C7E-4004-ADF0-92546EDF0246}",
+        "Color": "5"
+       },
+       {
+        "Id": "1874288895",
+        "Name": "Idle",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Locomotion_Type\\Idle",
+        "GUID": "{05B62766-73A2-464B-9C13-ED7758FEC675}",
+        "Color": "5"
        },
        {
         "Id": "2108779966",
         "Name": "Walk",
-        "ObjectPath": "\\Switches\\Default Work Unit\\PlayerCycle\\Walk",
-        "GUID": "{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}"
+        "ObjectPath": "\\Switches\\Default Work Unit\\Locomotion_Type\\Walk",
+        "GUID": "{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}",
+        "Color": "5"
        }
       ]
      },
@@ -288,42 +321,48 @@
       "Name": "Material",
       "ObjectPath": "\\Switches\\Default Work Unit\\Material",
       "GUID": "{9089911A-A5DF-4CAA-BAC3-0C49E75D12B2}",
+      "Color": "18",
       "Switches": [
        {
         "Id": "2058049674",
         "Name": "Wood",
         "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Wood",
-        "GUID": "{E6D327EE-7941-49F3-BE58-A140CD7C70DB}"
+        "GUID": "{E6D327EE-7941-49F3-BE58-A140CD7C70DB}",
+        "Color": "18"
        },
        {
         "Id": "2144363834",
         "Name": "Rock",
         "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Rock",
-        "GUID": "{07FDEB18-D359-4FD9-8396-2D846189012E}"
+        "GUID": "{07FDEB18-D359-4FD9-8396-2D846189012E}",
+        "Color": "18"
        },
        {
         "Id": "2185786256",
         "Name": "Gravel",
         "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Gravel",
-        "GUID": "{FCE96107-4A1B-439B-8995-96D1640EE58D}"
+        "GUID": "{FCE96107-4A1B-439B-8995-96D1640EE58D}",
+        "Color": "18"
        },
        {
         "Id": "2195636714",
         "Name": "Dirt",
         "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Dirt",
-        "GUID": "{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"
+        "GUID": "{33F4CA73-33EE-436C-94C4-B2CDA72356AD}",
+        "Color": "18"
        },
        {
         "Id": "4248645337",
         "Name": "Grass",
         "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Grass",
-        "GUID": "{908029FF-A343-43EC-9683-15C247DF06D8}"
+        "GUID": "{908029FF-A343-43EC-9683-15C247DF06D8}",
+        "Color": "18"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{7CC07891-3759-2C76-BD95-99D264BBFB8B}"
+  "FileHash": "{733F7F26-DBE5-051B-82AF-8FC4A75A23A3}"
  }
 }

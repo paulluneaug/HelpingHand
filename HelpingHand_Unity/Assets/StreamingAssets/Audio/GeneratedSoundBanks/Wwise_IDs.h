@@ -73,6 +73,19 @@ namespace AK
 
     namespace SWITCHES
     {
+        namespace LOCOMOTION_TYPE
+        {
+            static const AkUniqueID GROUP = 748991833U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID IDLE = 1874288895U;
+                static const AkUniqueID RUN = 712161704U;
+                static const AkUniqueID STAIRS = 1289942167U;
+                static const AkUniqueID WALK = 2108779966U;
+            } // namespace SWITCH
+        } // namespace LOCOMOTION_TYPE
+
         namespace MATERIAL
         {
             static const AkUniqueID GROUP = 3865314626U;
@@ -86,18 +99,6 @@ namespace AK
                 static const AkUniqueID WOOD = 2058049674U;
             } // namespace SWITCH
         } // namespace MATERIAL
-
-        namespace PLAYERCYCLE
-        {
-            static const AkUniqueID GROUP = 1295475536U;
-
-            namespace SWITCH
-            {
-                static const AkUniqueID RUN = 712161704U;
-                static const AkUniqueID STAIRS = 1289942167U;
-                static const AkUniqueID WALK = 2108779966U;
-            } // namespace SWITCH
-        } // namespace PLAYERCYCLE
 
     } // namespace SWITCHES
 
@@ -132,6 +133,7 @@ namespace AK
 
     namespace AUX_BUSSES
     {
+        static const AkUniqueID ENORMOUSRVB = 92103823U;
         static const AkUniqueID HALL = 3633416828U;
     } // namespace AUX_BUSSES
 

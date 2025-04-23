@@ -4,6 +4,10 @@
 		<WorkUnit Name="Default Work Unit" ID="{4DC445F5-38FB-4469-BB16-12A29B098306}" PersistMode="Standalone">
 			<ChildrenList>
 				<SwitchGroup Name="Material" ID="{9089911A-A5DF-4CAA-BAC3-0C49E75D12B2}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="18"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Switch Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
 						<Switch Name="Wood" ID="{E6D327EE-7941-49F3-BE58-A140CD7C70DB}"/>
@@ -12,11 +16,16 @@
 						<Switch Name="Grass" ID="{908029FF-A343-43EC-9683-15C247DF06D8}"/>
 					</ChildrenList>
 				</SwitchGroup>
-				<SwitchGroup Name="PlayerCycle" ID="{420E22CF-A5C2-4839-9124-99E4AC200830}">
+				<SwitchGroup Name="Locomotion_Type" ID="{420E22CF-A5C2-4839-9124-99E4AC200830}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="5"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Switch Name="Walk" ID="{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}"/>
 						<Switch Name="Run" ID="{E279E3A7-7A91-49B2-A682-247F8B5BE2FA}"/>
 						<Switch Name="Stairs" ID="{581174D2-7C7E-4004-ADF0-92546EDF0246}"/>
+						<Switch Name="Idle" ID="{05B62766-73A2-464B-9C13-ED7758FEC675}"/>
 					</ChildrenList>
 				</SwitchGroup>
 			</ChildrenList>
