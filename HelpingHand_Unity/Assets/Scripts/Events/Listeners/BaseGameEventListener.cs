@@ -5,7 +5,7 @@ namespace Events
 {
     public abstract class BaseGameEventListener<TEvent> : MonoBehaviour, IGameEventListener where TEvent : BaseGameEvent
     {
-        protected ScriptableObject GameEvent => m_event;
+        protected TEvent GameEvent => m_event;
         protected UnityEvent Response => m_response;
 
         [SerializeField]
@@ -59,7 +59,7 @@ namespace Events
 
     public abstract class BaseGameEventListener<TType, TEvent> : MonoBehaviour, IGameEventListener<TType> where TEvent : BaseGameEvent<TType>
     {
-        protected ScriptableObject GameEvent => m_event;
+        protected TEvent GameEvent => m_event;
         protected UnityEvent<TType> Response => m_response;
 
         [SerializeField]
