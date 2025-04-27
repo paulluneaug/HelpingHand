@@ -3,24 +3,22 @@ using UnityEngine;
 public class InputManagerTester : MonoBehaviour
 {
     public static InputManagerTester Instance;
-
     private bool m_bIsInitialized = false;
-
     [Header("Event Input Key Assignments")]
-    [SerializeField] private KeyCode StartMainMusic;
-    [SerializeField] private KeyCode StopMainMusic;
+    [SerializeField] private KeyCode m_startMainMusic;
+    [SerializeField] private KeyCode m_stopMainMusic;
 
     [Header("GameState Input Key Assignments")]
-    [SerializeField] private KeyCode Game_GameOver;
-    [SerializeField] private KeyCode Game_Gameplay;
-    [SerializeField] private KeyCode Game_Paused;
+    [SerializeField] private KeyCode m_game_GameOver;
+    [SerializeField] private KeyCode m_game_Gameplay;
+    [SerializeField] private KeyCode m_game_Paused;
 
     [Header("MusicState Input Key Assignments")]
-    [SerializeField] private KeyCode Music_MainMenu;
-    [SerializeField] private KeyCode Music_LevelStart;
-    [SerializeField] private KeyCode Music_LevelWin;
-    [SerializeField] private KeyCode Music_PauseMenu;
-    [SerializeField] private KeyCode Music_LevelLose;
+    [SerializeField] private KeyCode m_music_MainMenu;
+    [SerializeField] private KeyCode m_music_LevelStart;
+    [SerializeField] private KeyCode m_music_LevelWin;
+    [SerializeField] private KeyCode m_music_PauseMenu;
+    [SerializeField] private KeyCode m_music_LevelLose;
 
     private void Awake()
     {
@@ -60,45 +58,45 @@ public class InputManagerTester : MonoBehaviour
         }
 
         //Events
-        if (Input.GetKeyDown(StartMainMusic))
+        if (Input.GetKeyDown(m_startMainMusic))
         {
-            AudioManager.Instance.PostWwiseEventGlobal(AudioManager.Instance.MainMusic_Play);
+            //AudioManager.Instance.PostWwiseEventGlobal(AudioManager.Instance.MainMusic_Play);
         }
-        if (Input.GetKeyDown(StopMainMusic))
+        if (Input.GetKeyDown(m_stopMainMusic))
         {
-            AudioManager.Instance.PostWwiseEventGlobal(AudioManager.Instance.MainMusic_Stop);
+            //AudioManager.Instance.PostWwiseEventGlobal(AudioManager.Instance.MainMusic_Stop);
         }
 
 
         // Game States
-        if (Input.GetKeyDown(Game_GameOver))
+        if (Input.GetKeyDown(m_game_GameOver))
         {
-            AudioManager.Instance.SetAudioGameState(AudioGameState.GameOver);
+            //AudioManager.Instance.SetAudioGameState(AudioGameState.GameOver);
         }
-        if (Input.GetKeyDown(Game_Gameplay))
+        if (Input.GetKeyDown(m_game_Gameplay))
         {
-            AudioManager.Instance.SetAudioGameState(AudioGameState.Gameplay);
+            //AudioManager.Instance.SetAudioGameState(AudioGameState.Gameplay);
         }
-        if (Input.GetKeyDown(Game_Paused))
+        if (Input.GetKeyDown(m_game_Paused))
         {
-            AudioManager.Instance.SetAudioGameState(AudioGameState.Paused);
+            //AudioManager.Instance.SetAudioGameState(AudioGameState.Paused);
         }
         //Music States
-        if (Input.GetKeyDown(Music_MainMenu))
+        if (Input.GetKeyDown(m_music_MainMenu))
         {
-            AudioManager.Instance.SetAudioMusicState(AudioMusicState.MainMenu);
+            // AudioManager.Instance.SetAudioMusicState(AudioMusicState.MainMenu);
         }
-        if (Input.GetKeyDown(Music_LevelStart))
+        if (Input.GetKeyDown(m_music_LevelStart))
         {
-            AudioManager.Instance.SetAudioMusicState(AudioMusicState.GameplayFirstSection);
+            //  AudioManager.Instance.SetAudioMusicState(AudioMusicState.GameplayFirstSection);
         }
-        if (Input.GetKeyDown(Music_LevelWin))
+        if (Input.GetKeyDown(m_music_LevelWin))
         {
-            AudioManager.Instance.SetAudioMusicState(AudioMusicState.LevelWin);
+            //  AudioManager.Instance.SetAudioMusicState(AudioMusicState.LevelWin);
         }
-        if (Input.GetKeyDown(Music_LevelLose))
+        if (Input.GetKeyDown(m_music_LevelLose))
         {
-            AudioManager.Instance.SetAudioMusicState(AudioMusicState.LevelLose);
+            //  AudioManager.Instance.SetAudioMusicState(AudioMusicState.LevelLose);
         }
 
     }

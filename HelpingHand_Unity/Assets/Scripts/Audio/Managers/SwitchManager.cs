@@ -1,30 +1,39 @@
-using UnityEngine;
 using System.Collections.Generic;
 using AK.Wwise;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class WwiseSwitchManager : MonoBehaviour
+public class SwitchManager : MonoBehaviour
 {
-    public static WwiseSwitchManager Instance { get; private set; }
+    #region Switchs
+    [InfoBox("➔<b>SetLocomotionSwitch(LocomotionType.Run, gameObject);</b>", InfoMessageType.None)]
+    #region Locomotion Switches
+    [FoldoutGroup("Locomotion Switches")][LabelWidth(100)] public Switch IdleSwitch;
+    [FoldoutGroup("Locomotion Switches")][LabelWidth(100)] public Switch RunSwitch;
+    [FoldoutGroup("Locomotion Switches")][LabelWidth(100)] public Switch WalkSwitch;
+    [FoldoutGroup("Locomotion Switches")][LabelWidth(100)] public Switch StairsSwitch;
+    #endregion
 
-    [Header("Locomotion Switches")]
-    public Switch idleSwitch;
-    public Switch runSwitch;
-    public Switch walkSwitch;
-    public Switch stairsSwitch;
+    #region Material Switches
+    [InfoBox("➔<b>SetMaterialSwitch(MaterialType.Rock, gameObject);</b>", InfoMessageType.None)]
+    [FoldoutGroup("Material Switches")][LabelWidth(100)] public Switch DirtSwitch;
+    [FoldoutGroup("Material Switches")][LabelWidth(100)] public Switch GrassSwitch;
+    [FoldoutGroup("Material Switches")][LabelWidth(100)] public Switch GravelSwitch;
+    [FoldoutGroup("Material Switches")][LabelWidth(100)] public Switch RockSwitch;
+    [FoldoutGroup("Material Switches")][LabelWidth(100)] public Switch WoodSwitch;
+    #endregion
+    #endregion Switchs
 
-    [Header("Material Switches")]
-    public Switch dirtSwitch;
-    public Switch grassSwitch;
-    public Switch gravelSwitch;
-    public Switch rockSwitch;
-    public Switch woodSwitch;
+    #region Dictionnary
+    private Dictionary<LocomotionType, Switch> m_locomotionSwitches;
+    private Dictionary<MaterialType, Switch> m_materialSwitches;
+    #endregion
 
-    private Dictionary<LocomotionType, Switch> locomotionSwitches;
-    private Dictionary<MaterialType, Switch> materialSwitches;
+    [Header("Default Target Object")] // GameObject cible pour appliquer les switches Wwise si aucune target n'est précisée dans les appels de fonction
+    public GameObject TargetObject;
 
-    [Header("Default Target Object")]
-    public GameObject targetObject;
-
+    #region Enums
+    [SerializeField]
     public enum LocomotionType
     {
         Idle,
@@ -41,50 +50,33 @@ public class WwiseSwitchManager : MonoBehaviour
         Rock,
         Wood
     }
+    #endregion
 
-
-    void Awake()
+    public void InitSwitchDictionaries()
     {
-        if (Instance != null && Instance != this)
+        m_locomotionSwitches = new Dictionary<LocomotionType, Switch>
         {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        if (targetObject == null)
-            targetObject = gameObject;
-
-        InitSwitchDictionaries();
-    }
-
-    private void InitSwitchDictionaries()
-    {
-        locomotionSwitches = new Dictionary<LocomotionType, Switch>
-        {
-            { LocomotionType.Idle, idleSwitch },
-            { LocomotionType.Run, runSwitch },
-            { LocomotionType.Walk, walkSwitch },
-            { LocomotionType.Stairs, stairsSwitch }
+            { LocomotionType.Idle, IdleSwitch },
+            { LocomotionType.Run, RunSwitch },
+            { LocomotionType.Walk, WalkSwitch },
+            { LocomotionType.Stairs, StairsSwitch }
         };
 
-        materialSwitches = new Dictionary<MaterialType, Switch>
+        m_materialSwitches = new Dictionary<MaterialType, Switch>
         {
-            { MaterialType.Dirt, dirtSwitch },
-            { MaterialType.Grass, grassSwitch },
-            { MaterialType.Gravel, gravelSwitch },
-            { MaterialType.Rock, rockSwitch },
-            { MaterialType.Wood, woodSwitch }
+            { MaterialType.Dirt, DirtSwitch },
+            { MaterialType.Grass, GrassSwitch },
+            { MaterialType.Gravel, GravelSwitch },
+            { MaterialType.Rock, RockSwitch },
+            { MaterialType.Wood, WoodSwitch }
         };
     }
 
     public void SetLocomotionSwitch(LocomotionType type, GameObject target = null)
     {
-        if (locomotionSwitches.TryGetValue(type, out var switchValue))
+        if (m_locomotionSwitches.TryGetValue(type, out var switchValue))
         {
-            switchValue.SetValue(target ?? targetObject);
+            switchValue.SetValue(target ?? TargetObject);
         }
         else
         {
@@ -94,9 +86,9 @@ public class WwiseSwitchManager : MonoBehaviour
 
     public void SetMaterialSwitch(MaterialType material, GameObject target = null)
     {
-        if (materialSwitches.TryGetValue(material, out var switchValue))
+        if (m_materialSwitches.TryGetValue(material, out var switchValue))
         {
-            switchValue.SetValue(target ?? targetObject);
+            switchValue.SetValue(target ?? TargetObject);
         }
         else
         {
