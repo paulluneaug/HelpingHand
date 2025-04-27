@@ -3,7 +3,7 @@ using System.Collections;
 
 using Events;
 
-using Unity.Cinemachine;
+using Sirenix.OdinInspector;
 
 using UnityEngine;
 
@@ -15,14 +15,19 @@ public class SliderInputTrigger : InputTrigger
     [SerializeField]
     private FloatGameEvent m_sliderEvent;
 
-    [SerializeField, MinMaxRangeSlider(0, 1)]
+    [SerializeField, MinMaxSlider(0, 1, true)]
     private Vector2 m_targetRange;
 
     [SerializeField]
     private float m_timeToTrigger = 0.2f;
 
+    [SerializeField]
+    private bool m_isImmediate = true;
+
     private float m_currentSliderValue;
     private Coroutine m_triggerCoroutine;
+
+    public override bool IsRaised => m_isImmediate ? m_isRaised : m_currentSliderValue.Between(m_targetRange.x, m_targetRange.y);
 
     public override void Initialize()
     {

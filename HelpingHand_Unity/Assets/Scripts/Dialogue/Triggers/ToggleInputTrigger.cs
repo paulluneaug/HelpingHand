@@ -17,7 +17,10 @@ public class ToggleInputTrigger : InputTrigger
     [SerializeField]
     private float m_timeToTrigger = 0.05f;
 
-    public override bool IsRaised => m_currentValue;
+    [SerializeField]
+    private bool m_isImmediate = false;
+
+    public override bool IsRaised => m_isImmediate ? m_isRaised : m_currentValue;
 
     private bool m_currentValue;
     private Coroutine m_triggerCoroutine;
