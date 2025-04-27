@@ -9,6 +9,9 @@ public class PreconditionCount : PreconditionBase
     [SerializeField]
     private int m_countNeeded = 0;
 
+    [SerializeField]
+    private bool m_strictlyEquals = false;
+
     private int m_count;
 
     public override bool Test()
@@ -19,7 +22,7 @@ public class PreconditionCount : PreconditionBase
             m_count++;
         }
 
-        return test && m_count == m_countNeeded;
+        return test && (m_strictlyEquals ? m_count == m_countNeeded : m_count >= m_countNeeded);
     }
 
     public override void Initialize()
