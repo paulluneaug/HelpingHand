@@ -15,7 +15,7 @@ public class PreconditionTrigger : PreconditionBase
     {
         base.Initialize();
         m_trigger.Initialize();
-        m_trigger.OnTriggerRaised -= RaiseOnPreconditionUpdated;
-        m_trigger.OnTriggerRaised += RaiseOnPreconditionUpdated;
+        m_trigger.RaiseTriggerEvent -= RaiseOnPreconditionUpdated;
+        m_trigger.RaiseTriggerEvent += RaiseOnPreconditionUpdated;
     }
 }

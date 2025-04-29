@@ -1,8 +1,10 @@
 using System;
 
-using UnityEngine;
+using Sirenix.OdinInspector;
 
-using UnityUtility.CustomAttributes;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
 using UnityUtility.Easings;
 using UnityUtility.Extensions;
 using UnityUtility.Timer;
@@ -49,9 +51,18 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
     [SerializeField] private Vector3 m_endPosition;
     [SerializeField] private SlidingBehaviourEnum m_slidingBehaviour;
 
-    [SerializeField, ShowIf(nameof(m_slidingBehaviour), SlidingBehaviourEnum.SmoothDiscreet)] private Timer m_smoothDiscreetSlidingTimer;
-    [SerializeField, ShowIf(nameof(m_slidingBehaviour), SlidingBehaviourEnum.SmoothDiscreet)] private Easings.EasingFunction m_smoothDircreetEasing;
+    [SerializeField, UnityUtility.CustomAttributes.ShowIf(nameof(m_slidingBehaviour), SlidingBehaviourEnum.SmoothDiscreet)] private Timer m_smoothDiscreetSlidingTimer;
+    [SerializeField, UnityUtility.CustomAttributes.ShowIf(nameof(m_slidingBehaviour), SlidingBehaviourEnum.SmoothDiscreet)] private Easings.EasingFunction m_smoothDircreetEasing;
 
+    [SerializeField]
+    private EntityState m_visibleState;
+    
+    [SerializeField]
+    private EntityState m_hiddenState;
+
+    [SerializeField]
+    private float m_distanceOfActivation = 0.1f;
+    
     [NonSerialized] private Vector3 m_currentSlidingTarget;
     [NonSerialized] private Vector3 m_currentSlidingStart;
 
@@ -68,6 +79,7 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
     private void Update()
     {
         float gridSize = PuppetSettings.Instance.TileSize;
+        Vector3 oldPosition = transform.position;
         Vector3 targetPosition = Vector3.Lerp(m_startPosition, m_endPosition, m_masterSlider.SliderValue);
 
         switch (m_slidingBehaviour)
@@ -105,6 +117,31 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
                 break;
             default:
                 break;
+        }
+
+
+        if (m_visibleState != null && m_hiddenState != null)
+        {
+            if (oldPosition != transform.position)
+            {
+                if ((m_startPosition - transform.position).magnitude <= m_distanceOfActivation)
+                {
+                    m_hiddenState.Set();
+                }
+                else
+                {
+                    m_hiddenState.Unset();
+                }
+
+                if ((m_endPosition - transform.position).magnitude <= m_distanceOfActivation)
+                {
+                    m_visibleState.Set();
+                }
+                else
+                {
+                    m_visibleState.Unset();
+                }
+            }
         }
     }
 

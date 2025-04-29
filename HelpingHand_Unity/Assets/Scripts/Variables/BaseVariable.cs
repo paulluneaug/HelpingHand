@@ -7,6 +7,11 @@ public interface IVariable
     
 }
 
+public class BaseVariable : BaseGameEvent, IVariable
+{
+    
+}
+
 public class BaseVariable<T> : BaseGameEvent<T>, IVariable
 {
     [SerializeField]

@@ -29,6 +29,7 @@ public class Dialogue : SerializedScriptableObject
     {
         m_hasBeenRead.Value = false;
         m_precondition.Initialize();
+        m_precondition.OnPreconditionUpdated -= OnPreconditionUpdated;
         m_precondition.OnPreconditionUpdated += OnPreconditionUpdated;
     }
 
