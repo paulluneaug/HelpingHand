@@ -10,12 +10,30 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{2C40B268-7D81-69D4-3413-1108C9251650}",
+    "Hash": "{22FB9F32-09A0-73F2-61B5-35AAAADBBBE0}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Plugins": {
+     "Custom": [
+      {
+       "Id": "101835093",
+       "Name": "Guitar Distortion (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\MusicBus\\JingleBus\\[Effect Slot [0]: (Guitar Distortion)]\\Guitar Distortion (Custom)",
+       "GUID": "{C9203F2A-6B37-497F-87FD-3A537CA8E21D}",
+       "LibName": "Wwise Guitar Distortion",
+       "LibId": "8257539"
+      }
+     ],
      "ShareSets": [
+      {
+       "Id": "1416967478",
+       "Name": "All_Buttons_IN",
+       "ObjectPath": "\\Effects\\Factory Effects\\Compressor\\All_Buttons_IN",
+       "GUID": "{E5FFEBA7-4F6F-421E-ABB7-286C011BD0C8}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
+      },
       {
        "Id": "3216246379",
        "Name": "Space_Dreaming",
@@ -53,6 +71,34 @@
      ]
     },
     "Busses": [
+     {
+      "Id": "590867056",
+      "Name": "JingleBus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\MusicBus\\JingleBus",
+      "GUID": "{350A9A46-57D3-4F23-82B3-BC03C3775681}",
+      "Color": "14",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "101835093"
+        }
+       ],
+       "ShareSets": [
+        {
+         "Id": "1416967478"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "3633416828",
+        "Name": "Hall",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\Hall",
+        "GUID": "{168AA74E-F128-4A65-AB94-C40BE7738E4E}",
+        "Color": "4"
+       }
+      ]
+     },
      {
       "Id": "695384145",
       "Name": "RVB",
@@ -145,6 +191,12 @@
      }
     ],
     "GameParameters": [
+     {
+      "Id": "640723851",
+      "Name": "Dialogue_Cue",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Dialogue_Cue",
+      "GUID": "{467BFAD3-E0A9-4797-9008-8309D82DC1E1}"
+     },
      {
       "Id": "1460444787",
       "Name": "SliderSpeed",
@@ -280,6 +332,38 @@
     ],
     "SwitchGroups": [
      {
+      "Id": "376468136",
+      "Name": "DialogueCue",
+      "ObjectPath": "\\Switches\\Default Work Unit\\DialogueCue",
+      "GUID": "{CEAE6464-245B-4D76-8E17-943D573E344B}",
+      "Switches": [
+       {
+        "Id": "3311727978",
+        "Name": "d_04",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialogueCue\\d_04",
+        "GUID": "{F3AD162B-EE3A-4AFF-BB92-967451463BCC}"
+       },
+       {
+        "Id": "3311727980",
+        "Name": "d_02",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialogueCue\\d_02",
+        "GUID": "{2B7BE552-0D9E-449E-B3D8-7B34016BAF6F}"
+       },
+       {
+        "Id": "3311727981",
+        "Name": "d_03",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialogueCue\\d_03",
+        "GUID": "{69C8D741-CABD-4AC0-A6D8-EC2EA1E84786}"
+       },
+       {
+        "Id": "3311727983",
+        "Name": "d_01",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialogueCue\\d_01",
+        "GUID": "{2AFA2CF2-18FA-447C-B45E-AB02AB8D9D98}"
+       }
+      ]
+     },
+     {
       "Id": "748991833",
       "Name": "Locomotion_Type",
       "ObjectPath": "\\Switches\\Default Work Unit\\Locomotion_Type",
@@ -313,6 +397,84 @@
         "ObjectPath": "\\Switches\\Default Work Unit\\Locomotion_Type\\Walk",
         "GUID": "{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}",
         "Color": "5"
+       }
+      ]
+     },
+     {
+      "Id": "1774320658",
+      "Name": "JingleSwitch",
+      "ObjectPath": "\\Switches\\Default Work Unit\\JingleSwitch",
+      "GUID": "{59B9640E-EAB5-4833-B78D-2A1A11AB58ED}",
+      "Switches": [
+       {
+        "Id": "443572635",
+        "Name": "Sad",
+        "ObjectPath": "\\Switches\\Default Work Unit\\JingleSwitch\\Sad",
+        "GUID": "{C1276216-3A52-4733-86A7-36A9DEE0F030}"
+       },
+       {
+        "Id": "1040437717",
+        "Name": "Horror",
+        "ObjectPath": "\\Switches\\Default Work Unit\\JingleSwitch\\Horror",
+        "GUID": "{30444FF8-1BB1-4728-AF16-92A49C937A47}"
+       },
+       {
+        "Id": "1630613029",
+        "Name": "Heroic",
+        "ObjectPath": "\\Switches\\Default Work Unit\\JingleSwitch\\Heroic",
+        "GUID": "{95206ED5-DDD0-4178-B485-0BF918DB407A}"
+       },
+       {
+        "Id": "1900220284",
+        "Name": "Funky",
+        "ObjectPath": "\\Switches\\Default Work Unit\\JingleSwitch\\Funky",
+        "GUID": "{CD73DDAA-CAA7-4BC3-B095-4CA2D30EB39A}"
+       }
+      ]
+     },
+     {
+      "Id": "2112814044",
+      "Name": "DialLieu",
+      "ObjectPath": "\\Switches\\Default Work Unit\\DialLieu",
+      "GUID": "{F2E3C340-3476-4BEA-B67D-C2B707EA2989}",
+      "Switches": [
+       {
+        "Id": "103162457",
+        "Name": "Jardin",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialLieu\\Jardin",
+        "GUID": "{5F580B62-9308-4519-8F27-16C4B6C8C542}"
+       },
+       {
+        "Id": "4134473986",
+        "Name": "Chateau",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialLieu\\Chateau",
+        "GUID": "{0333CD0D-D18B-4582-BD8A-17623F6CBC9B}"
+       }
+      ]
+     },
+     {
+      "Id": "3815437198",
+      "Name": "DialObject",
+      "ObjectPath": "\\Switches\\Default Work Unit\\DialObject",
+      "GUID": "{2028E89D-FF28-41A2-BA9E-A95259F52F77}",
+      "Switches": [
+       {
+        "Id": "766317640",
+        "Name": "Epee",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialObject\\Epee",
+        "GUID": "{CEC09539-4B40-48BE-816A-6DAB1F52E0D0}"
+       },
+       {
+        "Id": "1668622101",
+        "Name": "Carotte",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialObject\\Carotte",
+        "GUID": "{FADB250A-5E42-454C-B98F-FB9B42C2C586}"
+       },
+       {
+        "Id": "3932397148",
+        "Name": "Marteau",
+        "ObjectPath": "\\Switches\\Default Work Unit\\DialObject\\Marteau",
+        "GUID": "{92298A37-E0B8-4AD1-BF42-B3467CAAA5C0}"
        }
       ]
      },
@@ -363,6 +525,6 @@
     ]
    }
   ],
-  "FileHash": "{733F7F26-DBE5-051B-82AF-8FC4A75A23A3}"
+  "FileHash": "{8735E9DB-D6DC-0A01-BF0E-F71488D20355}"
  }
 }

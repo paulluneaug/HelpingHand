@@ -13,23 +13,31 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID FUNKYJINGLE_SETSWITCH = 4104299446U;
+        static const AkUniqueID HEROICJINGLE_SETSWITCH = 3299137599U;
+        static const AkUniqueID HORRORJINGLE_SETSWITCH = 3116989295U;
+        static const AkUniqueID JINGLE_STOP = 3484940841U;
         static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
         static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
         static const AkUniqueID ONPOINTERDOWN = 1065012045U;
         static const AkUniqueID ONPOINTERENTER = 414303029U;
         static const AkUniqueID ONPOINTEREXIT = 3466097449U;
         static const AkUniqueID ONPOINTERUP = 3836048698U;
+        static const AkUniqueID PLAY_FACTORY = 3757240376U;
         static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
         static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
         static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
         static const AkUniqueID PLAY_FADERMAX = 3224940184U;
         static const AkUniqueID PLAY_FADERMIN = 3359161110U;
         static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
+        static const AkUniqueID PLAY_FORESTDAY_ = 4144464292U;
+        static const AkUniqueID PLAY_FORESTNIGHT = 109052221U;
         static const AkUniqueID PLAY_ROOMMACHINIST = 2948635231U;
         static const AkUniqueID PLAY_SQUAREROCKLOOP = 2367626798U;
         static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
         static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
         static const AkUniqueID PLAY_THEATERAMBIENCE = 3213662481U;
+        static const AkUniqueID SADJINGLE_SETSWITCH = 792680301U;
         static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
@@ -73,6 +81,55 @@ namespace AK
 
     namespace SWITCHES
     {
+        namespace DIALLIEU
+        {
+            static const AkUniqueID GROUP = 2112814044U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID CHATEAU = 4134473986U;
+                static const AkUniqueID JARDIN = 103162457U;
+            } // namespace SWITCH
+        } // namespace DIALLIEU
+
+        namespace DIALOBJECT
+        {
+            static const AkUniqueID GROUP = 3815437198U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID CAROTTE = 1668622101U;
+                static const AkUniqueID EPEE = 766317640U;
+                static const AkUniqueID MARTEAU = 3932397148U;
+            } // namespace SWITCH
+        } // namespace DIALOBJECT
+
+        namespace DIALOGUECUE
+        {
+            static const AkUniqueID GROUP = 376468136U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID D_01 = 3311727983U;
+                static const AkUniqueID D_02 = 3311727980U;
+                static const AkUniqueID D_03 = 3311727981U;
+                static const AkUniqueID D_04 = 3311727978U;
+            } // namespace SWITCH
+        } // namespace DIALOGUECUE
+
+        namespace JINGLESWITCH
+        {
+            static const AkUniqueID GROUP = 1774320658U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID FUNKY = 1900220284U;
+                static const AkUniqueID HEROIC = 1630613029U;
+                static const AkUniqueID HORROR = 1040437717U;
+                static const AkUniqueID SAD = 443572635U;
+            } // namespace SWITCH
+        } // namespace JINGLESWITCH
+
         namespace LOCOMOTION_TYPE
         {
             static const AkUniqueID GROUP = 748991833U;
@@ -104,6 +161,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID DIALOGUE_CUE = 640723851U;
         static const AkUniqueID RTPC_MUSIC_FIRSTLAYER = 2116630962U;
         static const AkUniqueID RTPC_MUSIC_SECONDLAYER = 1485517750U;
         static const AkUniqueID RTPC_RANDOMSEEKPOSITION = 2865193319U;
@@ -121,6 +179,7 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID AMBBUS = 2894416467U;
+        static const AkUniqueID JINGLEBUS = 590867056U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MOVABLEOBJECTSBUS = 2112977367U;
         static const AkUniqueID MUSICBUS = 2886307548U;

@@ -1,5 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.LightTransport;
+
 using TitleAlignments = Sirenix.OdinInspector.TitleAlignments;
 using WwiseEvent = AK.Wwise.Event;
 public class EventManager : MonoBehaviour
@@ -49,4 +51,14 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent RoomMachinist_Ambience_Play;
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent Theater_Ambience_Play;
     #endregion
+
+    public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
+    {
+        // Utilise l'ID de l'événement directement à partir du WwiseEvent
+        uint eventID = (uint)wwiseEvent.ID;
+
+        // Joue l'événement avec le callback
+        return AkUnitySoundEngine.PostEvent(eventID, gameObject, (uint)callbackType, callback, cookie);
+    }
+
 }
