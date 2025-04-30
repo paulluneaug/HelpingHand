@@ -28,5 +28,15 @@ public class LightActivationController : SerializedMonoBehaviour
     private void OnTriggerRaised()
     {
         m_light.enabled = m_doActivateLight;
+
+        if (m_doActivateLight)
+        {
+
+            _ = AudioManager.Instance.EventManager.SpotlightOn_Play.Post(gameObject);
+        }
+        else
+        {
+            _ = AudioManager.Instance.EventManager.SpotlightOff_Play.Post(gameObject);
+        }
     }
 }

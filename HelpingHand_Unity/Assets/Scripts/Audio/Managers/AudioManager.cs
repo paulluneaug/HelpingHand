@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
 
         //On joue la musique principale dès que la scène se lance
-        _ = EventManager.MainMusic_Play.Post(gameObject);
+       // _ = EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
         _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
@@ -87,5 +87,25 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     }
     #endregion
 
+    public void PlayTypewriter()
+    {
+        _ = EventManager.Typewriter_Play.Post(gameObject);
+    }
+
+    public void PlayButton()
+    {
+        _ = EventManager.ButtonOnPointerDown_Play.Post(gameObject);
+    }
+    public void ToggleSound(bool isOn)
+    {
+        if (isOn)
+        {
+            _ = EventManager.Toggle_Play.Post(gameObject);
+        }
+        else
+        {
+            _ = EventManager.Untoggle_Play.Post(gameObject);
+        }
+}
 
 }

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{4A104DE9-C8A6-F039-EE24-528D04D83512}",
+    "Hash": "{B25FC23F-D0BB-B01B-0600-F150F949E87D}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -23,9 +23,25 @@
        "GUID": "{C9203F2A-6B37-497F-87FD-3A537CA8E21D}",
        "LibName": "Wwise Guitar Distortion",
        "LibId": "8257539"
+      },
+      {
+       "Id": "544205087",
+       "Name": "Pumping_and_Breathing_1 (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\VoiceBus\\[Effect Slot [0]: (Compressor)]\\Pumping_and_Breathing_1 (Custom)",
+       "GUID": "{BD66F79F-9D17-4B13-A9C1-DE1ED16183B4}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
       }
      ],
      "ShareSets": [
+      {
+       "Id": "109045632",
+       "Name": "Vibrato",
+       "ObjectPath": "\\Effects\\Factory Effects\\Flanger\\Vibrato",
+       "GUID": "{D9586A30-FF0D-4DCC-89C5-04CDC4716ED6}",
+       "LibName": "Wwise Flanger",
+       "LibId": "8192003"
+      },
       {
        "Id": "1416967478",
        "Name": "All_Buttons_IN",
@@ -33,6 +49,22 @@
        "GUID": "{E5FFEBA7-4F6F-421E-ABB7-286C011BD0C8}",
        "LibName": "Wwise Compressor",
        "LibId": "7077891"
+      },
+      {
+       "Id": "2180422931",
+       "Name": "One_Tap_Quarter_Second",
+       "ObjectPath": "\\Effects\\Factory Effects\\Delay\\One_Tap_Quarter_Second",
+       "GUID": "{6BD2D67D-601A-45A6-AD4C-2C089078EBED}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      },
+      {
+       "Id": "2791153688",
+       "Name": "Hall_Small",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Small",
+       "GUID": "{D65B5F04-B83B-412C-9434-34A13A477E24}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
       },
       {
        "Id": "3216246379",
@@ -124,7 +156,31 @@
       "Id": "2045367873",
       "Name": "VoiceBus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\VoiceBus",
-      "GUID": "{C628C558-A524-4C84-B5EA-B492F58CA446}"
+      "GUID": "{C628C558-A524-4C84-B5EA-B492F58CA446}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "544205087"
+        }
+       ],
+       "ShareSets": [
+        {
+         "Id": "109045632"
+        },
+        {
+         "Id": "2180422931"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "1523137544",
+        "Name": "MachinistRoom",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\MachinistRoom",
+        "GUID": "{0F0EB7DE-27D7-49B7-8C42-140BD3689480}",
+        "Color": "4"
+       }
+      ]
      },
      {
       "Id": "2112977367",
@@ -151,7 +207,8 @@
       "Id": "3803692087",
       "Name": "Master Audio Bus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
-      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}",
+      "Color": "10"
      },
      {
       "Id": "3803850708",
@@ -171,6 +228,20 @@
        "ShareSets": [
         {
          "Id": "3216246379"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "1523137544",
+      "Name": "MachinistRoom",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\MachinistRoom",
+      "GUID": "{0F0EB7DE-27D7-49B7-8C42-140BD3689480}",
+      "Color": "4",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2791153688"
         }
        ]
       }
@@ -525,6 +596,6 @@
     ]
    }
   ],
-  "FileHash": "{5A8715EF-A8B9-0268-1C72-2099BB1C7BEE}"
+  "FileHash": "{77E6F94E-D036-2253-8C30-6BAE4C165EFD}"
  }
 }

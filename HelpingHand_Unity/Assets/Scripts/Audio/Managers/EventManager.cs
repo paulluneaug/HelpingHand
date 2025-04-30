@@ -26,21 +26,37 @@ public class EventManager : MonoBehaviour
 
     #region Controller Events
     [FoldoutGroup("Controller Events")]
-    [FoldoutGroup("Controller Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderLoop_Play;
-    [FoldoutGroup("Controller Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderMin_Play;
-    [FoldoutGroup("Controller Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderMax_Play;
-    [FoldoutGroup("Controller Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderFadeout_Stop;
-    [FoldoutGroup("Controller Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderImmediate_Stop;
+    [FoldoutGroup("Controller Events/Light Events")][LabelWidth(200)] public WwiseEvent SpotlightOn_Play;
+    [FoldoutGroup("Controller Events/Light Events")][LabelWidth(200)] public WwiseEvent SpotlightOff_Play;
 
-    [FoldoutGroup("Controller Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerUp_Play;
-    [FoldoutGroup("Controller Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerDown_Play;
-    [FoldoutGroup("Controller Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerEnter_Play;
-    [FoldoutGroup("Controller Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerExit_Play;
+    [FoldoutGroup("Controller Events/Music Events")][LabelWidth(200)] public WwiseEvent FightingJingle_Play;
+    [FoldoutGroup("Controller Events/Music Events")][LabelWidth(200)] public WwiseEvent HeroicJingle_Play;
+    [FoldoutGroup("Controller Events/Music Events")][LabelWidth(200)] public WwiseEvent HorrorJingle_Play;
+    [FoldoutGroup("Controller Events/Music Events")][LabelWidth(200)] public WwiseEvent SadJingle_Play;
+    [FoldoutGroup("Controller Events/Music Events")][LabelWidth(200)] public WwiseEvent Jingle_Stop;
+
+    [FoldoutGroup("Controller Events/SFX Events")][LabelWidth(200)] public WwiseEvent Monster_Play;
+    [FoldoutGroup("Controller Events/SFX Events")][LabelWidth(200)] public WwiseEvent Weapon_Play;
     #endregion
-
     #region UI Events
-    [FoldoutGroup("UI Events")][LabelWidth(200)] public WwiseEvent MenuOpenSound_Play;
-    [FoldoutGroup("UI Events")][LabelWidth(200)] public WwiseEvent MenuCloseSound_Play;
+    [FoldoutGroup("UI Events")]
+    [FoldoutGroup("UI Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderLoop_Play;
+    [FoldoutGroup("UI Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderMin_Play;
+    [FoldoutGroup("UI Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderMax_Play;
+    [FoldoutGroup("UI Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderFadeout_Stop;
+    [FoldoutGroup("UI Events/Fader Events")][LabelWidth(200)] public WwiseEvent FaderImmediate_Stop;
+
+    [FoldoutGroup("UI Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerUp_Play;
+    [FoldoutGroup("UI Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerDown_Play;
+    [FoldoutGroup("UI Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerEnter_Play;
+    [FoldoutGroup("UI Events/Button Events")][LabelWidth(200)] public WwiseEvent ButtonOnPointerExit_Play;
+
+    [FoldoutGroup("UI Events/Button Events")][LabelWidth(200)] public WwiseEvent Toggle_Play;
+    [FoldoutGroup("UI Events/Button Events")][LabelWidth(200)] public WwiseEvent Untoggle_Play;
+
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent MenuOpenSound_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent MenuCloseSound_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent Typewriter_Play;
     #endregion
     #region Puppet Events
     [FoldoutGroup("Puppet Events")][LabelWidth(200)] public WwiseEvent Footsteps_Play;
@@ -60,5 +76,5 @@ public class EventManager : MonoBehaviour
         // Joue l'événement avec le callback
         return AkUnitySoundEngine.PostEvent(eventID, gameObject, (uint)callbackType, callback, cookie);
     }
-
+     
 }

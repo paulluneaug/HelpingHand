@@ -23,6 +23,9 @@ namespace AK
         static const AkUniqueID ONPOINTERENTER = 414303029U;
         static const AkUniqueID ONPOINTEREXIT = 3466097449U;
         static const AkUniqueID ONPOINTERUP = 3836048698U;
+        static const AkUniqueID PLAY_DIRECTOR_DIALOGUE = 1900097235U;
+        static const AkUniqueID PLAY_DIRECTOR_DIALOGUE_INTERRUPT = 429245287U;
+        static const AkUniqueID PLAY_DIRECTOR_DIALOGUE_RESUME = 2523382879U;
         static const AkUniqueID PLAY_FACTORY = 3757240376U;
         static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
         static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
@@ -38,9 +41,14 @@ namespace AK
         static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
         static const AkUniqueID PLAY_THEATERAMBIENCE = 3213662481U;
         static const AkUniqueID SADJINGLE_SETSWITCH = 792680301U;
+        static const AkUniqueID SPOTLIGHT_OFF_PLAY = 1074187710U;
+        static const AkUniqueID SPOTLIGHT_ON_PLAY = 1206761850U;
         static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
+        static const AkUniqueID TOGGLE_PLAY = 2942539354U;
+        static const AkUniqueID TYPEWRITER_PLAY = 1749211329U;
+        static const AkUniqueID UNTOGGLE_PLAY = 3389532245U;
     } // namespace EVENTS
 
     namespace STATES
@@ -194,6 +202,7 @@ namespace AK
     {
         static const AkUniqueID ENORMOUSRVB = 92103823U;
         static const AkUniqueID HALL = 3633416828U;
+        static const AkUniqueID MACHINISTROOM = 1523137544U;
     } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES

@@ -56,7 +56,7 @@ public class StateManager : MonoBehaviour
     {
         if (GameState == CurrentGameState) //Si c'est la même valeur que celle actuelle, on ne fait rien
         {
-            Debug.Log("GameState is already" + GameState + "."); //On ne change pas l'état si c'est déjà le bon
+            //Debug.Log("GameState is already" + GameState + "."); //On ne change pas l'état si c'est déjà le bon
             return;
         }
         switch (GameState) // On change l'état en fonction de l'état du jeu
@@ -78,7 +78,7 @@ public class StateManager : MonoBehaviour
                 m_game_None.SetValue();
                 break;
         }
-        Debug.Log("New Wwise GameState: " + GameState + "."); //On affiche le nouvel état dans la console
+        //Debug.Log("New Wwise GameState: " + GameState + "."); //On affiche le nouvel état dans la console
 
         CurrentGameState = GameState; //On met à jour l'état actuel
     }
@@ -87,7 +87,7 @@ public class StateManager : MonoBehaviour
     {
         if (MusicState == CurrentMusicState)
         {
-            Debug.Log("MusicState is already" + MusicState + "."); //On ne change pas l'état si c'est déjà le bon
+            //Debug.Log("MusicState is already" + MusicState + "."); //On ne change pas l'état si c'est déjà le bon
             return;
         }
 
@@ -116,6 +116,6 @@ public class StateManager : MonoBehaviour
                 break;
         }
         CurrentMusicState = MusicState; //On met à jour l'état actuel
-        Debug.Log("New Wwise GameState: " + MusicState + ".");
+        //Debug.Log("New Wwise GameState: " + MusicState + ".");
     }
 }
