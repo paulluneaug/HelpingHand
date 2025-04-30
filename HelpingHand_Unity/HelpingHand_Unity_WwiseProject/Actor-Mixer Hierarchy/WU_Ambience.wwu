@@ -44,14 +44,11 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732" ID="{95889243-5D78-4AC5-960C-554D6E02AB8E}" ShortID="1026625166">
+										<RandomSequenceContainer Name="Roomtone" ID="{2B42474F-E99A-41FD-AC6A-00D6E538CAA2}" ShortID="878024672">
 											<PropertyList>
-												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>15</Value>
-													</ValueList>
-												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -62,36 +59,50 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732" ID="{D09E1760-3494-4C82-A8B9-E8D279E3DF51}">
+												<Sound Name="5 - Room tone Ventilation noise with light hum" ID="{1E1B25A5-9934-4C11-91E2-DD04C7B534E7}" ShortID="1048571961">
 													<PropertyList>
-														<Property Name="LoopBegin" Type="Real64" Value="0"/>
-														<Property Name="LoopEnd" Type="Real64" Value="0"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>7</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="943847803"/>
-													</MediaIDList>
-												</AudioFileSource>
-												<AudioFileSource Name="Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732 1" ID="{2BB28779-A139-4BA1-9DB1-3D67944328FA}">
-													<PropertyList>
-														<Property Name="CrossfadeDuration" Type="Real64" Value="4017.721"/>
-														<Property Name="LoopBegin" Type="Real64" Value="2.362"/>
-														<Property Name="LoopEnd" Type="Real64" Value="26.499183483998"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732 1.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="225600564"/>
-													</MediaIDList>
-												</AudioFileSource>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="5 - Room tone Ventilation noise with light hum" ID="{7ED9C9A3-83EE-443B-A7EA-34AA0766437E}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="2050.815"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.327500579453247"/>
+																<Property Name="LoopEnd" Type="Real64" Value="24.4617738281422"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>5 - Room tone Ventilation noise with light hum .wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="302202432"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="5 - Room tone Ventilation noise with light hum" ID="{7ED9C9A3-83EE-443B-A7EA-34AA0766437E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Ambience, Public Place, Convenience Store, Roomtone, Small, No People, Cars Passing By Outside SND42732 1" ID="{2BB28779-A139-4BA1-9DB1-3D67944328FA}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+											<ObjectLists>
+												<ObjectList Name="Playlist">
+													<Reference>
+														<ObjectRef Name="5 - Room tone Ventilation noise with light hum" ID="{1E1B25A5-9934-4C11-91E2-DD04C7B534E7}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 							</ChildrenList>
@@ -121,7 +132,7 @@
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-10</Value>
+														<Value>-96</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
