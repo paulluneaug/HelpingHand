@@ -1,6 +1,6 @@
 ﻿namespace Events
 {
-    public class GameEventListener : BaseGameEventListener<GameEvent>
+    public class GameEventListener : BaseGameEventListener<BaseGameEvent>
     {
     }
 }
