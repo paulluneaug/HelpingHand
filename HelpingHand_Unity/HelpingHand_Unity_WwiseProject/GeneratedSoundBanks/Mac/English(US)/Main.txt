@@ -34,6 +34,9 @@ Event	ID	Name			Wwise Object Path	Notes
 	4104299446	FunkyJingle_SetSwitch			\Jingle_Events\Music\FunkyJingle_SetSwitch	
 	4144464292	Play_ForestDay_			\Jingle_Events\Ambiences\Play_ForestDay_	
 
+Dialogue Event	ID	Name			Wwise Object Path	Notes
+	893562230	Dialogue_Event			\Default Work Unit\Dialogue_Event	
+
 Switch Group	ID	Name			Wwise Object Path	Notes
 	376468136	DialogueCue			\Default Work Unit\DialogueCue	
 	748991833	Locomotion_Type			\Default Work Unit\Locomotion_Type	
@@ -65,6 +68,27 @@ Switch	ID	Name	Switch Group			Notes
 	2185786256	Gravel	Material			
 	2195636714	Dirt	Material			
 	4248645337	Grass	Material			
+
+State Group	ID	Name			Wwise Object Path	Notes
+	295955913	Etat			\Default Work Unit\Dialogue_States\Etat	
+	1783195984	Repetition			\Default Work Unit\Dialogue_States\Repetition	
+	2456139351	Objet			\Default Work Unit\Dialogue_States\Objet	
+
+State	ID	Name	State Group			Notes
+	748895195	None	Etat			
+	930712164	Off	Etat			
+	1651971902	On	Etat			
+	748895195	None	Repetition			
+	1601639075	R4	Repetition			
+	1601639076	R3	Repetition			
+	1601639077	R2	Repetition			
+	1601639078	R1	Repetition			
+	213473489	Armure	Objet			
+	748895195	None	Objet			
+	789576189	Spot	Objet			
+	2042910332	Carton	Objet			
+	2782899139	Rien	Objet			
+	3890666427	Rideaux	Objet			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	1460444787	SliderSpeed			\Default Work Unit\SliderSpeed	
@@ -102,6 +126,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	66200398	Footsteps, Human, Dirt, Dry, Sneaker, Fast SND1035 6	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\82\{8280C7ED-8688-A1C7-D27C-819606261486}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Running\Dirt_Run\RunningBlend\Footstep_Dirt\Footsteps, Human, Dirt, Dry, Sneaker, Fast SND1035 6		5068
 	81857135	Ambience, Forest, Loud Crickets, Constant, Close & Distant, Distant Owl, Night SND104955	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\59\{59BBBD31-9A05-54C6-D06A-D849F5159663}.wem		\Actor-Mixer Hierarchy\WU_Controller\Controller_Ambience\Night_Forest_Ambience\Ambience, Forest, Loud Crickets, Constant, Close & Distant, Distant Owl, Night SND104955		2223586
 	96143765	Puppet_Footsteps_Wood_creak1	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\B1\{B192820A-2A49-7831-5777-4D795A8CFF00}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Walking\Dirt_Walk\WalkingBlend\Footstep_Wood_creak\Puppet_Footsteps_Wood_creak1		4349
+	113331526	d01_decor_vert	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\B0\{B0065B6C-81C3-CBF4-79DE-0764E06E9BCC}.wem		\Actor-Mixer Hierarchy\WU_Voice\Director_Voice\Director_Dialogue\d01_decor_vert		20611
 	118387207	Musical, Loop, Advertising Music Loop, Funky Guitar SND84904	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\0B\{0B914FBB-DFC5-7F2F-E324-BBA796E00E15}.wem		\Interactive Music Hierarchy\WU_Jingles\Jingle_Switch\Funky_Jingle\Funky\Musical, Loop, Advertising Music Loop, Funky Guitar SND84904		282914
 	119631216	jardin	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\E0\{E01291EA-5D85-F631-944C-B3FE2347CA49}.wem		\Actor-Mixer Hierarchy\WU_Voice\Director_Voice\SequenceTest_TimelineSansinterruption\Lieu\jardin		6503
 	127350845	Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S00	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\97\{97AA9A98-5862-1F31-9107-34C13E701C8E}.wem		\Actor-Mixer Hierarchy\WU_UI\Button\PointerDown\Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S00		11816
@@ -141,6 +166,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	468616533	Mechanical, Switch, Designed, Spotlight, Dramatic, Lever Pull, Switch On 01 SND134638 S00	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\DC\{DC48A710-DADE-28CC-7314-CEDE95249941}.wem		\Actor-Mixer Hierarchy\WU_Controller\Spotlight\Spotlight_On\Mechanical, Switch, Designed, Spotlight, Dramatic, Lever Pull, Switch On 01 SND134638 S00		45868
 	471885334	Puppet_Footsteps_Rope_creak3	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\41\{410BE9F6-D827-9D8E-16E3-11AA70A24D4B}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Walking\Wood_Walk\WalkingBlend\Footstep_Rope_creak\Puppet_Footsteps_Rope_creak3		5372
 	472272781	Puppet_Footsteps_Clock1	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\B2\{B202AF48-9502-E791-BF47-DBA9F19FC8B9}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Walking\Dirt_Walk\WalkingBlend\Footstep_CLock\Puppet_Footsteps_Clock1		2019
+	478508623	d04_a_nouveau	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\FA\{FA9CB6B7-10AD-C31B-10B5-65B27E6B4B90}.wem		\Actor-Mixer Hierarchy\WU_Voice\Director_Voice\Director_Dialogue\d04_a_nouveau		17502
+	482264565	d06	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\52\{528A234D-F945-AB32-3281-3B54705AEBBB}.wem		\Actor-Mixer Hierarchy\WU_Voice\Director_Voice\Director_Dialogue\d06		19537
 	495090744	Puppet_Footsteps_Clock10	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\50\{50EA985C-81F4-87F3-5CDC-3ABBAA839EC7}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Running\Dirt_Run\RunningBlend\Footstep_CLock\Puppet_Footsteps_Clock10		2085
 	500766588	Puppet_Footsteps_Clock6	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\D2\{D239BB2B-473B-CE74-9192-D7AC345308F4}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Walking\Wood_Walk\WalkingBlend\Footstep_CLock\Puppet_Footsteps_Clock6		1672
 	517027929	Puppet_Footsteps_Rope_creak2	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\CB\{CB4471DA-1C68-672D-ECC9-A98F6225854E}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Running\Wood_Run\RunningBlend\Footstep_Rope_creak\Puppet_Footsteps_Rope_creak2		6341
@@ -172,7 +199,9 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	739435882	Puppet_Footsteps_Wood_creak1	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\59\{59BC627E-14E6-80CD-9DF9-F4F4EE61ADEE}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Running\Wood_Run\RunningBlend\Footstep_Wood_creak\Puppet_Footsteps_Wood_creak1		3961
 	754371400	Footsteps, Human, Dirt, Dry, Sneaker, Fast SND1035 9	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\E8\{E8CE99B5-3F81-155C-1877-2FFB67D6BA2F}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Walking\Dirt_Walk\WalkingBlend\Footstep_Dirt\Footsteps, Human, Dirt, Dry, Sneaker, Fast SND1035 9		3141
 	767653506	Puppet_Footsteps_Clock2	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\57\{57E54BE4-3260-15DD-C30E-9B7FE9812522}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Running\Wood_Run\RunningBlend\Footstep_CLock\Puppet_Footsteps_Clock2		1647
+	770840643	d02_maintenant_masque	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\34\{34A37C83-510C-387C-7B3F-31908DB2ECCC}.wem		\Actor-Mixer Hierarchy\WU_Voice\Director_Voice\Director_Dialogue\d02_maintenant_masque		15441
 	791765349	Ambience, Industrial, Distant Machine Hammer, Impacts, Metal Factory SND53438	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\06\{0606A1B1-8D04-69FA-F33D-13D16F4BC3DC}.wem		\Actor-Mixer Hierarchy\WU_Controller\Controller_Ambience\Factory_Ambience\Ambience, Industrial, Distant Machine Hammer, Impacts, Metal Factory SND53438		122913
+	831665859	d03	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\16\{1667B639-2664-04FA-B6BA-633D991FCB41}.wem		\Actor-Mixer Hierarchy\WU_Voice\Director_Voice\Director_Dialogue\d03		17073
 	844410827	Ambience, Designed, Machine, Fantasy, Abstract, Isolated 15 SND77076	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\30\{306E135D-D018-9988-2821-BBB2E09F84AD}.wem		\Actor-Mixer Hierarchy\WU_Controller\Controller_Ambience\Factory_Ambience\Ambience, Designed, Machine, Fantasy, Abstract, Isolated 15 SND77076		1794442
 	859391563	idle1	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\31\{31E9810A-E826-5D36-3869-E4D003C24900}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Idle\idle1		14826
 	865209714	idle4	C:\Users\ELE66df04a172365\Documents\GitHub\HelpingHand\HelpingHand_Unity\HelpingHand_Unity_WwiseProject\.cache\19\{194C68F2-D5C5-E652-B7DB-9B96D3B7BE56}.wem		\Actor-Mixer Hierarchy\WU_Puppet\Foosteps\Idle\idle4		15196

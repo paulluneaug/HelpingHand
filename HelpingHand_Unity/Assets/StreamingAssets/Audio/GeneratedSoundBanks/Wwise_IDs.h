@@ -51,8 +51,25 @@ namespace AK
         static const AkUniqueID UNTOGGLE_PLAY = 3389532245U;
     } // namespace EVENTS
 
+    namespace DIALOGUE_EVENTS
+    {
+        static const AkUniqueID DIALOGUE_EVENT = 893562230U;
+    } // namespace DIALOGUE_EVENTS
+
     namespace STATES
     {
+        namespace ETAT
+        {
+            static const AkUniqueID GROUP = 295955913U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID OFF = 930712164U;
+                static const AkUniqueID ON = 1651971902U;
+            } // namespace STATE
+        } // namespace ETAT
+
         namespace GAMESTATE
         {
             static const AkUniqueID GROUP = 4091656514U;
@@ -84,6 +101,35 @@ namespace AK
                 static const AkUniqueID PAUSEMENU = 3494343696U;
             } // namespace STATE
         } // namespace MUSICSTATE
+
+        namespace OBJET
+        {
+            static const AkUniqueID GROUP = 2456139351U;
+
+            namespace STATE
+            {
+                static const AkUniqueID ARMURE = 213473489U;
+                static const AkUniqueID CARTON = 2042910332U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID RIDEAUX = 3890666427U;
+                static const AkUniqueID RIEN = 2782899139U;
+                static const AkUniqueID SPOT = 789576189U;
+            } // namespace STATE
+        } // namespace OBJET
+
+        namespace REPETITION
+        {
+            static const AkUniqueID GROUP = 1783195984U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID R1 = 1601639078U;
+                static const AkUniqueID R2 = 1601639077U;
+                static const AkUniqueID R3 = 1601639076U;
+                static const AkUniqueID R4 = 1601639075U;
+            } // namespace STATE
+        } // namespace REPETITION
 
     } // namespace STATES
 

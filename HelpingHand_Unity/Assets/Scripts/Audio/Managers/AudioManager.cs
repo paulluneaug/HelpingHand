@@ -16,7 +16,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     public EventManager EventManager;
     public SoundbankManager SoundbankManager;
     #endregion
-    public new void Awake()
+
+    public override void Initialize()
     {
         SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
 
@@ -26,7 +27,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         StateManager.SetMusicState(MusicState.None); //On initialise l'état de la musique à None (reset)
     }
 
-    public new void Start()
+    protected override void Start()
     {
         StateManager.SetGameState(GameState.MainMenu); //On initialise l'état du jeu à MainMenu
         StateManager.SetMusicState(MusicState.MainMenu); //On initialise l'état de la musique à MainMenu
@@ -38,8 +39,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
        // _ = EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
-        _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
-        _ = EventManager.Theater_Ambience_Play.Post(gameObject);
+        _ = EventManager.RoomMachinist_Ambience_Play.Post(null);
+        _ = EventManager.Theater_Ambience_Play.Post(null);
     }
 
     #region Functions
@@ -53,7 +54,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         if (WwiseEvent.IsValid())
         {
-            _ = WwiseEvent.Post(gameObject);
+            _ = WwiseEvent.Post(null);
         }
         else
         {
@@ -87,25 +88,33 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     }
     #endregion
 
-    public void PlayTypewriter()
+    public void PlayTypewriter(GameObject targetObject)
     {
-        _ = EventManager.Typewriter_Play.Post(gameObject);
+        _ = EventManager.Typewriter_Play.Post(targetObject);
     }
 
-    public void PlayButton()
+    public void PlayButton(GameObject targetObject)
     {
-        _ = EventManager.ButtonOnPointerDown_Play.Post(gameObject);
+        _ = EventManager.ButtonOnPointerDown_Play.Post(targetObject);
     }
-    public void ToggleSound(bool isOn)
+    public void ToggleSound(bool isOn, GameObject targetObject)
     {
         if (isOn)
         {
-            _ = EventManager.Toggle_Play.Post(gameObject);
+            _ = EventManager.Toggle_Play.Post(targetObject);
         }
         else
         {
-            _ = EventManager.Untoggle_Play.Post(gameObject);
+            _ = EventManager.Untoggle_Play.Post(targetObject);
         }
-}
+    }
+    public void PlayDialogueWithStates(string repetition, string etat, string objet)
+    {
+        AkUnitySoundEngine.SetState("Repetition", repetition);
+        AkUnitySoundEngine.SetState("Etat", etat);
+        AkUnitySoundEngine.SetState("Objet", objet);
 
+        _ = EventManager.DialogueEvent_Play.Post(gameObject);
+        // AkUnitySoundEngine.DynamicSequencePlay(sequenceID); Faut plutôt utiliser ce genre de chose,  https://www.audiokinetic.com/fr/learn/videos/8anypryl38k/?course=wwise301&lesson=5&ref=Reference_Scripts_l5%2F%2F%2F%2F%2F/
+    }
 }

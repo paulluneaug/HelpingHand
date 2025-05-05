@@ -3,22 +3,38 @@
 	<DynamicDialogue>
 		<WorkUnit Name="Default Work Unit" ID="{F06F9D6B-E588-4F23-8AD1-785381AC89AA}" PersistMode="Standalone">
 			<ChildrenList>
-				<DialogueEvent Name="New_Dialogue_Event" ID="{70F6CDAB-2B63-495F-AB52-4A41D3FC812E}">
+				<DialogueEvent Name="Dialogue_Event" ID="{70F6CDAB-2B63-495F-AB52-4A41D3FC812E}">
 					<ObjectLists>
 						<ObjectList Name="Arguments">
 							<Reference>
-								<ObjectRef Name="DialogueCue" ID="{CEAE6464-245B-4D76-8E17-943D573E344B}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
+								<ObjectRef Name="Etat" ID="{C102ED49-CBF9-4371-9DB3-2C817DD29BFB}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+							</Reference>
+							<Reference>
+								<ObjectRef Name="Objet" ID="{538112AD-9598-4A43-B1D9-07D5177FA6BF}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+							</Reference>
+							<Reference>
+								<ObjectRef Name="Repetition" ID="{33459F11-2715-4016-9EEC-30401C5683B6}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
 							</Reference>
 						</ObjectList>
 						<ObjectList Name="Entries">
 							<Reference>
 								<Local>
-									<MultiSwitchEntry Name="" ID="{6E1CD9DD-5AA5-489C-89E0-0A99B7A1DBB0}">
-										<ReferenceList/>
+									<MultiSwitchEntry Name="" ID="{A78BABAA-CB1A-4A21-954E-085B27C383C1}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="d01_decor_vert" ID="{D0F19596-8898-46F8-B507-6FE54E18E265}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+										</ReferenceList>
 										<ObjectLists>
 											<ObjectList Name="EntryPath">
 												<Reference>
-													<ObjectRef Name="d_01" ID="{2AFA2CF2-18FA-447C-B45E-AB02AB8D9D98}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
+													<ObjectRef Name="Off" ID="{A13FA060-64D7-4AD8-B715-59EE9CAA85E1}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="Rideaux" ID="{B8CBA2B4-685B-4A84-AE74-2F894722B9D6}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="R1" ID="{A2D7201B-12FA-46BB-A810-61C3E42A0291}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
 												</Reference>
 											</ObjectList>
 										</ObjectLists>
@@ -27,12 +43,118 @@
 							</Reference>
 							<Reference>
 								<Local>
-									<MultiSwitchEntry Name="" ID="{3128840D-562F-4448-8900-DF3F8399C03A}">
-										<ReferenceList/>
+									<MultiSwitchEntry Name="" ID="{7B3DCA7A-6EB4-4DF1-8B60-DB84296AA156}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="d02_maintenant_masque" ID="{ED7D6229-13E9-4110-A6F8-863D800447AB}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+										</ReferenceList>
 										<ObjectLists>
 											<ObjectList Name="EntryPath">
 												<Reference>
-													<ObjectRef Name="d_02" ID="{2B7BE552-0D9E-449E-B3D8-7B34016BAF6F}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
+													<ObjectRef Name="Off" ID="{A13FA060-64D7-4AD8-B715-59EE9CAA85E1}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="Rideaux" ID="{B8CBA2B4-685B-4A84-AE74-2F894722B9D6}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="R2" ID="{516543C3-5B86-4523-B622-96B7A8FCB09C}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{76D8A615-EA5F-4644-A7D1-1B28357DFC90}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="d03" ID="{0B8A11EA-EB81-4401-A7B5-3911E313204A}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Off" ID="{A13FA060-64D7-4AD8-B715-59EE9CAA85E1}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="Rideaux" ID="{B8CBA2B4-685B-4A84-AE74-2F894722B9D6}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="R3" ID="{089C6F7B-E039-4E29-8D21-EAFDF43237D6}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{7DFD2832-922F-44B8-9015-111B0D5F7ED8}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="d04_a_nouveau" ID="{53C5228D-1B45-4B13-9D69-3FBD9C9F5229}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Off" ID="{A13FA060-64D7-4AD8-B715-59EE9CAA85E1}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="Rideaux" ID="{B8CBA2B4-685B-4A84-AE74-2F894722B9D6}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="R4" ID="{3FD09C1F-04F1-47FB-889D-866001DFC79B}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{74B117AE-7974-4C8D-911F-0E13C512D1F9}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="d05_fini_de_tamuser" ID="{6C2C2ACE-7C49-4EE6-9563-B9D9FE843D82}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Off" ID="{A13FA060-64D7-4AD8-B715-59EE9CAA85E1}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="Spot" ID="{F270F06C-D10B-4F58-800C-AF7E56ECCE0F}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="R1" ID="{A2D7201B-12FA-46BB-A810-61C3E42A0291}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{CDC5846D-0918-4359-9209-9F7BFCA20E7C}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="d06" ID="{B6E44434-C107-4EBC-80C5-357C052511A1}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Off" ID="{A13FA060-64D7-4AD8-B715-59EE9CAA85E1}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="Spot" ID="{F270F06C-D10B-4F58-800C-AF7E56ECCE0F}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
+												</Reference>
+												<Reference>
+													<ObjectRef Name="R2" ID="{516543C3-5B86-4523-B622-96B7A8FCB09C}" WorkUnitID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}"/>
 												</Reference>
 											</ObjectList>
 										</ObjectLists>

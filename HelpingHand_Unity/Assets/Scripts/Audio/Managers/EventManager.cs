@@ -68,6 +68,10 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent Theater_Ambience_Play;
     #endregion
 
+    #region Dialogue Events
+    [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent DialogueEvent_Play;
+    #endregion
+
     public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
     {
         // Utilise l'ID de l'événement directement à partir du WwiseEvent
