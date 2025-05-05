@@ -1,3 +1,5 @@
+using System;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -8,7 +10,10 @@ using UnityUtility.ObservableFields;
 public class Dialogue : SerializedScriptableObject
 {
     [SerializeField]
-    private PreconditionBase m_precondition;
+    private PreconditionBase m_precondition = new PreconditionNone();
+
+    [NonSerialized]
+    public PreconditionTimeline m_timelinePrecondition;
 
     [SerializeField]
     private int m_priority;
@@ -21,27 +26,31 @@ public class Dialogue : SerializedScriptableObject
 
     public string Content => m_content;
     public int Priority => m_priority;
-    public ObservableField<bool> HasBeenRead => m_hasBeenRead;
-
-    private ObservableField<bool> m_hasBeenRead;
+    public ObservableField<bool> HasBeenRead { get; } = new ObservableField<bool>(false);
 
     public void Initialize()
     {
-        m_hasBeenRead.Value = false;
+        HasBeenRead.Value = false;
         m_precondition.Initialize();
         m_precondition.OnPreconditionUpdated -= OnPreconditionUpdated;
         m_precondition.OnPreconditionUpdated += OnPreconditionUpdated;
+        if (m_timelinePrecondition != null)
+        {
+            m_timelinePrecondition.OnPreconditionUpdated -= OnPreconditionUpdated;
+            m_timelinePrecondition.OnPreconditionUpdated += OnPreconditionUpdated;
+        }
     }
 
-    private void OnPreconditionUpdated()
+    public void OnPreconditionUpdated()
     {
-        if (m_hasBeenRead.Value && !m_canBeReadMultipleTimes)
+        if (HasBeenRead.Value && !m_canBeReadMultipleTimes)
         {
             return;
         }
-        if (m_precondition.Test())
+
+        if (m_precondition.Test() &&  (m_timelinePrecondition == null || m_timelinePrecondition.Test()))
         {
-            m_hasBeenRead.Value = true;
+            HasBeenRead.Value = true;
             DialogueManager.Instance.PlayDialog(this);
         }
     }

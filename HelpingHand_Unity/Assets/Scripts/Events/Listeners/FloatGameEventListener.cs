@@ -1,6 +1,6 @@
 ﻿namespace Events
 {
-    public class FloatGameEventListener : BaseGameEventListener<float, FloatGameEvent>
+    public class FloatGameEventListener : BaseGameEventListener<float, BaseGameEvent<float>>
     {
     }
 }
