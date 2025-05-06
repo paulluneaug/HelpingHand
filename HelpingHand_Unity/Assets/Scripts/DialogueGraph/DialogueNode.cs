@@ -1,5 +1,7 @@
+using System;
+using System.Threading;
 
-using System.Collections;
+using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
@@ -26,9 +28,13 @@ public class DialogueNode : BaseNode
     {
     }
 
-    public override IEnumerator Execute()
+    // public override async UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
+    public override async UniTask Execute(GraphRunnerHandler handler)
     {
+        await base.Execute(handler);
+        
         Debug.Log(m_content);
-        yield return ContinueFlow();
+        // await ContinueFlow(stopToken, pauseToken, resumeToken);
+        await ContinueFlow(handler);
     }
 }

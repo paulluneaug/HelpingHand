@@ -1,4 +1,4 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
@@ -24,9 +24,18 @@ public class WaitNode : BaseNode
     {
     }
 
-    public override IEnumerator Execute()
+    // public override async UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
+    public override async UniTask Execute(GraphRunnerHandler handler)
     {
-        yield return m_unscaled ? new WaitForSecondsRealtime(m_waitTime) : new WaitForSeconds(m_waitTime);
-        yield return ContinueFlow();
+        await base.Execute(handler);
+        
+        bool isCanceled =  await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow();
+        if (isCanceled)
+        {
+            Debug.Log($"WaitNode: wait cancelled");
+        }
+        
+        // await ContinueFlow(stopToken, pauseToken, resumeToken);
+        await ContinueFlow(handler);
     }
 }

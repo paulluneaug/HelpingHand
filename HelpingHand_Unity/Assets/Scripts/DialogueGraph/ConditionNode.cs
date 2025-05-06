@@ -1,4 +1,7 @@
-using System.Collections;
+using System;
+using System.Threading;
+
+using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
@@ -21,13 +24,16 @@ public class ConditionNode : BaseNode
         m_condition.Initialize();
     }
 
-    public override IEnumerator Execute()
+    // public override async UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
+    public override async UniTask Execute(GraphRunnerHandler handler)
     {
-        if (!m_condition.Test())
+        await base.Execute(handler);
+        
+        if (m_condition.Test())
         {
-            yield break;
+            // await ContinueFlow(stopToken, pauseToken, resumeToken);
+            await ContinueFlow(handler);
         }
-        yield return ContinueFlow();
     }
 
     public override object GetValue(NodePort port)

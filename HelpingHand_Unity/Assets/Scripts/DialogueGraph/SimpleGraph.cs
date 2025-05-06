@@ -1,4 +1,8 @@
+using System;
 using System.Collections;
+using System.Threading;
+
+using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
@@ -8,7 +12,7 @@ using XNode;
 public class SimpleGraph : NodeGraph
 {
     private StartNode m_startNode;
-    
+
     public void Initialize()
     {
         foreach (Node node in nodes)
@@ -25,8 +29,10 @@ public class SimpleGraph : NodeGraph
         }
     }
 
-    public IEnumerator Run()
+    // public async UniTask Run(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
+    public async UniTask Run(GraphRunnerHandler handler)
     {
-        yield return m_startNode.Execute();
+        // await m_startNode.Execute(stopToken, pauseToken, resumeToken);
+        await m_startNode.Execute(handler);
     }
 }

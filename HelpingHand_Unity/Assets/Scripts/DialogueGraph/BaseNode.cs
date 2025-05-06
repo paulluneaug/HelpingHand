@@ -1,4 +1,10 @@
+using System;
 using System.Collections;
+using System.Threading;
+
+using Cysharp.Threading.Tasks;
+
+using UnityEngine;
 
 using XNode;
 using XNode.Odin;
@@ -7,31 +13,40 @@ public abstract class BaseNode : SerializableNode
 {
     public virtual void Initialize() { }
 
-    public virtual IEnumerator Execute() { yield break; }
+    // public abstract UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken);
+    public virtual async UniTask Execute(GraphRunnerHandler handler)
+    {
+        if (handler.PauseToken.IsCancellationRequested)
+        {
+            Debug.Log($"[{name}] pause requested");
+            await UniTask.WaitUntilCanceled(handler.ResumeToken);
+            Debug.Log($"[{name}] resumed");
+        }
 
-    protected IEnumerator ContinueFlow()
+        if (handler.StopToken.IsCancellationRequested)
+        {
+            Debug.Log($"[{name}] stop requested");
+            throw new OperationCanceledException(handler.StopToken);
+        }
+    }
+
+    // protected async UniTask ContinueFlow(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
+    protected async UniTask ContinueFlow(GraphRunnerHandler handler)
     {
         NodePort outputPort = GetOutputPort("m_out");
-        if (outputPort.ConnectionCount > 1)
+        UniTask[] tasks = new UniTask[outputPort.ConnectionCount];
+        int index = 0;
+        foreach (NodePort otherPort in outputPort.GetConnections())
         {
-            foreach (NodePort otherPort in outputPort.GetConnections())
-            {
-                BaseNode nextNode = otherPort.node as BaseNode;
-                if (nextNode != null)
-                {
-                    // TODO trouver un moyen de lancer en parallèle et qu'on puisse attendre le tout (UniTask ?)
-                    GraphRunner.Instance.StartCoroutine(nextNode.Execute());
-                }
-            }
-        }
-        else
-        {
-            NodePort otherPort = outputPort.Connection;
             BaseNode nextNode = otherPort.node as BaseNode;
             if (nextNode != null)
             {
-                yield return nextNode.Execute();
+                // tasks[index] = nextNode.Execute(stopToken, pauseToken, resumeToken);
+                tasks[index] = nextNode.Execute(handler);
+                index++;
             }
         }
+
+        await UniTask.WhenAll(tasks);
     }
 }

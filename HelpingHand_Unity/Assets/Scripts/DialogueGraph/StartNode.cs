@@ -1,4 +1,8 @@
+using System;
 using System.Collections;
+using System.Threading;
+
+using Cysharp.Threading.Tasks;
 
 using XNode;
 
@@ -16,8 +20,11 @@ public class StartNode : BaseNode
     {
     }
 
-    public override IEnumerator Execute()
+    // public override async UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
+    public override async UniTask Execute(GraphRunnerHandler handler)
     {
-        yield return ContinueFlow();
+        await base.Execute(handler);
+        // await ContinueFlow(stopToken, pauseToken, resumeToken);
+        await ContinueFlow(handler);
     }
 }
