@@ -53,7 +53,7 @@ namespace AK
 
     namespace DIALOGUE_EVENTS
     {
-        static const AkUniqueID DIALOGUE_EVENT = 893562230U;
+        static const AkUniqueID DIRECTORVOICE = 1515938981U;
     } // namespace DIALOGUE_EVENTS
 
     namespace STATES
@@ -226,6 +226,7 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID DYNAMICDIALOGUE = 1028808198U;
         static const AkUniqueID MAIN = 3161908922U;
         static const AkUniqueID MUSICS = 1730564753U;
     } // namespace BANKS

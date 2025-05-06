@@ -44,6 +44,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     }
 
     #region Functions
+    #region PostWwise Events
     public void PostWwiseEventGlobal(WwiseEvent WwiseEvent)
     {
         if (WwiseEvent == null)
@@ -87,7 +88,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     }
     #endregion
-
+    #region Play UI Sounds
     public void PlayTypewriter(GameObject targetObject)
     {
         _ = EventManager.Typewriter_Play.Post(targetObject);
@@ -108,13 +109,60 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             _ = EventManager.Untoggle_Play.Post(targetObject);
         }
     }
+    #endregion
+
     public void PlayDialogueWithStates(string repetition, string etat, string objet)
     {
-        AkUnitySoundEngine.SetState("Repetition", repetition);
-        AkUnitySoundEngine.SetState("Etat", etat);
-        AkUnitySoundEngine.SetState("Objet", objet);
+        uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("DirectorVoice");
+        // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
+        // Il faut référencer l'ID stocké dans la soundbank
 
-        _ = EventManager.DialogueEvent_Play.Post(gameObject);
-        // AkUnitySoundEngine.DynamicSequencePlay(sequenceID); Faut plutôt utiliser ce genre de chose,  https://www.audiokinetic.com/fr/learn/videos/8anypryl38k/?course=wwise301&lesson=5&ref=Reference_Scripts_l5%2F%2F%2F%2F%2F/
+        if (dialogueEventId == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
+        {
+            Debug.LogError("L'event 'DirectorVoice' est introuvable. Vérifier son nom et sa SoundBank.");
+            return;
+        }
+
+        // Récupération des State IDs depuis les noms
+        uint repetitionID = AkUnitySoundEngine.GetIDFromString(repetition);
+        uint etatID = AkUnitySoundEngine.GetIDFromString(etat);
+        uint objetID = AkUnitySoundEngine.GetIDFromString(objet);
+        //Rajouter un state ici si nécessaire
+
+
+        if (repetitionID == 0 || etatID == 0 || objetID == 0)
+        {
+            Debug.LogError($"Échec de conversion des states: {repetition}, {etat}, {objet}");
+            return;
+        }
+
+        uint[] args = new uint[] { etatID, objetID, repetitionID };
+
+        uint sequenceID = AkUnitySoundEngine.DynamicSequenceOpen(this.gameObject);
+        AkPlaylist playlist = AkUnitySoundEngine.DynamicSequenceLockPlaylist(sequenceID);
+
+        uint nodeID = AkUnitySoundEngine.ResolveDialogueEvent(dialogueEventId, args, (uint)args.Length);
+        if (nodeID == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
+        {
+            Debug.LogError("Aucun dialogue node trouvé pour ces states.");
+            AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            return;
+        }
+
+        playlist.Enqueue(nodeID);
+        AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+        AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
+        AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+
+        Debug.Log($"Dialogue joué avec : Etat={etat}, Objet={objet}, Repetition={repetition}");
+
+        //Note : si on veut arrêter le son on utilise DynamicSequenceStop(sequenceID) puis DynamicSequenceClose(sequenceID)
+        //Note : si on veut reprendre où on en était, on utilise DynamicSequenceResume(sequenceID)
+         
     }
+
+
+
+    #endregion
 }

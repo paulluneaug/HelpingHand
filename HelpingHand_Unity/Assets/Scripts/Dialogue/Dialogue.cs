@@ -54,23 +54,20 @@ public class Dialogue : SerializedScriptableObject
     public void OnPreconditionUpdated()
     {
         if (HasBeenRead.Value && !m_canBeReadMultipleTimes)
-        {
             return;
-        }
 
-        if (m_precondition.Test() &&  (m_timelinePrecondition == null || m_timelinePrecondition.Test()))
+        if (m_precondition.Test() && (m_timelinePrecondition == null || m_timelinePrecondition.Test()))
         {
             HasBeenRead.Value = true;
-            AkUnitySoundEngine.SetState("Repetition", ((int)repetition).ToString());
-            AkUnitySoundEngine.SetState("Etat", etat.ToString());
-            AkUnitySoundEngine.SetState("Objet", objet.ToString());
 
-            DialogueManager.Instance.PlayDialog(this);
-            //AudioManager.Instance.PostWwiseEventToObject(DialogueEvent, null);
-            //GameObject emitter = AudioManager.Instance.gameObject;
-            //DialogueEvent.Post(emitter);
-            AudioManager.Instance.PlayDialogueWithStates(repetition.ToString(), etat.ToString(), objet.ToString());
-            Debug.Log(repetition.ToString() + etat.ToString() + objet.ToString());
+            // Appel AudioManager avec les bons noms de state (match Wwise !)
+            AudioManager.Instance.PlayDialogueWithStates(
+                repetition.ToString(),
+                etat.ToString(),
+                objet.ToString()
+            );
+
+            Debug.Log($"[Dialogue Triggered] {repetition}, {etat}, {objet}");
         }
     }
 }
