@@ -19,6 +19,7 @@ public abstract class BaseNode : SerializableNode
                 BaseNode nextNode = otherPort.node as BaseNode;
                 if (nextNode != null)
                 {
+                    // TODO trouver un moyen de lancer en parallèle et qu'on puisse attendre le tout (UniTask ?)
                     GraphRunner.Instance.StartCoroutine(nextNode.Execute());
                 }
             }

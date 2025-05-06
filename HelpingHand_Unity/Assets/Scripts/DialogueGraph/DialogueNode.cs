@@ -19,7 +19,7 @@ public class DialogueNode : BaseNode
 
     public override object GetValue(NodePort port)
     {
-        return base.GetValue(port);
+        return m_out;
     }
 
     public override void Initialize()
