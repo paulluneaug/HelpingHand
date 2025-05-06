@@ -24,7 +24,6 @@ public class WaitNode : BaseNode
     {
     }
 
-    // public override async UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
     public override async UniTask Execute(GraphRunnerHandler handler)
     {
         await base.Execute(handler);
@@ -33,9 +32,9 @@ public class WaitNode : BaseNode
         if (isCanceled)
         {
             Debug.Log($"WaitNode: wait cancelled");
+            await Execute(handler);
         }
         
-        // await ContinueFlow(stopToken, pauseToken, resumeToken);
         await ContinueFlow(handler);
     }
 }

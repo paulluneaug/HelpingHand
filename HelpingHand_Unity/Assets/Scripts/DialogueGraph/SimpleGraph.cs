@@ -29,10 +29,8 @@ public class SimpleGraph : NodeGraph
         }
     }
 
-    // public async UniTask Run(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
     public async UniTask Run(GraphRunnerHandler handler)
     {
-        // await m_startNode.Execute(stopToken, pauseToken, resumeToken);
         await m_startNode.Execute(handler);
     }
 }

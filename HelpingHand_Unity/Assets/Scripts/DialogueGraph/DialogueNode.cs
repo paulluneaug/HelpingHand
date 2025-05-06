@@ -28,13 +28,11 @@ public class DialogueNode : BaseNode
     {
     }
 
-    // public override async UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
     public override async UniTask Execute(GraphRunnerHandler handler)
     {
         await base.Execute(handler);
         
         Debug.Log(m_content);
-        // await ContinueFlow(stopToken, pauseToken, resumeToken);
         await ContinueFlow(handler);
     }
 }

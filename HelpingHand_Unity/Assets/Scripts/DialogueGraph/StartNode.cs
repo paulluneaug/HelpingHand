@@ -20,11 +20,9 @@ public class StartNode : BaseNode
     {
     }
 
-    // public override async UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
     public override async UniTask Execute(GraphRunnerHandler handler)
     {
         await base.Execute(handler);
-        // await ContinueFlow(stopToken, pauseToken, resumeToken);
         await ContinueFlow(handler);
     }
 }

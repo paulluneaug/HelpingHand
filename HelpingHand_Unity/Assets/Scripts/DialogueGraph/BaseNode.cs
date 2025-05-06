@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Threading;
+using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
 
@@ -13,7 +12,6 @@ public abstract class BaseNode : SerializableNode
 {
     public virtual void Initialize() { }
 
-    // public abstract UniTask Execute(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken);
     public virtual async UniTask Execute(GraphRunnerHandler handler)
     {
         if (handler.PauseToken.IsCancellationRequested)
@@ -30,20 +28,21 @@ public abstract class BaseNode : SerializableNode
         }
     }
 
-    // protected async UniTask ContinueFlow(CancellationToken stopToken, Func<CancellationToken> pauseToken, Func<CancellationToken> resumeToken)
-    protected async UniTask ContinueFlow(GraphRunnerHandler handler)
+    protected virtual async UniTask ContinueFlow(GraphRunnerHandler handler)
     {
         NodePort outputPort = GetOutputPort("m_out");
-        UniTask[] tasks = new UniTask[outputPort.ConnectionCount];
-        int index = 0;
+        await ContinueFlow(handler, outputPort);
+    }
+
+    protected virtual async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort outputPort)
+    {
+        List<UniTask> tasks = new ();
         foreach (NodePort otherPort in outputPort.GetConnections())
         {
             BaseNode nextNode = otherPort.node as BaseNode;
             if (nextNode != null)
             {
-                // tasks[index] = nextNode.Execute(stopToken, pauseToken, resumeToken);
-                tasks[index] = nextNode.Execute(handler);
-                index++;
+                tasks.Add(nextNode.Execute(handler));
             }
         }
 
