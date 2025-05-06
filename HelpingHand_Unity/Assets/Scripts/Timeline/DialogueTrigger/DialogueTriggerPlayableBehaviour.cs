@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class DialogueTriggerPlayableBehaviour : PlayableBehaviour
 {
@@ -11,7 +12,9 @@ public class DialogueTriggerPlayableBehaviour : PlayableBehaviour
         {
             return;
         }
-        m_dialogue.OnPreconditionUpdated();
+        
+        Debug.Log($"[OnBehaviourPlay] <color=green>[{m_dialogue.name}]</color> triggered");
+        m_dialogue.TriggerPreconditionsTests();
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)

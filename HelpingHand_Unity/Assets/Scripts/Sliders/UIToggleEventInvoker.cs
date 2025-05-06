@@ -1,5 +1,3 @@
-using Events;
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +5,7 @@ using UnityEngine.UI;
 public class UIToggleEventInvoker : MonoBehaviour
 {
     [SerializeField]
-    private BoolGameEvent m_event;
+    private BoolVariable m_variable;
         
     private Toggle m_toggle;
     
@@ -18,6 +16,7 @@ public class UIToggleEventInvoker : MonoBehaviour
 
     private void OnEnable()
     {
+        m_variable.Value = m_toggle.isOn;
         m_toggle.onValueChanged.AddListener(OnToggleValueChanged);
     }
 
@@ -28,6 +27,6 @@ public class UIToggleEventInvoker : MonoBehaviour
 
     private void OnToggleValueChanged(bool isOn)
     {
-        m_event.Raise(isOn);
+        m_variable.Value = isOn;
     }
 }

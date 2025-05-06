@@ -31,6 +31,11 @@ public class BaseVariable<T> : BaseGameEvent<T>, IVariable
         }
     }
 
+    public void SetValueWithoutNotify(T value)
+    {
+        m_value = value;
+    }
+
     protected virtual T ClampValue(T value)
     {
         return value;

@@ -6,7 +6,9 @@ using UnityEngine;
 public class PreconditionAnd : PreconditionBase
 {
     [SerializeField]
-    private PreconditionBase[] m_preconditions;
+    private PreconditionBase[] m_preconditions = new PreconditionBase[] {};
+
+    public PreconditionBase[] Preconditions => m_preconditions;
 
     public override bool Test()
     {

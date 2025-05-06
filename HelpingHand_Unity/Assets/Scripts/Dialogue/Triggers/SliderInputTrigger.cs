@@ -48,11 +48,16 @@ public class SliderInputTrigger : InputTrigger
 
     private void OnSliderValueChanged(float value)
     {
+        bool wasRaised = IsRaised;
         m_currentSliderValue = value;
 
-        if (value.Between(m_targetRange.x, m_targetRange.y) && m_triggerCoroutine == null)
+        if (m_currentSliderValue.Between(m_targetRange.x, m_targetRange.y) && m_triggerCoroutine == null)
         {
             m_triggerCoroutine = DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
+        } 
+        else if (wasRaised)
+        {
+            RaiseTrigger();
         }
     }
 
