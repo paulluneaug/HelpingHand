@@ -3,7 +3,7 @@ using System;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
-using Unity.VisualScripting.FullSerializer;
+//using Unity.VisualScripting.FullSerializer;
 
 using UnityEngine;
 using UnityEngine.Events;

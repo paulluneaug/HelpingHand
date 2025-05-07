@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-using UnityUtility.TriggerObject;
+//using UnityUtility.TriggerObject;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     public Vector3 EndAnchor => m_endAnchor.position;
 
-    [SerializeField] private TriggerObject m_levelEndTrigger;
+    //[SerializeField] private TriggerObject m_levelEndTrigger;
     [SerializeField] private Transform m_startAnchor;
     [SerializeField] private Transform m_endAnchor;
 
@@ -22,12 +22,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.LevelSequenceManager.RegisterLevel(this);
-        m_levelEndTrigger.OnEnter += OnEndTriggerEnter;
+   //     m_levelEndTrigger.OnEnter += OnEndTriggerEnter;
     }
 
     private void OnDestroy()
     {
-        m_levelEndTrigger.OnEnter -= OnEndTriggerEnter;
+   //     m_levelEndTrigger.OnEnter -= OnEndTriggerEnter;
     }
 
     public void MoveLevel(Vector3 previousLevelAnchor)

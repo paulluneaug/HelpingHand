@@ -17,8 +17,6 @@ namespace AK
         static const AkUniqueID HEROICJINGLE_SETSWITCH = 3299137599U;
         static const AkUniqueID HORRORJINGLE_SETSWITCH = 3116989295U;
         static const AkUniqueID JINGLE_STOP = 3484940841U;
-        static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
-        static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
         static const AkUniqueID ONPOINTERDOWN = 1065012045U;
         static const AkUniqueID ONPOINTERENTER = 414303029U;
         static const AkUniqueID ONPOINTEREXIT = 3466097449U;
@@ -53,7 +51,7 @@ namespace AK
 
     namespace DIALOGUE_EVENTS
     {
-        static const AkUniqueID DIRECTORVOICE = 1515938981U;
+        static const AkUniqueID DIALOGUE_EVENT = 893562230U;
     } // namespace DIALOGUE_EVENTS
 
     namespace STATES
@@ -226,9 +224,7 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
-        static const AkUniqueID DYNAMICDIALOGUE = 1028808198U;
         static const AkUniqueID MAIN = 3161908922U;
-        static const AkUniqueID MUSICS = 1730564753U;
     } // namespace BANKS
 
     namespace BUSSES
