@@ -8,7 +8,7 @@ public class DialogueTriggerPlayableAsset : PlayableAsset, ITimelineClipAsset
 {
     [InlineEditor(Expanded = true)]
     public Dialogue m_dialogue;
-
+    
     public ClipCaps clipCaps => ClipCaps.None;
     
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)

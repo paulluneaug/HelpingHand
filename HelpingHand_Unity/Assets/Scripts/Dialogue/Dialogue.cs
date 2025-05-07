@@ -1,33 +1,42 @@
 using System;
 
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 
 using Unity.VisualScripting.FullSerializer;
 
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 using UnityUtility.ObservableFields;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Dialogue/Dialogue")]
 public class Dialogue : SerializedScriptableObject
 {
-    [SerializeField]
+    [SerializeField][BoxGroup]
     private PreconditionBase m_precondition = new PreconditionNone();
 
-    [NonSerialized]
-    public PreconditionTimeline m_timelinePrecondition;
-
-    [SerializeField]
+    [Space][SerializeField]
     private int m_priority;
 
     [SerializeField]
     private bool m_canBeReadMultipleTimes = false;
 
-    [SerializeField, TextArea(5, 5)]
-    private string m_content;
+    [SerializeField]
+    private bool m_canBeInterrupted = false;
 
-    public string Content => m_content;
+    [Space][SerializeField, TextArea(3, 3)]
+    private string m_content;
+    
+    [Space]
+    public TimelineAsset m_parentTimeline;
+
+    public PreconditionBase Precondition => m_precondition;
     public int Priority => m_priority;
+    public string Content => m_content;
+    public bool CanBeInterrupted => m_canBeInterrupted;
     public ObservableField<bool> HasBeenRead { get; } = new ObservableField<bool>(false);
 
     [SerializeField] private RepetitionState repetition;
@@ -37,37 +46,31 @@ public class Dialogue : SerializedScriptableObject
     public enum RepetitionState { R1, R2, R3, R4 }
     public enum EtatState { On, Off }
     public enum ObjetState { Spot, Rideaux, Armure, Carton, Rien }
+    [HideInInspector]
+    public TimelineClip m_clip;
 
     public void Initialize()
     {
         HasBeenRead.Value = false;
         m_precondition.Initialize();
-        m_precondition.OnPreconditionUpdated -= OnPreconditionUpdated;
-        m_precondition.OnPreconditionUpdated += OnPreconditionUpdated;
-        if (m_timelinePrecondition != null)
-        {
-            m_timelinePrecondition.OnPreconditionUpdated -= OnPreconditionUpdated;
-            m_timelinePrecondition.OnPreconditionUpdated += OnPreconditionUpdated;
-        }
+        m_precondition.OnPreconditionUpdated -= TriggerPreconditionsTests;
+        m_precondition.OnPreconditionUpdated += TriggerPreconditionsTests;
     }
 
-    public void OnPreconditionUpdated()
+    public void TriggerPreconditionsTests()
     {
+        // Debug.Log($"[TriggerPreconditionsTests] <color=green>[{name}]</color> hasBeenRead={HasBeenRead.Value} canBeReadMultipleTimes={m_canBeReadMultipleTimes} parentTimeline={m_parentTimeline.name} currentTimeline={TimelineManager.Instance.CurrentRunner.Timeline}");
         if (HasBeenRead.Value && !m_canBeReadMultipleTimes)
             return;
 
-        if (m_precondition.Test() && (m_timelinePrecondition == null || m_timelinePrecondition.Test()))
+        if (m_parentTimeline == null || (TimelineManager.Instance.CurrentRunner != null && m_parentTimeline == TimelineManager.Instance.CurrentRunner.Timeline))
         {
-            HasBeenRead.Value = true;
-
-            // Appel AudioManager avec les bons noms de state (match Wwise !)
-            AudioManager.Instance.PlayDialogueWithStates(
-                repetition.ToString(),
-                etat.ToString(),
-                objet.ToString()
-            );
-
-            Debug.Log($"[Dialogue Triggered] {repetition}, {etat}, {objet}");
+            if (m_precondition.Test())
+            {
+                DialogueManager.Instance.PlayDialog(this);
+                AudioManager.Instance.PlayDialogueWithStates(repetition.ToString(),etat.ToString(),objet.ToString());
+                Debug.Log($"[Dialogue Triggered] {repetition}, {etat}, {objet}");
+            }
         }
     }
 }

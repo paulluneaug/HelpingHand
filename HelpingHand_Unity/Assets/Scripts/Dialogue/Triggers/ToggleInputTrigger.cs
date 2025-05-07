@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-
-using Events;
 
 using UnityEngine;
 
@@ -9,7 +6,7 @@ using UnityEngine;
 public class ToggleInputTrigger : InputTrigger
 {
     [SerializeField]
-    private BoolGameEvent m_toggleEvent;
+    private BoolVariable m_toggleVariable;
 
     [SerializeField]
     private bool m_triggerIfTrue = true;
@@ -20,57 +17,32 @@ public class ToggleInputTrigger : InputTrigger
     [SerializeField]
     private bool m_isImmediate = false;
 
-    public override bool IsRaised => m_isImmediate ? m_isRaised : m_currentValue;
-
-    private bool m_currentValue;
-    private Coroutine m_triggerCoroutine;
+    public override bool IsRaised => m_isImmediate ? m_isRaised : m_triggerIfTrue == m_toggleVariable.Value;
 
     public override void Initialize()
     {
         base.Initialize();
-        m_currentValue = false; // Attention c'est pas forcément vrai, il faudrait récupérer la valeur actuelle du toggle
         SetActive(true);
     }
 
     protected override void Activate()
     {
-        m_toggleEvent.AddListener(OnToggleValueChanged);
+        m_toggleVariable.AddListener(OnToggleValueChanged);
     }
 
     protected override void Deactivate()
     {
-        m_toggleEvent.RemoveListener(OnToggleValueChanged);
+        m_toggleVariable.RemoveListener(OnToggleValueChanged);
     }
 
     private void OnToggleValueChanged(bool isOn)
     {
-        m_currentValue = isOn;
-
-        if (m_triggerIfTrue == m_currentValue && m_triggerCoroutine == null)
+        if (m_triggerIfTrue ==  m_toggleVariable.Value)
         {
-            m_triggerCoroutine = DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
+            m_isRaised = true;
+            RaiseTrigger();
+            
+            DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
         }
-    }
-
-    private IEnumerator TriggerCoroutine()
-    {
-        float counter = 0;
-        while (counter < m_timeToTrigger)
-        {
-            // Toggle's value is not the right value => stop the coroutine
-            if (m_triggerIfTrue != m_currentValue)
-            {
-                m_triggerCoroutine = null;
-                yield break;
-            }
-
-            counter += Time.deltaTime;
-            yield return null;
-        }
-
-        // timer has been reached
-        m_isRaised = true;
-        m_triggerCoroutine = null;
-        RaiseTrigger();
     }
 }
