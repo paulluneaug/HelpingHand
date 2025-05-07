@@ -10,6 +10,11 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
 {
     public override int Value => m_value;
 
+    /// <summary>
+    /// Argument : offset
+    /// </summary>
+    public override event Action<int> OnValueChanged;
+
     [SerializeField] private float m_stepCount;
 
     [SerializeField] private RectTransform m_knob;
@@ -53,6 +58,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
             float snappedOffset = stepOffset * m_step;
 
             m_value += stepOffset;
+            OnValueChanged?.Invoke(stepOffset);
 
             m_angle = m_dragLastAngle + snappedOffset;
 

@@ -1,8 +1,96 @@
 using System;
 
+using UnityEngine;
+using UnityEngine.UI;
+
+using UnityUtility.Easings;
+using UnityUtility.Timer;
+
+[RequireComponent(typeof(RectTransform))]
 public class VirtualToggle : VirtualInput<bool>
 {
+    [Serializable]
+    private class ToggleStateParameters
+    {
+        public Color BackgroundColor;
+        public RectTransform TogglePosition;
+    }
+
     public override bool Value => m_value;
 
-    [NonSerialized] private readonly bool m_value;
+    public override event Action<bool> OnValueChanged;
+
+    [SerializeField] private Button m_button;
+    [SerializeField] private Image m_background;
+    [SerializeField] private RectTransform m_handle;
+
+    [SerializeField] private ToggleStateParameters m_toggleDownParameters;
+    [SerializeField] private ToggleStateParameters m_toggleUpParameters;
+
+    [SerializeField] private float m_transitionTime;
+    [SerializeField] private Easings.EasingFunction m_transitionEasing;
+
+    [NonSerialized] private bool m_value;
+    [NonSerialized] private Timer m_transitionTimer;
+
+    private void Awake()
+    {
+        m_value = false;
+        m_button.onClick.AddListener(OnButtonClicked);
+        ToggleStateParameters currentToggleParameters = GetToggleParameters(m_value);
+
+        m_handle.position = currentToggleParameters.TogglePosition.position;
+        m_background.color = currentToggleParameters.BackgroundColor;
+
+        m_transitionTimer = new Timer(m_transitionTime, false);
+    }
+
+    private void Update()
+    {
+        if (!m_transitionTimer.IsRunning)
+        {
+            return;
+        }
+        if (m_transitionTimer.Update(Time.deltaTime))
+        {
+            m_transitionTimer.Stop();
+            return;
+        }
+
+        ToggleStateParameters currentToggleParameters = GetToggleParameters(m_value);
+        ToggleStateParameters otherToggleParameters = GetToggleParameters(!m_value);
+
+        m_handle.position = Vector3.Lerp(otherToggleParameters.TogglePosition.position, currentToggleParameters.TogglePosition.position, Easings.Ease(m_transitionTimer.Progress, m_transitionEasing));
+        m_background.color = Color.Lerp(otherToggleParameters.BackgroundColor, currentToggleParameters.BackgroundColor, Easings.Ease(m_transitionTimer.Progress, m_transitionEasing));
+    }
+
+    private void OnDestroy()
+    {
+        m_button.onClick.RemoveListener(OnButtonClicked);
+    }
+
+    private void OnButtonClicked()
+    {
+        m_value = !m_value;
+
+        OnValueChanged.Invoke(m_value);
+
+        if (m_transitionTimer.IsRunning)
+        {
+            float timeToTarget = (1.0f - m_transitionTimer.Progress) * m_transitionTimer.Duration;
+            m_transitionTimer.Reset();
+            _ = m_transitionTimer.Update(timeToTarget);
+        }
+        else
+        {
+            m_transitionTimer.Reset();
+        }
+
+        m_transitionTimer.Start();
+    }
+
+    private ToggleStateParameters GetToggleParameters(bool value)
+    {
+        return value ? m_toggleUpParameters : m_toggleDownParameters;
+    }
 }

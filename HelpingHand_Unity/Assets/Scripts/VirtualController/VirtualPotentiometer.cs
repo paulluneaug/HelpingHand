@@ -17,7 +17,7 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
 
     public override float Value => m_value;
 
-    public event Action<float> OnValueChanged;
+    public override event Action<float> OnValueChanged;
 
 
     [SerializeField] private float m_originAngle;
@@ -36,9 +36,8 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
     [NonSerialized] private Vector2 m_knobRange;
 
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         m_rectTransform = GetComponent<RectTransform>();
 
         m_knobRange = GetKnobRange();
@@ -110,7 +109,7 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
     private void OnDrawGizmos()
     {
         Vector2 knobRange = GetKnobRange() * MathUf.DEG_2_RAD;
-        float rangeLineLength = ((RectTransform)transform).sizeDelta.x / 2.0f;
+        float rangeLineLength = ((RectTransform)transform).sizeDelta.x / 2.0f * transform.lossyScale.x;
         Vector3 position = transform.position;
 
         Gizmos.color = Color.blue;
