@@ -4,18 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 using UnityUtility.Extensions;
-using UnityUtility.MathU;
-
-using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(RectTransform))]
-public class VirtualRotaryEncoder : UIBehaviour, IPointerDownHandler, IDragHandler
+public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDragHandler
 {
-    private enum RotationDirection
-    {
-        Clockwise,
-        CounterClockwise,
-    }
+    public override int Value => m_value;
 
     [SerializeField] private float m_stepCount;
 
@@ -30,9 +23,9 @@ public class VirtualRotaryEncoder : UIBehaviour, IPointerDownHandler, IDragHandl
 
     [NonSerialized] private float m_step;
 
-    protected override void Awake()
+
+    protected void Awake()
     {
-        base.Awake();
         m_rectTransform = GetComponent<RectTransform>();
         m_step = 360.0f / m_stepCount;
 
@@ -55,7 +48,7 @@ public class VirtualRotaryEncoder : UIBehaviour, IPointerDownHandler, IDragHandl
         float angleOffset = Vector2.SignedAngle(m_dragLastPosition, currentLocalPosition);
         int stepOffset = (int)(angleOffset / m_step);
 
-        if (stepOffset != 0) 
+        if (stepOffset != 0)
         {
             float snappedOffset = stepOffset * m_step;
 

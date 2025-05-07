@@ -7,7 +7,7 @@ using UnityUtility.Extensions;
 using UnityUtility.MathU;
 
 [RequireComponent(typeof(RectTransform))]
-public class VirtualPotentiometer : UIBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     private enum RotationDirection
     {
@@ -15,7 +15,7 @@ public class VirtualPotentiometer : UIBehaviour, IPointerDownHandler, IPointerUp
         CounterClockwise,
     }
 
-    public float Value => m_value;
+    public override float Value => m_value;
 
     public event Action<float> OnValueChanged;
 
