@@ -1,22 +1,32 @@
+using System;
+
 using Sirenix.OdinInspector;
 
 using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
-using UnityUtility.Singletons;
-
-public class GraphRunner : MonoBehaviourSingleton<GraphRunner>
+public class GraphRunner : MonoBehaviour
 {
-    [SerializeField]
-    private SimpleGraph m_graph;
+    public event Action OnGraphStarted;
+    public event Action OnGraphEnded;
+    public event Action OnGraphCancelled;
+    public event Action OnGraphStopped;
+    public event Action OnGraphPaused;
+    public event Action OnGraphResumed;
 
     private GraphRunnerHandler m_graphRunnerHandler;
-    
-    protected override void Start()
+    private SimpleGraph m_graph;
+
+    private void Awake()
     {
-        m_graph.Initialize();
         m_graphRunnerHandler = new GraphRunnerHandler();
+    }
+
+    public void Initialize(SimpleGraph graph)
+    {
+        m_graph = graph;
+        m_graph.Initialize();
     }
 
     [Button("Reset")]
@@ -26,7 +36,8 @@ public class GraphRunner : MonoBehaviourSingleton<GraphRunner>
         m_graph.Initialize();
     }
 
-    [Button("Start")][ButtonGroup("Controls")]
+    [Button("Start")]
+    [ButtonGroup("Controls")]
     public void RunGraph()
     {
         Debug.Log($"Graph [{m_graph.name}]: Start");
@@ -39,40 +50,55 @@ public class GraphRunner : MonoBehaviourSingleton<GraphRunner>
         RunGraphAsync(graph).Forget();
     }
 
-    [Button("Stop")][ButtonGroup("Controls")]
+    [Button("Stop")]
+    [ButtonGroup("Controls")]
     public void StopGraph()
     {
         m_graphRunnerHandler.Stop();
     }
 
-    [Button("Pause")][ButtonGroup("Controls")]
+    [Button("Pause")]
+    [ButtonGroup("Controls")]
     public void PauseGraph()
     {
         m_graphRunnerHandler.Pause();
+        OnGraphPaused?.Invoke();
     }
 
-    [Button("Resume")][ButtonGroup("Controls")]
+    [Button("Resume")]
+    [ButtonGroup("Controls")]
     public void ResumeGraph()
     {
         m_graphRunnerHandler.Resume();
+        OnGraphResumed?.Invoke();
     }
 
     private async UniTask RunGraphAsync(SimpleGraph graph)
     {
+        OnGraphStarted?.Invoke();
         bool isCanceled = await graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
         if (isCanceled)
         {
             Debug.Log($"Graph [{m_graph.name}]: was stopped prematurely");
+            OnGraphCancelled?.Invoke();
         }
         else
         {
             Debug.Log($"Graph [{m_graph.name}]: ended");
+            OnGraphEnded?.Invoke();
         }
+
+        OnGraphStopped?.Invoke();
     }
 
-    public override void OnDestroy()
+    private void OnDestroy()
     {
-        base.OnDestroy();
         m_graphRunnerHandler.Dispose();
+        OnGraphStarted = null;
+        OnGraphEnded = null;
+        OnGraphCancelled = null;
+        OnGraphStopped = null;
+        OnGraphPaused = null;
+        OnGraphResumed = null;
     }
 }
