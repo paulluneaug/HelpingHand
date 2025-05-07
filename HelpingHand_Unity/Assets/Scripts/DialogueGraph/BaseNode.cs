@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Cysharp.Threading.Tasks;
+
+using Sirenix.OdinInspector;
 
 using UnityEngine;
 
@@ -10,9 +13,21 @@ using XNode.Odin;
 
 public abstract class BaseNode : SerializableNode
 {
+    [SerializeField]
+    [HideLabel][FoldoutGroup("Description")][TextArea(1, 2)]
+    protected string m_description;
+    
     public virtual void Initialize() { }
 
-    public virtual async UniTask Execute(GraphRunnerHandler handler)
+    public async UniTask Execute(GraphRunnerHandler handler)
+    {
+        await HandlePauseStop(handler);
+        await ExecuteNode(handler);
+    }
+
+    protected abstract UniTask ExecuteNode(GraphRunnerHandler handler);
+
+    private async UniTask HandlePauseStop(GraphRunnerHandler handler)
     {
         if (handler.PauseToken.IsCancellationRequested)
         {
@@ -37,15 +52,26 @@ public abstract class BaseNode : SerializableNode
     protected virtual async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort outputPort)
     {
         List<UniTask> tasks = new ();
-        foreach (NodePort otherPort in outputPort.GetConnections())
+        foreach (BaseNode nextNode in GetConnectedNodesToPort(outputPort))
         {
-            BaseNode nextNode = otherPort.node as BaseNode;
-            if (nextNode != null)
+            if (nextNode is DialogueNode dialogueNode)
+            {
+                if (dialogueNode.CanBeReadMultipleTimes || !dialogueNode.HasBeenRead)
+                {
+                    tasks.Add(nextNode.Execute(handler));
+                }
+            }
+            else
             {
                 tasks.Add(nextNode.Execute(handler));
             }
         }
 
         await UniTask.WhenAll(tasks);
+    }
+
+    protected BaseNode[] GetConnectedNodesToPort(NodePort port)
+    {
+        return port.GetConnections().Select(p => p.node as BaseNode).Where(n => n != null).ToArray();
     }
 }

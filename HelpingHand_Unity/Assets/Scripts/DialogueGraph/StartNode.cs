@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
-using System.Threading;
-
 using Cysharp.Threading.Tasks;
 
 using XNode;
 
 public class StartNode : BaseNode
 {
-    [Output(ShowBackingValue.Never, ConnectionType.Override)]
+    [Output]
     public DialogueFlow m_out;
 
     public override object GetValue(NodePort port)
@@ -20,9 +16,8 @@ public class StartNode : BaseNode
     {
     }
 
-    public override async UniTask Execute(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
-        await base.Execute(handler);
         await ContinueFlow(handler);
     }
 }

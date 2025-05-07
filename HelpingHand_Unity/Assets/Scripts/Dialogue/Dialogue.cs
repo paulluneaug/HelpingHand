@@ -1,11 +1,6 @@
-using System;
-
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 using UnityUtility.ObservableFields;

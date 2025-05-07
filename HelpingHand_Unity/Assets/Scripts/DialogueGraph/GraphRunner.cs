@@ -19,6 +19,13 @@ public class GraphRunner : MonoBehaviourSingleton<GraphRunner>
         m_graphRunnerHandler = new GraphRunnerHandler();
     }
 
+    [Button("Reset")]
+    [ButtonGroup("Controls")]
+    public void ResetGraph()
+    {
+        m_graph.Initialize();
+    }
+
     [Button("Start")][ButtonGroup("Controls")]
     public void RunGraph()
     {

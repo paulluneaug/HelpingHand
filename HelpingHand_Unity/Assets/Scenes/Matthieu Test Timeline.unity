@@ -889,14 +889,13 @@ GameObject:
   - component: {fileID: 422602974}
   - component: {fileID: 422602973}
   - component: {fileID: 422602976}
-  - component: {fileID: 422602977}
   m_Layer: 0
   m_Name: Spot Light Puppet_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &422602972
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,7 +1035,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: m_trigger
+    - Name: m_litTrigger
       Entry: 7
       Data: 0|MultiInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
@@ -1102,32 +1101,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 1
---- !u!114 &422602977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422602971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75bc1a9fb10618a40a7dc42b44d856ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_trigger
+    - Name: m_outTrigger
       Entry: 7
-      Data: 0|ToggleInputTrigger, Assembly-CSharp
+      Data: 4|ToggleInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
       Entry: 5
       Data: true
@@ -1149,7 +1125,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 0
+  m_litState: {fileID: 11400000, guid: 1576433b4c8227d4f99159a1b9dcfe77, type: 2}
+  m_unlitState: {fileID: 11400000, guid: 8b7fbd99dae02fa4596040428d637d2f, type: 2}
 --- !u!1 &446035767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,7 +1140,6 @@ GameObject:
   - component: {fileID: 446035770}
   - component: {fileID: 446035769}
   - component: {fileID: 446035772}
-  - component: {fileID: 446035773}
   m_Layer: 0
   m_Name: Spot Light Puppet
   m_TagString: Untagged
@@ -1310,7 +1286,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: m_trigger
+    - Name: m_litTrigger
       Entry: 7
       Data: 0|MultiInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
@@ -1376,32 +1352,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 1
---- !u!114 &446035773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446035767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75bc1a9fb10618a40a7dc42b44d856ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_trigger
+    - Name: m_outTrigger
       Entry: 7
-      Data: 0|ToggleInputTrigger, Assembly-CSharp
+      Data: 4|ToggleInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
       Entry: 5
       Data: true
@@ -1423,7 +1376,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 0
+  m_litState: {fileID: 11400000, guid: 1576433b4c8227d4f99159a1b9dcfe77, type: 2}
+  m_unlitState: {fileID: 11400000, guid: 8b7fbd99dae02fa4596040428d637d2f, type: 2}
 --- !u!1 &460115817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d98a963dc62b2b45ac64a4732eb5792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_graph: {fileID: 11400000, guid: ed15b626da4f7d64d8607c8e58c52d5d, type: 2}
+  m_graph: {fileID: 11400000, guid: 1d10df148712d70468e568563162fe82, type: 2}
 --- !u!4 &492558515
 Transform:
   m_ObjectHideFlags: 0
