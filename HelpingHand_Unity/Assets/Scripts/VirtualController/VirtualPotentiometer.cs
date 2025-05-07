@@ -2,54 +2,57 @@ using System;
 
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 using UnityUtility.Extensions;
+using UnityUtility.MathU;
 
 [RequireComponent(typeof(RectTransform))]
-public class VirtualPotentiometer : UIBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IInitializePotentialDragHandler, ICanvasElement
+public class VirtualPotentiometer : UIBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    #region Interface implementation
-    public void GraphicUpdateComplete()
+    private enum RotationDirection
     {
+        Clockwise,
+        CounterClockwise,
     }
 
-    public void LayoutComplete()
-    {
-    }
+    public float Value => m_value;
 
-    public void OnInitializePotentialDrag(PointerEventData eventData)
-    {
-        eventData.useDragThreshold = false;
-    }
-
-    public void Rebuild(CanvasUpdate executing)
-    {
-    }
-    #endregion
-
+    public event Action<float> OnValueChanged;
 
 
     [SerializeField] private float m_originAngle;
     [SerializeField] private float m_range;
+    [SerializeField] private RotationDirection m_direction = RotationDirection.Clockwise;
+
+    [SerializeField] private RectTransform m_knob;
 
     [NonSerialized] private float m_value;
+    [NonSerialized] private float m_angle;
 
     [NonSerialized] private RectTransform m_rectTransform;
-    [NonSerialized] private Vector2 m_dragStartPosition;
+    [NonSerialized] private Vector2 m_dragLastPosition;
+    [NonSerialized] private float m_dragLastAngle;
+
+    [NonSerialized] private Vector2 m_knobRange;
+
 
     protected override void Awake()
     {
         base.Awake();
-        m_value = 0.0f;
-
         m_rectTransform = GetComponent<RectTransform>();
+
+        m_knobRange = GetKnobRange();
+        m_angle = m_knobRange.x;
+        m_value = ComputeValue();
+
+        UpdateKnobPosition();
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
-        m_dragStartPosition = ToLocalPosition(eventData.position);
+        m_dragLastPosition = ToLocalPosition(eventData.position);
+        m_dragLastAngle = m_angle;
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -60,15 +63,60 @@ public class VirtualPotentiometer : UIBehaviour, IPointerDownHandler, IPointerUp
     {
         Vector2 currentLocalPosition = ToLocalPosition(eventData.position);
 
-        Vector2 offset = currentLocalPosition - m_dragStartPosition;
+        float angleOffset = Vector2.SignedAngle(m_dragLastPosition, currentLocalPosition);
+
+        m_angle = MathUf.Clamp(m_dragLastAngle + angleOffset, MathUf.Min(m_knobRange.x, m_knobRange.y), MathUf.Max(m_knobRange.x, m_knobRange.y));
+
+        UpdateKnobPosition();
+        float newValue = ComputeValue();
+
+        if (newValue != m_value)
+        {
+            m_value = newValue;
+            OnValueChanged?.Invoke(m_value);
+        }
+
+        m_dragLastPosition = currentLocalPosition;
+        m_dragLastAngle = m_angle;
 
 
-        
+    }
 
+    private void UpdateKnobPosition()
+    {
+        m_knob.localRotation = Quaternion.AngleAxis(m_angle, m_knob.forward);
     }
 
     private Vector2 ToLocalPosition(Vector2 position)
     {
-        return position - m_rectTransform.pivot;
+        return position - m_rectTransform.position.XY();
+    }
+
+    private Vector2 GetKnobRange()
+    {
+        return m_direction switch
+        {
+            RotationDirection.Clockwise => new Vector2(m_originAngle + m_range, m_originAngle),
+            RotationDirection.CounterClockwise => new Vector2(m_originAngle, m_originAngle + m_range),
+            _ => throw new ArgumentOutOfRangeException(),
+        };
+    }
+
+    private float ComputeValue()
+    {
+        return m_angle.RemapTo01(m_knobRange);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector2 knobRange = GetKnobRange() * MathUf.DEG_2_RAD;
+        float rangeLineLength = ((RectTransform)transform).sizeDelta.x / 2.0f;
+        Vector3 position = transform.position;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(position, new Vector3(MathUf.Cos(knobRange.x) * rangeLineLength + position.x, MathUf.Sin(knobRange.x) * rangeLineLength + position.y, position.z));
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(position, new Vector3(MathUf.Cos(knobRange.y) * rangeLineLength + position.x, MathUf.Sin(knobRange.y) * rangeLineLength + position.y, position.z));
     }
 }
