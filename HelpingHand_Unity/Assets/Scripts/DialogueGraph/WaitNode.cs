@@ -29,8 +29,8 @@ public class WaitNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
-        bool isCanceled = await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow();
-        if (isCanceled)
+        bool isCancelled = await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow();
+        if (isCancelled)
         {
             Debug.Log($"WaitNode: wait cancelled");
             await Execute(handler);

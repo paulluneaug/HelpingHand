@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using Febucci.UI;
@@ -10,6 +11,12 @@ using UnityUtility.Singletons;
 
 public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
 {
+    public event Action OnDialogueStarted;
+    public event Action OnDialogueEnded;
+    public event Action OnDialoguePaused;
+    public event Action OnDialogueResumed;
+    public event Action OnDialogueInterrupted;
+    
     [SerializeField]
     private TMP_Text m_uiText;
 
@@ -18,13 +25,13 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
 
     public bool IsShowingText => m_currentDialogue != null;
     public bool CanBeInterrupted => !IsShowingText || m_currentDialogue.CanBeInterrupted;
-    public Dialogue CurrentDialogue => m_currentDialogue;
+    public DialogueNode CurrentDialogue => m_currentDialogue;
 
     private Dialogue[] m_dialogues;
 
-    private readonly SortedSet<Dialogue> m_dialogQueue = new(Comparer<Dialogue>.Create((d1, d2) => d1.Priority.CompareTo(d2.Priority)));
-    private Dialogue m_currentDialogue;
-    private Dialogue m_interruptedDialogue;
+    private readonly SortedSet<DialogueNode> m_dialogQueue = new(Comparer<DialogueNode>.Create((d1, d2) => d1.Priority.CompareTo(d2.Priority)));
+    private DialogueNode m_currentDialogue;
+    private DialogueNode m_interruptedDialogue;
 
     protected override void Start()
     {
@@ -51,9 +58,8 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
             return;
         }
     
-        Dialogue dialogue = m_dialogQueue.Min;
+        DialogueNode dialogue = m_dialogQueue.Min;
         m_dialogQueue.Clear();
-        dialogue.HasBeenRead.Value = true;
         ShowDialogue(dialogue);
     }
 
@@ -61,9 +67,10 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     {
         Debug.Log($"[OnTextShowed] <color=green>[{m_currentDialogue}]</color>");
         m_currentDialogue = null;
+        OnDialogueEnded?.Invoke();
     }
 
-    public void PlayDialog(Dialogue dialogue)
+    public void PlayDialog(DialogueNode dialogue)
     {
         if (dialogue == null)
         {
@@ -73,11 +80,12 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         m_dialogQueue.Add(dialogue);
     }
 
-    private void ShowDialogue(Dialogue dialogue)
+    private void ShowDialogue(DialogueNode dialogue)
     {
         Debug.Log($"[ShowDialogue] <color=green>[{dialogue.name}]</color>");
         m_currentDialogue = dialogue;
         m_typewriter.ShowText(m_currentDialogue.Content);
+        OnDialogueStarted?.Invoke();
     }
 
     public void Interrupt()

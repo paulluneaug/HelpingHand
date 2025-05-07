@@ -76,8 +76,8 @@ public class GraphRunner : MonoBehaviour
     private async UniTask RunGraphAsync(SimpleGraph graph)
     {
         OnGraphStarted?.Invoke();
-        bool isCanceled = await graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
-        if (isCanceled)
+        bool isCancelled = await graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
+        if (isCancelled)
         {
             Debug.Log($"Graph [{m_graph.name}]: was stopped prematurely");
             OnGraphCancelled?.Invoke();

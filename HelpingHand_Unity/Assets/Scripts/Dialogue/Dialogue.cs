@@ -55,7 +55,7 @@ public class Dialogue : SerializedScriptableObject
         {
             if (m_precondition.Test())
             {
-                DialogueManager.Instance.PlayDialog(this);
+                // DialogueManager.Instance.PlayDialog(this);
             }
         }
     }
