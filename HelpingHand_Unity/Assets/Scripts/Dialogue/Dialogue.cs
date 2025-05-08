@@ -51,12 +51,9 @@ public class Dialogue : SerializedScriptableObject
             return;
         }
 
-        if (m_parentTimeline == null || (TimelineManager.Instance.CurrentRunner != null && m_parentTimeline == TimelineManager.Instance.CurrentRunner.Timeline))
+        if (m_precondition.Test())
         {
-            if (m_precondition.Test())
-            {
-                // DialogueManager.Instance.PlayDialog(this);
-            }
+            // DialogueManager.Instance.PlayDialog(this);
         }
     }
 }
