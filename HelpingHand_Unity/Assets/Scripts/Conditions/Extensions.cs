@@ -4,24 +4,24 @@ using UnityUtility.Extensions;
 
 public static partial class Extensions
 {
-    public static List<TPrecondition> SearchFor<TPrecondition>(this PreconditionBase precondition) where TPrecondition : PreconditionBase
+    public static List<TPrecondition> SearchFor<TPrecondition>(this ConditionBase condition) where TPrecondition : ConditionBase
     {
         List<TPrecondition> results = new();
-        SearchForRecur(results, precondition);
+        SearchForRecur(results, condition);
         return results;
     }
 
-    private static void SearchForRecur<TPrecondition>(List<TPrecondition> results, PreconditionBase precondition)
+    private static void SearchForRecur<TPrecondition>(List<TPrecondition> results, ConditionBase condition)
     {
-        switch (precondition)
+        switch (condition)
         {
             case TPrecondition tprec:
                 results.Add(tprec);
                 break;
-            case PreconditionAnd precAnd:
+            case ConditionAnd precAnd:
                 precAnd.Preconditions?.ForEach(p => SearchForRecur<TPrecondition>(results, p));
                 break;
-            case PreconditionOr precOr:
+            case ConditionOr precOr:
                 precOr.Preconditions?.ForEach(p => SearchForRecur<TPrecondition>(results, p));
                 break;
         }

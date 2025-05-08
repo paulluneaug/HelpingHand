@@ -14,7 +14,7 @@ public class InterruptWithConditionNode : BaseNode
     public DialogueFlow m_out;
 
     [SerializeField]
-    private PreconditionBase m_condition;
+    private ConditionBase m_condition;
 
     private bool m_isConditionPassed;
 

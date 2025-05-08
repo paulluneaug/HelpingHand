@@ -11,7 +11,7 @@ public class SwitchParallelNode : BaseNode
     public DialogueFlow m_in;
 
     [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
-    public List<PreconditionBase> m_conditions = new();
+    public List<ConditionBase> m_conditions = new();
 
     [Output]
     public DialogueFlow m_else;
@@ -42,7 +42,7 @@ public class SwitchParallelNode : BaseNode
         List<NodePort> continuePorts = new();
         foreach (NodePort outputPort in DynamicOutputs)
         {
-            PreconditionBase condition = GetValue(outputPort) as PreconditionBase;
+            ConditionBase condition = GetValue(outputPort) as ConditionBase;
             if (condition.Test())
             {
                 continuePorts.Add(outputPort);

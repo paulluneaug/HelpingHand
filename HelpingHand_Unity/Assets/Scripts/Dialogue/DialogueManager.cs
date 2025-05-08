@@ -50,8 +50,8 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
             return;
         }
 
-        Debug.Log($"{Debug_GetLogHeader()} Play");
         m_currentDialogue = dialogue;
+        Debug.Log($"{Debug_GetLogHeader()} Play");
         m_typewriter.ShowText(m_currentDialogue.Content);
         OnDialogueStarted?.Invoke();
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class PreconditionDialogueCount : PreconditionBase
+public class ConditionDialogueCount : ConditionBase
 {
     [SerializeField]
     private int m_countNeeded = 0;

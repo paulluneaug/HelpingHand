@@ -59,7 +59,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-8770305891520206194
@@ -208,7 +209,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-7799501931999962399
@@ -323,7 +325,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: -7672357437324049914}
@@ -332,9 +333,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_sequence 0
         node: {fileID: -7799501931999962399}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: -7672357437324049914}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -352,18 +350,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: -7672357437324049914}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -7672357437324049914}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -373,12 +359,11 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "Je ne suis pas s\xFBr que c'est ce que j'avais en t\xEAte, il n'y avait
     pas autre chose ?"
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &-3722951399506936176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +383,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: -3722951399506936176}
@@ -407,9 +391,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_sequence 0
         node: {fileID: -8770305891520206194}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: -3722951399506936176}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -427,18 +408,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: -3722951399506936176}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -3722951399506936176}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -448,11 +417,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "Rien du tout ? Vraiment ?  R\xE9fl\xE9chis bien..."
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &-1274965388831141403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +588,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-346294778292197372
@@ -642,7 +611,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: -346294778292197372}
@@ -651,9 +619,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_else
         node: {fileID: -7799501931999962399}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: -346294778292197372}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -671,18 +636,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: -346294778292197372}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -346294778292197372}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -692,11 +645,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "Tr\xE8s bien, la tunique, si c'est ce que tu souhaites..."
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +701,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: 342221319130998567}
@@ -758,9 +709,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_sequence 1
         node: {fileID: -8770305891520206194}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: 342221319130998567}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -778,18 +726,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: 342221319130998567}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 342221319130998567}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -799,11 +735,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "Tu es VRAIMENT s\xFBr de lui laisser le carton ?"
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &880477113287118088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +758,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: 880477113287118088}
@@ -832,9 +766,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_out
         node: {fileID: 7494473332993729120}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: 880477113287118088}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -852,18 +783,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: 880477113287118088}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 880477113287118088}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -873,11 +792,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "\u201CLe h\xE9ros alla \xE0 l\u2019armurerie pour enfiler son armure...\u201D"
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &1173463839128001777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +815,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: 1173463839128001777}
@@ -906,9 +823,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_out
         node: {fileID: -8945973019790914313}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: 1173463839128001777}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -923,18 +837,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: 1173463839128001777}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 1173463839128001777}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -944,36 +846,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "Passons \xE0 la suite... (fin)"
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
---- !u!114 &1951086110363751670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f96cea6ada90b4984cf627badd4634, type: 3}
-  m_Name: Node Group
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -424, y: 1000}
-  folded: 0
-  ports:
-    keys: []
-    values: []
-  width: 1644
-  height: 1031
-  color:
-    r: 1
-    g: 1
-    b: 1
-    a: 0.1
+  m_multipleReads: 0
 --- !u!114 &2818480532884931164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,7 +907,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &4932462197537384300
@@ -1053,7 +930,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: 4932462197537384300}
@@ -1062,9 +938,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_states 0
         node: {fileID: -1274965388831141403}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: 4932462197537384300}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1082,18 +955,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: 4932462197537384300}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 4932462197537384300}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1103,11 +964,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: Parfait !
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &5674718550864981815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,7 +987,6 @@ MonoBehaviour:
     keys:
     - m_out
     - m_in
-    - m_interrupted
     values:
     - _fieldName: m_out
       _node: {fileID: 5674718550864981815}
@@ -1149,22 +1008,7 @@ MonoBehaviour:
       - fieldName: m_out
         node: {fileID: 6411492278474950492}
         reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: 5674718550864981815}
-        reroutePoints: []
       _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: 5674718550864981815}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 5674718550864981815}
-        reroutePoints: []
-      _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
@@ -1177,12 +1021,11 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "\u201CIl \xE9tait une fois un h\xE9ros qui devait aller poutrer du
     dragon\u201D"
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 1
+  m_multipleReads: 0
 --- !u!114 &5756427550745120812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,7 +1045,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: 5756427550745120812}
@@ -1211,9 +1053,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_else
         node: {fileID: -8770305891520206194}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: 5756427550745120812}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1231,18 +1070,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: 5756427550745120812}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 5756427550745120812}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1252,11 +1079,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "Tr\xE8s bien, le carton, si c'est ce que tu d\xE9cides..."
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &6411492278474950492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,7 +1136,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &6473181080295122772
@@ -1373,7 +1200,6 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
-    - m_interrupted
     values:
     - _fieldName: m_in
       _node: {fileID: 6539813015861515371}
@@ -1382,9 +1208,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_sequence 1
         node: {fileID: -7799501931999962399}
-        reroutePoints: []
-      - fieldName: m_interrupted
-        node: {fileID: 6539813015861515371}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1402,18 +1225,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_interrupted
-      _node: {fileID: 6539813015861515371}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 6539813015861515371}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1423,11 +1234,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
   m_content: "La tunique ne le prot\xE8gera pas de grand chose..."
-  m_priority: 0
-  m_canBeInterrupted: 0
-  m_canBeReadMultipleTimes: 0
+  m_multipleReads: 0
 --- !u!114 &7494473332993729120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,6 +1291,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_description: 
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0

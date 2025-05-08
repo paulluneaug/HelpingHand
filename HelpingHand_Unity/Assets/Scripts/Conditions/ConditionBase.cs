@@ -1,7 +1,7 @@
 using System;
 
 [System.Serializable]
-public abstract class PreconditionBase
+public abstract class ConditionBase
 {
     public event Action OnPreconditionUpdated;
     

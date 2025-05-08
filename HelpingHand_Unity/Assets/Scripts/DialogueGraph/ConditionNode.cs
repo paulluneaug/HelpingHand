@@ -14,7 +14,7 @@ public class ConditionNode : BaseNode
     public DialogueFlow m_out;
 
     [SerializeField]
-    private PreconditionBase m_condition;
+    private ConditionBase m_condition;
 
     public override object GetValue(NodePort port)
     {

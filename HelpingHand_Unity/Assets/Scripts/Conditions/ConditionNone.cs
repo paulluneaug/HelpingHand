@@ -1,5 +1,5 @@
 [System.Serializable]
-public class PreconditionNone : PreconditionBase
+public class ConditionNone : ConditionBase
 {
     public override bool Test()
     {

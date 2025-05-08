@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class PreconditionTrigger : PreconditionBase
+public class ConditionTrigger : ConditionBase
 {
     [SerializeField]
     private InputTrigger m_trigger;

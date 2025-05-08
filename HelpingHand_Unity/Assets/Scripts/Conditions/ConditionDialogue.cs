@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [System.Serializable]
-public class PreconditionDialogue : PreconditionBase
+public class ConditionDialogue : ConditionBase
 {
     [SerializeField]
     private Dialogue m_dialogue;

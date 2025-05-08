@@ -26,7 +26,10 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     public GraphRunner CurrentGraphRunner => m_currentGraphRunner;
     
     [SerializeField]
-    private SimpleGraph[] m_graphs;
+    private SimpleGraph[] m_mainSequence;
+
+    [SerializeField]
+    private SimpleGraph[] m_parallelExecution;
 
     private Queue<SimpleGraph> m_graphQueue;
     private GraphRunner m_currentGraphRunner;
@@ -34,23 +37,34 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     public override void Initialize()
     {
         base.Initialize();
-        m_graphQueue = new(m_graphs);
+        m_graphQueue = new(m_mainSequence);
     }
 
     [Button("Start level")]
     private void StartLevel()
     {
-        m_currentGraphRunner = StartGraph(m_graphQueue.Dequeue());
+        m_currentGraphRunner = StartMainSequenceGraph(m_graphQueue.Dequeue());
+        foreach (SimpleGraph graph in m_parallelExecution)
+        {
+            GraphRunner graphRunner = CreateGraphRunner(graph);
+            graphRunner.RunGraph();
+        }
     }
 
-    public GraphRunner StartGraph(SimpleGraph graph)
+    private GraphRunner StartMainSequenceGraph(SimpleGraph graph)
     {
-        GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
-        graphRunner.Initialize(graph);
+        GraphRunner graphRunner = CreateGraphRunner(graph);
         graphRunner.OnGraphEnded += OnGraphEnded;
         graphRunner.OnGraphPaused += OnGraphPaused;
         graphRunner.OnGraphResumed += OnGraphResumed;
         graphRunner.RunGraph();
+        return graphRunner;
+    }
+
+    private GraphRunner CreateGraphRunner(SimpleGraph graph)
+    {
+        GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
+        graphRunner.Initialize(graph);
         return graphRunner;
     }
 
@@ -59,7 +73,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         m_currentGraphRunner = null;
         if (m_graphQueue.TryDequeue(out SimpleGraph graph))
         {
-            m_currentGraphRunner = StartGraph(graph);
+            m_currentGraphRunner = StartMainSequenceGraph(graph);
         }
     }
 

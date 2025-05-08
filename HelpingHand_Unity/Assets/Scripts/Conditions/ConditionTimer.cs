@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class PreconditionTimer : PreconditionBase
+public class ConditionTimer : ConditionBase
 {
     [SerializeField]
     private StandaloneTimer m_timer;

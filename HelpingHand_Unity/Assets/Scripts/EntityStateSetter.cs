@@ -9,7 +9,7 @@ public class EntityStateSetter : SerializedMonoBehaviour
     private EntityState m_state;
 
     [SerializeField][BoxGroup][PropertySpace(4, 4)]
-    private PreconditionBase m_precondition;
+    private ConditionBase m_condition;
 
     [SerializeField][FoldoutGroup("Callbacks")]
     private UnityEvent m_onStateSet;
@@ -22,14 +22,14 @@ public class EntityStateSetter : SerializedMonoBehaviour
 
     private void Start()
     {
-        m_precondition.Initialize();
-        m_precondition.OnPreconditionUpdated += OnPreconditionUpdated;
-        m_state.SetValueWithoutNotify(m_precondition.Test());
+        m_condition.Initialize();
+        m_condition.OnPreconditionUpdated += OnConditionUpdated;
+        m_state.SetValueWithoutNotify(m_condition.Test());
     }
 
-    private void OnPreconditionUpdated()
+    private void OnConditionUpdated()
     {
-        bool test = m_precondition.Test();
+        bool test = m_condition.Test();
         m_state.Value = test;
         if (test)
         {

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class PreconditionEntityState : PreconditionBase
+public class ConditionEntityState : ConditionBase
 {
     [SerializeField]
     private EntityState m_state;

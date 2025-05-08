@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class PreconditionBoolVariable : PreconditionBase
+public class ConditionBoolVariable : ConditionBase
 {
     [SerializeField]
     private BoolVariable m_variable;

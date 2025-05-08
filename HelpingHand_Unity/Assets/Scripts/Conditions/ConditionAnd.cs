@@ -3,12 +3,12 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class PreconditionAnd : PreconditionBase
+public class ConditionAnd : ConditionBase
 {
     [SerializeField]
-    private PreconditionBase[] m_preconditions = new PreconditionBase[] {};
+    private ConditionBase[] m_preconditions = new ConditionBase[] {};
 
-    public PreconditionBase[] Preconditions => m_preconditions;
+    public ConditionBase[] Preconditions => m_preconditions;
 
     public override bool Test()
     {
@@ -18,7 +18,7 @@ public class PreconditionAnd : PreconditionBase
     public override void Initialize()
     {
         base.Initialize();
-        foreach (PreconditionBase precondition in m_preconditions)
+        foreach (ConditionBase precondition in m_preconditions)
         {
             precondition.Initialize();
             precondition.OnPreconditionUpdated -= RaiseOnPreconditionUpdated;

@@ -1,4 +1,6 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+
+using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
 using UnityEngine;
@@ -15,8 +17,15 @@ namespace XNode.Odin
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            UnitySerializationUtility.DeserializeUnityObject(this, ref this.serializationData);
-            this.OnAfterDeserialize();
+            try
+            {
+                UnitySerializationUtility.DeserializeUnityObject(this, ref this.serializationData);
+                this.OnAfterDeserialize();
+            }
+            catch (ArgumentNullException e)
+            {
+                Debug.Log($"{name}");
+            }
         }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
