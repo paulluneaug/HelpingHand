@@ -7,6 +7,12 @@ public class StartNode : BaseNode
     [Output]
     public DialogueFlow m_out;
 
+    protected override void Init()
+    {
+        base.Init();
+        m_description = "Start the graph here";
+    }
+
     public override object GetValue(NodePort port)
     {
         return m_out;

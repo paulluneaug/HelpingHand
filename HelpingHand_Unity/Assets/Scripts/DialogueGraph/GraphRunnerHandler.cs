@@ -6,11 +6,19 @@ public class GraphRunnerHandler : IDisposable
     public CancellationToken StopToken => m_stopCancellation.Token;
     public CancellationToken PauseToken => m_pauseCancellation.Token;
     public CancellationToken ResumeToken => m_resumeCancellation.Token;
+    public GraphRunner GraphRunner => m_graphRunner;
+    public BaseNode CurrentNode { get; set; }
 
+    private GraphRunner m_graphRunner;
     private CancellationTokenSource m_stopCancellation = new();
     private CancellationTokenSource m_pauseCancellation = new();
     private CancellationTokenSource m_resumeCancellation = new();
 
+    public GraphRunnerHandler(GraphRunner graphRunner)
+    {
+        m_graphRunner = graphRunner;
+    }
+    
     public void Start()
     {
         m_stopCancellation?.Dispose();

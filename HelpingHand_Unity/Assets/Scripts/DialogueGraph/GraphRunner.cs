@@ -15,12 +15,21 @@ public class GraphRunner : MonoBehaviour
     public event Action OnGraphPaused;
     public event Action OnGraphResumed;
 
+    public GraphRunnerHandler Handler => m_graphRunnerHandler;
+
     private GraphRunnerHandler m_graphRunnerHandler;
+    
+    [SerializeField]
     private SimpleGraph m_graph;
 
     private void Awake()
     {
-        m_graphRunnerHandler = new GraphRunnerHandler();
+        m_graphRunnerHandler = new GraphRunnerHandler(this);
+    }
+
+    private void Start()
+    {
+        m_graph?.Initialize();
     }
 
     public void Initialize(SimpleGraph graph)
@@ -61,6 +70,7 @@ public class GraphRunner : MonoBehaviour
     [ButtonGroup("Controls")]
     public void PauseGraph()
     {
+        Debug.Log($"Graph [{m_graph.name}]: pause");
         m_graphRunnerHandler.Pause();
         OnGraphPaused?.Invoke();
     }
@@ -69,6 +79,7 @@ public class GraphRunner : MonoBehaviour
     [ButtonGroup("Controls")]
     public void ResumeGraph()
     {
+        Debug.Log($"Graph [{m_graph.name}]: resume");
         m_graphRunnerHandler.Resume();
         OnGraphResumed?.Invoke();
     }

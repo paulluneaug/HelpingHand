@@ -44,7 +44,7 @@ public class SubTimelinePlayableBehaviour : PlayableBehaviour
                 {
                     if (DialogueManager.Instance.IsShowingText)
                     {
-                        DialogueManager.Instance.Interrupt();
+                        DialogueManager.Instance.InterruptDialogue();
                     }
                     TimelineManager.Instance.StartTimeline(m_timeline);
                 }

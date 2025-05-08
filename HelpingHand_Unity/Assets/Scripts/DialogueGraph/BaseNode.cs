@@ -21,6 +21,7 @@ public abstract class BaseNode : SerializableNode
 
     public async UniTask Execute(GraphRunnerHandler handler)
     {
+        handler.CurrentNode = this;
         await HandlePauseStop(handler);
         await ExecuteNode(handler);
     }
@@ -31,14 +32,14 @@ public abstract class BaseNode : SerializableNode
     {
         if (handler.PauseToken.IsCancellationRequested)
         {
-            Debug.Log($"[{name}] pause requested");
+            Debug.Log($"{Debug_GetLogHeader()} Pause requested");
             await UniTask.WaitUntilCanceled(handler.ResumeToken);
-            Debug.Log($"[{name}] resumed");
+            Debug.Log($"{Debug_GetLogHeader()} Resumed");
         }
 
         if (handler.StopToken.IsCancellationRequested)
         {
-            Debug.Log($"[{name}] stop requested");
+            Debug.Log($"{Debug_GetLogHeader()} Stop requested");
             throw new OperationCanceledException(handler.StopToken);
         }
     }
@@ -56,7 +57,7 @@ public abstract class BaseNode : SerializableNode
         {
             if (nextNode is DialogueNode dialogueNode)
             {
-                if (dialogueNode.CanBeReadMultipleTimes || !dialogueNode.HasBeenRead)
+                if (dialogueNode.MultipleReads || !dialogueNode.HasBeenRead)
                 {
                     tasks.Add(nextNode.Execute(handler));
                 }
@@ -73,5 +74,10 @@ public abstract class BaseNode : SerializableNode
     protected BaseNode[] GetConnectedNodesToPort(NodePort port)
     {
         return port.GetConnections().Select(p => p.node as BaseNode).Where(n => n != null).ToArray();
+    }
+
+    protected string Debug_GetLogHeader()
+    {
+        return $"[{Time.frameCount}] <color=cyan>[{GetType().Name}]</color> ({name})";
     }
 }

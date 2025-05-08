@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 using Febucci.UI;
 
@@ -16,7 +15,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     public event Action OnDialoguePaused;
     public event Action OnDialogueResumed;
     public event Action OnDialogueInterrupted;
-    
+
     [SerializeField]
     private TMP_Text m_uiText;
 
@@ -24,14 +23,12 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     private TypewriterByCharacter m_typewriter;
 
     public bool IsShowingText => m_currentDialogue != null;
-    public bool CanBeInterrupted => !IsShowingText || m_currentDialogue.CanBeInterrupted;
+    public bool CanBeInterrupted => !IsShowingText || m_currentDialogue.Interruptable;
     public DialogueNode CurrentDialogue => m_currentDialogue;
 
     private Dialogue[] m_dialogues;
 
-    private readonly SortedSet<DialogueNode> m_dialogQueue = new(Comparer<DialogueNode>.Create((d1, d2) => d1.Priority.CompareTo(d2.Priority)));
     private DialogueNode m_currentDialogue;
-    private DialogueNode m_interruptedDialogue;
 
     protected override void Start()
     {
@@ -46,56 +43,67 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         m_typewriter.onTextShowed.AddListener(OnTextShowed);
     }
 
-    private void Update()
-    {
-        if (IsShowingText)
-        {
-            return;
-        }
-    
-        if (m_dialogQueue.Count == 0)
-        {
-            return;
-        }
-    
-        DialogueNode dialogue = m_dialogQueue.Min;
-        m_dialogQueue.Clear();
-        ShowDialogue(dialogue);
-    }
-
-    private void OnTextShowed()
-    {
-        Debug.Log($"[OnTextShowed] <color=green>[{m_currentDialogue}]</color>");
-        m_currentDialogue = null;
-        OnDialogueEnded?.Invoke();
-    }
-
     public void PlayDialog(DialogueNode dialogue)
     {
-        if (dialogue == null)
+        if (m_currentDialogue != null || dialogue == null)
         {
             return;
         }
 
-        m_dialogQueue.Add(dialogue);
-    }
-
-    private void ShowDialogue(DialogueNode dialogue)
-    {
-        Debug.Log($"[ShowDialogue] <color=green>[{dialogue.name}]</color>");
+        Debug.Log($"{Debug_GetLogHeader()} Play");
         m_currentDialogue = dialogue;
         m_typewriter.ShowText(m_currentDialogue.Content);
         OnDialogueStarted?.Invoke();
     }
 
-    public void Interrupt()
+    private void OnTextShowed()
     {
-        m_interruptedDialogue = m_currentDialogue;
-        if (m_interruptedDialogue != null)
+        Debug.Log($"{Debug_GetLogHeader()} Ended");
+        m_currentDialogue = null;
+        OnDialogueEnded?.Invoke();
+    }
+
+    public void PauseDialogue()
+    {
+        if (m_currentDialogue == null)
         {
-            Debug.Log($"{m_interruptedDialogue.name} interrupted");
-            m_typewriter.StopShowingText();
-            m_currentDialogue = null;
+            return;
         }
+
+        Debug.Log($"{Debug_GetLogHeader()} Paused");
+        m_typewriter.StopShowingText();
+        OnDialoguePaused?.Invoke();
+    }
+
+    public void ResumeDialogue()
+    {
+        if (m_currentDialogue == null)
+        {
+            return;
+        }
+
+        Debug.Log($"{Debug_GetLogHeader()} Resumed");
+        m_typewriter.StartShowingText();
+        OnDialogueResumed?.Invoke();
+    }
+
+    public void InterruptDialogue()
+    {
+        if (m_currentDialogue != null)
+        {
+            Debug.Log($"{Debug_GetLogHeader()} Interrupted");
+        }
+        else
+        {
+            Debug.Log($"{Debug_GetLogHeader()} No dialogue to interrupt");
+        }
+        m_typewriter.StopShowingText();
+        m_currentDialogue = null;
+        OnDialogueInterrupted?.Invoke();
+    }
+
+    private string Debug_GetLogHeader()
+    {
+        return $"[{Time.frameCount}] <color=#ff00ffff>[DialogueManager]</color> [{(m_currentDialogue ? m_currentDialogue.name : "null")}]";
     }
 }

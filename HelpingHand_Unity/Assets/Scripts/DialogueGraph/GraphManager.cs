@@ -8,6 +8,23 @@ using UnityUtility.Singletons;
 
 public class GraphManager : MonoBehaviourSingleton<GraphManager>
 {
+    public bool CurrentNodeCanBeInterrupted
+    {
+        get
+        {
+            if (m_currentGraphRunner != null && m_currentGraphRunner.Handler.CurrentNode is InterruptableNode interruptableNode)
+            {
+                return interruptableNode.Interruptable;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
+    
+    public GraphRunner CurrentGraphRunner => m_currentGraphRunner;
+    
     [SerializeField]
     private SimpleGraph[] m_graphs;
 
@@ -39,6 +56,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     private void OnGraphEnded()
     {
+        m_currentGraphRunner = null;
         if (m_graphQueue.TryDequeue(out SimpleGraph graph))
         {
             m_currentGraphRunner = StartGraph(graph);
@@ -52,5 +70,15 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     private void OnGraphResumed()
     {
         
+    }
+
+    public void Interrupt(GraphRunnerHandler handler)
+    {
+        m_currentGraphRunner?.PauseGraph();
+        GraphRunner interruptedGraph = m_currentGraphRunner;
+        handler.GraphRunner.OnGraphEnded += () =>
+        {
+            interruptedGraph?.ResumeGraph();
+        };
     }
 }
