@@ -42,10 +42,12 @@ public class Dialogue : SerializedScriptableObject
     [SerializeField] private RepetitionState repetition;
     [SerializeField] private EtatState etat;
     [SerializeField] private ObjetState objet;
+    [SerializeField] private NarraState narra;
 
-    public enum RepetitionState { R1, R2, R3, R4 }
-    public enum EtatState { On, Off }
-    public enum ObjetState { Spot, Rideaux, Armure, Carton, Rien }
+    public enum RepetitionState { IGNORE, R1, R2, R3, R4 }
+    public enum EtatState { IGNORE,On, Off }
+    public enum ObjetState { IGNORE, Spot, Rideaux, Armure, Carton, Rien }
+    public enum NarraState { IGNORE, Narra1, Narra2, Narra3, Narra4, Narra5, Narra6, Narra7, Narra8, Narra9, Narra10 }
     [HideInInspector]
     public TimelineClip m_clip;
 
@@ -68,7 +70,7 @@ public class Dialogue : SerializedScriptableObject
             if (m_precondition.Test())
             {
                 DialogueManager.Instance.PlayDialog(this);
-                AudioManager.Instance.PlayDialogueWithStates(repetition.ToString(),etat.ToString(),objet.ToString());
+                AudioManager.Instance.PlayDialogueWithStates(repetition.ToString(),etat.ToString(),objet.ToString(), narra.ToString());
                 Debug.Log($"[Dialogue Triggered] {repetition}, {etat}, {objet}");
             }
         }

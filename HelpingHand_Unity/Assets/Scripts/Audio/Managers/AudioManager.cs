@@ -111,7 +111,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     }
     #endregion
 
-    public void PlayDialogueWithStates(string repetition, string etat, string objet)
+    public void PlayDialogueWithStates(string repetition, string etat, string objet, string narra)
     {
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("DirectorVoice");
         // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
@@ -127,16 +127,17 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         uint repetitionID = AkUnitySoundEngine.GetIDFromString(repetition);
         uint etatID = AkUnitySoundEngine.GetIDFromString(etat);
         uint objetID = AkUnitySoundEngine.GetIDFromString(objet);
-        //Rajouter un state ici si nécessaire
+        uint narraID = AkUnitySoundEngine.GetIDFromString(narra);
+        //Rajouter des states ici si on en a besoin de + !
 
 
         if (repetitionID == 0 || etatID == 0 || objetID == 0)
         {
-            Debug.LogError($"Échec de conversion des states: {repetition}, {etat}, {objet}");
+            Debug.LogError($"Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}");
             return;
         }
 
-        uint[] args = new uint[] { etatID, objetID, repetitionID };
+        uint[] args = new uint[] { etatID, objetID, repetitionID, narraID };
 
         uint sequenceID = AkUnitySoundEngine.DynamicSequenceOpen(this.gameObject);
         AkPlaylist playlist = AkUnitySoundEngine.DynamicSequenceLockPlaylist(sequenceID);
@@ -155,7 +156,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
         AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
 
-        Debug.Log($"Dialogue joué avec : Etat={etat}, Objet={objet}, Repetition={repetition}");
+        Debug.Log($"Dialogue joué avec : Etat={etat}, Objet={objet}, Repetition={repetition}, Narration={narra}");
 
         //Note : si on veut arrêter le son on utilise DynamicSequenceStop(sequenceID) puis DynamicSequenceClose(sequenceID)
         //Note : si on veut reprendre où on en était, on utilise DynamicSequenceResume(sequenceID)

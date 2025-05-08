@@ -47,6 +47,7 @@ namespace AK
         static const AkUniqueID TOGGLE_PLAY = 2942539354U;
         static const AkUniqueID TYPEWRITER_PLAY = 1749211329U;
         static const AkUniqueID UNTOGGLE_PLAY = 3389532245U;
+        static const AkUniqueID VOICE_TEST = 3500533168U;
     } // namespace EVENTS
 
     namespace DIALOGUE_EVENTS
@@ -224,6 +225,7 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID DYNAMICDIALOGUE = 1028808198U;
         static const AkUniqueID MAIN = 3161908922U;
     } // namespace BANKS
 

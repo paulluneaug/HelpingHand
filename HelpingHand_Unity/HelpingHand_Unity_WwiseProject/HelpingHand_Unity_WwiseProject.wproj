@@ -30,8 +30,8 @@
 				<Property Name="SoundBankGenerateEstimatedDuration" Type="bool" Value="True" /><Property Name="SoundBankHeaderFilePath" Type="string" Value="..\Assets\StreamingAssets\Audio\GeneratedSoundBanks" />
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
-						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
-						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
+						<Value Platform="Windows">..\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</Value>
+						<Value Platform="Mac">..\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Mac\</Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdDescription" Type="string">
@@ -145,11 +145,6 @@
 						<Property Name="OverrideWavLoop" Type="bool">
 							<ValueList>
 								<Value>False</Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileIDForAudioSource" Type="string">
-							<ValueList>
-								<Value></Value>
 							</ValueList>
 						</Property>
 						<Property Name="TrimBegin" Type="Real64">
@@ -543,76 +538,6 @@
 						<Property Name="ReflectionsVolume" Type="Real64">
 							<ValueList>
 								<Value>0</Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:ActiveChannels" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileID" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileName" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:HandleStartTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:HandleStopTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:LibraryID" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:LibraryLocation" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:PlaybackSpeed" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:ProcessList" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFileBitRate" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFilePath" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFileSampleRate" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:SelectionStartTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:SelectionStopTime" Type="string">
-							<ValueList>
-								<Value></Value>
 							</ValueList>
 						</Property>
 						<Property Name="SpeakerPanning" Type="int16">
@@ -9137,6 +9062,155 @@
 						<Property Name="OverrideColor" Type="bool">
 							<ValueList>
 								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
+				<SharedPropertyList ClassName="Wwise Reflect" PluginType="3" CompanyID="0" PluginID="171">
+					<PropertyList>
+						<Property Name="BaseTextureFrequency" Type="Real32">
+							<ValueList>
+								<Value>250</Value>
+							</ValueList>
+						</Property>
+						<Property Name="CenterPerc" Type="Real32">
+							<ValueList>
+								<Value>100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="CurveUsageMask" Type="Uint32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DecorrAlgorithmSelect" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DecorrFilterMaxReflectionOrder" Type="Uint32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DecorrHardwareAcceleration" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DecorrStrength" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DecorrStrengthSource" Type="int32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DecorrWindowWidth" Type="Uint32">
+							<ValueList>
+								<Value>7</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DiffractionWarping" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DistanceThreshold" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DistanceWarping" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Dry" Type="Real32">
+							<ValueList>
+								<Value>-96</Value>
+							</ValueList>
+						</Property>
+						<Property Name="FadeTime" Type="Real32">
+							<ValueList>
+								<Value>500</Value>
+							</ValueList>
+						</Property>
+						<Property Name="FusingTime" Type="Real32">
+							<ValueList>
+								<Value>20</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MaterialFilteringSelect" Type="Uint32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MaxDistance" Type="Real32">
+							<ValueList>
+								<Value>1000</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MaxReflections" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OutputChannelConfig" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="ParamFilterCutoff" Type="Real32">
+							<ValueList>
+								<Value>0.5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="ParamFilterType" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PitchThreshold" Type="Real32">
+							<ValueList>
+								<Value>2400</Value>
+							</ValueList>
+						</Property>
+						<Property Name="SpeedOfSound" Type="Real32">
+							<ValueList>
+								<Value>345</Value>
+							</ValueList>
+						</Property>
+						<Property Name="StereoDecorrelation" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="ThresholdMode" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Wet" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
