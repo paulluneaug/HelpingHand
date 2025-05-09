@@ -32,6 +32,18 @@ public class DialogueNode : InterruptableNode
     public bool HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
 
+    #region Wwise States Dialogue
+
+    [SerializeField] private RepetitionState repetition;
+    [SerializeField] private EtatState etat;
+    [SerializeField] private ObjetState objet;
+    [SerializeField] private NarraState narra;
+    public enum RepetitionState { IGNORE, R1, R2, R3, R4 }
+    public enum EtatState { IGNORE, On, Off }
+    public enum ObjetState { IGNORE, Spot, Rideaux, Armure, Carton, Rien }
+    public enum NarraState { IGNORE, Narra1, Narra2, Narra3, Narra4, Narra5, Narra6, Narra7, Narra8, Narra9, Narra10 }
+    //Rajouter des champs si besoin, j'adapterai dans Wwise!
+    #endregion
     public override object GetValue(NodePort port)
     {
         return m_out;
@@ -75,6 +87,8 @@ public class DialogueNode : InterruptableNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
         Debug.Log($"{Debug_GetLogHeader()} Play");
+        AudioManager.Instance.PlayDialogueWithStates(repetition.ToString(), etat.ToString(), objet.ToString(), narra.ToString());
+        Debug.Log($"[Dialogue Triggered] {repetition}, {etat}, {objet}, {narra}");
         DialogueManager.Instance.PlayDialog(this);
         DialogueManager.Instance.OnDialogueEnded += OnDialogueEnded;
         Debug.Log($"{Debug_GetLogHeader()} Wait for end");

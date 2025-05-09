@@ -233,19 +233,37 @@
 								</Property>
 								<Property Name="Lowpass" Type="int16">
 									<ValueList>
-										<Value>26</Value>
+										<Value>27</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="UserAuxSendHPF0" Type="int16">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UserAuxSendHPF1" Type="int16">
+									<ValueList>
+										<Value>9</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UserAuxSendVolume0" Type="Real64">
 									<ValueList>
-										<Value>-9</Value>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UserAuxSendVolume1" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="UserAuxSend0">
 									<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+								<Reference Name="UserAuxSend1">
+									<ObjectRef Name="Hall" ID="{168AA74E-F128-4A65-AB94-C40BE7738E4E}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 								</Reference>
 							</ReferenceList>
 							<StateInfo>
@@ -359,6 +377,9 @@
 									<Reference>
 										<Local>
 											<EffectSlot Name="" ID="{D825DED9-008D-4411-A2B3-49DFA5DAA7E4}" ShortID="763048734">
+												<PropertyList>
+													<Property Name="Bypass" Type="bool" Value="True"/>
+												</PropertyList>
 												<ReferenceList>
 													<Reference Name="Effect" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
 														<ObjectRef Name="Vibrato" ID="{D9586A30-FF0D-4DCC-89C5-04CDC4716ED6}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>

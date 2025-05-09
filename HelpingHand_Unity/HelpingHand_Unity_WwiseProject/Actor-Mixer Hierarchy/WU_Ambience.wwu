@@ -118,6 +118,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<BlendContainer Name="Theater_Blend" ID="{651FE094-CC41-4865-BD59-1EE796400970}" ShortID="949782691">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -130,9 +137,14 @@
 										<Sound Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018" ID="{659E9CB9-82E9-4636-8120-50B99A138C0B}" ShortID="256290330">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>35</Value>
+													</ValueList>
+												</Property>
 												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-96</Value>
+														<Value>-16</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -158,7 +170,7 @@
 														<Property Name="LoopBegin" Type="Real64" Value="4.73682267329787"/>
 														<Property Name="LoopEnd" Type="Real64" Value="23.8460162771346"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="1.09122995583408"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.844540356666904"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018 1.wav</AudioFile>

@@ -101,6 +101,23 @@ namespace AK
             } // namespace STATE
         } // namespace MUSICSTATE
 
+        namespace NARRA
+        {
+            static const AkUniqueID GROUP = 3510972203U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NARRA1 = 2598977664U;
+                static const AkUniqueID NARRA2 = 2598977667U;
+                static const AkUniqueID NARRA3 = 2598977666U;
+                static const AkUniqueID NARRA4 = 2598977669U;
+                static const AkUniqueID NARRA5 = 2598977668U;
+                static const AkUniqueID NARRA6 = 2598977671U;
+                static const AkUniqueID NARRA7 = 2598977670U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace NARRA
+
         namespace OBJET
         {
             static const AkUniqueID GROUP = 2456139351U;

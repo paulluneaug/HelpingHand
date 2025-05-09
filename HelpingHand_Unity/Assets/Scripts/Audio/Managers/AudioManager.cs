@@ -39,8 +39,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
        // _ = EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
-        _ = EventManager.RoomMachinist_Ambience_Play.Post(null);
-        _ = EventManager.Theater_Ambience_Play.Post(null);
+        _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
+        _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
 
     #region Functions
@@ -113,13 +113,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public void PlayDialogueWithStates(string repetition, string etat, string objet, string narra)
     {
-        uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("DirectorVoice");
+        uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
         // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
         // Il faut référencer l'ID stocké dans la soundbank
 
         if (dialogueEventId == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
-            Debug.LogError("L'event 'DirectorVoice' est introuvable. Vérifier son nom et sa SoundBank.");
+            Debug.LogError("L'event 'Dialogue_Event' est introuvable. Vérifier son nom et sa SoundBank.");
             return;
         }
 
