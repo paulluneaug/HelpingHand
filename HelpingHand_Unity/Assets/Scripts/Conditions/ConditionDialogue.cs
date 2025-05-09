@@ -5,11 +5,14 @@ using UnityEngine.Serialization;
 public class ConditionDialogue : ConditionBase
 {
     [SerializeField]
-    private Dialogue m_dialogue;
+    private DialogueNode m_dialogue;
+
+    [SerializeField]
+    private bool m_isRead = true;
 
     public override bool Test()
     {
-        return m_dialogue.HasBeenRead.Value;
+        return m_isRead == m_dialogue.HasBeenRead.Value;
     }
 
     public override void Initialize()

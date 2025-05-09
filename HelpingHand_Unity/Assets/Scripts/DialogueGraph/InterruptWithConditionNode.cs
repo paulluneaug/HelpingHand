@@ -1,4 +1,8 @@
+using System;
+
 using Cysharp.Threading.Tasks;
+
+using Sirenix.OdinInspector;
 
 using UnityEngine;
 
@@ -9,13 +13,23 @@ public class InterruptWithConditionNode : BaseNode
 {
     [Input]
     public DialogueFlow m_in;
+    
+    [SerializeField]
+    private ConditionBase m_condition;
 
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField]
-    private ConditionBase m_condition;
+    [Space] [SerializeField]
+    private bool m_doesTimeout;
 
+    [Output] [ShowIf(nameof(m_doesTimeout))]
+    public DialogueFlow m_timeoutOut;
+
+    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    private float m_timeout;
+
+    private TimeoutController m_timeoutController;
     private bool m_isConditionPassed;
 
     protected override void Init()
@@ -26,6 +40,7 @@ public class InterruptWithConditionNode : BaseNode
 
     public override void Initialize()
     {
+        m_timeoutController = new TimeoutController();
         m_isConditionPassed = false;
         m_condition.Initialize();
         m_condition.OnPreconditionUpdated -= OnConditionUpdated;
@@ -38,21 +53,37 @@ public class InterruptWithConditionNode : BaseNode
         {
             nameof(m_out) => m_out,
             nameof(m_in) => m_in,
+            nameof(m_timeoutOut) => m_timeoutOut,
             _ => null
         };
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
-        Debug.Log($"{Debug_GetLogHeader()} Waiting for condition");
+        DebugLog($"Waiting for condition");
+        
         OnConditionUpdated();
-        if (await UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow())
+        UniTask task = UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, handler.StopToken);
+        if (m_doesTimeout)
         {
-            Debug.Log($"{Debug_GetLogHeader()} Wait interrupted");
+            DebugLog($"With timeout ({m_timeout} seconds)");
+            m_timeoutController.Reset();
+            task = task.AttachExternalCancellation(m_timeoutController.Timeout(TimeSpan.FromSeconds(m_timeout)));
+        }
+        
+        if (await task.SuppressCancellationThrow())
+        {
+            DebugLog($"Wait interrupted");
+
+            if (m_timeoutController.IsTimeout())
+            {
+                DebugLog($"Wait timeout");
+            }
+
             return;
         }
 
-        Debug.Log($"{Debug_GetLogHeader()} Interrupting");
+        DebugLog($"Interrupting main graph");
 
         GraphManager.Instance.Interrupt(handler);
 

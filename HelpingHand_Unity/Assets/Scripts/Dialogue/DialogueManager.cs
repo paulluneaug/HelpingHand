@@ -26,20 +26,11 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     public bool CanBeInterrupted => !IsShowingText || m_currentDialogue.Interruptable;
     public DialogueNode CurrentDialogue => m_currentDialogue;
 
-    private Dialogue[] m_dialogues;
-
     private DialogueNode m_currentDialogue;
 
     protected override void Start()
     {
         base.Start();
-        m_dialogues = Resources.LoadAll<Dialogue>("Dialogues");
-
-        foreach (Dialogue dialogue in m_dialogues)
-        {
-            dialogue.Initialize();
-        }
-
         m_typewriter.onTextShowed.AddListener(OnTextShowed);
     }
 

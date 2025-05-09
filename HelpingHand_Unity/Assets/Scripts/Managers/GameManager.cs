@@ -26,12 +26,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     protected override void Start()
     {
         base.Start();
-        m_levelSequenceManager.Start();
+        // m_levelSequenceManager.Start();
     }
 
     private void Update()
     {
-        m_levelSequenceManager.Update(Time.deltaTime);
+        // m_levelSequenceManager.Update(Time.deltaTime);
     }
 
 }

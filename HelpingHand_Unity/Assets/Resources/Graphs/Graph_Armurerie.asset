@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: Dialogue Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 56, y: 1112}
+  position: {x: 56, y: 1192}
   folded: 0
   ports:
     keys:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -952, y: 104}
+  position: {x: -936, y: -8}
   folded: 0
   ports:
     keys:
@@ -235,6 +235,7 @@ MonoBehaviour:
     - m_else
     - m_sequence 0
     - m_sequence 1
+    - m_sequence 2
     values:
     - _fieldName: m_in
       _node: {fileID: -7799501931999962399}
@@ -294,6 +295,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
+    - _fieldName: m_sequence 2
+      _node: {fileID: -7799501931999962399}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -316,10 +326,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Shirt selected 1
+  m_Name: Dialogue_Armory_Tunic_1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: -88}
+  position: {x: 312, y: -88}
   folded: 0
   ports:
     keys:
@@ -361,13 +371,9 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
-  m_content: "Je ne suis pas s\xFBr que c'est ce que j'avais en t\xEAte, il n'y avait
-    pas autre chose ?"
+  m_content: "Rien du tout ? Vraiment ?  R\xE9fl\xE9chis bien..."
   m_multipleReads: 0
-  repetition: 1
-  etat: 0
-  objet: 5
-  narra: 0
+  m_audioEvent: {fileID: 11400000, guid: 9be08385d41b4fd45b53f3a7bb14b9b3, type: 2}
 --- !u!114 &-3722951399506936176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,10 +384,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Cardboard selected 1
+  m_Name: Dialogue_Armory_Cardboard_1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: 888}
+  position: {x: 328, y: 840}
   folded: 0
   ports:
     keys:
@@ -423,12 +429,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
-  m_content: "Rien du tout ? Vraiment ?  R\xE9fl\xE9chis bien..."
+  m_content: "Je ne suis pas s\xFBr que c'est ce que j'avais en t\xEAte, il n'y avait
+    pas autre chose ?"
   m_multipleReads: 0
-  repetition: 1
-  etat: 0
-  objet: 5
-  narra: 0
+  m_audioEvent: {fileID: 11400000, guid: d6dd5363691e2b14180bf9cde74423d2, type: 2}
 --- !u!114 &-1274965388831141403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +446,7 @@ MonoBehaviour:
   m_Name: Switch State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -536, y: 104}
+  position: {x: -536, y: 40}
   folded: 0
   ports:
     keys:
@@ -553,7 +557,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 808, y: 1064}
+  position: {x: 808, y: 1032}
   folded: 0
   ports:
     keys:
@@ -610,10 +614,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Shirt validated
+  m_Name: Dialogue_Armory_Tunic_Validated
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: 520}
+  position: {x: 472, y: 360}
   folded: 0
   ports:
     keys:
@@ -657,10 +661,7 @@ MonoBehaviour:
   m_interruptable: 1
   m_content: "Tr\xE8s bien, la tunique, si c'est ce que tu souhaites..."
   m_multipleReads: 0
-  repetition: 3
-  etat: 0
-  objet: 5
-  narra: 0
+  m_audioEvent: {fileID: 11400000, guid: ace1571cfc51edb4989c1165ed1b55b3, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,10 +675,8 @@ MonoBehaviour:
   m_Name: Graph_Armurerie
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 5674718550864981815}
   - {fileID: 6473181080295122772}
   - {fileID: 7494473332993729120}
-  - {fileID: 6411492278474950492}
   - {fileID: 880477113287118088}
   - {fileID: -7850895734784482816}
   - {fileID: 4932462197537384300}
@@ -704,10 +703,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Cardboard selected 2
+  m_Name: Dialogue_Armory_Cardboard_2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: 1192}
+  position: {x: 440, y: 1064}
   folded: 0
   ports:
     keys:
@@ -751,10 +750,7 @@ MonoBehaviour:
   m_interruptable: 1
   m_content: "Tu es VRAIMENT s\xFBr de lui laisser le carton ?"
   m_multipleReads: 0
-  repetition: 1
-  etat: 0
-  objet: 4
-  narra: 0
+  m_audioEvent: {fileID: 11400000, guid: c0b40e103e4e07d40a4d5bc1bddcfab9, type: 2}
 --- !u!114 &880477113287118088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,10 +761,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue
+  m_Name: Dialogue_Armory_Narra_1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1320, y: 104}
+  position: {x: -1288, y: -8}
   folded: 0
   ports:
     keys:
@@ -812,10 +808,7 @@ MonoBehaviour:
   m_interruptable: 1
   m_content: "\u201CLe h\xE9ros alla \xE0 l\u2019armurerie pour enfiler son armure...\u201D"
   m_multipleReads: 0
-  repetition: 0
-  etat: 0
-  objet: 0
-  narra: 3
+  m_audioEvent: {fileID: 11400000, guid: 2a1375c4985edd44a9cccbf3bc752858, type: 2}
 --- !u!114 &1173463839128001777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,7 +819,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Next
+  m_Name: Dialogue_Armory_End
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1816, y: 552}
@@ -868,12 +861,9 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
-  m_content: "Passons \xE0 la suite... (fin)"
+  m_content: "Passons \xE0 la suite... [Fin Armurerie]"
   m_multipleReads: 0
-  repetition: 0
-  etat: 0
-  objet: 0
-  narra: 0
+  m_audioEvent: {fileID: 11400000, guid: 9180d7e3384f39a479459691b4e6b436, type: 2}
 --- !u!114 &2818480532884931164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,7 +877,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 776, y: 88}
+  position: {x: 872, y: 40}
   folded: 0
   ports:
     keys:
@@ -917,7 +907,7 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -1274965388831141403}
         reroutePoints:
-        - {x: 192, y: -208}
+        - {x: 576, y: -208}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -945,10 +935,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Plate selected
+  m_Name: Dialogue_Armory_Plate
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: -552}
+  position: {x: 296, y: -600}
   folded: 0
   ports:
     keys:
@@ -992,72 +982,7 @@ MonoBehaviour:
   m_interruptable: 1
   m_content: Parfait !
   m_multipleReads: 0
-  repetition: 1
-  etat: 0
-  objet: 3
-  narra: 0
---- !u!114 &5674718550864981815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue 1
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -1976, y: 104}
-  folded: 0
-  ports:
-    keys:
-    - m_out
-    - m_in
-    values:
-    - _fieldName: m_out
-      _node: {fileID: 5674718550864981815}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 7494473332993729120}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_in
-      _node: {fileID: 5674718550864981815}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: 6411492278474950492}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 1
-  m_content: "\u201CIl \xE9tait une fois un h\xE9ros qui devait aller poutrer du
-    dragon\u201D"
-  m_multipleReads: 0
-  repetition: 0
-  etat: 0
-  objet: 0
-  narra: 1
+  m_audioEvent: {fileID: 11400000, guid: f07aefa84300cc54c909521f063a4584, type: 2}
 --- !u!114 &5756427550745120812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,10 +993,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Cardboard validated
+  m_Name: Dialogue_Armory_Cardboard_Validated
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: 1480}
+  position: {x: 536, y: 1288}
   folded: 0
   ports:
     keys:
@@ -1115,67 +1040,7 @@ MonoBehaviour:
   m_interruptable: 1
   m_content: "Tr\xE8s bien, le carton, si c'est ce que tu d\xE9cides..."
   m_multipleReads: 0
-  repetition: 2
-  etat: 0
-  objet: 4
-  narra: 0
---- !u!114 &6411492278474950492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -2248, y: 104}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: 6411492278474950492}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: 6473181080295122772}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: 6411492278474950492}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 5674718550864981815}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 1
-  m_waitTime: 2
-  m_unscaled: 0
+  m_audioEvent: {fileID: 11400000, guid: d7a669264443c6c4e8892bf3d51914e0, type: 2}
 --- !u!114 &6473181080295122772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,7 +1054,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2520, y: 104}
+  position: {x: -1800, y: -8}
   folded: 0
   ports:
     keys:
@@ -1201,7 +1066,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 6411492278474950492}
+        node: {fileID: 7494473332993729120}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1227,10 +1092,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Shirt selected 2
+  m_Name: Dialogue_Armory_Tunic_2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: 200}
+  position: {x: 392, y: 136}
   folded: 0
   ports:
     keys:
@@ -1274,10 +1139,7 @@ MonoBehaviour:
   m_interruptable: 1
   m_content: "La tunique ne le prot\xE8gera pas de grand chose..."
   m_multipleReads: 0
-  repetition: 2
-  etat: 0
-  objet: 5
-  narra: 0
+  m_audioEvent: {fileID: 11400000, guid: bba3856bb8523064fa430c9278fb4310, type: 2}
 --- !u!114 &7494473332993729120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,7 +1153,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1608, y: 104}
+  position: {x: -1544, y: -8}
   folded: 0
   ports:
     keys:
@@ -1304,7 +1166,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 5674718550864981815}
+        node: {fileID: 6473181080295122772}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

@@ -57,7 +57,7 @@ public abstract class BaseNode : SerializableNode
         {
             if (nextNode is DialogueNode dialogueNode)
             {
-                if (dialogueNode.MultipleReads || !dialogueNode.HasBeenRead)
+                if (dialogueNode.MultipleReads || !dialogueNode.HasBeenRead.Value)
                 {
                     tasks.Add(nextNode.Execute(handler));
                 }
@@ -79,5 +79,10 @@ public abstract class BaseNode : SerializableNode
     protected string Debug_GetLogHeader()
     {
         return $"[{Time.frameCount}] <color=cyan>[{GetType().Name}]</color> ({name})";
+    }
+
+    protected void DebugLog(string log)
+    {
+        Debug.Log($"{Debug_GetLogHeader()} {log}");
     }
 }

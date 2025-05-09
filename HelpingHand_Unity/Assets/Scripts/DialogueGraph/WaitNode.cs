@@ -38,12 +38,14 @@ public class WaitNode : InterruptableNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
+        DebugLog($"Waiting for {m_waitTime} seconds");
         if (await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow())
         {
-            Debug.Log($"{Debug_GetLogHeader()} Wait interrupted");
+            DebugLog($"Wait interrupted");
             // The graph is being paused => We have to wait its reactivation
             await Execute(handler);
         }
+        DebugLog($"Wait done");
 
         await ContinueFlow(handler);
     }
