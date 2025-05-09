@@ -61,7 +61,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         return graphRunner;
     }
 
-    private GraphRunner CreateGraphRunner(SimpleGraph graph)
+    public GraphRunner CreateGraphRunner(SimpleGraph graph)
     {
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
         graphRunner.Initialize(graph);

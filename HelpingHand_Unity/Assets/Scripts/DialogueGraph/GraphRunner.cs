@@ -49,14 +49,7 @@ public class GraphRunner : MonoBehaviour
     [ButtonGroup("Controls")]
     public void RunGraph()
     {
-        Debug.Log($"Graph [{m_graph.name}]: Start");
-        RunGraph(m_graph);
-    }
-
-    public void RunGraph(SimpleGraph graph)
-    {
-        m_graphRunnerHandler.Start();
-        RunGraphAsync(graph).Forget();
+        RunGraphAsync().Forget();
     }
 
     [Button("Stop")]
@@ -84,10 +77,12 @@ public class GraphRunner : MonoBehaviour
         OnGraphResumed?.Invoke();
     }
 
-    private async UniTask RunGraphAsync(SimpleGraph graph)
+    public async UniTask RunGraphAsync()
     {
+        Debug.Log($"Graph [{m_graph.name}]: Start");
+        m_graphRunnerHandler.Start();
         OnGraphStarted?.Invoke();
-        bool isCancelled = await graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
+        bool isCancelled = await m_graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
         if (isCancelled)
         {
             Debug.Log($"Graph [{m_graph.name}]: was stopped prematurely");
