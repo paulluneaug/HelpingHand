@@ -23,6 +23,13 @@ public class MasterSlider : MonoBehaviour, ISlidingObject
         }
     }
 
+    public void SetValueWithoutNotify(float value)
+    {
+        m_value = value;
+        m_uiSlider.SetSliderValue(value);
+        m_physicalSlider.SetSliderValue(value);
+    }
+
     public float SliderSpeed => m_speed;
     public float SliderMovementDirection => m_movementDirection;
     public float SliderMaxValue => MAX_VALUE;

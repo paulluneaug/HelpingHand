@@ -71,7 +71,7 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
     {
         base.Start();
         float gridSize = PuppetSettings.Instance.TileSize;
-        m_masterSlider.SliderValue = m_startValue;
+        m_masterSlider.SetValueWithoutNotify(m_startValue);
         m_startPosition = m_startPosition.Snap(gridSize);
         m_endPosition = m_endPosition.Snap(gridSize);
     }
