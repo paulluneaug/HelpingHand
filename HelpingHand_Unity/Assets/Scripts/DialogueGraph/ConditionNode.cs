@@ -4,7 +4,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(300)]
+[NodeWidth(350)]
 public class ConditionNode : BaseNode
 {
     [Input]
@@ -14,25 +14,23 @@ public class ConditionNode : BaseNode
     public DialogueFlow m_out;
 
     [SerializeField]
-    private PreconditionBase m_condition;
+    private ConditionBase m_condition;
+
+    public override object GetValue(NodePort port)
+    {
+        return m_out;
+    }
 
     public override void Initialize()
     {
         m_condition.Initialize();
     }
 
-    public override async UniTask Execute(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
-        await base.Execute(handler);
-        
         if (m_condition.Test())
         {
             await ContinueFlow(handler);
         }
-    }
-
-    public override object GetValue(NodePort port)
-    {
-        return m_out;
     }
 }

@@ -1,13 +1,7 @@
-using System;
-
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
-//using Unity.VisualScripting.FullSerializer;
-
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 using UnityUtility.ObservableFields;
@@ -16,7 +10,7 @@ using UnityUtility.ObservableFields;
 public class Dialogue : SerializedScriptableObject
 {
     [SerializeField][BoxGroup]
-    private PreconditionBase m_precondition = new PreconditionNone();
+    private ConditionBase m_condition = new ConditionNone();
 
     [Space][SerializeField]
     private int m_priority;
@@ -33,7 +27,7 @@ public class Dialogue : SerializedScriptableObject
     [Space]
     public TimelineAsset m_parentTimeline;
 
-    public PreconditionBase Precondition => m_precondition;
+    public ConditionBase Condition => m_condition;
     public int Priority => m_priority;
     public string Content => m_content;
     public bool CanBeInterrupted => m_canBeInterrupted;
@@ -54,25 +48,22 @@ public class Dialogue : SerializedScriptableObject
     public void Initialize()
     {
         HasBeenRead.Value = false;
-        m_precondition.Initialize();
-        m_precondition.OnPreconditionUpdated -= TriggerPreconditionsTests;
-        m_precondition.OnPreconditionUpdated += TriggerPreconditionsTests;
+        m_condition.Initialize();
+        m_condition.OnPreconditionUpdated -= TriggerConditionsTests;
+        m_condition.OnPreconditionUpdated += TriggerConditionsTests;
     }
 
-    public void TriggerPreconditionsTests()
+    public void TriggerConditionsTests()
     {
         // Debug.Log($"[TriggerPreconditionsTests] <color=green>[{name}]</color> hasBeenRead={HasBeenRead.Value} canBeReadMultipleTimes={m_canBeReadMultipleTimes} parentTimeline={m_parentTimeline.name} currentTimeline={TimelineManager.Instance.CurrentRunner.Timeline}");
         if (HasBeenRead.Value && !m_canBeReadMultipleTimes)
             return;
 
-        if (m_parentTimeline == null || (TimelineManager.Instance.CurrentRunner != null && m_parentTimeline == TimelineManager.Instance.CurrentRunner.Timeline))
+        if (m_condition.Test())
         {
-            if (m_precondition.Test())
-            {
-                DialogueManager.Instance.PlayDialog(this);
+            // DialogueManager.Instance.PlayDialog(this);
                 AudioManager.Instance.PlayDialogueWithStates(repetition.ToString(),etat.ToString(),objet.ToString(), narra.ToString());
                 Debug.Log($"[Dialogue Triggered] {repetition}, {etat}, {objet}");
-            }
         }
     }
 }

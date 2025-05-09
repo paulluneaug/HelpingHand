@@ -631,53 +631,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56708557}
   m_CullTransparentMesh: 1
---- !u!1 &95797557
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 95797560}
-  - component: {fileID: 95797559}
-  m_Layer: 0
-  m_Name: Timeline Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &95797559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95797557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b21c89cbd0dd9704f9b1b172bfea3262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_autoStart: 1
-  m_timelineRunnerPrefab: {fileID: 4804941298028736492, guid: 1a28817d1ea91514d9fad9960487dd82, type: 3}
-  m_sacredTimeline: {fileID: 11400000, guid: 59676b5d048f3d44e87efad7b0e21257, type: 2}
---- !u!4 &95797560
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95797557}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &112844904
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,14 +842,13 @@ GameObject:
   - component: {fileID: 422602974}
   - component: {fileID: 422602973}
   - component: {fileID: 422602976}
-  - component: {fileID: 422602977}
   m_Layer: 0
   m_Name: Spot Light Puppet_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &422602972
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,7 +988,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: m_trigger
+    - Name: m_litTrigger
       Entry: 7
       Data: 0|MultiInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
@@ -1102,32 +1054,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 1
---- !u!114 &422602977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422602971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75bc1a9fb10618a40a7dc42b44d856ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_trigger
+    - Name: m_outTrigger
       Entry: 7
-      Data: 0|ToggleInputTrigger, Assembly-CSharp
+      Data: 4|ToggleInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
       Entry: 5
       Data: true
@@ -1149,7 +1078,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 0
+  m_litState: {fileID: 11400000, guid: 1576433b4c8227d4f99159a1b9dcfe77, type: 2}
+  m_unlitState: {fileID: 11400000, guid: 8b7fbd99dae02fa4596040428d637d2f, type: 2}
 --- !u!1 &446035767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,7 +1093,6 @@ GameObject:
   - component: {fileID: 446035770}
   - component: {fileID: 446035769}
   - component: {fileID: 446035772}
-  - component: {fileID: 446035773}
   m_Layer: 0
   m_Name: Spot Light Puppet
   m_TagString: Untagged
@@ -1310,7 +1239,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: m_trigger
+    - Name: m_litTrigger
       Entry: 7
       Data: 0|MultiInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
@@ -1376,32 +1305,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 1
---- !u!114 &446035773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446035767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75bc1a9fb10618a40a7dc42b44d856ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_trigger
+    - Name: m_outTrigger
       Entry: 7
-      Data: 0|ToggleInputTrigger, Assembly-CSharp
+      Data: 4|ToggleInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
       Entry: 5
       Data: true
@@ -1423,7 +1329,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_doActivateLight: 0
+  m_litState: {fileID: 11400000, guid: 1576433b4c8227d4f99159a1b9dcfe77, type: 2}
+  m_unlitState: {fileID: 11400000, guid: 8b7fbd99dae02fa4596040428d637d2f, type: 2}
 --- !u!1 &460115817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,51 +1375,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1375374073}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &492558513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 492558515}
-  - component: {fileID: 492558514}
-  m_Layer: 0
-  m_Name: Graph Runner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &492558514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492558513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d98a963dc62b2b45ac64a4732eb5792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_graph: {fileID: 11400000, guid: ed15b626da4f7d64d8607c8e58c52d5d, type: 2}
---- !u!4 &492558515
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492558513}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &535635378
 GameObject:
@@ -4431,6 +4293,55 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &867160101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 867160103}
+  - component: {fileID: 867160102}
+  m_Layer: 0
+  m_Name: Graph Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &867160102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867160101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8265d8cc57ef1f14b8e062b17540cc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_mainSequence:
+  - {fileID: 11400000, guid: 2e081362c7bfd65438240c83c0a42118, type: 2}
+  - {fileID: 11400000, guid: 1d10df148712d70468e568563162fe82, type: 2}
+  m_parallelExecution:
+  - {fileID: 11400000, guid: ed15b626da4f7d64d8607c8e58c52d5d, type: 2}
+--- !u!4 &867160103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867160101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911563157
 GameObject:
   m_ObjectHideFlags: 0
@@ -7734,55 +7645,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1576857561
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1576857563}
-  - component: {fileID: 1576857562}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!320 &1576857562
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576857561}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 857ef1b038a9a024d8378c5bbbd056e7, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings: []
-  m_ExposedReferences:
-    m_References: []
---- !u!4 &1576857563
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576857561}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596634545
 GameObject:
   m_ObjectHideFlags: 0
@@ -8519,9 +8381,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: m_precondition
+    - Name: m_condition
       Entry: 7
-      Data: 0|PreconditionTrigger, Assembly-CSharp
+      Data: 0|ConditionTrigger, Assembly-CSharp
     - Name: m_trigger
       Entry: 7
       Data: 1|SliderInputTrigger, Assembly-CSharp
@@ -8539,7 +8401,7 @@ MonoBehaviour:
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0.6666
+      Data: 0.66667
     - Name: 
       Entry: 4
       Data: 1
@@ -8602,9 +8464,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: m_precondition
+    - Name: m_condition
       Entry: 7
-      Data: 0|PreconditionTrigger, Assembly-CSharp
+      Data: 0|ConditionTrigger, Assembly-CSharp
     - Name: m_trigger
       Entry: 7
       Data: 1|SliderInputTrigger, Assembly-CSharp
@@ -8622,10 +8484,10 @@ MonoBehaviour:
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0.3333
+      Data: 0.33334
     - Name: 
       Entry: 4
-      Data: 0.6666
+      Data: 0.66666
     - Name: 
       Entry: 8
       Data: 
@@ -8685,9 +8547,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: m_precondition
+    - Name: m_condition
       Entry: 7
-      Data: 0|PreconditionTrigger, Assembly-CSharp
+      Data: 0|ConditionTrigger, Assembly-CSharp
     - Name: m_trigger
       Entry: 7
       Data: 1|SliderInputTrigger, Assembly-CSharp
@@ -8708,7 +8570,7 @@ MonoBehaviour:
       Data: 0
     - Name: 
       Entry: 4
-      Data: 0.3333
+      Data: 0.33333
     - Name: 
       Entry: 8
       Data: 
@@ -10880,6 +10742,51 @@ MonoBehaviour:
   AmplitudeGain: 0.3
   FrequencyGain: 1
   m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!1 &1897920577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1897920579}
+  - component: {fileID: 1897920578}
+  m_Layer: 0
+  m_Name: Graph interrupting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1897920578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897920577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d98a963dc62b2b45ac64a4732eb5792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_graph: {fileID: 11400000, guid: 1d10df148712d70468e568563162fe82, type: 2}
+--- !u!4 &1897920579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897920577}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1950940681
 GameObject:
   m_ObjectHideFlags: 0
@@ -14829,9 +14736,8 @@ SceneRoots:
   - {fileID: 236471454}
   - {fileID: 704426069}
   - {fileID: 1375374073}
-  - {fileID: 8473777632527675254}
   - {fileID: 1606271934}
   - {fileID: 1012797642}
-  - {fileID: 95797560}
-  - {fileID: 1576857563}
-  - {fileID: 492558515}
+  - {fileID: 8473777632527675254}
+  - {fileID: 867160103}
+  - {fileID: 1897920579}

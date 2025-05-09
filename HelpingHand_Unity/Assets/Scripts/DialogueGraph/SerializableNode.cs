@@ -1,36 +1,47 @@
-﻿
+﻿using System;
+
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+
 using UnityEngine;
 
 namespace XNode.Odin
 {
-	[ShowOdinSerializedPropertiesInInspector]
-	public abstract class SerializableNode : Node, ISerializationCallbackReceiver
-	{
-		#region Odin serialized data
-		[SerializeField, HideInInspector]
-		private SerializationData serializationData;
+    [ShowOdinSerializedPropertiesInInspector]
+    public abstract class SerializableNode : Node, ISerializationCallbackReceiver
+    {
+        #region Odin serialized data
 
-		void ISerializationCallbackReceiver.OnAfterDeserialize()
-		{
-			UnitySerializationUtility.DeserializeUnityObject( this, ref this.serializationData );
-			this.OnAfterDeserialize();
-		}
+        [SerializeField, HideInInspector]
+        private SerializationData serializationData;
 
-		void ISerializationCallbackReceiver.OnBeforeSerialize()
-		{
-			this.OnBeforeSerialize();
-			UnitySerializationUtility.SerializeUnityObject( this, ref this.serializationData );
-		}
-		#endregion
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            try
+            {
+                UnitySerializationUtility.DeserializeUnityObject(this, ref this.serializationData);
+                this.OnAfterDeserialize();
+            }
+            catch (ArgumentNullException e)
+            {
+                Debug.Log($"{name}");
+            }
+        }
 
-		public virtual void OnAfterDeserialize()
-		{
-		}
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+            this.OnBeforeSerialize();
+            UnitySerializationUtility.SerializeUnityObject(this, ref this.serializationData);
+        }
 
-		public virtual void OnBeforeSerialize()
-		{
-		}
-	}
+        #endregion
+
+        public virtual void OnAfterDeserialize()
+        {
+        }
+
+        public virtual void OnBeforeSerialize()
+        {
+        }
+    }
 }

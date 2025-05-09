@@ -6,7 +6,7 @@ using UnityEngine;
 public class MultiInputTrigger : InputTrigger
 {
     [SerializeField]
-    private InputTrigger[] m_triggers;
+    private InputTrigger[] m_triggers = Array.Empty<InputTrigger>();
 
     public override void Initialize()
     {
