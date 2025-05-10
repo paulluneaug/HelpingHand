@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using Sirenix.OdinInspector;
@@ -33,6 +34,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     private Queue<SimpleGraph> m_graphQueue;
     private GraphRunner m_currentGraphRunner;
+    private Dictionary<SimpleGraph, GraphRunner> m_graphDictionary = new();
 
     public override void Initialize()
     {
@@ -47,7 +49,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         foreach (SimpleGraph graph in m_parallelExecution)
         {
             GraphRunner graphRunner = CreateGraphRunner(graph);
-            graphRunner.RunGraph();
+            graphRunner.StartGraph();
         }
     }
 
@@ -57,7 +59,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         graphRunner.OnGraphEnded += OnGraphEnded;
         graphRunner.OnGraphPaused += OnGraphPaused;
         graphRunner.OnGraphResumed += OnGraphResumed;
-        graphRunner.RunGraph();
+        graphRunner.StartGraph();
         return graphRunner;
     }
 
@@ -65,7 +67,13 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     {
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
         graphRunner.Initialize(graph);
+        m_graphDictionary.Add(graph, graphRunner);
         return graphRunner;
+    }
+
+    public bool TryGetGraphRunner(SimpleGraph graph, out GraphRunner graphRunner)
+    {
+        return m_graphDictionary.TryGetValue(graph, out graphRunner);
     }
 
     private void OnGraphEnded()
@@ -95,4 +103,14 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             interruptedGraph?.ResumeGraph();
         };
     }
+
+    #if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        foreach (GraphRunner graphRunner in m_graphDictionary.Values)
+        {
+            graphRunner.OnApplicationQuit();
+        }
+    }
+    #endif
 }

@@ -1,4 +1,4 @@
-﻿public static partial class Utils
+﻿public static partial class Extensions
 {
     public static string Truncate(this string value, int maxChars)
     {

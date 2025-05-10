@@ -6,6 +6,8 @@ using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
+using XNode;
+
 public class GraphRunner : MonoBehaviour
 {
     public event Action OnGraphStarted;
@@ -38,17 +40,15 @@ public class GraphRunner : MonoBehaviour
         m_graph.Initialize();
     }
 
-    [Button("Reset")]
-    [ButtonGroup("Controls")]
-    public void ResetGraph()
-    {
-        m_graph.Initialize();
-    }
-
     [Button("Start")]
     [ButtonGroup("Controls")]
-    public void RunGraph()
+    public void StartGraph()
     {
+        if (m_graphRunnerHandler.IsRunning)
+        {
+            Debug.LogWarning($"{Debug_GetLogHeader()} [StartGraph] Graph is not running");
+            return;
+        }
         RunGraphAsync().Forget();
     }
 
@@ -56,14 +56,30 @@ public class GraphRunner : MonoBehaviour
     [ButtonGroup("Controls")]
     public void StopGraph()
     {
+        if (!m_graphRunnerHandler.IsRunning)
+        {
+            Debug.LogWarning($"{Debug_GetLogHeader()} [StopGraph] Graph is not running");
+            return;
+        }
         m_graphRunnerHandler.Stop();
+        m_graph.Initialize();
     }
 
     [Button("Pause")]
     [ButtonGroup("Controls")]
     public void PauseGraph()
     {
-        Debug.Log($"Graph [{m_graph.name}]: pause");
+        if (!m_graphRunnerHandler.IsRunning)
+        {
+            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is not running");
+            return;
+        }
+        if (m_graphRunnerHandler.IsPaused)
+        {
+            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is already paused");
+            return;
+        }
+        Debug.Log($"{Debug_GetLogHeader()} Pause");
         m_graphRunnerHandler.Pause();
         OnGraphPaused?.Invoke();
     }
@@ -72,25 +88,41 @@ public class GraphRunner : MonoBehaviour
     [ButtonGroup("Controls")]
     public void ResumeGraph()
     {
-        Debug.Log($"Graph [{m_graph.name}]: resume");
+        if (!m_graphRunnerHandler.IsRunning)
+        {
+            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is not running");
+            return;
+        }
+        if (!m_graphRunnerHandler.IsPaused)
+        {
+            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is not paused");
+            return;
+        }
+        Debug.Log($"{Debug_GetLogHeader()} Resume");
         m_graphRunnerHandler.Resume();
         OnGraphResumed?.Invoke();
     }
 
     public async UniTask RunGraphAsync()
     {
-        Debug.Log($"Graph [{m_graph.name}]: Start");
+        if (m_graphRunnerHandler.IsRunning)
+        {
+            Debug.LogWarning($"{Debug_GetLogHeader()} [StartGraph] Graph is not running");
+            return;
+        }
+        
+        Debug.Log($"{Debug_GetLogHeader()} Start");
         m_graphRunnerHandler.Start();
         OnGraphStarted?.Invoke();
         bool isCancelled = await m_graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
         if (isCancelled)
         {
-            Debug.Log($"Graph [{m_graph.name}]: was stopped prematurely");
+            Debug.Log($"{Debug_GetLogHeader()} Stopped prematurely");
             OnGraphCancelled?.Invoke();
         }
         else
         {
-            Debug.Log($"Graph [{m_graph.name}]: ended");
+            Debug.Log($"{Debug_GetLogHeader()} Ended");
             OnGraphEnded?.Invoke();
         }
 
@@ -106,5 +138,23 @@ public class GraphRunner : MonoBehaviour
         OnGraphStopped = null;
         OnGraphPaused = null;
         OnGraphResumed = null;
+    }
+
+    #if UNITY_EDITOR
+    public void OnApplicationQuit()
+    {
+        foreach (Node node in m_graph.nodes)
+        {
+            if (node is GraphControlNode controlNode)
+            {
+                controlNode.OnApplicationQuit();
+            }
+        }
+    }
+    #endif
+
+    private string Debug_GetLogHeader()
+    {
+        return $"[{Time.frameCount}] <color=teal>[{GetType().Name}]</color> <color=cyan>[{m_graph.name}]</color>";
     }
 }

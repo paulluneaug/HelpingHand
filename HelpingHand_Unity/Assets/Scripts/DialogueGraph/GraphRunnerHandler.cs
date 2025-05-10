@@ -6,13 +6,20 @@ public class GraphRunnerHandler : IDisposable
     public CancellationToken StopToken => m_stopCancellation.Token;
     public CancellationToken PauseToken => m_pauseCancellation.Token;
     public CancellationToken ResumeToken => m_resumeCancellation.Token;
+    public CancellationToken TimeoutToken => m_timeoutCancellation.Token;
+    public CancellationTokenSource Timeout => m_timeoutCancellation;
     public GraphRunner GraphRunner => m_graphRunner;
     public BaseNode CurrentNode { get; set; }
+    public bool IsRunning => m_isRunning;
+    public bool IsPaused => m_isPaused;
 
-    private GraphRunner m_graphRunner;
+    private readonly GraphRunner m_graphRunner;
     private CancellationTokenSource m_stopCancellation = new();
     private CancellationTokenSource m_pauseCancellation = new();
     private CancellationTokenSource m_resumeCancellation = new();
+    private CancellationTokenSource m_timeoutCancellation = new();
+    private bool m_isRunning;
+    private bool m_isPaused;
 
     public GraphRunnerHandler(GraphRunner graphRunner)
     {
@@ -21,12 +28,14 @@ public class GraphRunnerHandler : IDisposable
     
     public void Start()
     {
-        m_stopCancellation?.Dispose();
+        m_isRunning = true;
+        m_stopCancellation.Dispose();
         m_stopCancellation = new CancellationTokenSource();
     }
 
     public void Pause()
     {
+        m_isPaused = true;
         m_resumeCancellation?.Dispose();
         m_resumeCancellation = new CancellationTokenSource();
         m_pauseCancellation?.Cancel();
@@ -35,6 +44,7 @@ public class GraphRunnerHandler : IDisposable
 
     public void Resume()
     {
+        m_isPaused = false;
         m_stopCancellation?.Dispose();
         m_stopCancellation = new CancellationTokenSource();
         m_pauseCancellation?.Dispose();
@@ -44,7 +54,19 @@ public class GraphRunnerHandler : IDisposable
 
     public void Stop()
     {
+        if (m_isPaused)
+        {
+            Resume();
+        }
+        m_isRunning = false;
+        m_isPaused = false;
         m_stopCancellation.Cancel();
+    }
+
+    public void ResetTimeout()
+    {
+        m_timeoutCancellation.Dispose();
+        m_timeoutCancellation = new CancellationTokenSource();
     }
 
     public void Dispose()
