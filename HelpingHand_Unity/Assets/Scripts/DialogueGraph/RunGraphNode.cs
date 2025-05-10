@@ -31,15 +31,21 @@ public class RunGraphNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
-        GraphRunner runner = GraphManager.Instance.CreateGraphRunner(m_graph);
         if (m_waitForCompletion)
         {
+            GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
             await runner.RunGraphAsync().AttachExternalCancellation(handler.StopToken);
         }
         else
         {
-            runner.RunGraphAsync().Forget();
+            CreateGraphRunnerAndForget().Forget();
         }
         await ContinueFlow(handler);
+    }
+
+    private async UniTaskVoid CreateGraphRunnerAndForget()
+    {
+        GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
+        runner.RunGraphAsync().Forget();
     }
 }

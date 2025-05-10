@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using Cysharp.Threading.Tasks;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -45,29 +47,44 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     [Button("Start level")]
     private void StartLevel()
     {
-        m_currentGraphRunner = StartMainSequenceGraph(m_graphQueue.Dequeue());
+        StartLevelAsync().Forget();
+    }
+
+    private async UniTaskVoid StartLevelAsync()
+    {
+        StartMainSequenceGraph(m_graphQueue.Dequeue()).Forget();
         foreach (SimpleGraph graph in m_parallelExecution)
         {
-            GraphRunner graphRunner = CreateGraphRunner(graph);
+            GraphRunner graphRunner = await CreateGraphRunner(graph);
             graphRunner.StartGraph();
         }
     }
 
-    private GraphRunner StartMainSequenceGraph(SimpleGraph graph)
+    private async UniTaskVoid StartMainSequenceGraph(SimpleGraph graph)
     {
-        GraphRunner graphRunner = CreateGraphRunner(graph);
+        GraphRunner graphRunner = await CreateGraphRunner(graph);
         graphRunner.OnGraphEnded += OnGraphEnded;
         graphRunner.OnGraphPaused += OnGraphPaused;
         graphRunner.OnGraphResumed += OnGraphResumed;
         graphRunner.StartGraph();
-        return graphRunner;
+        m_currentGraphRunner = graphRunner;
     }
 
-    public GraphRunner CreateGraphRunner(SimpleGraph graph)
+    public async UniTask<GraphRunner> CreateGraphRunner(SimpleGraph graph)
     {
+        bool isRunning = false;
+        // If graph is already running, wait for its completion
+        if (m_graphDictionary.TryGetValue(graph, out GraphRunner existingRunner))
+        {
+            isRunning = true;
+            existingRunner.OnGraphEnded += () => isRunning = false;
+        }
+
+        await UniTask.WaitUntil(() => isRunning == false);
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
         graphRunner.Initialize(graph);
-        m_graphDictionary.Add(graph, graphRunner);
+
+        m_graphDictionary[graph] = graphRunner;
         return graphRunner;
     }
 
@@ -81,7 +98,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         m_currentGraphRunner = null;
         if (m_graphQueue.TryDequeue(out SimpleGraph graph))
         {
-            m_currentGraphRunner = StartMainSequenceGraph(graph);
+            StartMainSequenceGraph(graph).Forget();
         }
     }
 

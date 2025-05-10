@@ -1,11 +1,8 @@
 using System;
-using System.ComponentModel;
 
 using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using Sirenix.Serialization;
 
 using UnityEngine;
 
@@ -23,7 +20,7 @@ public class GraphControlNode : BaseNode
     [Input(ShowBackingValue.Never)] [ShowInInspector]
     private GraphRunner m_graphRunnerIn;
 
-    [Output(ShowBackingValue.Never)] [ShowInInspector]
+    [Output] [ShowInInspector]
     private GraphRunner m_graphRunnerOut;
 
     [SerializeField] [HideLabel]
@@ -88,7 +85,7 @@ public class GraphControlNode : BaseNode
     {
         if (m_graphRunnerOut == null)
         {
-            m_graphRunnerOut = GraphManager.Instance.CreateGraphRunner(m_graph);
+            m_graphRunnerOut = await GraphManager.Instance.CreateGraphRunner(m_graph);
         }
         if (m_waitForCompletion)
         {
