@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b10dfdb3856096409bd66cc6420f3b3, type: 3}
-  m_Name: Graph_Spot
+  m_Name: Graph_Scene_1_1_Spot
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 5674718550864981815}
@@ -414,6 +414,7 @@ MonoBehaviour:
   - {fileID: 2653865955438741562}
   - {fileID: -9011316318453822863}
   - {fileID: 5428832348178298288}
+  - {fileID: 2914515026302966904}
 --- !u!114 &349191870330162782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +627,59 @@ MonoBehaviour:
   m_description: "Continue le flow vers le premier dialogue de la s\xE9quence qui
     n'a pas \xE9t\xE9 lu"
   m_sequence: []
+--- !u!114 &2914515026302966904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b24767430842bf46a25b11103fb9b21, type: 3}
+  m_Name: Run Graph
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -1528, y: -424}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 2914515026302966904}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 6473181080295122772}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 2914515026302966904}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_description: 
+  m_graph: {fileID: 11400000, guid: ed15b626da4f7d64d8607c8e58c52d5d, type: 2}
+  m_waitForCompletion: 0
 --- !u!114 &3202879309738427877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,6 +1010,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 6411492278474950492}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 2914515026302966904}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
