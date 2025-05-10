@@ -78,7 +78,7 @@ public abstract class BaseNode : SerializableNode
 
     protected string Debug_GetLogHeader()
     {
-        return $"[{Time.frameCount}] <color=cyan>[{GetType().Name}]</color> ({name})";
+        return $"[{Time.frameCount}] <color=cyan>[{graph.name}]</color> <color=yellow>[{GetType().Name}]</color> ({name})";
     }
 
     protected void DebugLog(string log)

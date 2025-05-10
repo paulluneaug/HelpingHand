@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         }
 
         m_currentDialogue = dialogue;
-        Debug.Log($"{Debug_GetLogHeader()} Play");
+        Debug.Log($"{Debug_GetLogHeader()} Play ({m_currentDialogue.Content.Truncate(30)}");
         m_typewriter.ShowText(m_currentDialogue.Content);
         OnDialogueStarted?.Invoke();
     }
@@ -95,6 +95,6 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
 
     private string Debug_GetLogHeader()
     {
-        return $"[{Time.frameCount}] <color=#ff00ffff>[DialogueManager]</color> [{(m_currentDialogue ? m_currentDialogue.name : "null")}]";
+        return $"[{Time.frameCount}] <color=#ff55ff>[DialogueManager]</color> [{(m_currentDialogue ? m_currentDialogue.name : "null")}]";
     }
 }

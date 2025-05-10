@@ -55,13 +55,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     {
         if (wwiseEvent == null)
         {
-            Debug.LogError("wwiseEvent is null (check if it's set correctly and up to date :)");
+            Debug.LogError($"{Debug_GetLogHeader()} wwiseEvent is null (check if it's set correctly and up to date :)");
             return;
         }
 
         if (!wwiseEvent.IsValid())
         {
-            Debug.LogError(wwiseEvent.Name + " is invalid, check if it's set correctly and up to date");
+            Debug.LogError($"{Debug_GetLogHeader()} {wwiseEvent.Name} is invalid, check if it's set correctly and up to date");
         }
 
         bool isEnded = false;
@@ -72,12 +72,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
-            Debug.Log($"[{Time.frameCount}] [{nameof(AudioManager)}] PostWwiseEventToObjectAsync interrupted");
+            Debug.Log($"{Debug_GetLogHeader()} PostWwiseEventToObjectAsync interrupted");
             AkUnitySoundEngine.StopPlayingID(playingID);
             throw new OperationCanceledException();
         }
         
-        Debug.Log($"[{Time.frameCount}] [{nameof(AudioManager)}] PostWwiseEventToObjectAsync end");
+        Debug.Log($"{Debug_GetLogHeader()} PostWwiseEventToObjectAsync end");
     }
     
     #endregion
@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public async UniTask PlayDialogueWithStatesAsync(string repetition, string etat, string objet, string narra, GameObject targetObject = null, CancellationToken cancellationToken = default)
     {        
-        Debug.Log($"[{Time.frameCount}] [{nameof(AudioManager)}] PlayDialogueWithStatesAsync {repetition}, {etat}, {objet}, {narra}");
+        Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync {repetition}, {etat}, {objet}, {narra}");
 
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
         // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
@@ -115,7 +115,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         if (dialogueEventId == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
-            Debug.LogError("L'event 'Dialogue_Event' est introuvable. Vérifier son nom et sa SoundBank.");
+            Debug.LogError($"{Debug_GetLogHeader()} L'event 'Dialogue_Event' est introuvable. Vérifier son nom et sa SoundBank.");
             return;
         }
 
@@ -128,7 +128,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         if (repetitionID == 0 || etatID == 0 || objetID == 0)
         {
-            Debug.LogError($"Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}");
+            Debug.LogError($"{Debug_GetLogHeader()} Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}");
             return;
         }
 
@@ -145,7 +145,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         uint nodeID = AkUnitySoundEngine.ResolveDialogueEvent(dialogueEventId, args, (uint)args.Length);
         if (nodeID == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
-            Debug.LogError("Aucun dialogue node trouvé pour ces states.");
+            Debug.LogError($"{Debug_GetLogHeader()} Aucun dialogue node trouvé pour ces states.");
             AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
             AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             return;
@@ -157,15 +157,20 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
-            Debug.Log($"[{Time.frameCount}] [{nameof(AudioManager)}] PlayDialogueWithStatesAsync interrupted");
+            Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync interrupted");
             AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
             AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             throw new OperationCanceledException();
         }
         
         AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
-        Debug.Log($"[{Time.frameCount}] [{nameof(AudioManager)}] PlayDialogueWithStatesAsync end");
+        Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync end");
     }
 
     #endregion
+
+    private string Debug_GetLogHeader()
+    {
+        return $"[{Time.frameCount}] <color=green>[{nameof(AudioManager)}]</color>";
+    }
 }
