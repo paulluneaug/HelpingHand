@@ -83,17 +83,24 @@ public class GraphControlNode : BaseNode
 
     private async UniTask PlayGraph(GraphRunnerHandler handler)
     {
-        if (m_graphRunnerOut == null)
-        {
-            m_graphRunnerOut = await GraphManager.Instance.CreateGraphRunner(m_graph);
-        }
         if (m_waitForCompletion)
         {
+            if (m_graphRunnerOut == null)
+            {
+                m_graphRunnerOut = await GraphManager.Instance.CreateGraphRunner(m_graph);
+            }
             await m_graphRunnerOut.RunGraphAsync().AttachExternalCancellation(handler.StopToken);
         }
         else
         {
-            m_graphRunnerOut.RunGraphAsync().Forget();
+            if (m_graphRunnerOut == null)
+            {
+                CreateGraphRunnerAndForget().Forget();
+            }
+            else
+            {
+                m_graphRunnerOut.RunGraphAsync().Forget();
+            }
         }
     }
 
@@ -146,6 +153,12 @@ public class GraphControlNode : BaseNode
         {
             Debug.LogError($"{Debug_GetLogHeader()} ResumeGraph: no graph provided");
         }
+    }
+
+    private async UniTaskVoid CreateGraphRunnerAndForget()
+    {
+        m_graphRunnerOut = await GraphManager.Instance.CreateGraphRunner(m_graph);
+        m_graphRunnerOut.RunGraphAsync().Forget();
     }
 
     public void OnApplicationQuit()
