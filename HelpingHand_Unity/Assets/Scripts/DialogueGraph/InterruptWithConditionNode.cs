@@ -6,19 +6,17 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-using XNode;
-
 [NodeWidth(350)]
 public class InterruptWithConditionNode : BaseNode
 {
     [Input]
     public DialogueFlow m_in;
-    
-    [SerializeField]
-    private ConditionBase m_condition;
 
     [Output]
     public DialogueFlow m_out;
+    
+    [SerializeField]
+    private ConditionBase m_condition;
 
     [Space] [SerializeField]
     private bool m_doesTimeout;
@@ -45,17 +43,6 @@ public class InterruptWithConditionNode : BaseNode
         m_condition.Initialize();
         m_condition.OnPreconditionUpdated -= OnConditionUpdated;
         m_condition.OnPreconditionUpdated += OnConditionUpdated;
-    }
-
-    public override object GetValue(NodePort port)
-    {
-        return port.fieldName switch
-        {
-            nameof(m_out) => m_out,
-            nameof(m_in) => m_in,
-            nameof(m_timeoutOut) => m_timeoutOut,
-            _ => null
-        };
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)

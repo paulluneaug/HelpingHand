@@ -56,11 +56,6 @@ public class DialogueNode : InterruptableNode
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
 
-    public override object GetValue(NodePort port)
-    {
-        return m_out;
-    }
-
     protected override void Init()
     {
         base.Init();

@@ -13,11 +13,6 @@ public class StartNode : BaseNode
         m_description = "Start the graph here";
     }
 
-    public override object GetValue(NodePort port)
-    {
-        return m_out;
-    }
-
     public override void Initialize()
     {
     }

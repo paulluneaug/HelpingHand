@@ -7,18 +7,16 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-using XNode;
-
 public class WaitStateNode : InterruptableNode
 {
     [Input]
     public DialogueFlow m_in;
 
-    [SerializeField] [HideLabel]
-    private EntityState m_state;
-
     [Output]
     public DialogueFlow m_out;
+
+    [SerializeField] [HideLabel]
+    private EntityState m_state;
 
     [Space] [SerializeField]
     private bool m_doesTimeout;
@@ -34,17 +32,6 @@ public class WaitStateNode : InterruptableNode
     public override void Initialize()
     {
         m_timeoutController = new TimeoutController();
-    }
-
-    public override object GetValue(NodePort port)
-    {
-        return port.fieldName switch
-        {
-            nameof(m_out) => m_out,
-            nameof(m_in) => m_in,
-            nameof(m_timeoutOut) => m_timeoutOut,
-            _ => null
-        };
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)

@@ -6,8 +6,6 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-using XNode;
-
 [NodeWidth(200)]
 public class GraphControlNode : BaseNode
 {
@@ -38,18 +36,6 @@ public class GraphControlNode : BaseNode
         [LabelText("", SdfIconType.ArrowRepeat)] Resume,
         [LabelText("", SdfIconType.Pause)] Pause,
         [LabelText("", SdfIconType.Stop)] Stop,
-    }
-
-    public override object GetValue(NodePort port)
-    {
-        return port.fieldName switch
-        {
-            "m_in" => m_in,
-            "m_out" => m_out,
-            "m_graphRunnerIn" => m_graphRunnerIn,
-            "m_graphRunnerOut" => m_graphRunnerOut,
-            _ => throw new ArgumentOutOfRangeException()
-        };
     }
 
     public override void Initialize()

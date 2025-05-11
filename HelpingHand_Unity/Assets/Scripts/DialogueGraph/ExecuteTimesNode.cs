@@ -1,10 +1,6 @@
-using System;
-
 using Cysharp.Threading.Tasks;
 
 using UnityEngine;
-
-using XNode;
 
 public class ExecuteTimesNode : BaseNode
 {
@@ -18,17 +14,6 @@ public class ExecuteTimesNode : BaseNode
     private int m_times = 1;
 
     private int m_executionCount;
-
-    public override object GetValue(NodePort port)
-    {
-        return port.fieldName switch
-        {
-            "m_in" => m_in,
-            "m_out" => m_out,
-            "m_count" => m_times,
-            _ => throw new ArgumentOutOfRangeException()
-        };
-    }
 
     protected override void Init()
     {

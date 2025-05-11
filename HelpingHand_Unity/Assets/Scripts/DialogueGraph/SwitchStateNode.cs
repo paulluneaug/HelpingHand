@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
@@ -23,17 +24,20 @@ public class SwitchStateNode : BaseNode
         base.Init();
         m_description = "Continue le flow vers tous les noeuds dont l'état est set";
     }
-    
+
+    public override void Initialize()
+    {
+    }
+
     public override object GetValue(NodePort port)
     {
-        if (port.fieldName == "m_else")
+        if (int.TryParse(port.fieldName[9..], out int index))
         {
-            return m_else;
+            return m_states[index];
         }
         else
         {
-            int index = int.Parse(port.fieldName[9..]);
-            return m_states[index];
+            throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname");
         }
     }
 
@@ -42,10 +46,16 @@ public class SwitchStateNode : BaseNode
         List<NodePort> continuePorts = new();
         foreach (NodePort outputPort in DynamicOutputs)
         {
-            EntityState state = GetValue(outputPort) as EntityState;
-            if (state.IsSet)
+            if (GetValue(outputPort) is EntityState state)
             {
-                continuePorts.Add(outputPort);
+                if (state.IsSet)
+                {
+                    continuePorts.Add(outputPort);
+                }
+            }
+            else
+            {
+                throw new InvalidCastException($"{Debug_GetLogHeader()}");
             }
         }
 
@@ -55,7 +65,7 @@ public class SwitchStateNode : BaseNode
         }
         else
         {
-            NodePort outputPort = GetOutputPort("m_else");
+            NodePort outputPort = GetOutputPort(nameof(m_else));
             await ContinueFlow(handler, outputPort);
         }
     }

@@ -25,19 +25,6 @@ public class DialogueSequenceNode : BaseNode
         m_description = "Continue le flow vers le premier dialogue de la séquence qui n'a pas été lu";
     }
 
-    public override object GetValue(NodePort port)
-    {
-        if (port.fieldName == "m_else" || m_sequence.Count == 0)
-        {
-            return m_else;
-        }
-        else
-        {
-            int index = int.Parse(port.fieldName[11..]);
-            return m_sequence[index];
-        }
-    }
-
     public override void Initialize()
     {
     }
@@ -77,7 +64,7 @@ public class DialogueSequenceNode : BaseNode
         }
         else
         {
-            NodePort elsePort = GetOutputPort("m_else");
+            NodePort elsePort = GetOutputPort(nameof(m_else));
             await ContinueFlow(handler, elsePort);
         }
     }

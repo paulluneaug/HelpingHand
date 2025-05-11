@@ -20,11 +20,6 @@ public class WaitNode : InterruptableNode
     [SerializeField][LabelWidth(100)]
     private bool m_unscaled = false;
 
-    public override object GetValue(NodePort port)
-    {
-        return m_out;
-    }
-
     protected override void Init()
     {
         base.Init();
@@ -33,7 +28,6 @@ public class WaitNode : InterruptableNode
 
     public override void Initialize()
     {
-        base.Initialize();
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)

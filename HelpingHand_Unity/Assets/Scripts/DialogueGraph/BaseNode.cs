@@ -17,7 +17,15 @@ public abstract class BaseNode : SerializableNode
     [HideLabel][FoldoutGroup("Description")][TextArea(1, 2)]
     protected string m_description;
     
-    public virtual void Initialize() { }
+    /// <summary>
+    /// Run when the graph starts
+    /// </summary>
+    public abstract void Initialize();
+    
+    public override object GetValue(NodePort port)
+    {
+        return null;
+    }
 
     public async UniTask Execute(GraphRunnerHandler handler)
     {

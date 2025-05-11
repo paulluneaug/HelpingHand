@@ -16,11 +16,6 @@ public class ConditionNode : BaseNode
     [SerializeField]
     private ConditionBase m_condition;
 
-    public override object GetValue(NodePort port)
-    {
-        return m_out;
-    }
-
     public override void Initialize()
     {
         m_condition.Initialize();

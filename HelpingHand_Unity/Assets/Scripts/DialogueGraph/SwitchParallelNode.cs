@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
@@ -23,17 +24,20 @@ public class SwitchParallelNode : BaseNode
         base.Init();
         m_description = "Continue le flow vers tous les noeuds dont la condition est vraie";
     }
+
+    public override void Initialize()
+    {
+    }
     
     public override object GetValue(NodePort port)
     {
-        if (port.fieldName == "m_else")
+        if (int.TryParse(port.fieldName[13..], out int index))
         {
-            return m_else;
+            return m_conditions[index];
         }
         else
         {
-            int index = int.Parse(port.fieldName[13..]);
-            return m_conditions[index];
+            throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
         }
     }
 

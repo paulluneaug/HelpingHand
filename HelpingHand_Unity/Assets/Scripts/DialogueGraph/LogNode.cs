@@ -2,8 +2,6 @@ using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
-using XNode;
-
 public class LogNode : BaseNode
 {
     [Input]
@@ -17,18 +15,6 @@ public class LogNode : BaseNode
 
     [SerializeField]
     private string m_content;
-
-    public override object GetValue(NodePort port)
-    {
-        if (port.fieldName == "m_stringIn")
-        {
-            return m_stringIn;
-        }
-        else
-        {
-            return m_out;
-        }
-    }
 
     public override void Initialize()
     {

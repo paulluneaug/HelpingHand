@@ -20,13 +20,13 @@ public class RunGraphNode : BaseNode
     [Output]
     public DialogueFlow m_out;
 
+    public override void Initialize()
+    {
+    }
+    
     public override object GetValue(NodePort port)
     {
         return m_graph;
-    }
-
-    public override void Initialize()
-    {
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
