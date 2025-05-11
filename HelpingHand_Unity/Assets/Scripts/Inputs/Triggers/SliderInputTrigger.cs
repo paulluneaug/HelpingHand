@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 
-using Events;
-
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -13,7 +11,7 @@ using UnityUtility.Extensions;
 public class SliderInputTrigger : InputTrigger
 {
     [SerializeField]
-    private FloatGameEvent m_sliderEvent;
+    private FloatVariable m_sliderVariable;
 
     [SerializeField, MinMaxSlider(0, 1, true)]
     private Vector2 m_targetRange;
@@ -38,12 +36,12 @@ public class SliderInputTrigger : InputTrigger
 
     protected override void Activate()
     {
-        m_sliderEvent.AddListener(OnSliderValueChanged);
+        m_sliderVariable.AddListener(OnSliderValueChanged);
     }
 
     protected override void Deactivate()
     {
-        m_sliderEvent.RemoveListener(OnSliderValueChanged);
+        m_sliderVariable.RemoveListener(OnSliderValueChanged);
     }
 
     private void OnSliderValueChanged(float value)
