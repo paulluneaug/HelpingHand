@@ -14,20 +14,6 @@ public class CurtainsController : SingleSliderInteractiveObject
     [SerializeField]
     private Vector3 m_upPosition;
 
-    [Header("States")]
-
-    [SerializeField]
-    private float m_activationDistance;
-
-    [SerializeField]
-    private EntityState m_fullyDownState;
-
-    [SerializeField]
-    private EntityState m_fullUpState;
-
-    [SerializeField]
-    private EntityState m_visibleState;
-
     private Transform m_transform;
 
     private void Awake()
@@ -47,28 +33,6 @@ public class CurtainsController : SingleSliderInteractiveObject
 
     private new void OnSliderValueChanged(float value)
     {
-        Vector3 oldPosition = m_transform.position;
         m_transform.position = Vector3.Lerp(m_downPosition, m_upPosition, value);
-
-        if (oldPosition != m_transform.position)
-        {
-            if ((m_downPosition - transform.position).magnitude <= m_activationDistance)
-            {
-                m_fullyDownState.Set();
-            }
-            else
-            {
-                m_fullyDownState.Unset();
-            }
-
-            if ((m_upPosition - transform.position).magnitude <= m_activationDistance)
-            {
-                m_fullUpState.Set();
-            }
-            else
-            {
-                m_fullUpState.Unset();
-            }
-        }
     }
 }

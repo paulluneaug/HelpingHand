@@ -40,7 +40,7 @@ public class ToggleInputTrigger : InputTrigger
         if (m_triggerIfTrue ==  m_toggleVariable.Value)
         {
             m_isRaised = true;
-            RaiseTrigger();
+            RaiseTriggeredEvent();
             
             DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
         }

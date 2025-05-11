@@ -70,7 +70,7 @@ public class ButtonInputTrigger : InputTrigger
         m_isRaised = true;
         m_triggerCoroutine = null;
         SetActive(false);
-        RaiseTrigger();
+        RaiseTriggeredEvent();
         
         DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
     }

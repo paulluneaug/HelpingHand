@@ -22,8 +22,8 @@ public class MultiInputTrigger : InputTrigger
     {
         foreach (InputTrigger inputTrigger in m_triggers)
         {
-            inputTrigger.RaiseTriggerEvent -= OnTriggerRaised;
-            inputTrigger.RaiseTriggerEvent += OnTriggerRaised;
+            inputTrigger.OnTriggered -= OnTriggerRaised;
+            inputTrigger.OnTriggered += OnTriggerRaised;
         }
     }
 
@@ -31,7 +31,7 @@ public class MultiInputTrigger : InputTrigger
     {
         foreach (InputTrigger inputTrigger in m_triggers)
         {
-            inputTrigger.RaiseTriggerEvent -= OnTriggerRaised;
+            inputTrigger.OnTriggered -= OnTriggerRaised;
         }
     }
 
@@ -47,7 +47,7 @@ public class MultiInputTrigger : InputTrigger
 
         m_isRaised = true;
         SetActive(false);
-        RaiseTrigger();
+        RaiseTriggeredEvent();
         DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
     }
 }

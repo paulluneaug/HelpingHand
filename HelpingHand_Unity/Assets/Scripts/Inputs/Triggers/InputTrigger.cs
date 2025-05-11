@@ -12,7 +12,7 @@ public abstract class InputTrigger
     [SerializeField]
     private float m_reactivateTime;
 
-    public event Action RaiseTriggerEvent;
+    public event Action OnTriggered;
     public bool IsActive => m_isActive;
     public virtual bool IsRaised => m_isRaised;
 
@@ -29,9 +29,9 @@ public abstract class InputTrigger
         m_triggerCoroutine = null;
     }
 
-    public void RaiseTrigger()
+    public void RaiseTriggeredEvent()
     {
-        RaiseTriggerEvent?.Invoke();
+        OnTriggered?.Invoke();
     }
 
     protected void SetActive(bool isActive)

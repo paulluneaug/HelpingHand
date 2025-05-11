@@ -29,10 +29,10 @@ public class LightActivationController : SerializedMonoBehaviour
     {
         m_litTrigger.Initialize();
         m_outTrigger.Initialize();
-        m_litTrigger.RaiseTriggerEvent -= OnLitTriggerRaised;
-        m_litTrigger.RaiseTriggerEvent += OnLitTriggerRaised;
-        m_outTrigger.RaiseTriggerEvent -= OnOutTriggerRaised;
-        m_outTrigger.RaiseTriggerEvent += OnOutTriggerRaised;
+        m_litTrigger.OnTriggered -= OnLitTriggerRaised;
+        m_litTrigger.OnTriggered += OnLitTriggerRaised;
+        m_outTrigger.OnTriggered -= OnOutTriggerRaised;
+        m_outTrigger.OnTriggered += OnOutTriggerRaised;
         m_litState?.SetValueWithoutNotify(m_light.enabled);
         m_unlitState?.SetValueWithoutNotify(!m_light.enabled);
     }

@@ -20,18 +20,19 @@ public class SliderInputTrigger : InputTrigger
     private float m_timeToTrigger = 0.2f;
 
     [SerializeField]
-    private bool m_isImmediate = true;
+    private bool m_isImmediate = false;
 
-    private float m_currentSliderValue;
     private Coroutine m_triggerCoroutine;
 
-    public override bool IsRaised => m_isImmediate ? m_isRaised : m_currentSliderValue.Between(m_targetRange.x, m_targetRange.y);
+    public override bool IsRaised => m_isImmediate ? m_isRaised : TestValue();
 
+    private bool m_wasRaised;
+    
     public override void Initialize()
     {
         base.Initialize();
-        m_currentSliderValue = 0; // Attention c'est pas forcément vrai, il faudrait récupérer la valeur actuelle du slider
         SetActive(true);
+        m_wasRaised = false;
     }
 
     protected override void Activate()
@@ -44,19 +45,27 @@ public class SliderInputTrigger : InputTrigger
         m_sliderVariable.RemoveListener(OnSliderValueChanged);
     }
 
+    private bool TestValue()
+    {
+        return m_sliderVariable.Value.Between(m_targetRange.x, m_targetRange.y);
+    }
+
     private void OnSliderValueChanged(float value)
     {
-        bool wasRaised = IsRaised;
-        m_currentSliderValue = value;
-
-        if (m_currentSliderValue.Between(m_targetRange.x, m_targetRange.y) && m_triggerCoroutine == null)
+        // We want to start the trigger coroutine when the trigger is not raised, the coroutine is not already running, and the test is true
+        if (!m_isRaised && m_triggerCoroutine == null && TestValue())
         {
             m_triggerCoroutine = DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
         } 
-        else if (wasRaised)
+        
+        // If the trigger was raised previously && the new value steps out of the range values, trigger the event
+        if (m_wasRaised && !TestValue())
         {
-            RaiseTrigger();
+            Debug.Log($"{m_sliderVariable.name} Not raised anymore");
+            RaiseTriggeredEvent();
         }
+
+        m_wasRaised = IsRaised;
     }
 
     private IEnumerator TriggerCoroutine()
@@ -65,7 +74,7 @@ public class SliderInputTrigger : InputTrigger
         while (counter < m_timeToTrigger)
         {
             // Slider's value exit the target range => stop the coroutine
-            if (!m_currentSliderValue.Between(m_targetRange.x, m_targetRange.y))
+            if (!TestValue())
             {
                 m_triggerCoroutine = null;
                 yield break;
@@ -79,7 +88,7 @@ public class SliderInputTrigger : InputTrigger
         m_isRaised = true;
         m_triggerCoroutine = null;
         SetActive(false);
-        RaiseTrigger();
+        RaiseTriggeredEvent();
 
         DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
     }
