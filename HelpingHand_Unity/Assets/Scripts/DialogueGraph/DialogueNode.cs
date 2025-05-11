@@ -55,6 +55,8 @@ public class DialogueNode : InterruptableNode
     public bool MultipleReads => m_multipleReads;
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
+    
+    private bool m_isReadingText;
 
     protected override void Init()
     {
@@ -66,6 +68,7 @@ public class DialogueNode : InterruptableNode
     {
         base.Initialize();
         m_hasBeenRead.Value = false;
+        m_isReadingText = false;
         m_readCount = 0;
     }
 
@@ -95,6 +98,9 @@ public class DialogueNode : InterruptableNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
         DebugLog($"Play");
+        m_hasBeenInterrupted = false;
+        m_isReadingText = true;
+        
         // Todo rendre awaitable
         DialogueManager.Instance.PlayDialog(this);
         DialogueManager.Instance.OnDialogueEnded += OnDialogueEnded;
@@ -120,13 +126,19 @@ public class DialogueNode : InterruptableNode
 
     private async UniTask WaitForDialogueEnd(GraphRunnerHandler handler)
     {
-        await UniTask.WaitUntil(() => m_hasBeenRead.Value || m_hasBeenInterrupted, PlayerLoopTiming.Update, handler.StopToken);
+        await UniTask.WaitUntil(() => !m_isReadingText || m_hasBeenInterrupted, PlayerLoopTiming.Update, handler.StopToken);
     }
 
     private void OnDialogueEnded()
     {
         DialogueManager.Instance.OnDialogueEnded -= OnDialogueEnded;
         m_hasBeenRead.Value = true;
+        m_isReadingText = false;
         m_readCount++;
+    }
+
+    public void ResetReadCount()
+    {
+        m_readCount = 0;
     }
 }

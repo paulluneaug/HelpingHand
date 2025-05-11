@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LogNode : BaseNode
 {
-    [Input]
+    [Input(ShowBackingValue.Never)]
     public DialogueFlow m_in;
 
     [Input]

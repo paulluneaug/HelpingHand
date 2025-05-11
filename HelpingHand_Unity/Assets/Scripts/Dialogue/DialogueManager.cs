@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         }
 
         m_currentDialogue = dialogue;
-        Debug.Log($"{Debug_GetLogHeader()} Play ({m_currentDialogue.Content.Truncate(30)}");
+        Debug.Log($"{Debug_GetLogHeader()} Play \"{m_currentDialogue.Content.Truncate(30)}\"");
         m_typewriter.ShowText(m_currentDialogue.Content);
         OnDialogueStarted?.Invoke();
     }

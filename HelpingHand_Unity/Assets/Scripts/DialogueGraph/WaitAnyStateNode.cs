@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 using Cysharp.Threading.Tasks;
@@ -7,17 +9,16 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
+using XNode;
+
 [NodeWidth(350)]
-public class InterruptWithConditionNode : BaseNode
+public class WaitAnyStateNode : InterruptableNode
 {
     [Input]
     public DialogueFlow m_in;
 
-    [Output]
-    public DialogueFlow m_out;
-    
-    [SerializeField]
-    private ConditionBase m_condition;
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
+    public List<EntityState> m_states = new();
 
     [Space] [SerializeField]
     private bool m_doesTimeout;
@@ -29,30 +30,39 @@ public class InterruptWithConditionNode : BaseNode
     private float m_timeout;
 
     private CancellationTokenSource m_timeoutSource;
-    private bool m_isConditionPassed;
-
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Wait for the condition to be true & the current dialogue to be interruptable";
-    }
 
     public override void Initialize()
     {
-        m_isConditionPassed = false;
-        m_condition.Initialize();
-        m_condition.OnPreconditionUpdated -= OnConditionUpdated;
-        m_condition.OnPreconditionUpdated += OnConditionUpdated;
+    }
+
+    public override object GetValue(NodePort port)
+    {
+        if (port.fieldName == nameof(m_timeoutOut))
+        {
+            return new DialogueFlow { active = m_doesTimeout && m_timeoutSource.IsCancellationRequested };
+        }
+        else
+        {
+            return base.GetValue(port);
+        }
+    }
+
+    private EntityState GetState(NodePort port)
+    {
+        if (int.TryParse(port.fieldName[9..], out int index))
+        {
+            return m_states[index];
+        }
+
+        throw new ArgumentOutOfRangeException(port.fieldName);
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
-        DebugLog($"Waiting for condition");
-        
-        OnConditionUpdated();
-        
+        DebugLog($"Waiting for states");
+
         CancellationToken cancellationToken = handler.StopToken;
-        
+
         if (m_doesTimeout)
         {
             DebugLog($"With timeout ({m_timeout} seconds)");
@@ -62,8 +72,21 @@ public class InterruptWithConditionNode : BaseNode
             CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
             cancellationToken = linkedTokenSource.Token;
         }
-        
-        UniTask task = UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, cancellationToken);
+
+        List<NodePort> continuePorts = new();
+        UniTask task = UniTask.WaitUntil(() =>
+        {
+            continuePorts.Clear();
+            foreach (NodePort outputPort in DynamicOutputs)
+            {
+                EntityState state = GetState(outputPort);
+                if (state.IsSet)
+                {
+                    continuePorts.Add(outputPort);
+                }
+            }
+            return continuePorts.Count > 0;
+        }, PlayerLoopTiming.Update, cancellationToken);
         
         if (await task.SuppressCancellationThrow())
         {
@@ -84,27 +107,8 @@ public class InterruptWithConditionNode : BaseNode
         }
         else
         {
-            DebugLog($"Interrupting main graph");
-
-            GraphManager.Instance.Interrupt(handler);
-
-            await UniTask.NextFrame();
-            await ContinueFlow(handler);        
+            DebugLog($"Set states has been found: [{continuePorts.Select(port => (GetState(port)).name).Aggregate((state, aggregate) => $"{aggregate}, {state}")}]");
+            await UniTask.WhenAll(continuePorts.Select(port => ContinueFlow(handler, port)));
         }
-    }
-
-    private bool TestInterruption()
-    {
-        return GraphManager.Instance.CurrentNodeCanBeInterrupted && m_isConditionPassed;
-    }
-
-    private void OnConditionUpdated()
-    {
-        m_isConditionPassed = m_condition.Test();
-    }
-
-    private void OnDestroy()
-    {
-        m_condition.OnPreconditionUpdated -= OnConditionUpdated;
     }
 }

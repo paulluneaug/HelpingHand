@@ -61,7 +61,6 @@ public class SliderInputTrigger : InputTrigger
         // If the trigger was raised previously && the new value steps out of the range values, trigger the event
         if (m_wasRaised && !TestValue())
         {
-            Debug.Log($"{m_sliderVariable.name} Not raised anymore");
             RaiseTriggeredEvent();
         }
 

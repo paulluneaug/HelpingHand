@@ -69,8 +69,14 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: 
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_state: {fileID: 11400000, guid: 9ce8181f57fef6144904bf0304198dfb, type: 2}
   m_doesTimeout: 1
+  m_timeoutOut:
+    active: 0
   m_timeout: 6
 --- !u!114 &-8637808298498981219
 MonoBehaviour:
@@ -170,7 +176,14 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: "Continue le flow vers le premier dialogue de la s\xE9quence qui
     n'a pas \xE9t\xE9 lu"
-  m_sequence: []
+  m_in:
+    active: 0
+  m_sequence:
+  - active: 0
+  - active: 0
+  m_else:
+    active: 0
+  m_loop: 0
 --- !u!114 &-7850895734784482816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +239,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 1
   m_unscaled: 0
 --- !u!114 &-3008775012816729128
@@ -296,8 +313,14 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: 
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_state: {fileID: 11400000, guid: 9ce8181f57fef6144904bf0304198dfb, type: 2}
   m_doesTimeout: 1
+  m_timeoutOut:
+    active: 0
   m_timeout: 3
 --- !u!114 &-2996550221761818409
 MonoBehaviour:
@@ -309,7 +332,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue
+  m_Name: Dialogue_Introduction_Curtains_5
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 392, y: 1240}
@@ -354,7 +377,11 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: C'est quand tu veux...
+  m_in:
+    active: 0
+  m_out:
+    active: 0
+  m_content: C'est quand tu veux... Lorem ipsum... Dolor sit amet...
   m_multipleReads: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &-2911237490638544311
@@ -367,7 +394,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue
+  m_Name: Dialogue_Introduction_Curtains_3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 392, y: 536}
@@ -412,6 +439,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Rappelle-moi, tu disais bien conna\xEEtre ce m\xE9tier ?"
   m_multipleReads: 0
   m_audioEvent: {fileID: 0}
@@ -442,10 +473,10 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -2911237490638544311}
+        node: {fileID: -1055043094685863183}
         reroutePoints: []
       - fieldName: m_out
-        node: {fileID: -1055043094685863183}
+        node: {fileID: -2911237490638544311}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -471,7 +502,7 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -8637808298498981219}
         reroutePoints:
-        - {x: 576, y: 432}
+        - {x: 544, y: 448}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -487,8 +518,14 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: 
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_state: {fileID: 11400000, guid: 9ce8181f57fef6144904bf0304198dfb, type: 2}
   m_doesTimeout: 1
+  m_timeoutOut:
+    active: 0
   m_timeout: 3
 --- !u!114 &-1055043094685863183
 MonoBehaviour:
@@ -500,7 +537,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue
+  m_Name: Dialogue_Introduction_Curtains_4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 392, y: 888}
@@ -545,6 +582,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Parce que j'esp\xE8re pour toi que tu n'as pas menti durant notre appel..."
   m_multipleReads: 0
   m_audioEvent: {fileID: 0}
@@ -558,7 +599,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue
+  m_Name: Dialogue_Introduction_Curtains_6
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1704, y: 104}
@@ -603,6 +644,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Parfait ! On peut commencer la pi\xE8ce. [Fin intro rideaux]"
   m_multipleReads: 0
   m_audioEvent: {fileID: 0}
@@ -661,6 +706,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &11400000
@@ -746,6 +795,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Bien. Merci d'avoir r\xE9pondu \xE0 l'annonce.\nOn va commencer le
     test sans plus attendre."
   m_multipleReads: 0
@@ -805,6 +858,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Tu dois ouvrir les rideaux avec ta console de contr\xF4le."
   m_multipleReads: 0
   m_audioEvent: {fileID: 0}
@@ -849,6 +906,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_description: Start the graph here
+  m_out:
+    active: 0
 --- !u!114 &7494473332993729120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +963,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &7987794243484619626
@@ -916,7 +979,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue
+  m_Name: Dialogue_Introduction_Curtains_7
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1704, y: 488}
@@ -964,6 +1027,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: 'Bon... On peut enfin commencer... [Fin intro rideaux]'
   m_multipleReads: 0
   m_audioEvent: {fileID: 0}

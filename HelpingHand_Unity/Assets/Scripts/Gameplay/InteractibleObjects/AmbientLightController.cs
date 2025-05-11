@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AmbientLightController : SingleSliderInteractiveObject
 {
+    [SerializeField]
+    private FloatVariable m_sliderFloatVariable;
+    
     [Range(0, 1)] [SerializeField]
     private float m_startValue;
 
@@ -16,7 +19,8 @@ public class AmbientLightController : SingleSliderInteractiveObject
     {
         base.Start();
         m_masterSlider.SetValueWithoutNotify(m_startValue);
-        m_masterSlider.OnSliderValueChanged += OnSliderValueChanged;
+        // m_masterSlider.OnSliderValueChanged += OnSliderValueChanged;
+        m_sliderFloatVariable.AddListener(OnSliderValueChanged);
         OnSliderValueChanged(m_startValue);
         Color.RGBToHSV(RenderSettings.ambientLight, out m_hsv.x, out m_hsv.y, out m_hsv.z);
     }

@@ -25,13 +25,12 @@ public class EntityStateSetter : SerializedMonoBehaviour
         m_condition.Initialize();
         m_condition.OnPreconditionUpdated += OnConditionUpdated;
         m_state.SetValueWithoutNotify(m_condition.Test());
+        m_state.AddListener(OnValueChanged);
     }
 
-    private void OnConditionUpdated()
+    private void OnValueChanged(bool value)
     {
-        bool test = m_condition.Test();
-        m_state.Value = test;
-        if (test)
+        if (value)
         {
             m_onStateSet.Invoke();
         }
@@ -39,6 +38,11 @@ public class EntityStateSetter : SerializedMonoBehaviour
         {
             m_onStateUnset.Invoke();
         }
-        m_onStateChanged.Invoke(test);
+        m_onStateChanged.Invoke(value);
+    }
+
+    private void OnConditionUpdated()
+    {
+        m_state.Value  = m_condition.Test();
     }
 }

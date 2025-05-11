@@ -869,7 +869,7 @@ Transform:
   m_GameObject: {fileID: 446035767}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5800586, y: 0.38574827, z: -0.6468305, w: 0.31038788}
-  m_LocalPosition: {x: 0, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 3.89, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5864,6 +5864,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1693304306}
   - component: {fileID: 1693304307}
+  - component: {fileID: 1693304310}
+  - component: {fileID: 1693304309}
+  - component: {fileID: 1693304308}
   m_Layer: 0
   m_Name: Ambient Light
   m_TagString: Untagged
@@ -5899,8 +5902,222 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_controllingSlider: 1
+  m_sliderFloatVariable: {fileID: 11400000, guid: 08e455e9552b02f49b5d94f7ef7edbc3, type: 2}
   m_startValue: 0.5
   m_minMaxIntensity: {x: 0.1, y: 1}
+--- !u!114 &1693304308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693304305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 08e455e9552b02f49b5d94f7ef7edbc3, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_condition
+      Entry: 7
+      Data: 0|ConditionTrigger, Assembly-CSharp
+    - Name: m_trigger
+      Entry: 7
+      Data: 1|SliderInputTrigger, Assembly-CSharp
+    - Name: m_canReactivate
+      Entry: 5
+      Data: true
+    - Name: m_reactivateTime
+      Entry: 4
+      Data: 0
+    - Name: m_sliderVariable
+      Entry: 10
+      Data: 0
+    - Name: m_targetRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 4
+      Data: 0.9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_timeToTrigger
+      Entry: 4
+      Data: 0.2
+    - Name: m_isImmediate
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  m_state: {fileID: 11400000, guid: d45686c94bff9f344a581547bc4cb061, type: 2}
+  m_onStateSet:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStateUnset:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1693304309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693304305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 08e455e9552b02f49b5d94f7ef7edbc3, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_condition
+      Entry: 7
+      Data: 0|ConditionTrigger, Assembly-CSharp
+    - Name: m_trigger
+      Entry: 7
+      Data: 1|SliderInputTrigger, Assembly-CSharp
+    - Name: m_canReactivate
+      Entry: 5
+      Data: true
+    - Name: m_reactivateTime
+      Entry: 4
+      Data: 0
+    - Name: m_sliderVariable
+      Entry: 10
+      Data: 0
+    - Name: m_targetRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_timeToTrigger
+      Entry: 4
+      Data: 0.2
+    - Name: m_isImmediate
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  m_state: {fileID: 11400000, guid: 08321531e1c429046b398a77d4683db5, type: 2}
+  m_onStateSet:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStateUnset:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1693304310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693304305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 08e455e9552b02f49b5d94f7ef7edbc3, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_condition
+      Entry: 7
+      Data: 0|ConditionTrigger, Assembly-CSharp
+    - Name: m_trigger
+      Entry: 7
+      Data: 1|SliderInputTrigger, Assembly-CSharp
+    - Name: m_canReactivate
+      Entry: 5
+      Data: true
+    - Name: m_reactivateTime
+      Entry: 4
+      Data: 0
+    - Name: m_sliderVariable
+      Entry: 10
+      Data: 0
+    - Name: m_targetRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.9
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_timeToTrigger
+      Entry: 4
+      Data: 0.2
+    - Name: m_isImmediate
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  m_state: {fileID: 11400000, guid: 5acf02ec7653bb74c977daba6700d2aa, type: 2}
+  m_onStateSet:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStateUnset:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1693445015
 GameObject:
   m_ObjectHideFlags: 0
@@ -5934,7 +6151,7 @@ Transform:
   m_GameObject: {fileID: 1693445015}
   serializedVersion: 2
   m_LocalRotation: {x: 1.110223e-17, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 4, z: -1.5}
+  m_LocalPosition: {x: -6, y: 5, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5956,7 +6173,7 @@ MonoBehaviour:
   m_sliderFloatVariable: {fileID: 11400000, guid: ceb0ca9439df8f34c91ec90e37968b43, type: 2}
   m_startValue: 0
   m_downPosition: {x: -6, y: 0, z: -1.5}
-  m_upPosition: {x: -6, y: 4, z: -1.5}
+  m_upPosition: {x: -6, y: 5, z: -1.5}
 --- !u!33 &1693445018
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -8120,7 +8337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d98a963dc62b2b45ac64a4732eb5792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_graph: {fileID: 11400000, guid: 4d5702b00baa4e8499cd4bc06ee75ef2, type: 2}
+  m_graph: {fileID: 11400000, guid: ed15b626da4f7d64d8607c8e58c52d5d, type: 2}
 --- !u!4 &1897920579
 Transform:
   m_ObjectHideFlags: 0

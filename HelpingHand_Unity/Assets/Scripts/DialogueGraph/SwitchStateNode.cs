@@ -31,6 +31,10 @@ public class SwitchStateNode : BaseNode
 
     public override object GetValue(NodePort port)
     {
+        if (port.fieldName == nameof(m_else))
+        {
+            return m_else;
+        }
         if (int.TryParse(port.fieldName[9..], out int index))
         {
             return m_states[index];

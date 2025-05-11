@@ -24,7 +24,7 @@ public abstract class BaseNode : SerializableNode
     
     public override object GetValue(NodePort port)
     {
-        return null;
+        return new DialogueFlow() { active = true };
     }
 
     public async UniTask Execute(GraphRunnerHandler handler)

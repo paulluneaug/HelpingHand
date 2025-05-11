@@ -64,6 +64,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-8770305891520206194
@@ -158,7 +162,12 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: "Continue le flow vers le premier dialogue de la s\xE9quence qui
     n'a pas \xE9t\xE9 lu"
+  m_in:
+    active: 0
   m_sequence: []
+  m_else:
+    active: 0
+  m_loop: 0
 --- !u!114 &-7850895734784482816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +181,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1304, y: -8}
+  position: {x: -1656, y: 24}
   folded: 0
   ports:
     keys:
@@ -214,6 +223,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-7799501931999962399
@@ -308,7 +321,12 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: "Continue le flow vers le premier dialogue de la s\xE9quence qui
     n'a pas \xE9t\xE9 lu"
+  m_in:
+    active: 0
   m_sequence: []
+  m_else:
+    active: 0
+  m_loop: 0
 --- !u!114 &-7672357437324049914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +382,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Rien du tout ? Vraiment ?  R\xE9fl\xE9chis bien..."
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: 9be08385d41b4fd45b53f3a7bb14b9b3, type: 2}
@@ -380,7 +402,7 @@ MonoBehaviour:
   m_Name: Puppet Walk
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1656, y: 408}
+  position: {x: -2008, y: 440}
   folded: 0
   ports:
     keys:
@@ -418,6 +440,10 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_description: 
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_duration: 4
   m_waitForCompletion: 1
 --- !u!114 &-3722951399506936176
@@ -475,6 +501,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Je ne suis pas s\xFBr que c'est ce que j'avais en t\xEAte, il n'y avait
     pas autre chose ?"
   m_multipleReads: 0
@@ -492,7 +522,7 @@ MonoBehaviour:
   m_Name: Dialogue_Armory_Narra_2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1032, y: -8}
+  position: {x: -1384, y: 24}
   folded: 0
   ports:
     keys:
@@ -517,7 +547,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -1274965388831141403}
+        node: {fileID: 3214796737684595552}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -534,6 +564,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: Choisis son armure maintenant
   m_multipleReads: 0
   m_audioEvent: {fileID: 0}
@@ -573,7 +607,7 @@ MonoBehaviour:
         node: {fileID: -1069840322984133600}
         reroutePoints: []
       - fieldName: m_out
-        node: {fileID: -1788002020077412541}
+        node: {fileID: 3214796737684595552}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -644,10 +678,14 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_description: "Continue le flow vers tous les noeuds dont l'\xE9tat est set"
+  m_in:
+    active: 0
   m_states:
   - {fileID: 11400000, guid: 64ead123a1e29d24ebc7c3ce4c82ac6d, type: 2}
   - {fileID: 11400000, guid: 41aace46940aa894d9c58de2944cf6d7, type: 2}
   - {fileID: 11400000, guid: e7cea0d005c7caf41a54faa86e36a61c, type: 2}
+  m_else:
+    active: 0
 --- !u!114 &-1069840322984133600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,6 +744,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-346294778292197372
@@ -763,6 +805,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Tr\xE8s bien, la tunique, si c'est ce que tu souhaites..."
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: ace1571cfc51edb4989c1165ed1b55b3, type: 2}
@@ -800,6 +846,7 @@ MonoBehaviour:
   - {fileID: -4696318213191538540}
   - {fileID: -1788002020077412541}
   - {fileID: 8626516062270387273}
+  - {fileID: 3214796737684595552}
 --- !u!114 &342221319130998567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +902,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Tu es VRAIMENT s\xFBr de lui laisser le carton ?"
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: c0b40e103e4e07d40a4d5bc1bddcfab9, type: 2}
@@ -871,7 +922,7 @@ MonoBehaviour:
   m_Name: Dialogue_Armory_Narra_1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1656, y: -8}
+  position: {x: -2008, y: 24}
   folded: 0
   ports:
     keys:
@@ -913,6 +964,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "\u201CLe h\xE9ros alla \xE0 l\u2019armurerie pour enfiler son armure...\u201D"
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: 2a1375c4985edd44a9cccbf3bc752858, type: 2}
@@ -968,6 +1023,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Passons \xE0 la suite... [Fin Armurerie]"
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: 9180d7e3384f39a479459691b4e6b436, type: 2}
@@ -1030,6 +1089,71 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
+  m_waitTime: 2
+  m_unscaled: 0
+--- !u!114 &3214796737684595552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -976.2493, y: 25.949116}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 3214796737684595552}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -1788002020077412541}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 3214796737684595552}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -1274965388831141403}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &4932462197537384300
@@ -1088,6 +1212,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: Parfait !
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: f07aefa84300cc54c909521f063a4584, type: 2}
@@ -1146,6 +1274,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "Tr\xE8s bien, le carton, si c'est ce que tu d\xE9cides..."
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: d7a669264443c6c4e8892bf3d51914e0, type: 2}
@@ -1162,7 +1294,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2168, y: -8}
+  position: {x: -2520, y: 24}
   folded: 0
   ports:
     keys:
@@ -1190,6 +1322,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_description: Start the graph here
+  m_out:
+    active: 0
 --- !u!114 &6539813015861515371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,6 +1379,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_content: "La tunique ne le prot\xE8gera pas de grand chose..."
   m_multipleReads: 0
   m_audioEvent: {fileID: 11400000, guid: bba3856bb8523064fa430c9278fb4310, type: 2}
@@ -1261,7 +1399,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1912, y: -8}
+  position: {x: -2264, y: 24}
   folded: 0
   ports:
     keys:
@@ -1306,6 +1444,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &8626516062270387273
@@ -1359,5 +1501,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_description: 
+  m_in:
+    active: 0
+  m_out:
+    active: 0
   m_duration: 10
   m_waitForCompletion: 1

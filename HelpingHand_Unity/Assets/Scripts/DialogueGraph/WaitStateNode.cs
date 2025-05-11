@@ -27,13 +27,12 @@ public class WaitStateNode : InterruptableNode
     [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
-    private TimeoutController m_timeoutController;
-
+    private CancellationTokenSource m_timeoutSource;
+    
     public override void Initialize()
     {
-        m_timeoutController = new TimeoutController();
     }
-
+    
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
         DebugLog($"Waiting for state {m_state.name}");
@@ -43,9 +42,12 @@ public class WaitStateNode : InterruptableNode
         if (m_doesTimeout)
         {
             DebugLog($"With timeout ({m_timeout} seconds)");
-            m_timeoutController.Reset();
-            CancellationToken timeoutToken = m_timeoutController.Timeout(TimeSpan.FromSeconds(m_timeout));
-            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, timeoutToken).Token;
+            
+            m_timeoutSource?.Dispose();
+            m_timeoutSource = new ();
+            m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+            CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
+            cancellationToken = linkedTokenSource.Token;
         }
         
         UniTask task = UniTask.WaitUntil(() => m_state.IsSet, PlayerLoopTiming.Update, cancellationToken);
@@ -54,7 +56,7 @@ public class WaitStateNode : InterruptableNode
         {
             DebugLog($"Wait interrupted");
 
-            if (!m_timeoutController.IsTimeout())
+            if (!m_timeoutSource.IsCancellationRequested)
             {
                 DebugLog($"Paused/stopped");
                 // The graph is being paused => We have to wait its reactivation
@@ -62,10 +64,9 @@ public class WaitStateNode : InterruptableNode
             }
         }
 
-        if (m_timeoutController.IsTimeout())
+        if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait timeout");
-            handler.ResetTimeout();
             await ContinueFlow(handler, GetOutputPort(nameof(m_timeoutOut)));
         }
         else
