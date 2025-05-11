@@ -54,14 +54,18 @@ public class VirtualToggle : VirtualInput<bool>
         if (m_transitionTimer.Update(Time.deltaTime))
         {
             m_transitionTimer.Stop();
+            ToggleStateParameters targetToggleParameters = GetToggleParameters(m_value);
+            m_handle.position = targetToggleParameters.TogglePosition.position;
+            m_background.color = targetToggleParameters.BackgroundColor;
             return;
         }
 
         ToggleStateParameters currentToggleParameters = GetToggleParameters(m_value);
         ToggleStateParameters otherToggleParameters = GetToggleParameters(!m_value);
 
-        m_handle.position = Vector3.Lerp(otherToggleParameters.TogglePosition.position, currentToggleParameters.TogglePosition.position, Easings.Ease(m_transitionTimer.Progress, m_transitionEasing));
-        m_background.color = Color.Lerp(otherToggleParameters.BackgroundColor, currentToggleParameters.BackgroundColor, Easings.Ease(m_transitionTimer.Progress, m_transitionEasing));
+        float lerpFactor = Easings.Ease(m_transitionTimer.Progress, m_transitionEasing);
+        m_handle.position = Vector3.Lerp(otherToggleParameters.TogglePosition.position, currentToggleParameters.TogglePosition.position, lerpFactor);
+        m_background.color = Color.Lerp(otherToggleParameters.BackgroundColor, currentToggleParameters.BackgroundColor, lerpFactor);
     }
 
     private void OnDestroy()
@@ -69,11 +73,21 @@ public class VirtualToggle : VirtualInput<bool>
         m_button.onClick.RemoveListener(OnButtonClicked);
     }
 
+    private void OnValidate()
+    {
+        if (m_background == null)
+        {
+            return;
+        }
+
+        m_background.color = m_toggleDownParameters.BackgroundColor;
+    }
+
     private void OnButtonClicked()
     {
         m_value = !m_value;
 
-        OnValueChanged.Invoke(m_value);
+        OnValueChanged?.Invoke(m_value);
 
         if (m_transitionTimer.IsRunning)
         {
