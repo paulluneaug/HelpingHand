@@ -12,6 +12,8 @@ public class UISlider : MonoBehaviour
     public event Action<float> OnValueChanged;
     public event Action<bool> OnPointerDown;
 
+    public float Value => m_slider.value;
+
     [SerializeField] private Slider m_slider;
     [SerializeField] private PointerEventDispatcher m_pointerEventDispatcher;
     [SerializeField, Disable] private bool m_pointerDown;

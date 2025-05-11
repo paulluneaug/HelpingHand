@@ -1,5 +1,3 @@
-using System;
-
 using UnityEngine;
 
 public class CurtainsController : SingleSliderInteractiveObject
@@ -41,10 +39,10 @@ public class CurtainsController : SingleSliderInteractiveObject
     {
         base.Start();
         m_masterSlider.SetValueWithoutNotify(m_startValue);
-        m_masterSlider.OnSliderValueChanged += OnSliderValueChanged;
-        OnSliderValueChanged(m_startValue);
-        // m_sliderFloatVariable.AddListener(OnSliderValueChanged);
+        // m_masterSlider.OnSliderValueChanged += OnSliderValueChanged;
         // OnSliderValueChanged(m_startValue);
+        m_sliderFloatVariable.AddListener(OnSliderValueChanged);
+        OnSliderValueChanged(m_startValue);
     }
 
     private new void OnSliderValueChanged(float value)

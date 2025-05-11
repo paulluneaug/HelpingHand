@@ -1,18 +1,21 @@
-using Events;
-
 using UnityEngine;
 
 [RequireComponent(typeof(UISlider))]
 public class UISliderEventInvoker : MonoBehaviour
 {
     [SerializeField]
-    private FloatGameEvent m_event;
+    private FloatVariable m_floatVariable;
     
     private UISlider m_uiSlider;
     
     private void Awake()
     {
         m_uiSlider = GetComponent<UISlider>();
+    }
+
+    private void Start()
+    {
+        m_floatVariable.SetValueWithoutNotify(m_uiSlider.Value);
     }
 
     private void OnEnable()
@@ -27,6 +30,6 @@ public class UISliderEventInvoker : MonoBehaviour
 
     private void OnSliderValueChanged(float value)
     {
-        m_event.Raise(value);
+        m_floatVariable.Value = value;
     }
 }
