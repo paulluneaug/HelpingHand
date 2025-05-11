@@ -2,7 +2,9 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-public class PuppetWalk : MonoBehaviour
+using UnityUtility.Singletons;
+
+public class PuppetWalk : MonoBehaviourSingleton<PuppetWalk>
 {
     private static readonly int s_isWalking = Animator.StringToHash("IsWalking");
     
@@ -14,7 +16,7 @@ public class PuppetWalk : MonoBehaviour
 
     private bool IsWalking => m_animator.GetBool(s_isWalking);
 
-    private void Awake()
+    public override void Initialize()
     {
         StopWalk();
     }
@@ -39,7 +41,7 @@ public class PuppetWalk : MonoBehaviour
     [DisableIf("IsWalking")]
     [HorizontalGroup("Split", 0.5f)]
     [Button("Start walk", ButtonSizes.Small)]
-    private void StartWalk()
+    public void StartWalk()
     {
         m_animator.SetBool(s_isWalking, true);
     }
@@ -47,7 +49,7 @@ public class PuppetWalk : MonoBehaviour
     [EnableIf("IsWalking")]
     [HorizontalGroup("Split", 0.5f)]
     [Button("Stop walk", ButtonSizes.Small)]
-    private void StopWalk()
+    public void StopWalk()
     {
         m_animator.SetBool(s_isWalking, false);
     }
