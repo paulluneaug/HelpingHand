@@ -9,8 +9,6 @@ using UnityUtility.Timer;
 
 public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUpHandler
 {
-    public override bool Value => m_value;
-    public override event Action<bool> OnValueChanged;
 
     [SerializeField] private Color m_buttonReleasedColor;
     [SerializeField] private Color m_buttonPressedColor;
@@ -19,7 +17,6 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
     [SerializeField] private float m_transitionTime;
     [SerializeField] private Easings.EasingFunction m_transitionEasing;
 
-    [NonSerialized] private bool m_value;
     [NonSerialized] private Timer m_transitionTimer;
 
     private void Awake()
