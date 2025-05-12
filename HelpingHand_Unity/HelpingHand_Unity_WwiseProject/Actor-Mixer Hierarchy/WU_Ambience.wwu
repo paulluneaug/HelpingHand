@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" SchemaVersion="123">
+	<AudioObjects>
+		<WorkUnit Name="WU_Ambience" ID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<ActorMixer Name="Theater_Ambience" ID="{58A84C12-8B0C-43ED-9978-83A2FAE42498}" ShortID="850992418">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="Room_Machinist" ID="{B3D58F8C-A0D5-460C-8095-232DC8ADC1F3}" ShortID="92024911">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="AmbBus" ID="{1808A7C8-6E5F-4188-ADEF-CF7E64F64B42}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Room_Machinist_Blend" ID="{09DCF989-CD2C-49EF-B420-9F871B7D85A5}" ShortID="856480190">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Roomtone" ID="{2B42474F-E99A-41FD-AC6A-00D6E538CAA2}" ShortID="878024672">
+											<PropertyList>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="5 - Room tone Ventilation noise with light hum" ID="{1E1B25A5-9934-4C11-91E2-DD04C7B534E7}" ShortID="1048571961">
+													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="5 - Room tone Ventilation noise with light hum" ID="{7ED9C9A3-83EE-443B-A7EA-34AA0766437E}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="2050.815"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.327500579453247"/>
+																<Property Name="LoopEnd" Type="Real64" Value="24.4617738281422"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>5 - Room tone Ventilation noise with light hum .wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="302202432"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="5 - Room tone Ventilation noise with light hum" ID="{7ED9C9A3-83EE-443B-A7EA-34AA0766437E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Playlist">
+													<Reference>
+														<ObjectRef Name="5 - Room tone Ventilation noise with light hum" ID="{1E1B25A5-9934-4C11-91E2-DD04C7B534E7}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Theater" ID="{A17519E3-3B61-4820-97CA-C63E9164356A}" ShortID="738912019">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Theater_Blend" ID="{651FE094-CC41-4865-BD59-1EE796400970}" ShortID="949782691">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018" ID="{659E9CB9-82E9-4636-8120-50B99A138C0B}" ShortID="256290330">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>35</Value>
+													</ValueList>
+												</Property>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-16</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018" ID="{DBF5C7A1-9830-41EC-89AF-32FD6FA4A677}">
+													<Language>SFX</Language>
+													<AudioFile>Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="871650396"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018 1" ID="{124F7933-B52B-4618-B563-46EED2AA83E6}">
+													<PropertyList>
+														<Property Name="CrossfadeDuration" Type="Real64" Value="4043.397"/>
+														<Property Name="LoopBegin" Type="Real64" Value="4.73682267329787"/>
+														<Property Name="LoopEnd" Type="Real64" Value="23.8460162771346"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.844540356666904"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018 1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="345131309"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ambience, Industrial, Interior Room Tone, Huge Warehouse, Silence SND118018 1" ID="{124F7933-B52B-4618-B563-46EED2AA83E6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}" SchemaVersion="123">
+	<AudioObjects>
+		<WorkUnit Name="WU_UI" ID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="16"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<ActorMixer Name="Button" ID="{988E61BD-2926-440B-A30C-44382D7A608F}" ShortID="19488046">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Fader_UI_Mono" ID="{08E25ABF-48DC-4828-871A-284F3643F542}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="UIBus" ID="{CA20ED2A-D11E-4DFF-AE57-2E3114B13AA9}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="PointerEnter" ID="{2219F68A-51A6-473B-B478-E2504AEA6C04}" ShortID="234703393">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="PointerDown" ID="{00F46CA2-CC54-46A1-8E87-03A2C0FA234C}" ShortID="1048510728">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-9</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S02" ID="{B714121E-AA4D-40A6-8AC4-29D438C822B8}" ShortID="794746905">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S02" ID="{4AE1A75B-423C-45FB-90A7-0C0734FED551}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.00912603632134585"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.00912603632134585"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="461120749"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S02" ID="{4AE1A75B-423C-45FB-90A7-0C0734FED551}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S00" ID="{5A6638D6-87F7-4A3E-800E-3B349089F4E1}" ShortID="325259207">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S00" ID="{9A9D6890-5ED0-4F6C-9E13-D870C0AB4697}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.0123755182348081"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0123755182348081"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S00.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="127350845"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S00" ID="{9A9D6890-5ED0-4F6C-9E13-D870C0AB4697}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S04" ID="{602CEB3D-435D-4C3D-BAA5-91407CE2D8F8}" ShortID="1051334999">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S04" ID="{B135E6A1-F4AB-47B0-8279-D603E80826AD}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0278776941904381"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="131313360"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S04" ID="{B135E6A1-F4AB-47B0-8279-D603E80826AD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="PointerUp" ID="{0CAB2ADD-F189-46B6-93A5-1481A5F78720}" ShortID="930512613">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S01" ID="{F2FC2536-B622-4C9F-B803-4130C65A0666}" ShortID="382364904">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S01" ID="{4FDE7A72-76C9-4928-9167-02FE20519297}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.0161926306005734"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0161926306005734"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="922935026"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S01" ID="{4FDE7A72-76C9-4928-9167-02FE20519297}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S03" ID="{DDC3BA94-0382-475D-B4B2-33B33A42ED22}" ShortID="111520526">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S03" ID="{9C6C48B0-BDC7-499B-9FE9-73F917DCB36E}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.0359970983581163"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0359970983581163"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="423807413"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S03" ID="{9C6C48B0-BDC7-499B-9FE9-73F917DCB36E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S05" ID="{86096CB4-8A3B-4CDA-9F07-5F177DD4CB45}" ShortID="109276321">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S05" ID="{13EDF473-9A9E-4440-82B8-2125B145CDD3}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0277772587515525"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S05.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="317297848"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Miniature Button, Multiple Pushes SND6560 S05" ID="{13EDF473-9A9E-4440-82B8-2125B145CDD3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="PointerExit" ID="{2F743D38-4CD8-408B-BCE1-668644AA7B05}" ShortID="73180749">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Fader" ID="{41637079-D483-4B54-9CD8-8FA7B35A31A7}" ShortID="675507675">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Fader_UI_Mono" ID="{08E25ABF-48DC-4828-871A-284F3643F542}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="UIBus" ID="{CA20ED2A-D11E-4DFF-AE57-2E3114B13AA9}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<BlendContainer Name="Fader_Loop" ID="{4BC55CE1-0C0B-4E83-BE3A-5258D7664E46}" ShortID="246613949">
+							<PropertyList>
+								<Property Name="OverrideConversion" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Mono" ID="{378FFCEF-9BE3-4D72-A9AC-3C240D18937C}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Switch, Vintage Fader Slider SND6562 - Pitch 98_7" ID="{CA3EECD5-147A-46E6-8518-C63E20CFA0C7}" ShortID="536783408">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Vintage Fader Slider SND6562" ID="{D0CDC2D1-8DA0-41BD-8612-2984B601F1F6}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="270.62"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0.181553680911537"/>
+												<Property Name="LoopEnd" Type="Real64" Value="0.571499392134427"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Vintage Fader Slider SND6562.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="57605471"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Vintage Fader Slider SND6562" ID="{D0CDC2D1-8DA0-41BD-8612-2984B601F1F6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<BlendTrackList>
+								<BlendTrack Name="Fader" ID="{3E39DA8E-7F63-45BD-87D5-6E0771B27ABD}" ShortID="250892592">
+									<PropertyList>
+										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="LayerCrossFadeControlInput">
+											<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{E3E39287-7E73-4165-A73E-64FCDFF8A084}" ShortID="1007280920">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{A896A30D-DF7A-4694-AEB7-00FA82F291C0}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</BlendTrack>
+							</BlendTrackList>
+						</BlendContainer>
+						<RandomSequenceContainer Name="Fader_MaxValue" ID="{306A7801-18D3-4E85-9EC5-CEF8DFA631C1}" ShortID="55258964">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664" ID="{E531D578-1255-4830-9388-480A00CA3FB9}" ShortID="672420067">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664" ID="{DC01ADD0-6DF2-4D59-872B-FCB48FCD4C7C}">
+											<Language>SFX</Language>
+											<AudioFile>Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="541202909"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664 1" ID="{3DF38C4E-5073-411B-BAFE-D6D8465B7099}">
+											<Language>SFX</Language>
+											<AudioFile>Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="461073492"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664 2" ID="{E6AE4544-A9CA-47CF-82B5-9525AF4A537F}">
+											<Language>SFX</Language>
+											<AudioFile>Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664 2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="588030806"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664 3" ID="{13623564-9741-4EED-B0BE-B40DE98183EF}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.134730981185663"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664 3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="645988148"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Guns, Mechanism, Metal Bolt, Slide, Small, Close 02 SND130664 3" ID="{13623564-9741-4EED-B0BE-B40DE98183EF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Fader_MinValue" ID="{4B950FB1-8D41-446F-9151-5C303466371F}" ShortID="956068669">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656" ID="{D9FE6917-C13C-41B4-9D55-F2051C1921E3}" ShortID="915657346">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656" ID="{6138F543-BA57-4470-A2B5-C3CA790E6CDD}">
+											<Language>SFX</Language>
+											<AudioFile>Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="891005305"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656 1" ID="{7F32E010-FE9A-44DD-8080-BBA3D9D6BB70}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.0391990362458732"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0353471078286486"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="535587180"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656 3" ID="{F3BB1FC9-B3FB-487C-B770-4140C6FA50A7}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.204208333333333"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656 3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="14965161"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Guns, Mechanism, Metal Bolt, Slide, Loose, Close 02 SND130656 3" ID="{F3BB1FC9-B3FB-487C-B770-4140C6FA50A7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Fader_Release" ID="{4BB9D3B8-A0A3-4B6E-9CEF-9542954BA9DE}" ShortID="418919609">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Toggle" ID="{EB5034EE-C863-4886-8521-77A17A2BD444}" ShortID="483724787">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Fader_UI_Mono" ID="{08E25ABF-48DC-4828-871A-284F3643F542}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="UIBus" ID="{CA20ED2A-D11E-4DFF-AE57-2E3114B13AA9}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="UnToggle" ID="{89046D4C-492B-49C0-8A38-EB0509C09C39}" ShortID="99311709">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-11</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-450</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Switch, Toggle, Small 01 SND6565 S00" ID="{B912BEB5-FE71-4E45-94BA-FF44B33D0AB5}" ShortID="359876983">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S00" ID="{F4598B1B-39AF-4C49-A4F1-150E5313D556}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 01 SND6565 S00.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="307450395"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S00" ID="{F4598B1B-39AF-4C49-A4F1-150E5313D556}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 01 SND6565 S01" ID="{2A3FF8E1-8905-41CA-92B8-E5302767A716}" ShortID="968398675">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S01" ID="{EBCDFA29-DDF9-4C94-A344-DA11CE3D593F}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 01 SND6565 S01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1000163568"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S01" ID="{EBCDFA29-DDF9-4C94-A344-DA11CE3D593F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 01 SND6565 S02" ID="{97CC144F-38ED-4F81-A27D-708B1164EDAF}" ShortID="86022888">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S02" ID="{053D7ED3-9198-488F-9616-BDDE5EA8893B}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 01 SND6565 S02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="973487296"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S02" ID="{053D7ED3-9198-488F-9616-BDDE5EA8893B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 01 SND6565 S03" ID="{1EA96BFF-8351-48BC-B763-C486FB531833}" ShortID="78094104">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S03" ID="{9BBE4744-9FB3-4DFD-A091-56B1ECF4E716}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 01 SND6565 S03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="965545296"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S03" ID="{9BBE4744-9FB3-4DFD-A091-56B1ECF4E716}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 01 SND6565 S04" ID="{29B403D8-E433-4C2D-9D8A-84C216E0C0D6}" ShortID="667315213">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S04" ID="{164D86AE-4DAF-4BE2-923F-4761C10DE9CB}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 01 SND6565 S04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="205913180"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S04" ID="{164D86AE-4DAF-4BE2-923F-4761C10DE9CB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 01 SND6565 S05" ID="{9B1600C4-9890-4B88-9B8B-B85A049DEEDA}" ShortID="767263546">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S05" ID="{9A49C4C1-42D5-4C3F-A658-36986696B51C}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 01 SND6565 S05.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="538060379"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 01 SND6565 S05" ID="{9A49C4C1-42D5-4C3F-A658-36986696B51C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Toggle" ID="{AF0B84A0-8212-4214-BD3E-EBE0268AAFCB}" ShortID="727535797">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-11</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Switch, Toggle, Small 02 SND6568 S00" ID="{BA57535D-46CC-412F-BD70-6515C07FE6E2}" ShortID="446987308">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S00" ID="{E43D0CDB-1145-4161-843F-EF003898EF12}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.0238464445023987"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0238464445023987"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 02 SND6568 S00.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="934718320"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S00" ID="{E43D0CDB-1145-4161-843F-EF003898EF12}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 02 SND6568 S01" ID="{E7BE242E-0D86-48BB-9F42-A8D21F3FDE69}" ShortID="549170968">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S01" ID="{FA30FD19-DA17-4314-9578-7114DBDBB39C}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 02 SND6568 S01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="608602572"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S01" ID="{FA30FD19-DA17-4314-9578-7114DBDBB39C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 02 SND6568 S02" ID="{8DB8BF33-B344-4CC1-AEAA-9ED5ABE2072D}" ShortID="112793978">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S02" ID="{F7A3FD66-0EF9-4264-AE55-577DEA0BDEF6}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 02 SND6568 S02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="983558866"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S02" ID="{F7A3FD66-0EF9-4264-AE55-577DEA0BDEF6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 02 SND6568 S03" ID="{A554F235-63EB-478F-8AAE-DDCFF02F438D}" ShortID="835530919">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S03" ID="{E2E4B724-5FD0-484D-B7D8-90811D962384}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 02 SND6568 S03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="388955115"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S03" ID="{E2E4B724-5FD0-484D-B7D8-90811D962384}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 02 SND6568 S04" ID="{8E482CF7-EC81-4BE3-962A-7070CCA00EB2}" ShortID="59988356">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S04" ID="{F1EBB3B3-8FFF-4174-AC44-F97A5770ECFA}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 02 SND6568 S04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="872029570"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S04" ID="{F1EBB3B3-8FFF-4174-AC44-F97A5770ECFA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Toggle, Small 02 SND6568 S05" ID="{57725069-0165-486C-B691-F62DA3739519}" ShortID="138015181">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S05" ID="{D1A5D778-E366-4F0D-871A-DD258CBF4916}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Toggle, Small 02 SND6568 S05.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="579066258"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Toggle, Small 02 SND6568 S05" ID="{D1A5D778-E366-4F0D-871A-DD258CBF4916}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Typewriter" ID="{66A389FD-60EA-4BB2-AF9E-5A23771F645D}" ShortID="580728540">
+					<PropertyList>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="Typewriter_Random" ID="{58C14F4A-6EF3-4452-82CC-8177D20E10FF}" ShortID="1048683266">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>40</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-810</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{7E2AA2FA-0E9E-471F-B58F-E2087ED1DF7A}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="325"/>
+													<Property Name="Min" Type="Real64" Value="-300"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S00 - Pitch 436_0" ID="{374D9FC5-9594-42EB-A329-907718C9DB68}" ShortID="846686079">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S00 - Pitch 436_0" ID="{A2F3BF85-8832-44C8-87A8-93E2D9FD2633}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0440525261709345"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0440525261709345"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S00 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="947895477"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S00 - Pitch 436_0" ID="{A2F3BF85-8832-44C8-87A8-93E2D9FD2633}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S01 - Pitch 436_0" ID="{06077F03-C646-4F01-A25A-441AA53A43E8}" ShortID="651980976">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S01 - Pitch 436_0" ID="{D834B97B-42F5-4BF2-8602-8C9175533072}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.029820172460518"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.029820172460518"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S01 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="322811193"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S01 - Pitch 436_0" ID="{D834B97B-42F5-4BF2-8602-8C9175533072}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S02 - Pitch 436_0" ID="{704F6B58-03FF-4B34-BF7C-98821F59B003}" ShortID="802023160">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S02 - Pitch 436_0" ID="{8B58C73C-291E-470E-92A0-A2AC4E82124F}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0332088281058553"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0332088281058553"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S02 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="390594153"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S02 - Pitch 436_0" ID="{8B58C73C-291E-470E-92A0-A2AC4E82124F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S03 - Pitch 436_0" ID="{584F023B-1B59-4458-83BD-CDE790834B43}" ShortID="790457355">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S03 - Pitch 436_0" ID="{6B59ABF8-96E6-41D0-B8A0-E4EA2707FB00}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.031175634718653"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.031175634718653"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S03 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="697524676"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S03 - Pitch 436_0" ID="{6B59ABF8-96E6-41D0-B8A0-E4EA2707FB00}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S04 - Pitch 436_0" ID="{C82CFEA7-F81E-4817-B768-B417C55D1912}" ShortID="168276534">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S04 - Pitch 436_0" ID="{581FFF91-06DD-4011-AFAD-21A347EBA964}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0257537856861134"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0257537856861134"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S04 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="580721659"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S04 - Pitch 436_0" ID="{581FFF91-06DD-4011-AFAD-21A347EBA964}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S05 - Pitch 436_0" ID="{876E7D34-BF84-4A7B-ACF4-A1F582DBB4F1}" ShortID="967648465">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S05 - Pitch 436_0" ID="{45CF89FE-3C17-46E3-950A-A51DF5D12997}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0230428611698436"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0230428611698436"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S05 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="677273596"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S05 - Pitch 436_0" ID="{45CF89FE-3C17-46E3-950A-A51DF5D12997}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S06 - Pitch 436_0" ID="{343FDCC9-9DB5-48F9-BA29-DDBCA5806FAF}" ShortID="1019763181">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S06 - Pitch 436_0" ID="{6B16F667-530F-455A-AB08-A28BA8407CA2}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0230428611698435"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0230428611698435"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S06 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="411611544"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S06 - Pitch 436_0" ID="{6B16F667-530F-455A-AB08-A28BA8407CA2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S07 - Pitch 436_0" ID="{1B6BDCAB-7EAB-4E13-883D-918A2D863A86}" ShortID="932340832">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S07 - Pitch 436_0" ID="{535DB1B3-C7EF-446E-854D-C26C896EDEE6}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0284647102023831"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0284647102023831"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S07 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="12762304"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S07 - Pitch 436_0" ID="{535DB1B3-C7EF-446E-854D-C26C896EDEE6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S08 - Pitch 436_0" ID="{27C6C68F-46CC-436E-BEC6-F6D99D822691}" ShortID="906423951">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S08 - Pitch 436_0" ID="{B13F8215-35D3-4BE2-82E8-0DDF7955A1D2}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0230428611698436"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0230428611698436"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S08 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="18916859"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S08 - Pitch 436_0" ID="{B13F8215-35D3-4BE2-82E8-0DDF7955A1D2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S09 - Pitch 436_0" ID="{99D3B0B4-EB68-4BB7-B391-31A83ADB33FE}" ShortID="971015848">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S09 - Pitch 436_0" ID="{95D930BF-4158-47AA-96C5-8E87BA30FEDF}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0312985986144982"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0312985986144982"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S09 - Pitch 436_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="551636877"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Small, Ticking, Close, Metallic 01 SND105133 S09 - Pitch 436_0" ID="{95D930BF-4158-47AA-96C5-8E87BA30FEDF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{F9A0CAB6-D2BB-4DDF-91DA-3C6761B262D3}" ShortID="80516605"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{9AA51FD9-E88D-4E24-8625-99AFB4EF15D3}" ShortID="631608586">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Flanger (Custom)" ID="{D245E273-8C91-420F-BDE3-38D9E2AB26E0}" ShortID="595773392" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
+																<PropertyList>
+																	<Property Name="DelayTime" Type="Real32" Value="54.4"/>
+																	<Property Name="DryLevel" Type="Real32" Value="0.79"/>
+																	<Property Name="FeedBackLevel" Type="Real32" Value="0.1"/>
+																	<Property Name="FeedForwardLevel" Type="Real32" Value="0.6"/>
+																	<Property Name="ModDepth" Type="Real32" Value="70.8"/>
+																	<Property Name="ModFrequency" Type="Real32" Value="1.66"/>
+																	<Property Name="ModWaveform" Type="int32" Value="3"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

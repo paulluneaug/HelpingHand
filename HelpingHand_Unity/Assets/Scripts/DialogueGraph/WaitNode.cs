@@ -1,0 +1,46 @@
+using Cysharp.Threading.Tasks;
+
+using Sirenix.OdinInspector;
+
+using UnityEngine;
+
+using XNode;
+
+public class WaitNode : InterruptableNode
+{
+    [Input]
+    public DialogueFlow m_in;
+
+    [Output]
+    public DialogueFlow m_out;
+
+    [SerializeField][LabelWidth(100)]
+    private float m_waitTime;
+
+    [SerializeField][LabelWidth(100)]
+    private bool m_unscaled = false;
+
+    protected override void Init()
+    {
+        base.Init();
+        m_description = "Wait for n seconds before resuming the flow. Loops back if interrupted";
+    }
+
+    public override void Initialize()
+    {
+    }
+
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    {
+        DebugLog($"Waiting for {m_waitTime} seconds");
+        if (await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow())
+        {
+            DebugLog($"Wait interrupted");
+            // The graph is being paused => We have to wait its reactivation
+            await Execute(handler);
+        }
+        DebugLog($"Wait done");
+
+        await ContinueFlow(handler);
+    }
+}
