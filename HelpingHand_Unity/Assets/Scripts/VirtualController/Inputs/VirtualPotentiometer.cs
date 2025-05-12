@@ -15,10 +15,6 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         CounterClockwise,
     }
 
-    public override float Value => m_value;
-
-    public override event Action<float> OnValueChanged;
-
 
     [SerializeField] private float m_originAngle;
     [SerializeField] private float m_range;
@@ -26,7 +22,6 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
 
     [SerializeField] private RectTransform m_knob;
 
-    [NonSerialized] private float m_value;
     [NonSerialized] private float m_angle;
 
     [NonSerialized] private RectTransform m_rectTransform;
@@ -42,7 +37,7 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
 
         m_knobRange = GetKnobRange();
         m_angle = m_knobRange.x;
-        m_value = ComputeValue();
+        SetValueWithoutNotify(ComputeValue());
 
         UpdateKnobPosition();
 
@@ -69,10 +64,9 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         UpdateKnobPosition();
         float newValue = ComputeValue();
 
-        if (newValue != m_value)
+        if (newValue != Value)
         {
-            m_value = newValue;
-            OnValueChanged?.Invoke(m_value);
+            SetValue(newValue);
         }
 
         m_dragLastPosition = currentLocalPosition;

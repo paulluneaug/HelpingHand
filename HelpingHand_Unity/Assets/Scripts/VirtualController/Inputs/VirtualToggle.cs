@@ -16,10 +16,6 @@ public class VirtualToggle : VirtualInput<bool>
         public RectTransform TogglePosition;
     }
 
-    public override bool Value => m_value;
-
-    public override event Action<bool> OnValueChanged;
-
     [SerializeField] private Button m_button;
     [SerializeField] private Image m_background;
     [SerializeField] private RectTransform m_handle;
@@ -30,14 +26,14 @@ public class VirtualToggle : VirtualInput<bool>
     [SerializeField] private float m_transitionTime;
     [SerializeField] private Easings.EasingFunction m_transitionEasing;
 
-    [NonSerialized] private bool m_value;
     [NonSerialized] private Timer m_transitionTimer;
 
     private void Awake()
     {
-        m_value = false;
+        SetValueWithoutNotify(false);
+
         m_button.onClick.AddListener(OnButtonClicked);
-        ToggleStateParameters currentToggleParameters = GetToggleParameters(m_value);
+        ToggleStateParameters currentToggleParameters = GetToggleParameters(Value);
 
         m_handle.position = currentToggleParameters.TogglePosition.position;
         m_background.color = currentToggleParameters.BackgroundColor;
@@ -54,14 +50,14 @@ public class VirtualToggle : VirtualInput<bool>
         if (m_transitionTimer.Update(Time.deltaTime))
         {
             m_transitionTimer.Stop();
-            ToggleStateParameters targetToggleParameters = GetToggleParameters(m_value);
+            ToggleStateParameters targetToggleParameters = GetToggleParameters(Value);
             m_handle.position = targetToggleParameters.TogglePosition.position;
             m_background.color = targetToggleParameters.BackgroundColor;
             return;
         }
 
-        ToggleStateParameters currentToggleParameters = GetToggleParameters(m_value);
-        ToggleStateParameters otherToggleParameters = GetToggleParameters(!m_value);
+        ToggleStateParameters currentToggleParameters = GetToggleParameters(Value);
+        ToggleStateParameters otherToggleParameters = GetToggleParameters(!Value);
 
         float lerpFactor = Easings.Ease(m_transitionTimer.Progress, m_transitionEasing);
         m_handle.position = Vector3.Lerp(otherToggleParameters.TogglePosition.position, currentToggleParameters.TogglePosition.position, lerpFactor);
@@ -85,9 +81,7 @@ public class VirtualToggle : VirtualInput<bool>
 
     private void OnButtonClicked()
     {
-        m_value = !m_value;
-
-        OnValueChanged?.Invoke(m_value);
+        SetValue(!Value);
 
         if (m_transitionTimer.IsRunning)
         {

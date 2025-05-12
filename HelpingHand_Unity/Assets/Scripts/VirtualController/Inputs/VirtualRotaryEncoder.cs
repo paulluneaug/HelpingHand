@@ -8,18 +8,10 @@ using UnityUtility.Extensions;
 [RequireComponent(typeof(RectTransform))]
 public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDragHandler
 {
-    public override int Value => m_value;
-
-    /// <summary>
-    /// Argument : offset
-    /// </summary>
-    public override event Action<int> OnValueChanged;
-
     [SerializeField] private float m_stepCount;
 
     [SerializeField] private RectTransform m_knob;
 
-    [SerializeField] private int m_value;
     [NonSerialized] private float m_angle;
 
     [NonSerialized] private RectTransform m_rectTransform;
@@ -34,7 +26,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
         m_rectTransform = GetComponent<RectTransform>();
         m_step = 360.0f / m_stepCount;
 
-        m_value = 0;
+        SetValueWithoutNotify(0);
 
         UpdateKnobPosition();
 
@@ -57,8 +49,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
         {
             float snappedOffset = stepOffset * m_step;
 
-            m_value += stepOffset;
-            OnValueChanged?.Invoke(stepOffset);
+            SetValue(stepOffset);
 
             m_angle = m_dragLastAngle + snappedOffset;
 

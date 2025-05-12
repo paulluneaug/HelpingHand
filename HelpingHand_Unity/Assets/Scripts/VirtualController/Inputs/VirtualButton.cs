@@ -33,12 +33,12 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
         if (m_transitionTimer.Update(Time.deltaTime))
         {
             m_transitionTimer.Stop();
-            m_background.color = GetButtonColor(m_value);
+            m_background.color = GetButtonColor(Value);
             return;
         }
 
-        Color currentButtonColor = GetButtonColor(m_value);
-        Color otherButtonColor = GetButtonColor(!m_value);
+        Color currentButtonColor = GetButtonColor(Value);
+        Color otherButtonColor = GetButtonColor(!Value);
 
         float lerpFactor = Easings.Ease(m_transitionTimer.Progress, m_transitionEasing);
         m_background.color = Color.Lerp(otherButtonColor, currentButtonColor, lerpFactor);
@@ -56,14 +56,12 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        m_value = true;
-        OnButtonPressed();
+        OnButtonPressed(true);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        m_value = false;
-        OnButtonPressed();
+        OnButtonPressed(false);
     }
 
     private Color GetButtonColor(bool state)
@@ -71,9 +69,9 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
         return state ? m_buttonPressedColor : m_buttonReleasedColor;
     }
 
-    private void OnButtonPressed()
+    private void OnButtonPressed(bool buttonValue)
     {
-        OnValueChanged?.Invoke(m_value);
+        SetValue(buttonValue);
 
         if (m_transitionTimer.IsRunning)
         {

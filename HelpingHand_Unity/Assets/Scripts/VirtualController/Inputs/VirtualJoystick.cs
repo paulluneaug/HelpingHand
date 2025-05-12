@@ -1,13 +1,7 @@
-using System;
-
 using UnityEngine;
 
 public class VirtualJoystick : VirtualInput<Vector2>
 {
-    public override Vector2 Value => m_value;
-
-    public override event Action<Vector2> OnValueChanged;
-
     [SerializeField] private VirtualButton m_northButton;
     [SerializeField] private VirtualButton m_northEastButton;
     [SerializeField] private VirtualButton m_eastButton;
@@ -16,8 +10,6 @@ public class VirtualJoystick : VirtualInput<Vector2>
     [SerializeField] private VirtualButton m_southWestButton;
     [SerializeField] private VirtualButton m_westButton;
     [SerializeField] private VirtualButton m_northWestButton;
-
-    [NonSerialized] private Vector2 m_value;
 
     private void Update()
     {
@@ -31,10 +23,9 @@ public class VirtualJoystick : VirtualInput<Vector2>
             (m_westButton.Value ? Vector2.left : Vector2.zero) +
             (m_northWestButton.Value ? new Vector2(-1.0f, 1.0f) : Vector2.zero);
 
-        if (newValue != m_value)
+        if (newValue != Value)
         {
-            m_value = newValue;
-            OnValueChanged?.Invoke(newValue);
+            SetValue(newValue);
         }
     }
 

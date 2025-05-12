@@ -11,15 +11,25 @@ public abstract class VirtualInput<T> : MonoBehaviour, IVirtualInput
 
     [NonSerialized] private T m_value;
 
-    protected void ChangeValue(T newValue)
+    protected void SetValue(T newValue)
     {
         m_value = newValue;
-
-        OnValueChanged?.Invoke(newValue);
 
         if (m_linkedVariable != null)
         {
             m_linkedVariable.Value = newValue;
+        }
+
+        OnValueChanged?.Invoke(newValue);
+    }
+
+    protected virtual void SetValueWithoutNotify(T newValue)
+    {
+        m_value = newValue;
+
+        if (m_linkedVariable != null)
+        {
+            m_linkedVariable.SetValueWithoutNotify(newValue);
         }
     }
 }
