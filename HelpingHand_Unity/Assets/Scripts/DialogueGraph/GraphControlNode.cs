@@ -13,23 +13,31 @@ public class GraphControlNode : BaseNode
 {
     [Input]
     public DialogueFlow m_in;
-    
+
     [Output]
     public DialogueFlow m_out;
 
-    [Input(ShowBackingValue.Never)] [ShowInInspector]
+    [Input(ShowBackingValue.Never)]
+    [ShowInInspector]
     private GraphRunner m_graphRunnerIn;
 
-    [Output] [ShowInInspector]
+    [Output]
+    [ShowInInspector]
     private GraphRunner m_graphRunnerOut;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private SimpleGraph m_graph;
 
-    [SerializeField] [Space] [HideLabel] [EnumToggleButtons]
+    [SerializeField]
+    [Space]
+    [HideLabel]
+    [EnumToggleButtons]
     private GraphControlsEnum m_control;
 
-    [SerializeField] [LabelWidth(125)] [ShowIf("@m_control == GraphControlsEnum.Start")]
+    [SerializeField]
+    [LabelWidth(125)]
+    [ShowIf("@m_control == GraphControlsEnum.Start")]
     private bool m_waitForCompletion;
 
     private enum GraphControlsEnum
@@ -59,7 +67,7 @@ public class GraphControlNode : BaseNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
         m_graphRunnerOut = GetInputPort(nameof(m_graphRunnerIn)).GetInputValue<GraphRunner>();
-        
+
         switch (m_control)
         {
             case GraphControlsEnum.Start:
@@ -77,7 +85,7 @@ public class GraphControlNode : BaseNode
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        
+
         await ContinueFlow(handler);
     }
 
@@ -108,7 +116,7 @@ public class GraphControlNode : BaseNode
     {
         if (m_graphRunnerOut == null)
         {
-            GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
+            _ = GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
         }
 
         if (m_graphRunnerOut != null)
@@ -125,9 +133,9 @@ public class GraphControlNode : BaseNode
     {
         if (m_graphRunnerOut == null)
         {
-            GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
+            _ = GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
         }
-        
+
         if (m_graphRunnerOut != null)
         {
             m_graphRunnerOut.PauseGraph();
@@ -142,9 +150,9 @@ public class GraphControlNode : BaseNode
     {
         if (m_graphRunnerOut == null)
         {
-            GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
+            _ = GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
         }
-        
+
         if (m_graphRunnerOut != null)
         {
             m_graphRunnerOut.ResumeGraph();

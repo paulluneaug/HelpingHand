@@ -14,10 +14,12 @@ public class WaitNode : InterruptableNode
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField][LabelWidth(100)]
+    [SerializeField]
+    [LabelWidth(100)]
     private float m_waitTime;
 
-    [SerializeField][LabelWidth(100)]
+    [SerializeField]
+    [LabelWidth(100)]
     private bool m_unscaled = false;
 
     public override object GetValue(NodePort port)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -35,7 +35,7 @@ namespace Events
         {
             if (m_listeners.Contains(listener))
             {
-                m_listeners.Remove(listener);
+                _ = m_listeners.Remove(listener);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Events
         {
             if (m_actions.Contains(action))
             {
-                m_actions.Remove(action);
+                _ = m_actions.Remove(action);
             }
         }
 
@@ -102,7 +102,7 @@ namespace Events
         {
             if (m_typedListeners.Contains(listener))
             {
-                m_typedListeners.Remove(listener);
+                _ = m_typedListeners.Remove(listener);
             }
         }
 
@@ -118,7 +118,7 @@ namespace Events
         {
             if (m_typedActions.Contains(action))
             {
-                m_typedActions.Remove(action);
+                _ = m_typedActions.Remove(action);
             }
         }
 

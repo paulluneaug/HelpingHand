@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
@@ -25,9 +24,9 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             }
         }
     }
-    
+
     public GraphRunner CurrentGraphRunner => m_currentGraphRunner;
-    
+
     [SerializeField]
     private SimpleGraph[] m_mainSequence;
 
@@ -36,7 +35,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     private Queue<SimpleGraph> m_graphQueue;
     private GraphRunner m_currentGraphRunner;
-    private Dictionary<SimpleGraph, GraphRunner> m_graphDictionary = new();
+    private readonly Dictionary<SimpleGraph, GraphRunner> m_graphDictionary = new();
 
     public override void Initialize()
     {
@@ -108,7 +107,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     private void OnGraphResumed()
     {
-        
+
     }
 
     public void Interrupt(GraphRunnerHandler handler)
@@ -121,7 +120,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         };
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void OnApplicationQuit()
     {
         foreach (GraphRunner graphRunner in m_graphDictionary.Values)
@@ -129,5 +128,5 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             graphRunner.OnApplicationQuit();
         }
     }
-    #endif
+#endif
 }

@@ -16,14 +16,14 @@ public class SwitchStateNode : BaseNode
     [Output]
     public DialogueFlow m_else;
 
-    private int m_caseCount = 0;
+    private readonly int m_caseCount = 0;
 
     protected override void Init()
     {
         base.Init();
         m_description = "Continue le flow vers tous les noeuds dont l'état est set";
     }
-    
+
     public override object GetValue(NodePort port)
     {
         if (port.fieldName == "m_else")

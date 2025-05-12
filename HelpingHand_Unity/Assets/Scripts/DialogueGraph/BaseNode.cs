@@ -14,9 +14,11 @@ using XNode.Odin;
 public abstract class BaseNode : SerializableNode
 {
     [SerializeField]
-    [HideLabel][FoldoutGroup("Description")][TextArea(1, 2)]
+    [HideLabel]
+    [FoldoutGroup("Description")]
+    [TextArea(1, 2)]
     protected string m_description;
-    
+
     public virtual void Initialize() { }
 
     public async UniTask Execute(GraphRunnerHandler handler)
@@ -52,7 +54,7 @@ public abstract class BaseNode : SerializableNode
 
     protected virtual async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort outputPort)
     {
-        List<UniTask> tasks = new ();
+        List<UniTask> tasks = new();
         foreach (BaseNode nextNode in GetConnectedNodesToPort(outputPort))
         {
             if (nextNode is DialogueNode dialogueNode)

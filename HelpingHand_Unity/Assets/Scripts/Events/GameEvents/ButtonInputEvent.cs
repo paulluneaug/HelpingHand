@@ -13,10 +13,10 @@ public class ButtonInputEvent : BaseGameEvent
 {
     [SerializeField]
     private GameEvent m_buttonDownEvent;
-    
+
     [SerializeField]
     private GameEvent m_buttonUpEvent;
-    
+
     [SerializeField]
     private GameEvent m_buttonPressedEvent;
 

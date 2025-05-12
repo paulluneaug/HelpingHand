@@ -5,9 +5,9 @@ public class UISliderEventInvoker : MonoBehaviour
 {
     [SerializeField]
     private FloatVariable m_floatVariable;
-    
+
     private UISlider m_uiSlider;
-    
+
     private void Awake()
     {
         m_uiSlider = GetComponent<UISlider>();

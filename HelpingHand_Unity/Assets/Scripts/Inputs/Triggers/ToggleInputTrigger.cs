@@ -10,7 +10,7 @@ public class ToggleInputTrigger : InputTrigger
 
     [SerializeField]
     private bool m_triggerIfTrue = true;
-    
+
     [SerializeField]
     private float m_timeToTrigger = 0.05f;
 
@@ -37,12 +37,12 @@ public class ToggleInputTrigger : InputTrigger
 
     private void OnToggleValueChanged(bool isOn)
     {
-        if (m_triggerIfTrue ==  m_toggleVariable.Value)
+        if (m_triggerIfTrue == m_toggleVariable.Value)
         {
             m_isRaised = true;
             RaiseTrigger();
-            
-            DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
+
+            _ = DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
         }
     }
 }

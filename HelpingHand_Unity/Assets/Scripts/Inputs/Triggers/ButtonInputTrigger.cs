@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 
-using Events;
-
 using UnityEngine;
 
 [Serializable]
@@ -10,7 +8,7 @@ public class ButtonInputTrigger : InputTrigger
 {
     [SerializeField]
     private ButtonInputEvent m_buttonEvent;
-    
+
     [SerializeField]
     private float m_timeToTrigger = 0.05f;
 
@@ -38,10 +36,10 @@ public class ButtonInputTrigger : InputTrigger
     private void OnButtonDown()
     {
         m_isButtonPressed = true;
-        
+
         if (m_triggerCoroutine == null)
         {
-            DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
+            _ = DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
         }
     }
 
@@ -49,7 +47,7 @@ public class ButtonInputTrigger : InputTrigger
     {
         m_isButtonPressed = false;
     }
-    
+
     private IEnumerator TriggerCoroutine()
     {
         float counter = 0;
@@ -71,7 +69,7 @@ public class ButtonInputTrigger : InputTrigger
         m_triggerCoroutine = null;
         SetActive(false);
         RaiseTrigger();
-        
-        DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
+
+        _ = DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
     }
 }

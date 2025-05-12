@@ -48,6 +48,6 @@ public class MultiInputTrigger : InputTrigger
         m_isRaised = true;
         SetActive(false);
         RaiseTrigger();
-        DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
+        _ = DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
     }
 }

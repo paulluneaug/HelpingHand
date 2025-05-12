@@ -6,9 +6,9 @@ public class UIToggleEventInvoker : MonoBehaviour
 {
     [SerializeField]
     private BoolVariable m_variable;
-        
+
     private Toggle m_toggle;
-    
+
     private void Awake()
     {
         m_toggle = GetComponent<Toggle>();

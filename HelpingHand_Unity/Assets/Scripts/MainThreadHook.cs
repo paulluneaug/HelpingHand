@@ -6,7 +6,7 @@ public class MainThreadHook : MonoBehaviourSingleton<MainThreadHook>
 {
     private readonly object m_lock = new();
     private Action m_callback;
-    
+
     private void Update()
     {
         Action action = null;

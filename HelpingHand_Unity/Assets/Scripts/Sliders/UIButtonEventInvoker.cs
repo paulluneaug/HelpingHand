@@ -14,7 +14,7 @@ public class UIButtonEventInvoker : MonoBehaviour, IPointerDownHandler, IPointer
     {
         m_buttonEvent.RaiseDown();
         m_isPressed = true;
-        StartCoroutine(ButtonPressedCoroutine());
+        _ = StartCoroutine(ButtonPressedCoroutine());
     }
 
     public void OnPointerUp(PointerEventData eventData)

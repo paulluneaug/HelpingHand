@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-using UnityUtility.Extensions;
-
 [RequireComponent(typeof(RectTransform))]
 public class VirtualPotentiometer : UIBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IInitializePotentialDragHandler, ICanvasElement
 {
@@ -59,11 +57,10 @@ public class VirtualPotentiometer : UIBehaviour, IPointerDownHandler, IPointerUp
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 currentLocalPosition = ToLocalPosition(eventData.position);
+        _ = currentLocalPosition - m_dragStartPosition;
 
-        Vector2 offset = currentLocalPosition - m_dragStartPosition;
 
 
-        
 
     }
 

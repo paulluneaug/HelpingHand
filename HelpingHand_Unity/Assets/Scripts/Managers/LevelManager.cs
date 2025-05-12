@@ -22,12 +22,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.LevelSequenceManager.RegisterLevel(this);
-   //     m_levelEndTrigger.OnEnter += OnEndTriggerEnter;
+        //     m_levelEndTrigger.OnEnter += OnEndTriggerEnter;
     }
 
     private void OnDestroy()
     {
-   //     m_levelEndTrigger.OnEnter -= OnEndTriggerEnter;
+        //     m_levelEndTrigger.OnEnter -= OnEndTriggerEnter;
     }
 
     public void MoveLevel(Vector3 previousLevelAnchor)
@@ -54,6 +54,6 @@ public class LevelManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        
+
     }
 }

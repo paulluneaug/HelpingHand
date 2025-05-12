@@ -5,7 +5,8 @@ public class CurtainsController : SingleSliderInteractiveObject
     [SerializeField]
     private FloatVariable m_sliderFloatVariable;
 
-    [Range(0, 1)] [SerializeField]
+    [Range(0, 1)]
+    [SerializeField]
     private float m_startValue;
 
     [SerializeField]

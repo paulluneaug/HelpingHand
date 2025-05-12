@@ -11,12 +11,14 @@ public class RunGraphNode : BaseNode
     [Input]
     public DialogueFlow m_in;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private SimpleGraph m_graph;
 
-    [SerializeField] [LabelWidth(125)]
+    [SerializeField]
+    [LabelWidth(125)]
     private bool m_waitForCompletion = false;
-    
+
     [Output]
     public DialogueFlow m_out;
 

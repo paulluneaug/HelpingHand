@@ -7,7 +7,7 @@ public class ConditionOr : ConditionBase
 {
     [SerializeField]
     private ConditionBase[] m_preconditions;
-    
+
     public ConditionBase[] Preconditions => m_preconditions;
 
     public override bool Test()

@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityUtility.Easings;
-
 public class InteractiveObjectTestDebug : MonoBehaviour
 {
     [SerializeField] private SlidingBehaviourDebugFieldController m_slidingBehaviourController;

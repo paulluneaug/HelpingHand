@@ -1,9 +1,6 @@
 using System;
 
-using Sirenix.OdinInspector;
-
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 using UnityUtility.Easings;
 using UnityUtility.Extensions;
@@ -22,16 +19,16 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
     public SlidingBehaviourEnum SlidingBehaviour { get => m_slidingBehaviour; set => m_slidingBehaviour = value; }
     public Vector3 StartPosition { get => m_startPosition; set => m_startPosition = value; }
     public Vector3 EndPosition { get => m_endPosition; set => m_endPosition = value; }
-    public float SmoothDiscreetSlidingDuration 
-    { 
-        get => m_smoothDiscreetSlidingTimer.Duration; 
-        set 
+    public float SmoothDiscreetSlidingDuration
+    {
+        get => m_smoothDiscreetSlidingTimer.Duration;
+        set
         {
             if (m_smoothDiscreetSlidingTimer.Duration != value)
             {
                 m_smoothDiscreetSlidingTimer.Duration = value;
             }
-        } 
+        }
     }
     public Easings.EasingFunction SmoothDircreetEasing
     {
@@ -56,13 +53,13 @@ public class InteractiveObjectTest : SingleSliderInteractiveObject
 
     [SerializeField]
     private EntityState m_visibleState;
-    
+
     [SerializeField]
     private EntityState m_hiddenState;
 
     [SerializeField]
     private float m_distanceOfActivation = 0.1f;
-    
+
     [NonSerialized] private Vector3 m_currentSlidingTarget;
     [NonSerialized] private Vector3 m_currentSlidingStart;
 

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         MainMenu,
         Game,
-        Pause, 
+        Pause,
     }
 
     public SlidersManager SlidersManager => m_sliderManager;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [Title("Puppet")]
     [SerializeField] private Puppet m_puppet;
 
-    [NonSerialized] private GameState m_currentGameState;
+    [NonSerialized] private readonly GameState m_currentGameState;
 
     public override void Initialize()
     {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Update()
     {
-         m_levelSequenceManager.Update(Time.deltaTime);
+        m_levelSequenceManager.Update(Time.deltaTime);
     }
 
     public void StartGame()

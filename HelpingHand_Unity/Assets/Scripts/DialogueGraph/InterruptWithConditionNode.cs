@@ -13,20 +13,23 @@ public class InterruptWithConditionNode : BaseNode
 {
     [Input]
     public DialogueFlow m_in;
-    
+
     [SerializeField]
     private ConditionBase m_condition;
 
     [Output]
     public DialogueFlow m_out;
 
-    [Space] [SerializeField]
+    [Space]
+    [SerializeField]
     private bool m_doesTimeout;
 
-    [Output] [ShowIf(nameof(m_doesTimeout))]
+    [Output]
+    [ShowIf(nameof(m_doesTimeout))]
     public DialogueFlow m_timeoutOut;
 
-    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    [SerializeField]
+    [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
     private TimeoutController m_timeoutController;
@@ -61,7 +64,7 @@ public class InterruptWithConditionNode : BaseNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
     {
         DebugLog($"Waiting for condition");
-        
+
         OnConditionUpdated();
         UniTask task = UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, handler.StopToken);
         if (m_doesTimeout)
@@ -70,7 +73,7 @@ public class InterruptWithConditionNode : BaseNode
             m_timeoutController.Reset();
             task = task.AttachExternalCancellation(m_timeoutController.Timeout(TimeSpan.FromSeconds(m_timeout)));
         }
-        
+
         if (await task.SuppressCancellationThrow())
         {
             DebugLog($"Wait interrupted");

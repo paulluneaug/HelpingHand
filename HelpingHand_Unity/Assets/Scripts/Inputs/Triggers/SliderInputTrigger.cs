@@ -52,7 +52,7 @@ public class SliderInputTrigger : InputTrigger
         if (m_currentSliderValue.Between(m_targetRange.x, m_targetRange.y) && m_triggerCoroutine == null)
         {
             m_triggerCoroutine = DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
-        } 
+        }
         else if (wasRaised)
         {
             RaiseTrigger();
@@ -81,6 +81,6 @@ public class SliderInputTrigger : InputTrigger
         SetActive(false);
         RaiseTrigger();
 
-        DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
+        _ = DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
     }
 }

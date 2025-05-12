@@ -14,19 +14,23 @@ public class WaitStateNode : InterruptableNode
     [Input]
     public DialogueFlow m_in;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private EntityState m_state;
 
     [Output]
     public DialogueFlow m_out;
 
-    [Space] [SerializeField]
+    [Space]
+    [SerializeField]
     private bool m_doesTimeout;
 
-    [Output] [ShowIf(nameof(m_doesTimeout))]
+    [Output]
+    [ShowIf(nameof(m_doesTimeout))]
     public DialogueFlow m_timeoutOut;
 
-    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    [SerializeField]
+    [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
     private TimeoutController m_timeoutController;
@@ -60,7 +64,7 @@ public class WaitStateNode : InterruptableNode
             CancellationToken timeoutToken = m_timeoutController.Timeout(TimeSpan.FromSeconds(m_timeout));
             cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, timeoutToken).Token;
         }
-        
+
         UniTask task = UniTask.WaitUntil(() => m_state.IsSet, PlayerLoopTiming.Update, cancellationToken);
 
         if (await task.SuppressCancellationThrow())

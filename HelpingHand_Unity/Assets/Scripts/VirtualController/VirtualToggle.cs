@@ -1,7 +1,5 @@
 using System;
 
-using UnityEngine;
-
 public class VirtualToggle : VirtualInput<bool>
 {
     public override bool Value => m_value;

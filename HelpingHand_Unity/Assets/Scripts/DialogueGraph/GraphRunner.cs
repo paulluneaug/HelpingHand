@@ -1,8 +1,8 @@
 using System;
 
-using Sirenix.OdinInspector;
-
 using Cysharp.Threading.Tasks;
+
+using Sirenix.OdinInspector;
 
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class GraphRunner : MonoBehaviour
     public GraphRunnerHandler Handler => m_graphRunnerHandler;
 
     private GraphRunnerHandler m_graphRunnerHandler;
-    
+
     [SerializeField]
     private SimpleGraph m_graph;
 
@@ -110,7 +110,7 @@ public class GraphRunner : MonoBehaviour
             Debug.LogWarning($"{Debug_GetLogHeader()} [StartGraph] Graph is not running");
             return;
         }
-        
+
         Debug.Log($"{Debug_GetLogHeader()} Start");
         m_graphRunnerHandler.Start();
         OnGraphStarted?.Invoke();
@@ -140,7 +140,7 @@ public class GraphRunner : MonoBehaviour
         OnGraphResumed = null;
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     public void OnApplicationQuit()
     {
         foreach (Node node in m_graph.nodes)
@@ -151,7 +151,7 @@ public class GraphRunner : MonoBehaviour
             }
         }
     }
-    #endif
+#endif
 
     private string Debug_GetLogHeader()
     {

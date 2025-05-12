@@ -20,7 +20,7 @@ public class StandaloneTimerSingleton : MonoBehaviourSingleton<StandaloneTimerSi
         for (int i = m_timers.Count - 1; i >= 0; i--)
         {
             Timer timer = m_timers[i];
-            timer.Update(Time.deltaTime);
+            _ = timer.Update(Time.deltaTime);
         }
     }
 
@@ -31,6 +31,6 @@ public class StandaloneTimerSingleton : MonoBehaviourSingleton<StandaloneTimerSi
 
     public void RemoveTimer(Timer timer)
     {
-        m_timers.Remove(timer);
+        _ = m_timers.Remove(timer);
     }
 }

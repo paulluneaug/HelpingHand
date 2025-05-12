@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class AmbientLightController : SingleSliderInteractiveObject
 {
-    [Range(0, 1)] [SerializeField]
+    [Range(0, 1)]
+    [SerializeField]
     private float m_startValue;
 
-    [SerializeField] [MinMaxSlider(0, 1, true)]
+    [SerializeField]
+    [MinMaxSlider(0, 1, true)]
     private Vector2 m_minMaxIntensity;
 
     private Vector3 m_hsv;
-    
+
     protected override void Start()
     {
         base.Start();

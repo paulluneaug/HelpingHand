@@ -5,19 +5,25 @@ using UnityEngine.Events;
 
 public class EntityStateSetter : SerializedMonoBehaviour
 {
-    [SerializeField][PropertySpace(0, 4)]
+    [SerializeField]
+    [PropertySpace(0, 4)]
     private EntityState m_state;
 
-    [SerializeField][BoxGroup][PropertySpace(4, 4)]
+    [SerializeField]
+    [BoxGroup]
+    [PropertySpace(4, 4)]
     private ConditionBase m_condition;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent m_onStateSet;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent m_onStateUnset;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent<bool> m_onStateChanged;
 
     private void Start()

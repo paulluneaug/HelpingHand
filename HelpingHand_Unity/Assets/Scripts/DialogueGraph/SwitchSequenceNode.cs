@@ -22,7 +22,7 @@ public class SwitchSequenceNode : BaseNode
         base.Init();
         m_description = "Continue le flow vers le premier noeud dont la condition est vraie";
     }
-    
+
     public override object GetValue(NodePort port)
     {
         if (port.fieldName == "m_else")

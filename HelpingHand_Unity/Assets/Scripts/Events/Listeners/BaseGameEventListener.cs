@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Events
@@ -39,18 +39,12 @@ namespace Events
                 return;
             }
 
-            if (m_event != null)
-            {
-                m_event.RemoveListener(this);
-            }
+            m_event?.RemoveListener(this);
         }
 
         private void Register()
         {
-            if (m_previouslyRegisteredEvent != null)
-            {
-                m_previouslyRegisteredEvent.RemoveListener(this);
-            }
+            m_previouslyRegisteredEvent?.RemoveListener(this);
 
             m_event.AddListener(this);
             m_previouslyRegisteredEvent = m_event;
@@ -93,18 +87,12 @@ namespace Events
                 return;
             }
 
-            if (m_event != null)
-            {
-                m_event.RemoveListener(this);
-            }
+            m_event?.RemoveListener(this);
         }
 
         private void Register()
         {
-            if (m_previouslyRegisteredEvent != null)
-            {
-                m_previouslyRegisteredEvent.RemoveListener(this);
-            }
+            m_previouslyRegisteredEvent?.RemoveListener(this);
 
             m_event.AddListener(this);
             m_previouslyRegisteredEvent = m_event;

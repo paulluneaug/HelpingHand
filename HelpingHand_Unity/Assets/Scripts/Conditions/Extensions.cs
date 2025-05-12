@@ -24,6 +24,8 @@ public static partial class Extensions
             case ConditionOr precOr:
                 precOr.Preconditions?.ForEach(p => SearchForRecur<TPrecondition>(results, p));
                 break;
+            default:
+                break;
         }
     }
 }

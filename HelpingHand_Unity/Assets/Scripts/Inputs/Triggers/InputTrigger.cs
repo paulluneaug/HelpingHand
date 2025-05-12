@@ -8,7 +8,7 @@ public abstract class InputTrigger
 {
     [SerializeField]
     private bool m_canReactivate = true;
-    
+
     [SerializeField]
     private float m_reactivateTime;
 
@@ -17,7 +17,7 @@ public abstract class InputTrigger
     public virtual bool IsRaised => m_isRaised;
 
     protected bool m_isRaised;
-    
+
     private bool m_isActive;
     private WaitForSecondsRealtime m_wait;
     private Coroutine m_triggerCoroutine;
@@ -52,7 +52,7 @@ public abstract class InputTrigger
     }
 
     protected abstract void Activate();
-    
+
     protected abstract void Deactivate();
 
     protected IEnumerator ReactivateCoroutine()
@@ -61,7 +61,7 @@ public abstract class InputTrigger
         {
             yield break;
         }
-        
+
         yield return m_wait;
         m_isRaised = false;
         SetActive(true);

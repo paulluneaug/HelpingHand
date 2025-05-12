@@ -38,15 +38,15 @@ public class WwiseDynamicDialogueTester : MonoBehaviour
         if (nodeID == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
             Debug.LogError("❌ Échec de la résolution du Dialogue Event. Vérifie les states assignés.");
-            AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             return;
         }
 
-        pPlaylist.Enqueue(nodeID);
+        _ = pPlaylist.Enqueue(nodeID);
 
-        AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-        AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
-        AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
     }
 }

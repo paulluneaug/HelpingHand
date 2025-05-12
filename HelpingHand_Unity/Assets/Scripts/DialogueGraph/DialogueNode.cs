@@ -15,18 +15,22 @@ using XNode;
 [NodeWidth(300)]
 public class DialogueNode : InterruptableNode
 {
-    [Input] [SerializeField]
+    [Input]
+    [SerializeField]
     private DialogueFlow m_in;
 
-    [Output] [SerializeField]
+    [Output]
+    [SerializeField]
     private DialogueFlow m_out;
 
-    [BoxGroup("Content")] 
-    [HideLabel, Multiline(3)] [SerializeField]
+    [BoxGroup("Content")]
+    [HideLabel, Multiline(3)]
+    [SerializeField]
     private string m_content;
 
-    [BoxGroup("Content")] 
-    [SerializeField] [LabelWidth(100)]
+    [BoxGroup("Content")]
+    [SerializeField]
+    [LabelWidth(100)]
     private bool m_multipleReads;
 
     [ShowIf("@m_audioEvent == null")]
@@ -36,19 +40,24 @@ public class DialogueNode : InterruptableNode
     {
         m_audioEvent = ScriptableObject.CreateInstance<AudioEvent>();
         m_audioEvent.name = $"Audio_{name}";
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         AssetDatabase.CreateAsset(m_audioEvent, $"Assets/Resources/AudioEvents/{m_audioEvent.name}.asset");
-        #endif
+#endif
     }
-    
+
     [HideIf("@m_audioEvent == null")]
-    [BoxGroup("Audio")] [HideLabel] [InlineEditor] [SerializeField]
+    [BoxGroup("Audio")]
+    [HideLabel]
+    [InlineEditor]
+    [SerializeField]
     private AudioEvent m_audioEvent;
 
-    [FoldoutGroup("Debug")] [ShowInInspector, LabelWidth(125), ReadOnly]
-    private ObservableField<bool> m_hasBeenRead;
+    [FoldoutGroup("Debug")]
+    [ShowInInspector, LabelWidth(125), ReadOnly]
+    private readonly ObservableField<bool> m_hasBeenRead;
 
-    [FoldoutGroup("Debug")] [ShowInInspector, LabelWidth(125), ReadOnly]
+    [FoldoutGroup("Debug")]
+    [ShowInInspector, LabelWidth(125), ReadOnly]
     private int m_readCount;
 
     public string Content => m_content;
@@ -104,12 +113,12 @@ public class DialogueNode : InterruptableNode
         DialogueManager.Instance.PlayDialog(this);
         DialogueManager.Instance.OnDialogueEnded += OnDialogueEnded;
         DebugLog($"Wait for end");
-        
+
         bool isCancelled = await UniTask.WhenAll(
-            m_audioEvent? m_audioEvent.Play(null, handler.StopToken) : UniTask.CompletedTask,
+            m_audioEvent ? m_audioEvent.Play(null, handler.StopToken) : UniTask.CompletedTask,
             WaitForDialogueEnd(handler)
             ).SuppressCancellationThrow();
-        
+
         if (isCancelled)
         {
             // Normalement le dialogue pouvait être interrompu, pas besoin de retester

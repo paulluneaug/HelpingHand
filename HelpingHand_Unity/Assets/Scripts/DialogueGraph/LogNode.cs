@@ -11,7 +11,7 @@ public class LogNode : BaseNode
 
     [Input]
     public string m_stringIn;
-    
+
     [Output]
     public DialogueFlow m_out;
 

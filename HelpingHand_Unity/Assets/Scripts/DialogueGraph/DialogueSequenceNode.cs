@@ -12,7 +12,7 @@ public class DialogueSequenceNode : BaseNode
     [Input]
     [SerializeField]
     private DialogueFlow m_in;
-    
+
     [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
     public List<DialogueFlow> m_sequence = new();
 
