@@ -1,3 +1,5 @@
+using System;
+
 using UnityEngine;
 
 using UnityUtility.CustomAttributes;
@@ -5,6 +7,13 @@ using UnityUtility.Singletons;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    private enum GameState
+    {
+        MainMenu,
+        Game,
+        Pause, 
+    }
+
     public SlidersManager SlidersManager => m_sliderManager;
     public LevelSequenceManager LevelSequenceManager => m_levelSequenceManager;
 
@@ -16,22 +25,36 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [Title("Puppet")]
     [SerializeField] private Puppet m_puppet;
 
+    [NonSerialized] private GameState m_currentGameState;
 
     public override void Initialize()
     {
         base.Initialize();
         m_levelSequenceManager.Initialize(m_puppet);
+
     }
 
     protected override void Start()
     {
         base.Start();
-        // m_levelSequenceManager.Start();
+        m_levelSequenceManager.Start();
     }
 
     private void Update()
     {
-        // m_levelSequenceManager.Update(Time.deltaTime);
+         m_levelSequenceManager.Update(Time.deltaTime);
     }
 
+    public void StartGame()
+    {
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+    }
 }
