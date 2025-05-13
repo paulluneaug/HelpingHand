@@ -11,6 +11,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     [SerializeField] private float m_stepCount;
 
     [SerializeField] private RectTransform m_knob;
+    [SerializeField] private bool m_reverse;
 
     [NonSerialized] private float m_angle;
 
@@ -49,7 +50,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
         {
             float snappedOffset = stepOffset * m_step;
 
-            SetValue(stepOffset);
+            SetValue(m_reverse ? -stepOffset : stepOffset);
 
             m_angle = m_dragLastAngle + snappedOffset;
 
