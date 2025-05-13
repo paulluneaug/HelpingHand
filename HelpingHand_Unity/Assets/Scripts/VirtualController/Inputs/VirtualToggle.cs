@@ -79,6 +79,16 @@ public class VirtualToggle : VirtualInput<bool>
         m_background.color = m_toggleDownParameters.BackgroundColor;
     }
 
+    public void SetToggleValue(bool value)
+    {
+        if (value == Value)
+        {
+            return;
+        }
+
+        OnButtonClicked();
+    }
+
     private void OnButtonClicked()
     {
         SetValue(!Value);
