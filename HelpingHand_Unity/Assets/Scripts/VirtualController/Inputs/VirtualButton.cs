@@ -86,4 +86,6 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
 
         m_transitionTimer.Start();
     }
+
+    protected override BaseVariable<bool> LinkedVariable { get; }
 }

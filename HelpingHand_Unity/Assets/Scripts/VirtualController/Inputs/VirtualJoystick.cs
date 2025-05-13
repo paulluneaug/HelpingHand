@@ -29,4 +29,5 @@ public class VirtualJoystick : VirtualInput<Vector2>
         }
     }
 
+    protected override BaseVariable<Vector2> LinkedVariable { get; }
 }
