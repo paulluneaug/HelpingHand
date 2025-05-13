@@ -1,4 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 using UnityEngine;
 
@@ -7,7 +13,8 @@ public abstract class VirtualInput<T> : MonoBehaviour, IVirtualInput
     public T Value => m_value;
     public event Action<T> OnValueChanged;
 
-    [SerializeField] private BaseVariable<T> m_linkedVariable;
+    
+    protected abstract BaseVariable<T> LinkedVariable { get; }
 
     [NonSerialized] private T m_value;
 
@@ -15,9 +22,9 @@ public abstract class VirtualInput<T> : MonoBehaviour, IVirtualInput
     {
         m_value = newValue;
 
-        if (m_linkedVariable != null)
+        if (LinkedVariable != null)
         {
-            m_linkedVariable.Value = newValue;
+            LinkedVariable.Value = newValue;
         }
 
         OnValueChanged?.Invoke(newValue);
@@ -27,9 +34,24 @@ public abstract class VirtualInput<T> : MonoBehaviour, IVirtualInput
     {
         m_value = newValue;
 
-        if (m_linkedVariable != null)
+        if (LinkedVariable != null)
         {
-            m_linkedVariable.SetValueWithoutNotify(newValue);
+            LinkedVariable.SetValueWithoutNotify(newValue);
+        }
+    }
+
+    private string GetTypeFilter
+    {
+        get
+        {
+            var thisType = typeof(BaseVariable<T>);
+            var q = thisType.Assembly.GetTypes()
+                .Where(x => !x.IsAbstract) // Excludes BaseClass
+                .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+                .Where(x => thisType.IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+
+            Debug.Log(q.Select(t => t.Name).Aggregate((t, ag) => $"{ag} t:{t}"));
+            return q.Select(t => t.Name).Aggregate((t, ag) => $"{ag} t:{t}");
         }
     }
 }

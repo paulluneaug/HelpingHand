@@ -70,4 +70,6 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     {
         return position - m_rectTransform.position.XY();
     }
+
+    protected override BaseVariable<int> LinkedVariable { get; }
 }

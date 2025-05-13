@@ -111,4 +111,6 @@ public class VirtualToggle : VirtualInput<bool>
     {
         return value ? m_toggleUpParameters : m_toggleDownParameters;
     }
+
+    protected override BaseVariable<bool> LinkedVariable { get; }
 }
