@@ -8,6 +8,10 @@ using UnityUtility.Extensions;
 [RequireComponent(typeof(RectTransform))]
 public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDragHandler
 {
+    protected override BaseVariable<int> LinkedVariable => m_linkedVariable;
+
+    [SerializeField] private IntVariable m_linkedVariable;
+
     [SerializeField] private float m_stepCount;
 
     [SerializeField] private RectTransform m_knob;
@@ -70,6 +74,4 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     {
         return position - m_rectTransform.position.XY();
     }
-
-    protected override BaseVariable<int> LinkedVariable { get; }
 }

@@ -1,10 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-
-using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 
 using UnityEngine;
 
@@ -13,7 +8,7 @@ public abstract class VirtualInput<T> : MonoBehaviour, IVirtualInput
     public T Value => m_value;
     public event Action<T> OnValueChanged;
 
-    
+
     protected abstract BaseVariable<T> LinkedVariable { get; }
 
     [NonSerialized] private T m_value;

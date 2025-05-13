@@ -14,6 +14,9 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         Clockwise,
         CounterClockwise,
     }
+    protected override BaseVariable<float> LinkedVariable => m_linkedVariable;
+
+    [SerializeField] private FloatVariable m_linkedVariable;
 
 
     [SerializeField] private float m_originAngle;
@@ -112,6 +115,4 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         Gizmos.color = Color.red;
         Gizmos.DrawLine(position, new Vector3(MathUf.Cos(knobRange.y) * rangeLineLength + position.x, MathUf.Sin(knobRange.y) * rangeLineLength + position.y, position.z));
     }
-
-    protected override BaseVariable<float> LinkedVariable { get; }
 }

@@ -9,6 +9,9 @@ using UnityUtility.Timer;
 
 public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUpHandler
 {
+    protected override BaseVariable<bool> LinkedVariable => m_linkedVariable;
+
+    [SerializeField] private BoolVariable m_linkedVariable;
 
     [SerializeField] private Color m_buttonReleasedColor;
     [SerializeField] private Color m_buttonPressedColor;
@@ -86,6 +89,4 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
 
         m_transitionTimer.Start();
     }
-
-    protected override BaseVariable<bool> LinkedVariable { get; }
 }

@@ -1,7 +1,14 @@
 using UnityEngine;
 
+using UnityUtility.CustomAttributes;
+
 public class VirtualJoystick : VirtualInput<Vector2>
 {
+    protected override BaseVariable<Vector2> LinkedVariable => m_linkedVariable;
+
+    [SerializeField] private Vector2Variable m_linkedVariable;
+
+    [Title("Joystick Buttons")]
     [SerializeField] private VirtualButton m_northButton;
     [SerializeField] private VirtualButton m_northEastButton;
     [SerializeField] private VirtualButton m_eastButton;
@@ -28,6 +35,4 @@ public class VirtualJoystick : VirtualInput<Vector2>
             SetValue(newValue);
         }
     }
-
-    protected override BaseVariable<Vector2> LinkedVariable { get; }
 }

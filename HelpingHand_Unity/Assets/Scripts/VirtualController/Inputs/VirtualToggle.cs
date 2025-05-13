@@ -15,6 +15,9 @@ public class VirtualToggle : VirtualInput<bool>
         public Color BackgroundColor;
         public RectTransform TogglePosition;
     }
+    protected override BaseVariable<bool> LinkedVariable => m_linkedVariable;
+
+    [SerializeField] private BoolVariable m_linkedVariable;
 
     [SerializeField] private Button m_button;
     [SerializeField] private Image m_background;
@@ -111,6 +114,4 @@ public class VirtualToggle : VirtualInput<bool>
     {
         return value ? m_toggleUpParameters : m_toggleDownParameters;
     }
-
-    protected override BaseVariable<bool> LinkedVariable { get; }
 }
