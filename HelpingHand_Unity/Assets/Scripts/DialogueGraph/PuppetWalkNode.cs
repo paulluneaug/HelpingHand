@@ -6,6 +6,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
+using XNode;
+
 using Debug = UnityEngine.Debug;
 
 public class PuppetWalkNode : BaseNode
@@ -29,7 +31,7 @@ public class PuppetWalkNode : BaseNode
         m_puppet = PuppetWalk.Instance;
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         if (m_waitForCompletion)
         {

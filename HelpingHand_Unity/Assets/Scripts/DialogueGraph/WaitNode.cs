@@ -30,7 +30,7 @@ public class WaitNode : InterruptableNode
     {
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         DebugLog($"Waiting for {m_waitTime} seconds");
         if (await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow())

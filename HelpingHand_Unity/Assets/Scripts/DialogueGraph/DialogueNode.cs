@@ -86,7 +86,7 @@ public class DialogueNode : InterruptableNode
             }
 
             // re-execute the node
-            await ExecuteNode(handler);
+            await Execute(handler);
         }
         else
         {
@@ -95,7 +95,7 @@ public class DialogueNode : InterruptableNode
         }
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         DebugLog($"Play");
         m_hasBeenInterrupted = false;

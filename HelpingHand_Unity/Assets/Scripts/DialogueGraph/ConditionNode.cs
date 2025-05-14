@@ -21,7 +21,7 @@ public class ConditionNode : BaseNode
         m_condition.Initialize();
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         if (m_condition.Test())
         {

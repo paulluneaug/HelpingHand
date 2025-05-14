@@ -2,6 +2,8 @@ using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
+using XNode;
+
 public class LogNode : BaseNode
 {
     [Input(ShowBackingValue.Never)]
@@ -20,7 +22,7 @@ public class LogNode : BaseNode
     {
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         string inputString = GetInputPort(nameof(m_stringIn)).GetInputValue<string>();
         Debug.Log($"{m_content}: {inputString}");

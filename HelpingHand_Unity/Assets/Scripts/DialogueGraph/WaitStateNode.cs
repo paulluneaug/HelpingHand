@@ -7,6 +7,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
+using XNode;
+
 public class WaitStateNode : InterruptableNode
 {
     [Input]
@@ -33,7 +35,7 @@ public class WaitStateNode : InterruptableNode
     {
     }
     
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         DebugLog($"Waiting for state {m_state.name}");
 

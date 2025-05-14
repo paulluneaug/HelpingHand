@@ -35,17 +35,17 @@ public class WaitAnyStateNode : InterruptableNode
     {
     }
 
-    public override object GetValue(NodePort port)
-    {
-        if (port.fieldName == nameof(m_timeoutOut))
-        {
-            return new DialogueFlow { active = m_doesTimeout && m_timeoutSource.IsCancellationRequested };
-        }
-        else
-        {
-            return base.GetValue(port);
-        }
-    }
+    // public override object GetValue(NodePort port)
+    // {
+    //     if (port.fieldName == nameof(m_timeoutOut))
+    //     {
+    //         return new DialogueFlow { active = m_doesTimeout && m_timeoutSource.IsCancellationRequested };
+    //     }
+    //     else
+    //     {
+    //         return base.GetValue(port);
+    //     }
+    // }
 
     private EntityState GetState(NodePort port)
     {
@@ -57,7 +57,9 @@ public class WaitAnyStateNode : InterruptableNode
         throw new ArgumentOutOfRangeException(port.fieldName);
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    private bool m_isTimeout;
+    
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         DebugLog($"Waiting for states");
 

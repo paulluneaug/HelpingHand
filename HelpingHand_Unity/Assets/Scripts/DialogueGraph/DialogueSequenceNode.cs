@@ -38,7 +38,7 @@ public class DialogueSequenceNode : BaseNode
         m_orderedNodePorts = DynamicOutputs.OrderBy(p => p.fieldName).ToArray();
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         await ContinueFlow(handler);
     }

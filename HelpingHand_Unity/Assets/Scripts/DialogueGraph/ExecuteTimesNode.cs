@@ -2,6 +2,8 @@ using Cysharp.Threading.Tasks;
 
 using UnityEngine;
 
+using XNode;
+
 public class ExecuteTimesNode : BaseNode
 {
     [Input]
@@ -26,7 +28,7 @@ public class ExecuteTimesNode : BaseNode
         m_executionCount = 0;
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         if (m_executionCount < m_times)
         {

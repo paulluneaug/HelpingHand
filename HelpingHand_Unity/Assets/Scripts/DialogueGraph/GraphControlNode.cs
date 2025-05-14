@@ -6,6 +6,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
+using XNode;
+
 [NodeWidth(200)]
 public class GraphControlNode : BaseNode
 {
@@ -42,7 +44,7 @@ public class GraphControlNode : BaseNode
     {
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         m_graphRunnerOut = GetInputPort(nameof(m_graphRunnerIn)).GetInputValue<GraphRunner>();
         

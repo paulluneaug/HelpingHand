@@ -40,7 +40,7 @@ public class SwitchSequenceNode : BaseNode
         }
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         await ContinueFlow(handler);
     }

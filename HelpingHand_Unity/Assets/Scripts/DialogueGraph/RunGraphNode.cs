@@ -29,7 +29,7 @@ public class RunGraphNode : BaseNode
         return m_graph;
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         if (m_waitForCompletion)
         {

@@ -7,6 +7,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
+using XNode;
+
 [NodeWidth(350)]
 public class InterruptWithConditionNode : BaseNode
 {
@@ -45,7 +47,7 @@ public class InterruptWithConditionNode : BaseNode
         m_condition.OnPreconditionUpdated += OnConditionUpdated;
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
         DebugLog($"Waiting for condition");
         
