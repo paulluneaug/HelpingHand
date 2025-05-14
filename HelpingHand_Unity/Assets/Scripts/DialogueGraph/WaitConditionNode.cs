@@ -10,16 +10,16 @@ using UnityEngine;
 using XNode;
 
 [NodeWidth(350)]
-public class InterruptWithConditionNode : BaseNode
+public class WaitConditionNode : InterruptableNode
 {
     [Input]
     public DialogueFlow m_in;
 
     [Output]
     public DialogueFlow m_out;
-    
-    [SerializeField]
-    private ConditionBase m_condition;
+
+    [SerializeField] [HideLabel]
+    private ConditionBase m_condition = new ConditionAnd();
 
     [Space] [SerializeField]
     private bool m_doesTimeout;
@@ -32,16 +32,9 @@ public class InterruptWithConditionNode : BaseNode
 
     private CancellationTokenSource m_timeoutSource;
     private bool m_isConditionPassed;
-
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Wait for the condition to be true & the current dialogue to be interruptible";
-    }
-
+    
     public override void Initialize()
     {
-        m_isConditionPassed = false;
         m_condition.Initialize();
         m_condition.OnPreconditionUpdated -= OnConditionUpdated;
         m_condition.OnPreconditionUpdated += OnConditionUpdated;
@@ -86,11 +79,7 @@ public class InterruptWithConditionNode : BaseNode
         }
         else
         {
-            DebugLog($"Interrupting main graph");
-
-            GraphManager.Instance.Interrupt(handler);
-
-            await UniTask.NextFrame();
+            DebugLog($"Continuing flow");
             await ContinueFlow(handler);        
         }
     }
