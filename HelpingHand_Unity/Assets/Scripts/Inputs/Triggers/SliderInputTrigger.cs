@@ -31,16 +31,16 @@ public class SliderInputTrigger : InputTrigger
     public override void Initialize()
     {
         base.Initialize();
-        SetActive(true);
+        ArmTrigger();
         m_wasRaised = false;
     }
 
-    protected override void Activate()
+    protected override void ArmTrigger()
     {
         m_sliderVariable.AddListener(OnSliderValueChanged);
     }
 
-    protected override void Deactivate()
+    protected override void DisarmTrigger()
     {
         m_sliderVariable.RemoveListener(OnSliderValueChanged);
     }
@@ -55,7 +55,7 @@ public class SliderInputTrigger : InputTrigger
         // We want to start the trigger coroutine when the trigger is not raised, the coroutine is not already running, and the test is true
         if (!m_isRaised && m_triggerCoroutine == null && TestValue())
         {
-            m_triggerCoroutine = DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
+            m_triggerCoroutine = GameManager.Instance.StartCoroutine(TriggerCoroutine());
         } 
         
         // If the trigger was raised previously && the new value steps out of the range values, trigger the event
@@ -86,9 +86,9 @@ public class SliderInputTrigger : InputTrigger
         // timer has been reached
         m_isRaised = true;
         m_triggerCoroutine = null;
-        SetActive(false);
+        DisarmTrigger();
         RaiseTriggeredEvent();
 
-        DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
+        GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
     }
 }

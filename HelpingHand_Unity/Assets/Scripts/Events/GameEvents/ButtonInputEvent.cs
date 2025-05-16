@@ -26,13 +26,13 @@ public class ButtonInputEvent : BaseGameEvent
         if (m_buttonDownEvent == null)
         {
             m_buttonDownEvent = ScriptableObject.CreateInstance<GameEvent>();
-            m_buttonDownEvent.name = "OnDownEvent";
+            m_buttonDownEvent.name = $"{name}_OnDownEvent";
             AssetDatabase.AddObjectToAsset(m_buttonDownEvent, this);
             m_buttonUpEvent = ScriptableObject.CreateInstance<GameEvent>();
-            m_buttonUpEvent.name = "OnUpEvent";
+            m_buttonUpEvent.name = $"{name}_OnUpEvent";
             AssetDatabase.AddObjectToAsset(m_buttonUpEvent, this);
             m_buttonPressedEvent = ScriptableObject.CreateInstance<GameEvent>();
-            m_buttonPressedEvent.name = "OnPressedEvent";
+            m_buttonPressedEvent.name = $"{name}_OnPressedEvent";
             AssetDatabase.AddObjectToAsset(m_buttonPressedEvent, this);
             AssetDatabase.SaveAssetIfDirty(this);
         }

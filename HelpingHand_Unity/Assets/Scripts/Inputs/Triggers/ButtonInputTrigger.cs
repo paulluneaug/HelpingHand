@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 
-using Events;
-
 using UnityEngine;
 
 [Serializable]
@@ -20,16 +18,16 @@ public class ButtonInputTrigger : InputTrigger
     public override void Initialize()
     {
         base.Initialize();
-        SetActive(true);
+        ArmTrigger();
     }
 
-    protected override void Activate()
+    protected override void ArmTrigger()
     {
         m_buttonEvent.AddDownListener(OnButtonDown);
         m_buttonEvent.AddUpListener(OnButtonUp);
     }
 
-    protected override void Deactivate()
+    protected override void DisarmTrigger()
     {
         m_buttonEvent.RemoveDownListener(OnButtonDown);
         m_buttonEvent.RemoveUpListener(OnButtonUp);
@@ -41,7 +39,7 @@ public class ButtonInputTrigger : InputTrigger
         
         if (m_triggerCoroutine == null)
         {
-            DialogueManager.Instance.StartCoroutine(TriggerCoroutine());
+            GameManager.Instance.StartCoroutine(TriggerCoroutine());
         }
     }
 
@@ -69,9 +67,9 @@ public class ButtonInputTrigger : InputTrigger
         // timer has been reached
         m_isRaised = true;
         m_triggerCoroutine = null;
-        SetActive(false);
+        DisarmTrigger();
         RaiseTriggeredEvent();
         
-        DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
+        GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
     }
 }
