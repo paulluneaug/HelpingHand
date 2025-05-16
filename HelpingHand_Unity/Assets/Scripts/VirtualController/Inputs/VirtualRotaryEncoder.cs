@@ -11,7 +11,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     protected override BaseVariable<int> LinkedVariable => m_event.Index;
 
     [SerializeField] private RotaryEncoderInputEvent m_event;
-    [SerializeField] private GameObject m_stepPrefab;
+    [SerializeField] private GameObject m_stepMarkerPrefab;
 
     [SerializeField] private int m_stepCount;
 
@@ -49,7 +49,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
         {
             float snappedOffset = i * m_step;
             float currentAngle = lastAngle + snappedOffset;
-            GameObject stepGO = Instantiate(m_stepPrefab, transform);
+            GameObject stepGO = Instantiate(m_stepMarkerPrefab, transform);
             stepGO.transform.rotation = Quaternion.Euler(0, 0, currentAngle);
         }
     }

@@ -17,7 +17,7 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
     protected override BaseVariable<float> LinkedVariable => m_linkedVariable;
 
     [SerializeField] private FloatVariable m_linkedVariable;
-
+    [SerializeField] private GameObject m_stepMarkerPrefab;
 
     [SerializeField] private float m_originAngle;
     [SerializeField] private float m_range;
@@ -50,6 +50,11 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
 
         UpdateKnobPosition();
 
+        GameObject stepGO = Instantiate(m_stepMarkerPrefab, transform);
+        stepGO.transform.rotation = Quaternion.Euler(0, 0, GetKnobRange().x);
+
+        stepGO = Instantiate(m_stepMarkerPrefab, transform);
+        stepGO.transform.rotation = Quaternion.Euler(0, 0, GetKnobRange().y);
     }
 
     public void OnPointerDown(PointerEventData eventData)
