@@ -11,6 +11,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     protected override BaseVariable<int> LinkedVariable => m_event.Index;
 
     [SerializeField] private RotaryEncoderInputEvent m_event;
+    [SerializeField] private GameObject m_stepPrefab;
 
     [SerializeField] private int m_stepCount;
 
@@ -20,6 +21,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     [NonSerialized] private float m_angle;
 
     [NonSerialized] private RectTransform m_rectTransform;
+    [NonSerialized] private Camera m_camera;
     [NonSerialized] private Vector2 m_dragLastPosition;
     [NonSerialized] private float m_dragLastAngle;
 
@@ -30,12 +32,26 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     protected void Awake()
     {
         m_rectTransform = GetComponent<RectTransform>();
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas.renderMode != RenderMode.WorldSpace)
+        {
+            m_camera = parentCanvas.worldCamera;
+        }
         m_step = 360.0f / m_stepCount;
 
         m_index = 0;
         SetValueWithoutNotify(m_index);
 
         UpdateKnobPosition();
+
+        float lastAngle = 0;
+        for (int i = 0; i < m_stepCount; i++)
+        {
+            float snappedOffset = i * m_step;
+            float currentAngle = lastAngle + snappedOffset;
+            GameObject stepGO = Instantiate(m_stepPrefab, transform);
+            stepGO.transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -85,6 +101,6 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
 
     private Vector2 ToLocalPosition(Vector2 position)
     {
-        return position - m_rectTransform.position.XY();
+        return position - (m_camera == null ? m_rectTransform.position.XY() : m_camera.WorldToScreenPoint(m_rectTransform.position).XY());
     }
 }

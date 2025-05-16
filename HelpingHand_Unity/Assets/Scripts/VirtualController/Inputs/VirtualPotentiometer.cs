@@ -28,6 +28,7 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
     [NonSerialized] private float m_angle;
 
     [NonSerialized] private RectTransform m_rectTransform;
+    [NonSerialized] private Camera m_camera;
     [NonSerialized] private Vector2 m_dragLastPosition;
     [NonSerialized] private float m_dragLastAngle;
 
@@ -37,6 +38,11 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
     protected void Awake()
     {
         m_rectTransform = GetComponent<RectTransform>();
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas.renderMode != RenderMode.WorldSpace)
+        {
+            m_camera = parentCanvas.worldCamera;
+        }
 
         m_knobRange = GetKnobRange();
         m_angle = m_knobRange.x;
@@ -85,7 +91,7 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
 
     private Vector2 ToLocalPosition(Vector2 position)
     {
-        return position - m_rectTransform.position.XY();
+        return position - (m_camera == null ? m_rectTransform.position.XY() : m_camera.WorldToScreenPoint(m_rectTransform.position).XY());
     }
 
     private Vector2 GetKnobRange()
