@@ -8,11 +8,11 @@ using UnityUtility.Extensions;
 [RequireComponent(typeof(RectTransform))]
 public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDragHandler
 {
-    protected override BaseVariable<int> LinkedVariable => m_linkedVariable;
+    protected override BaseVariable<int> LinkedVariable => m_event.Index;
 
-    [SerializeField] private IntVariable m_linkedVariable;
+    [SerializeField] private RotaryEncoderInputEvent m_event;
 
-    [SerializeField] private float m_stepCount;
+    [SerializeField] private int m_stepCount;
 
     [SerializeField] private RectTransform m_knob;
     [SerializeField] private bool m_reverse;
@@ -24,6 +24,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
     [NonSerialized] private float m_dragLastAngle;
 
     [NonSerialized] private float m_step;
+    [NonSerialized] private int m_index;
 
 
     protected void Awake()
@@ -31,10 +32,10 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
         m_rectTransform = GetComponent<RectTransform>();
         m_step = 360.0f / m_stepCount;
 
-        SetValueWithoutNotify(0);
+        m_index = 0;
+        SetValueWithoutNotify(m_index);
 
         UpdateKnobPosition();
-
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -49,20 +50,32 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
 
         float angleOffset = Vector2.SignedAngle(m_dragLastPosition, currentLocalPosition);
         int stepOffset = (int)(angleOffset / m_step);
-
-        if (stepOffset != 0)
+        
+        if (stepOffset == 0)
         {
-            float snappedOffset = stepOffset * m_step;
-
-            SetValue(m_reverse ? -stepOffset : stepOffset);
-
-            m_angle = m_dragLastAngle + snappedOffset;
-
-            UpdateKnobPosition();
-
-            m_dragLastPosition = currentLocalPosition;
-            m_dragLastAngle = m_angle;
+            return;
         }
+
+        if (stepOffset > 0)
+        {
+            m_event.RaiseStepRight();
+        } 
+        else
+        {
+            m_event.RaiseStepLeft();
+        }
+
+        
+        m_index = (m_index + (m_reverse ? 1 : -1) * stepOffset).Mod(m_stepCount);
+        SetValue(m_index);
+
+        float snappedOffset = stepOffset * m_step;
+        m_angle = m_dragLastAngle + snappedOffset;
+
+        UpdateKnobPosition();
+
+        m_dragLastPosition = currentLocalPosition;
+        m_dragLastAngle = m_angle;
     }
 
     private void UpdateKnobPosition()

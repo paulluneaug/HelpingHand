@@ -11,14 +11,14 @@ public class MultiInputTrigger : InputTrigger
     public override void Initialize()
     {
         base.Initialize();
-        SetActive(true);
+        ArmTrigger();
         foreach (InputTrigger inputTrigger in m_triggers)
         {
             inputTrigger.Initialize();
         }
     }
 
-    protected override void Activate()
+    protected override void ArmTrigger()
     {
         foreach (InputTrigger inputTrigger in m_triggers)
         {
@@ -27,7 +27,7 @@ public class MultiInputTrigger : InputTrigger
         }
     }
 
-    protected override void Deactivate()
+    protected override void DisarmTrigger()
     {
         foreach (InputTrigger inputTrigger in m_triggers)
         {
@@ -46,8 +46,8 @@ public class MultiInputTrigger : InputTrigger
         }
 
         m_isRaised = true;
-        SetActive(false);
+        DisarmTrigger();
         RaiseTriggeredEvent();
-        DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
+        GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
     }
 }
