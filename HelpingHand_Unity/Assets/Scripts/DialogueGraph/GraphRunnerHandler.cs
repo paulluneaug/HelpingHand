@@ -9,6 +9,7 @@ public class GraphRunnerHandler : IDisposable
     public CancellationToken ResumeToken => m_resumeCancellation.Token;
     public GraphRunner GraphRunner => m_graphRunner;
     public BaseNode CurrentNode { get; set; }
+    public int Priority { get; set; }
     public bool IsRunning => m_isRunning;
     public bool IsPaused => m_isPaused;
 

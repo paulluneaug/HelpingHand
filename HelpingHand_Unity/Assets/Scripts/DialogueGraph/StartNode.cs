@@ -1,11 +1,16 @@
 using Cysharp.Threading.Tasks;
 
+using UnityEngine;
+
 using XNode;
 
 public class StartNode : BaseNode
 {
     [Output]
     public DialogueFlow m_out;
+
+    [SerializeField] 
+    private int m_priority;
 
     protected override void Init()
     {
@@ -19,6 +24,7 @@ public class StartNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
     {
+        handler.Priority = m_priority;
         await ContinueFlow(handler);
     }
 }

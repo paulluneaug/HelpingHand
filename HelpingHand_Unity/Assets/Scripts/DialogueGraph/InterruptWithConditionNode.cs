@@ -18,6 +18,9 @@ public class InterruptWithConditionNode : BaseNode
     [Output]
     public DialogueFlow m_out;
     
+    [Output]
+    public DialogueFlow m_cancelledOut;
+
     [SerializeField]
     private ConditionBase m_condition;
 
@@ -88,10 +91,23 @@ public class InterruptWithConditionNode : BaseNode
         {
             DebugLog($"Interrupting main graph");
 
-            GraphManager.Instance.Interrupt(handler);
+            // If the interruption didn't happen (because another graph with more priority interrupted at the same time)
+            // then exit via cancelled out port
+            bool passed = await GraphManager.Instance.Interrupt(handler);
+            NodePort outPort;
+            if (!passed)
+            {
+                DebugLog($"Interruption cancelled");
+                outPort = GetOutputPort(nameof(m_cancelledOut));
+            }
+            else
+            {
+                DebugLog($"Interruption passed");
+                outPort = GetOutputPort(nameof(m_out));
+            }
 
             await UniTask.NextFrame();
-            await ContinueFlow(handler);        
+            await ContinueFlow(handler, outPort);        
         }
     }
 

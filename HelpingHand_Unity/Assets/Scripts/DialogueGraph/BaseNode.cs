@@ -49,6 +49,7 @@ public abstract class BaseNode : SerializableNode
         handler.CurrentNode = this;
         await HandlePauseStop(handler);
         await ExecuteNode(handler, port);
+        // await ContinueFlow(handler); // we want this
     }
     
     /// <summary>
