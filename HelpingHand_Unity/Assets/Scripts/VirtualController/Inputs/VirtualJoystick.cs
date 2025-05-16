@@ -6,7 +6,7 @@ public class VirtualJoystick : VirtualInput<Vector2>
 {
     protected override BaseVariable<Vector2> LinkedVariable => m_linkedVariable;
 
-    [SerializeField] private Vector2Variable m_linkedVariable;
+    [SerializeField] private JoystickInputEvent m_linkedVariable;
 
     [Title("Joystick Buttons")]
     [SerializeField] private VirtualButton m_northButton;

@@ -17,7 +17,7 @@ public class VirtualToggle : VirtualInput<bool>
     }
     protected override BaseVariable<bool> LinkedVariable => m_linkedVariable;
 
-    [SerializeField] private BoolVariable m_linkedVariable;
+    [SerializeField] private ToggleInputEvent m_linkedVariable;
 
     [SerializeField] private Button m_button;
     [SerializeField] private Image m_background;

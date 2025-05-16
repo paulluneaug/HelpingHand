@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CurtainsController : SingleSliderInteractiveObject
+public class CurtainsController : MonoBehaviour
 {
     [SerializeField]
     private FloatVariable m_sliderFloatVariable;
@@ -21,17 +21,14 @@ public class CurtainsController : SingleSliderInteractiveObject
         m_transform = transform;
     }
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
-        m_masterSlider.SetValueWithoutNotify(m_startValue);
-        // m_masterSlider.OnSliderValueChanged += OnSliderValueChanged;
-        // OnSliderValueChanged(m_startValue);
+        // Todo set virtual slider value
         m_sliderFloatVariable.AddListener(OnSliderValueChanged);
         OnSliderValueChanged(m_startValue);
     }
 
-    private new void OnSliderValueChanged(float value)
+    private void OnSliderValueChanged(float value)
     {
         m_transform.position = Vector3.Lerp(m_downPosition, m_upPosition, value);
     }

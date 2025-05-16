@@ -1,41 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8050271864135813375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7350f5bdd2854f609149f738c7ca71ba, type: 3}
-  m_Name: OnDownEvent
-  m_EditorClassIdentifier: 
---- !u!114 &-5731629685619026953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7350f5bdd2854f609149f738c7ca71ba, type: 3}
-  m_Name: OnUpEvent
-  m_EditorClassIdentifier: 
---- !u!114 &-2105438115906439514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7350f5bdd2854f609149f738c7ca71ba, type: 3}
-  m_Name: OnPressedEvent
-  m_EditorClassIdentifier: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,9 +9,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6548f5f57ed6f994ba7a6e6f756b5fca, type: 3}
-  m_Name: E_Button_0
+  m_Script: {fileID: 11500000, guid: e8ec36b09f8ac3f49836b17f5a1af041, type: 3}
+  m_Name: E_Rotary_0
   m_EditorClassIdentifier: 
-  m_buttonDownEvent: {fileID: -8050271864135813375}
-  m_buttonUpEvent: {fileID: -5731629685619026953}
-  m_buttonPressedEvent: {fileID: -2105438115906439514}
+  m_indexVariable: {fileID: 6729629683186903671}
+  m_stepLeftEvent: {fileID: 5051422650607797859}
+  m_stepRightEvent: {fileID: 3261536923336123490}
+--- !u!114 &3261536923336123490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7350f5bdd2854f609149f738c7ca71ba, type: 3}
+  m_Name: E_Rotary_0_OnStepRightEvent
+  m_EditorClassIdentifier: 
+--- !u!114 &5051422650607797859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7350f5bdd2854f609149f738c7ca71ba, type: 3}
+  m_Name: E_Rotary_0_OnStepLeftEvent
+  m_EditorClassIdentifier: 
+--- !u!114 &6729629683186903671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e48fc8a715f61349844ec8b5f540a30, type: 3}
+  m_Name: E_Rotary_0_Variable_Index
+  m_EditorClassIdentifier: 
+  m_value: 0

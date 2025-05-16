@@ -8,7 +8,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Events/Button")]
+[CreateAssetMenu(menuName = "Scriptable Objects/Inputs/Button")]
 public class ButtonInputEvent : BaseGameEvent
 {
     [SerializeField]
@@ -16,9 +16,11 @@ public class ButtonInputEvent : BaseGameEvent
     
     [SerializeField]
     private GameEvent m_buttonUpEvent;
-    
-    [SerializeField]
-    private GameEvent m_buttonPressedEvent;
+
+    [SerializeField] 
+    private BoolVariable m_buttonState;
+
+    public BoolVariable ButtonState => m_buttonState;
 
 #if UNITY_EDITOR
     private void Awake()
@@ -31,9 +33,9 @@ public class ButtonInputEvent : BaseGameEvent
             m_buttonUpEvent = ScriptableObject.CreateInstance<GameEvent>();
             m_buttonUpEvent.name = $"{name}_OnUpEvent";
             AssetDatabase.AddObjectToAsset(m_buttonUpEvent, this);
-            m_buttonPressedEvent = ScriptableObject.CreateInstance<GameEvent>();
-            m_buttonPressedEvent.name = $"{name}_OnPressedEvent";
-            AssetDatabase.AddObjectToAsset(m_buttonPressedEvent, this);
+            m_buttonState = ScriptableObject.CreateInstance<BoolVariable>();
+            m_buttonState.name = $"{name}_State";
+            AssetDatabase.AddObjectToAsset(m_buttonState, this);
             AssetDatabase.SaveAssetIfDirty(this);
         }
     }
@@ -47,11 +49,6 @@ public class ButtonInputEvent : BaseGameEvent
     public void RaiseUp()
     {
         m_buttonUpEvent.Raise();
-    }
-
-    public void RaisePressed()
-    {
-        m_buttonPressedEvent.Raise();
     }
 
     public void AddDownListener(GameEventListener listener)
@@ -74,16 +71,6 @@ public class ButtonInputEvent : BaseGameEvent
         m_buttonUpEvent.AddListener(action);
     }
 
-    public void AddPressedListener(GameEventListener listener)
-    {
-        m_buttonPressedEvent.AddListener(listener);
-    }
-
-    public void AddPressedListener(Action action)
-    {
-        m_buttonPressedEvent.AddListener(action);
-    }
-
     public void RemoveDownListener(GameEventListener listener)
     {
         m_buttonDownEvent.RemoveListener(listener);
@@ -102,15 +89,5 @@ public class ButtonInputEvent : BaseGameEvent
     public void RemoveUpListener(Action action)
     {
         m_buttonUpEvent.RemoveListener(action);
-    }
-
-    public void RemovePressedListener(GameEventListener listener)
-    {
-        m_buttonPressedEvent.RemoveListener(listener);
-    }
-
-    public void RemovePressedListener(Action action)
-    {
-        m_buttonPressedEvent.RemoveListener(action);
     }
 }

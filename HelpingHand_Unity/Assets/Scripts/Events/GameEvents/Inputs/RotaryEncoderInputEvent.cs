@@ -8,7 +8,7 @@ using UnityEditor;
 
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Events/Rotary Encoder")]
+[CreateAssetMenu(menuName = "Scriptable Objects/Inputs/Rotary Encoder")]
 public class RotaryEncoderInputEvent : BaseGameEvent
 {
     [SerializeField] 

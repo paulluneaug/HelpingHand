@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-public class AmbientLightController : SingleSliderInteractiveObject
+public class AmbientLightController : MonoBehaviour
 {
     [SerializeField]
     private FloatVariable m_sliderFloatVariable;
@@ -15,17 +15,15 @@ public class AmbientLightController : SingleSliderInteractiveObject
 
     private Vector3 m_hsv;
     
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
-        m_masterSlider.SetValueWithoutNotify(m_startValue);
-        // m_masterSlider.OnSliderValueChanged += OnSliderValueChanged;
+        // Todo set virtual slider value
         m_sliderFloatVariable.AddListener(OnSliderValueChanged);
         OnSliderValueChanged(m_startValue);
         Color.RGBToHSV(RenderSettings.ambientLight, out m_hsv.x, out m_hsv.y, out m_hsv.z);
     }
 
-    private new void OnSliderValueChanged(float value)
+    private void OnSliderValueChanged(float value)
     {
         m_hsv.z = Mathf.Lerp(m_minMaxIntensity.x, m_minMaxIntensity.y, value);
         RenderSettings.ambientLight = Color.HSVToRGB(m_hsv.x, m_hsv.y, m_hsv.z);

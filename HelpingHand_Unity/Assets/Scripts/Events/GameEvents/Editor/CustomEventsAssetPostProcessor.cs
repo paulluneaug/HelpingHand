@@ -23,7 +23,7 @@ public class CustomEventsAssetPostProcessor : AssetPostprocessor
                 Object[] subAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
                 foreach (Object subAsset in subAssets)
                 {
-                    string suffix = subAsset.name.Contains("OnDownEvent") ? "OnDownEvent" : subAsset.name.Contains("OnUpEvent") ? "OnUpEvent" : "OnPressedEvent";
+                    string suffix = subAsset.name.Contains("OnDownEvent") ? "OnDownEvent" : subAsset.name.Contains("OnUpEvent") ? "OnUpEvent" : "State";
                     subAsset.name = $"{rootAsset.name}_{suffix}";
                 }
             }

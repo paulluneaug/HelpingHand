@@ -9,9 +9,9 @@ using UnityUtility.Timer;
 
 public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUpHandler
 {
-    protected override BaseVariable<bool> LinkedVariable => m_linkedVariable;
+    protected override BaseVariable<bool> LinkedVariable => m_event.ButtonState;
 
-    [SerializeField] private BoolVariable m_linkedVariable;
+    [SerializeField] private ButtonInputEvent m_event;
 
     [SerializeField] private Color m_buttonReleasedColor;
     [SerializeField] private Color m_buttonPressedColor;
@@ -59,11 +59,13 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        m_event.RaiseDown();
         OnButtonPressed(true);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        m_event.RaiseUp();
         OnButtonPressed(false);
     }
 
