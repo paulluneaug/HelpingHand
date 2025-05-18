@@ -65,7 +65,7 @@ public class WaitConditionNode : InterruptableNode
 
             if (await task.SuppressCancellationThrow())
             {
-                DebugLog($"Wait is interrupted");
+                DebugLog($"Wait for condition has been interrupted");
 
                 if (!m_timeoutSource.IsCancellationRequested)
                 {
@@ -84,12 +84,12 @@ public class WaitConditionNode : InterruptableNode
     {
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
-            DebugLog($"Wait is timeout");
+            DebugLog($"Wait for condition has timeout");
             await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_timeoutOut)));
         }
         else
         {
-            DebugLog($"Continuing flow");
+            DebugLog($"Condition passed. Continuing flow");
             await base.ContinueFlow(handler, inPort);
         }
     }
