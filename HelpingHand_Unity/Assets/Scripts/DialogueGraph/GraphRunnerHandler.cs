@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 
+[Serializable]
 public class GraphRunnerHandler : IDisposable
 {
     public CancellationToken StopToken => m_stopCancellation.Token;

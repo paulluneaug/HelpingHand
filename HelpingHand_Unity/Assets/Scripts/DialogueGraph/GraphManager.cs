@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
@@ -8,6 +7,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 using UnityUtility.Singletons;
+
+using Utils;
 
 public class GraphManager : MonoBehaviourSingleton<GraphManager>
 {
@@ -25,22 +26,23 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             }
         }
     }
-    
+
     public GraphRunner CurrentGraphRunner => m_currentGraphRunner;
-    
+
     [SerializeField]
     private SimpleGraph[] m_mainSequence;
 
     [SerializeField]
     private SimpleGraph[] m_parallelExecution;
 
-    [SerializeField] 
+    [SerializeField]
     private float m_delayBetweenInterruptions = 0.5f;
 
-    private Queue<SimpleGraph> m_graphQueue; 
-    private readonly SortedSet<GraphRunnerHandler> m_interruptionQueue = new(Comparer<GraphRunnerHandler>.Create((h1, h2) => h1.Priority.CompareTo(h2.Priority)));
+    private Queue<SimpleGraph> m_graphQueue;
+    // private readonly PriorityQueue<GraphRunnerHandler, int> m_interruptionQueue =   new(Comparer<GraphRunnerHandler>.Create((h1, h2) => h1.Priority.CompareTo(h2.Priority)));
+    private readonly PriorityQueue<GraphRunnerHandler, int> m_interruptionQueue = new(Comparer<int>.Create((i1, i2) => -i1.CompareTo(i2)));
     private readonly Dictionary<GraphRunnerHandler, (bool returned, bool passed)> m_interruptionDictionary = new();
-    
+
     private GraphRunner m_currentGraphRunner;
     private Dictionary<SimpleGraph, GraphRunner> m_graphDictionary = new();
     private float m_timeWhenCheckingInterruption;
@@ -117,22 +119,26 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     private void OnGraphResumed()
     {
-        
     }
 
-    
+
     public async UniTask<bool> Interrupt(GraphRunnerHandler handler)
     {
-        // Test if this graph can interrupt the running graph
-        if (handler.Priority <= m_currentGraphRunner.Handler.Priority)
+        lock (m_interruptionQueue)
         {
-            return false;
+            // Test if this graph can interrupt the running graph
+            if (m_currentGraphRunner != null && handler.Priority <= m_currentGraphRunner.Handler.Priority)
+            {
+                Debug.Log($"{Time.frameCount} Graph ({handler.GraphRunner.name}) cannot interrupt. Priority={handler.Priority} currentGraph's priority={m_currentGraphRunner.Handler.Priority}");
+                return false;
+            }
+
+            m_interruptionQueue.Enqueue(handler, handler.Priority);
         }
-        
-        m_interruptionQueue.Add(handler);
+
         m_interruptionDictionary[handler] = (false, false);
 
-        await UniTask.WaitUntil(() => m_interruptionDictionary[handler].returned);
+        await UniTask.WaitUntil(() =>m_interruptionDictionary[handler].returned);
         return m_interruptionDictionary[handler].passed;
     }
 
@@ -142,7 +148,10 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         if (Time.time > m_timeWhenCheckingInterruption)
         {
             m_timeWhenCheckingInterruption = Time.time + m_delayBetweenInterruptions;
-            DequeueInterrupting();
+            lock (m_interruptionQueue)
+            {
+                DequeueInterrupting();
+            }
         }
     }
 
@@ -152,30 +161,37 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         {
             return;
         }
-        
+
         // Take the graph with most priority and make it the interrupting graph
-        GraphRunnerHandler interruptingGraph = m_interruptionQueue.Max;
-        
+        GraphRunnerHandler interruptingGraph = m_interruptionQueue.Dequeue();
+
         // Tell the others to cancel their interruption
-        foreach (GraphRunnerHandler otherHandler in m_interruptionQueue)
+        foreach (var item in m_interruptionQueue.UnorderedItems)
         {
-            m_interruptionDictionary[otherHandler] = (true, false);
+            Debug.Log($"Graph ({item.Element.GraphRunner.name}) cannot interrupt. Another graph has been chosen.");
+            m_interruptionDictionary[item.Element] = (true, false);
         }
+
         m_interruptionQueue.Clear();
-        
+
         // Interrupt the current graph and mark it to resume when the interrupting graph is finished
-        m_currentGraphRunner?.PauseGraph();
-        GraphRunner interruptedGraph = m_currentGraphRunner;
-        interruptingGraph.GraphRunner.OnGraphEnded += () =>
+        if (m_currentGraphRunner != null)
         {
-            interruptedGraph?.ResumeGraph();
-        };
-        
+            m_currentGraphRunner.PauseGraph();
+            GraphRunner interruptedGraph = m_currentGraphRunner;
+            interruptingGraph.GraphRunner.OnGraphEnded += () =>
+            {
+                m_currentGraphRunner = interruptedGraph;
+                m_currentGraphRunner.ResumeGraph();
+            };
+        }
+
+        m_currentGraphRunner = interruptingGraph.GraphRunner;
         // Tell the interrupting graph to continue
         m_interruptionDictionary[interruptingGraph] = (true, true);
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void OnApplicationQuit()
     {
         foreach (GraphRunner graphRunner in m_graphDictionary.Values)
@@ -183,5 +199,5 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             graphRunner.OnApplicationQuit();
         }
     }
-    #endif
+#endif
 }

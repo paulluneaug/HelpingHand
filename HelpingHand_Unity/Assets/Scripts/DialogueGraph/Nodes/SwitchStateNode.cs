@@ -27,55 +27,38 @@ public class SwitchStateNode : BaseNode
 
     public override void Initialize()
     {
+        m_caseCount = 0;
     }
 
-    public override object GetValue(NodePort port)
+    private EntityState GetState(NodePort port)
     {
-        if (port.fieldName == nameof(m_else))
-        {
-            return m_else;
-        }
         if (int.TryParse(port.fieldName[9..], out int index))
         {
             return m_states[index];
         }
-        else
-        {
-            throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname");
-        }
+        throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
     }
 
-    protected override async UniTask ContinueFlow(GraphRunnerHandler handler)
+    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         List<NodePort> continuePorts = new();
         foreach (NodePort outputPort in DynamicOutputs)
         {
-            if (GetValue(outputPort) is EntityState state)
+            EntityState state = GetState(outputPort);
+            if (state.IsSet)
             {
-                if (state.IsSet)
-                {
-                    continuePorts.Add(outputPort);
-                }
-            }
-            else
-            {
-                throw new InvalidCastException($"{Debug_GetLogHeader()}");
+                continuePorts.Add(outputPort);
             }
         }
 
         if (continuePorts.Count > 0)
         {
-            await UniTask.WhenAll(continuePorts.Select(port => ContinueFlow(handler, port)));
+            await UniTask.WhenAll(continuePorts.Select(port => ContinueFlow(handler, inPort, port)));
         }
         else
         {
             NodePort outputPort = GetOutputPort(nameof(m_else));
-            await ContinueFlow(handler, outputPort);
+            await ContinueFlow(handler, inPort, outputPort);
         }
-    }
-
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
-    {
-        await ContinueFlow(handler);
     }
 }

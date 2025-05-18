@@ -17,11 +17,7 @@ public abstract class SetVariableNode<T> : BaseNode
     
     protected abstract BaseVariable<T> Variable { get; }
 
-    public override void Initialize()
-    {
-    }
-
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         T inValue = m_inValue;
         NodePort inValuePort = GetInputPort(nameof(m_inValue));
@@ -36,6 +32,5 @@ public abstract class SetVariableNode<T> : BaseNode
         }
 
         Variable.Value = inValue;
-        await ContinueFlow(handler);
     }
 }

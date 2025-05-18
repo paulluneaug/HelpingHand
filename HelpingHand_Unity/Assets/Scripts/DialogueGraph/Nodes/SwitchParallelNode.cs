@@ -27,26 +27,24 @@ public class SwitchParallelNode : BaseNode
 
     public override void Initialize()
     {
+        m_caseCount = 0;
     }
     
-    public override object GetValue(NodePort port)
+    private ConditionBase GetCondition(NodePort port)
     {
         if (int.TryParse(port.fieldName[13..], out int index))
         {
             return m_conditions[index];
         }
-        else
-        {
-            throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
-        }
+        throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
     }
 
-    protected override async UniTask ContinueFlow(GraphRunnerHandler handler)
+    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         List<NodePort> continuePorts = new();
         foreach (NodePort outputPort in DynamicOutputs)
         {
-            ConditionBase condition = GetValue(outputPort) as ConditionBase;
+            ConditionBase condition = GetCondition(outputPort);
             if (condition.Test())
             {
                 continuePorts.Add(outputPort);
@@ -55,17 +53,12 @@ public class SwitchParallelNode : BaseNode
 
         if (continuePorts.Count > 0)
         {
-            await UniTask.WhenAll(continuePorts.Select(port => ContinueFlow(handler, port)));
+            await UniTask.WhenAll(continuePorts.Select(port => ContinueFlow(handler, inPort, port)));
         }
         else
         {
             NodePort outputPort = GetOutputPort("m_else");
-            await ContinueFlow(handler, outputPort);
+            await ContinueFlow(handler, inPort, outputPort);
         }
-    }
-
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
-    {
-        await ContinueFlow(handler);
     }
 }

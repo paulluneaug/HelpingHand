@@ -29,7 +29,7 @@ public class RunGraphNode : BaseNode
         return m_graph;
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         if (m_waitForCompletion)
         {
@@ -40,7 +40,6 @@ public class RunGraphNode : BaseNode
         {
             CreateGraphRunnerAndForget().Forget();
         }
-        await ContinueFlow(handler);
     }
 
     private async UniTaskVoid CreateGraphRunnerAndForget()

@@ -20,7 +20,7 @@ public abstract class BaseNode : SerializableNode
     /// <summary>
     /// Initialize the node when the graph starts. Use this to reset the node state (non serialized variables)
     /// </summary>
-    public abstract void Initialize();
+    public virtual void Initialize() { }
     
     /// <summary>
     /// Returns the value coming from the port specified. Override this if the node has value port. It is not
@@ -44,23 +44,27 @@ public abstract class BaseNode : SerializableNode
     /// <summary>
     /// Execute the node with a flow coming from the input port specified
     /// </summary>
-    public async UniTask Execute(GraphRunnerHandler handler, NodePort port)
+    private async UniTask Execute(GraphRunnerHandler handler, NodePort inPort)
     {
         handler.CurrentNode = this;
         await HandlePauseStop(handler);
-        await ExecuteNode(handler, port);
-        // await ContinueFlow(handler); // we want this
+        await ExecuteNode(handler, inPort);
+        await UniTask.NextFrame();
+        await ContinueFlow(handler, inPort);
     }
-    
+
     /// <summary>
     /// Execute the node with a flow coming from the input port specified. 
     /// </summary>
-    protected abstract UniTask ExecuteNode(GraphRunnerHandler handler,  NodePort port);
+    protected virtual async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
+    {
+        await UniTask.CompletedTask;
+    }
 
     /// <summary>
     /// Handles the pausing, resuming and stopping of the graph.
     /// </summary>
-    private async UniTask HandlePauseStop(GraphRunnerHandler handler)
+    protected async UniTask HandlePauseStop(GraphRunnerHandler handler)
     {
         // If the graph is paused, either pause token & stop token are triggered
         if (handler.PauseToken.IsCancellationRequested)
@@ -83,11 +87,11 @@ public abstract class BaseNode : SerializableNode
     /// It has to be called at the end of the execution.
     /// It has to be overriden if the flow can divert to multiple out ports.
     /// </summary>
-    protected virtual async UniTask ContinueFlow(GraphRunnerHandler handler)
+    protected virtual async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         // By default the out port is m_out
         NodePort outputPort = GetOutputPort("m_out");
-        await ContinueFlow(handler, outputPort);
+        await ContinueFlow(handler, inPort, outputPort);
     }
 
     /// <summary>
@@ -95,7 +99,7 @@ public abstract class BaseNode : SerializableNode
     /// It has to be called at the end of the execution.
     /// It has to be overriden if the flow can divert to multiple out ports.
     /// </summary>
-    protected virtual async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort outputPort)
+    protected async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort, NodePort outputPort)
     {
         // All the resulting flows
         List<UniTask> tasks = new ();

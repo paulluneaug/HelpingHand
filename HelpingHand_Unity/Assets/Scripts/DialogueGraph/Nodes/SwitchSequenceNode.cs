@@ -23,47 +23,29 @@ public class SwitchSequenceNode : BaseNode
         base.Init();
         m_description = "Continue le flow vers le premier noeud dont la condition est vraie";
     }
-
-    public override void Initialize()
-    {
-    }
     
-    public override object GetValue(NodePort port)
+    private ConditionBase GetCondition(NodePort port)
     {
         if (int.TryParse(port.fieldName[13..], out int index))
         {
             return m_conditions[index];
         }
-        else
-        {
-            throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
-        }
+        throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
-    {
-        await ContinueFlow(handler);
-    }
-
-    protected override async UniTask ContinueFlow(GraphRunnerHandler handler)
+    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         foreach (NodePort outputPort in DynamicOutputs.OrderBy(p => p.fieldName))
         {
-            if (GetValue(outputPort) is ConditionBase condition)
+            ConditionBase condition = GetCondition(outputPort);
+            if (condition.Test())
             {
-                if (condition.Test())
-                {
-                    await ContinueFlow(handler, outputPort);
-                    return;
-                }
-            }
-            else
-            {
-                throw new InvalidCastException($"{Debug_GetLogHeader()}");
+                await ContinueFlow(handler, inPort, outputPort);
+                return;
             }
         }
 
         NodePort elsePort = GetOutputPort("m_else");
-        await ContinueFlow(handler, elsePort);
+        await ContinueFlow(handler, inPort, elsePort);
     }
 }

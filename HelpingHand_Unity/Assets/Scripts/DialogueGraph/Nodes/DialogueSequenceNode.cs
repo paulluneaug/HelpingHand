@@ -38,12 +38,7 @@ public class DialogueSequenceNode : BaseNode
         m_orderedNodePorts = DynamicOutputs.OrderBy(p => p.fieldName).ToArray();
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
-    {
-        await ContinueFlow(handler);
-    }
-
-    protected override async UniTask ContinueFlow(GraphRunnerHandler handler)
+    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         List<NodePort> continuePorts = new();
 
@@ -78,6 +73,6 @@ public class DialogueSequenceNode : BaseNode
         }
 
         DebugLog($"Reading Dialogues: [{continuePorts.Select(port => GetConnectedNodesToPort(port).Select(node => (node as DialogueNode).name).Aggregate((dialogue, aggregate) => $"{aggregate}, {dialogue}")).Aggregate((dialogues, aggregate) => $"{aggregate}, {dialogues}")}]");
-        await UniTask.WhenAll(continuePorts.Select(port => ContinueFlow(handler, port)));
+        await UniTask.WhenAll(continuePorts.Select(port => ContinueFlow(handler, inPort, port)));
     }
 }

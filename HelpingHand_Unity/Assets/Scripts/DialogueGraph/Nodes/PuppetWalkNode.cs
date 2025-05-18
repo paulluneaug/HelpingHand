@@ -31,7 +31,7 @@ public class PuppetWalkNode : BaseNode
         m_puppet = PuppetWalk.Instance;
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         if (m_waitForCompletion)
         {
@@ -41,7 +41,6 @@ public class PuppetWalkNode : BaseNode
         {
             WalkAsync(handler).Forget();
         }
-        await ContinueFlow(handler);
     }
 
     private async UniTask WalkAsync(GraphRunnerHandler handler)

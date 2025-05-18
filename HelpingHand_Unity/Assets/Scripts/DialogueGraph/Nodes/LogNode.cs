@@ -18,14 +18,10 @@ public class LogNode : BaseNode
     [SerializeField]
     private string m_content;
 
-    public override void Initialize()
-    {
-    }
-
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         string inputString = GetInputPort(nameof(m_stringIn)).GetInputValue<string>();
         Debug.Log($"{m_content}: {inputString}");
-        await ContinueFlow(handler);
+        await UniTask.CompletedTask;
     }
 }

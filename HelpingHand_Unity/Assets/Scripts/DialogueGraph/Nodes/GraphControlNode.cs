@@ -40,11 +40,7 @@ public class GraphControlNode : BaseNode
         [LabelText("", SdfIconType.Stop)] Stop,
     }
 
-    public override void Initialize()
-    {
-    }
-
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         m_graphRunnerOut = GetInputPort(nameof(m_graphRunnerIn)).GetInputValue<GraphRunner>();
         
@@ -65,8 +61,6 @@ public class GraphControlNode : BaseNode
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        
-        await ContinueFlow(handler);
     }
 
     private async UniTask PlayGraph(GraphRunnerHandler handler)

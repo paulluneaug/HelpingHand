@@ -27,13 +27,13 @@ public class ExecuteTimesNode : BaseNode
     {
         m_executionCount = 0;
     }
-
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
+    
+    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         if (m_executionCount < m_times)
         {
             m_executionCount++;
-            await ContinueFlow(handler);
+            await base.ContinueFlow(handler, inPort);
         }
     }
 }

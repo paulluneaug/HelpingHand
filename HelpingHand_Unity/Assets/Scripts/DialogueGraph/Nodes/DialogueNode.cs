@@ -66,13 +66,12 @@ public class DialogueNode : InterruptableNode
 
     public override void Initialize()
     {
-        base.Initialize();
         m_hasBeenRead.Value = false;
         m_isReadingText = false;
         m_readCount = 0;
     }
 
-    protected override async UniTask ContinueFlow(GraphRunnerHandler handler)
+    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         if (m_hasBeenInterrupted)
         {
@@ -91,11 +90,11 @@ public class DialogueNode : InterruptableNode
         else
         {
             Debug.Log($"{Debug_GetLogHeader()} End");
-            await ContinueFlow(handler, GetOutputPort(nameof(m_out)));
+            await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_out)));
         }
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort port)
+    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         DebugLog($"Play");
         m_hasBeenInterrupted = false;
@@ -120,8 +119,6 @@ public class DialogueNode : InterruptableNode
             m_hasBeenInterrupted = true;
             DialogueManager.Instance.InterruptDialogue();
         }
-
-        await ContinueFlow(handler);
     }
 
     private async UniTask WaitForDialogueEnd(GraphRunnerHandler handler)
