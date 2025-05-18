@@ -18,12 +18,12 @@ public class GraphControlNode : BaseNode
     public DialogueFlow m_out;
 
     [Input(ShowBackingValue.Never)] [ShowInInspector]
-    private GraphRunner m_graphRunnerIn;
+    private GraphRunnerHandler m_handlerIn;
 
     [Output] [ShowInInspector]
-    private GraphRunner m_graphRunnerOut;
+    private GraphRunnerHandler m_handlerOut;
 
-    [SerializeField] [HideLabel]
+    [SerializeField] [HideLabel] [HideIf("@GetInputPort(\"m_handlerIn\").GetInputValue<GraphRunnerHandler>() != null")]
     private SimpleGraph m_graph;
 
     [SerializeField] [Space] [HideLabel] [EnumToggleButtons]
@@ -40,9 +40,14 @@ public class GraphControlNode : BaseNode
         [LabelText("", SdfIconType.Stop)] Stop,
     }
 
+    public override object GetValue(NodePort port)
+    {
+        return m_handlerOut;
+    }
+
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        m_graphRunnerOut = GetInputPort(nameof(m_graphRunnerIn)).GetInputValue<GraphRunner>();
+        m_handlerOut = GetInputPort(nameof(m_handlerIn)).GetInputValue<GraphRunnerHandler>();
         
         switch (m_control)
         {
@@ -67,35 +72,39 @@ public class GraphControlNode : BaseNode
     {
         if (m_waitForCompletion)
         {
-            if (m_graphRunnerOut == null)
+            if (m_handlerOut == null)
             {
-                m_graphRunnerOut = await GraphManager.Instance.CreateGraphRunner(m_graph);
+                GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
+                m_handlerOut = runner.Handler;
             }
-            await m_graphRunnerOut.RunGraphAsync().AttachExternalCancellation(handler.StopToken);
+            await m_handlerOut.GraphRunner.RunGraphAsync().AttachExternalCancellation(handler.StopToken);
         }
         else
         {
-            if (m_graphRunnerOut == null)
+            if (m_handlerOut == null)
             {
                 CreateGraphRunnerAndForget().Forget();
             }
             else
             {
-                m_graphRunnerOut.RunGraphAsync().Forget();
+                m_handlerOut.GraphRunner.RunGraphAsync().Forget();
             }
         }
     }
 
     private void StopGraph()
     {
-        if (m_graphRunnerOut == null)
+        if (m_handlerOut == null)
         {
-            GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
+            if (GraphManager.Instance.TryGetGraphRunner(m_graph, out GraphRunner runner))
+            {
+                m_handlerOut = runner.Handler;
+            }
         }
 
-        if (m_graphRunnerOut != null)
+        if (m_handlerOut != null)
         {
-            m_graphRunnerOut.StopGraph();
+            m_handlerOut.GraphRunner.StopGraph();
         }
         else
         {
@@ -105,14 +114,17 @@ public class GraphControlNode : BaseNode
 
     private void PauseGraph()
     {
-        if (m_graphRunnerOut == null)
+        if (m_handlerOut == null)
         {
-            GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
+            if (GraphManager.Instance.TryGetGraphRunner(m_graph, out GraphRunner runner))
+            {
+                m_handlerOut = runner.Handler;
+            }
         }
-        
-        if (m_graphRunnerOut != null)
+
+        if (m_handlerOut != null)
         {
-            m_graphRunnerOut.PauseGraph();
+            m_handlerOut.GraphRunner.PauseGraph();
         }
         else
         {
@@ -122,14 +134,17 @@ public class GraphControlNode : BaseNode
 
     private void ResumeGraph()
     {
-        if (m_graphRunnerOut == null)
+        if (m_handlerOut == null)
         {
-            GraphManager.Instance.TryGetGraphRunner(m_graph, out m_graphRunnerOut);
+            if (GraphManager.Instance.TryGetGraphRunner(m_graph, out GraphRunner runner))
+            {
+                m_handlerOut = runner.Handler;
+            }
         }
-        
-        if (m_graphRunnerOut != null)
+
+        if (m_handlerOut != null)
         {
-            m_graphRunnerOut.ResumeGraph();
+            m_handlerOut.GraphRunner.ResumeGraph();
         }
         else
         {
@@ -139,13 +154,14 @@ public class GraphControlNode : BaseNode
 
     private async UniTaskVoid CreateGraphRunnerAndForget()
     {
-        m_graphRunnerOut = await GraphManager.Instance.CreateGraphRunner(m_graph);
-        m_graphRunnerOut.RunGraphAsync().Forget();
+        GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
+        m_handlerOut = runner.Handler;
+        runner.RunGraphAsync().Forget();
     }
 
     public void OnApplicationQuit()
     {
-        m_graphRunnerIn = null;
-        m_graphRunnerOut = null;
+        m_handlerOut = null;
+        m_handlerIn = null;
     }
 }
