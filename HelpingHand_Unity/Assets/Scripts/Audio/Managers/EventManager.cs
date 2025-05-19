@@ -1,6 +1,5 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.LightTransport;
 
 using TitleAlignments = Sirenix.OdinInspector.TitleAlignments;
 using WwiseEvent = AK.Wwise.Event;
