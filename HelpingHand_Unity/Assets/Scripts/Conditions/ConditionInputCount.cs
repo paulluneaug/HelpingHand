@@ -31,22 +31,27 @@ public class ConditionInputCount : ConditionBase
     [SerializeField] [LabelWidth(100)]
     private float m_timeWindow;
 
-    [SerializeField] [EnumToggleButtons] [LabelWidth(100)]
+    [SerializeField] [EnumToggleButtons] [LabelWidth(100)] [OnValueChanged("OnTypeChanged")]
     private InputListType m_type;
+    
+    private void OnTypeChanged()
+    {
+        m_onlyEvents = Array.Empty<BaseGameEvent>();
+        m_anyButEvents = Array.Empty<BaseGameEvent>();
+    }
 
     [SerializeField] [ShowIf("@m_type == InputListType.AnyInput")] [LabelWidth(100)] 
     private bool m_usePhysicalInputs = true;
 
-    [SerializeField] [HideLabel] [ShowIf("@m_type == InputListType.OnlyThese")] 
+    [SerializeField] [HideLabel] [ShowIf("@m_type == InputListType.OnlyThese")] [PropertySpace(8, 8)]
     private BaseGameEvent[] m_onlyEvents = Array.Empty<BaseGameEvent>();
     
-    [SerializeField] [HideLabel] [ShowIf("@m_type == InputListType.AnyButThese")] [LabelWidth(100)]
+    [SerializeField] [HideLabel] [ShowIf("@m_type == InputListType.AnyButThese")] [PropertySpace(8, 8)]
     private BaseGameEvent[] m_anyButEvents = Array.Empty<BaseGameEvent>();
 
     [SerializeField] [EnumToggleButtons] [LabelWidth(100)]
     private InputCountType m_countType;
 
-    private bool m_isInputTriggered;
     private IEnumerable<BaseGameEvent> m_effectiveInputList; 
     
     public override void Initialize()
@@ -55,7 +60,7 @@ public class ConditionInputCount : ConditionBase
 
         m_effectiveInputList = m_type switch
         {
-            InputListType.AnyInput => m_usePhysicalInputs ? InputCountListeneringleton.Instance.AllPhysicalInputEvents : InputCountListeneringleton.Instance.AllInputEvents,
+            InputListType.AnyInput => m_usePhysicalInputs ? InputCountListenerSingleton.Instance.AllPhysicalInputEvents : InputCountListenerSingleton.Instance.AllInputEvents,
             InputListType.OnlyThese => m_onlyEvents,
             InputListType.AnyButThese => m_anyButEvents,
             _ => throw new ArgumentOutOfRangeException()
@@ -70,8 +75,8 @@ public class ConditionInputCount : ConditionBase
 
     private void OnInputTriggered()
     {
-        m_isInputTriggered = true;
         // This is rather crado but it works?!
+        // We need to delay the raise because the InputCountListener must have the callback first
         UniTask.Action(async () =>
         {
             await UniTask.WaitForEndOfFrame();
@@ -81,16 +86,7 @@ public class ConditionInputCount : ConditionBase
 
     public override bool Test()
     {
-        int inputCount = InputCountListeneringleton.Instance.GetInputCount(m_effectiveInputList, m_timeWindow, m_countType == InputCountType.Triggers);
-
-        // OnInputTriggered is called before InputCountSingleton.OnInputTriggered so the count is short of 1
-        // If Test() is called from another condition, we don't need to add 1
-        // if (inputCount == 0 && m_isInputTriggered)
-        // {
-        //     inputCount = 1;
-        //     m_isInputTriggered = false;
-        // }
-        Debug.Log($"Input count = {inputCount}");
+        int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, m_timeWindow, m_countType == InputCountType.Triggers);
         return inputCount >= m_count;
     }
 

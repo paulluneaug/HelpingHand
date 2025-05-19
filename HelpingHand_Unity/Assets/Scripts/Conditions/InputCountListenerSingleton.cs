@@ -16,7 +16,7 @@ using UnityUtility.Singletons;
 
 using Object = UnityEngine.Object;
 
-public class InputCountListeneringleton : MonoBehaviourSingleton<InputCountListeneringleton>
+public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountListenerSingleton>
 {
     [SerializeField]
     private float m_window = 15f;
@@ -96,7 +96,27 @@ public class InputCountListeneringleton : MonoBehaviourSingleton<InputCountListe
     /// <summary>
     /// Time since the last input
     /// </summary>
-    public float LastInputTime => m_lastInputTime;
+    public float LastInputTime(IEnumerable<BaseGameEvent> inputEvents = null)
+    {
+        if (inputEvents == null)
+        {
+            return m_lastInputTime;
+        }
+
+        float maxTime = 0;
+        foreach (BaseGameEvent inputEvent in inputEvents)
+        {
+            if (m_eventTimes.TryGetValue(inputEvent, out List<float> times))
+            {
+                if (times.Count > 0 && times[^1] > maxTime)
+                {
+                    maxTime = times[^1];
+                }
+            }
+        }
+
+        return maxTime;
+    }
     
     protected override void Start()
     {
