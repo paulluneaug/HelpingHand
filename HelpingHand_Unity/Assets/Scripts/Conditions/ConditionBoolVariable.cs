@@ -22,4 +22,10 @@ public class ConditionBoolVariable : ConditionBase
         m_variable.RemoveListener(RaiseOnPreconditionUpdated);
         m_variable.AddListener(RaiseOnPreconditionUpdated);
     }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_variable.RemoveListener(RaiseOnPreconditionUpdated);
+    }
 }

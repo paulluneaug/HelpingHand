@@ -100,8 +100,9 @@ public class WaitConditionNode : InterruptableNode
         m_isConditionPassed = test;
     }
 
-    private void OnDestroy()
+    public override void Dispose()
     {
-        m_condition.OnPreconditionUpdated -= OnConditionUpdated;
+        base.Dispose();
+        m_condition.Dispose();
     }
 }

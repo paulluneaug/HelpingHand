@@ -73,6 +73,15 @@ public class ConditionInputCount : ConditionBase
         }
     }
 
+    public override void Dispose()
+    {
+        base.Dispose();
+        foreach (BaseGameEvent inputEvent in m_effectiveInputList)
+        {
+            inputEvent.RemoveListener(OnInputTriggered);
+        }
+    }
+
     private void OnInputTriggered()
     {
         // This is rather crado but it works?!
@@ -88,13 +97,5 @@ public class ConditionInputCount : ConditionBase
     {
         int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, m_timeWindow, m_countType == InputCountType.Triggers);
         return inputCount >= m_count;
-    }
-
-    public override void Dispose()
-    {
-        foreach (BaseGameEvent inputEvent in m_effectiveInputList)
-        {
-            inputEvent.RemoveListener(OnInputTriggered);
-        }
     }
 }

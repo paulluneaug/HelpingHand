@@ -21,7 +21,7 @@ public class LogNode : BaseNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         string inputString = GetInputPort(nameof(m_stringIn)).GetInputValue<string>();
-        Debug.Log($"{m_content}: {inputString}");
+        DebugLog($"{m_content}: {inputString}");
         await UniTask.CompletedTask;
     }
 }

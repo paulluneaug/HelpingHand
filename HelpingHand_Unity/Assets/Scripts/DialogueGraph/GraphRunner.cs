@@ -122,11 +122,20 @@ public class GraphRunner : MonoBehaviour
         }
         else
         {
-            Debug.Log($"{Debug_GetLogHeader()} Ended");
+            Debug.Log($"{Debug_GetLogHeader()} End reached");
             OnGraphEnded?.Invoke();
         }
 
+        Debug.Log($"{Debug_GetLogHeader()} Stopped");
         OnGraphStopped?.Invoke();
+        
+        foreach (Node node in m_graph.nodes)
+        {
+            if (node is IDisposable disposableNode)
+            {
+                disposableNode.Dispose();
+            }
+        }
     }
 
     private void OnDestroy()

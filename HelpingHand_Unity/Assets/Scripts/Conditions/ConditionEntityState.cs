@@ -16,6 +16,12 @@ public class ConditionEntityState : ConditionBase
         m_state.AddListener(RaiseOnPreconditionUpdated);
     }
 
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_state.RemoveListener(RaiseOnPreconditionUpdated);
+    }
+
     public override bool Test()
     {
         return m_mustBeSet == m_state.IsSet;

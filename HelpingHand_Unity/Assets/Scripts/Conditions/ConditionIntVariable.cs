@@ -30,6 +30,19 @@ public class ConditionIntVariable : ConditionBase
     [SerializeField] [LabelWidth(100)] [ShowIf("@m_useBounds")] [HorizontalGroup("Range")]
     private int m_valueMax;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        m_variable.RemoveListener(RaiseOnPreconditionUpdated);
+        m_variable.AddListener(RaiseOnPreconditionUpdated);
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_variable.RemoveListener(RaiseOnPreconditionUpdated);
+    }
+    
     public override bool Test()
     {
         return m_comparison switch
@@ -54,12 +67,5 @@ public class ConditionIntVariable : ConditionBase
         {
             return m_value == m_variable.Value;
         }
-    }
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        m_variable.RemoveListener(RaiseOnPreconditionUpdated);
-        m_variable.AddListener(RaiseOnPreconditionUpdated);
     }
 }

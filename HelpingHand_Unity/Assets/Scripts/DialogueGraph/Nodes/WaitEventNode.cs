@@ -99,8 +99,9 @@ public class WaitEventNode : InterruptableNode
         m_isEventRaised = true;
     }
 
-    private void OnDestroy()
+    public override void Dispose()
     {
+        base.Dispose();
         m_event.RemoveListener(OnEventRaised);
     }
 }

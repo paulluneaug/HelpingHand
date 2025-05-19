@@ -50,4 +50,5 @@ public class ConditionLastInputSince : ConditionBase
             _ => throw new ArgumentOutOfRangeException()
         }) > m_timeWindow;
     }
+    
 }

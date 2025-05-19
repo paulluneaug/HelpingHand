@@ -22,6 +22,12 @@ public class ConditionDialogue : ConditionBase
         m_dialogue.HasBeenRead.OnValueChanged += OnValueChanged;
     }
 
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_dialogue.HasBeenRead.OnValueChanged -= OnValueChanged;
+    }
+
     private void OnValueChanged(bool value)
     {
         RaiseOnPreconditionUpdated();

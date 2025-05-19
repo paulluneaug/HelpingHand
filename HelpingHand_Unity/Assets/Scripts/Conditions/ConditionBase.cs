@@ -19,5 +19,6 @@ public abstract class ConditionBase : IDisposable
 
     public virtual void Dispose()
     {
+        OnPreconditionUpdated = null;
     }
 }

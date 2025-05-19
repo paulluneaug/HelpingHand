@@ -28,4 +28,10 @@ public class ConditionNode : BaseNode
             await base.ContinueFlow(handler, inPort);
         }
     }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_condition.Dispose();
+    }
 }

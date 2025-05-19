@@ -74,8 +74,9 @@ public class InterruptWithConditionNode : InterruptableNode
         m_isConditionPassed = m_condition.Test();
     }
 
-    private void OnDestroy()
+    public override void Dispose()
     {
+        base.Dispose();
         m_condition.OnPreconditionUpdated -= OnConditionUpdated;
     }
 }

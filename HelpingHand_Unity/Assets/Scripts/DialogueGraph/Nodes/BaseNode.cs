@@ -11,7 +11,7 @@ using UnityEngine;
 using XNode;
 using XNode.Odin;
 
-public abstract class BaseNode : SerializableNode
+public abstract class BaseNode : SerializableNode, IDisposable
 {
     [SerializeField]
     [HideLabel][FoldoutGroup("Description")][TextArea(1, 2)]
@@ -168,5 +168,9 @@ public abstract class BaseNode : SerializableNode
                 Debug.Log($"{Debug_GetLogHeader()} {log}", source);
                 break;
         }
+    }
+
+    public virtual void Dispose()
+    {
     }
 }

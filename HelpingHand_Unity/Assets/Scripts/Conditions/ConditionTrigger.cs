@@ -14,6 +14,12 @@ public class ConditionTrigger : ConditionBase
         m_trigger.OnTriggered += RaiseOnPreconditionUpdated;
     }
 
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_trigger.OnTriggered -= RaiseOnPreconditionUpdated;
+    }
+
     public override bool Test()
     {
         return m_trigger.IsRaised;

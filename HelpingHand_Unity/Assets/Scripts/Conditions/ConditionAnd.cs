@@ -25,4 +25,13 @@ public class ConditionAnd : ConditionBase
             precondition.OnPreconditionUpdated += RaiseOnPreconditionUpdated;
         }
     }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        foreach (ConditionBase precondition in m_preconditions)
+        {
+            precondition.OnPreconditionUpdated -= RaiseOnPreconditionUpdated;
+        }
+    }
 }
