@@ -75,21 +75,15 @@ public class DialogueNode : InterruptableNode
     {
         if (m_hasBeenInterrupted)
         {
+            DebugLog($"Has been interrupted");
             m_hasBeenInterrupted = false;
-            // wait for interruption graph to end
-            bool isCancelled = await UniTask.WaitUntilCanceled(handler.ResumeToken).SuppressCancellationThrow();
-            if (isCancelled)
-            {
-                Debug.Log($"{Debug_GetLogHeader()} Wait cancelled");
-                return;
-            }
 
             // re-execute the node
             await Execute(handler);
         }
         else
         {
-            Debug.Log($"{Debug_GetLogHeader()} End");
+            DebugLog($"End");
             await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_out)));
         }
     }
