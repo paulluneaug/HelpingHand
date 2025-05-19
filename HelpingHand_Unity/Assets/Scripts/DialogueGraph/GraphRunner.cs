@@ -138,15 +138,9 @@ public class GraphRunner : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         m_graphRunnerHandler.Dispose();
-        OnGraphStarted = null;
-        OnGraphEnded = null;
-        OnGraphCancelled = null;
-        OnGraphStopped = null;
-        OnGraphPaused = null;
-        OnGraphResumed = null;
     }
 
     #if UNITY_EDITOR
