@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 616, y: -104}
+  position: {x: 408, y: -104}
   folded: 0
   ports:
     keys:
@@ -38,7 +38,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 7209371068473495525}
+        node: {fileID: 8569747492048098117}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -199,6 +199,7 @@ MonoBehaviour:
   - {fileID: -274544132751459862}
   - {fileID: 7829108088616394289}
   - {fileID: 2955120949733356542}
+  - {fileID: 8569747492048098117}
 --- !u!114 &2955120949733356542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 312, y: -104}
+  position: {x: 136, y: -104}
   folded: 0
   ports:
     keys:
@@ -448,7 +449,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -8596623034309422450}
+        node: {fileID: 8569747492048098117}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -539,3 +540,124 @@ MonoBehaviour:
   m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0
+--- !u!114 &8569747492048098117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b790149fc24ea4e90cc495df728465, type: 3}
+  m_Name: Wait Condition
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 440, y: 216}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_timeoutOut
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 8569747492048098117}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -8596623034309422450}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 8569747492048098117}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 7209371068473495525}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_timeoutOut
+      _node: {fileID: 8569747492048098117}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_condition
+      Entry: 7
+      Data: 0|ConditionAnd, Assembly-CSharp
+    - Name: m_preconditions
+      Entry: 7
+      Data: 1|ConditionBase[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 2|ConditionInputCount, Assembly-CSharp
+    - Name: m_count
+      Entry: 3
+      Data: 20
+    - Name: m_timeWindow
+      Entry: 4
+      Data: 5
+    - Name: m_type
+      Entry: 3
+      Data: 0
+    - Name: m_usePhysicalInputs
+      Entry: 5
+      Data: true
+    - Name: m_onlyEvents
+      Entry: 7
+      Data: 3|Events.BaseGameEvent[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_anyButEvents
+      Entry: 6
+      Data: 
+    - Name: m_countType
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  m_description: 
+  m_interruptable: 0
+  m_doesTimeout: 0
+  m_timeout: 0

@@ -49,11 +49,13 @@ public class RotaryEncoderInputEvent : BaseGameEvent
     public void RaiseStepLeft()
     {
         m_stepLeftEvent.Raise();
+        Raise();
     }
 
     public void RaiseStepRight()
     {
         m_stepRightEvent.Raise();
+        Raise();
     }
 
     public void AddIndexListener(IntGameEventListener listener)

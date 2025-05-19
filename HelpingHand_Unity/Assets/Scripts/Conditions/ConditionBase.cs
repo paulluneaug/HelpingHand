@@ -1,7 +1,7 @@
 using System;
 
 [System.Serializable]
-public abstract class ConditionBase
+public abstract class ConditionBase : IDisposable
 {
     public event Action OnPreconditionUpdated;
     
@@ -15,5 +15,9 @@ public abstract class ConditionBase
     public virtual void Initialize()
     {
         OnPreconditionUpdated = null;
+    }
+
+    public virtual void Dispose()
+    {
     }
 }

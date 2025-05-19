@@ -96,7 +96,9 @@ public class WaitConditionNode : InterruptableNode
 
     private void OnConditionUpdated()
     {
-        m_isConditionPassed = m_condition.Test();
+        bool test = m_condition.Test();
+        DebugLog($"Condition udpated. test = {test}");
+        m_isConditionPassed =test;
     }
 
     private void OnDestroy()
