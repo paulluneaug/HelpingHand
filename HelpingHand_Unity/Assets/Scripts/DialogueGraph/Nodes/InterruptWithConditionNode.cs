@@ -51,7 +51,7 @@ public class InterruptWithConditionNode : InterruptableNode
 
             // If the interruption didn't happen (because another graph with more priority interrupted at the same time)
             // then exit via cancelled out port
-            if (await GraphManager.Instance.Interrupt(handler))
+            if (await GraphManager.Instance.Interrupt(m_condition.Depth(), handler))
             {
                 DebugLog($"Is interrupting. Continuing...");
                 break;

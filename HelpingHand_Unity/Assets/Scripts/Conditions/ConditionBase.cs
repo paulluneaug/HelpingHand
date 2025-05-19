@@ -21,4 +21,9 @@ public abstract class ConditionBase : IDisposable
     {
         OnPreconditionUpdated = null;
     }
+
+    public virtual int Depth()
+    {
+        return 1;
+    }
 }

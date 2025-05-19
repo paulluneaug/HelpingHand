@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [System.Serializable]
 public class ConditionDialogue : ConditionBase
@@ -9,11 +8,6 @@ public class ConditionDialogue : ConditionBase
 
     [SerializeField]
     private bool m_isRead = true;
-
-    public override bool Test()
-    {
-        return m_isRead == m_dialogue.HasBeenRead.Value;
-    }
 
     public override void Initialize()
     {
@@ -26,6 +20,11 @@ public class ConditionDialogue : ConditionBase
     {
         base.Dispose();
         m_dialogue.HasBeenRead.OnValueChanged -= OnValueChanged;
+    }
+
+    public override bool Test()
+    {
+        return m_isRead == m_dialogue.HasBeenRead.Value;
     }
 
     private void OnValueChanged(bool value)

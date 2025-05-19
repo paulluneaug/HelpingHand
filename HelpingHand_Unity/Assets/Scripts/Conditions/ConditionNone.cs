@@ -10,4 +10,9 @@ public class ConditionNone : ConditionBase
     {
         base.Initialize();
     }
+
+    public override int Depth()
+    {
+        return 0;
+    }
 }

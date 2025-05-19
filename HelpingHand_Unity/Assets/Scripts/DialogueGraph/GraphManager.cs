@@ -29,18 +29,29 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     public GraphRunner CurrentGraphRunner => m_currentGraphRunner;
 
-    [SerializeField]
+    [SerializeField] 
     private SimpleGraph[] m_mainSequence;
 
     [SerializeField]
     private SimpleGraph[] m_parallelExecution;
 
-    [SerializeField]
+    [SerializeField] 
     private float m_delayBetweenInterruptions = 0.5f;
 
     private Queue<SimpleGraph> m_graphQueue;
-    // private readonly PriorityQueue<GraphRunnerHandler, int> m_interruptionQueue =   new(Comparer<GraphRunnerHandler>.Create((h1, h2) => h1.Priority.CompareTo(h2.Priority)));
-    private readonly PriorityQueue<GraphRunnerHandler, int> m_interruptionQueue = new(Comparer<int>.Create((i1, i2) => -i1.CompareTo(i2)));
+
+    private readonly PriorityQueue<GraphRunnerHandler, (int priority, int depth)> m_interruptionQueue =
+        new(Comparer<(int priority, int depth)>.Create((i1, i2) =>
+        {
+            int comparison = -i1.priority.CompareTo(i2.priority);
+            if (comparison == 0)
+            {
+                comparison = -i1.depth.CompareTo(i2.depth);
+            }
+
+            return comparison;
+        }));
+
     private readonly Dictionary<GraphRunnerHandler, (bool returned, bool passed)> m_interruptionDictionary = new();
 
     private GraphRunner m_currentGraphRunner;
@@ -122,7 +133,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     }
 
 
-    public async UniTask<bool> Interrupt(GraphRunnerHandler handler)
+    public async UniTask<bool> Interrupt(int interruptionDepth, GraphRunnerHandler handler)
     {
         lock (m_interruptionQueue)
         {
@@ -133,12 +144,12 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
                 return false;
             }
 
-            m_interruptionQueue.Enqueue(handler, handler.Priority);
+            m_interruptionQueue.Enqueue(handler, (handler.Priority, interruptionDepth));
         }
 
         m_interruptionDictionary[handler] = (false, false);
 
-        await UniTask.WaitUntil(() =>m_interruptionDictionary[handler].returned);
+        await UniTask.WaitUntil(() => m_interruptionDictionary[handler].returned);
         return m_interruptionDictionary[handler].passed;
     }
 
@@ -187,6 +198,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         }
 
         m_currentGraphRunner = interruptingGraph.GraphRunner;
+        
         // Tell the interrupting graph to continue
         m_interruptionDictionary[interruptingGraph] = (true, true);
     }

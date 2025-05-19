@@ -34,4 +34,15 @@ public class ConditionAnd : ConditionBase
             precondition.OnPreconditionUpdated -= RaiseOnPreconditionUpdated;
         }
     }
+
+    public override int Depth()
+    {
+        int result = 0;
+        foreach (ConditionBase precondition in m_preconditions)
+        {
+            result += precondition.Depth();
+        }
+
+        return result;
+    }
 }
