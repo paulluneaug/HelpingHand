@@ -190,7 +190,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         {
             m_currentGraphRunner.PauseGraph();
             GraphRunner interruptedGraph = m_currentGraphRunner;
-            interruptingGraph.GraphRunner.OnGraphEnded += () =>
+            interruptingGraph.GraphRunner.OnGraphStopped += () =>
             {
                 m_currentGraphRunner = interruptedGraph;
                 m_currentGraphRunner.ResumeGraph();
