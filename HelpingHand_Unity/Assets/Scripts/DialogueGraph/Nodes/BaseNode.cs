@@ -13,6 +13,9 @@ using XNode.Odin;
 
 public abstract class BaseNode : SerializableNode, IDisposable
 {
+    [SerializeField] 
+    protected bool m_showDebug = true;
+    
     [SerializeField]
     [HideLabel][FoldoutGroup("Description")][TextArea(1, 2)]
     protected string m_description;
@@ -156,6 +159,11 @@ public abstract class BaseNode : SerializableNode, IDisposable
     /// </summary>
     protected void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
+        if (!m_showDebug)
+        {
+            return;
+        }
+        
         switch (logType)
         {
             case LogType.Error:
