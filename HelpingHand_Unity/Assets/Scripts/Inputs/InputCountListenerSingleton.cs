@@ -33,7 +33,6 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
     private Dictionary<BaseGameEvent, Action> m_eventActions = new();
     private Dictionary<BaseGameEvent, List<float>> m_eventTimes = new();
     private float m_nextWindowTime;
-    private float m_lastInputTime;
 
     public override void Initialize()
     {
@@ -94,15 +93,10 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
     }
 
     /// <summary>
-    /// Time since the last input
+    /// Closest of last input times from the list
     /// </summary>
-    public float LastInputTime(IEnumerable<BaseGameEvent> inputEvents = null)
+    public float LastInputTime(IEnumerable<BaseGameEvent> inputEvents)
     {
-        if (inputEvents == null)
-        {
-            return m_lastInputTime;
-        }
-
         float maxTime = 0;
         foreach (BaseGameEvent inputEvent in inputEvents)
         {
@@ -127,11 +121,9 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
             evt.AddListener(m_eventActions[evt]);
         }
     }
-
+    
     private void Update()
     {
-        m_lastInputTime += Time.deltaTime;
-        
         if (Time.time > m_nextWindowTime)
         {
             var keys = m_eventTimes.Keys.ToArray();
@@ -147,8 +139,6 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
 
     private void OnInputTriggered(BaseGameEvent inputEvent)
     {
-        m_lastInputTime = 0;
-        
         if (!m_eventTimes.TryAdd(inputEvent, new List<float> { Time.time }))
         {
             m_eventTimes[inputEvent].Add(Time.time);

@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class ConditionInputCount : ConditionBase
 {
     private enum InputListType
@@ -20,7 +20,7 @@ public class ConditionInputCount : ConditionBase
         [LabelText("Any but these inputs")] AnyButThese,
     }
 
-    private enum InputCountType
+    private enum InputType
     {
         [LabelText("Triggers count")] Triggers,
         [LabelText("Inputs count")] Inputs,
@@ -51,8 +51,11 @@ public class ConditionInputCount : ConditionBase
     private BaseGameEvent[] m_anyButEvents = Array.Empty<BaseGameEvent>();
 
     [SerializeField] [EnumToggleButtons] [LabelWidth(100)]
-    private InputCountType m_countType;
-
+    private InputType m_inputType;
+    
+    [SerializeField] [LabelWidth(100)] [EnumToggleButtons]
+    private ComparisonOperation m_countType;
+    
     private IEnumerable<BaseGameEvent> m_effectiveInputList; 
     
     public override void Initialize()
@@ -96,7 +99,16 @@ public class ConditionInputCount : ConditionBase
 
     public override bool Test()
     {
-        int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, m_timeWindow, m_countType == InputCountType.Triggers);
-        return inputCount >= m_count;
+        int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, m_timeWindow, m_inputType == InputType.Triggers);
+        return m_countType switch
+        {
+            ComparisonOperation.Equal => inputCount == m_count,
+            ComparisonOperation.NotEqual => inputCount != m_count,
+            ComparisonOperation.StrictlyLowerThan => inputCount < m_count,
+            ComparisonOperation.LowerOrEqualThan => inputCount <= m_count,
+            ComparisonOperation.StrictlyGreaterThan => inputCount > m_count,
+            ComparisonOperation.GreaterOrEqualThan => inputCount >= m_count,
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 }
