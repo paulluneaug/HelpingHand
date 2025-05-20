@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class InterruptableNode : BaseNode
 {
     [SerializeField][LabelWidth(100)]
-    private bool m_interruptable = false;
+    private bool m_interruptable = true;
 
     public bool Interruptable => m_interruptable;
     
