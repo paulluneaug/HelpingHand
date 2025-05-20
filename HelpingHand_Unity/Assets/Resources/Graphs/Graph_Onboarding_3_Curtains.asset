@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 632, y: -264}
+  position: {x: 632, y: -280}
   folded: 0
   ports:
     keys:
@@ -39,64 +39,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 3052270152535175503}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 0
-  m_waitTime: 2
-  m_unscaled: 0
---- !u!114 &-8550092342788941510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 4728, y: -1224}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -8550092342788941510}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: -4904058218897012265}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -8550092342788941510}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -8205328504482604724}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -172,65 +114,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Aller tu y es presque ! (1)
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
---- !u!114 &-8205328504482604724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 5000, y: -1224}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -8205328504482604724}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: -8550092342788941510}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -8205328504482604724}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Et surtout, \xE0 partir de maintenant, garde bien les lumi\xE8res de
-    la salle \xE9teintes !"
+  m_interruptable: 1
+  m_content: (Curtains) Aller tu y es presque ! (1)
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-7737650620656342079
@@ -289,8 +174,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Aller tu y es presque ! (2)
+  m_interruptable: 1
+  m_content: (Curtains) Aller tu y es presque ! (2) (repeat)
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &-6288489059127872387
@@ -379,8 +264,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: 
-  m_interruptable: 0
-  m_state: {fileID: 11400000, guid: 08321531e1c429046b398a77d4683db5, type: 2}
+  m_interruptable: 1
+  m_state: {fileID: 11400000, guid: 9ce8181f57fef6144904bf0304198dfb, type: 2}
   m_doesTimeout: 1
   m_timeout: 5
 --- !u!114 &-5593853868953500548
@@ -465,6 +350,63 @@ MonoBehaviour:
     n'a pas \xE9t\xE9 lu"
   m_sequence: []
   m_loop: 0
+--- !u!114 &-5591041780130728931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4984, y: -1224}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -5591041780130728931}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 8111389587761003402}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -5591041780130728931}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebug: 1
+  m_description: Display the content. Loops back if interrupted
+  m_interruptable: 1
+  m_content: (Curtains)  Il faudra baisser les rideaux entre chaque acte, je te ferai
+    signe le moment venu.
+  m_canRepeat: 0
+  m_audioEvent: {fileID: 0}
 --- !u!114 &-5255160588323726711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,8 +463,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Concentre toi (4) (repeat)
+  m_interruptable: 1
+  m_content: (Curtains) Concentre toi (4) (repeat)
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &-4904058218897012265
@@ -563,7 +505,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -8550092342788941510}
+        node: {fileID: 8111389587761003402}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -580,8 +522,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Parfait, passons \xE0 la suite"
+  m_interruptable: 1
+  m_content: "(Curtains)  Parfait, passons \xE0 la suite"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-4371676715320391880
@@ -640,8 +582,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Concentre toi (2)
+  m_interruptable: 1
+  m_content: (Curtains) Concentre toi (2)
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-1678166920989867139
@@ -699,7 +641,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
+  m_interruptable: 1
   m_content: "Bon, tu es peut-\xEAtre plus capable que les autres finalement... Continue"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
@@ -759,8 +701,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Utilise la console 1
+  m_interruptable: 1
+  m_content: (Curtains) Utilise la console (1)
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-1475312660811051118
@@ -901,8 +843,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Pourquoi tu ne touches plus \xE0 rien ?? (2) (repeat)"
+  m_interruptable: 1
+  m_content: "(Curtains) Pourquoi tu ne touches plus \xE0 rien ?? (2) (repeat)"
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &-434795655288001289
@@ -961,8 +903,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Utilise la console 3
+  m_interruptable: 1
+  m_content: (Curtains) Utilise la console (3) (repeat)
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &11400000
@@ -975,7 +917,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b10dfdb3856096409bd66cc6420f3b3, type: 3}
-  m_Name: Graph_Onboarding_2_GlobalLights
+  m_Name: Graph_Onboarding_3_Curtains
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4662089034119733656}
@@ -1007,8 +949,8 @@ MonoBehaviour:
   - {fileID: -5593853868953500548}
   - {fileID: -8433473268115473465}
   - {fileID: -7737650620656342079}
-  - {fileID: -8205328504482604724}
-  - {fileID: -8550092342788941510}
+  - {fileID: 8111389587761003402}
+  - {fileID: -5591041780130728931}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,10 +1007,10 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Concentre toi (1)
+  m_interruptable: 1
+  m_content: (Curtains) Concentre toi (1)
   m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: 55daa36af8d4b294f98397df14fe11b1, type: 2}
 --- !u!114 &2341588443346751878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,7 +1093,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a9d9a698f59d6a849b54ee472d87f5c0, type: 2}
+    - {fileID: 11400000, guid: ceb0ca9439df8f34c91ec90e37968b43, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -1186,7 +1128,7 @@ MonoBehaviour:
       Data: 
   m_showDebug: 1
   m_description: 
-  m_interruptable: 0
+  m_interruptable: 1
   m_doesTimeout: 1
   m_timeout: 5
 --- !u!114 &3052270152535175503
@@ -1199,10 +1141,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 2 GlobalLights 1
+  m_Name: Dialogue Onboarding 3 Curtains 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 904, y: -264}
+  position: {x: 872, y: -280}
   folded: 0
   ports:
     keys:
@@ -1244,9 +1186,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Pour la repr\xE9sentation il faut commencer par \xE9teindre les lumi\xE8res
-    de la salle"
+  m_interruptable: 1
+  m_content: "Ok 2e \xE9tape maintenant, ouvrir les rideaux."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &4546823021958708317
@@ -1305,8 +1246,9 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Non mais t'\xE9tais bien parti c'\xE9tait l'autre input (2) (repeat)"
+  m_interruptable: 1
+  m_content: "(Curtains) Non mais t'\xE9tais bien parti c'\xE9tait l'autre input
+    (2) (repeat)"
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &4662089034119733656
@@ -1322,7 +1264,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 376, y: -264}
+  position: {x: 376, y: -280}
   folded: 0
   ports:
     keys:
@@ -1418,8 +1360,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Pourquoi tu ne touches plus \xE0 rien ?? (1)"
+  m_interruptable: 1
+  m_content: "(Curtains) Pourquoi tu ne touches plus \xE0 rien ?? (1)"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &5073853030362982201
@@ -1435,7 +1377,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1272, y: -264}
+  position: {x: 1208, y: -280}
   folded: 0
   ports:
     keys:
@@ -1477,7 +1419,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 0
+  m_interruptable: 1
   m_waitTime: 1
   m_unscaled: 0
 --- !u!114 &5940134337118002107
@@ -1536,8 +1478,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Utilise la console 2
+  m_interruptable: 1
+  m_content: (Curtains) Utilise la console (2)
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &5982179380867700703
@@ -1596,8 +1538,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: Concentre toi (3)
+  m_interruptable: 1
+  m_content: (Curtains) Concentre toi (3)
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &6425178165369696990
@@ -1764,10 +1706,11 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Non mais t'\xE9tais bien parti c'\xE9tait l'autre input (1)"
+  m_interruptable: 1
+  m_content: "(Curtains) Non mais t'\xE9tais bien parti c'\xE9tait l'autre input
+    (1)"
   m_canRepeat: 0
-  m_audioEvent: {fileID: 11400000, guid: 55daa36af8d4b294f98397df14fe11b1, type: 2}
+  m_audioEvent: {fileID: 0}
 --- !u!114 &7565657492849213458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,7 +1865,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a9d9a698f59d6a849b54ee472d87f5c0, type: 2}
+    - {fileID: 11400000, guid: ceb0ca9439df8f34c91ec90e37968b43, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -1985,6 +1928,64 @@ MonoBehaviour:
       Data: 
   m_showDebug: 1
   m_description: Continue le flow vers le premier noeud dont la condition est vraie
+--- !u!114 &8111389587761003402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4728, y: -1224}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 8111389587761003402}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -4904058218897012265}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 8111389587761003402}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -5591041780130728931}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebug: 1
+  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
+  m_interruptable: 1
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &8638641163836513865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2167,7 +2168,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a9d9a698f59d6a849b54ee472d87f5c0, type: 2}
+    - {fileID: 11400000, guid: ceb0ca9439df8f34c91ec90e37968b43, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -2238,23 +2239,11 @@ MonoBehaviour:
       Entry: 5
       Data: true
     - Name: m_onlyEvents
-      Entry: 7
-      Data: 4|Events.BaseGameEvent[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 9
+      Data: 2
     - Name: m_anyButEvents
       Entry: 9
-      Data: 4
+      Data: 2
     - Name: m_inputType
       Entry: 3
       Data: 1
@@ -2327,6 +2316,6 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 0
+  m_interruptable: 1
   m_waitTime: 2
   m_unscaled: 0
