@@ -99,8 +99,7 @@ public class WaitConditionNode : InterruptableNode
 
     private void OnConditionUpdated()
     {
-        bool test = m_condition.Test();
-        m_isConditionPassed = test;
+        m_isConditionPassed = m_condition.Test();
     }
 
     public override void Dispose()
