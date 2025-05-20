@@ -17,8 +17,6 @@ public class SwitchParallelNode : BaseNode
     [Output]
     public DialogueFlow m_else;
 
-    private int m_caseCount = 0;
-
     protected override void Init()
     {
         base.Init();
@@ -27,7 +25,10 @@ public class SwitchParallelNode : BaseNode
 
     public override void Initialize()
     {
-        m_caseCount = 0;
+        foreach (ConditionBase condition in m_conditions)
+        {
+            condition.Initialize();
+        }
     }
     
     private ConditionBase GetCondition(NodePort port)
@@ -57,7 +58,7 @@ public class SwitchParallelNode : BaseNode
         }
         else
         {
-            NodePort outputPort = GetOutputPort("m_else");
+            NodePort outputPort = GetOutputPort(nameof(m_else));
             await ContinueFlow(handler, inPort, outputPort);
         }
     }

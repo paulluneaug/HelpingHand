@@ -23,6 +23,14 @@ public class SwitchSequenceNode : BaseNode
         base.Init();
         m_description = "Continue le flow vers le premier noeud dont la condition est vraie";
     }
+
+    public override void Initialize()
+    {
+        foreach (ConditionBase condition in m_conditions)
+        {
+            condition.Initialize();
+        }
+    }
     
     private ConditionBase GetCondition(NodePort port)
     {
@@ -45,7 +53,7 @@ public class SwitchSequenceNode : BaseNode
             }
         }
 
-        NodePort elsePort = GetOutputPort("m_else");
+        NodePort elsePort = GetOutputPort(nameof(m_else));
         await ContinueFlow(handler, inPort, elsePort);
     }
 }
