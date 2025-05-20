@@ -25,6 +25,8 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
 
     [SerializeField] private RectTransform m_knob;
 
+    [SerializeField] private float m_startValue;
+
     [NonSerialized] private float m_angle;
 
     [NonSerialized] private RectTransform m_rectTransform;
@@ -45,8 +47,10 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         }
 
         m_knobRange = GetKnobRange();
-        m_angle = m_knobRange.x;
-        SetValueWithoutNotify(ComputeValue());
+        
+        m_angle = m_startValue.RemapFrom01(m_knobRange.x, m_knobRange.y);
+        
+        SetValueWithoutNotify(m_startValue);
 
         UpdateKnobPosition();
 

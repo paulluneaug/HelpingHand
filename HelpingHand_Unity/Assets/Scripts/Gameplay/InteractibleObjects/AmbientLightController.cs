@@ -19,7 +19,7 @@ public class AmbientLightController : MonoBehaviour
     {
         // Todo set virtual slider value
         m_sliderFloatVariable.AddListener(OnSliderValueChanged);
-        OnSliderValueChanged(m_startValue);
+        OnSliderValueChanged(m_sliderFloatVariable.Value);
         Color.RGBToHSV(RenderSettings.ambientLight, out m_hsv.x, out m_hsv.y, out m_hsv.z);
     }
 
