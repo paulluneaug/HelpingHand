@@ -12,7 +12,7 @@ using UnityEngine;
 using XNode;
 
 [NodeWidth(350)]
-public class WaitAnyStateNode : InterruptableNode
+public class WaitSwitchStateNode : InterruptableNode
 {
     [Input]
     public DialogueFlow m_in;
