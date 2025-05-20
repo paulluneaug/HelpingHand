@@ -104,6 +104,8 @@ public abstract class BaseNode : SerializableNode, IDisposable
     /// </summary>
     protected async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort, NodePort outputPort)
     {
+        DebugLog($"Continuing flow to port [{outputPort.fieldName}]");
+        
         // All the resulting flows
         List<UniTask> tasks = new ();
         
