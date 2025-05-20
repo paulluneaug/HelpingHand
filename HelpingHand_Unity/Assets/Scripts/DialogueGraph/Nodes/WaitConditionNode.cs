@@ -48,31 +48,34 @@ public class WaitConditionNode : InterruptableNode
             DebugLog($"Waiting for condition");
 
             OnConditionUpdated();
-
-            CancellationToken cancellationToken = handler.StopToken;
-
-            if (m_doesTimeout)
+            
+            if (!m_isConditionPassed)
             {
-                DebugLog($"With timeout ({m_timeout} seconds)");
-                m_timeoutSource?.Dispose();
-                m_timeoutSource = new();
-                m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
-                CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
-                cancellationToken = linkedTokenSource.Token;
-            }
+                CancellationToken cancellationToken = handler.StopToken;
 
-            UniTask task = UniTask.WaitUntil(() => m_isConditionPassed, PlayerLoopTiming.Update, cancellationToken);
-
-            if (await task.SuppressCancellationThrow())
-            {
-                DebugLog($"Wait for condition has been interrupted");
-
-                if (!m_timeoutSource.IsCancellationRequested)
+                if (m_doesTimeout)
                 {
-                    DebugLog($"Pause/stop requested");
-                    // The graph is being paused => We have to wait its reactivation
-                    await HandlePauseStop(handler);
-                    continue;
+                    DebugLog($"With timeout ({m_timeout} seconds)");
+                    m_timeoutSource?.Dispose();
+                    m_timeoutSource = new();
+                    m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+                    CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
+                    cancellationToken = linkedTokenSource.Token;
+                }
+
+                UniTask task = UniTask.WaitUntil(() => m_isConditionPassed, PlayerLoopTiming.Update, cancellationToken);
+
+                if (await task.SuppressCancellationThrow())
+                {
+                    DebugLog($"Wait for condition has been interrupted");
+
+                    if (!m_timeoutSource.IsCancellationRequested)
+                    {
+                        DebugLog($"Pause/stop requested");
+                        // The graph is being paused => We have to wait its reactivation
+                        await HandlePauseStop(handler);
+                        continue;
+                    }
                 }
             }
 
