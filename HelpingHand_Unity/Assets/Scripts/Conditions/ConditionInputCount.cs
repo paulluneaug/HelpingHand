@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Cysharp.Threading.Tasks;
 
@@ -62,7 +63,7 @@ public class ConditionInputCount : ConditionBase
         {
             InputListType.AnyInput => m_usePhysicalInputs ? InputCountListenerSingleton.Instance.AllPhysicalInputEvents : InputCountListenerSingleton.Instance.AllInputEvents,
             InputListType.OnlyThese => m_onlyEvents,
-            InputListType.AnyButThese => m_anyButEvents,
+            InputListType.AnyButThese => InputCountListenerSingleton.Instance.AllInputEvents.Except(m_anyButEvents),
             _ => throw new ArgumentOutOfRangeException()
         };
 
