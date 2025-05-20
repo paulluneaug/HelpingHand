@@ -7,6 +7,7 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
 using UnityUtility.ObservableFields;
 
@@ -25,9 +26,10 @@ public class DialogueNode : InterruptableNode
     [HideLabel, Multiline(3)] [SerializeField]
     private string m_content;
 
+    [FormerlySerializedAs("m_multipleReads")]
     [BoxGroup("Content")] 
     [SerializeField] [LabelWidth(100)]
-    private bool m_multipleReads;
+    private bool m_canRepeat = true;
 
     [ShowIf("@m_audioEvent == null")]
     [BoxGroup("Audio")]
@@ -52,7 +54,7 @@ public class DialogueNode : InterruptableNode
     private int m_readCount;
 
     public string Content => m_content;
-    public bool MultipleReads => m_multipleReads;
+    public bool CanRepeat => m_canRepeat;
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
     

@@ -119,7 +119,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
                 // We don't want to consume the flow if the dialogue cannot be read
                 if (nextNode is DialogueNode dialogueNode)
                 {
-                    if (dialogueNode.MultipleReads || !dialogueNode.HasBeenRead.Value)
+                    if (dialogueNode.CanRepeat || !dialogueNode.HasBeenRead.Value)
                     {
                         tasks.Add(nextNode.Execute(handler, nextPort));
                     }

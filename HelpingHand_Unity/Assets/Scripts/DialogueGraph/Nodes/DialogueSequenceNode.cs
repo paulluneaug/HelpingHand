@@ -59,7 +59,7 @@ public class DialogueSequenceNode : BaseNode
             {
                 if (node is DialogueNode dialogueNode)
                 {
-                    if (dialogueNode.ReadCount == 0 || dialogueNode.MultipleReads)
+                    if (dialogueNode.ReadCount == 0 || dialogueNode.CanRepeat)
                     {
                         continuePorts.Add(outputPort);
                         break;
