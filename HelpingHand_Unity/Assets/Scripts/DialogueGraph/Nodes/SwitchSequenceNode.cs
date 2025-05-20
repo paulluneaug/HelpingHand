@@ -48,8 +48,11 @@ public class SwitchSequenceNode : BaseNode
             ConditionBase condition = GetCondition(outputPort);
             if (condition.Test())
             {
-                await ContinueFlow(handler, inPort, outputPort);
-                return;
+                if (outputPort.GetConnections().Count > 0)
+                {
+                    await ContinueFlow(handler, inPort, outputPort);
+                    return;
+                }
             }
         }
 

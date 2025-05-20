@@ -48,7 +48,10 @@ public class SwitchParallelNode : BaseNode
             ConditionBase condition = GetCondition(outputPort);
             if (condition.Test())
             {
-                continuePorts.Add(outputPort);
+                if (outputPort.GetConnections().Count > 0)
+                {
+                    continuePorts.Add(outputPort);
+                }
             }
         }
 
