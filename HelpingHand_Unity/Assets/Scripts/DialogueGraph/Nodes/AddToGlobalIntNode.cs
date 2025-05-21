@@ -6,8 +6,8 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)]
-public class AddToIntVariableNode : BaseNode
+[CreateNodeMenu("Data/Operations/Add/Add To Global Int")] [NodeTint(0f, 0.4784314f, 0.6509804f)] [NodeWidth(250)]
+public class AddToGlobalIntNode : BaseNode
 {
     [Input(ShowBackingValue.Never)] [SerializeField]
     private DialogueFlow m_in;

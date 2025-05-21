@@ -2,8 +2,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-[NodeWidth(250)]
-public class SetStateNode : SetVariableNode<bool>
+[CreateNodeMenu("Data/Operations/Set/Globals/State")] 
+public class SetStateNode : SetGlobalVariableNode<bool>
 {
     [SerializeField] [InlineEditor]
     private EntityState m_variable;

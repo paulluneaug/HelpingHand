@@ -9,6 +9,7 @@ using UnityEngine;
 
 using XNode;
 
+[CreateNodeMenu("Dialogues/Dialogue Sequence")] [NodeTint(0.1f, 0.3f, 0.1f)]
 public class DialogueSequenceNode : BaseNode
 {
     [Input] [SerializeField]

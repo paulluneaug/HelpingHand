@@ -11,7 +11,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)]
+[NodeWidth(250)][CreateNodeMenu("Waiting/Wait Event")] [NodeTint(0.2f, 0.1f, .3f)]
 public class WaitEventNode : InterruptableNode
 {
     [Input]

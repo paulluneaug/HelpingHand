@@ -4,7 +4,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(350)]
+[CreateNodeMenu("Flow/Simple/Condition")] [NodeWidth(350)] [NodeTint(0.4f, 0.2f, 0f)]
 public class ConditionNode : BaseNode
 {
     [Input]

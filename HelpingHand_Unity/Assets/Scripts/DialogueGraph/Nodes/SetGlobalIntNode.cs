@@ -2,8 +2,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-[NodeWidth(250)]
-public class SetIntVariableNode : SetVariableNode<int>
+[CreateNodeMenu("Data/Operations/Set/Globals/Int")] 
+public class SetGlobalIntNode : SetGlobalVariableNode<int>
 {
     [SerializeField] [InlineEditor]
     private IntVariable m_variable;

@@ -2,8 +2,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-[NodeWidth(250)]
-public class SetBoolVariableNode : SetVariableNode<bool>
+[CreateNodeMenu("Data/Operations/Set/Globals/Bool")] 
+public class SetGlobalBoolNode : SetGlobalVariableNode<bool>
 {
     [SerializeField] [InlineEditor]
     private BoolVariable m_variable;

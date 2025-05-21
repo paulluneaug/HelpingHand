@@ -10,20 +10,20 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Flow/Multiple/Switch State")] [NodeWidth(350)] [NodeTint(0.4f, 0.2f, 0f)]
-public class SwitchStateNode : BaseNode
+[CreateNodeMenu("Flow/Multiple/Switch Condition")] [NodeWidth(350)] [NodeTint(0.4f, 0.2f, 0f)]
+public class SwitchConditionNode : BaseNode
 {
     private enum SwitchType
     {
         [LabelText("All matching")] All,
-        [LabelText("First one")] First
+       [LabelText("First one")] First
     }
     
     [Input] [SerializeField]
     private DialogueFlow m_in;
 
     [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)] [SerializeField] [PropertySpace(8,8)]
-    private List<EntityState> m_states = new();
+    private List<ConditionBase> m_conditions = new();
 
     [Output] [SerializeField]
     private DialogueFlow m_else;
@@ -31,20 +31,23 @@ public class SwitchStateNode : BaseNode
     [SerializeField] [EnumToggleButtons]
     private SwitchType m_type;
 
-    private int m_caseCount = 0;
     private IEnumerable<NodePort> m_outputPorts;
-
+    
     public override void Initialize()
     {
-        m_caseCount = 0;
+        foreach (ConditionBase condition in m_conditions)
+        {
+            condition.Initialize();
+        }
+
         m_outputPorts = DynamicOutputs.OrderBy(p => p.fieldName);
     }
-
-    private EntityState GetState(NodePort port)
+    
+    private ConditionBase GetCondition(NodePort port)
     {
-        if (int.TryParse(port.fieldName[9..], out int index))
+        if (int.TryParse(port.fieldName[13..], out int index))
         {
-            return m_states[index];
+            return m_conditions[index];
         }
         throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
     }
@@ -54,10 +57,13 @@ public class SwitchStateNode : BaseNode
         List<NodePort> continuePorts = new();
         foreach (NodePort outputPort in m_outputPorts)
         {
-            EntityState state = GetState(outputPort);
-            if (state.IsSet)
+            ConditionBase condition = GetCondition(outputPort);
+            if (condition.Test())
             {
-                continuePorts.Add(outputPort);
+                if (outputPort.GetConnections().Count > 0)
+                {
+                    continuePorts.Add(outputPort);
+                }
             }
         }
 
@@ -74,6 +80,7 @@ public class SwitchStateNode : BaseNode
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            
         }
         else
         {

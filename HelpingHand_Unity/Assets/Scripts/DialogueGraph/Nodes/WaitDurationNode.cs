@@ -5,8 +5,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 using XNode;
-
-public class WaitNode : InterruptableNode
+[CreateNodeMenu("Waiting/Wait Duration")] [NodeTint(0.2f, 0.1f, .3f)]
+public class WaitDurationNode : InterruptableNode
 {
     [Input]
     public DialogueFlow m_in;

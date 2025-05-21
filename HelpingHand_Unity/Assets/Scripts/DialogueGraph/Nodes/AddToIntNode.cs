@@ -6,7 +6,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)]
+[CreateNodeMenu("Data/Operations/Add/Add To Int")] [NodeTint(0f, 0.4784314f, 0.6509804f)] [NodeWidth(250)] 
 public class AddToIntNode : BaseNode
 {
     [Input(ShowBackingValue.Never)] [SerializeField]

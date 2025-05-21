@@ -12,7 +12,7 @@ using Utils;
 
 using XNode;
 
-[NodeWidth(350)]
+[NodeWidth(350)][CreateNodeMenu("Waiting/Wait Any Condition")] [NodeTint(0.2f, 0.1f, .3f)]
 public class WaitSwitchConditionNode : InterruptableNode
 {
     [Input]

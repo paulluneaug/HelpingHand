@@ -4,6 +4,7 @@ using UnityEngine;
 
 using XNode;
 
+[CreateNodeMenu("Graph/Start")] [NodeTint(0.6078432f, 0.2627451f, 0.6235294f)]
 public class StartNode : BaseNode
 {
     [Output] [SerializeField] 

@@ -9,7 +9,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(350)]
+[CreateNodeMenu("Flow/Multiple/Switch Int")] [NodeWidth(350)] [NodeTint(0.4f, 0.2f, 0f)]
 public class SwitchIntNode : BaseNode
 {
     [Input] [SerializeField]
@@ -18,17 +18,17 @@ public class SwitchIntNode : BaseNode
     [Input] [SerializeField] [PropertySpace(8, 8)]
     private int m_value;
 
-    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)] [SerializeField]
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)] [SerializeField] [PropertySpace(8,8)]
     private List<int> m_values = new();
-
-    [SerializeField] [PropertySpace(8)] 
-    private bool m_exactValues;
     
-    [Output] [PropertySpace(8)] [ShowIf("@m_exactValues == true")]
+    [Output] [ShowIf("@m_exactValues == true")]
     public DialogueFlow m_else;
 
+    [SerializeField] 
+    private bool m_exactValues;
+
     [ShowInInspector] [ReadOnly] 
-    private int Value => m_value;
+    private int IncomingValue => m_value;
 
     private SortedSet<int> m_sortedValues = new();
     private Dictionary<int, NodePort> m_portsDictionary = new();

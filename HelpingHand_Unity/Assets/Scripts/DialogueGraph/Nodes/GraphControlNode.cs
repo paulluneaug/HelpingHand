@@ -8,7 +8,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(200)]
+[CreateNodeMenu("Graph/Controls")] [NodeTint(0.6078432f, 0.2627451f, 0.6235294f)] [NodeWidth(200)]
 public class GraphControlNode : BaseNode
 {
     [Input]

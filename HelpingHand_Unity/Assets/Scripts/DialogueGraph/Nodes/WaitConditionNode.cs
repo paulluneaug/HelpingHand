@@ -9,7 +9,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(350)]
+[NodeWidth(350)] [CreateNodeMenu("Waiting/Wait Condition")] [NodeTint(0.2f, 0.1f, .3f)]
 public class WaitConditionNode : InterruptableNode
 {
     [Input]

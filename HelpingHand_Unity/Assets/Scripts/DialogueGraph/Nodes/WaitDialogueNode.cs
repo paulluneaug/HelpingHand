@@ -9,6 +9,7 @@ using UnityEngine;
 
 using XNode;
 
+[CreateNodeMenu("Waiting/Wait Dialogue")] [NodeTint(0.2f, 0.1f, .3f)]
 public class WaitDialogueNode : InterruptableNode
 {
     [Input]

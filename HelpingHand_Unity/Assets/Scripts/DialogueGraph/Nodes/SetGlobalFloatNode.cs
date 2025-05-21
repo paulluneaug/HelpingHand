@@ -2,8 +2,8 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-[NodeWidth(250)]
-public class SetFloatVariableNode : SetVariableNode<float>
+[CreateNodeMenu("Data/Operations/Set/Globals/Float")] 
+public class SetGlobalFloatNode : SetGlobalVariableNode<float>
 {
     [SerializeField] [InlineEditor]
     private FloatVariable m_variable;

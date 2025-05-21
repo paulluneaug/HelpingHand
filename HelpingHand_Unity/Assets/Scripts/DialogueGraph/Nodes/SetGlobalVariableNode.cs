@@ -4,8 +4,8 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)]
-public abstract class SetVariableNode<T> : BaseNode
+[NodeWidth(250)] [NodeTint(0f, 0.4784314f, 0.6509804f)]
+public abstract class SetGlobalVariableNode<T> : BaseNode
 {
     [Input(ShowBackingValue.Never)] 
     public DialogueFlow m_in;

@@ -13,7 +13,7 @@ using UnityUtility.ObservableFields;
 
 using XNode;
 
-[NodeWidth(300)]
+[NodeWidth(300)] [CreateNodeMenu("Dialogues/Dialogue")] [NodeTint(0.2f, 0.4f, 0.2f)]
 public class DialogueNode : InterruptableNode
 {
     [Input] [SerializeField]

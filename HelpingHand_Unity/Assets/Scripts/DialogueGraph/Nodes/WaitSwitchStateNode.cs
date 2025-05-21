@@ -11,7 +11,7 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(350)]
+[NodeWidth(350)][CreateNodeMenu("Waiting/Wait Any State")] [NodeTint(0.2f, 0.1f, .3f)]
 public class WaitSwitchStateNode : InterruptableNode
 {
     [Input]

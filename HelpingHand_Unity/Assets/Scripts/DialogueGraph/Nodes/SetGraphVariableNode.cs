@@ -1,18 +1,17 @@
 using Cysharp.Threading.Tasks;
 
-using Sirenix.OdinInspector;
-
 using UnityEngine;
 
 using XNode;
 
-public abstract class SetLocalVariableNode<T> : BaseNode
+[NodeWidth(250)] [NodeTint(0f, 0.4784314f, 0.6509804f)]
+public abstract class SetGraphVariableNode<T> : BaseNode
 {
     [Input(ShowBackingValue.Never)] [SerializeField]
     protected DialogueFlow m_in;
 
     [Input(ShowBackingValue.Never)] [SerializeField]
-    protected LocalVariable<T> m_inVariable;
+    protected GraphVariable<T> m_inVariable;
 
     [Input(ShowBackingValue.Always)] [SerializeField] 
     protected T m_value;
@@ -21,7 +20,7 @@ public abstract class SetLocalVariableNode<T> : BaseNode
     protected DialogueFlow m_out;
 
     [Output(ShowBackingValue.Never)] [SerializeField] 
-    protected LocalVariable<T> m_variableOut;
+    protected GraphVariable<T> m_variableOut;
     
 
     public override object GetValue(NodePort port)
@@ -36,7 +35,7 @@ public abstract class SetLocalVariableNode<T> : BaseNode
             m_value = outValue;
         }
 
-        m_inVariable = GetInputPort(nameof(m_inVariable)).GetInputValue<LocalVariable<T>>();
+        m_inVariable = GetInputPort(nameof(m_inVariable)).GetInputValue<GraphVariable<T>>();
 
         m_inVariable.Value = m_value;
 

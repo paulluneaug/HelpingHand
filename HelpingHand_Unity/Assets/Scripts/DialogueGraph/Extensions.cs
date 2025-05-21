@@ -7,7 +7,7 @@ public static partial class Extensions
         NodePort inValuePort = node.GetInputPort(inputPort);
         if (inValuePort.ConnectionCount > 0)
         {
-            if (inValuePort.TryGetInputValue(out LocalVariable<T> local))
+            if (inValuePort.TryGetInputValue(out GraphVariable<T> local))
             {
                 outValue = local;
                 return true;
