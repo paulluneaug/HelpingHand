@@ -9,14 +9,14 @@ using XNode;
 [NodeWidth(300)]
 public class LogNode : BaseNode
 {
-    [Input(ShowBackingValue.Never)]
-    public DialogueFlow m_in;
+    [Input(ShowBackingValue.Never)] [SerializeField]
+    private DialogueFlow m_in;
 
-    [Input(ShowBackingValue.Never)]
-    public string m_stringIn;
+    [Input(ShowBackingValue.Never)] [SerializeField]
+    private string m_valueIn;
     
-    [Output]
-    public DialogueFlow m_out;
+    [Output] [SerializeField]
+    private DialogueFlow m_out;
 
     [SerializeField] [TextArea(3, 3)] [HideLabel]
     private string m_content;
@@ -26,8 +26,8 @@ public class LogNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        string inputString = GetInputPort(nameof(m_stringIn)).GetInputValue<string>();
-        DebugLog($"{m_content}{(string.IsNullOrEmpty(inputString) ? $": {inputString}" : string.Empty)}", m_logType);
+        string inputString = GetInputPort(nameof(m_valueIn)).GetInputValue().ToString();
+        DebugLog($"{m_content}{(!string.IsNullOrEmpty(inputString) ? $" {inputString}" : string.Empty)}", m_logType);
         await UniTask.CompletedTask;
     }
 }

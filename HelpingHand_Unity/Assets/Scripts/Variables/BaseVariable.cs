@@ -45,11 +45,6 @@ public class BaseVariable<T> : BaseGameEvent<T>, IVariable
         m_value = value;
     }
 
-    protected virtual T ClampValue(T value)
-    {
-        return value;
-    }
-
     public override string ToString()
     {
         return m_value == null ? "null" : m_value.ToString();

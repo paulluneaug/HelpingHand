@@ -5,23 +5,32 @@ using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
 
+using UnityEngine;
+
 using XNode;
 
 [NodeWidth(350)]
 public class SwitchIntNode : BaseNode
 {
-    [Input]
-    public DialogueFlow m_in;
+    [Input] [SerializeField]
+    private DialogueFlow m_in;
 
-    [Input] [PropertySpace(8, 8)] [InlineEditor]
-    public IntVariable m_value;
+    [Input] [SerializeField] [PropertySpace(8, 8)]
+    private int m_value;
 
-    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
-    public List<int> m_values = new();
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)] [SerializeField]
+    private List<int> m_values = new();
 
-    [Output] [PropertySpace(8)]
-    public DialogueFlow m_else;
+    [SerializeField] [PropertySpace(8)] 
+    private bool m_exactValues;
     
+    [Output] [PropertySpace(8)] [ShowIf("@m_exactValues == true")]
+    public DialogueFlow m_else;
+
+    [ShowInInspector] [ReadOnly] 
+    private int Value => m_value;
+
+    private SortedSet<int> m_sortedValues = new();
     private Dictionary<int, NodePort> m_portsDictionary = new();
     
     public override void Initialize()
@@ -31,6 +40,7 @@ public class SwitchIntNode : BaseNode
         {
             int value = GetValue(outputPort);
             m_portsDictionary[value] = outputPort;
+            m_sortedValues.Add(value);
         }
     }
 
@@ -45,21 +55,32 @@ public class SwitchIntNode : BaseNode
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
-        int val = m_value.Value;
-        NodePort inValuePort = GetInputPort(nameof(m_value));
-        if (inValuePort.ConnectionCount > 0)
+        if (this.TryGetIntFromInputPort(nameof(m_value), out int outValue))
         {
-            if (inValuePort.TryGetInputValue(out IntVariable variable))
+            m_value = outValue;
+        }
+
+        int portNumber = m_value;
+        bool found = false;
+
+        // Look for the closest lower or equal number in the keys
+        if (!m_exactValues)
+        {
+            foreach (int v in m_sortedValues)
             {
-                val = variable.Value;
-            }
-            else if (inValuePort.TryGetInputValue(out int v))
-            {
-                val = v;
+                if (v <= m_value)
+                {
+                    portNumber = v;
+                    found = true;
+                }
+                else
+                {
+                    break;
+                }
             }
         }
 
-        if (m_portsDictionary.TryGetValue(val, out NodePort outputPort))
+        if ((m_exactValues || found) && m_portsDictionary.TryGetValue(portNumber, out NodePort outputPort))
         {
             await ContinueFlow(handler, inPort, outputPort);
         }
