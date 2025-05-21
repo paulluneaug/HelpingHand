@@ -55,7 +55,7 @@ public class SwitchIntNode : BaseNode
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (this.TryGetIntFromInputPort(nameof(m_value), out int outValue))
+        if (this.TryGetValueFromInputPort(nameof(m_value), out int outValue))
         {
             m_value = outValue;
         }

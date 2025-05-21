@@ -34,14 +34,14 @@ public class AddToLocalIntNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (this.TryGetIntFromInputPort(nameof(m_increment), out int outValue))
+        if (this.TryGetValueFromInputPort(nameof(m_increment), out int outValue))
         {
             m_increment = outValue;
         }
         
-        LocalVariable<int> variable = GetInputPort(nameof(m_variableIn)).GetInputValue<LocalVariable<int>>();
-        variable.Value += m_increment;
-        m_variableOut = variable;
+        m_variableIn = GetInputPort(nameof(m_variableIn)).GetInputValue<LocalVariable<int>>();
+        m_variableIn.Value += m_increment;
+        m_variableOut = m_variableIn;
 
         await UniTask.CompletedTask;
     }

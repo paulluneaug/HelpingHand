@@ -40,7 +40,7 @@ public class AddToIntNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (this.TryGetIntFromInputPort(nameof(m_increment), out int outValue))
+        if (this.TryGetValueFromInputPort(nameof(m_increment), out int outValue))
         {
             m_increment = outValue;
         }

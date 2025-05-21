@@ -32,5 +32,7 @@ public abstract class SetVariableNode<T> : BaseNode
         }
 
         Variable.Value = inValue;
+
+        await UniTask.CompletedTask;
     }
 }

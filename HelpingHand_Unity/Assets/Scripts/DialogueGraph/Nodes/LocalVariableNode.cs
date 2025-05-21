@@ -5,10 +5,10 @@ using XNode;
 public abstract class LocalVariableNode<T> : BaseNode
 {
     [Output] [SerializeField]
-    private LocalVariable<T> m_variableOut;
+    protected LocalVariable<T> m_variableOut;
 
     [SerializeField] 
-    private T m_startValue;
+    protected T m_startValue;
 
     public override void Initialize()
     {

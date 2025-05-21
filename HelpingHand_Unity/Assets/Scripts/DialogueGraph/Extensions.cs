@@ -2,29 +2,29 @@ using XNode;
 
 public static partial class Extensions
 {
-    public static bool TryGetIntFromInputPort(this Node node, string inputPort, out int outValue)
+    public static bool TryGetValueFromInputPort<T>(this Node node, string inputPort, out T outValue)
     {
         NodePort inValuePort = node.GetInputPort(inputPort);
         if (inValuePort.ConnectionCount > 0)
         {
-            if (inValuePort.TryGetInputValue(out LocalVariable<int> localInt))
+            if (inValuePort.TryGetInputValue(out LocalVariable<T> local))
             {
-                outValue = localInt;
+                outValue = local;
                 return true;
             } 
-            if (inValuePort.TryGetInputValue(out BaseVariable<int> variableInt))
+            if (inValuePort.TryGetInputValue(out BaseVariable<T> variable))
             {
-                outValue = variableInt;
+                outValue = variable;
                 return true;
             }
-            if (inValuePort.TryGetInputValue(out int intValue))
+            if (inValuePort.TryGetInputValue(out T value))
             {
-                outValue = intValue;
+                outValue = value;
                 return true;
             }
         }
 
-        outValue = 0;
+        outValue = default(T);
         return false;
     }
 }
