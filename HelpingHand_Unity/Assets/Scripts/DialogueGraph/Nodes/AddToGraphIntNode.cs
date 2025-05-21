@@ -15,7 +15,7 @@ public class AddToGraphIntNode : BaseNode
     [Input(ShowBackingValue.Never)] [SerializeField]
     private GraphVariable<int> m_variableIn;
 
-    [Input(ShowBackingValue.Always)] [SerializeField] 
+    [Input] [SerializeField] 
     private int m_increment;
 
     [Output] [SerializeField]
