@@ -9,7 +9,7 @@ public class EntityStateSetter : SerializedMonoBehaviour
     private EntityState m_state;
 
     [SerializeField][BoxGroup][PropertySpace(4, 4)]
-    private ConditionBase m_condition;
+    private ConditionBase m_condition = new ConditionNone();
 
     [SerializeField][FoldoutGroup("Callbacks")]
     private UnityEvent m_onStateSet;
