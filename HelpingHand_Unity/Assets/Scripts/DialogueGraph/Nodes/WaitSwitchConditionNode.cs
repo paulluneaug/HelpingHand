@@ -32,6 +32,7 @@ public class WaitSwitchConditionNode : InterruptableNode
 
     private Dictionary<ConditionBase, bool> m_conditionTestsDictionary = new();
     private Dictionary<ConditionBase, NodePort> m_conditionPortsDictionary = new();
+    private Dictionary<ConditionBase, Action> m_conditionActionsDictionary = new();
     private PriorityQueue<NodePort, int> m_continuePortQueue = new(Comparer<int>.Create((i1, i2) => -i1.CompareTo(i2)));
     private CancellationTokenSource m_timeoutSource;
     private bool m_isTimeout;
@@ -49,8 +50,6 @@ public class WaitSwitchConditionNode : InterruptableNode
         {
             condition.Initialize();
             m_conditionTestsDictionary[condition] = condition.Test();
-            ConditionBase c = condition;
-            condition.OnPreconditionUpdated += () => m_conditionTestsDictionary[c] = c.Test();
         }
 
         foreach (NodePort outputPort in DynamicOutputs)
@@ -71,6 +70,18 @@ public class WaitSwitchConditionNode : InterruptableNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
+        void OnConditionUpdated(ConditionBase condition)
+        {
+            m_conditionTestsDictionary[condition] = condition.Test();
+        }
+        
+        foreach (ConditionBase condition in m_conditions)
+        {
+            ConditionBase c = condition;
+            m_conditionActionsDictionary[c] = () => OnConditionUpdated(c);
+            condition.OnPreconditionUpdated += m_conditionActionsDictionary[c];
+        }
+        
         while (true)
         {
             DebugLog($"Waiting for conditions");
@@ -122,6 +133,11 @@ public class WaitSwitchConditionNode : InterruptableNode
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
+        foreach (ConditionBase condition in m_conditions)
+        {
+            condition.OnPreconditionUpdated -= m_conditionActionsDictionary[condition];
+        }
+        
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait is timeout");

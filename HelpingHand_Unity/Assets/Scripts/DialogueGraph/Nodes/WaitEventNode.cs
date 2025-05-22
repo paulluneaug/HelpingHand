@@ -38,12 +38,13 @@ public class WaitEventNode : InterruptableNode
     public override void Initialize()
     {
         m_isEventRaised = false;
-        m_event.RemoveListener(OnEventRaised);
-        m_event.AddListener(OnEventRaised);
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
+        m_event.RemoveListener(OnEventRaised);
+        m_event.AddListener(OnEventRaised);
+        
         while (true)
         {
             DebugLog($"Waiting for event {m_event.name}");
@@ -81,6 +82,8 @@ public class WaitEventNode : InterruptableNode
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
+        m_event.RemoveListener(OnEventRaised);
+        
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait for event has timeout");

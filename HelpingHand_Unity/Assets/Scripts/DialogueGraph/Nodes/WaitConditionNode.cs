@@ -37,12 +37,13 @@ public class WaitConditionNode : InterruptableNode
     {
         m_isConditionPassed = false;
         m_condition.Initialize();
-        m_condition.OnPreconditionUpdated -= OnConditionUpdated;
-        m_condition.OnPreconditionUpdated += OnConditionUpdated;
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
+        m_condition.OnPreconditionUpdated -= OnConditionUpdated;
+        m_condition.OnPreconditionUpdated += OnConditionUpdated;
+        
         while (true)
         {
             DebugLog($"Waiting for condition");
@@ -85,6 +86,8 @@ public class WaitConditionNode : InterruptableNode
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
+        m_condition.OnPreconditionUpdated -= OnConditionUpdated;
+        
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait for condition has timeout");
