@@ -29,7 +29,7 @@ public class BaseVariable<T> : BaseGameEvent<T>, IVariable
     [ShowInInspector] [ReadOnly]
     private T m_runtimeValue;
 
-    [ShowInInspector] [ReadOnly]
+    [ShowInInspector] [ReadOnly] [NonSerialized]
     private bool m_isInitialized;
 #endif
     
