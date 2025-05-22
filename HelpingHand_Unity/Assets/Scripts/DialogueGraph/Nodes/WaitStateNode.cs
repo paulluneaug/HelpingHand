@@ -20,6 +20,9 @@ public class WaitStateNode : InterruptableNode
     [SerializeField] [HideLabel]
     private EntityState m_state;
 
+    [SerializeField] 
+    private bool m_mustBeSet = true;
+
     [Space] [SerializeField]
     private bool m_doesTimeout;
 
@@ -30,13 +33,24 @@ public class WaitStateNode : InterruptableNode
     private float m_timeout;
 
     private CancellationTokenSource m_timeoutSource;
+    private bool m_isConditionPassed;
 
+    public override void Initialize()
+    {
+        m_isConditionPassed = false;
+    }
+    
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
+        m_state.RemoveListener(OnStateUpdated);
+        m_state.AddListener(OnStateUpdated);
+        
         while (true)
         {
             DebugLog($"Waiting for state {m_state.name}");
 
+            OnStateUpdated();
+                
             CancellationToken cancellationToken = handler.StopToken;
 
             if (m_doesTimeout)
@@ -50,7 +64,7 @@ public class WaitStateNode : InterruptableNode
                 cancellationToken = linkedTokenSource.Token;
             }
 
-            UniTask task = UniTask.WaitUntil(() => m_state.IsSet, PlayerLoopTiming.Update, cancellationToken);
+            UniTask task = UniTask.WaitUntil(() => m_isConditionPassed, PlayerLoopTiming.Update, cancellationToken);
 
             if (await task.SuppressCancellationThrow())
             {
@@ -71,6 +85,8 @@ public class WaitStateNode : InterruptableNode
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
+        m_state.RemoveListener(OnStateUpdated);
+        
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait timeout");
@@ -81,5 +97,10 @@ public class WaitStateNode : InterruptableNode
             DebugLog($"State {m_state.name} is set, continue");
             await base.ContinueFlow(handler, inPort);
         }
+    }
+
+    private void OnStateUpdated()
+    {
+        m_isConditionPassed = m_state.IsSet == m_mustBeSet;
     }
 }
