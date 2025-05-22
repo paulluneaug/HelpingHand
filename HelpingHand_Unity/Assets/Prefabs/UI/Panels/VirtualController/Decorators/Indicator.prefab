@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2591509463862848366}
   - component: {fileID: 1720847789242675541}
   - component: {fileID: 8219155475628575660}
+  - component: {fileID: 4907440927670527463}
   m_Layer: 5
   m_Name: Indicator
   m_TagString: Untagged
@@ -91,3 +92,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4907440927670527463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645812216094401716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c87c6895d4257447bd875c8f0b4287d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_doUnregisterOnDisable: 1
+  m_event: {fileID: 0}
+  m_response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1720847789242675541}
+        m_TargetAssemblyTypeName: VirtualIndicator, Assembly-CSharp
+        m_MethodName: SetEnable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
