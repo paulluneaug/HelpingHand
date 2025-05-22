@@ -59,6 +59,7 @@ public class WaitConditionNode : InterruptableNode
                     DebugLog($"With timeout ({m_timeout} seconds)");
                     m_timeoutSource?.Dispose();
                     m_timeoutSource = new();
+                    // TODO gérer ici le Time.scale
                     m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
                     CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
                     cancellationToken = linkedTokenSource.Token;

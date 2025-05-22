@@ -24,13 +24,9 @@ public abstract class SetGlobalVariableNode<T> : BaseNode
         if (inValuePort.ConnectionCount > 0)
         {
             inValue = inValuePort.GetInputValue<T>();
-            Debug.Log($"Reading value {inValue} from input port");
-        }
-        else
-        {
-            Debug.Log($"Reading value {inValue} from node");
         }
 
+        DebugLog($"Setting global variable [{Variable.name}] to value [{m_inValue.ToString()}]");
         Variable.Value = inValue;
 
         await UniTask.CompletedTask;

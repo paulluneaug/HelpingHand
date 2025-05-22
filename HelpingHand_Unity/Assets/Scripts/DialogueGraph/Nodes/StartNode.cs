@@ -31,5 +31,6 @@ public class StartNode : BaseNode
     {
         handler.Priority = m_priority;
         m_handler = handler;
+        await UniTask.CompletedTask;
     }
 }
