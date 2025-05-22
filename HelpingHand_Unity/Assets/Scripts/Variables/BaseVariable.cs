@@ -1,3 +1,5 @@
+using System;
+
 using Events;
 
 using Sirenix.OdinInspector;
@@ -17,37 +19,97 @@ public class BaseVariable : BaseGameEvent, IVariable
 public class BaseVariable<T> : BaseGameEvent<T>, IVariable
 {
     [SerializeField]
+#if UNITY_EDITOR
     [Delayed]
     [OnValueChanged("OnValueChanged")]
+#endif
     protected T m_value;
+
+#if UNITY_EDITOR
+    [ShowInInspector] [ReadOnly]
+    private T m_runtimeValue;
+
+    [ShowInInspector] [ReadOnly]
+    private bool m_isInitialized;
+#endif
     
     public virtual T Value
     {
-        get => m_value;
+        get
+        {
+#if UNITY_EDITOR
+            if (!m_isInitialized)
+            {
+                Initialize();
+            }
+#endif
+            
+#if UNITY_EDITOR
+            return m_runtimeValue;
+#else
+            return m_value;
+#endif
+            
+        } 
         set
         {
+#if UNITY_EDITOR
+            if (!m_isInitialized)
+            {
+                Initialize();
+            }
+#endif
+            
+#if UNITY_EDITOR
+            T oldValue = m_runtimeValue;
+            m_runtimeValue = value;
+            if (!oldValue.Equals(m_runtimeValue))
+            {
+                Raise(value);
+            }
+#else
             T oldValue = m_value;
             m_value = value;
             if (!oldValue.Equals(m_value))
             {
                 Raise(value);
             }
+#endif
         }
     }
 
+#if UNITY_EDITOR
+    protected virtual void Initialize()
+    {
+        m_runtimeValue = m_value;
+        m_isInitialized = true;
+    }
+#endif
+
+#if UNITY_EDITOR
     private void OnValueChanged()
     {
-        Raise(m_value);
+        m_runtimeValue = m_value;
+        Raise(m_runtimeValue);
     }
+#endif
 
     public void SetValueWithoutNotify(T value)
     {
+#if UNITY_EDITOR
+        m_runtimeValue = value;
+#else
         m_value = value;
+#endif
     }
 
     public override string ToString()
     {
+#if UNITY_EDITOR
+        return m_runtimeValue == null ? "null" : m_runtimeValue.ToString();
+#else
         return m_value == null ? "null" : m_value.ToString();
+#endif
     }
 
     public static implicit operator T(BaseVariable<T> variable)
