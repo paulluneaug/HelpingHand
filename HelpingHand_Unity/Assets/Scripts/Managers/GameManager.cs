@@ -11,16 +11,18 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         MainMenu,
         Game,
-        Pause,
     }
 
     public SlidersManager SlidersManager => m_sliderManager;
     public LevelSequenceManager LevelSequenceManager => m_levelSequenceManager;
+    public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
     [SerializeField, Label(bold: true)] private SlidersManager m_sliderManager;
     [Separator]
     [SerializeField, Label(bold: true)] private LevelSequenceManager m_levelSequenceManager;
+    [Separator]
+    [SerializeField, Label(bold: true)] private GameOptionsManager m_gameOptionsManager;
 
     [Title("Puppet")]
     [SerializeField] private Puppet m_puppet;

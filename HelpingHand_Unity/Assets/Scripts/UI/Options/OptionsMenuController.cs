@@ -5,27 +5,29 @@ using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-using UnityUtility.Singletons;
+using UnityUtility.CustomAttributes;
 
-public class UIOptionsMenuController : MonoBehaviourSingleton<UIOptionsMenuController>
+public class OptionsMenuController : MonoBehaviour 
 {
+    public bool IsOpened => m_isOpened;
+
     [SerializeField] private AudioMixer m_mixer;
     [SerializeField] private InputActionReference m_pauseAction;
 
-    [Header("UI components")]
+    [Title("UI components")]
     [SerializeField] private CanvasGroup m_menuOptions;
     [SerializeField] private Selectable m_firstSelectable;
     [SerializeField] private Button m_saveButton;
     [SerializeField] private Button m_defaultButton;
     [SerializeField] private Button m_quitButton;
 
-    [Header("Options")]
+    [Title("Options")]
     [SerializeField] private UIAbstractOption<string> m_optionInvincibility;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeGlobal;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeSFX;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeMusic;
     [SerializeField] private UIAbstractOption<float> m_optionGameSpeed;
-    [SerializeField] private UIAbstractOption<string> m_optionScreenMode;
+    [SerializeField] private UIAbstractOption<WindowMode> m_optionScreenMode;
     [SerializeField] private UIAbstractOption<float> m_optionSensitivity;
 
     public event Action OnMenuOpened;
@@ -33,15 +35,15 @@ public class UIOptionsMenuController : MonoBehaviourSingleton<UIOptionsMenuContr
 
     private UIAbstractDefaultable[] m_options;
     private bool m_isOpened;
-    public bool IsOpened => m_isOpened;
 
-    public override void Initialize()
+    private GameOptionsManager m_gameOptions;
+
+    private void Awake()
     {
-        base.Initialize();
         m_options = new UIAbstractDefaultable[] { m_optionInvincibility, m_optionVolumeGlobal, m_optionVolumeSFX, m_optionVolumeMusic, m_optionGameSpeed, m_optionScreenMode, m_optionSensitivity };
     }
 
-    protected override void Start()
+    private void Start()
     {
         m_pauseAction.action.performed += OnGamePaused;
         m_saveButton.onClick.AddListener(OnSaveButtonClicked);
@@ -52,15 +54,17 @@ public class UIOptionsMenuController : MonoBehaviourSingleton<UIOptionsMenuContr
         m_optionVolumeGlobal.OnValueChangedEvent += OptionVolumeGlobalChanged;
         m_optionVolumeSFX.OnValueChangedEvent += OptionVolumeSFXChanged;
         m_optionVolumeMusic.OnValueChangedEvent += OptionVolumeMusicChanged;
-        m_optionGameSpeed.OnValueChangedEvent += OptionGameSpeedChanged;
-        m_optionScreenMode.OnValueChangedEvent += OptionScreenModeChanged;
-        m_optionSensitivity.OnValueChangedEvent += OptionSensitivityChanged;
+        m_optionGameSpeed.OnValueChangedEvent += OnOptionGameSpeedChanged;
+        m_optionScreenMode.OnValueChangedEvent += OnOptionScreenModeChanged;
+        m_optionSensitivity.OnValueChangedEvent += OnOptionSensitivityChanged;
+
+        m_gameOptions = GameManager.Instance.GameOptionsManager;
     }
 
 
     private void OptionInvincibilityChanged(string value)
     {
-        GameOptionsManager.Instance.IsInvincible = value switch
+        m_gameOptions.IsInvincible = value switch
         {
             "Enabled" => true,
             _ => false
@@ -88,21 +92,22 @@ public class UIOptionsMenuController : MonoBehaviourSingleton<UIOptionsMenuContr
         _ = m_mixer.SetFloat(group, volume);
     }
 
-    private void OptionGameSpeedChanged(float value)
+    private void OnOptionGameSpeedChanged(float value)
     {
-        GameOptionsManager.Instance.GameSpeed.Value = value;
+        m_gameOptions.GameSpeed.Value = value;
     }
 
-    private void OptionSensitivityChanged(float value)
+    private void OnOptionSensitivityChanged(float value)
     {
-        GameOptionsManager.Instance.Sensitivity.Value = (int)value;
+        m_gameOptions.Sensitivity.Value = (int)value;
     }
 
-    private void OptionScreenModeChanged(string value)
+    private void OnOptionScreenModeChanged(WindowMode value)
     {
-        GameOptionsManager.Instance.IsWindowed.Value = value switch
+        m_gameOptions.IsWindowed.Value = value switch
         {
-            "Windowed" => true,
+            WindowMode.Windowed => true,
+            WindowMode.FullScreen => false,
             _ => false
         };
     }
