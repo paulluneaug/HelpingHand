@@ -1,7 +1,6 @@
 using System;
 
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -11,7 +10,9 @@ public class OptionsMenuController : MonoBehaviour
 {
     public bool IsOpened => m_isOpened;
 
-    [SerializeField] private AudioMixer m_mixer;
+    public event Action OnMenuOpened;
+    public event Action OnMenuClosed;
+
     [SerializeField] private InputActionReference m_pauseAction;
 
     [Title("UI components")]
@@ -22,16 +23,11 @@ public class OptionsMenuController : MonoBehaviour
     [SerializeField] private Button m_quitButton;
 
     [Title("Options")]
-    [SerializeField] private UIAbstractOption<string> m_optionInvincibility;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeGlobal;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeSFX;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeMusic;
-    [SerializeField] private UIAbstractOption<float> m_optionGameSpeed;
     [SerializeField] private UIAbstractOption<WindowMode> m_optionScreenMode;
-    [SerializeField] private UIAbstractOption<float> m_optionSensitivity;
-
-    public event Action OnMenuOpened;
-    public event Action OnMenuClosed;
+    [SerializeField] private UIAbstractOption<float> m_optionGameSpeed;
 
     private UIAbstractDefaultable[] m_options;
     private bool m_isOpened;
@@ -40,48 +36,58 @@ public class OptionsMenuController : MonoBehaviour
 
     private void Awake()
     {
-        m_options = new UIAbstractDefaultable[] { m_optionInvincibility, m_optionVolumeGlobal, m_optionVolumeSFX, m_optionVolumeMusic, m_optionGameSpeed, m_optionScreenMode, m_optionSensitivity };
+        m_options = new UIAbstractDefaultable[] 
+        { 
+            m_optionVolumeGlobal, 
+            m_optionVolumeSFX, 
+            m_optionVolumeMusic, 
+            m_optionScreenMode, 
+            m_optionGameSpeed 
+        };
     }
 
     private void Start()
     {
+        m_gameOptions = GameManager.Instance.GameOptionsManager;
+
         m_pauseAction.action.performed += OnGamePaused;
         m_saveButton.onClick.AddListener(OnSaveButtonClicked);
         m_defaultButton.onClick.AddListener(OnDefaultButtonClicked);
         m_quitButton.onClick.AddListener(OnQuitButtonClicked);
 
-        m_optionInvincibility.OnValueChangedEvent += OptionInvincibilityChanged;
-        m_optionVolumeGlobal.OnValueChangedEvent += OptionVolumeGlobalChanged;
-        m_optionVolumeSFX.OnValueChangedEvent += OptionVolumeSFXChanged;
-        m_optionVolumeMusic.OnValueChangedEvent += OptionVolumeMusicChanged;
-        m_optionGameSpeed.OnValueChangedEvent += OnOptionGameSpeedChanged;
-        m_optionScreenMode.OnValueChangedEvent += OnOptionScreenModeChanged;
-        m_optionSensitivity.OnValueChangedEvent += OnOptionSensitivityChanged;
+        m_optionVolumeGlobal.OnValueChangedEvent    += OnOptionVolumeGlobalChanged;
+        m_optionVolumeSFX.OnValueChangedEvent       += OnOptionVolumeSFXChanged;
+        m_optionVolumeMusic.OnValueChangedEvent     += OnOptionVolumeMusicChanged;
+        m_optionScreenMode.OnValueChangedEvent      += OnOptionScreenModeChanged;
+        m_optionGameSpeed.OnValueChangedEvent       += OnOptionGameSpeedChanged;
 
-        m_gameOptions = GameManager.Instance.GameOptionsManager;
     }
 
-
-    private void OptionInvincibilityChanged(string value)
+    private void OnDestroy()
     {
-        m_gameOptions.IsInvincible = value switch
-        {
-            "Enabled" => true,
-            _ => false
-        };
+        m_pauseAction.action.performed -= OnGamePaused;
+        m_saveButton.onClick.RemoveListener(OnSaveButtonClicked);
+        m_defaultButton.onClick.RemoveListener(OnDefaultButtonClicked);
+        m_quitButton.onClick.RemoveListener(OnQuitButtonClicked);
+
+        m_optionVolumeGlobal.OnValueChangedEvent    -= OnOptionVolumeGlobalChanged;
+        m_optionVolumeSFX.OnValueChangedEvent       -= OnOptionVolumeSFXChanged;
+        m_optionVolumeMusic.OnValueChangedEvent     -= OnOptionVolumeMusicChanged;
+        m_optionScreenMode.OnValueChangedEvent      -= OnOptionScreenModeChanged;
+        m_optionGameSpeed.OnValueChangedEvent       -= OnOptionGameSpeedChanged;
     }
 
-    private void OptionVolumeGlobalChanged(float value)
+    private void OnOptionVolumeGlobalChanged(float value)
     {
         SetVolume("GlobalVolume", value);
     }
 
-    private void OptionVolumeSFXChanged(float value)
+    private void OnOptionVolumeSFXChanged(float value)
     {
         SetVolume("SFXVolume", value);
     }
 
-    private void OptionVolumeMusicChanged(float value)
+    private void OnOptionVolumeMusicChanged(float value)
     {
         SetVolume("MusicVolume", value);
     }
@@ -89,17 +95,7 @@ public class OptionsMenuController : MonoBehaviour
     private void SetVolume(string group, float value)
     {
         var volume = value == 0 ? -80 : Mathf.Log10(value / 100f) * 20;
-        _ = m_mixer.SetFloat(group, volume);
-    }
-
-    private void OnOptionGameSpeedChanged(float value)
-    {
-        m_gameOptions.GameSpeed.Value = value;
-    }
-
-    private void OnOptionSensitivityChanged(float value)
-    {
-        m_gameOptions.Sensitivity.Value = (int)value;
+        // @TODO Set Volume
     }
 
     private void OnOptionScreenModeChanged(WindowMode value)
@@ -110,6 +106,11 @@ public class OptionsMenuController : MonoBehaviour
             WindowMode.FullScreen => false,
             _ => false
         };
+    }
+
+    private void OnOptionGameSpeedChanged(float gameSpeed)
+    {
+        m_gameOptions.GameSpeed.Value = gameSpeed;
     }
 
     private void OnGamePaused(InputAction.CallbackContext ctx)

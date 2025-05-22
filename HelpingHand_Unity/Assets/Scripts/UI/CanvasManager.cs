@@ -4,29 +4,29 @@ using UnityUtility.Singletons;
 
 public class CanvasManager : MonoBehaviourSingleton<CanvasManager>
 {
-    [SerializeField] private MainMenuManager m_mainMenuManager;
+    [SerializeField] private MainMenuManager m_mainMenuController;
     [SerializeField] private OptionsMenuController m_optionsMenuController;
 
     protected override void Awake()
     {
         base.Awake();
-        m_mainMenuManager.gameObject.SetActive(true);
-        m_optionsMenuController.gameObject.SetActive(false);
+        m_mainMenuController.gameObject.SetActive(true);
+        m_optionsMenuController.CloseOptionMenu();
     }
 
     public void StartGame()
     {
-        m_mainMenuManager.gameObject.SetActive(false);
+        m_mainMenuController.gameObject.SetActive(false);
         GameManager.Instance.StartGame();
     }
 
     public void OpenOptions()
     {
-        m_optionsMenuController.gameObject.SetActive(true);
+        m_optionsMenuController.OpenOptionMenu();
     }
 
     public void CloseOptions()
     {
-        m_optionsMenuController.gameObject.SetActive(false);
+        m_optionsMenuController.CloseOptionMenu();
     }
 }

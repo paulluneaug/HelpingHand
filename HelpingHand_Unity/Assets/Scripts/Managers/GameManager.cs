@@ -32,14 +32,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public override void Initialize()
     {
         base.Initialize();
-        m_levelSequenceManager.Initialize(m_puppet);
+        //m_levelSequenceManager.Initialize(m_puppet);
 
     }
 
     protected override void Start()
     {
         base.Start();
-        m_levelSequenceManager.Start();
+        //m_levelSequenceManager.Start();
     }
 
     private void Update()

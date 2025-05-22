@@ -19,8 +19,6 @@ public abstract class UIOptionEnumController<TEnum> :
     [SerializeField] private Button m_leftButton;
     [SerializeField] private Button m_rightButton;
 
-    [Title("Parameters")]
-
     [Title("Preferences")]
     [SerializeField] private string m_preferenceName;
     [SerializeField] private TEnum m_defaultValue;
