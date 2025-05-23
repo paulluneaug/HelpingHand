@@ -9,7 +9,7 @@ using UnityUtility.Timer;
 
 public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUpHandler
 {
-    protected override BaseVariable<bool> LinkedVariable => m_event.ButtonState;
+    protected override BaseVariable<bool> InputEvent => m_event.ButtonState;
 
     [SerializeField] private ButtonInputEvent m_event;
 

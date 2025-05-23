@@ -8,7 +8,7 @@ using UnityUtility.Extensions;
 [RequireComponent(typeof(RectTransform))]
 public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDragHandler
 {
-    protected override BaseVariable<int> LinkedVariable => m_event.Index;
+    protected override BaseVariable<int> InputEvent => m_event.Index;
 
     [SerializeField] private RotaryEncoderInputEvent m_event;
     [SerializeField] private GameObject m_stepMarkerPrefab;

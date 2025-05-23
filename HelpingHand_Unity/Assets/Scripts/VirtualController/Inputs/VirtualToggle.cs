@@ -1,6 +1,7 @@
 using System;
 
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 using UnityUtility.Easings;
@@ -15,9 +16,9 @@ public class VirtualToggle : VirtualInput<bool>
         public Color BackgroundColor;
         public RectTransform TogglePosition;
     }
-    protected override BaseVariable<bool> LinkedVariable => m_linkedVariable;
+    protected override BaseVariable<bool> InputEvent => m_inputEvent;
 
-    [SerializeField] private ToggleInputEvent m_linkedVariable;
+    [FormerlySerializedAs("m_linkedVariable")] [SerializeField] private ToggleInputEvent m_inputEvent;
 
     [SerializeField] private Button m_button;
     [SerializeField] private Image m_background;

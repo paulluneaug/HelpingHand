@@ -15,7 +15,7 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         Clockwise,
         CounterClockwise,
     }
-    protected override BaseVariable<float> LinkedVariable => m_inputEvent;
+    protected override BaseVariable<float> InputEvent => m_inputEvent;
 
     [SerializeField] private PotentiometerInputEvent m_inputEvent;
     [SerializeField] private GameObject m_stepMarkerPrefab;

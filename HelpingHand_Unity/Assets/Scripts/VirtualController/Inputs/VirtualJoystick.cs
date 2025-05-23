@@ -4,7 +4,7 @@ using UnityUtility.CustomAttributes;
 
 public class VirtualJoystick : VirtualInput<Vector2>
 {
-    protected override BaseVariable<Vector2> LinkedVariable => m_linkedVariable;
+    protected override BaseVariable<Vector2> InputEvent => m_linkedVariable;
 
     [SerializeField] private JoystickInputEvent m_linkedVariable;
 

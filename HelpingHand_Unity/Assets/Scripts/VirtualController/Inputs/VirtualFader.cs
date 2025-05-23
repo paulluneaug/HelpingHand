@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class VirtualFader : VirtualInput<float>
 {
-    protected override BaseVariable<float> LinkedVariable => m_linkedVariable;
+    protected override BaseVariable<float> InputEvent => m_inputEvent;
     
-    [SerializeField]
-    private FaderInputEvent m_linkedVariable;
+    [FormerlySerializedAs("m_linkedVariable")] [SerializeField]
+    private FaderInputEvent m_inputEvent;
     
     [SerializeField] 
     private Slider m_slider;
@@ -15,9 +16,21 @@ public class VirtualFader : VirtualInput<float>
     [Range(0, 1)]
     private float m_startValue;
 
-    private void Awake()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+        m_slider.onValueChanged.RemoveListener(OnSliderValueChanged);
         m_slider.onValueChanged.AddListener(OnSliderValueChanged);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        m_slider.onValueChanged.RemoveListener(OnSliderValueChanged);
+    }
+
+    private void Start()
+    {
         SetValueWithoutNotify(m_startValue);
         m_slider.SetValueWithoutNotify(m_startValue);
     }
