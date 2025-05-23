@@ -19,15 +19,13 @@ public abstract class SetGlobalVariableNode<T> : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        T inValue = m_inValue;
-        NodePort inValuePort = GetInputPort(nameof(m_inValue));
-        if (inValuePort.ConnectionCount > 0)
+        if (this.TryGetValueFromInputPort(nameof(m_inValue), out T outValue))
         {
-            inValue = inValuePort.GetInputValue<T>();
+            m_inValue = outValue;
         }
 
         DebugLog($"Setting global variable [{Variable.name}] to value [{m_inValue.ToString()}]");
-        Variable.Value = inValue;
+        Variable.Value = m_inValue;
 
         await UniTask.CompletedTask;
     }
