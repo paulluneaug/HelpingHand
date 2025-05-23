@@ -11,12 +11,12 @@ public interface IVariable
     
 }
 
-public class BaseVariable : BaseGameEvent, IVariable
+public abstract class BaseVariable : BaseGameEvent, IVariable
 {
     
 }
 
-public class BaseVariable<T> : BaseGameEvent<T>, IVariable
+public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
 {
     [SerializeField]
 #if UNITY_EDITOR
@@ -26,24 +26,14 @@ public class BaseVariable<T> : BaseGameEvent<T>, IVariable
     protected T m_value;
 
 #if UNITY_EDITOR
-    [ShowInInspector] [ReadOnly]
-    private T m_runtimeValue;
-
     [ShowInInspector] [ReadOnly] [NonSerialized]
-    private bool m_isInitialized;
+    private T m_runtimeValue;
 #endif
     
     public virtual T Value
     {
         get
         {
-#if UNITY_EDITOR
-            if (!m_isInitialized)
-            {
-                Initialize();
-            }
-#endif
-            
 #if UNITY_EDITOR
             return m_runtimeValue;
 #else
@@ -54,35 +44,34 @@ public class BaseVariable<T> : BaseGameEvent<T>, IVariable
         set
         {
 #if UNITY_EDITOR
-            if (!m_isInitialized)
-            {
-                Initialize();
-            }
-#endif
-            
-#if UNITY_EDITOR
             T oldValue = m_runtimeValue;
             m_runtimeValue = value;
             if (!oldValue.Equals(m_runtimeValue))
             {
-                Raise(value);
+                Raise(m_runtimeValue);
             }
 #else
             T oldValue = m_value;
             m_value = value;
             if (!oldValue.Equals(m_value))
             {
-                Raise(value);
+                Raise(m_value);
             }
 #endif
         }
     }
 
 #if UNITY_EDITOR
+    private void OnEnable()
+    {
+        Initialize();
+    }
+#endif
+
+#if UNITY_EDITOR
     protected virtual void Initialize()
     {
         m_runtimeValue = m_value;
-        m_isInitialized = true;
     }
 #endif
 
