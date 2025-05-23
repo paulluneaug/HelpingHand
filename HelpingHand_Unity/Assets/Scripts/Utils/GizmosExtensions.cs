@@ -51,16 +51,17 @@ public static class GizmosExtensions
         Gizmos.matrix = previousMatrix;
     }
 
-    public static void DrawConeFromRadius(Vector3 tip, Vector3 direction, float radius, float height)
+    public static void DrawConeFromDirection(Vector3 tip, Vector3 direction, float radius, float height)
     {
         Vector3 baseCenter = tip + direction * height;
         DrawConeFromBase(baseCenter, tip, radius);
     }
 
+    /// <param name="angle">Angle between the <paramref name="direction"/> and the cone edge in radians</param>
     public static void DrawConeFromAngle(Vector3 tip, Vector3 direction, float height, float angle)
     {
         Vector3 baseCenter = tip + direction * height;
-        float radius = height * MathUf.Tan(angle / 2.0f);
+        float radius = height * MathUf.Tan(angle);
         DrawConeFromBase(baseCenter, tip, radius);
     }
 
