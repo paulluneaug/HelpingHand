@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Sirenix.OdinInspector;
+
 using UnityEngine;
 
 namespace Events
 {
     public abstract class BaseGameEvent : ScriptableObject, IGameEvent
     {
-        [SerializeField]
-        private bool m_isActive = true;
+        [SerializeField] [ReadOnly]
+        protected bool m_isActive = true;
 
         public bool IsActive
         {

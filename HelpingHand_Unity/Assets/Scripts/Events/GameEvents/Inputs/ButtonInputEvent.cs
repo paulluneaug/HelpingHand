@@ -43,12 +43,20 @@ public class ButtonInputEvent : BaseGameEvent
 
     public void RaiseDown()
     {
+        if (!m_isActive)
+        {
+            return;
+        }
         m_buttonDownEvent.Raise();
         Raise();
     }
 
     public void RaiseUp()
     {
+        if (!m_isActive)
+        {
+            return;
+        }
         m_buttonUpEvent.Raise();
     }
 

@@ -29,7 +29,7 @@ public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
     [ShowInInspector] [ReadOnly] [NonSerialized]
     private T m_runtimeValue;
 #endif
-    
+
     public virtual T Value
     {
         get
