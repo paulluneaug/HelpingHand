@@ -13,7 +13,7 @@ public abstract class SetGraphVariableNode<T> : BaseNode
     [Input(ShowBackingValue.Never)] [SerializeField]
     protected GraphVariable<T> m_inVariable;
 
-    [Input(ShowBackingValue.Always)] [SerializeField] 
+    [Input(ShowBackingValue.Unconnected)] [SerializeField] 
     protected T m_value;
 
     [Output] [SerializeField]
@@ -21,7 +21,6 @@ public abstract class SetGraphVariableNode<T> : BaseNode
 
     [Output(ShowBackingValue.Never)] [SerializeField] 
     protected GraphVariable<T> m_variableOut;
-    
 
     public override object GetValue(NodePort port)
     {
