@@ -2,6 +2,7 @@ using System;
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 using UnityUtility.Extensions;
 using UnityUtility.MathU;
@@ -14,9 +15,9 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         Clockwise,
         CounterClockwise,
     }
-    protected override BaseVariable<float> LinkedVariable => m_linkedVariable;
+    protected override BaseVariable<float> LinkedVariable => m_inputEvent;
 
-    [SerializeField] private PotentiometerInputEvent m_linkedVariable;
+    [SerializeField] private PotentiometerInputEvent m_inputEvent;
     [SerializeField] private GameObject m_stepMarkerPrefab;
 
     [SerializeField] private float m_originAngle;

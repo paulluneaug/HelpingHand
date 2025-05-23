@@ -27,12 +27,21 @@ public class ToggleInputTrigger : InputTrigger
 
     protected override void ArmTrigger()
     {
+        m_toggleVariable.OnActivate -= OnActivate;
+        m_toggleVariable.OnActivate += OnActivate;
+        m_toggleVariable.RemoveListener(OnToggleValueChanged);
         m_toggleVariable.AddListener(OnToggleValueChanged);
     }
 
     protected override void DisarmTrigger()
     {
+        m_toggleVariable.OnActivate -= OnActivate;
         m_toggleVariable.RemoveListener(OnToggleValueChanged);
+    }
+
+    private void OnActivate()
+    {
+        OnToggleValueChanged(m_toggleVariable.Value);
     }
 
     private void OnToggleValueChanged(bool isOn)

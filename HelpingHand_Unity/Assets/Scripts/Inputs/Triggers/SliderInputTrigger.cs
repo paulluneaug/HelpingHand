@@ -32,17 +32,26 @@ public class SliderInputTrigger : InputTrigger
     {
         base.Initialize();
         ArmTrigger();
-        m_wasRaised = false;
+        m_wasRaised = IsRaised;
     }
 
     protected override void ArmTrigger()
     {
+        m_sliderVariable.OnActivate -= OnActivate;
+        m_sliderVariable.OnActivate += OnActivate;
+        m_sliderVariable.RemoveListener(OnSliderValueChanged);
         m_sliderVariable.AddListener(OnSliderValueChanged);
     }
 
     protected override void DisarmTrigger()
     {
+        m_sliderVariable.OnActivate -= OnActivate;
         m_sliderVariable.RemoveListener(OnSliderValueChanged);
+    }
+
+    private void OnActivate()
+    {
+        OnSliderValueChanged(m_sliderVariable.Value);
     }
 
     private bool TestValue()
