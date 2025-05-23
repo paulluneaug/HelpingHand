@@ -5,33 +5,31 @@ using UnityUtility.Singletons;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
-    public SlidersManager SlidersManager => m_sliderManager;
+    public InputActionTriggersManager InputActionTriggersManager => m_inputActionTriggersManager;
     public LevelSequenceManager LevelSequenceManager => m_levelSequenceManager;
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
-    [SerializeField, Label(bold: true)] private SlidersManager m_sliderManager;
+
+    [SerializeField, Label(bold: true)] private InputActionTriggersManager m_inputActionTriggersManager;
     [Separator]
     [SerializeField, Label(bold: true)] private LevelSequenceManager m_levelSequenceManager;
-
-    [Title("Puppet")]
-    [SerializeField] private Puppet m_puppet;
 
 
     public override void Initialize()
     {
         base.Initialize();
-        m_levelSequenceManager.Initialize(m_puppet);
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-        // m_levelSequenceManager.Start();
+        m_inputActionTriggersManager.Initialize();
     }
 
     private void Update()
     {
-        // m_levelSequenceManager.Update(Time.deltaTime);
+        m_inputActionTriggersManager.Update();
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_inputActionTriggersManager.Dispose();
     }
 
 }
