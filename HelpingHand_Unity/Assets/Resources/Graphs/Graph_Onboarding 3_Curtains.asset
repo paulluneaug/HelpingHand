@@ -63,6 +63,60 @@ MonoBehaviour:
   m_content: "Pourquoi tu ne touches plus \xE0 rien ?? (3) (repeat)"
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
+--- !u!114 &-8815734746215548525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b24767430842bf46a25b11103fb9b21, type: 3}
+  m_Name: Run Graph
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -536, y: -664}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -8815734746215548525}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -8815734746215548525}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebug: 1
+  m_description: 
+  m_graph: {fileID: 11400000, guid: 229670b60e4dc944aac17fe30987aacb, type: 2}
+  m_waitForCompletion: 0
 --- !u!114 &-8596623034309422450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,7 +963,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: 
+  m_content: aze
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-5255160588323726711
@@ -1261,7 +1315,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: 
   m_inValue: 1
-  m_variable: {fileID: 11400000, guid: 970f36d8b6a31af4380c30b0c74ce84a, type: 2}
+  m_variable: {fileID: 11400000, guid: f7177867f63a0f240b699e7a5a5f04c8, type: 2}
 --- !u!114 &-2456886186865490796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,6 +2009,7 @@ MonoBehaviour:
   - {fileID: 8654679800632104788}
   - {fileID: -4988096315605319355}
   - {fileID: -4152863740758414339}
+  - {fileID: -8815734746215548525}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,7 +2430,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: 
   m_value:
-    Value: 3
+    Value: 0
   m_startValue: 0
 --- !u!114 &3515301945936933447
 MonoBehaviour:
@@ -2569,7 +2624,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: 
+  m_content: aze
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &4150210900661882403
@@ -2783,6 +2838,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_in
         node: {fileID: -4152863740758414339}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -8815734746215548525}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -3066,7 +3124,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: 
   m_value:
-    Value: 6
+    Value: 0
   m_startValue: 0
 --- !u!114 &5887713836382923125
 MonoBehaviour:
