@@ -7,11 +7,43 @@ namespace Events
 {
     public abstract class BaseGameEvent : ScriptableObject, IGameEvent
     {
-        protected readonly List<IGameEventListener> m_listeners = new();
-        protected readonly List<Action> m_actions = new();
+        [SerializeField]
+        private bool m_isActive = true;
+
+        public bool IsActive
+        {
+            get => m_isActive;
+            set
+            {
+                bool oldValue = m_isActive;
+                m_isActive = value;
+                if (m_isActive != oldValue)
+                {
+                    if (m_isActive)
+                    {
+                        OnActivate?.Invoke();
+                    }
+                    else
+                    {
+                        OnDeactivate?.Invoke();
+                    }
+                }
+            }
+        }
+
+        public event Action OnActivate;
+        public event Action OnDeactivate;
+
+        private readonly List<IGameEventListener> m_listeners = new();
+        private readonly List<Action> m_actions = new();
 
         public virtual void Raise()
         {
+            if (!IsActive)
+            {
+                return;
+            }
+            
             for (var i = m_listeners.Count - 1; i >= 0; i--)
             {
                 m_listeners[i].OnEventRaised();
@@ -69,25 +101,22 @@ namespace Events
 
         public void Raise(T value)
         {
+            if (!IsActive)
+            {
+                return;
+            }
+            
             for (var i = m_typedListeners.Count - 1; i >= 0; i--)
             {
                 m_typedListeners[i].OnEventRaised(value);
-            }
-
-            for (var i = m_listeners.Count - 1; i >= 0; i--)
-            {
-                m_listeners[i].OnEventRaised();
             }
 
             for (var i = m_typedActions.Count - 1; i >= 0; i--)
             {
                 m_typedActions[i](value);
             }
-
-            for (var i = m_actions.Count - 1; i >= 0; i--)
-            {
-                m_actions[i]();
-            }
+            
+            Raise();
         }
 
         public void AddListener(IGameEventListener<T> listener)
