@@ -39,7 +39,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
     }
 
     #if UNITY_EDITOR
-    [Button("Load events")]
+    [Button("Load input events")]
     private void LoadAllInputEvents()
     {
         m_inputEvents = new List<BaseGameEvent>();
@@ -110,17 +110,26 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
 
         return maxTime;
     }
-    
-    protected override void Start()
+
+    private void OnEnable()
     {
         foreach (BaseGameEvent inputEvent in m_inputEvents)
         {
             BaseGameEvent evt = inputEvent;
-            m_eventActions[evt] = () => OnInputTriggered(evt); 
-            evt.AddListener(m_eventActions[evt]);
+            m_eventActions[evt] = () => OnInputUsed(evt); 
+            evt.OnEventRaised -= m_eventActions[evt];
+            evt.OnEventRaised += m_eventActions[evt];
         }
     }
-    
+
+    private void OnDisable()
+    {
+        foreach (BaseGameEvent inputEvent in m_inputEvents)
+        {
+            inputEvent.OnEventRaised -= m_eventActions[inputEvent];
+        }
+    }
+
     private void Update()
     {
         if (Time.time > m_nextWindowTime)
@@ -136,20 +145,11 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
         }
     }
 
-    private void OnInputTriggered(BaseGameEvent inputEvent)
+    private void OnInputUsed(BaseGameEvent inputEvent)
     {
         if (!m_eventTimes.TryAdd(inputEvent, new List<float> { Time.time }))
         {
             m_eventTimes[inputEvent].Add(Time.time);
-        }
-    }
-
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        foreach (BaseGameEvent gameEvent in m_eventActions.Keys)
-        {
-            gameEvent.RemoveListener(m_eventActions[gameEvent]);
         }
     }
 }

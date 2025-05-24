@@ -35,12 +35,20 @@ namespace Events
 
         public event Action OnActivate;
         public event Action OnDeactivate;
+        public event Action OnEventRaised;
+
+        protected void RaiseEvent()
+        {
+            OnEventRaised?.Invoke();
+        }
 
         private readonly List<IGameEventListener> m_listeners = new();
         private readonly List<Action> m_actions = new();
 
         public virtual void Raise()
         {
+            RaiseEvent();
+            
             if (!IsActive)
             {
                 return;
@@ -103,6 +111,8 @@ namespace Events
 
         public void Raise(T value)
         {
+            RaiseEvent();
+            
             if (!IsActive)
             {
                 return;

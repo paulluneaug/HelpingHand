@@ -39,13 +39,13 @@ public class InputGroup : MonoBehaviour, ILateStarter
         }
     }
 
-    [Button("Enable")]
+    [Button("Enable")] [HorizontalGroup("Buttons")]
     public void Enable()
     {
         SetActive(true);
     }
 
-    [Button("Disable")]
+    [Button("Disable")] [HorizontalGroup("Buttons")]
     public void Disable()
     {
         SetActive(false);
