@@ -6,7 +6,7 @@ using UnityEngine;
 public class ConditionOr : ConditionBase
 {
     [SerializeField]
-    private ConditionBase[] m_preconditions;
+    private ConditionBase[] m_preconditions = new ConditionBase[] {};
     
     public ConditionBase[] Preconditions => m_preconditions;
 
