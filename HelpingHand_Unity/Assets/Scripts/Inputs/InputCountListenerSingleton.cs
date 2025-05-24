@@ -67,17 +67,16 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
     /// <summary>
     /// How many triggers from this input in the time window provided?
     /// </summary>
-    public int GetInputCount(IEnumerable<BaseGameEvent> inputEvents, float timeWindow, bool countAllTriggers = false)
+    public int GetInputCount(IEnumerable<BaseGameEvent> inputEvents, float sinceTime, bool countAllTriggers = false)
     {
         int count = 0;
-        float baseTime = Time.time - timeWindow;
         foreach (BaseGameEvent inputEvent in inputEvents)
         {
             if (m_eventTimes.TryGetValue(inputEvent, out List<float> times))
             {
                 foreach (float time in times)
                 {
-                    if (time > baseTime)
+                    if (time > sinceTime)
                     {
                         count++;
                         if (!countAllTriggers)

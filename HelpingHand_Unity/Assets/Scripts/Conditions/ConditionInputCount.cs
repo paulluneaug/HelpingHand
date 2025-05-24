@@ -25,12 +25,36 @@ public class ConditionInputCount : ConditionBase
         [LabelText("Triggers count")] Triggers,
         [LabelText("Inputs count")] Inputs,
     }
+
+    private enum TimeType
+    {
+        [LabelText("Time window")] TimeWindow,
+        [LabelText("Start time")] TimeStart
+    }
+
+    private enum StartTimeType
+    {
+        [LabelText("Global variable")] GlobalVariable,
+        [LabelText("Blackboard")] Blackboard
+    }
     
     [SerializeField] [LabelWidth(100)]
     private int m_count;
 
-    [SerializeField] [LabelWidth(100)]
+    [SerializeField] [LabelWidth(100)] [EnumToggleButtons]
+    private TimeType m_timeType;
+    
+    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeWindow")]
     private float m_timeWindow;
+
+    [SerializeField] [LabelWidth(100)] [EnumToggleButtons] [ShowIf("@m_timeType == TimeType.TimeStart")]
+    private StartTimeType m_startTimeType;
+    
+    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.GlobalVariable")]
+    private FloatVariable m_floatVariable;
+    
+    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.Blackboard")]
+    private string m_blackboardKey;
 
     [SerializeField] [EnumToggleButtons] [LabelWidth(100)] [OnValueChanged("OnTypeChanged")]
     private InputListType m_type;
@@ -99,7 +123,10 @@ public class ConditionInputCount : ConditionBase
 
     public override bool Test()
     {
-        int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, m_timeWindow, m_inputType == InputType.Triggers);
+        float sinceTime = m_timeType == TimeType.TimeWindow ? Time.time - m_timeWindow :
+            m_startTimeType == StartTimeType.GlobalVariable ? m_floatVariable.Value : (float)GraphBlackboard.Instance.Blackboard[m_blackboardKey];
+        
+        int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, sinceTime, m_inputType == InputType.Triggers);
         return m_countType switch
         {
             ComparisonOperation.Equal => inputCount == m_count,
