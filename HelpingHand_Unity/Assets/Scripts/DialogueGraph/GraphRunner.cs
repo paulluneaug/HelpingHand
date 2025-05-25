@@ -133,6 +133,12 @@ public class GraphRunner : MonoBehaviour
                 disposableNode.Dispose();
             }
         }
+        
+        UniTask.Action(async () =>
+        {
+            await UniTask.NextFrame();
+            Destroy(gameObject);
+        }).Invoke();
     }
 
     private void OnDisable()
