@@ -48,7 +48,7 @@ public class DialogueNode : InterruptableNode
     private AudioEvent m_audioEvent;
 
     [FoldoutGroup("Debug")] [ShowInInspector, LabelWidth(125), ReadOnly]
-    private ObservableField<bool> m_hasBeenRead;
+    private ObservableField<bool> m_hasBeenRead = new (false);
 
     [FoldoutGroup("Debug")] [ShowInInspector, LabelWidth(125), ReadOnly]
     private int m_readCount;
@@ -58,8 +58,6 @@ public class DialogueNode : InterruptableNode
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
     
-    private bool m_isReadingText;
-
     protected override void Init()
     {
         base.Init();
@@ -69,8 +67,7 @@ public class DialogueNode : InterruptableNode
     public override void Initialize()
     {
         m_hasBeenRead.Value = false;
-        m_isReadingText = false;
-        m_readCount = 0;
+        m_readCount = 0; // Quid si on relance plusieurs fois le même graph, le compteur est reset
     }
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
@@ -94,44 +91,23 @@ public class DialogueNode : InterruptableNode
     {
         DebugLog($"Play");
         m_hasBeenInterrupted = false;
-        m_isReadingText = true;
         
-        // Todo rendre awaitable
-        DialogueManager.Instance.OnDialogueEnded += OnDialogueEnded;
-        DialogueManager.Instance.PlayDialog(this);
+        UniTask dialogueTask = DialogueManager.Instance.PlayDialogAsync(name, m_content, handler.StopToken);
+        UniTask audioTask = m_audioEvent ? m_audioEvent.Play(null, handler.StopToken) : UniTask.CompletedTask;
+        
         DebugLog($"Wait for dialogue end");
         
-        bool isCancelled = await UniTask.WhenAll(
-            m_audioEvent? m_audioEvent.Play(null, handler.StopToken) : UniTask.CompletedTask,
-            WaitForDialogueEnd(handler)
-            ).SuppressCancellationThrow();
-        
-        if (isCancelled)
+        if (await UniTask.WhenAll(dialogueTask, audioTask).SuppressCancellationThrow())
         {
             // Normalement le dialogue pouvait être interrompu, pas besoin de retester
             // On arrive ici si le dialogue est interrompu au milieu d'une phrase par un autre dialogue
             // ou si le graph est mis en pause 
             DebugLog($"Interrupted");
             m_hasBeenInterrupted = true;
-            DialogueManager.Instance.InterruptDialogue();
+            return;
         }
-    }
-
-    private async UniTask WaitForDialogueEnd(GraphRunnerHandler handler)
-    {
-        await UniTask.WaitUntil(() => !m_isReadingText || m_hasBeenInterrupted, PlayerLoopTiming.Update, handler.StopToken);
-    }
-
-    private void OnDialogueEnded()
-    {
-        DialogueManager.Instance.OnDialogueEnded -= OnDialogueEnded;
+        
         m_hasBeenRead.Value = true;
-        m_isReadingText = false;
         m_readCount++;
-    }
-
-    public void ResetReadCount()
-    {
-        m_readCount = 0;
     }
 }
