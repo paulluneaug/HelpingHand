@@ -12,10 +12,11 @@ public class WaitFrameNode : InterruptableNode
 {
     private enum WaitType
     {
-        [LabelText("Frame count")] FrameCount,
-        [LabelText("Next frame")] NextFrame,
+        [LabelText("Pre LateUpdate")] PreLateUpdate,
+        [LabelText("Post LateUpdate")] PostLateUpdate,
         [LabelText("End of frame")] EndOfFrame,
-        [LabelText("LateUpdate")] LateUpdate,
+        [LabelText("Next frame")] NextFrame,
+        [LabelText("Frame count")] FrameCount,
     }
     
     [Input]
@@ -43,20 +44,23 @@ public class WaitFrameNode : InterruptableNode
             UniTask task;
             switch (m_type)
             {
-                case WaitType.FrameCount:
-                    DebugLog($"Waiting for {m_frameCount} frames");
-                    task = UniTask.DelayFrame(m_frameCount, PlayerLoopTiming.Update, handler.StopToken);
+                case WaitType.PreLateUpdate:
+                    task = UniTask.Yield(PlayerLoopTiming.PreLateUpdate, handler.StopToken);
                     break;
-                case WaitType.NextFrame:
-                    DebugLog($"Waiting for next frame");
-                    task = UniTask.NextFrame(handler.StopToken);
+                case WaitType.PostLateUpdate:
+                    task = UniTask.Yield(PlayerLoopTiming.PostLateUpdate, handler.StopToken);
                     break;
                 case WaitType.EndOfFrame:
                     DebugLog($"Waiting for end of frame");
                     task = UniTask.WaitForEndOfFrame(handler.StopToken); 
                     break;
-                case WaitType.LateUpdate:
-                    task = UniTask.Yield(PlayerLoopTiming.PostLateUpdate, handler.StopToken);
+                case WaitType.NextFrame:
+                    DebugLog($"Waiting for next frame");
+                    task = UniTask.NextFrame(handler.StopToken);
+                    break;
+                case WaitType.FrameCount:
+                    DebugLog($"Waiting for {m_frameCount} frames");
+                    task = UniTask.DelayFrame(m_frameCount, PlayerLoopTiming.Update, handler.StopToken);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
