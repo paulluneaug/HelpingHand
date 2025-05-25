@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-[CreateNodeMenu("Data/Variables/Global/Spline Container")]
+[CreateNodeMenu("Data/Variables/Globals/Spline Container")]
 public class GlobalSplineContainerNode : GlobalVariableNode<SplineContainerVariable>
 {
     [Output(ShowBackingValue.Always)]
