@@ -29,5 +29,6 @@ public class SetBlackboardValueNode : BaseNode
         GraphBlackboard.Instance.Blackboard[m_key] = m_inValue;
 
         await UniTask.CompletedTask;
+        // Use UniTask.Yield() ?
     }
 }

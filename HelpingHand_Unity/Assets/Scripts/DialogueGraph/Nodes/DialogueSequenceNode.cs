@@ -44,12 +44,10 @@ public class DialogueSequenceNode : BaseNode
         List<NodePort> continuePorts = new();
 
         m_sequenceIndex++;
-        DebugLog($"sequenceIndex={m_sequenceIndex} | sequenceCount={m_orderedNodePorts.Length}");
         
         if (m_loop)
         {
             m_sequenceIndex %= m_orderedNodePorts.Length;
-            DebugLog($"is lopping | sequenceIndex={m_sequenceIndex}");
         }
         
         if (m_sequenceIndex < m_orderedNodePorts.Length)
