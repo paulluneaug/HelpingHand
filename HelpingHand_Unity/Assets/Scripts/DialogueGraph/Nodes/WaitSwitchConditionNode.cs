@@ -153,6 +153,7 @@ public class WaitSwitchConditionNode : InterruptableNode
     public override void Dispose()
     {
         base.Dispose();
+        m_timeoutSource?.Dispose();
         foreach (ConditionBase condition in m_conditions)
         {
             condition.Dispose();

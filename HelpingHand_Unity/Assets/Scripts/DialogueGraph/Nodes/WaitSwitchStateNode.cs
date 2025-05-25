@@ -107,4 +107,10 @@ public class WaitSwitchStateNode : InterruptableNode
             await UniTask.WhenAll(m_continuePortList.Select(port => ContinueFlow(handler, inPort, port)));
         }
     }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_timeoutSource?.Dispose();
+    }
 }

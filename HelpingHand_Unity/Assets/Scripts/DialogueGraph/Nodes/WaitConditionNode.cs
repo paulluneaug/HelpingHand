@@ -109,6 +109,7 @@ public class WaitConditionNode : InterruptableNode
     public override void Dispose()
     {
         base.Dispose();
+        m_timeoutSource?.Dispose();
         m_condition.Dispose();
     }
 }

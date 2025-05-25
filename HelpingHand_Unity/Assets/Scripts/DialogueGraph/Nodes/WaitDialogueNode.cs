@@ -83,4 +83,10 @@ public class WaitDialogueNode : InterruptableNode
             await base.ContinueFlow(handler, inPort);
         }
     }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_timeoutSource?.Dispose();
+    }
 }

@@ -105,6 +105,7 @@ public class WaitEventNode : InterruptableNode
     public override void Dispose()
     {
         base.Dispose();
+        m_timeoutSource?.Dispose();
         m_event.RemoveListener(OnEventRaised);
     }
 }

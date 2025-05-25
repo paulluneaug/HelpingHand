@@ -39,7 +39,7 @@ public class WaitStateNode : InterruptableNode
     {
         m_isConditionPassed = false;
     }
-    
+
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         m_state.RemoveListener(OnStateUpdated);
@@ -102,5 +102,11 @@ public class WaitStateNode : InterruptableNode
     private void OnStateUpdated()
     {
         m_isConditionPassed = m_state.IsSet == m_mustBeSet;
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_timeoutSource?.Dispose();
     }
 }
