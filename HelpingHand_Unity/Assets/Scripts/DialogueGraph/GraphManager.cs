@@ -94,18 +94,16 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     public async UniTask<GraphRunner> CreateGraphRunner(SimpleGraph graph)
     {
-        bool isRunning = false;
         // If graph is already running, wait for its completion
         if (m_graphDictionary.TryGetValue(graph, out GraphRunner existingRunner))
         {
-            isRunning = true;
+            bool isRunning = true;
             existingRunner.OnGraphEnded += () => isRunning = false;
+            await UniTask.WaitUntil(() => isRunning == false);
         }
-
-        await UniTask.WaitUntil(() => isRunning == false);
+        
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
-        graphRunner.Initialize(graph);
-
+        graphRunner.SetGraph(graph);
         m_graphDictionary[graph] = graphRunner;
         return graphRunner;
     }

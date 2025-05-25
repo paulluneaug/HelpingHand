@@ -24,20 +24,14 @@ public class GraphRunner : MonoBehaviour
     [SerializeField]
     private SimpleGraph m_graph;
 
+    public void SetGraph(SimpleGraph graph)
+    {
+        m_graph = graph;
+    }
+
     private void Awake()
     {
         m_graphRunnerHandler = new GraphRunnerHandler(this);
-    }
-
-    private void Start()
-    {
-        m_graph?.Initialize();
-    }
-
-    public void Initialize(SimpleGraph graph)
-    {
-        m_graph = graph;
-        m_graph.Initialize();
     }
 
     [Button("Start")]
@@ -62,7 +56,6 @@ public class GraphRunner : MonoBehaviour
             return;
         }
         m_graphRunnerHandler.Stop();
-        m_graph.Initialize();
     }
 
     [Button("Pause")]
@@ -110,6 +103,10 @@ public class GraphRunner : MonoBehaviour
             Debug.LogWarning($"{Debug_GetLogHeader()} [StartGraph] Graph is not running");
             return;
         }
+        
+        Debug.Log($"{Debug_GetLogHeader()} Initialize");
+        m_graph.Initialize();
+        await UniTask.NextFrame();
         
         Debug.Log($"{Debug_GetLogHeader()} Start");
         m_graphRunnerHandler.Start();

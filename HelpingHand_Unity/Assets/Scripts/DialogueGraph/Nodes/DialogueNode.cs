@@ -85,7 +85,7 @@ public class DialogueNode : InterruptableNode
         }
         else
         {
-            DebugLog($"End");
+            DebugLog($"Dialogue has ended normally");
             await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_out)));
         }
     }
@@ -97,9 +97,9 @@ public class DialogueNode : InterruptableNode
         m_isReadingText = true;
         
         // Todo rendre awaitable
-        DialogueManager.Instance.PlayDialog(this);
         DialogueManager.Instance.OnDialogueEnded += OnDialogueEnded;
-        DebugLog($"Wait for end");
+        DialogueManager.Instance.PlayDialog(this);
+        DebugLog($"Wait for dialogue end");
         
         bool isCancelled = await UniTask.WhenAll(
             m_audioEvent? m_audioEvent.Play(null, handler.StopToken) : UniTask.CompletedTask,

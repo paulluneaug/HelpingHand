@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 using XNode;
-[CreateNodeMenu("Waiting/Wait State")] [NodeTint(0.2f, 0.1f, .3f)]
+[CreateNodeMenu("Waiting/Wait State")] [NodeTint(0.2f, 0.1f, .3f)] [NodeWidth(300)]
 public class WaitStateNode : InterruptableNode
 {
     [Input]

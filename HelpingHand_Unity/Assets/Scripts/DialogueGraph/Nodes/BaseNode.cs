@@ -52,7 +52,6 @@ public abstract class BaseNode : SerializableNode, IDisposable
         handler.CurrentNode = this;
         await HandlePauseStop(handler);
         await ExecuteNode(handler, inPort);
-        await UniTask.NextFrame();
         await ContinueFlow(handler, inPort);
     }
 
