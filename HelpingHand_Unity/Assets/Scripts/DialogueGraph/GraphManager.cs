@@ -60,6 +60,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     private GraphRunner m_currentGraphRunner;
     private Dictionary<SimpleGraph, GraphRunner> m_graphDictionary = new();
     private float m_timeWhenCheckingInterruption;
+    private bool m_started = false;
 
     public override void Initialize()
     {
@@ -72,6 +73,11 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     [Button("Start sequence")]
     private void StartSequence()
     {
+        if (m_started)
+        {
+            return;
+        }
+        m_started = true;
         StartLevelAsync().Forget();
     }
 
@@ -165,6 +171,11 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
                 DequeueInterrupting();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartSequence();
+        }
     }
 
     private void DequeueInterrupting()
@@ -194,7 +205,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             interruptingGraph.GraphRunner.OnGraphStopped += () =>
             {
                 m_currentGraphRunner = interruptedGraph;
-                m_currentGraphRunner.ResumeGraph();
+                m_currentGraphRunner.StartGraph();
             };
         }
 
