@@ -16,14 +16,17 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     {
         get
         {
-            if (m_currentGraphRunner != null && m_currentGraphRunner.Handler.CurrentNode is InterruptableNode interruptableNode)
+            if (m_currentGraphRunner != null)
             {
-                return interruptableNode.Interruptable;
+                foreach (BaseNode node in m_currentGraphRunner.Handler.CurrentNodes)
+                {
+                    if (node is InterruptableNode { Interruptable: false })
+                    {
+                        return false;
+                    }
+                }
             }
-            else
-            {
-                return true;
-            }
+            return true;
         }
     }
 

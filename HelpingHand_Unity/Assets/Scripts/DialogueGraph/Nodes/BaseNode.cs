@@ -49,7 +49,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
     /// </summary>
     private async UniTask Execute(GraphRunnerHandler handler, NodePort inPort)
     {
-        handler.CurrentNode = this;
+        handler.CurrentNodes.Add(this);
         await HandlePauseStop(handler);
         await ExecuteNode(handler, inPort);
         await ContinueFlow(handler, inPort);
@@ -135,6 +135,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
             }
         }
 
+        handler.CurrentNodes.Remove(this);
         await UniTask.WhenAll(tasks);
     }
 
