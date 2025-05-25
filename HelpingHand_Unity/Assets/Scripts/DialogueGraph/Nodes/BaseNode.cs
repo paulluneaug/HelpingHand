@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 using Cysharp.Threading.Tasks;
@@ -10,6 +11,8 @@ using UnityEngine;
 
 using XNode;
 using XNode.Odin;
+
+using Debug = UnityEngine.Debug;
 
 public abstract class BaseNode : SerializableNode, IDisposable
 {
@@ -147,20 +150,19 @@ public abstract class BaseNode : SerializableNode, IDisposable
         return port.GetConnections().Select(p => p.node as BaseNode).Where(n => n != null).ToArray();
     }
 
-    /// <summary>
-    /// Debug log header
-    /// </summary>
     protected string Debug_GetLogHeader()
     {
         return $"[{Time.frameCount}] <color=cyan>[{graph.name}]</color> <color=yellow>[{GetType().Name}]</color> ({name})";
     }
-
+    
     /// <summary>
     /// Debug log with header
     /// TODO: move it project-wise 
     /// </summary>
+    [Conditional("UNITY_EDITOR")]
     protected void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
+        
         if (!m_showDebug)
         {
             return;

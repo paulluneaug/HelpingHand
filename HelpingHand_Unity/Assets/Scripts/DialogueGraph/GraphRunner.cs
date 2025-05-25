@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.Threading;
 
 using Sirenix.OdinInspector;
 
@@ -7,6 +9,8 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 using XNode;
+
+using Debug = UnityEngine.Debug;
 
 public class GraphRunner : MonoBehaviour
 {
@@ -40,7 +44,7 @@ public class GraphRunner : MonoBehaviour
     {
         if (m_graphRunnerHandler.IsRunning)
         {
-            Debug.LogWarning($"{Debug_GetLogHeader()} [StartGraph] Graph is not running");
+            DebugLog($"[StartGraph] Graph is not running", LogType.Warning);
             return;
         }
         RunGraphAsync().Forget();
@@ -52,7 +56,7 @@ public class GraphRunner : MonoBehaviour
     {
         if (!m_graphRunnerHandler.IsRunning)
         {
-            Debug.LogWarning($"{Debug_GetLogHeader()} [StopGraph] Graph is not running");
+            DebugLog($"[StopGraph] Graph is not running", LogType.Warning);
             return;
         }
         m_graphRunnerHandler.Stop();
@@ -64,15 +68,15 @@ public class GraphRunner : MonoBehaviour
     {
         if (!m_graphRunnerHandler.IsRunning)
         {
-            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is not running");
+            DebugLog($"[PauseGraph] Graph is not running", LogType.Warning);
             return;
         }
         if (m_graphRunnerHandler.IsPaused)
         {
-            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is already paused");
+            DebugLog($"[PauseGraph] Graph is already paused", LogType.Warning);
             return;
         }
-        Debug.Log($"{Debug_GetLogHeader()} Pause");
+        DebugLog($"Pause");
         m_graphRunnerHandler.Pause();
         OnGraphPaused?.Invoke();
     }
@@ -83,15 +87,15 @@ public class GraphRunner : MonoBehaviour
     {
         if (!m_graphRunnerHandler.IsRunning)
         {
-            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is not running");
+            DebugLog($"[PauseGraph] Graph is not running", LogType.Warning);
             return;
         }
         if (!m_graphRunnerHandler.IsPaused)
         {
-            Debug.LogWarning($"{Debug_GetLogHeader()} [PauseGraph] Graph is not paused");
+            DebugLog($"[PauseGraph] Graph is not paused", LogType.Warning);
             return;
         }
-        Debug.Log($"{Debug_GetLogHeader()} Resume");
+        DebugLog($"Resume");
         m_graphRunnerHandler.Resume();
         OnGraphResumed?.Invoke();
     }
@@ -100,30 +104,31 @@ public class GraphRunner : MonoBehaviour
     {
         if (m_graphRunnerHandler.IsRunning)
         {
-            Debug.LogWarning($"{Debug_GetLogHeader()} [StartGraph] Graph is not running");
+            DebugLog($"[StartGraph] Graph is not running", LogType.Warning);
             return;
         }
         
-        Debug.Log($"{Debug_GetLogHeader()} Initialize");
+        DebugLog($"Initialize"); 
         m_graph.Initialize();
+        
         await UniTask.NextFrame();
         
-        Debug.Log($"{Debug_GetLogHeader()} Start");
+        DebugLog($"Start");
         m_graphRunnerHandler.Start();
         OnGraphStarted?.Invoke();
         bool isCancelled = await m_graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
         if (isCancelled)
         {
-            Debug.Log($"{Debug_GetLogHeader()} Stopped prematurely");
+            DebugLog($"Stopped prematurely");
             OnGraphCancelled?.Invoke();
         }
         else
         {
-            Debug.Log($"{Debug_GetLogHeader()} End reached");
+            DebugLog($"End reached");
             OnGraphEnded?.Invoke();
         }
 
-        Debug.Log($"{Debug_GetLogHeader()} Stopped");
+        DebugLog($"Stopped");
         OnGraphStopped?.Invoke();
         
         foreach (Node node in m_graph.nodes)
@@ -159,8 +164,28 @@ public class GraphRunner : MonoBehaviour
     }
     #endif
 
-    private string Debug_GetLogHeader()
+    /// <summary>
+    /// Debug log with header
+    /// TODO: move it project-wise 
+    /// </summary>
+    [Conditional("UNITY_EDITOR")]
+    private void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
-        return $"[{Time.frameCount}] <color=teal>[{GetType().Name}]</color> <color=cyan>[{m_graph.name}]</color>";
+        string GetLogHeader()
+        {
+            return $"[{Time.frameCount}] <color=teal>[{GetType().Name}]</color> <color=cyan>[{m_graph.name}]</color>";
+        }
+        switch (logType)
+        {
+            case LogType.Error:
+                Debug.LogError($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Warning:
+                Debug.LogWarning($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Log:
+                Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
+        }
     }
 }

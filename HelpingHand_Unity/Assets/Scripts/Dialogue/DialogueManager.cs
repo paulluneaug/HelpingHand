@@ -44,6 +44,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         m_currentDialogue = dialogue;
         Debug.Log($"{Debug_GetLogHeader()} Play \"{m_currentDialogue.Content.Truncate(30)}\"");
         m_typewriter.ShowText(m_currentDialogue.Content);
+        DebugLog($"Play \"{content.Truncate(30)}\"");
         OnDialogueStarted?.Invoke();
     }
 
@@ -59,6 +60,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         if (m_currentDialogue == null)
         {
             return;
+            DebugLog($"Interrupted");
         }
 
         Debug.Log($"{Debug_GetLogHeader()} Paused");
@@ -71,6 +73,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         if (m_currentDialogue == null)
         {
             return;
+            DebugLog($"On Text Showed");
         }
 
         Debug.Log($"{Debug_GetLogHeader()} Resumed");
@@ -79,22 +82,32 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     }
 
     public void InterruptDialogue()
+    /// <summary>
+    /// Debug log with header
+    /// TODO: move it project-wise 
+    /// </summary>
+    [Conditional("UNITY_EDITOR")]
+    private void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
-        if (m_currentDialogue != null)
+        string GetLogHeader()
         {
-            Debug.Log($"{Debug_GetLogHeader()} Interrupted");
+            return $"[{Time.frameCount}] <color=#ff55ff>[DialogueManager]</color> [{(!string.IsNullOrEmpty(m_currentDialogueTitle) ? m_currentDialogueTitle : "null")}]";
         }
-        else
+        
+        switch (logType)
         {
-            Debug.Log($"{Debug_GetLogHeader()} No dialogue to interrupt");
+            case LogType.Error:
+                Debug.LogError($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Warning:
+                Debug.LogWarning($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Log:
+                Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
         }
         m_typewriter.StopShowingText();
         m_currentDialogue = null;
         OnDialogueInterrupted?.Invoke();
-    }
-
-    private string Debug_GetLogHeader()
-    {
-        return $"[{Time.frameCount}] <color=#ff55ff>[DialogueManager]</color> [{(m_currentDialogue ? m_currentDialogue.name : "null")}]";
     }
 }
