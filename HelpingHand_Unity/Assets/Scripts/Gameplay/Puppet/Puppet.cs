@@ -33,12 +33,15 @@ public class Puppet : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.RegisterPuppet(this);
+
         StopWalk();
         m_splineToFollow.AddListener(OnSplineToFollowChanged);
     }
 
     private void OnDestroy()
     {
+        GameManager.Instance.UnregisterPuppet();
         m_splineToFollow.RemoveListener(OnSplineToFollowChanged);
     }
 
@@ -62,16 +65,15 @@ public class Puppet : MonoBehaviour
 
     [DisableIf("m_isWalking")]
     [HorizontalGroup("Split", 0.5f)]
-    [Button("Start walk", ButtonSizes.Small)]
-    public void StartWalk()
+    [Button("Begin walk", ButtonSizes.Small)]
+    public void BeginWalk()
     {
         if (m_splineToFollow.Value == null)
         {
-            throw new NullReferenceException("");
+            throw new NullReferenceException("Puppet has non spline to follow");
         }
-        m_isWalking = true;
         m_hasReachedEndOfSpline = false;
-        m_puppetAnimator.SetBool(s_isWalkingAnimatorParameter, true);
+        SetWalkState(true);
 
         m_currentSpline = m_splineToFollow.Value.Spline;
         m_splineLength = m_splineToFollow.Value.CalculateLength();
@@ -86,8 +88,25 @@ public class Puppet : MonoBehaviour
     [Button("Stop walk", ButtonSizes.Small)]
     public void StopWalk()
     {
-        m_isWalking = false;
-        m_puppetAnimator.SetBool(s_isWalkingAnimatorParameter, false);
+        SetWalkState(false);
+        m_hasReachedEndOfSpline = false;
+        m_progressAlongSpline = 0.0f;
+    }
+
+    public void PauseWalk()
+    {
+        if (m_isWalking)
+        {
+            SetWalkState(false);
+        }
+    }
+
+    public void ResumeWalk()
+    {
+        if (!m_isWalking)
+        {
+            SetWalkState(true);
+        }
     }
 
     private void UpdatePositionAndRotation(float time)
@@ -106,4 +125,11 @@ public class Puppet : MonoBehaviour
             throw new InvalidOperationException("Don't change the spline the puppet is following while it is walking : Call Puppet.StopWalk() before doing so");
         }
     }
+
+    private void SetWalkState(bool walk)
+    {
+        m_isWalking = walk;
+        m_puppetAnimator.SetBool(s_isWalkingAnimatorParameter, walk);
+    }
+
 }
