@@ -67,7 +67,7 @@ public class GraphController : MonoBehaviour
     }
 
     [Button("Start sequence")]
-    private void StartSequence()
+    public void StartSequence()
     {
         StartLevelAsync().Forget();
     }
@@ -104,6 +104,7 @@ public class GraphController : MonoBehaviour
 
         await UniTask.WaitUntil(() => isRunning == false);
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
+        graphRunner.transform.SetParent(transform);
         graphRunner.Initialize(graph);
 
         m_graphDictionary[graph] = graphRunner;
@@ -123,6 +124,7 @@ public class GraphController : MonoBehaviour
             StartMainSequenceGraph(graph).Forget();
             return;
         }
+        OnGraphSequenceFinished?.Invoke();
     }
 
     private void OnGraphPaused()

@@ -25,6 +25,7 @@ public class ActManager : MonoBehaviour
         puppet.gameObject.SetActive(true);
 
         m_graphController.OnGraphSequenceFinished += OnGraphSequenceFinished;
+        m_graphController.StartSequence();
     }
 
     private void OnGraphSequenceFinished()
