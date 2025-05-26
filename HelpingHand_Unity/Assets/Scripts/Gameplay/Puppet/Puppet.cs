@@ -9,7 +9,7 @@ using UnityEngine.Splines;
 
 using UnityUtility.MathU;
 
-public class Puppet : MonoBehaviour
+public class Puppet : MonoBehaviour, ILateAwaker
 {
     private static readonly int s_isWalkingAnimatorParameter = Animator.StringToHash("IsWalking");
 
@@ -31,7 +31,7 @@ public class Puppet : MonoBehaviour
     [NonSerialized] private Spline m_currentSpline = null;
 
 
-    private void Start()
+    public void LateAwake()
     {
         GameManager.Instance.RegisterPuppet(this);
         m_splineToFollow.AddListener(OnSplineToFollowChanged);
@@ -41,7 +41,10 @@ public class Puppet : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.UnregisterPuppet();
+        if (!GameManager.ApplicationIsQuitting)
+        {
+            GameManager.Instance.UnregisterPuppet();
+        }
         m_splineToFollow.RemoveListener(OnSplineToFollowChanged);
     }
 
@@ -131,5 +134,4 @@ public class Puppet : MonoBehaviour
         m_isWalking = walk;
         m_puppetAnimator.SetBool(s_isWalkingAnimatorParameter, walk);
     }
-
 }
