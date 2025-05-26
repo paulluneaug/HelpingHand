@@ -40,11 +40,8 @@ public class ActSequenceManager
     [NonSerialized] private ActManager m_currentAct;
     [NonSerialized] private ActManager[] m_actSequence;
 
-    [NonSerialized] private Puppet m_puppet;
-
-    public void Initialize(Puppet puppet)
+    public void Initialize()
     {
-        m_puppet = puppet;
         if (m_mode == ActSequenceManagerMode.Single)
         {
             return;
@@ -88,7 +85,7 @@ public class ActSequenceManager
     {
         if (m_mode == ActSequenceManagerMode.Single)
         {
-            act.StartAct(m_puppet);
+            act.StartAct(GameManager.Instance.GetPuppet());
             return;
         }
 
@@ -112,20 +109,20 @@ public class ActSequenceManager
     {
         if (m_nextActIndex >= m_actSequence.Length)
         {
-            EndActSequence();
             return;
         }
         m_currentAct = m_actSequence[m_nextActIndex++];
         m_currentState = ActSequenceManagerState.Running;
 
-        m_currentAct.StartAct(m_puppet);
+        m_currentAct.StartAct(GameManager.Instance.GetPuppet());
     }
 
     private void LoadNextScene()
     {
         if (m_nextSceneToLoadIndex >= m_actsScenes.Length)
         {
-            throw new ArgumentOutOfRangeException("No more scenes to load");
+            EndActSequence();
+            return;
         }
 
         m_currentState = ActSequenceManagerState.WaitingForSceneLoading;
