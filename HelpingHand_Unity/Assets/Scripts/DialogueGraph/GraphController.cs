@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
@@ -6,11 +7,9 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-using UnityUtility.Singletons;
-
 using Utils;
 
-public class GraphManager : MonoBehaviourSingleton<GraphManager>
+public class GraphController : MonoBehaviour
 {
     public bool CurrentNodeCanBeInterrupted
     {
@@ -29,13 +28,15 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
 
     public GraphRunner CurrentGraphRunner => m_currentGraphRunner;
 
-    [SerializeField] 
+    public event Action OnGraphSequenceFinished;
+
+    [SerializeField]
     private SimpleGraph[] m_mainSequence;
 
     [SerializeField]
     private SimpleGraph[] m_parallelExecution;
 
-    [SerializeField] 
+    [SerializeField]
     private float m_delayBetweenInterruptions = 0.5f;
 
     private Queue<SimpleGraph> m_graphQueue;
@@ -55,12 +56,11 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
     private readonly Dictionary<GraphRunnerHandler, (bool returned, bool passed)> m_interruptionDictionary = new();
 
     private GraphRunner m_currentGraphRunner;
-    private Dictionary<SimpleGraph, GraphRunner> m_graphDictionary = new();
+    private readonly Dictionary<SimpleGraph, GraphRunner> m_graphDictionary = new();
     private float m_timeWhenCheckingInterruption;
 
-    public override void Initialize()
+    private void Awake()
     {
-        base.Initialize();
         m_graphQueue = new(m_mainSequence);
         m_interruptionQueue.Clear();
         m_interruptionDictionary.Clear();
@@ -121,6 +121,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         if (m_graphQueue.TryDequeue(out SimpleGraph graph))
         {
             StartMainSequenceGraph(graph).Forget();
+            return;
         }
     }
 
@@ -177,10 +178,10 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         GraphRunnerHandler interruptingGraph = m_interruptionQueue.Dequeue();
 
         // Tell the others to cancel their interruption
-        foreach (var item in m_interruptionQueue.UnorderedItems)
+        foreach (var (Element, Priority) in m_interruptionQueue.UnorderedItems)
         {
-            Debug.Log($"Graph ({item.Element.GraphRunner.name}) cannot interrupt. Another graph has been chosen.");
-            m_interruptionDictionary[item.Element] = (true, false);
+            Debug.Log($"Graph ({Element.GraphRunner.name}) cannot interrupt. Another graph has been chosen.");
+            m_interruptionDictionary[Element] = (true, false);
         }
 
         m_interruptionQueue.Clear();
@@ -198,7 +199,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         }
 
         m_currentGraphRunner = interruptingGraph.GraphRunner;
-        
+
         // Tell the interrupting graph to continue
         m_interruptionDictionary[interruptingGraph] = (true, true);
     }
