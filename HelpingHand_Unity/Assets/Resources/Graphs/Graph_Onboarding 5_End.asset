@@ -36,10 +36,7 @@ MonoBehaviour:
       _node: {fileID: -8596623034309422450}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 3052270152535175503}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -172,7 +169,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: End 2
+  m_content: "[Fin de la session, merci d'avoir test\xE9 !]"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &11400000
@@ -190,66 +187,9 @@ MonoBehaviour:
   nodes:
   - {fileID: 4662089034119733656}
   - {fileID: -8596623034309422450}
-  - {fileID: 3052270152535175503}
   - {fileID: -5380636645386814925}
   - {fileID: 3790325056312640404}
   - {fileID: -6375639938786975348}
---- !u!114 &3052270152535175503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 5 End 3
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 904, y: -264}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: 3052270152535175503}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: -8596623034309422450}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: 3052270152535175503}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: End 3
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
 --- !u!114 &3790325056312640404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +246,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "End 1\t"
+  m_content: "Bon, on va maintenant attaquer les choses s\xE9rieuses..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &4662089034119733656

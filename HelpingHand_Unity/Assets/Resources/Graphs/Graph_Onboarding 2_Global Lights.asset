@@ -166,6 +166,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 4934192616184835313}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 4435828099126403674}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -457,7 +460,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
-  m_waitTime: 3
+  m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-6310571771393336078
 MonoBehaviour:
@@ -529,7 +532,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 2 Global Lights Next 3
+  m_Name: Dialogue Onboarding 2 Global Lights Next 2.3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 4888, y: -616}
@@ -588,7 +591,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 2 Global Lights 2
+  m_Name: Dialogue Onboarding 2 Global Lights Intro 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 264, y: -264}
@@ -634,8 +637,8 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Quand une repr\xE9sentation a d\xE9marr\xE9, il faut bien penser \xE0
-    maintenir ces lumi\xE8res \xE9teintes. \xC7a ira pour toi ?"
+  m_content: "Pendant la repr\xE9sentation, elle doit \xEAtre \xE9videmment plong\xE9e
+    dans le noir. Je ne t'apprends rien j'esp\xE8re."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-5255160588323726711
@@ -1157,6 +1160,7 @@ MonoBehaviour:
   - {fileID: 6349970386383097155}
   - {fileID: 8969448227153945682}
   - {fileID: 2312669717615297661}
+  - {fileID: 4435828099126403674}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1553,7 +1557,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 2 Global Lights 3
+  m_Name: Dialogue Onboarding 2 Global Lights Intro 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 904, y: -264}
@@ -1599,7 +1603,8 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Allez, \xE9teins les lumi\xE8res maintenant."
+  m_content: "Allez, \xE9teins les lumi\xE8res maintenant. Et fais bien attention
+    \xE0 ne pas les rallumer par la suite !"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &3302907912504281877
@@ -1635,6 +1640,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_value
         node: {fileID: 4934192616184835313}
+        reroutePoints: []
+      - fieldName: m_inValue
+        node: {fileID: 4435828099126403674}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1987,7 +1995,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 2 Global Lights 1
+  m_Name: Dialogue Onboarding 2 Global Lights Intro 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -376, y: -264}
@@ -2033,8 +2041,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "On va faire une mise en situation. \xC7a veut dire qu'on va d'abord
-    s'occuper des lumi\xE8res de la salle."
+  m_content: "Tu vas tout d'abord t'occuper des lumi\xE8res de la salle."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &4049035977856209295
@@ -2230,6 +2237,75 @@ MonoBehaviour:
   m_value: 19
   m_values: 000000000200000004000000
   m_exactValues: 0
+--- !u!114 &4435828099126403674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d489a8263feb2438d078021d130f17, type: 3}
+  m_Name: Set Blackboard Value
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3736, y: -1304}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 4435828099126403674}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -8550092342788941510}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 4435828099126403674}
+      _typeQualifiedName: System.Object, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_value
+        node: {fileID: 3302907912504281877}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 4435828099126403674}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_inValue
+      Entry: 6
+      Data: 
+  m_showDebug: 1
+  m_description: 
+  m_key: total errors
 --- !u!114 &4662089034119733656
 MonoBehaviour:
   m_ObjectHideFlags: 0
