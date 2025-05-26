@@ -168,7 +168,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             m_timeWhenCheckingInterruption = Time.time + m_delayBetweenInterruptions;
             lock (m_interruptionQueue)
             {
-                DequeueInterrupting();
+                HandleInterruptionQueue();
             }
         }
 
@@ -178,7 +178,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
         }
     }
 
-    private void DequeueInterrupting()
+    private void HandleInterruptionQueue()
     {
         if (m_interruptionQueue.Count == 0)
         {
@@ -205,7 +205,7 @@ public class GraphManager : MonoBehaviourSingleton<GraphManager>
             interruptingGraph.GraphRunner.OnGraphStopped += () =>
             {
                 m_currentGraphRunner = interruptedGraph;
-                m_currentGraphRunner.StartGraph();
+                m_currentGraphRunner.ResumeGraph();
             };
         }
 
