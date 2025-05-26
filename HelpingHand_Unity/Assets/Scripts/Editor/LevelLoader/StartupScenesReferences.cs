@@ -7,6 +7,8 @@ using UnityUtility.Singletons;
 public class StartupScenesReferences : ScriptableSingleton<StartupScenesReferences>
 {
     public SceneReference EntryScene => m_entryScene;
+    public SceneReference GloabalObjectsScene => m_gloabalObjectsScene;
 
     [SerializeField] private SceneReference m_entryScene;
+    [SerializeField] private SceneReference m_gloabalObjectsScene;
 }
