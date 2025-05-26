@@ -7,12 +7,13 @@ using UnityUtility.Singletons;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
-    public SlidersManager SlidersManager => m_sliderManager;
+    public InputActionTriggersManager InputActionTriggersManager => m_inputActionTriggersManager;
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
 
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
-    [SerializeField, Label(bold: true)] private SlidersManager m_sliderManager;
+
+    [SerializeField, Label(bold: true)] private InputActionTriggersManager m_inputActionTriggersManager;
     [Separator]
     [SerializeField, Label(bold: true)] private ActSequenceManager m_actSequenceManager;
 
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public override void Initialize()
     {
         base.Initialize();
+        m_inputActionTriggersManager.Initialize();
         m_actSequenceManager.Initialize(m_puppet);
     }
 
@@ -34,8 +36,16 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Update()
     {
-         m_actSequenceManager.Update(Time.deltaTime);
+        m_inputActionTriggersManager.Update();
+        m_actSequenceManager.Update(Time.deltaTime);
     }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_inputActionTriggersManager.Dispose();
+    }
+    
 
     #region Puppet
     public Puppet GetPuppet()
