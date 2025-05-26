@@ -22,11 +22,12 @@ public class PuppetWalkNode : BaseNode
 
     public override void Initialize()
     {
-        m_puppet = GameManager.Instance.GetPuppet();
+        base.Initialize();
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
+        m_puppet = GameManager.Instance.GetPuppet();
         if (m_waitForEndOfSpline)
         {
             await WalkAsync(handler);
