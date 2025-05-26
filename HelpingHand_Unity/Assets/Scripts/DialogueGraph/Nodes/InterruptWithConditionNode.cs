@@ -51,7 +51,7 @@ public class InterruptWithConditionNode : InterruptableNode
 
             // If the interruption didn't happen (because another graph with more priority interrupted at the same time)
             // then exit via cancelled out port
-            if (await GraphManager.Instance.Interrupt(m_condition.Depth(), handler))
+            if (await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.Interrupt(m_condition.Depth(), handler))
             {
                 DebugLog($"Is interrupting. Continuing...");
                 break;
@@ -66,7 +66,7 @@ public class InterruptWithConditionNode : InterruptableNode
 
     private bool TestInterruption()
     {
-        return m_isConditionPassed && GraphManager.Instance.CurrentNodeCanBeInterrupted;
+        return m_isConditionPassed && GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CurrentNodeCanBeInterrupted;
     }
 
     private void OnConditionUpdated()

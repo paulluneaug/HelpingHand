@@ -74,7 +74,7 @@ public class GraphControlNode : BaseNode
         {
             if (m_handlerOut == null)
             {
-                GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
+                GraphRunner runner = await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CreateGraphRunner(m_graph);
                 m_handlerOut = runner.Handler;
             }
             await m_handlerOut.GraphRunner.RunGraphAsync().AttachExternalCancellation(handler.StopToken);
@@ -96,7 +96,7 @@ public class GraphControlNode : BaseNode
     {
         if (m_handlerOut == null)
         {
-            if (GraphManager.Instance.TryGetGraphRunner(m_graph, out GraphRunner runner))
+            if (GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.TryGetGraphRunner(m_graph, out GraphRunner runner))
             {
                 m_handlerOut = runner.Handler;
             }
@@ -116,7 +116,7 @@ public class GraphControlNode : BaseNode
     {
         if (m_handlerOut == null)
         {
-            if (GraphManager.Instance.TryGetGraphRunner(m_graph, out GraphRunner runner))
+            if (GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.TryGetGraphRunner(m_graph, out GraphRunner runner))
             {
                 m_handlerOut = runner.Handler;
             }
@@ -136,7 +136,7 @@ public class GraphControlNode : BaseNode
     {
         if (m_handlerOut == null)
         {
-            if (GraphManager.Instance.TryGetGraphRunner(m_graph, out GraphRunner runner))
+            if (GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.TryGetGraphRunner(m_graph, out GraphRunner runner))
             {
                 m_handlerOut = runner.Handler;
             }
@@ -154,7 +154,7 @@ public class GraphControlNode : BaseNode
 
     private async UniTaskVoid CreateGraphRunnerAndForget()
     {
-        GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
+        GraphRunner runner = await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CreateGraphRunner(m_graph);
         m_handlerOut = runner.Handler;
         runner.RunGraphAsync().Forget();
     }

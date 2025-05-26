@@ -34,7 +34,8 @@ public class RunGraphNode : BaseNode
     {
         if (m_waitForCompletion)
         {
-            GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
+            GraphRunner runner = await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CreateGraphRunner(m_graph);
+
             await runner.RunGraphAsync().AttachExternalCancellation(handler.StopToken);
         }
         else
@@ -45,7 +46,7 @@ public class RunGraphNode : BaseNode
 
     private async UniTaskVoid CreateGraphRunnerAndForget()
     {
-        GraphRunner runner = await GraphManager.Instance.CreateGraphRunner(m_graph);
+        GraphRunner runner = await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CreateGraphRunner(m_graph);
         runner.RunGraphAsync().Forget();
     }
 }
