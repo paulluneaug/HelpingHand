@@ -5,7 +5,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 using XNode;
-[CreateNodeMenu("Waiting/Wait Duration")] [NodeTint(0.2f, 0.1f, .3f)]
+[CreateNodeMenu("Waiting/Wait Duration")]
+[NodeTint(0.2f, 0.1f, .3f)]
 public class WaitDurationNode : InterruptableNode
 {
     [Input]
@@ -14,10 +15,12 @@ public class WaitDurationNode : InterruptableNode
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField][LabelWidth(100)]
+    [SerializeField]
+    [LabelWidth(100)]
     private float m_waitTime;
 
-    [SerializeField][LabelWidth(100)]
+    [SerializeField]
+    [LabelWidth(100)]
     private bool m_unscaled = false;
 
     protected override void Init()

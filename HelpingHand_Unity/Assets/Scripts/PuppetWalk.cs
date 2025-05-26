@@ -7,7 +7,7 @@ using UnityUtility.Singletons;
 public class PuppetWalk : MonoBehaviourSingleton<PuppetWalk>
 {
     private static readonly int s_isWalking = Animator.StringToHash("IsWalking");
-    
+
     [SerializeField] private float m_walkSpeed;
     [SerializeField] private bool m_doMove = true;
     [SerializeField] private Vector3 m_walkDirection = new(1, 0, 0);

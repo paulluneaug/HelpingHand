@@ -10,7 +10,9 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Flow/Multiple/Switch State")] [NodeWidth(350)] [NodeTint(0.4f, 0.2f, 0f)]
+[CreateNodeMenu("Flow/Multiple/Switch State")]
+[NodeWidth(350)]
+[NodeTint(0.4f, 0.2f, 0f)]
 public class SwitchStateNode : BaseNode
 {
     private enum SwitchType
@@ -18,17 +20,22 @@ public class SwitchStateNode : BaseNode
         [LabelText("All matching")] All,
         [LabelText("First one")] First
     }
-    
-    [Input] [SerializeField]
+
+    [Input]
+    [SerializeField]
     private DialogueFlow m_in;
 
-    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)] [SerializeField] [PropertySpace(8,8)]
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
+    [SerializeField]
+    [PropertySpace(8, 8)]
     private List<EntityState> m_states = new();
 
-    [Output] [SerializeField]
+    [Output]
+    [SerializeField]
     private DialogueFlow m_else;
 
-    [SerializeField] [EnumToggleButtons]
+    [SerializeField]
+    [EnumToggleButtons]
     private SwitchType m_type;
 
     private int m_caseCount = 0;

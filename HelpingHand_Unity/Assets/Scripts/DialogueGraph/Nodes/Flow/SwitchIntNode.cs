@@ -9,30 +9,39 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Flow/Multiple/Switch Int")] [NodeWidth(350)] [NodeTint(0.4f, 0.2f, 0f)]
+[CreateNodeMenu("Flow/Multiple/Switch Int")]
+[NodeWidth(350)]
+[NodeTint(0.4f, 0.2f, 0f)]
 public class SwitchIntNode : BaseNode
 {
-    [Input] [SerializeField]
+    [Input]
+    [SerializeField]
     private DialogueFlow m_in;
 
-    [Input] [SerializeField] [PropertySpace(8, 8)]
+    [Input]
+    [SerializeField]
+    [PropertySpace(8, 8)]
     private int m_value;
 
-    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)] [SerializeField] [PropertySpace(8,8)]
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
+    [SerializeField]
+    [PropertySpace(8, 8)]
     private List<int> m_values = new();
-    
-    [Output] [ShowIf("@m_exactValues == true")]
+
+    [Output]
+    [ShowIf("@m_exactValues == true")]
     public DialogueFlow m_else;
 
-    [SerializeField] 
+    [SerializeField]
     private bool m_exactValues;
 
-    [ShowInInspector] [ReadOnly] 
+    [ShowInInspector]
+    [ReadOnly]
     private int IncomingValue => m_value;
 
-    private SortedSet<int> m_sortedValues = new();
-    private Dictionary<int, NodePort> m_portsDictionary = new();
-    
+    private readonly SortedSet<int> m_sortedValues = new();
+    private readonly Dictionary<int, NodePort> m_portsDictionary = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -40,7 +49,7 @@ public class SwitchIntNode : BaseNode
         {
             int value = GetValue(outputPort);
             m_portsDictionary[value] = outputPort;
-            m_sortedValues.Add(value);
+            _ = m_sortedValues.Add(value);
         }
     }
 

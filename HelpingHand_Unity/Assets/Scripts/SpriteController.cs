@@ -13,10 +13,10 @@ public class SpriteController : SerializedMonoBehaviour
     [SerializeField]
     private SerializedDictionary<EntityState, Sprite> m_dictionary = new();
 
-    private Dictionary<EntityState, Action> m_actions = new();
-    
+    private readonly Dictionary<EntityState, Action> m_actions = new();
+
     private SpriteRenderer m_spriteRenderer;
-    
+
     private void Awake()
     {
         m_spriteRenderer = GetComponent<SpriteRenderer>();

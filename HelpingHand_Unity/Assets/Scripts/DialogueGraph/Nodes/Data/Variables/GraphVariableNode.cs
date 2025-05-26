@@ -4,13 +4,15 @@ using UnityEngine;
 
 public abstract class GraphVariableNode<T> : ValueNodeBase<GraphVariable<T>>
 {
-    [Output(ShowBackingValue.Never)] [SerializeField]
+    [Output(ShowBackingValue.Never)]
+    [SerializeField]
     protected GraphVariable<T> m_value;
-    
-    [SerializeField] 
+
+    [SerializeField]
     protected T m_startValue;
-    
-    [ShowInInspector] [ReadOnly] 
+
+    [ShowInInspector]
+    [ReadOnly]
     private T CurrentValue => m_value.Value;
 
     protected override GraphVariable<T> Value => m_value;

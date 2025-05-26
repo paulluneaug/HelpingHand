@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         m_puppet = null;
     }
-    
+
     #endregion
 
 }

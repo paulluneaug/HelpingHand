@@ -7,7 +7,7 @@ public class ConditionOr : ConditionBase
 {
     [SerializeField]
     private ConditionBase[] m_preconditions;
-    
+
     public ConditionBase[] Preconditions => m_preconditions;
 
     public override bool Test()
@@ -34,7 +34,7 @@ public class ConditionOr : ConditionBase
             precondition.OnPreconditionUpdated -= RaiseOnPreconditionUpdated;
         }
     }
-    
+
     public override int Depth()
     {
         int result = 0;

@@ -7,16 +7,23 @@ public class GraphVariable<T>
 
     public GraphVariable()
     {
-        Value = default(T);
+        Value = default;
     }
-    
+
     public GraphVariable(T value)
     {
         Value = value;
     }
 
-    public static implicit operator T(GraphVariable<T> variable) => variable.Value;
-    public static explicit operator GraphVariable<T>(T value) => new GraphVariable<T>(value);
+    public static implicit operator T(GraphVariable<T> variable)
+    {
+        return variable.Value;
+    }
+
+    public static explicit operator GraphVariable<T>(T value)
+    {
+        return new GraphVariable<T>(value);
+    }
 
     public override string ToString()
     {

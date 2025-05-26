@@ -34,9 +34,9 @@ public class Puppet : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.RegisterPuppet(this);
+        m_splineToFollow.AddListener(OnSplineToFollowChanged);
 
         StopWalk();
-        m_splineToFollow.AddListener(OnSplineToFollowChanged);
     }
 
     private void OnDestroy()
@@ -120,7 +120,7 @@ public class Puppet : MonoBehaviour
 
     private void OnSplineToFollowChanged(SplineContainer container)
     {
-        if (m_isWalking) 
+        if (m_isWalking)
         {
             throw new InvalidOperationException("Don't change the spline the puppet is following while it is walking : Call Puppet.StopWalk() before doing so");
         }

@@ -2,7 +2,6 @@ using System;
 
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 using UnityUtility.Extensions;
 using UnityUtility.MathU;
@@ -48,9 +47,9 @@ public class VirtualPotentiometer : VirtualInput<float>, IPointerDownHandler, IP
         }
 
         m_knobRange = GetKnobRange();
-        
+
         m_angle = m_startValue.RemapFrom01(m_knobRange.x, m_knobRange.y);
-        
+
         SetValueWithoutNotify(m_startValue);
 
         UpdateKnobPosition();

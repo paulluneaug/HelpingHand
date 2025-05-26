@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
@@ -22,7 +22,7 @@ namespace XNode.Odin
                 UnitySerializationUtility.DeserializeUnityObject(this, ref this.serializationData);
                 this.OnAfterDeserialize();
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException)
             {
                 Debug.Log($"{name}");
             }

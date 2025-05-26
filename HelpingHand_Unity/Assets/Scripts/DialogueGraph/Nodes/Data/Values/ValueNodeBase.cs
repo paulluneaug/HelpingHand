@@ -4,7 +4,7 @@ using XNode;
 public abstract class ValueNodeBase<T> : BaseNode
 {
     protected abstract T Value { get; }
-    
+
     public override object GetValue(NodePort port)
     {
         return Value;

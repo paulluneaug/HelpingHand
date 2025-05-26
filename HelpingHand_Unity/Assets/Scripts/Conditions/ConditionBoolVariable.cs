@@ -5,10 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class ConditionBoolVariable : ConditionBase
 {
-    [SerializeField] [LabelWidth(100)] [InlineEditor]
+    [SerializeField]
+    [LabelWidth(100)]
+    [InlineEditor]
     private BoolVariable m_variable;
 
-    [SerializeField] [LabelWidth(100)] 
+    [SerializeField]
+    [LabelWidth(100)]
     private bool m_value;
 
     public override bool Test()

@@ -14,8 +14,8 @@ public class InputGroup : MonoBehaviour, ILateStarter
 
     [SerializeField]
     private bool m_activateAtStart = false;
-    
-    private bool m_isActive;
+
+    private readonly bool m_isActive;
 
     public void LateStart()
     {
@@ -23,10 +23,10 @@ public class InputGroup : MonoBehaviour, ILateStarter
         {
             m_indicatorState.Value = m_activateAtStart;
         }
-        
+
         foreach (BaseGameEvent input in m_inputs)
         {
-            input.IsActive = m_activateAtStart; 
+            input.IsActive = m_activateAtStart;
         }
     }
 
@@ -35,7 +35,7 @@ public class InputGroup : MonoBehaviour, ILateStarter
         m_indicatorState.Value = isActive;
         foreach (BaseGameEvent input in m_inputs)
         {
-            input.IsActive = isActive; 
+            input.IsActive = isActive;
         }
     }
 

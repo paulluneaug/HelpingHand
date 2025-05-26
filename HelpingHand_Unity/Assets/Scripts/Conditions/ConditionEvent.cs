@@ -11,7 +11,7 @@ public class ConditionEvent : ConditionBase
     private BaseGameEvent m_event;
 
     private bool m_isEventRaised;
-    
+
     public override void Initialize()
     {
         base.Initialize();

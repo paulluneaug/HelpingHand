@@ -9,16 +9,19 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Dialogues/Dialogue Sequence")] [NodeTint(0.1f, 0.3f, 0.1f)]
+[CreateNodeMenu("Dialogues/Dialogue Sequence")]
+[NodeTint(0.1f, 0.3f, 0.1f)]
 public class DialogueSequenceNode : BaseNode
 {
-    [Input] [SerializeField]
+    [Input]
+    [SerializeField]
     private DialogueFlow m_in;
 
     [Output(dynamicPortList = true, backingValue = ShowBackingValue.Never, connectionType = ConnectionType.Multiple)]
     public List<DialogueFlow> m_sequence = new();
 
-    [Output][ShowIf("@m_loop == false")]
+    [Output]
+    [ShowIf("@m_loop == false")]
     public DialogueFlow m_else;
 
     [SerializeField]
@@ -45,13 +48,13 @@ public class DialogueSequenceNode : BaseNode
 
         m_sequenceIndex++;
         DebugLog($"sequenceIndex={m_sequenceIndex} | sequenceCount={m_orderedNodePorts.Length}");
-        
+
         if (m_loop)
         {
             m_sequenceIndex %= m_orderedNodePorts.Length;
             DebugLog($"is lopping | sequenceIndex={m_sequenceIndex}");
         }
-        
+
         if (m_sequenceIndex < m_orderedNodePorts.Length)
         {
             NodePort outputPort = m_orderedNodePorts[m_sequenceIndex];

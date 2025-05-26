@@ -1,4 +1,4 @@
-[CreateNodeMenu("Data/Variables/Graphs/Float")] 
+[CreateNodeMenu("Data/Variables/Graphs/Float")]
 public class GraphFloatNode : GraphVariableNode<float>
 {
 }

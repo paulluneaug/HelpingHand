@@ -8,20 +8,23 @@ using UnityEngine;
 
 using UnityUtility.Timer;
 
-[Serializable] [CreateAssetMenu(menuName = "Scriptable Objects/Timer")]
+[Serializable]
+[CreateAssetMenu(menuName = "Scriptable Objects/Timer")]
 public class StandaloneTimer : BaseGameEvent
 {
     [SerializeField]
     private bool m_isRepeating = false;
 
-    [SerializeField] [ShowIf(nameof(m_isRepeating))]
+    [SerializeField]
+    [ShowIf(nameof(m_isRepeating))]
     private float m_repeatInterval;
 
-    [SerializeField] [HideIf(nameof(m_isRepeating))]
+    [SerializeField]
+    [HideIf(nameof(m_isRepeating))]
     private float m_duration;
 
     public bool Elapsed { get; private set; }
-    
+
     private Timer m_timer;
 
     [Button("Initialize"), EnableIf("@UnityEngine.Application.isPlaying")]
@@ -39,7 +42,8 @@ public class StandaloneTimer : BaseGameEvent
         if (m_isRepeating)
         {
             Elapsed = false;
-        } else 
+        }
+        else
         {
             StandaloneTimerSingleton.Instance.RemoveTimer(m_timer);
         }

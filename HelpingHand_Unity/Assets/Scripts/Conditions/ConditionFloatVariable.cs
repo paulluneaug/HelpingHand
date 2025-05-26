@@ -9,23 +9,36 @@ using UnityUtility.Extensions;
 [System.Serializable]
 public class ConditionFloatVariable : ConditionBase
 {
-    
-    [SerializeField] [LabelWidth(100)] [InlineEditor]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [InlineEditor]
     private FloatVariable m_variable;
 
-    [SerializeField] [LabelWidth(100)]
+    [SerializeField]
+    [LabelWidth(100)]
     private ComparisonOperation m_comparison;
 
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_comparison == ComparisonOperation.Equal || m_comparison == ComparisonOperation.NotEqual")]
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_comparison == ComparisonOperation.Equal || m_comparison == ComparisonOperation.NotEqual")]
     private bool m_useBounds;
-    
-    [SerializeField] [LabelWidth(100)] [HideIf("@m_useBounds")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [HideIf("@m_useBounds")]
     private float m_value;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_useBounds")] [HorizontalGroup("Range")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_useBounds")]
+    [HorizontalGroup("Range")]
     private float m_valueMin;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_useBounds")] [HorizontalGroup("Range")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_useBounds")]
+    [HorizontalGroup("Range")]
     private float m_valueMax;
 
     public override void Initialize()
@@ -40,7 +53,7 @@ public class ConditionFloatVariable : ConditionBase
         base.Dispose();
         m_variable.RemoveListener(RaiseOnPreconditionUpdated);
     }
-    
+
     public override bool Test()
     {
         return m_comparison switch

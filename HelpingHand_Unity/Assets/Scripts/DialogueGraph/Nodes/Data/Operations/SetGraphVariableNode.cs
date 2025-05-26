@@ -4,22 +4,28 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)] [NodeTint(0f, 0.4784314f, 0.6509804f)]
+[NodeWidth(250)]
+[NodeTint(0f, 0.4784314f, 0.6509804f)]
 public abstract class SetGraphVariableNode<T> : BaseNode
 {
-    [Input(ShowBackingValue.Never)] [SerializeField]
+    [Input(ShowBackingValue.Never)]
+    [SerializeField]
     protected DialogueFlow m_in;
 
-    [Input(ShowBackingValue.Never)] [SerializeField]
+    [Input(ShowBackingValue.Never)]
+    [SerializeField]
     protected GraphVariable<T> m_inVariable;
 
-    [Input(ShowBackingValue.Unconnected)] [SerializeField] 
+    [Input(ShowBackingValue.Unconnected)]
+    [SerializeField]
     protected T m_value;
 
-    [Output] [SerializeField]
+    [Output]
+    [SerializeField]
     protected DialogueFlow m_out;
 
-    [Output(ShowBackingValue.Never)] [SerializeField] 
+    [Output(ShowBackingValue.Never)]
+    [SerializeField]
     protected GraphVariable<T> m_variableOut;
 
     public override object GetValue(NodePort port)

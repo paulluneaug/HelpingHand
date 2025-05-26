@@ -7,13 +7,13 @@ public class RotaryEncoderInputTrigger : InputTrigger
 {
     [SerializeField]
     private RotaryEncoderInputEvent m_event;
-    
+
     public override bool IsRaised => true;
 
     public override void Initialize()
     {
         base.Initialize();
-        
+
         ArmTrigger();
     }
 

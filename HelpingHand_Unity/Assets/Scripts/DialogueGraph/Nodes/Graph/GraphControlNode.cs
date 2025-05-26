@@ -8,28 +8,39 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Graph/Controls")] [NodeTint(0.6078432f, 0.2627451f, 0.6235294f)] [NodeWidth(200)]
+[CreateNodeMenu("Graph/Controls")]
+[NodeTint(0.6078432f, 0.2627451f, 0.6235294f)]
+[NodeWidth(200)]
 public class GraphControlNode : BaseNode
 {
     [Input]
     public DialogueFlow m_in;
-    
+
     [Output]
     public DialogueFlow m_out;
 
-    [Input(ShowBackingValue.Never)] [ShowInInspector]
+    [Input(ShowBackingValue.Never)]
+    [ShowInInspector]
     private GraphRunnerHandler m_handlerIn;
 
-    [Output] [ShowInInspector]
+    [Output]
+    [ShowInInspector]
     private GraphRunnerHandler m_handlerOut;
 
-    [SerializeField] [HideLabel] [HideIf("@GetInputPort(\"m_handlerIn\").GetInputValue<GraphRunnerHandler>() != null")]
+    [SerializeField]
+    [HideLabel]
+    [HideIf("@GetInputPort(\"m_handlerIn\").GetInputValue<GraphRunnerHandler>() != null")]
     private SimpleGraph m_graph;
 
-    [SerializeField] [Space] [HideLabel] [EnumToggleButtons]
+    [SerializeField]
+    [Space]
+    [HideLabel]
+    [EnumToggleButtons]
     private GraphControlsEnum m_control;
 
-    [SerializeField] [LabelWidth(125)] [ShowIf("@m_control == GraphControlsEnum.Start")]
+    [SerializeField]
+    [LabelWidth(125)]
+    [ShowIf("@m_control == GraphControlsEnum.Start")]
     private bool m_waitForCompletion;
 
     private enum GraphControlsEnum
@@ -48,7 +59,7 @@ public class GraphControlNode : BaseNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         m_handlerOut = GetInputPort(nameof(m_handlerIn)).GetInputValue<GraphRunnerHandler>();
-        
+
         switch (m_control)
         {
             case GraphControlsEnum.Start:

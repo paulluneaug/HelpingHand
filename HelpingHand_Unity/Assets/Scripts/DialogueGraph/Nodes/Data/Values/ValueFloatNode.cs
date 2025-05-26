@@ -1,4 +1,4 @@
-[CreateNodeMenu("Data/Values/Float")] 
+[CreateNodeMenu("Data/Values/Float")]
 public class ValueFloatNode : ValueNode<float>
 {
 }

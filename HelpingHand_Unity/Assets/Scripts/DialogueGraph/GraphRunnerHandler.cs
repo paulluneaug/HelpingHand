@@ -25,7 +25,7 @@ public class GraphRunnerHandler : IDisposable
     {
         m_graphRunner = graphRunner;
     }
-    
+
     public void Start()
     {
         m_isRunning = true;

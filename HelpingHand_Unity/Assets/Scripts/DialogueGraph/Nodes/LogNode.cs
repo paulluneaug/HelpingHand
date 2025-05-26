@@ -9,19 +9,24 @@ using XNode;
 [NodeWidth(300)]
 public class LogNode : BaseNode
 {
-    [Input(ShowBackingValue.Never)] [SerializeField]
+    [Input(ShowBackingValue.Never)]
+    [SerializeField]
     private DialogueFlow m_in;
 
-    [Input(ShowBackingValue.Never)] [SerializeField]
+    [Input(ShowBackingValue.Never)]
+    [SerializeField]
     private string m_valueIn;
-    
-    [Output] [SerializeField]
+
+    [Output]
+    [SerializeField]
     private DialogueFlow m_out;
 
-    [SerializeField] [TextArea(3, 3)] [HideLabel]
+    [SerializeField]
+    [TextArea(3, 3)]
+    [HideLabel]
     private string m_content;
 
-    [SerializeField] 
+    [SerializeField]
     private LogType m_logType = LogType.Log;
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)

@@ -5,11 +5,12 @@ using UnityEngine.UI;
 public class VirtualFader : VirtualInput<float>
 {
     protected override BaseVariable<float> InputEvent => m_inputEvent;
-    
-    [FormerlySerializedAs("m_linkedVariable")] [SerializeField]
+
+    [FormerlySerializedAs("m_linkedVariable")]
+    [SerializeField]
     private FaderInputEvent m_inputEvent;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private Slider m_slider;
 
     [SerializeField]

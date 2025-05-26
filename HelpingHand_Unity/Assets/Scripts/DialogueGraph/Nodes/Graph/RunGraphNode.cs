@@ -6,25 +6,28 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Graph/Run")] [NodeTint(0.6078432f, 0.2627451f, 0.6235294f)]
+[CreateNodeMenu("Graph/Run")]
+[NodeTint(0.6078432f, 0.2627451f, 0.6235294f)]
 public class RunGraphNode : BaseNode
 {
     [Input]
     public DialogueFlow m_in;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private SimpleGraph m_graph;
 
-    [SerializeField] [LabelWidth(125)]
+    [SerializeField]
+    [LabelWidth(125)]
     private bool m_waitForCompletion = false;
-    
+
     [Output]
     public DialogueFlow m_out;
 
     public override void Initialize()
     {
     }
-    
+
     public override object GetValue(NodePort port)
     {
         return m_graph;

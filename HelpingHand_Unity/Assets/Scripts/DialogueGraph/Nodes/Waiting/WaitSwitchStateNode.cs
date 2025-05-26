@@ -11,7 +11,9 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(350)][CreateNodeMenu("Waiting/Wait Any State")] [NodeTint(0.2f, 0.1f, .3f)]
+[NodeWidth(350)]
+[CreateNodeMenu("Waiting/Wait Any State")]
+[NodeTint(0.2f, 0.1f, .3f)]
 public class WaitSwitchStateNode : InterruptableNode
 {
     [Input]
@@ -20,18 +22,21 @@ public class WaitSwitchStateNode : InterruptableNode
     [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
     public List<EntityState> m_states = new();
 
-    [Space] [SerializeField]
+    [Space]
+    [SerializeField]
     private bool m_doesTimeout;
 
-    [Output] [ShowIf(nameof(m_doesTimeout))]
+    [Output]
+    [ShowIf(nameof(m_doesTimeout))]
     public DialogueFlow m_timeoutOut;
 
-    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    [SerializeField]
+    [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
     private List<NodePort> m_continuePortList;
     private CancellationTokenSource m_timeoutSource;
-    private bool m_isTimeout;
+    private readonly bool m_isTimeout;
 
     private EntityState GetState(NodePort port)
     {
@@ -56,7 +61,7 @@ public class WaitSwitchStateNode : InterruptableNode
                 DebugLog($"With timeout ({m_timeout} seconds)");
                 m_timeoutSource?.Dispose();
                 m_timeoutSource = new();
-                m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+                _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
                 CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
                 cancellationToken = linkedTokenSource.Token;
             }

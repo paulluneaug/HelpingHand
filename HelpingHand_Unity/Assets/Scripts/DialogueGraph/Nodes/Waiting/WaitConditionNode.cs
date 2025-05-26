@@ -9,7 +9,9 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(350)] [CreateNodeMenu("Waiting/Wait Condition")] [NodeTint(0.2f, 0.1f, .3f)]
+[NodeWidth(350)]
+[CreateNodeMenu("Waiting/Wait Condition")]
+[NodeTint(0.2f, 0.1f, .3f)]
 public class WaitConditionNode : InterruptableNode
 {
     [Input]
@@ -18,21 +20,25 @@ public class WaitConditionNode : InterruptableNode
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private ConditionBase m_condition = new ConditionAnd();
 
-    [Space] [SerializeField]
+    [Space]
+    [SerializeField]
     private bool m_doesTimeout;
 
-    [Output] [ShowIf(nameof(m_doesTimeout))]
+    [Output]
+    [ShowIf(nameof(m_doesTimeout))]
     public DialogueFlow m_timeoutOut;
 
-    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    [SerializeField]
+    [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
     private CancellationTokenSource m_timeoutSource;
     private bool m_isConditionPassed;
-    
+
     public override void Initialize()
     {
         m_isConditionPassed = false;
@@ -43,13 +49,13 @@ public class WaitConditionNode : InterruptableNode
     {
         m_condition.OnPreconditionUpdated -= OnConditionUpdated;
         m_condition.OnPreconditionUpdated += OnConditionUpdated;
-        
+
         while (true)
         {
             DebugLog($"Waiting for condition");
 
             OnConditionUpdated();
-            
+
             if (!m_isConditionPassed)
             {
                 CancellationToken cancellationToken = handler.StopToken;
@@ -60,7 +66,7 @@ public class WaitConditionNode : InterruptableNode
                     m_timeoutSource?.Dispose();
                     m_timeoutSource = new();
                     // TODO gérer ici le Time.scale
-                    m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+                    _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
                     CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
                     cancellationToken = linkedTokenSource.Token;
                 }
@@ -88,7 +94,7 @@ public class WaitConditionNode : InterruptableNode
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         m_condition.OnPreconditionUpdated -= OnConditionUpdated;
-        
+
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait for condition has timeout");

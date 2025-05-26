@@ -6,7 +6,9 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Graph/Interrupt")] [NodeTint(0.6078432f, 0.2627451f, 0.6235294f)] [NodeWidth(350)] 
+[CreateNodeMenu("Graph/Interrupt")]
+[NodeTint(0.6078432f, 0.2627451f, 0.6235294f)]
+[NodeWidth(350)]
 public class InterruptWithConditionNode : InterruptableNode
 {
     [Input]
@@ -15,12 +17,13 @@ public class InterruptWithConditionNode : InterruptableNode
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private ConditionBase m_condition = new ConditionAnd();
-    
+
     private bool m_isConditionPassed;
-    private bool m_canInterrupt;
-    
+    private readonly bool m_canInterrupt;
+
     public override void Initialize()
     {
         m_isConditionPassed = false;

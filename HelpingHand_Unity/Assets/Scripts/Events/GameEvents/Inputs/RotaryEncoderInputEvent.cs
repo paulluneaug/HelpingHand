@@ -11,14 +11,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/Inputs/Rotary Encoder")]
 public class RotaryEncoderInputEvent : BaseGameEvent
 {
-    [SerializeField] 
+    [SerializeField]
     private IntVariable m_indexVariable;
 
     public IntVariable Index => m_indexVariable;
-    
+
     [SerializeField]
     private GameEvent m_stepLeftEvent;
-    
+
     [SerializeField]
     private GameEvent m_stepRightEvent;
 
@@ -39,7 +39,7 @@ public class RotaryEncoderInputEvent : BaseGameEvent
         }
     }
 #endif
-    
+
 
     public void SetIndex(int index)
     {

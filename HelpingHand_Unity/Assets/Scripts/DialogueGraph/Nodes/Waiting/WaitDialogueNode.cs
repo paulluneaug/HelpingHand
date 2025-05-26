@@ -9,7 +9,8 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Waiting/Wait Dialogue")] [NodeTint(0.2f, 0.1f, .3f)]
+[CreateNodeMenu("Waiting/Wait Dialogue")]
+[NodeTint(0.2f, 0.1f, .3f)]
 public class WaitDialogueNode : InterruptableNode
 {
     [Input]
@@ -18,16 +19,20 @@ public class WaitDialogueNode : InterruptableNode
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private DialogueNode m_dialogue;
 
-    [Space] [SerializeField]
+    [Space]
+    [SerializeField]
     private bool m_doesTimeout;
 
-    [Output] [ShowIf(nameof(m_doesTimeout))]
+    [Output]
+    [ShowIf(nameof(m_doesTimeout))]
     public DialogueFlow m_timeoutOut;
 
-    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    [SerializeField]
+    [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
     private CancellationTokenSource m_timeoutSource;
@@ -46,7 +51,7 @@ public class WaitDialogueNode : InterruptableNode
 
                 m_timeoutSource?.Dispose();
                 m_timeoutSource = new();
-                m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+                _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
                 CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
                 cancellationToken = linkedTokenSource.Token;
             }

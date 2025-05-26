@@ -12,7 +12,9 @@ using Utils;
 
 using XNode;
 
-[NodeWidth(350)][CreateNodeMenu("Waiting/Wait Any Condition")] [NodeTint(0.2f, 0.1f, .3f)]
+[NodeWidth(350)]
+[CreateNodeMenu("Waiting/Wait Any Condition")]
+[NodeTint(0.2f, 0.1f, .3f)]
 public class WaitSwitchConditionNode : InterruptableNode
 {
     [Input]
@@ -21,21 +23,24 @@ public class WaitSwitchConditionNode : InterruptableNode
     [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
     public List<ConditionBase> m_conditions = new();
 
-    [Space] [SerializeField]
+    [Space]
+    [SerializeField]
     private bool m_doesTimeout;
 
-    [Output] [ShowIf(nameof(m_doesTimeout))]
+    [Output]
+    [ShowIf(nameof(m_doesTimeout))]
     public DialogueFlow m_timeoutOut;
 
-    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    [SerializeField]
+    [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
-    private Dictionary<ConditionBase, bool> m_conditionTestsDictionary = new();
-    private Dictionary<ConditionBase, NodePort> m_conditionPortsDictionary = new();
-    private Dictionary<ConditionBase, Action> m_conditionActionsDictionary = new();
-    private PriorityQueue<NodePort, int> m_continuePortQueue = new(Comparer<int>.Create((i1, i2) => -i1.CompareTo(i2)));
+    private readonly Dictionary<ConditionBase, bool> m_conditionTestsDictionary = new();
+    private readonly Dictionary<ConditionBase, NodePort> m_conditionPortsDictionary = new();
+    private readonly Dictionary<ConditionBase, Action> m_conditionActionsDictionary = new();
+    private readonly PriorityQueue<NodePort, int> m_continuePortQueue = new(Comparer<int>.Create((i1, i2) => -i1.CompareTo(i2)));
     private CancellationTokenSource m_timeoutSource;
-    private bool m_isTimeout;
+    private readonly bool m_isTimeout;
 
     protected override void Init()
     {
@@ -74,14 +79,14 @@ public class WaitSwitchConditionNode : InterruptableNode
         {
             m_conditionTestsDictionary[condition] = condition.Test();
         }
-        
+
         foreach (ConditionBase condition in m_conditions)
         {
             ConditionBase c = condition;
             m_conditionActionsDictionary[c] = () => OnConditionUpdated(c);
             condition.OnPreconditionUpdated += m_conditionActionsDictionary[c];
         }
-        
+
         while (true)
         {
             DebugLog($"Waiting for conditions");
@@ -93,7 +98,7 @@ public class WaitSwitchConditionNode : InterruptableNode
                 DebugLog($"With timeout ({m_timeout} seconds)");
                 m_timeoutSource?.Dispose();
                 m_timeoutSource = new();
-                m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+                _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
                 CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
                 cancellationToken = linkedTokenSource.Token;
             }
@@ -110,7 +115,7 @@ public class WaitSwitchConditionNode : InterruptableNode
                         found = true;
                     }
                 }
-                
+
                 return found;
             }, PlayerLoopTiming.Update, cancellationToken);
 
@@ -137,7 +142,7 @@ public class WaitSwitchConditionNode : InterruptableNode
         {
             condition.OnPreconditionUpdated -= m_conditionActionsDictionary[condition];
         }
-        
+
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait is timeout");

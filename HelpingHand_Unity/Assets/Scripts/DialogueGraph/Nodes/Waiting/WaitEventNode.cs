@@ -11,7 +11,9 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)][CreateNodeMenu("Waiting/Wait Event")] [NodeTint(0.2f, 0.1f, .3f)]
+[NodeWidth(250)]
+[CreateNodeMenu("Waiting/Wait Event")]
+[NodeTint(0.2f, 0.1f, .3f)]
 public class WaitEventNode : InterruptableNode
 {
     [Input]
@@ -20,21 +22,25 @@ public class WaitEventNode : InterruptableNode
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField] [HideLabel]
+    [SerializeField]
+    [HideLabel]
     private BaseGameEvent m_event;
 
-    [Space] [SerializeField]
+    [Space]
+    [SerializeField]
     private bool m_doesTimeout;
 
-    [Output] [ShowIf(nameof(m_doesTimeout))]
+    [Output]
+    [ShowIf(nameof(m_doesTimeout))]
     public DialogueFlow m_timeoutOut;
 
-    [SerializeField] [ShowIfGroup(nameof(m_doesTimeout))]
+    [SerializeField]
+    [ShowIfGroup(nameof(m_doesTimeout))]
     private float m_timeout;
 
     private CancellationTokenSource m_timeoutSource;
     private bool m_isEventRaised;
-    
+
     public override void Initialize()
     {
         m_isEventRaised = false;
@@ -44,7 +50,7 @@ public class WaitEventNode : InterruptableNode
     {
         m_event.RemoveListener(OnEventRaised);
         m_event.AddListener(OnEventRaised);
-        
+
         while (true)
         {
             DebugLog($"Waiting for event {m_event.name}");
@@ -56,7 +62,7 @@ public class WaitEventNode : InterruptableNode
                 DebugLog($"With timeout ({m_timeout} seconds)");
                 m_timeoutSource?.Dispose();
                 m_timeoutSource = new();
-                m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+                _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
                 CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
                 cancellationToken = linkedTokenSource.Token;
             }
@@ -83,7 +89,7 @@ public class WaitEventNode : InterruptableNode
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         m_event.RemoveListener(OnEventRaised);
-        
+
         if (m_timeoutSource is { IsCancellationRequested: true })
         {
             DebugLog($"Wait for event has timeout");

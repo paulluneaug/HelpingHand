@@ -8,7 +8,7 @@ public class ButtonInputTrigger : InputTrigger
 {
     [SerializeField]
     private ButtonInputEvent m_buttonEvent;
-    
+
     [SerializeField]
     private float m_timeToTrigger = 0.05f;
 
@@ -36,10 +36,10 @@ public class ButtonInputTrigger : InputTrigger
     private void OnButtonDown()
     {
         m_isButtonPressed = true;
-        
+
         if (m_triggerCoroutine == null)
         {
-            GameManager.Instance.StartCoroutine(TriggerCoroutine());
+            _ = GameManager.Instance.StartCoroutine(TriggerCoroutine());
         }
     }
 
@@ -47,7 +47,7 @@ public class ButtonInputTrigger : InputTrigger
     {
         m_isButtonPressed = false;
     }
-    
+
     private IEnumerator TriggerCoroutine()
     {
         float counter = 0;
@@ -69,7 +69,7 @@ public class ButtonInputTrigger : InputTrigger
         m_triggerCoroutine = null;
         DisarmTrigger();
         RaiseTriggeredEvent();
-        
-        GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
+
+        _ = GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
     }
 }

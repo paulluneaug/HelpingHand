@@ -10,29 +10,36 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Flow/Multiple/Switch Condition")] [NodeWidth(350)] [NodeTint(0.4f, 0.2f, 0f)]
+[CreateNodeMenu("Flow/Multiple/Switch Condition")]
+[NodeWidth(350)]
+[NodeTint(0.4f, 0.2f, 0f)]
 public class SwitchConditionNode : BaseNode
 {
     private enum SwitchType
     {
         [LabelText("All matching")] All,
-       [LabelText("First one")] First
+        [LabelText("First one")] First
     }
-    
-    [Input] [SerializeField]
+
+    [Input]
+    [SerializeField]
     private DialogueFlow m_in;
 
-    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)] [SerializeField] [PropertySpace(8,8)]
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
+    [SerializeField]
+    [PropertySpace(8, 8)]
     private List<ConditionBase> m_conditions = new();
 
-    [Output] [SerializeField]
+    [Output]
+    [SerializeField]
     private DialogueFlow m_else;
 
-    [SerializeField] [EnumToggleButtons]
+    [SerializeField]
+    [EnumToggleButtons]
     private SwitchType m_type;
 
     private IEnumerable<NodePort> m_outputPorts;
-    
+
     public override void Initialize()
     {
         foreach (ConditionBase condition in m_conditions)
@@ -42,7 +49,7 @@ public class SwitchConditionNode : BaseNode
 
         m_outputPorts = DynamicOutputs.OrderBy(p => p.fieldName);
     }
-    
+
     private ConditionBase GetCondition(NodePort port)
     {
         if (int.TryParse(port.fieldName[13..], out int index))
@@ -80,7 +87,7 @@ public class SwitchConditionNode : BaseNode
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
         }
         else
         {

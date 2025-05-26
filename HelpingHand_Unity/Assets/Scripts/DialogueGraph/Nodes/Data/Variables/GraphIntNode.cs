@@ -1,4 +1,4 @@
-[CreateNodeMenu("Data/Variables/Graphs/Int")] 
+[CreateNodeMenu("Data/Variables/Graphs/Int")]
 public class GraphIntNode : GraphVariableNode<int>
 {
 }
