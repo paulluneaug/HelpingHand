@@ -9,6 +9,7 @@ public static class LoadLevelUtils
             StartupScenesReferences startupScenesReferences = StartupScenesReferences.Instance;
 
             _ = EditorSceneManager.OpenScene(startupScenesReferences.EntryScene, OpenSceneMode.Single);
+            _ = EditorSceneManager.OpenScene(startupScenesReferences.GloabalObjectsScene, OpenSceneMode.Additive);
             _ = EditorSceneManager.OpenScene(levelScenePath, OpenSceneMode.Additive);
         }
     }
