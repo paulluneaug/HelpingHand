@@ -10,13 +10,13 @@ public class LateInitializationManager : MonoBehaviourSingleton<LateInitializati
 {
     private IEnumerable<ILateAwaker> m_lateAwakers;
     private IEnumerable<ILateStarter> m_lateStarters;
-    
+
     public override void Initialize()
     {
         base.Initialize();
         m_lateAwakers = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<ILateAwaker>();
         m_lateStarters = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<ILateStarter>();
-        
+
         foreach (ILateAwaker lateAwaker in m_lateAwakers)
         {
             lateAwaker.LateAwake();

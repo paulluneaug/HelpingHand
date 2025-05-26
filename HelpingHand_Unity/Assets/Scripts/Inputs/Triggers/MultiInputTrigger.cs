@@ -48,6 +48,6 @@ public class MultiInputTrigger : InputTrigger
         m_isRaised = true;
         DisarmTrigger();
         RaiseTriggeredEvent();
-        GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
+        _ = GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
     }
 }

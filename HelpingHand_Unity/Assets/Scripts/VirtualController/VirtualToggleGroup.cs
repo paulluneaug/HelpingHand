@@ -21,10 +21,10 @@ public class VirtualToggleGroup : MonoBehaviour
         for (int iToggle = 0; iToggle < m_toggles.Length; ++iToggle)
         {
             int toggleIndex = iToggle;
-            Action<bool> toggleSubscription = (bool state) =>
+            void toggleSubscription(bool state)
             {
                 OnTogglePressed(toggleIndex, state);
-            };
+            }
 
             m_toggles[iToggle].OnValueChanged += toggleSubscription;
             m_togglesSubscribtions[iToggle] = toggleSubscription;

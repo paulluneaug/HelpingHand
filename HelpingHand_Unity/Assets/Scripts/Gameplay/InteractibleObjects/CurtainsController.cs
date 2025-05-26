@@ -7,7 +7,8 @@ public class CurtainsController : MonoBehaviour
     [SerializeField]
     private FloatVariable m_inputEvent;
 
-    [Range(0, 1)] [SerializeField]
+    [Range(0, 1)]
+    [SerializeField]
     private float m_startValue;
 
     [SerializeField]
@@ -18,11 +19,11 @@ public class CurtainsController : MonoBehaviour
 
     [SerializeField]
     private float m_smoothTime = .5f;
-    
+
     private Transform m_transform;
     private Vector3 m_targetPosition;
     private Vector3 m_currentVelocity;
-    
+
     private void Awake()
     {
         m_transform = transform;
@@ -59,7 +60,7 @@ public class CurtainsController : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
         if (m_targetPosition != m_transform.position)
         {
             m_transform.position = Vector3.SmoothDamp(m_transform.position, m_targetPosition, ref m_currentVelocity, m_smoothTime);

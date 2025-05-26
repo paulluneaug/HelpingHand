@@ -5,16 +5,20 @@ using UnityEngine.Events;
 
 public class EntityStateListener : MonoBehaviour
 {
-    [SerializeField][PropertySpace(0, 4)]
+    [SerializeField]
+    [PropertySpace(0, 4)]
     private EntityState m_state;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent m_onStateSet;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent m_onStateUnset;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent<bool> m_onStateChanged;
 
     private void OnEnable()

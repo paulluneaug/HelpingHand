@@ -1,8 +1,9 @@
 using Sirenix.OdinInspector;
 
-[CreateNodeMenu("Data/Operations/Set/Graphs/Float")] 
+[CreateNodeMenu("Data/Operations/Set/Graphs/Float")]
 public class SetGraphFloatNode : SetGraphVariableNode<float>
 {
-    [ShowInInspector] [ReadOnly] 
+    [ShowInInspector]
+    [ReadOnly]
     private float Value => m_variableOut.Value;
 }
