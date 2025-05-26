@@ -1,43 +1,87 @@
 using System;
 
-using UnityEngine;
+using Sirenix.OdinInspector;
 
-using UnityUtility.CustomAttributes;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+using UnityUtility.SceneReference;
 using UnityUtility.Singletons;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    private enum GameState
+    {
+        MainMenu,
+        Gameplay,
+    }
+
     public InputActionTriggersManager InputActionTriggersManager => m_inputActionTriggersManager;
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
 
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
 
-    [SerializeField, Label(bold: true)] private InputActionTriggersManager m_inputActionTriggersManager;
-    [Separator]
-    [SerializeField, Label(bold: true)] private ActSequenceManager m_actSequenceManager;
+    [SerializeField] private InputActionTriggersManager m_inputActionTriggersManager;
+    [SerializeField] private ActSequenceManager m_actSequenceManager;
+
+    [Title("Start")]
+    [SerializeField] private GameState m_startGameState;
+
+    [Title("Scene References")]
+    [SerializeField] private SceneReference m_globalObjectsScene;
 
     // Cache
     [NonSerialized] private Puppet m_puppet;
+    [NonSerialized] private GameState m_currentGameState;
 
 
     public override void Initialize()
     {
         base.Initialize();
         m_inputActionTriggersManager.Initialize();
-        m_actSequenceManager.Initialize(m_puppet);
+        m_actSequenceManager.Initialize();
+        LoadGlobalObjectScene();
+
+        m_currentGameState = m_startGameState;
     }
 
     protected override void Start()
     {
         base.Start();
+        switch (m_currentGameState)
+        {
+            case GameState.MainMenu:
+                break;
+            case GameState.Gameplay:
+                StartGameplay();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void StartGameplay()
+    {
+        m_currentGameState = GameState.Gameplay;
         m_actSequenceManager.Start();
     }
 
     private void Update()
     {
         m_inputActionTriggersManager.Update();
-        m_actSequenceManager.Update(Time.deltaTime);
+
+        switch (m_currentGameState)
+        {
+            case GameState.MainMenu:
+                UpdateMainMenu();
+                break;
+            case GameState.Gameplay:
+                UpdateGameplay();
+                break;
+            default:
+                break;
+        }
     }
 
     public override void OnDestroy()
@@ -45,7 +89,34 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         base.OnDestroy();
         m_inputActionTriggersManager.Dispose();
     }
-    
+
+    #region Load
+    private void LoadGlobalObjectScene()
+    {
+#if UNITY_EDITOR
+        if (SceneManager.GetSceneByPath(m_globalObjectsScene.ScenePath) != null)
+        {
+            return;
+        }
+        SceneManager.LoadScene(m_globalObjectsScene);
+#else
+        SceneManager.LoadScene(m_globalObjectsScene);
+#endif
+    }
+
+    #endregion
+
+    #region Updates
+    private void UpdateMainMenu()
+    {
+
+    }
+
+    private void UpdateGameplay()
+    {
+        m_actSequenceManager.Update(Time.deltaTime);
+    }
+    #endregion
 
     #region Puppet
     public Puppet GetPuppet()
