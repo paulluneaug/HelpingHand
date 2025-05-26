@@ -58,7 +58,7 @@ public class DialogueNode : InterruptableNode
 
     [FoldoutGroup("Debug")]
     [ShowInInspector, LabelWidth(125), ReadOnly]
-    private readonly ObservableField<bool> m_hasBeenRead;
+    private readonly ObservableField<bool> m_hasBeenRead = new ObservableField<bool>(false);
 
     [FoldoutGroup("Debug")]
     [ShowInInspector, LabelWidth(125), ReadOnly]
