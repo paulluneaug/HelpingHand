@@ -4,6 +4,12 @@ using UnityEditor;
 public static class LoadLevelList
 {
 
+    [MenuItem("Helping Hand/Levels/Matthieu Test", false, 0)]
+    private static void Open15e8b0ab92e7e7f4cb03088a83900a99()
+    {
+        LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/Tests/Matthieu Test.unity");
+    }
+
     [MenuItem("Helping Hand/Levels/TestSequence0", false, 0)]
     private static void Open37888990636850d4bbf86fdc6aaf589e()
     {
