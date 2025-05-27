@@ -35,12 +35,12 @@ public class ConditionAnd : ConditionBase
         }
     }
 
-    public override int Depth()
+    public override int Score()
     {
         int result = 0;
         foreach (ConditionBase precondition in m_preconditions)
         {
-            result += precondition.Depth();
+            result += precondition.Score();
         }
 
         return result;

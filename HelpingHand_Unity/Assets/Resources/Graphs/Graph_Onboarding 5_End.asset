@@ -1,60 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8596623034309422450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 632, y: -264}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -8596623034309422450}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: -5380636645386814925}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -8596623034309422450}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 0
-  m_waitTime: 3
-  m_unscaled: 0
 --- !u!114 &-6375639938786975348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +40,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -5380636645386814925}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 6919239223013669110}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -111,7 +59,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
   m_interruptable: 1
-  m_waitTime: 3
+  m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-5380636645386814925
 MonoBehaviour:
@@ -149,10 +97,7 @@ MonoBehaviour:
       _node: {fileID: -5380636645386814925}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -8596623034309422450}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -186,10 +131,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4662089034119733656}
-  - {fileID: -8596623034309422450}
   - {fileID: -5380636645386814925}
   - {fileID: 3790325056312640404}
   - {fileID: -6375639938786975348}
+  - {fileID: 6919239223013669110}
+  - {fileID: 8218632579131916569}
 --- !u!114 &3790325056312640404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +191,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
+  m_interruptable: 1
   m_content: "Bon, on va maintenant attaquer les choses s\xE9rieuses..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
@@ -302,6 +248,84 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Start the graph here
   m_priority: 1
+--- !u!114 &6919239223013669110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e928cc46fe1085e4383f08dfdf17308a, type: 3}
+  m_Name: Graph Control
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 264, y: -744}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_handlerIn
+    - m_handlerOut
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 6919239223013669110}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -6375639938786975348}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 6919239223013669110}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 8218632579131916569}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerIn
+      _node: {fileID: 6919239223013669110}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerOut
+      _node: {fileID: 6919239223013669110}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebug: 1
+  m_description: 
+  m_graph: {fileID: 11400000, guid: 9afa09cd95348d744a4d0ca3619131eb, type: 2}
+  m_control: 3
+  m_waitForCompletion: 0
 --- !u!114 &7982589639963475073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +454,81 @@ MonoBehaviour:
   m_description: Continue le flow vers le premier noeud dont la condition est vraie
   m_in: {}
   m_else: {}
+--- !u!114 &8218632579131916569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e928cc46fe1085e4383f08dfdf17308a, type: 3}
+  m_Name: Graph Control
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 488, y: -744}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_handlerIn
+    - m_handlerOut
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 8218632579131916569}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 6919239223013669110}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 8218632579131916569}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerIn
+      _node: {fileID: 8218632579131916569}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerOut
+      _node: {fileID: 8218632579131916569}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebug: 1
+  m_description: 
+  m_graph: {fileID: 11400000, guid: 229670b60e4dc944aac17fe30987aacb, type: 2}
+  m_control: 3
+  m_waitForCompletion: 0
 --- !u!114 &8935974237158678807
 MonoBehaviour:
   m_ObjectHideFlags: 0

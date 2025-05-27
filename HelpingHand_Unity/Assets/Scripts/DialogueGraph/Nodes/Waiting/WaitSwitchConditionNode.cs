@@ -111,7 +111,7 @@ public class WaitSwitchConditionNode : InterruptableNode
                 {
                     if (m_conditionTestsDictionary[condition])
                     {
-                        m_continuePortQueue.Enqueue(m_conditionPortsDictionary[condition], condition.Depth());
+                        m_continuePortQueue.Enqueue(m_conditionPortsDictionary[condition], condition.Score());
                         found = true;
                     }
                 }
