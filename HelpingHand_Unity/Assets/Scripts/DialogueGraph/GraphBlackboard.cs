@@ -7,6 +7,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 
 using UnityUtility.Singletons;
+using UnityUtility.SerializedDictionary;
 
 public class GraphBlackboard : MonoBehaviourSingleton<GraphBlackboard>
 {
