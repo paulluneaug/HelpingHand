@@ -16,13 +16,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         Gameplay,
     }
 
-    public InputActionTriggersManager InputActionTriggersManager => m_inputActionTriggersManager;
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
 
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
 
-    [SerializeField] private InputActionTriggersManager m_inputActionTriggersManager;
     [SerializeField] private ActSequenceManager m_actSequenceManager;
 
     [Title("Start")]
@@ -39,7 +37,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public override void Initialize()
     {
         base.Initialize();
-        m_inputActionTriggersManager.Initialize();
         m_actSequenceManager.Initialize();
         LoadGlobalObjectScene();
 
@@ -69,8 +66,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Update()
     {
-        m_inputActionTriggersManager.Update();
-
         switch (m_currentGameState)
         {
             case GameState.MainMenu:
@@ -84,17 +79,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
     }
 
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        m_inputActionTriggersManager.Dispose();
-    }
-
-    #region Load
+#region Load
     private void LoadGlobalObjectScene()
     {
 #if UNITY_EDITOR
-        if (SceneManager.GetSceneByPath(m_globalObjectsScene.ScenePath) != null)
+        if (SceneManager.GetSceneByPath(m_globalObjectsScene.ScenePath) != default)
         {
             return;
         }

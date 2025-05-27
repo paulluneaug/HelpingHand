@@ -21,7 +21,7 @@ public class ActManager : MonoBehaviour
     public void StartAct(Puppet puppet)
     {
         m_isFinished = false;
-        puppet.transform.position = m_puppetStart.position;
+        puppet.transform.SetPositionAndRotation(m_puppetStart.position, m_puppetStart.rotation);
         puppet.gameObject.SetActive(true);
 
         m_graphController.OnGraphSequenceFinished += OnGraphSequenceFinished;

@@ -14,7 +14,7 @@ public class InputActionTriggersManager : SerializedMonoBehaviour
     [SerializeField] private InputActionTrigger<int>[] m_intInputTriggers;
     [SerializeField] private InputActionTrigger<Vector2>[] m_vector2InputTriggers;
 
-    public void Initialize()
+    private void Awake()
     {
         m_boolInputTriggers.ForEach(trigger => trigger.Initialize());
         m_floatInputTriggers.ForEach(trigger => trigger.Initialize());
@@ -22,7 +22,7 @@ public class InputActionTriggersManager : SerializedMonoBehaviour
         m_vector2InputTriggers.ForEach(trigger => trigger.Initialize());
     }
 
-    public void Update()
+    private void Update()
     {
         m_boolInputTriggers.ForEach(trigger => trigger.Update());
         m_floatInputTriggers.ForEach(trigger => trigger.Update());
@@ -30,7 +30,7 @@ public class InputActionTriggersManager : SerializedMonoBehaviour
         m_vector2InputTriggers.ForEach(trigger => trigger.Update());
     }
 
-    public void Dispose()
+    private void OnDestroy()  
     {
         m_boolInputTriggers.ForEach(trigger => trigger.Dispose());
         m_floatInputTriggers.ForEach(trigger => trigger.Dispose());

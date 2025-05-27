@@ -87,6 +87,12 @@ public class SpotlightController : MonoBehaviour
 
     private void UpdateFollowTargetMovement()
     {
+        if (m_target == null || m_target.Value == null)
+        {
+            Debug.LogError($"No target assigned");
+            Debug.Break();
+            return;
+        }
         float angle = m_followTargetRotationSpeed * Time.deltaTime;
         m_spotTransform.rotation = Quaternion.RotateTowards(m_spotTransform.rotation, Quaternion.LookRotation(m_target.Value.position - m_spotTransform.position), angle);
     }
