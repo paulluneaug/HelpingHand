@@ -5,7 +5,7 @@ using TMPro;
 
 using UnityEngine;
 
-public class EnumDebugFieldController<TEnum> : MonoBehaviour 
+public class EnumDebugFieldController<TEnum> : MonoBehaviour
     where TEnum : struct
 {
     [SerializeField] private TMP_Text m_label;

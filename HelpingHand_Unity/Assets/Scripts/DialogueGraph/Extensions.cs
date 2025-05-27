@@ -11,7 +11,7 @@ public static partial class Extensions
             {
                 outValue = local;
                 return true;
-            } 
+            }
             if (inValuePort.TryGetInputValue(out BaseVariable<T> variable))
             {
                 outValue = variable;
@@ -24,7 +24,7 @@ public static partial class Extensions
             }
         }
 
-        outValue = default(T);
+        outValue = default;
         return false;
     }
 }

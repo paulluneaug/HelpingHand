@@ -27,7 +27,7 @@ public class SliderInputTrigger : InputTrigger
     public override bool IsRaised => m_isImmediate ? m_isRaised : TestValue();
 
     private bool m_wasRaised;
-    
+
     public override void Initialize()
     {
         base.Initialize();
@@ -65,8 +65,8 @@ public class SliderInputTrigger : InputTrigger
         if (!m_isRaised && m_triggerCoroutine == null && TestValue())
         {
             m_triggerCoroutine = GameManager.Instance.StartCoroutine(TriggerCoroutine());
-        } 
-        
+        }
+
         // If the trigger was raised previously && the new value steps out of the range values, trigger the event
         if (m_wasRaised && !TestValue())
         {
@@ -98,6 +98,6 @@ public class SliderInputTrigger : InputTrigger
         DisarmTrigger();
         RaiseTriggeredEvent();
 
-        GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
+        _ = GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
     }
 }

@@ -1,5 +1,3 @@
-using System;
-
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -8,23 +6,29 @@ using UnityEngine.Events;
 public class EntityStateSelector : SerializedMonoBehaviour
 {
     [SerializeField] private IntVariable m_rotaryEncoderIndex;
-    
-    [SerializeField][PropertySpace(0, 4)]
+
+    [SerializeField]
+    [PropertySpace(0, 4)]
     private EntityState[] m_states;
 
-    [SerializeField] 
+    [SerializeField]
     private int m_selectedIndex;
 
-    [SerializeField][BoxGroup][PropertySpace(4, 4)]
+    [SerializeField]
+    [BoxGroup]
+    [PropertySpace(4, 4)]
     private RotaryEncoderInputEvent m_rotaryEncoderEvent;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent<EntityState> m_onStateSet;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent<EntityState> m_onStateUnset;
 
-    [SerializeField][FoldoutGroup("Callbacks")]
+    [SerializeField]
+    [FoldoutGroup("Callbacks")]
     private UnityEvent<EntityState, bool> m_onStateChanged;
 
     private int m_currentIndex;
@@ -52,7 +56,7 @@ public class EntityStateSelector : SerializedMonoBehaviour
         m_onStateChanged?.Invoke(m_states[m_currentIndex], false);
 
         m_currentIndex = index.Mod(m_states.Length);
-        
+
         m_states[m_currentIndex].Set();
         m_onStateSet?.Invoke(m_states[m_currentIndex]);
         m_onStateChanged?.Invoke(m_states[m_currentIndex], true);

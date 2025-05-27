@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+
 using UnityEngine;
 
 [RequireComponent(typeof(Light))]
@@ -15,7 +16,7 @@ public class LightActivationController : SerializedMonoBehaviour
 
     [SerializeField]
     private EntityState m_unlitState;
-    
+
     private Light m_light;
 
     private void Awake()

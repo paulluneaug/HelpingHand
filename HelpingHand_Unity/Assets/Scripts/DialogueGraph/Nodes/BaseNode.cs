@@ -16,18 +16,20 @@ using Debug = UnityEngine.Debug;
 
 public abstract class BaseNode : SerializableNode, IDisposable
 {
-    [SerializeField] 
-    protected bool m_showDebug = true;
-    
     [SerializeField]
-    [HideLabel][FoldoutGroup("Description")][TextArea(1, 2)]
+    protected bool m_showDebug = true;
+
+    [SerializeField]
+    [HideLabel]
+    [FoldoutGroup("Description")]
+    [TextArea(1, 2)]
     protected string m_description;
-    
+
     /// <summary>
     /// Initialize the node when the graph starts. Use this to reset the node state (non serialized variables)
     /// </summary>
     public virtual void Initialize() { }
-    
+
     /// <summary>
     /// Returns the value coming from the port specified. Override this if the node has value port. It is not
     /// necessary for flow nodes.
@@ -107,10 +109,10 @@ public abstract class BaseNode : SerializableNode, IDisposable
     protected async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort, NodePort outputPort)
     {
         DebugLog($"Continuing flow to port [{outputPort.fieldName}]");
-        
+
         // All the resulting flows
-        List<UniTask> tasks = new ();
-        
+        List<UniTask> tasks = new();
+
         // Get all connections of the output port. For each one, execute the connected node.
         // Wait for all the executions to be finished before returning
         foreach (NodePort nextPort in outputPort.GetConnections())
@@ -167,7 +169,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
         {
             return;
         }
-        
+
         switch (logType)
         {
             case LogType.Error:
@@ -178,6 +180,12 @@ public abstract class BaseNode : SerializableNode, IDisposable
                 break;
             case LogType.Log:
                 Debug.Log($"{Debug_GetLogHeader()} {log}", source);
+                break;
+            case LogType.Assert:
+                break;
+            case LogType.Exception:
+                break;
+            default:
                 break;
         }
     }

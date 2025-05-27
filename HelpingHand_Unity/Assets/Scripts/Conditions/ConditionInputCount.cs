@@ -58,30 +58,42 @@ public class ConditionInputCount : ConditionBase
 
     [SerializeField] [EnumToggleButtons] [LabelWidth(100)] [OnValueChanged("OnTypeChanged")]
     private InputListType m_type;
-    
+
     private void OnTypeChanged()
     {
         m_onlyEvents = Array.Empty<BaseGameEvent>();
         m_anyButEvents = Array.Empty<BaseGameEvent>();
     }
 
-    [SerializeField] [ShowIf("@m_type == InputListType.AnyInput")] [LabelWidth(100)] 
+    [SerializeField]
+    [ShowIf("@m_type == InputListType.AnyInput")]
+    [LabelWidth(100)]
     private bool m_usePhysicalInputs = true;
 
-    [SerializeField] [HideLabel] [ShowIf("@m_type == InputListType.OnlyThese")] [PropertySpace(8, 8)]
+    [SerializeField]
+    [HideLabel]
+    [ShowIf("@m_type == InputListType.OnlyThese")]
+    [PropertySpace(8, 8)]
     private BaseGameEvent[] m_onlyEvents = Array.Empty<BaseGameEvent>();
-    
-    [SerializeField] [HideLabel] [ShowIf("@m_type == InputListType.AnyButThese")] [PropertySpace(8, 8)]
+
+    [SerializeField]
+    [HideLabel]
+    [ShowIf("@m_type == InputListType.AnyButThese")]
+    [PropertySpace(8, 8)]
     private BaseGameEvent[] m_anyButEvents = Array.Empty<BaseGameEvent>();
 
-    [SerializeField] [EnumToggleButtons] [LabelWidth(100)]
+    [SerializeField]
+    [EnumToggleButtons]
+    [LabelWidth(100)]
     private InputType m_inputType;
-    
-    [SerializeField] [LabelWidth(100)] [EnumToggleButtons]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [EnumToggleButtons]
     private ComparisonOperation m_countType;
-    
-    private IEnumerable<BaseGameEvent> m_effectiveInputList; 
-    
+
+    private IEnumerable<BaseGameEvent> m_effectiveInputList;
+
     public override void Initialize()
     {
         base.Initialize();

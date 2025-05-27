@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 
-using Sirenix.OdinInspector;
-
 using Cysharp.Threading.Tasks;
+
+using Sirenix.OdinInspector;
 
 using UnityEngine;
 
@@ -24,7 +24,7 @@ public class GraphRunner : MonoBehaviour
     public GraphRunnerHandler Handler => m_graphRunnerHandler;
 
     private GraphRunnerHandler m_graphRunnerHandler;
-    
+
     [SerializeField]
     private SimpleGraph m_graph;
 
@@ -130,7 +130,7 @@ public class GraphRunner : MonoBehaviour
 
         DebugLog($"Stopped");
         OnGraphStopped?.Invoke();
-        
+
         foreach (Node node in m_graph.nodes)
         {
             if (node is IDisposable disposableNode)
@@ -151,7 +151,7 @@ public class GraphRunner : MonoBehaviour
         m_graphRunnerHandler.Dispose();
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     public void OnApplicationQuit()
     {
         foreach (Node node in m_graph.nodes)
@@ -162,7 +162,7 @@ public class GraphRunner : MonoBehaviour
             }
         }
     }
-    #endif
+#endif
 
     /// <summary>
     /// Debug log with header

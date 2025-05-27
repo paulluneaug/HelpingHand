@@ -8,11 +8,13 @@ public class AmbientLightController : MonoBehaviour
 {
     [SerializeField]
     private FloatVariable m_inputEvent;
-    
-    [Range(0, 1)] [SerializeField]
+
+    [Range(0, 1)]
+    [SerializeField]
     private float m_startValue;
 
-    [SerializeField] [MinMaxSlider(0, 1, true)]
+    [SerializeField]
+    [MinMaxSlider(0, 1, true)]
     private Vector2 m_minMaxIntensity;
 
     [SerializeField]

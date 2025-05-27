@@ -1,37 +1,149 @@
-using UnityEngine;
+using System;
 
-using UnityUtility.CustomAttributes;
+using Sirenix.OdinInspector;
+
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+using UnityUtility.SceneReference;
 using UnityUtility.Singletons;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
-    public SlidersManager SlidersManager => m_sliderManager;
-    public LevelSequenceManager LevelSequenceManager => m_levelSequenceManager;
+    private enum GameState
+    {
+        MainMenu,
+        Gameplay,
+    }
+
+    public InputActionTriggersManager InputActionTriggersManager => m_inputActionTriggersManager;
+    public ActSequenceManager ActSequenceManager => m_actSequenceManager;
+
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
-    [SerializeField, Label(bold: true)] private SlidersManager m_sliderManager;
-    [Separator]
-    [SerializeField, Label(bold: true)] private LevelSequenceManager m_levelSequenceManager;
 
-    [Title("Puppet")]
-    [SerializeField] private Puppet m_puppet;
+    [SerializeField] private InputActionTriggersManager m_inputActionTriggersManager;
+    [SerializeField] private ActSequenceManager m_actSequenceManager;
+
+    [Title("Start")]
+    [SerializeField] private GameState m_startGameState;
+
+    [Title("Scene References")]
+    [SerializeField] private SceneReference m_globalObjectsScene;
+
+    // Cache
+    [NonSerialized] private Puppet m_puppet;
+    [NonSerialized] private GameState m_currentGameState;
 
 
     public override void Initialize()
     {
         base.Initialize();
-        m_levelSequenceManager.Initialize(m_puppet);
+        m_inputActionTriggersManager.Initialize();
+        m_actSequenceManager.Initialize();
+        LoadGlobalObjectScene();
+
+        m_currentGameState = m_startGameState;
     }
 
     protected override void Start()
     {
         base.Start();
-        // m_levelSequenceManager.Start();
+        switch (m_currentGameState)
+        {
+            case GameState.MainMenu:
+                break;
+            case GameState.Gameplay:
+                StartGameplay();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void StartGameplay()
+    {
+        m_currentGameState = GameState.Gameplay;
+        m_actSequenceManager.Start();
     }
 
     private void Update()
     {
-        // m_levelSequenceManager.Update(Time.deltaTime);
+        m_inputActionTriggersManager.Update();
+
+        switch (m_currentGameState)
+        {
+            case GameState.MainMenu:
+                UpdateMainMenu();
+                break;
+            case GameState.Gameplay:
+                UpdateGameplay();
+                break;
+            default:
+                break;
+        }
     }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_inputActionTriggersManager.Dispose();
+    }
+
+    #region Load
+    private void LoadGlobalObjectScene()
+    {
+#if UNITY_EDITOR
+        if (SceneManager.GetSceneByPath(m_globalObjectsScene.ScenePath) != null)
+        {
+            return;
+        }
+        SceneManager.LoadScene(m_globalObjectsScene);
+#else
+        SceneManager.LoadScene(m_globalObjectsScene);
+#endif
+    }
+
+    #endregion
+
+    #region Updates
+    private void UpdateMainMenu()
+    {
+
+    }
+
+    private void UpdateGameplay()
+    {
+        m_actSequenceManager.Update(Time.deltaTime);
+    }
+    #endregion
+
+    #region Puppet
+    public Puppet GetPuppet()
+    {
+        if (m_puppet == null)
+        {
+            Debug.LogError($"No puppet registered : Call {nameof(RegisterPuppet)}");
+            return null;
+        }
+        return m_puppet;
+    }
+
+    public void RegisterPuppet(Puppet puppet)
+    {
+        if (m_puppet != null)
+        {
+            Debug.LogError("A puppet was already registered");
+            return;
+        }
+        m_puppet = puppet;
+    }
+
+    public void UnregisterPuppet()
+    {
+        m_puppet = null;
+    }
+
+    #endregion
 
 }

@@ -8,12 +8,12 @@ using UnityEngine;
 
 public interface IVariable
 {
-    
+
 }
 
 public abstract class BaseVariable : BaseGameEvent, IVariable
 {
-    
+
 }
 
 public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
@@ -26,34 +26,36 @@ public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
     protected T m_value;
 
 #if UNITY_EDITOR
-    [ShowInInspector] [ReadOnly] [NonSerialized]
+    [ShowInInspector]
+    [ReadOnly]
+    [NonSerialized]
     private T m_runtimeValue;
 #endif
 
     public virtual T Value
     {
-        get
-        {
+        get =>
 #if UNITY_EDITOR
-            return m_runtimeValue;
+            m_runtimeValue;
 #else
-            return m_value;
+            m_value;
 #endif
-            
-        } 
+
         set
         {
 #if UNITY_EDITOR
             T oldValue = m_runtimeValue;
             m_runtimeValue = value;
-            if (!oldValue.Equals(m_runtimeValue))
+
+            if (ValueChanged(oldValue, m_runtimeValue))
             {
                 Raise(m_runtimeValue);
             }
 #else
             T oldValue = m_value;
             m_value = value;
-            if (!oldValue.Equals(m_value))
+
+            if (ValueChanged(oldValue, m_value))
             {
                 Raise(m_value);
             }
@@ -104,5 +106,14 @@ public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
     public static implicit operator T(BaseVariable<T> variable)
     {
         return variable.Value;
+    }
+
+    private bool ValueChanged(T oldValue, T newValue)
+    {
+        if (oldValue == null && newValue != null)
+        {
+            return true;
+        }
+        return !oldValue.Equals(newValue);
     }
 }

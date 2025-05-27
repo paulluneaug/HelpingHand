@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
@@ -8,32 +6,29 @@ using UnityEngine;
 
 using XNode;
 
-using Debug = UnityEngine.Debug;
-
 public class PuppetWalkNode : BaseNode
 {
     [Input]
-    public DialogueFlow m_in;
-    
+    public DialogueFlow In;
+
     [Output]
-    public DialogueFlow m_out;
+    public DialogueFlow Out;
 
     [SerializeField]
-    private float m_duration;
+    [LabelWidth(125)]
+    private bool m_waitForEndOfSpline = false;
 
-    [SerializeField] [LabelWidth(125)]
-    private bool m_waitForCompletion = false;
-
-    private PuppetWalk m_puppet;
+    private Puppet m_puppet;
 
     public override void Initialize()
     {
-        m_puppet = PuppetWalk.Instance;
+        base.Initialize();
     }
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (m_waitForCompletion)
+        m_puppet = GameManager.Instance.GetPuppet();
+        if (m_waitForEndOfSpline)
         {
             await WalkAsync(handler);
         }
@@ -45,35 +40,30 @@ public class PuppetWalkNode : BaseNode
 
     private async UniTask WalkAsync(GraphRunnerHandler handler)
     {
-        await WalkAsyncFor(handler, m_duration);
+        m_puppet.BeginWalk();
+        await HandleCancellation(handler);
+        m_puppet.StopWalk();
     }
 
-    private async UniTask WalkAsyncFor(GraphRunnerHandler handler, float duration)
+    private async UniTask HandleCancellation(GraphRunnerHandler handler)
     {
-        m_puppet.StartWalk();
-        Stopwatch timer = new ();
-        timer.Start();
-        if (await UniTask.WaitForSeconds(duration, false, PlayerLoopTiming.TimeUpdate, handler.StopToken).SuppressCancellationThrow())
+        if (await UniTask.WaitUntil(() => m_puppet.HasReachedEndOfSpline, PlayerLoopTiming.TimeUpdate, handler.StopToken).SuppressCancellationThrow())
         {
-            timer.Stop();
             DebugLog($"Interrupted");
             // Test if paused
             if (handler.PauseToken.IsCancellationRequested)
             {
-                Debug.Log($"{Debug_GetLogHeader()} Pause requested. Walked for {timer.ElapsedMilliseconds / 1000f} seconds");
-                m_puppet.StopWalk();
+                m_puppet.PauseWalk();
                 await UniTask.WaitUntilCanceled(handler.ResumeToken);
-                // Time left to walk?
-                float timeLeft = duration - (timer.ElapsedMilliseconds / 1000f);
-                Debug.Log($"{Debug_GetLogHeader()} Resumed. Left to walk {timeLeft} seconds");
-                await WalkAsyncFor(handler, timeLeft);
+
+                m_puppet.ResumeWalk();
+                await HandleCancellation(handler);
                 return;
             }
             else // Cancelled => need to move back?
             {
-                
+
             }
         }
-        m_puppet.StopWalk();
     }
 }

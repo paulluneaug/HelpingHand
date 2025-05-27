@@ -12,7 +12,7 @@ public abstract class VirtualInput<T> : MonoBehaviour, IVirtualInput
     protected abstract BaseVariable<T> InputEvent { get; }
 
     public bool IsActive => InputEvent.IsActive;
-    
+
     [NonSerialized] private T m_value;
 
     protected virtual void OnEnable()
@@ -23,7 +23,7 @@ public abstract class VirtualInput<T> : MonoBehaviour, IVirtualInput
         InputEvent.OnDeactivate += OnInputDeactivate;
     }
 
-    protected virtual  void OnDisable()
+    protected virtual void OnDisable()
     {
         InputEvent.OnActivate -= OnInputActivate;
     }

@@ -23,15 +23,15 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
 
     [SerializeField]
     private List<BaseGameEvent> m_inputEvents;
-    
+
     [SerializeField]
     private List<BaseGameEvent> m_physicalInputEvents;
-    
+
     public List<BaseGameEvent> AllInputEvents => m_inputEvents.ToList();
     public List<BaseGameEvent> AllPhysicalInputEvents => m_physicalInputEvents.ToList();
-    
-    private Dictionary<BaseGameEvent, Action> m_eventActions = new();
-    private Dictionary<BaseGameEvent, List<float>> m_eventTimes = new();
+
+    private readonly Dictionary<BaseGameEvent, Action> m_eventActions = new();
+    private readonly Dictionary<BaseGameEvent, List<float>> m_eventTimes = new();
     private float m_nextWindowTime;
 
     public override void Initialize()
@@ -62,7 +62,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
         }
         AssetDatabase.SaveAssetIfDirty(this);
     }
-    #endif
+#endif
 
     /// <summary>
     /// How many triggers from this input in the time window provided?
@@ -140,7 +140,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
                 List<float> times = m_eventTimes[gameEvent];
                 m_eventTimes[gameEvent] = times.Where(t => (Time.time - t) < m_window).ToList();
             }
-            
+
             m_nextWindowTime = Time.time + m_window;
         }
     }

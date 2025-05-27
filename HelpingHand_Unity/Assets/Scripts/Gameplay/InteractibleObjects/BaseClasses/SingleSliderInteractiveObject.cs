@@ -27,7 +27,7 @@ public class SingleSliderInteractiveObject : MonoBehaviour, ISlidingObject
 
     protected virtual void Start()
     {
-        m_masterSlider = GameManager.Instance.SlidersManager.GetSlider(m_controllingSlider);
+        //m_masterSlider = GameManager.Instance.SlidersManager.GetSlider(m_controllingSlider);
 
         m_masterSlider.OnSliderValueChanged += OnSliderValueChanged_Callback;
         m_masterSlider.OnSliderPointerDown += OnSliderPointerDown_Callback;

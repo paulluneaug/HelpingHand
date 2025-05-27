@@ -13,11 +13,11 @@ public class ButtonInputEvent : BaseGameEvent
 {
     [SerializeField]
     private GameEvent m_buttonDownEvent;
-    
+
     [SerializeField]
     private GameEvent m_buttonUpEvent;
 
-    [SerializeField] 
+    [SerializeField]
     private BoolVariable m_buttonState;
 
     public BoolVariable ButtonState => m_buttonState;

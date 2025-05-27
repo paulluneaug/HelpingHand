@@ -34,7 +34,7 @@ public class ConditionOr : ConditionBase
             precondition.OnPreconditionUpdated -= RaiseOnPreconditionUpdated;
         }
     }
-    
+
     public override int Depth()
     {
         int result = 0;

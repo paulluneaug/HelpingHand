@@ -7,7 +7,13 @@ using UnityEngine;
 
 public static class LoadLevelListReload
 {
-    [MenuItem("Helping Hand/Levels/Reload this menu", false, 15)]
+    [MenuItem("Helping Hand/Levels/Sequence", false, 85)]
+    public static void LoadSequence()
+    {
+        LoadLevelUtils.LoadCommonScenes();
+    }
+
+    [MenuItem("Helping Hand/Levels/Reload this menu", false, 100)]
     public static void Reload()
     {
         GenerateOpenSceneMenuScript();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 using Sirenix.OdinInspector;
@@ -9,7 +9,8 @@ namespace Events
 {
     public abstract class BaseGameEvent : ScriptableObject, IGameEvent
     {
-        [SerializeField] [ReadOnly]
+        [SerializeField]
+        [ReadOnly]
         protected bool m_isActive = true;
 
         public bool IsActive
@@ -53,7 +54,7 @@ namespace Events
             {
                 return;
             }
-            
+
             for (var i = m_listeners.Count - 1; i >= 0; i--)
             {
                 m_listeners[i].OnEventRaised();
@@ -77,7 +78,7 @@ namespace Events
         {
             if (m_listeners.Contains(listener))
             {
-                m_listeners.Remove(listener);
+                _ = m_listeners.Remove(listener);
             }
         }
 
@@ -93,7 +94,7 @@ namespace Events
         {
             if (m_actions.Contains(action))
             {
-                m_actions.Remove(action);
+                _ = m_actions.Remove(action);
             }
         }
 
@@ -117,7 +118,7 @@ namespace Events
             {
                 return;
             }
-            
+
             for (var i = m_typedListeners.Count - 1; i >= 0; i--)
             {
                 m_typedListeners[i].OnEventRaised(value);
@@ -127,7 +128,7 @@ namespace Events
             {
                 m_typedActions[i](value);
             }
-            
+
             Raise();
         }
 
@@ -143,7 +144,7 @@ namespace Events
         {
             if (m_typedListeners.Contains(listener))
             {
-                m_typedListeners.Remove(listener);
+                _ = m_typedListeners.Remove(listener);
             }
         }
 
@@ -159,7 +160,7 @@ namespace Events
         {
             if (m_typedActions.Contains(action))
             {
-                m_typedActions.Remove(action);
+                _ = m_typedActions.Remove(action);
             }
         }
 

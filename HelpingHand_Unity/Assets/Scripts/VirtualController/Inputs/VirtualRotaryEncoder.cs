@@ -66,7 +66,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
 
         float angleOffset = Vector2.SignedAngle(m_dragLastPosition, currentLocalPosition);
         int stepOffset = (int)(angleOffset / m_step);
-        
+
         if (stepOffset == 0)
         {
             return;
@@ -75,13 +75,13 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
         if (stepOffset > 0)
         {
             m_event.RaiseStepRight();
-        } 
+        }
         else
         {
             m_event.RaiseStepLeft();
         }
 
-        
+
         m_index = (m_index + (m_reverse ? 1 : -1) * stepOffset).Mod(m_stepCount);
         SetValue(m_index);
 
