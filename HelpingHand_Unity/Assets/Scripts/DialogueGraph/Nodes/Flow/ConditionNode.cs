@@ -18,6 +18,9 @@ public class ConditionNode : BaseNode
     [SerializeField]
     private ConditionBase m_condition;
 
+    [Output]
+    public DialogueFlow m_else;
+
     public override void Initialize()
     {
         m_condition.Initialize();
@@ -28,6 +31,11 @@ public class ConditionNode : BaseNode
         if (m_condition.Test())
         {
             await base.ContinueFlow(handler, inPort);
+        }
+        else
+        {
+            NodePort elsePort = GetOutputPort(nameof(m_else));
+            await ContinueFlow(handler, inPort, elsePort);
         }
     }
 
