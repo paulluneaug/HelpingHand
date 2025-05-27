@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Global Light 2.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 648, y: 56}
+  position: {x: 504, y: 264}
   folded: 0
   ports:
     keys:
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (2d time) (1)"
+  m_content: "Encore avec les lumi\xE8res de la salle ? \xC9teins tout de suite !"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-9086622756207219556
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Global Light End 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1832, y: -856}
+  position: {x: 1576, y: -392}
   folded: 0
   ports:
     keys:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Bon c'est mieux comme \xE7a...\nAlors o\xF9 est-ce que j'en \xE9tais..."
+  m_content: "Bon c'est mieux comme \xE7a. Alors o\xF9 est-ce que j'en \xE9tais..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 11400000, guid: 748111cb5bcc5e74e9dc9539f6984aaf, type: 2}
 --- !u!114 &-8560536780818355489
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: Increment global execution count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1160, y: 328}
+  position: {x: -968, y: 248}
   folded: 0
   ports:
     keys:
@@ -198,6 +198,49 @@ MonoBehaviour:
   m_description: 
   m_increment: 1
   m_variable: {fileID: 11400000, guid: 1eb71aa0ceac5e5468e9c23607d4b7f1, type: 2}
+--- !u!114 &-5863454737118967246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c5f3f9e1b9e3a46bd25695bf2c7850, type: 3}
+  m_Name: Value Time Now
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2616, y: 264}
+  folded: 0
+  ports:
+    keys:
+    - m_TimeNow
+    values:
+    - _fieldName: m_TimeNow
+      _node: {fileID: -5863454737118967246}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_inValue
+        node: {fileID: 832965144980684856}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebug: 1
+  m_description: 
+  m_TimeNow: 0
 --- !u!114 &-4104502719213378196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +254,7 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Global Light 1.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 648, y: -1160}
+  position: {x: 504, y: -520}
   folded: 0
   ports:
     keys:
@@ -254,7 +297,8 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (first time) (1)"
+  m_content: "Je crois que je t'avais dit de ne pas toucher aux lumi\xE8res de la
+    salle durant la repr\xE9sentation. Tu peux les \xE9teindre ?"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &-2765385272706123732
@@ -270,7 +314,7 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Global Light End 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1784, y: 1592}
+  position: {x: 1576, y: 1160}
   folded: 0
   ports:
     keys:
@@ -313,7 +357,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Bon c'est mieux comme \xE7a...\nAlors o\xF9 est-ce que j'en \xE9tais..."
+  m_content: "Sache que je passe un TR\xC8S mauvais moment. Reprenons..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 11400000, guid: 748111cb5bcc5e74e9dc9539f6984aaf, type: 2}
 --- !u!114 &-2751932113907057705
@@ -329,7 +373,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1848, y: 328}
+  position: {x: -1656, y: 248}
   folded: 0
   ports:
     keys:
@@ -369,124 +413,6 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Start the graph here
   m_priority: 10
---- !u!114 &-2618054623453131275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 2.2
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 568, y: 280}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -2618054623453131275}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_sequence 1
-        node: {fileID: -116271974007765571}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -2618054623453131275}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 4779757357934396693}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (2d time) (2)"
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
---- !u!114 &-2527200436602953117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 3.2
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 552, y: 1512}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -2527200436602953117}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_sequence 1
-        node: {fileID: -1345512575537652514}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -2527200436602953117}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 6889655905858105940}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (3rd+ time) (2)"
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
 --- !u!114 &-1451217696873072907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +426,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2808, y: 408}
+  position: {x: 2392, y: 408}
   folded: 0
   ports:
     keys:
@@ -531,7 +457,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 1279750985825110323}
+        node: {fileID: 832965144980684856}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -564,7 +490,7 @@ MonoBehaviour:
   m_Name: Dialogue Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 56, y: 1608}
+  position: {x: 152, y: 1176}
   folded: 0
   ports:
     keys:
@@ -572,8 +498,6 @@ MonoBehaviour:
     - m_sequence
     - m_else
     - m_sequence 0
-    - m_sequence 1
-    - m_sequence 2
     values:
     - _fieldName: m_in
       _node: {fileID: -1345512575537652514}
@@ -624,30 +548,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
-    - _fieldName: m_sequence 1
-      _node: {fileID: -1345512575537652514}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -2527200436602953117}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: m_sequence 2
-      _node: {fileID: -1345512575537652514}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 4124252733164046010}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -672,10 +572,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 2.4
+  m_Name: Dialogue Interruption Global Light 2.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 456, y: 728}
+  position: {x: 552, y: 504}
   folded: 0
   ports:
     keys:
@@ -718,7 +618,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (2d time) (4) (repeat)"
+  m_content: Ha ha ! Qu'est-ce qu'on s'amuse, hein ?
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &-116271974007765571
@@ -734,7 +634,7 @@ MonoBehaviour:
   m_Name: Dialogue Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 40, y: 440}
+  position: {x: 136, y: 376}
   folded: 0
   ports:
     keys:
@@ -742,8 +642,6 @@ MonoBehaviour:
     - m_sequence
     - m_else
     - m_sequence 0
-    - m_sequence 1
-    - m_sequence 2
     values:
     - _fieldName: m_in
       _node: {fileID: -116271974007765571}
@@ -794,30 +692,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
-    - _fieldName: m_sequence 1
-      _node: {fileID: -116271974007765571}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -2618054623453131275}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: m_sequence 2
-      _node: {fileID: -116271974007765571}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 8879249883158576830}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -847,8 +721,6 @@ MonoBehaviour:
   nodes:
   - {fileID: -2751932113907057705}
   - {fileID: -4104502719213378196}
-  - {fileID: 204944481000469491}
-  - {fileID: 3721397765627318667}
   - {fileID: 1065568671611667386}
   - {fileID: 3014503775287954927}
   - {fileID: 2030744951520009959}
@@ -859,8 +731,6 @@ MonoBehaviour:
   - {fileID: -8560536780818355489}
   - {fileID: -116271974007765571}
   - {fileID: -9187839150895031892}
-  - {fileID: -2618054623453131275}
-  - {fileID: 8879249883158576830}
   - {fileID: -403132829028716600}
   - {fileID: 363634971037514213}
   - {fileID: 4779757357934396693}
@@ -868,69 +738,10 @@ MonoBehaviour:
   - {fileID: -1345512575537652514}
   - {fileID: -2765385272706123732}
   - {fileID: 869105416637553366}
-  - {fileID: -2527200436602953117}
-  - {fileID: 4124252733164046010}
   - {fileID: 5707384061461111984}
   - {fileID: 6889655905858105940}
---- !u!114 &204944481000469491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 1.2
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 568, y: -936}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: 204944481000469491}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_sequence 1
-        node: {fileID: 3014503775287954927}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: 204944481000469491}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 2030744951520009959}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (first time) (2)"
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
+  - {fileID: 832965144980684856}
+  - {fileID: -5863454737118967246}
 --- !u!114 &363634971037514213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,7 +755,7 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Global Light End 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1864, y: 392}
+  position: {x: 1592, y: 408}
   folded: 0
   ports:
     keys:
@@ -987,9 +798,87 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Bon c'est mieux comme \xE7a...\nAlors o\xF9 est-ce que j'en \xE9tais..."
+  m_content: "Tu m'as fait perdre le fil. O\xF9 est-ce que j'en \xE9tais..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 11400000, guid: 748111cb5bcc5e74e9dc9539f6984aaf, type: 2}
+--- !u!114 &832965144980684856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d489a8263feb2438d078021d130f17, type: 3}
+  m_Name: Set Blackboard Value
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2664, y: 408}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 832965144980684856}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -1451217696873072907}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 832965144980684856}
+      _typeQualifiedName: System.Object, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_TimeNow
+        node: {fileID: -5863454737118967246}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 832965144980684856}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 1279750985825110323}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_inValue
+      Entry: 7
+      Data: 0|System.Single, mscorlib
+    - Name: 
+      Entry: 4
+      Data: 113.597191
+    - Name: 
+      Entry: 8
+      Data: 
+  m_showDebug: 1
+  m_description: 
+  m_key: timer input count
 --- !u!114 &869105416637553366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +892,7 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Global Light 3.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 632, y: 1288}
+  position: {x: 504, y: 1048}
   folded: 0
   ports:
     keys:
@@ -1046,7 +935,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (3rd+ time) (1)"
+  m_content: "Tiens donc, les lumi\xE8res, \xE7a faisait longtemps !"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &1065568671611667386
@@ -1059,10 +948,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 1.4
+  m_Name: Dialogue Interruption Global Light 1.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 456, y: -488}
+  position: {x: 552, y: -280}
   folded: 0
   ports:
     keys:
@@ -1105,7 +994,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (first time) (4) (repeat)"
+  m_content: "C'est quand tu veux pour \xE9teindre..."
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &1155235488444859843
@@ -1200,7 +1089,7 @@ MonoBehaviour:
   m_Name: Restart graph
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3064, y: 408}
+  position: {x: 2984, y: 408}
   folded: 0
   ports:
     keys:
@@ -1213,7 +1102,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -1451217696873072907}
+        node: {fileID: 832965144980684856}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1254,7 +1143,7 @@ MonoBehaviour:
   m_Name: Wait for global lights off
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1368, y: -872}
+  position: {x: 1016, y: -424}
   folded: 0
   ports:
     keys:
@@ -1269,12 +1158,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_out
         node: {fileID: -4104502719213378196}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: 204944481000469491}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: 3721397765627318667}
         reroutePoints: []
       - fieldName: m_out
         node: {fileID: 1065568671611667386}
@@ -1303,7 +1186,7 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 3014503775287954927}
         reroutePoints:
-        - {x: 544, y: -96}
+        - {x: 832, y: 96}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1337,7 +1220,7 @@ MonoBehaviour:
   m_Name: Dialogue Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 40, y: -840}
+  position: {x: 168, y: -408}
   folded: 0
   ports:
     keys:
@@ -1345,8 +1228,6 @@ MonoBehaviour:
     - m_sequence
     - m_else
     - m_sequence 0
-    - m_sequence 1
-    - m_sequence 2
     values:
     - _fieldName: m_in
       _node: {fileID: 3014503775287954927}
@@ -1397,30 +1278,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
-    - _fieldName: m_sequence 1
-      _node: {fileID: 3014503775287954927}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 204944481000469491}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: m_sequence 2
-      _node: {fileID: 3014503775287954927}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 3721397765627318667}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1435,65 +1292,6 @@ MonoBehaviour:
     n'a pas \xE9t\xE9 lu"
   m_sequence: []
   m_loop: 0
---- !u!114 &3721397765627318667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 1.3
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 520, y: -712}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: 3721397765627318667}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_sequence 2
-        node: {fileID: 3014503775287954927}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: 3721397765627318667}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 2030744951520009959}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (first time) (3)"
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
 --- !u!114 &3935527377422329109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,7 +1305,7 @@ MonoBehaviour:
   m_Name: Interrupt With Condition
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1576, y: 328}
+  position: {x: -1384, y: 248}
   folded: 0
   ports:
     keys:
@@ -1563,65 +1361,6 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: 
   m_interruptable: 0
---- !u!114 &4124252733164046010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 3.3
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 504, y: 1736}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: 4124252733164046010}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_sequence 2
-        node: {fileID: -1345512575537652514}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: 4124252733164046010}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 6889655905858105940}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (3rd+ time) (3)"
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
 --- !u!114 &4779757357934396693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,7 +1374,7 @@ MonoBehaviour:
   m_Name: Wait for global lights off
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 376}
+  position: {x: 1032, y: 392}
   folded: 0
   ports:
     keys:
@@ -1650,12 +1389,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_out
         node: {fileID: -9187839150895031892}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: -2618054623453131275}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: 8879249883158576830}
         reroutePoints: []
       - fieldName: m_out
         node: {fileID: -403132829028716600}
@@ -1684,7 +1417,7 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -116271974007765571}
         reroutePoints:
-        - {x: 576, y: 1120}
+        - {x: 784, y: 912}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1704,7 +1437,7 @@ MonoBehaviour:
   m_state: {fileID: 11400000, guid: 08321531e1c429046b398a77d4683db5, type: 2}
   m_mustBeSet: 1
   m_doesTimeout: 1
-  m_timeout: 6
+  m_timeout: 5
 --- !u!114 &5707384061461111984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,10 +1448,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 3.4
+  m_Name: Dialogue Interruption Global Light 3.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 440, y: 1960}
+  position: {x: 552, y: 1288}
   folded: 0
   ports:
     keys:
@@ -1761,7 +1494,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
   m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (3rd+ time) (4) (repeat)"
+  m_content: "\xC9teins.<waitfor=0.3> Les.<waitfor=0.3> Lumi\xE8res.<waitfor=0.3>"
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
 --- !u!114 &6889655905858105940
@@ -1777,7 +1510,7 @@ MonoBehaviour:
   m_Name: Wait for global lights off
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1240, y: 1576}
+  position: {x: 1000, y: 1144}
   folded: 0
   ports:
     keys:
@@ -1792,12 +1525,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_out
         node: {fileID: 869105416637553366}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: -2527200436602953117}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: 4124252733164046010}
         reroutePoints: []
       - fieldName: m_out
         node: {fileID: 5707384061461111984}
@@ -1826,7 +1553,7 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -1345512575537652514}
         reroutePoints:
-        - {x: 576, y: 2352}
+        - {x: 784, y: 1712}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1846,7 +1573,7 @@ MonoBehaviour:
   m_state: {fileID: 11400000, guid: 08321531e1c429046b398a77d4683db5, type: 2}
   m_mustBeSet: 1
   m_doesTimeout: 1
-  m_timeout: 6
+  m_timeout: 5
 --- !u!114 &7331391410199740346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,7 +1587,7 @@ MonoBehaviour:
   m_Name: Switch Int
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -840, y: 328}
+  position: {x: -648, y: 248}
   folded: 0
   ports:
     keys:
@@ -1952,65 +1679,6 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: 
-  m_value: 5
+  m_value: 1
   m_values: 0100000002000000
   m_exactValues: 1
---- !u!114 &8879249883158576830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Global Light 2.3
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 520, y: 504}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: 8879249883158576830}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_sequence 2
-        node: {fileID: -116271974007765571}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: 8879249883158576830}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 4779757357934396693}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
-  m_content: "Eteins la lumi\xE8re ! (2d time) (3)"
-  m_canRepeat: 0
-  m_audioEvent: {fileID: 0}
