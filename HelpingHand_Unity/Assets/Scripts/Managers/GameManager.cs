@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     private enum GameState
     {
+        Idle,
         MainMenu,
         Gameplay,
     }
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         base.Start();
         switch (m_currentGameState)
         {
+            case GameState.Idle:
+                break;
             case GameState.MainMenu:
                 break;
             case GameState.Gameplay:
@@ -61,11 +64,19 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void StartGameplay()
     {
         m_currentGameState = GameState.Gameplay;
-        m_actSequenceManager.Start();
+        m_actSequenceManager.StartSequence();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (m_currentGameState != GameState.Gameplay)
+            {
+                StartGameplay();
+            }
+        }
+        
         switch (m_currentGameState)
         {
             case GameState.MainMenu:
@@ -103,7 +114,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void UpdateGameplay()
     {
-        m_actSequenceManager.Update(Time.deltaTime);
+        m_actSequenceManager.UpdateSequence(Time.deltaTime);
     }
     #endregion
 

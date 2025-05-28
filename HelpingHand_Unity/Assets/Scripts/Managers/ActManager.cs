@@ -13,9 +13,10 @@ public class ActManager : MonoBehaviour
     // Cache
     [NonSerialized] private bool m_isFinished;
 
+    // TODO quand on lance la scène, l'acte se lance tout seul sans prendre en compte le GameManager
     private void Start()
     {
-        GameManager.Instance.ActSequenceManager.RegisterAct(this);
+        // GameManager.Instance.ActSequenceManager.RegisterAct(this);
     }
 
     public void StartAct(Puppet puppet)
