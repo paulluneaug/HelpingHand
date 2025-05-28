@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 using UnityEngine;
 
@@ -9,14 +10,27 @@ public class ActManager : MonoBehaviour
 
     [SerializeField] private Transform m_puppetStart;
     [SerializeField] private GraphController m_graphController;
+    [SerializeField] private bool m_autoStart = false;
         
     // Cache
     [NonSerialized] private bool m_isFinished;
 
-    // TODO quand on lance la scène, l'acte se lance tout seul sans prendre en compte le GameManager
     private void Start()
     {
-        // GameManager.Instance.ActSequenceManager.RegisterAct(this);
+        if (m_autoStart)
+        {
+            GameManager.Instance.ActSequenceManager.RegisterAct(this);
+        }
+    }
+
+    // For debug
+    [Conditional("UNITY_EDITOR")]
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.ActSequenceManager.RegisterAct(this);
+        }
     }
 
     public void StartAct(Puppet puppet)

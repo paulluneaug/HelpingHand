@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     private enum GameState
     {
-        Idle,
         MainMenu,
         Gameplay,
     }
@@ -49,8 +48,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         base.Start();
         switch (m_currentGameState)
         {
-            case GameState.Idle:
-                break;
             case GameState.MainMenu:
                 break;
             case GameState.Gameplay:
@@ -69,14 +66,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (m_currentGameState != GameState.Gameplay)
-            {
-                StartGameplay();
-            }
-        }
-        
         switch (m_currentGameState)
         {
             case GameState.MainMenu:
