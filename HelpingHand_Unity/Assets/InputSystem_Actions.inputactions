@@ -1027,7 +1027,16 @@
                     "type": "Value",
                     "id": "769a2f0c-52a3-43a8-b930-9ce6d499b279",
                     "expectedControlType": "Axis",
-                    "processors": "Remap(InitialRangeX=-1,InitialRangeY=1,TargetRangeY=1)",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Fader",
+                    "type": "Value",
+                    "id": "5d638789-c197-423e-b640-22a7c4be303f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -1069,11 +1078,22 @@
                 {
                     "name": "",
                     "id": "25a8f70f-6c5e-47eb-bba4-b889457f189a",
-                    "path": "<HID::Arduino LLC Arduino Leonardo>/stick/x",
+                    "path": "<Joystick>/stick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Potentiometer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a4b3299-715f-45df-a428-df9d35516f60",
+                    "path": "<Joystick>/stick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fader",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
