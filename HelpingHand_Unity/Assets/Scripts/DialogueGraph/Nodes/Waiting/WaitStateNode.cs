@@ -22,9 +22,11 @@ public class WaitStateNode : InterruptableNode
     private EntityState m_state;
 
     [SerializeField]
+    [LabelText("Must be set?")]
     private bool m_mustBeSet = true;
 
     [Space]
+    [LabelText("Timeout?")]
     [SerializeField]
     private bool m_doesTimeout;
 
@@ -33,8 +35,13 @@ public class WaitStateNode : InterruptableNode
     public DialogueFlow m_timeoutOut;
 
     [SerializeField]
-    [ShowIfGroup(nameof(m_doesTimeout))]
+    [ShowIf(nameof(m_doesTimeout))]
     private float m_timeout;
+
+    [SerializeField] 
+    [ShowIf(nameof(m_doesTimeout))]
+    [LabelText("Loop after timeout?")]
+    private bool m_loopAfterTimeout;
 
     private CancellationTokenSource m_timeoutSource;
     private bool m_isConditionPassed;
@@ -86,6 +93,27 @@ public class WaitStateNode : InterruptableNode
             break;
         }
     }
+    
+    // TODO algo pour régler la boucle qui stack overflow
+    private async UniTask ExecuteNode2(GraphRunnerHandler handler, NodePort inPort)
+    {
+        handler.CurrentNodes.Add(this);
+        await HandlePauseStop(handler);
+        // Si m_loopAfterTimeout est vrai alors 
+        // Tant que
+        await ExecuteNode(handler, inPort);
+        // est timeout
+        // alors envoyer sur 
+        await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_timeoutOut)));
+        // puis se remettre en noeud actif
+        handler.CurrentNodes.Add(this);
+        // -- fin tant que
+        
+        // si pas timeout, envoyer sur
+        await base.ContinueFlow(handler, inPort);
+        
+        // Sinon exécution normale
+    }
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
@@ -95,6 +123,12 @@ public class WaitStateNode : InterruptableNode
         {
             DebugLog($"Wait timeout");
             await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_timeoutOut)));
+            // If loop is active, we must loop here
+            if (m_loopAfterTimeout)
+            {
+                await ExecuteNode(handler, inPort);
+                await ContinueFlow(handler, inPort);
+            }
         }
         else
         {
