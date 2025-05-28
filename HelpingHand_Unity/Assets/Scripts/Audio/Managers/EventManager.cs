@@ -71,6 +71,10 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent DialogueEvent_Play;
     #endregion
 
+    #region Gear Events
+    [FoldoutGroup("Gear Events")][LabelWidth(200)] public WwiseEvent MainGear_Play;
+    #endregion
+
     public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
     {
         // Utilise l'ID de l'événement directement à partir du WwiseEvent
