@@ -63,6 +63,14 @@ public class DialogueNode : InterruptableNode
     [ShowInInspector, LabelWidth(125), ReadOnly]
     private int m_readCount;
 
+    [SerializeField]
+    [LabelWidth(125)]
+    private float m_waitTime = 1;
+
+    [SerializeField]
+    [LabelWidth(125)]
+    private bool m_waitUnscaled = false;
+
     public string Content => m_content;
     public bool CanRepeat => m_canRepeat;
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
@@ -119,5 +127,20 @@ public class DialogueNode : InterruptableNode
         
         m_hasBeenRead.Value = true;
         m_readCount++;
+        
+        while (true)
+        {
+            DebugLog($"Waiting for {m_waitTime} seconds");
+            if (await UniTask.WaitForSeconds(m_waitTime, m_waitUnscaled, PlayerLoopTiming.Update, handler.StopToken).SuppressCancellationThrow())
+            {
+                DebugLog($"Wait interrupted");
+                // The graph is being paused => We have to wait its reactivation
+                await HandlePauseStop(handler);
+                continue;
+            }
+
+            DebugLog($"Wait done");
+            break;
+        }
     }
 }
