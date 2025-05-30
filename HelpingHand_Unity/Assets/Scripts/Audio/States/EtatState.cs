@@ -1,6 +1,6 @@
 public enum EtatState
 {
-    IGNORE, 
-    On, 
+    IGNORE,
+    On,
     Off
 }

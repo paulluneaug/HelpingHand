@@ -56,8 +56,9 @@ public class DialogueNode : InterruptableNode
     [SerializeField]
     private AudioEvent m_audioEvent;
 
-    [FoldoutGroup("Debug")] [ShowInInspector, LabelWidth(125), ReadOnly]
-    private ObservableField<bool> m_hasBeenRead = new (false);
+    [FoldoutGroup("Debug")]
+    [ShowInInspector, LabelWidth(125), ReadOnly]
+    private readonly ObservableField<bool> m_hasBeenRead = new(false);
 
     [FoldoutGroup("Debug")]
     [ShowInInspector, LabelWidth(125), ReadOnly]
@@ -67,7 +68,7 @@ public class DialogueNode : InterruptableNode
     public bool CanRepeat => m_canRepeat;
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
-    
+
     protected override void Init()
     {
         base.Init();
@@ -101,12 +102,12 @@ public class DialogueNode : InterruptableNode
     {
         DebugLog($"Play");
         m_hasBeenInterrupted = false;
-        
+
         UniTask dialogueTask = DialogueManager.Instance.PlayDialogAsync(name, m_content, handler.StopToken);
         UniTask audioTask = m_audioEvent ? m_audioEvent.Play(null, handler.StopToken) : UniTask.CompletedTask;
-        
+
         DebugLog($"Wait for dialogue end");
-        
+
         if (await UniTask.WhenAll(dialogueTask, audioTask).SuppressCancellationThrow())
         {
             // Normalement le dialogue pouvait être interrompu, pas besoin de retester
@@ -116,7 +117,7 @@ public class DialogueNode : InterruptableNode
             m_hasBeenInterrupted = true;
             return;
         }
-        
+
         m_hasBeenRead.Value = true;
         m_readCount++;
     }

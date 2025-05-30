@@ -1,9 +1,9 @@
 public enum ObjetState
 {
-    IGNORE, 
-    Spot, 
-    Rideaux, 
+    IGNORE,
+    Spot,
+    Rideaux,
     Armure,
-    Carton, 
-    Rien 
+    Carton,
+    Rien
 }

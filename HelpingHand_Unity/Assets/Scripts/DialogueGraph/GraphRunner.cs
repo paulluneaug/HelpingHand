@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Threading;
 
 using Cysharp.Threading.Tasks;
 
@@ -107,13 +106,14 @@ public class GraphRunner : MonoBehaviour
             DebugLog($"[StartGraph] Graph is not running", LogType.Warning);
             return;
         }
-        
-        DebugLog($"Initialize"); 
+
+        DebugLog($"Initialize");
         m_graph.Initialize();
-        
+
         await UniTask.NextFrame();
-        
+
         DebugLog($"Start");
+
         m_graphRunnerHandler.Start();
         OnGraphStarted?.Invoke();
         bool isCancelled = await m_graph.Run(m_graphRunnerHandler).SuppressCancellationThrow();
@@ -138,7 +138,7 @@ public class GraphRunner : MonoBehaviour
                 disposableNode.Dispose();
             }
         }
-        
+
         UniTask.Action(async () =>
         {
             await UniTask.NextFrame();
@@ -185,6 +185,12 @@ public class GraphRunner : MonoBehaviour
                 break;
             case LogType.Log:
                 Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Assert:
+                break;
+            case LogType.Exception:
+                break;
+            default:
                 break;
         }
     }

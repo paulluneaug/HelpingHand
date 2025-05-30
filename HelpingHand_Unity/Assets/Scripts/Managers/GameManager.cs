@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 using UnityUtility.SceneReference;
 using UnityUtility.Singletons;
 
+using Separator = UnityUtility.CustomAttributes.SeparatorAttribute;
+
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     private enum GameState
@@ -17,22 +19,24 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
 
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
+    public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
 
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
 
     [SerializeField] private ActSequenceManager m_actSequenceManager;
+    [SerializeField] private GameOptionsManager m_gameOptionsManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
 
     [Title("Scene References")]
     [SerializeField] private SceneReference m_globalObjectsScene;
+    [Separator]
 
     // Cache
     [NonSerialized] private Puppet m_puppet;
     [NonSerialized] private GameState m_currentGameState;
-
 
     public override void Initialize()
     {
@@ -79,7 +83,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
     }
 
-#region Load
+    #region Load
     private void LoadGlobalObjectScene()
     {
 #if UNITY_EDITOR
@@ -135,4 +139,16 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     #endregion
 
+    public void StartGame()
+    {
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+    }
 }

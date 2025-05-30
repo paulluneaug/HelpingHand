@@ -21,6 +21,7 @@ public class AmbientLightController : MonoBehaviour
     private float m_smoothTime = .2f;
 
     private Vector3 m_hsv;
+
     private float m_targetIntensity;
     private float m_currentVelocity;
 
