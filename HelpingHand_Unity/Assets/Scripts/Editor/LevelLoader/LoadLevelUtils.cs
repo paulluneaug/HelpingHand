@@ -6,10 +6,16 @@ public static class LoadLevelUtils
     {
         if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
         {
-            StartupScenesReferences startupScenesReferences = StartupScenesReferences.Instance;
-
-            _ = EditorSceneManager.OpenScene(startupScenesReferences.EntryScene, OpenSceneMode.Single);
+            LoadCommonScenes();
             _ = EditorSceneManager.OpenScene(levelScenePath, OpenSceneMode.Additive);
         }
+    }
+
+    public static void LoadCommonScenes()
+    {
+        StartupScenesReferences startupScenesReferences = StartupScenesReferences.Instance;
+
+        _ = EditorSceneManager.OpenScene(startupScenesReferences.EntryScene, OpenSceneMode.Single);
+        _ = EditorSceneManager.OpenScene(startupScenesReferences.GloabalObjectsScene, OpenSceneMode.Additive);
     }
 }

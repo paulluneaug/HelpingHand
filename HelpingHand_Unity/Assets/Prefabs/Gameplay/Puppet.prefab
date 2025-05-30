@@ -43,8 +43,7 @@ GameObject:
   - component: {fileID: 3022957129543141574}
   - component: {fileID: 6429054074214071195}
   - component: {fileID: 1950785755491864467}
-  - component: {fileID: 715482954522232625}
-  - component: {fileID: 6634445429589562481}
+  - component: {fileID: 2869929615924869729}
   m_Layer: 0
   m_Name: Puppet
   m_TagString: Player
@@ -92,9 +91,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 124
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &6429054074214071195
 CapsuleCollider:
@@ -131,9 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e1ede2227c2c645b861aced537dc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_puppetSettings: {fileID: 11400000, guid: 32489bd1af8a6fc47a2e08de183c1b4a, type: 2}
-  m_puppetBehaviour: {fileID: 715482954522232625}
---- !u!114 &715482954522232625
+  m_puppetAnimator: {fileID: 852765490885441079}
+  m_splineToFollow: {fileID: 11400000, guid: 60ee3b3bf0ac9624881a0ffafaab0cc7, type: 2}
+  m_speedAlongSpline: {fileID: 11400000, guid: 8511053f1da8db94db54f050ab643e84, type: 2}
+--- !u!114 &2869929615924869729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,27 +142,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6692471691043219104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10ac7c41a6794648b9eca2df8c3a820, type: 3}
+  m_Script: {fileID: 11500000, guid: 29bd590978505b1499999e8a28b9b4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actions: 
---- !u!114 &6634445429589562481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6692471691043219104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ee45943ea3cc1c4286f5ad8911c15fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_walkSpeed: 1.295
-  m_doMove: 1
-  m_walkDirection: {x: 1, y: 0, z: 0}
-  m_animator: {fileID: 852765490885441079}
-  m_rigidbody: {fileID: 3022957129543141574}
+  m_variable: {fileID: 11400000, guid: 919b0e40eed72df44a24e4b976fc29b2, type: 2}
+  m_value: {fileID: 318932898162935300}
 --- !u!1001 &6539002478211402662
 PrefabInstance:
   m_ObjectHideFlags: 0

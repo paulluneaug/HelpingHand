@@ -22,27 +22,34 @@ public class ToggleInputTrigger : InputTrigger
     public override void Initialize()
     {
         base.Initialize();
-        SetActive(true);
+        ArmTrigger();
     }
 
-    protected override void Activate()
+    protected override void ArmTrigger()
     {
+        m_toggleVariable.OnActivate -= OnActivate;
+        m_toggleVariable.OnActivate += OnActivate;
+        m_toggleVariable.RemoveListener(OnToggleValueChanged);
         m_toggleVariable.AddListener(OnToggleValueChanged);
     }
 
-    protected override void Deactivate()
+    protected override void DisarmTrigger()
     {
+        m_toggleVariable.OnActivate -= OnActivate;
         m_toggleVariable.RemoveListener(OnToggleValueChanged);
+    }
+
+    private void OnActivate()
+    {
+        OnToggleValueChanged(m_toggleVariable.Value);
     }
 
     private void OnToggleValueChanged(bool isOn)
     {
-        if (m_triggerIfTrue == m_toggleVariable.Value)
-        {
-            m_isRaised = true;
-            RaiseTrigger();
+        m_isRaised = m_triggerIfTrue == m_toggleVariable.Value;
+        DisarmTrigger();
+        RaiseTriggeredEvent();
 
-            _ = DialogueManager.Instance.StartCoroutine(ReactivateCoroutine());
-        }
+        _ = GameManager.Instance.StartCoroutine(RearmTriggerCoroutine());
     }
 }

@@ -1,4 +1,8 @@
 using System;
+using System.Diagnostics;
+using System.Threading;
+
+using Cysharp.Threading.Tasks;
 
 using Febucci.UI;
 
@@ -8,12 +12,12 @@ using UnityEngine;
 
 using UnityUtility.Singletons;
 
+using Debug = UnityEngine.Debug;
+
 public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
 {
     public event Action OnDialogueStarted;
     public event Action OnDialogueEnded;
-    public event Action OnDialoguePaused;
-    public event Action OnDialogueResumed;
     public event Action OnDialogueInterrupted;
 
     [SerializeField]
@@ -22,79 +26,70 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     [SerializeField]
     private TypewriterByCharacter m_typewriter;
 
-    public bool IsShowingText => m_currentDialogue != null;
-    public bool CanBeInterrupted => !IsShowingText || m_currentDialogue.Interruptable;
-    public DialogueNode CurrentDialogue => m_currentDialogue;
-
     private DialogueNode m_currentDialogue;
+    private string m_currentDialogueTitle;
 
-    protected override void Start()
+    public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationToken token)
     {
-        base.Start();
+        if (!string.IsNullOrEmpty(m_currentDialogueTitle) || string.IsNullOrEmpty(dialogueTitle) || string.IsNullOrEmpty(content))
+        {
+            return;
+        }
+
+        m_currentDialogueTitle = dialogueTitle;
+        
+        DebugLog($"Play \"{content.Truncate(30)}\"");
+        
         m_typewriter.onTextShowed.AddListener(OnTextShowed);
-    }
-
-    public void PlayDialog(DialogueNode dialogue)
-    {
-        if (m_currentDialogue != null || dialogue == null)
-        {
-            return;
-        }
-
-        m_currentDialogue = dialogue;
-        Debug.Log($"{Debug_GetLogHeader()} Play ({m_currentDialogue.Content.Truncate(30)}");
-        m_typewriter.ShowText(m_currentDialogue.Content);
+        bool isTextShowed = false;
+        m_typewriter.ShowText(content);
+        
         OnDialogueStarted?.Invoke();
-    }
 
-    private void OnTextShowed()
-    {
-        Debug.Log($"{Debug_GetLogHeader()} Ended");
-        m_currentDialogue = null;
-        OnDialogueEnded?.Invoke();
-    }
-
-    public void PauseDialogue()
-    {
-        if (m_currentDialogue == null)
+        if (await UniTask.WaitUntil(() => isTextShowed, PlayerLoopTiming.Update, token).SuppressCancellationThrow())
         {
-            return;
+            DebugLog($"Interrupted");
+            m_typewriter.onTextShowed.RemoveListener(OnTextShowed);
+            m_typewriter.StopShowingText();
+            m_currentDialogueTitle = null;
+            OnDialogueInterrupted?.Invoke();
+            // Bubble up the exception
+            throw new OperationCanceledException(token);
         }
-
-        Debug.Log($"{Debug_GetLogHeader()} Paused");
-        m_typewriter.StopShowingText();
-        OnDialoguePaused?.Invoke();
+        
+        void OnTextShowed()
+        {
+            DebugLog($"On Text Showed");
+            m_typewriter.onTextShowed.RemoveListener(OnTextShowed);
+            isTextShowed = true;
+            m_currentDialogueTitle = null;
+            OnDialogueEnded?.Invoke();
+        }
     }
 
-    public void ResumeDialogue()
+    /// <summary>
+    /// Debug log with header
+    /// TODO: move it project-wise 
+    /// </summary>
+    [Conditional("UNITY_EDITOR")]
+    private void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
-        if (m_currentDialogue == null)
+        string GetLogHeader()
         {
-            return;
+            return $"[{Time.frameCount}] <color=#ff55ff>[DialogueManager]</color> [{(!string.IsNullOrEmpty(m_currentDialogueTitle) ? m_currentDialogueTitle : "null")}]";
         }
-
-        Debug.Log($"{Debug_GetLogHeader()} Resumed");
-        m_typewriter.StartShowingText();
-        OnDialogueResumed?.Invoke();
-    }
-
-    public void InterruptDialogue()
-    {
-        if (m_currentDialogue != null)
+        
+        switch (logType)
         {
-            Debug.Log($"{Debug_GetLogHeader()} Interrupted");
+            case LogType.Error:
+                Debug.LogError($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Warning:
+                Debug.LogWarning($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Log:
+                Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
         }
-        else
-        {
-            Debug.Log($"{Debug_GetLogHeader()} No dialogue to interrupt");
-        }
-        m_typewriter.StopShowingText();
-        m_currentDialogue = null;
-        OnDialogueInterrupted?.Invoke();
-    }
-
-    private string Debug_GetLogHeader()
-    {
-        return $"[{Time.frameCount}] <color=#ff55ff>[DialogueManager]</color> [{(m_currentDialogue ? m_currentDialogue.name : "null")}]";
     }
 }

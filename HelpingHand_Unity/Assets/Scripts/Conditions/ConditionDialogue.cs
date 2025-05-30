@@ -9,16 +9,22 @@ public class ConditionDialogue : ConditionBase
     [SerializeField]
     private bool m_isRead = true;
 
-    public override bool Test()
-    {
-        return m_isRead == m_dialogue.HasBeenRead.Value;
-    }
-
     public override void Initialize()
     {
         base.Initialize();
         m_dialogue.HasBeenRead.OnValueChanged -= OnValueChanged;
         m_dialogue.HasBeenRead.OnValueChanged += OnValueChanged;
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_dialogue.HasBeenRead.OnValueChanged -= OnValueChanged;
+    }
+
+    public override bool Test()
+    {
+        return m_isRead == m_dialogue.HasBeenRead.Value;
     }
 
     private void OnValueChanged(bool value)

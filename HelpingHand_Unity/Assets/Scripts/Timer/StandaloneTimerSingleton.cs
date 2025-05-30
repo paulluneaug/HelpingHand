@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -7,6 +8,8 @@ using UnityUtility.Timer;
 
 public class StandaloneTimerSingleton : MonoBehaviourSingleton<StandaloneTimerSingleton>
 {
+    public event Action OnUpdateTickEvent;
+
     private List<Timer> m_timers;
 
     public override void Initialize()
@@ -17,6 +20,8 @@ public class StandaloneTimerSingleton : MonoBehaviourSingleton<StandaloneTimerSi
 
     private void Update()
     {
+        OnUpdateTickEvent?.Invoke();
+
         for (int i = m_timers.Count - 1; i >= 0; i--)
         {
             Timer timer = m_timers[i];

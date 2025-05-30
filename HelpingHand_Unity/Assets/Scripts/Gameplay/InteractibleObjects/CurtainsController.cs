@@ -1,9 +1,11 @@
+using System;
+
 using UnityEngine;
 
-public class CurtainsController : SingleSliderInteractiveObject
+public class CurtainsController : MonoBehaviour
 {
     [SerializeField]
-    private FloatVariable m_sliderFloatVariable;
+    private FloatVariable m_inputEvent;
 
     [Range(0, 1)]
     [SerializeField]
@@ -15,61 +17,53 @@ public class CurtainsController : SingleSliderInteractiveObject
     [SerializeField]
     private Vector3 m_upPosition;
 
-    [Header("States")]
-
     [SerializeField]
-    private float m_activationDistance;
-
-    [SerializeField]
-    private EntityState m_fullyDownState;
-
-    [SerializeField]
-    private EntityState m_fullUpState;
-
-    [SerializeField]
-    private EntityState m_visibleState;
+    private float m_smoothTime = .5f;
 
     private Transform m_transform;
+    private Vector3 m_targetPosition;
+    private Vector3 m_currentVelocity;
 
     private void Awake()
     {
         m_transform = transform;
     }
 
-    protected override void Start()
+    private void OnEnable()
     {
-        base.Start();
-        m_masterSlider.SetValueWithoutNotify(m_startValue);
-        // m_masterSlider.OnSliderValueChanged += OnSliderValueChanged;
-        // OnSliderValueChanged(m_startValue);
-        m_sliderFloatVariable.AddListener(OnSliderValueChanged);
-        OnSliderValueChanged(m_startValue);
+        m_inputEvent.OnActivate -= OnInputEventActivate;
+        m_inputEvent.OnActivate += OnInputEventActivate;
+        m_inputEvent.RemoveListener(OnValueChanged);
+        m_inputEvent.AddListener(OnValueChanged);
     }
 
-    private new void OnSliderValueChanged(float value)
+    private void OnDisable()
     {
-        Vector3 oldPosition = m_transform.position;
-        m_transform.position = Vector3.Lerp(m_downPosition, m_upPosition, value);
+        m_inputEvent.OnActivate -= OnInputEventActivate;
+        m_inputEvent.RemoveListener(OnValueChanged);
+    }
 
-        if (oldPosition != m_transform.position)
+    private void OnInputEventActivate()
+    {
+        OnValueChanged(m_inputEvent.Value);
+    }
+
+    protected void Start()
+    {
+        OnValueChanged(m_inputEvent.Value);
+        m_transform.position = m_targetPosition;
+    }
+
+    private void OnValueChanged(float value)
+    {
+        m_targetPosition = Vector3.Lerp(m_downPosition, m_upPosition, value);
+    }
+
+    private void Update()
+    {
+        if (m_targetPosition != m_transform.position)
         {
-            if ((m_downPosition - transform.position).magnitude <= m_activationDistance)
-            {
-                m_fullyDownState.Set();
-            }
-            else
-            {
-                m_fullyDownState.Unset();
-            }
-
-            if ((m_upPosition - transform.position).magnitude <= m_activationDistance)
-            {
-                m_fullUpState.Set();
-            }
-            else
-            {
-                m_fullUpState.Unset();
-            }
+            m_transform.position = Vector3.SmoothDamp(m_transform.position, m_targetPosition, ref m_currentVelocity, m_smoothTime);
         }
     }
 }

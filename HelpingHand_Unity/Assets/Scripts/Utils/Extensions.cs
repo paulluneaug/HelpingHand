@@ -4,4 +4,14 @@ public static partial class Extensions
     {
         return value.Length <= maxChars ? value : value[..maxChars] + "...";
     }
+
+    public static int Mod(this int value, int mod)
+    {
+        return (value % mod + mod) % mod;
+    }
+
+    public static int Mod(this float value, int mod)
+    {
+        return (int)(value % mod + mod) % mod;
+    }
 }

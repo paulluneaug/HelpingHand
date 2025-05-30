@@ -10,8 +10,14 @@ public class ConditionTrigger : ConditionBase
     {
         base.Initialize();
         m_trigger.Initialize();
-        m_trigger.RaiseTriggerEvent -= RaiseOnPreconditionUpdated;
-        m_trigger.RaiseTriggerEvent += RaiseOnPreconditionUpdated;
+        m_trigger.OnTriggered -= RaiseOnPreconditionUpdated;
+        m_trigger.OnTriggered += RaiseOnPreconditionUpdated;
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        m_trigger.OnTriggered -= RaiseOnPreconditionUpdated;
     }
 
     public override bool Test()

@@ -6,8 +6,8 @@ using UnityEngine;
 public class ConditionOr : ConditionBase
 {
     [SerializeField]
-    private ConditionBase[] m_preconditions;
-
+    private ConditionBase[] m_preconditions = new ConditionBase[] {};
+    
     public ConditionBase[] Preconditions => m_preconditions;
 
     public override bool Test()
@@ -24,5 +24,25 @@ public class ConditionOr : ConditionBase
             precondition.OnPreconditionUpdated -= RaiseOnPreconditionUpdated;
             precondition.OnPreconditionUpdated += RaiseOnPreconditionUpdated;
         }
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        foreach (ConditionBase precondition in m_preconditions)
+        {
+            precondition.OnPreconditionUpdated -= RaiseOnPreconditionUpdated;
+        }
+    }
+
+    public override int Score()
+    {
+        int result = 0;
+        foreach (ConditionBase precondition in m_preconditions)
+        {
+            result += precondition.Score();
+        }
+
+        return result;
     }
 }

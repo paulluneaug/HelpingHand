@@ -12,50 +12,34 @@ public abstract class InputTrigger
     [SerializeField]
     private float m_reactivateTime;
 
-    public event Action RaiseTriggerEvent;
-    public bool IsActive => m_isActive;
+    public event Action OnTriggered;
+    public bool IsArmed => m_isArmed;
     public virtual bool IsRaised => m_isRaised;
 
     protected bool m_isRaised;
 
-    private bool m_isActive;
+    private bool m_isArmed;
+
     private WaitForSecondsRealtime m_wait;
     private Coroutine m_triggerCoroutine;
 
     public virtual void Initialize()
     {
         m_wait = new WaitForSecondsRealtime(m_reactivateTime);
-        m_isActive = false;
+        m_isArmed = false;
         m_triggerCoroutine = null;
     }
 
-    public void RaiseTrigger()
+    public void RaiseTriggeredEvent()
     {
-        RaiseTriggerEvent?.Invoke();
+        OnTriggered?.Invoke();
     }
 
-    protected void SetActive(bool isActive)
-    {
-        if (m_isActive == isActive)
-        {
-            return;
-        }
-        m_isActive = isActive;
-        if (m_isActive)
-        {
-            Activate();
-        }
-        else
-        {
-            Deactivate();
-        }
-    }
+    protected abstract void ArmTrigger();
 
-    protected abstract void Activate();
+    protected abstract void DisarmTrigger();
 
-    protected abstract void Deactivate();
-
-    protected IEnumerator ReactivateCoroutine()
+    protected IEnumerator RearmTriggerCoroutine()
     {
         if (!m_canReactivate)
         {
@@ -64,6 +48,6 @@ public abstract class InputTrigger
 
         yield return m_wait;
         m_isRaised = false;
-        SetActive(true);
+        ArmTrigger();
     }
 }

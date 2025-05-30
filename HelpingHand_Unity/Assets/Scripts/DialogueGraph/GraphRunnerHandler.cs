@@ -1,15 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
+[Serializable]
 public class GraphRunnerHandler : IDisposable
 {
     public CancellationToken StopToken => m_stopCancellation.Token;
+    public CancellationTokenSource StopSource => m_stopCancellation;
     public CancellationToken PauseToken => m_pauseCancellation.Token;
     public CancellationToken ResumeToken => m_resumeCancellation.Token;
-    public CancellationToken TimeoutToken => m_timeoutCancellation.Token;
-    public CancellationTokenSource Timeout => m_timeoutCancellation;
     public GraphRunner GraphRunner => m_graphRunner;
-    public BaseNode CurrentNode { get; set; }
+    public List<BaseNode> CurrentNodes { get; set; } = new();
+    public int Priority { get; set; }
     public bool IsRunning => m_isRunning;
     public bool IsPaused => m_isPaused;
 
@@ -17,7 +19,6 @@ public class GraphRunnerHandler : IDisposable
     private CancellationTokenSource m_stopCancellation = new();
     private CancellationTokenSource m_pauseCancellation = new();
     private CancellationTokenSource m_resumeCancellation = new();
-    private CancellationTokenSource m_timeoutCancellation = new();
     private bool m_isRunning;
     private bool m_isPaused;
 
@@ -61,12 +62,6 @@ public class GraphRunnerHandler : IDisposable
         m_isRunning = false;
         m_isPaused = false;
         m_stopCancellation.Cancel();
-    }
-
-    public void ResetTimeout()
-    {
-        m_timeoutCancellation.Dispose();
-        m_timeoutCancellation = new CancellationTokenSource();
     }
 
     public void Dispose()
