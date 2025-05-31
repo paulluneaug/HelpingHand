@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void StartGameplay()
     {
         m_currentGameState = GameState.Gameplay;
-        m_actSequenceManager.Start();
+        m_actSequenceManager.StartSequence();
     }
 
     private void Update()
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void UpdateGameplay()
     {
-        m_actSequenceManager.Update(Time.deltaTime);
+        m_actSequenceManager.UpdateSequence(Time.deltaTime);
     }
     #endregion
 

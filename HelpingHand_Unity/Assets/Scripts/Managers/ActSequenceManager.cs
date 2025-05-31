@@ -54,7 +54,7 @@ public class ActSequenceManager
         m_currentState = ActSequenceManagerState.NotStarted;
     }
 
-    public void Start()
+    public void StartSequence()
     {
         if (m_mode == ActSequenceManagerMode.Single)
         {
@@ -66,7 +66,7 @@ public class ActSequenceManager
 
     }
 
-    public void Update(float deltaTime)
+    public void UpdateSequence(float deltaTime)
     {
         if (m_mode == ActSequenceManagerMode.Single)
         {

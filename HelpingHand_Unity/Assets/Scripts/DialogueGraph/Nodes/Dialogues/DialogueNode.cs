@@ -127,6 +127,12 @@ public class DialogueNode : InterruptableNode
         
         m_hasBeenRead.Value = true;
         m_readCount++;
+
+        // Wait time
+        if (Mathf.Approximately(m_waitTime, 0))
+        {
+            return;
+        }
         
         while (true)
         {
