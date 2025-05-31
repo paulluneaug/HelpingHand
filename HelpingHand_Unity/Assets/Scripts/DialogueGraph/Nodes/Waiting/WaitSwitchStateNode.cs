@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 using Cysharp.Threading.Tasks;
-
-using Sirenix.OdinInspector;
 
 using UnityEngine;
 
@@ -14,29 +11,57 @@ using XNode;
 [NodeWidth(350)]
 [CreateNodeMenu("Waiting/Wait Any State")]
 [NodeTint(0.2f, 0.1f, .3f)]
-public class WaitSwitchStateNode : InterruptableNode
+public class WaitSwitchStateNode : WaitNodeBase
 {
-    [Input]
-    public DialogueFlow m_in;
-
-    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
-    public List<EntityState> m_states = new();
-
     [Space]
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
     [SerializeField]
-    private bool m_doesTimeout;
-
-    [Output]
-    [ShowIf(nameof(m_doesTimeout))]
-    public DialogueFlow m_timeoutOut;
-
-    [SerializeField]
-    [ShowIfGroup(nameof(m_doesTimeout))]
-    private float m_timeout;
+    private List<EntityState> m_states = new();
 
     private List<NodePort> m_continuePortList;
-    private CancellationTokenSource m_timeoutSource;
     private readonly bool m_isTimeout;
+
+    protected override void InitializeExecute(GraphRunnerHandler handler, NodePort inPort)
+    {
+        foreach (EntityState state in m_states)
+        {
+            state.RemoveListener(UpdateWaitUntilTest);
+            state.AddListener(UpdateWaitUntilTest);
+        }
+    }
+
+    protected override void DisposeExecute(GraphRunnerHandler handler, NodePort inPort)
+    {
+        foreach (EntityState state in m_states)
+        {
+            state.RemoveListener(UpdateWaitUntilTest);
+        }
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        
+        foreach (EntityState state in m_states)
+        {
+            state.RemoveListener(UpdateWaitUntilTest);
+        }
+    }
+
+    protected override void UpdateWaitUntilTest()
+    {
+        m_continuePortList.Clear();
+        foreach (NodePort outputPort in DynamicOutputs)
+        {
+            EntityState state = GetState(outputPort);
+            if (state.IsSet)
+            {
+                m_continuePortList.Add(outputPort);
+            }
+        }
+
+        m_stopWait = m_continuePortList.Count > 0;
+    }
 
     private EntityState GetState(NodePort port)
     {
@@ -48,62 +73,11 @@ public class WaitSwitchStateNode : InterruptableNode
         throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
     }
 
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
-    {
-        while (true)
-        {
-            DebugLog($"Waiting for states");
-
-            CancellationToken cancellationToken = handler.StopToken;
-
-            if (m_doesTimeout)
-            {
-                DebugLog($"With timeout ({m_timeout} seconds)");
-                m_timeoutSource?.Dispose();
-                m_timeoutSource = new();
-                _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
-                CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
-                cancellationToken = linkedTokenSource.Token;
-            }
-
-            m_continuePortList = new();
-            UniTask task = UniTask.WaitUntil(() =>
-            {
-                m_continuePortList.Clear();
-                foreach (NodePort outputPort in DynamicOutputs)
-                {
-                    EntityState state = GetState(outputPort);
-                    if (state.IsSet)
-                    {
-                        m_continuePortList.Add(outputPort);
-                    }
-                }
-
-                return m_continuePortList.Count > 0;
-            }, PlayerLoopTiming.Update, cancellationToken);
-
-            if (await task.SuppressCancellationThrow())
-            {
-                DebugLog($"Wait is interrupted");
-
-                if (!m_timeoutSource.IsCancellationRequested)
-                {
-                    DebugLog($"Pause/stop requested");
-                    // The graph is being paused => We have to wait its reactivation
-                    await HandlePauseStop(handler);
-                    continue;
-                }
-            }
-
-            break;
-        }
-    }
-
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (m_timeoutSource is { IsCancellationRequested: true })
+        if (IsTimeout)
         {
-            DebugLog($"Wait is timeout");
+            DebugLog($"Has timeout");
             await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_timeoutOut)));
         }
         else
@@ -111,11 +85,5 @@ public class WaitSwitchStateNode : InterruptableNode
             DebugLog($"Set states has been found: [{m_continuePortList.Select(port => (GetState(port)).name).Aggregate((state, aggregate) => $"{aggregate}, {state}")}]");
             await UniTask.WhenAll(m_continuePortList.Select(port => ContinueFlow(handler, inPort, port)));
         }
-    }
-
-    public override void Dispose()
-    {
-        base.Dispose();
-        m_timeoutSource?.Dispose();
     }
 }
