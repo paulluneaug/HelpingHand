@@ -7,13 +7,12 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
-using UnityEngine.Serialization;
 
 using UnityUtility.ObservableFields;
 
 using XNode;
 
-[NodeWidth(300)]
+[NodeWidth(350)]
 [CreateNodeMenu("Dialogues/Dialogue")]
 [NodeTint(0.2f, 0.4f, 0.2f)]
 public class DialogueNode : InterruptableNode
@@ -26,16 +25,41 @@ public class DialogueNode : InterruptableNode
     [SerializeField]
     private DialogueFlow m_out;
 
-    [BoxGroup("Content")]
-    [HideLabel, Multiline(3)]
+    [TabGroup("Content", "Neutral")]
+    [Multiline(3)]
+    [HideLabel]
     [SerializeField]
     private string m_content;
+    
+    [TabGroup("Content", "Satisfied")]
+    [HideLabel, Multiline(3)]
+    [SerializeField]
+    private string m_contentSatisfied;
+    
+    [TabGroup("Content", "Annoyed")]
+    [HideLabel, Multiline(3)]
+    [SerializeField]
+    private string m_contentAnnoyed;
+    
+    [TabGroup("Content", "Pissed")]
+    [HideLabel, Multiline(3)]
+    [SerializeField]
+    private string m_contentPissed;
 
-    [FormerlySerializedAs("m_multipleReads")]
-    [BoxGroup("Content")]
+    [PropertySpace(SpaceBefore = 0, SpaceAfter = 8)]
     [SerializeField]
     [LabelWidth(100)]
     private bool m_canRepeat = true;
+
+    [BoxGroup("Wait")]
+    [SerializeField]
+    [LabelWidth(125)]
+    private float m_waitTime = 1;
+
+    [BoxGroup("Wait")]
+    [SerializeField]
+    [LabelWidth(125)]
+    private bool m_waitUnscaled = false;
 
     [ShowIf("@m_audioEvent == null")]
     [BoxGroup("Audio")]
@@ -62,14 +86,6 @@ public class DialogueNode : InterruptableNode
     [FoldoutGroup("Debug")]
     [ShowInInspector, LabelWidth(125), ReadOnly]
     private int m_readCount;
-
-    [SerializeField]
-    [LabelWidth(125)]
-    private float m_waitTime = 1;
-
-    [SerializeField]
-    [LabelWidth(125)]
-    private bool m_waitUnscaled = false;
 
     public string Content => m_content;
     public bool CanRepeat => m_canRepeat;
@@ -110,7 +126,7 @@ public class DialogueNode : InterruptableNode
         DebugLog($"Play");
         m_hasBeenInterrupted = false;
         
-        UniTask dialogueTask = DialogueManager.Instance.PlayDialogAsync(name, m_content, handler.StopToken);
+        UniTask dialogueTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopToken);
         UniTask audioTask = m_audioEvent ? m_audioEvent.Play(null, handler.StopToken) : UniTask.CompletedTask;
         
         DebugLog($"Wait for dialogue end");
@@ -148,5 +164,26 @@ public class DialogueNode : InterruptableNode
             DebugLog($"Wait done");
             break;
         }
+    }
+
+    private string GetContent()
+    {
+        NarratorState narratorState = DialogueManager.Instance.NarratorState;
+        if (narratorState.Satisfied.IsSet)
+        {
+            return string.IsNullOrEmpty(m_contentSatisfied) ? m_content : m_contentSatisfied;
+        }
+        
+        if (narratorState.Annoyed.IsSet)
+        {
+            return string.IsNullOrEmpty(m_contentAnnoyed) ? m_content : m_contentAnnoyed;
+        }
+        
+        if (narratorState.Pissed.IsSet)
+        {
+            return string.IsNullOrEmpty(m_contentPissed) ? m_content : m_contentPissed;
+        }
+
+        return m_content;
     }
 }

@@ -26,6 +26,11 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     [SerializeField]
     private TypewriterByCharacter m_typewriter;
 
+    [SerializeField]
+    private NarratorState m_narratorState;
+
+    public NarratorState NarratorState => m_narratorState;
+
     private DialogueNode m_currentDialogue;
     private string m_currentDialogueTitle;
 
