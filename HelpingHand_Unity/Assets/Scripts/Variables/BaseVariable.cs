@@ -21,7 +21,7 @@ public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
     [SerializeField]
 #if UNITY_EDITOR
     [Delayed]
-    [OnValueChanged("OnValueChanged")]
+    [OnValueChanged("OnValueChangedInInspector")]
 #endif
     protected T m_value;
 
@@ -49,7 +49,7 @@ public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
 
             if (ValueChanged(oldValue, m_runtimeValue))
             {
-                Raise(m_runtimeValue);
+                OnValueChanged(oldValue, m_runtimeValue);
             }
 #else
             T oldValue = m_value;
@@ -57,7 +57,7 @@ public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
 
             if (ValueChanged(oldValue, m_value))
             {
-                Raise(m_value);
+                OnValueChanged(oldValue, m_value);
             }
 #endif
         }
@@ -78,12 +78,18 @@ public abstract class BaseVariable<T> : BaseGameEvent<T>, IVariable
 #endif
 
 #if UNITY_EDITOR
-    private void OnValueChanged()
+    private void OnValueChangedInInspector()
     {
+        T oldValue = m_runtimeValue;
         m_runtimeValue = m_value;
-        Raise(m_runtimeValue);
+        OnValueChanged(oldValue, m_runtimeValue);
     }
 #endif
+
+    protected virtual void OnValueChanged(T oldValue, T newValue)
+    {
+        Raise(m_runtimeValue);
+    }
 
     public void SetValueWithoutNotify(T value)
     {
