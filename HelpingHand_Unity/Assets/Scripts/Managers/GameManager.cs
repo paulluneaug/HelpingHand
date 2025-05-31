@@ -3,6 +3,7 @@ using System;
 using Sirenix.OdinInspector;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 using UnityUtility.SceneReference;
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
 
+    public InputAction SkipDialogueInput => m_skipDialogueInput.action;
+
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
 
@@ -34,6 +37,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private SceneReference m_globalObjectsScene;
     [Separator]
 
+    [Title("Input References")]
+    [SerializeField] private InputActionReference m_skipDialogueInput;
+
     // Cache
     [NonSerialized] private Puppet m_puppet;
     [NonSerialized] private GameState m_currentGameState;
@@ -45,6 +51,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         LoadGlobalObjectScene();
 
         m_currentGameState = m_startGameState;
+
+        m_skipDialogueInput.asset.Enable();
     }
 
     protected override void Start()
