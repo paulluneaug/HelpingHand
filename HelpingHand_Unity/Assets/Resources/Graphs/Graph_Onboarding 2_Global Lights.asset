@@ -1,66 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8596623034309422450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 632, y: -264}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -8596623034309422450}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: -5380636645386814925}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -8596623034309422450}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 3052270152535175503}
-        reroutePoints: []
-      - fieldName: m_in
-        node: {fileID: 8229454814148213892}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 0
-  m_waitTime: 2
-  m_unscaled: 0
 --- !u!114 &-8593754463068087676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,71 +59,6 @@ MonoBehaviour:
   m_content: "On peut passer \xE0 la suite."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
---- !u!114 &-8550092342788941510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 3432, y: -904}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -8550092342788941510}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: -1678166920989867139}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: -6310571771393336078}
-        reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: -532063954026977233}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -8550092342788941510}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 4934192616184835313}
-        reroutePoints: []
-      - fieldName: m_in
-        node: {fileID: 4435828099126403674}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 0
   m_waitTime: 2
   m_unscaled: 0
 --- !u!114 &-8205328504482604724
@@ -247,6 +121,8 @@ MonoBehaviour:
     de la salle doivent rester \xE9teintes..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 22
+  m_unscaled: 0
 --- !u!114 &-7529699739381909923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +183,8 @@ MonoBehaviour:
     non ?"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &-6404294614456921619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,68 +279,10 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: 
   m_variableIn:
-    Value: 20
+    Value: 1
   m_increment: 1
   m_variableOut:
-    Value: 20
---- !u!114 &-6375639938786975348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -8, y: -264}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -6375639938786975348}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: 3790325056312640404}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -6375639938786975348}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -5380636645386814925}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 1
-  m_waitTime: 2
-  m_unscaled: 0
+    Value: 1
 --- !u!114 &-6310571771393336078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +321,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -8550092342788941510}
+        node: {fileID: 1504621091200893832}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -523,6 +343,8 @@ MonoBehaviour:
     quelque chose \xE0 sauver apr\xE8s tout."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &-5471062062866535725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +404,8 @@ MonoBehaviour:
   m_content: Ne m'en veux pas d'insister hein, je sens que tu en as besoin...
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &-5380636645386814925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +432,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -6375639938786975348}
+        node: {fileID: 3790325056312640404}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -620,7 +444,10 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -8596623034309422450}
+        node: {fileID: 3052270152535175503}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 8229454814148213892}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -642,6 +469,8 @@ MonoBehaviour:
     dans le noir. Je ne t'apprends rien j'esp\xE8re."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &-5255160588323726711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,6 +530,8 @@ MonoBehaviour:
   m_content: Encore un qui fait n'importe quoi...
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &-4371676715320391880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,6 +592,8 @@ MonoBehaviour:
     Regarde les voyants lumineux peut-\xEAtre ?"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &-1678166920989867139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,7 +632,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -8550092342788941510}
+        node: {fileID: 1504621091200893832}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -821,6 +654,8 @@ MonoBehaviour:
     qui sont pass\xE9s par ici..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &-1592283817127671702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,6 +716,8 @@ MonoBehaviour:
     non ? Tu sais t'en servir quand m\xEAme."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &-1118044617527560967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1026,7 +863,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -8550092342788941510}
+        node: {fileID: 1504621091200893832}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1043,11 +880,13 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebug: 1
   m_description: Display the content. Loops back if interrupted
-  m_interruptable: 0
+  m_interruptable: 1
   m_content: "Enfin elles sont \xE9teintes ! Je sens qu'elle va \xEAtre longue cette
     journ\xE9e..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &-250234850845267456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,7 +959,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4662089034119733656}
-  - {fileID: -8596623034309422450}
   - {fileID: 3052270152535175503}
   - {fileID: 69235015225015850}
   - {fileID: -1678166920989867139}
@@ -1131,7 +969,6 @@ MonoBehaviour:
   - {fileID: -1592283817127671702}
   - {fileID: 5940134337118002107}
   - {fileID: -8205328504482604724}
-  - {fileID: -8550092342788941510}
   - {fileID: 589682606745690414}
   - {fileID: 3302907912504281877}
   - {fileID: -6404294614456921619}
@@ -1140,7 +977,6 @@ MonoBehaviour:
   - {fileID: -532063954026977233}
   - {fileID: -5380636645386814925}
   - {fileID: 3790325056312640404}
-  - {fileID: -6375639938786975348}
   - {fileID: 4934192616184835313}
   - {fileID: -5471062062866535725}
   - {fileID: 3515301945936933447}
@@ -1161,8 +997,8 @@ MonoBehaviour:
   - {fileID: 8174187315473774340}
   - {fileID: 6349970386383097155}
   - {fileID: 8969448227153945682}
-  - {fileID: 2312669717615297661}
   - {fileID: 4435828099126403674}
+  - {fileID: 1504621091200893832}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,6 +1059,8 @@ MonoBehaviour:
     d'actives pour le moment...
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &589682606745690414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,6 +1120,8 @@ MonoBehaviour:
   m_content: Heu... Il y a quelqu'un ? Tu m'entends bien ? Tu vois la console ?
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &652997422395964937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,7 +1246,9 @@ MonoBehaviour:
   m_content: "Allez, il faut \xE9teindre les lumi\xE8res totalement maintenant."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
---- !u!114 &2312669717615297661
+  m_waitTime: 0
+  m_unscaled: 0
+--- !u!114 &1504621091200893832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1415,11 +1257,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
+  m_Script: {fileID: 11500000, guid: 76f8d934533c0504db8a6c04d72ac207, type: 3}
+  m_Name: Continue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1288, y: -264}
+  position: {x: 3432, y: -872}
   folded: 0
   ports:
     keys:
@@ -1427,24 +1269,33 @@ MonoBehaviour:
     - m_out
     values:
     - _fieldName: m_in
-      _node: {fileID: 2312669717615297661}
+      _node: {fileID: 1504621091200893832}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 3052270152535175503}
+        node: {fileID: -1678166920989867139}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: -6310571771393336078}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: -532063954026977233}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: m_out
-      _node: {fileID: 2312669717615297661}
+      _node: {fileID: 1504621091200893832}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 2976491016854724620}
+        node: {fileID: 4435828099126403674}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 4934192616184835313}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1460,10 +1311,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebug: 1
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 0
-  m_waitTime: 1
-  m_unscaled: 0
+  m_description: 
 --- !u!114 &2976491016854724620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,9 +1339,6 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 2312669717615297661}
-        reroutePoints: []
-      - fieldName: m_out
         node: {fileID: 3559303691370501805}
         reroutePoints: []
       - fieldName: m_out
@@ -1501,6 +1346,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_out
         node: {fileID: 652997422395964937}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: 3052270152535175503}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1575,7 +1423,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -8596623034309422450}
+        node: {fileID: -5380636645386814925}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1587,7 +1435,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 2312669717615297661}
+        node: {fileID: 2976491016854724620}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1609,6 +1457,8 @@ MonoBehaviour:
     \xE0 ne pas les rallumer par la suite !"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_unscaled: 0
 --- !u!114 &3302907912504281877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,7 +1512,7 @@ MonoBehaviour:
   m_showDebug: 1
   m_description: 
   m_value:
-    Value: 20
+    Value: 1
   m_startValue: 0
 --- !u!114 &3515301945936933447
 MonoBehaviour:
@@ -2031,7 +1881,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -6375639938786975348}
+        node: {fileID: -5380636645386814925}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -2052,6 +1902,8 @@ MonoBehaviour:
   m_content: "Tu vas tout d'abord t'occuper des lumi\xE8res de la salle."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &4049035977856209295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,7 +1972,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 259.053
+      Data: 174.367661
     - Name: 
       Entry: 8
       Data: 
@@ -2272,7 +2124,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -8550092342788941510}
+        node: {fileID: 1504621091200893832}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2461,7 +2313,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -8550092342788941510}
+        node: {fileID: 1504621091200893832}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2596,6 +2448,8 @@ MonoBehaviour:
     fort comme tu as l'air d'esp\xE9rer."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &6349970386383097155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3031,6 +2885,8 @@ MonoBehaviour:
   m_content: Heureusement que j'ai appris la patience durant ma retraite spirituelle...
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
+  m_waitTime: 0
+  m_unscaled: 0
 --- !u!114 &8229454814148213892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3058,7 +2914,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -8596623034309422450}
+        node: {fileID: -5380636645386814925}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -3102,7 +2958,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 72.85682
+      Data: 167.584045
     - Name: 
       Entry: 8
       Data: 
