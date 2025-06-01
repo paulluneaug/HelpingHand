@@ -29,7 +29,7 @@ public class GraphControlNode : BaseNode
 
     [SerializeField]
     [HideLabel]
-    [HideIf("@GetInputPort(\"m_handlerIn\").GetInputValue<GraphRunnerHandler>() != null")]
+    [HideIf("@GetInputPort(\"m_handlerIn\").GetInputValue() != null")]
     private SimpleGraph m_graph;
 
     [SerializeField]
