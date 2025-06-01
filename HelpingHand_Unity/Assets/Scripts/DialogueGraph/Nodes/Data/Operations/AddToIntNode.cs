@@ -15,7 +15,11 @@ public class AddToIntNode : BaseNode
     [SerializeField]
     private DialogueFlow m_in;
 
-    [Input(ShowBackingValue.Always)]
+    [Input]
+    [SerializeField]
+    private int m_value;
+
+    [Input]
     [SerializeField]
     private int m_increment;
 
@@ -27,18 +31,9 @@ public class AddToIntNode : BaseNode
     [SerializeField]
     private int m_valueOut;
 
-    [SerializeField]
-    private int m_startValue;
-
     [ShowInInspector]
     [ReadOnly]
-    private int m_value;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        m_value = m_startValue;
-    }
+    private int m_currentValue;
 
     public override object GetValue(NodePort port)
     {
@@ -47,14 +42,19 @@ public class AddToIntNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (this.TryGetValueFromInputPort(nameof(m_increment), out int outValue))
+        if (this.TryGetValueFromInputPort(nameof(m_value), out int val))
         {
-            m_increment = outValue;
+            m_currentValue = val;
+        }
+        
+        if (this.TryGetValueFromInputPort(nameof(m_increment), out int increment))
+        {
+            m_increment = increment;
         }
 
-        m_value += m_increment;
+        m_currentValue += m_increment;
 
-        m_valueOut = m_value;
+        m_valueOut = m_currentValue;
 
         await UniTask.CompletedTask;
     }
