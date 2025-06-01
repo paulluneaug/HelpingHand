@@ -3,10 +3,13 @@ using System;
 using Sirenix.OdinInspector;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 using UnityUtility.SceneReference;
 using UnityUtility.Singletons;
+
+using Separator = UnityUtility.CustomAttributes.SeparatorAttribute;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
@@ -17,22 +20,29 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
 
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
+    public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
+
+    public InputAction SkipDialogueInput => m_skipDialogueInput.action;
 
 
     [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
 
     [SerializeField] private ActSequenceManager m_actSequenceManager;
+    [SerializeField] private GameOptionsManager m_gameOptionsManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
 
     [Title("Scene References")]
     [SerializeField] private SceneReference m_globalObjectsScene;
+    [Separator]
+
+    [Title("Input References")]
+    [SerializeField] private InputActionReference m_skipDialogueInput;
 
     // Cache
     [NonSerialized] private Puppet m_puppet;
     [NonSerialized] private GameState m_currentGameState;
-
 
     public override void Initialize()
     {
@@ -41,6 +51,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         LoadGlobalObjectScene();
 
         m_currentGameState = m_startGameState;
+
+        m_skipDialogueInput.asset.Enable();
     }
 
     protected override void Start()
@@ -79,7 +91,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
     }
 
-#region Load
+    #region Load
     private void LoadGlobalObjectScene()
     {
 #if UNITY_EDITOR
@@ -135,4 +147,16 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     #endregion
 
+    public void StartGame()
+    {
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+    }
 }

@@ -67,6 +67,7 @@ public class ButtonInputTrigger : InputTrigger
         // timer has been reached
         m_isRaised = true;
         m_triggerCoroutine = null;
+
         DisarmTrigger();
         RaiseTriggeredEvent();
 

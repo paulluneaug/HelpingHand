@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
     #region Accessors
     [field: Title("Sub Managers")]
-  //  [field: SerializeField]
+    //  [field: SerializeField]
     public SwitchManager SwitchManager;
     public RTPCManager RTPCManager;
     public StateManager StateManager;
@@ -41,11 +41,11 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
 
         //On joue la musique principale dès que la scène se lance
-       // _ = EventManager.MainMusic_Play.Post(gameObject);
+        // _ = EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
-        EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
-        EventManager.Theater_Ambience_Play.Post(gameObject);
+        _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
+        _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
 
     #region Functions
@@ -69,44 +69,44 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             isEnded = true;
         }, null);
-        
+
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
             Debug.Log($"{Debug_GetLogHeader()} PostWwiseEventToObjectAsync interrupted");
             AkUnitySoundEngine.StopPlayingID(playingID);
             throw new OperationCanceledException();
         }
-        
+
         Debug.Log($"{Debug_GetLogHeader()} PostWwiseEventToObjectAsync end");
     }
-    
+
     #endregion
     #region Play UI Sounds
     public void PlayTypewriter(GameObject targetObject)
     {
-        EventManager.Typewriter_Play.Post(targetObject);
+        _ = EventManager.Typewriter_Play.Post(targetObject);
     }
 
     public void PlayButton(GameObject targetObject)
     {
-        EventManager.ButtonOnPointerDown_Play.Post(targetObject);
+        _ = EventManager.ButtonOnPointerDown_Play.Post(targetObject);
     }
-    
+
     public void ToggleSound(bool isOn, GameObject targetObject)
     {
         if (isOn)
         {
-            EventManager.Toggle_Play.Post(targetObject);
+            _ = EventManager.Toggle_Play.Post(targetObject);
         }
         else
         {
-            EventManager.Untoggle_Play.Post(targetObject);
+            _ = EventManager.Untoggle_Play.Post(targetObject);
         }
     }
     #endregion
 
     public async UniTask PlayDialogueWithStatesAsync(string repetition, string etat, string objet, string narra, GameObject targetObject = null, CancellationToken cancellationToken = default)
-    {        
+    {
         Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync {repetition}, {etat}, {objet}, {narra}");
 
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
@@ -139,31 +139,31 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             isEnded = true;
         }, null);
-        
+
         AkPlaylist playlist = AkUnitySoundEngine.DynamicSequenceLockPlaylist(sequenceID);
 
         uint nodeID = AkUnitySoundEngine.ResolveDialogueEvent(dialogueEventId, args, (uint)args.Length);
         if (nodeID == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
             Debug.LogError($"{Debug_GetLogHeader()} Aucun dialogue node trouvé pour ces states.");
-            AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             return;
         }
 
-        playlist.Enqueue(nodeID);
-        AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-        AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
+        _ = playlist.Enqueue(nodeID);
+        _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
 
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
             Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync interrupted");
-            AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
-            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             throw new OperationCanceledException();
         }
-        
-        AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+
+        _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
         Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync end");
     }
 

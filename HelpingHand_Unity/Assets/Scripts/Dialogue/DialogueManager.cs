@@ -72,6 +72,11 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         }
     }
 
+    public void ShowAllRemainingText()
+    {
+        m_typewriter.SkipTypewriter();
+    }
+
     /// <summary>
     /// Debug log with header
     /// TODO: move it project-wise 

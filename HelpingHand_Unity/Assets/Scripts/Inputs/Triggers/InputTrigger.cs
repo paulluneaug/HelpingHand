@@ -19,6 +19,7 @@ public abstract class InputTrigger
     protected bool m_isRaised;
 
     private bool m_isArmed;
+
     private WaitForSecondsRealtime m_wait;
     private Coroutine m_triggerCoroutine;
 
