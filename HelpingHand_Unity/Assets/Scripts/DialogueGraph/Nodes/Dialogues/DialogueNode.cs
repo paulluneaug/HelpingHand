@@ -28,8 +28,9 @@ public class DialogueNode : InterruptableNode
     [TabGroup("Content", "Neutral")]
     [Multiline(3)]
     [HideLabel]
+    [Required]
     [SerializeField]
-    private string m_content;
+    private string m_contentNeutral;
     
     [TabGroup("Content", "Satisfied")]
     [HideLabel, Multiline(3)]
@@ -53,12 +54,12 @@ public class DialogueNode : InterruptableNode
 
     [BoxGroup("Wait")]
     [SerializeField]
-    [LabelWidth(125)]
+    [LabelWidth(100)]
     private float m_waitTime = 1;
 
     [BoxGroup("Wait")]
     [SerializeField]
-    [LabelWidth(125)]
+    [LabelWidth(100)]
     private bool m_waitUnscaled = false;
 
     [ShowIf("@m_audioEvent == null")]
@@ -80,18 +81,21 @@ public class DialogueNode : InterruptableNode
     [SerializeField]
     private AudioEvent m_audioEvent;
 
-    [FoldoutGroup("Debug")] [ShowInInspector, LabelWidth(125), ReadOnly]
+    [BoxGroup("Debug")] 
+    [ShowInInspector]
+    [LabelWidth(100)]
+    [ReadOnly]
     private ObservableField<bool> m_hasBeenRead = new (false);
 
-    [FoldoutGroup("Debug")]
-    [ShowInInspector, LabelWidth(125), ReadOnly]
+    [BoxGroup("Debug")]
+    [ShowInInspector]
+    [LabelWidth(100)]
+    [ReadOnly]
     private int m_readCount;
 
-    public string Content => m_content;
     public bool CanRepeat => m_canRepeat;
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
-    
 
     protected override string Infos => "Display dialogue content with 4 variations. Re-execute from the beginings if interrupted.";
 
@@ -168,19 +172,19 @@ public class DialogueNode : InterruptableNode
         NarratorState narratorState = DialogueManager.Instance.NarratorState;
         if (narratorState.Satisfied.IsSet)
         {
-            return string.IsNullOrEmpty(m_contentSatisfied) ? m_content : m_contentSatisfied;
+            return string.IsNullOrEmpty(m_contentSatisfied) ? m_contentNeutral : m_contentSatisfied;
         }
         
         if (narratorState.Annoyed.IsSet)
         {
-            return string.IsNullOrEmpty(m_contentAnnoyed) ? m_content : m_contentAnnoyed;
+            return string.IsNullOrEmpty(m_contentAnnoyed) ? m_contentNeutral : m_contentAnnoyed;
         }
         
         if (narratorState.Pissed.IsSet)
         {
-            return string.IsNullOrEmpty(m_contentPissed) ? m_content : m_contentPissed;
+            return string.IsNullOrEmpty(m_contentPissed) ? m_contentNeutral : m_contentPissed;
         }
 
-        return m_content;
+        return m_contentNeutral;
     }
 }
