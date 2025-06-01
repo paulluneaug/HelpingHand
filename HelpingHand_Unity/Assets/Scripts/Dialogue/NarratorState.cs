@@ -17,13 +17,19 @@ public class NarratorState : IntVariable
     private int m_satisfiedThreshold;
     
     [SerializeField]
-    [LabelText("Annoyed")]
+    [LabelText("Neutral")]
     [VerticalGroup("Thresholds/Horiz/B")]
+    [ReadOnly]
+    private int m_neutralThreshold;
+    
+    [SerializeField]
+    [LabelText("Annoyed")]
+    [VerticalGroup("Thresholds/Horiz/C")]
     private int m_annoyedThreshold;
     
     [SerializeField]
     [LabelText("Pissed")]
-    [VerticalGroup("Thresholds/Horiz/C")]
+    [VerticalGroup("Thresholds/Horiz/D")]
     private int m_pissedThreshold;
 
     [ShowInInspector]
@@ -31,9 +37,20 @@ public class NarratorState : IntVariable
     [Space]
     private string m_currentState = "Neutral";
     
+    [SerializeField] 
+    [HideInInspector]
     private EntityState m_stateNeutral;
+    
+    [SerializeField] 
+    [HideInInspector]
     private EntityState m_stateSatisfied;
+    
+    [SerializeField] 
+    [HideInInspector]
     private EntityState m_stateAnnoyed;
+    
+    [SerializeField] 
+    [HideInInspector]
     private EntityState m_statePissed;
 
     public EntityState Neutral => m_stateNeutral;

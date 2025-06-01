@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3810938355143651244
+--- !u!114 &-5978560006008020254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4fd466992e141049b01c6cba6954e85, type: 3}
-  m_Name: State_Narrator_StateSatisfied
+  m_Name: State_Narrator_StateAnnoyed
   m_EditorClassIdentifier: 
   m_isActive: 1
   m_value: 0
---- !u!114 &-1999850505169064441
+--- !u!114 &-3407277283527164610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24,7 +24,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4fd466992e141049b01c6cba6954e85, type: 3}
-  m_Name: State_Narrator_StatePissed
+  m_Name: State_Narrator_StateNeutral
   m_EditorClassIdentifier: 
   m_isActive: 1
   m_value: 0
@@ -43,9 +43,14 @@ MonoBehaviour:
   m_isActive: 1
   m_value: 0
   m_satisfiedThreshold: -5
+  m_neutralThreshold: 0
   m_annoyedThreshold: 5
   m_pissedThreshold: 10
---- !u!114 &986711154636537362
+  m_stateNeutral: {fileID: -3407277283527164610}
+  m_stateSatisfied: {fileID: 9146083670007817315}
+  m_stateAnnoyed: {fileID: -5978560006008020254}
+  m_statePissed: {fileID: 4370125260151495759}
+--- !u!114 &4370125260151495759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,11 +60,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4fd466992e141049b01c6cba6954e85, type: 3}
-  m_Name: State_Narrator_StateAnnoyed
+  m_Name: State_Narrator_StatePissed
   m_EditorClassIdentifier: 
   m_isActive: 1
   m_value: 0
---- !u!114 &8742637721353362946
+--- !u!114 &9146083670007817315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,7 +74,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4fd466992e141049b01c6cba6954e85, type: 3}
-  m_Name: State_Narrator_StateNeutral
+  m_Name: State_Narrator_StateSatisfied
   m_EditorClassIdentifier: 
   m_isActive: 1
   m_value: 0
