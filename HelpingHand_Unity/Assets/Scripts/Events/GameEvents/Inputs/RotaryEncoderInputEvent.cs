@@ -40,7 +40,6 @@ public class RotaryEncoderInputEvent : BaseGameEvent
     }
 #endif
 
-
     public void SetIndex(int index)
     {
         m_indexVariable.Value = index;
@@ -48,20 +47,12 @@ public class RotaryEncoderInputEvent : BaseGameEvent
 
     public void RaiseStepLeft()
     {
-        if (!m_isActive)
-        {
-            return;
-        }
         m_stepLeftEvent.Raise();
         Raise();
     }
 
     public void RaiseStepRight()
     {
-        if (!m_isActive)
-        {
-            return;
-        }
         m_stepRightEvent.Raise();
         Raise();
     }
