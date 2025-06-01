@@ -108,8 +108,8 @@ public class ConditionInputCount : ConditionBase
 
         foreach (BaseGameEvent inputEvent in m_effectiveInputList)
         {
-            inputEvent.RemoveListener(OnInputTriggered);
-            inputEvent.AddListener(OnInputTriggered);
+            inputEvent.OnEventRaised -= OnInputTriggered;
+            inputEvent.OnEventRaised += OnInputTriggered;
         }
     }
 
@@ -118,7 +118,7 @@ public class ConditionInputCount : ConditionBase
         base.Dispose();
         foreach (BaseGameEvent inputEvent in m_effectiveInputList)
         {
-            inputEvent.RemoveListener(OnInputTriggered);
+            inputEvent.OnEventRaised -= OnInputTriggered;
         }
     }
 
