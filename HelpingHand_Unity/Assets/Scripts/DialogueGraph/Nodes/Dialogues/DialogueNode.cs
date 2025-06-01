@@ -11,7 +11,6 @@ using UnityEditor;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 using UnityUtility.Extensions;
 using UnityUtility.ObservableFields;
@@ -30,7 +29,6 @@ public class DialogueNode : InterruptableNode
         Waiting,
     }
 
-    public string Content => m_content;
     public bool CanRepeat => m_canRepeat;
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
@@ -111,10 +109,6 @@ public class DialogueNode : InterruptableNode
     [ReadOnly]
     private int m_readCount;
 
-    public bool CanRepeat => m_canRepeat;
-    public ObservableField<bool> HasBeenRead => m_hasBeenRead;
-    public int ReadCount => m_readCount;
-
     protected override string Infos => "Display dialogue content with 4 variations. Re-execute from the beginings if interrupted.";
 	// Cache
     [NonSerialized] private DialogueNodeState m_currentState;
@@ -163,7 +157,7 @@ public class DialogueNode : InterruptableNode
 
         m_skipAudioCTS = skipAudioCTS;
 
-        m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, m_content, handler.StopToken);
+        m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopToken);
         m_audioTask = m_audioEvent ?
             MakeSkippable(m_audioEvent.Play(null, skipAudioLinkedCTS.Token), skipAudioCTS, skipAudioLinkedCTS) :
             UniTask.CompletedTask;
@@ -201,7 +195,7 @@ public class DialogueNode : InterruptableNode
             UniTask followingTask = GameManager.Instance.GameOptionsManager.DialogueReadMode.Value switch
             {
                 DialogueReadMode.Manual => UniTask.WaitUntil(() => m_skipPressed, cancellationToken: skipWaitingLinkedCTS.Token),
-                DialogueReadMode.Auto => UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, skipWaitingLinkedCTS.Token),
+                DialogueReadMode.Auto => UniTask.WaitForSeconds(m_waitTime, m_waitUnscaled, PlayerLoopTiming.Update, skipWaitingLinkedCTS.Token),
                 _ => throw new ArgumentOutOfRangeException(),
             };
 
@@ -225,7 +219,6 @@ public class DialogueNode : InterruptableNode
         }
         GameManager.Instance.SkipDialogueInput.performed -= OnSkipDialogue;
     }
-
 
     private void OnSkipDialogue(InputAction.CallbackContext context)
     {
