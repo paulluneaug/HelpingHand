@@ -27,11 +27,7 @@ public class WaitSwitchConditionNode : WaitNodeBase
     private CancellationTokenSource m_timeoutSource;
     private readonly bool m_isTimeout;
 
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Attend et continue le flow vers le premier noeud dont la condition est vraie";
-    }
+    protected override string Infos => "Attend et continue le flow vers le premier port dont la condition est vraie";
 
     public override void Initialize()
     {

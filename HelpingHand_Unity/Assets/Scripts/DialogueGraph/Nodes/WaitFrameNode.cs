@@ -31,11 +31,7 @@ public class WaitFrameNode : InterruptableNode
     [SerializeField] [LabelWidth(100)] [ShowIf("@m_type == WaitType.FrameCount")]
     private int m_frameCount;
 
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Wait for n seconds before resuming the flow. Loops back if interrupted";
-    }
+    protected override string Infos => "Wait for n seconds before resuming the flow. Loops back if interrupted";
     
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {

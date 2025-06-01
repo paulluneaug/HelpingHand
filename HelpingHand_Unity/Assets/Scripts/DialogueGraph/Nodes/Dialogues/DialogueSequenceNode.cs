@@ -11,6 +11,7 @@ using XNode;
 
 [CreateNodeMenu("Dialogues/Dialogue Sequence")]
 [NodeTint(0.1f, 0.3f, 0.1f)]
+[NodeWidth(250)]
 public class DialogueSequenceNode : BaseNode
 {
     [Input]
@@ -30,11 +31,10 @@ public class DialogueSequenceNode : BaseNode
     private NodePort[] m_orderedNodePorts;
     private int m_sequenceIndex;
 
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Continue le flow vers le premier dialogue de la séquence qui n'a pas été lu";
-    }
+    
+    protected override string Infos => "Continue le flow vers le premier dialogue de la séquence qui n'a pas été lu.\n" +
+                                       "Peut boucler après avoir lu tous les dialogues (ou sort dans \"else\").\n" +
+                                       "Peut choisir les ports séquentiellement ou au hasard.";
 
     public override void Initialize()
     {

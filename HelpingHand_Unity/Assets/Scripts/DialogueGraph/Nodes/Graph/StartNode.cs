@@ -19,11 +19,7 @@ public class StartNode : BaseNode
     [SerializeField]
     private int m_priority;
 
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Start the graph here";
-    }
+    protected override string Infos => "Start the graph here";
 
     public override object GetValue(NodePort port)
     {

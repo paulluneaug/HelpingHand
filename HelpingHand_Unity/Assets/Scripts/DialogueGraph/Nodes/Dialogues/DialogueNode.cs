@@ -92,11 +92,8 @@ public class DialogueNode : InterruptableNode
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
     
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Display the content. Loops back if interrupted";
-    }
+
+    protected override string Infos => "Display dialogue content with 4 variations. Re-execute from the beginings if interrupted.";
 
     public override void Initialize()
     {
