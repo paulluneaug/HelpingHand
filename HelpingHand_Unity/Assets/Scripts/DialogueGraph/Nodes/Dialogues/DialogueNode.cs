@@ -119,15 +119,26 @@ public class DialogueNode : InterruptableNode
     [NonSerialized] private UniTask m_audioTask;
 
     [NonSerialized] private bool m_skipPressed;
+
+    [NonSerialized] private bool m_hasBeenKilled;
     
     public override void Initialize()
     {
         m_hasBeenRead.Value = false;
         m_readCount = 0; // Quid si on relance plusieurs fois le même graph, le compteur est reset
+        m_hasBeenKilled = false;
+        m_hasBeenInterrupted = false;
     }
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
+        if (m_hasBeenKilled)
+        {
+            DebugLog($"Has been killed");
+            await UniTask.CompletedTask;
+            return;
+        }
+        
         if (m_hasBeenInterrupted)
         {
             DebugLog($"Has been interrupted");
@@ -148,16 +159,19 @@ public class DialogueNode : InterruptableNode
         DebugLog($"Play");
         StartDialogueNode();
 
-        CancellationTokenSource[] tokenSources = new CancellationTokenSource[4];
+        CancellationTokenSource[] tokenSources = new CancellationTokenSource[5];
         int nextSourceIndex = 0;
 
-        (CancellationTokenSource skipAudioCTS, CancellationTokenSource skipAudioLinkedCTS) = GetSkippableTokenSources(handler.StopToken);
+        CancellationTokenSource killCTS = new();
+        tokenSources[nextSourceIndex++] = killCTS;
+        
+        (CancellationTokenSource skipAudioCTS, CancellationTokenSource skipAudioLinkedCTS) = GetSkippableTokenSources(handler.StopToken, killCTS.Token);
         tokenSources[nextSourceIndex++] = skipAudioCTS;
         tokenSources[nextSourceIndex++] = skipAudioLinkedCTS;
 
         m_skipAudioCTS = skipAudioCTS;
 
-        m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopToken);
+        m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopSource, killCTS);
         m_audioTask = m_audioEvent ?
             MakeSkippable(m_audioEvent.Play(null, skipAudioLinkedCTS.Token), skipAudioCTS, skipAudioLinkedCTS) :
             UniTask.CompletedTask;
@@ -171,9 +185,20 @@ public class DialogueNode : InterruptableNode
             // Normalement le dialogue pouvait être interrompu, pas besoin de retester
             // On arrive ici si le dialogue est interrompu au milieu d'une phrase par un autre dialogue
             // ou si le graph est mis en pause 
-            DebugLog($"Interrupted");
-            m_hasBeenInterrupted = true;
-            EndDialogueNode(tokenSources);
+            if (handler.StopSource.IsCancellationRequested)
+            {
+                DebugLog($"Interrupted by stop/pause");
+                m_hasBeenInterrupted = true;
+                EndDialogueNode(tokenSources);
+            }
+            else
+            {
+                DebugLog($"Killed by kill node");
+                EndDialogueNode(tokenSources);
+                // Kill the branch (don't continue the flow)
+                m_hasBeenKilled = true;
+            }
+
             return;
         }
 
@@ -186,7 +211,7 @@ public class DialogueNode : InterruptableNode
             m_skipPressed = false;
             m_currentState = DialogueNodeState.Waiting;
 
-            (CancellationTokenSource skipWaitingCTS, CancellationTokenSource skipWaitingLinkedCTS) = GetSkippableTokenSources(handler.StopToken);
+            (CancellationTokenSource skipWaitingCTS, CancellationTokenSource skipWaitingLinkedCTS) = GetSkippableTokenSources(handler.StopToken, killCTS.Token);
             tokenSources[nextSourceIndex++] = skipWaitingCTS;
             tokenSources[nextSourceIndex++] = skipWaitingLinkedCTS;
 
@@ -256,25 +281,32 @@ public class DialogueNode : InterruptableNode
         }
     }
 
-    private (CancellationTokenSource skipCTS, CancellationTokenSource linkedCTS) GetSkippableTokenSources(CancellationToken token)
+    private (CancellationTokenSource skipCTS, CancellationTokenSource linkedCTS) GetSkippableTokenSources(CancellationToken stopToken, CancellationToken killToken)
     {
-        CancellationTokenSource skipSource = new CancellationTokenSource();
-        return (skipSource, CancellationTokenSource.CreateLinkedTokenSource(token, skipSource.Token));
+        CancellationTokenSource skipSource = new ();
+        CancellationTokenSource skipKill = CancellationTokenSource.CreateLinkedTokenSource(killToken, skipSource.Token);
+        return (skipKill, CancellationTokenSource.CreateLinkedTokenSource(skipKill.Token, stopToken));
     }
 
     private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource linkedCTS)
     {
         UniTask skipTask = UniTask.WaitUntilCanceled(skipCTS.Token);
 
+        // TODO I don't know why isCancelled is false even though skipCTS is cancelled by a kill node (through the kill CTS)
         (bool isCancelled, int _) = await UniTask.WhenAny(task, skipTask).SuppressCancellationThrow();
 
-        if (!isCancelled) // The main task succeeded
+        // TODO I had to invert these two
+        
+        if (skipCTS.IsCancellationRequested) // Only the skip+kill token was cancelled
         {
+            m_hasBeenKilled = true;
+            DebugLog($"Skip / killed");
             return;
         }
-
-        if (skipCTS.IsCancellationRequested) // Only the skip token was cancelled
+        
+        if (!isCancelled) // The main task succeeded
         {
+            DebugLog($"Main task succeeded");
             return;
         }
 

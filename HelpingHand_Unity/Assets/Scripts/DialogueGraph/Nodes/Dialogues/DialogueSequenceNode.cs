@@ -11,7 +11,7 @@ using UnityEngine;
 using XNode;
 
 [CreateNodeMenu("Dialogues/Dialogue Sequence")]
-[NodeTint(0.1f, 0.3f, 0.1f)]
+[NodeTint(0f, 0.2f, 0f)]
 [NodeWidth(250)]
 public class DialogueSequenceNode : BaseNode
 {

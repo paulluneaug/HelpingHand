@@ -33,8 +33,10 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
 
     private DialogueNode m_currentDialogue;
     private string m_currentDialogueTitle;
+    private CancellationTokenSource m_dialogueKillCTS;
+    private CancellationTokenSource m_currentCts;
 
-    public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationToken token)
+    public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationTokenSource graphStopCTS, CancellationTokenSource killCTS)
     {
         if (!string.IsNullOrEmpty(m_currentDialogueTitle) || string.IsNullOrEmpty(dialogueTitle) || string.IsNullOrEmpty(content))
         {
@@ -42,6 +44,10 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         }
 
         m_currentDialogueTitle = dialogueTitle;
+
+        m_dialogueKillCTS = killCTS;
+        m_currentCts?.Dispose();
+        m_currentCts = CancellationTokenSource.CreateLinkedTokenSource(m_dialogueKillCTS.Token, graphStopCTS.Token);
         
         DebugLog($"Play \"{content.Truncate(30)}\"");
         
@@ -51,15 +57,24 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         
         OnDialogueStarted?.Invoke();
 
-        if (await UniTask.WaitUntil(() => isTextShowed, PlayerLoopTiming.Update, token).SuppressCancellationThrow())
+        if (await UniTask.WaitUntil(() => isTextShowed, PlayerLoopTiming.Update, m_currentCts.Token).SuppressCancellationThrow())
         {
-            DebugLog($"Interrupted");
-            m_typewriter.onTextShowed.RemoveListener(OnTextShowed);
-            m_typewriter.StopShowingText();
-            m_currentDialogueTitle = null;
-            OnDialogueInterrupted?.Invoke();
-            // Bubble up the exception
-            throw new OperationCanceledException(token);
+            InterruptDialogue();
+            if (m_dialogueKillCTS.IsCancellationRequested)
+            {
+                // We have dialogue kill
+                DebugLog($"Killed!");
+                killCTS.Cancel();
+            }
+            else
+            {
+                // It is pause/stop
+                DebugLog($"Paused/Stopped!");
+            }
+
+            // Bubble up
+            DebugLog($"Bubble up");
+            throw new OperationCanceledException();
         }
         
         void OnTextShowed()
@@ -70,6 +85,20 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
             m_currentDialogueTitle = null;
             OnDialogueEnded?.Invoke();
         }
+
+        void InterruptDialogue()
+        {
+            DebugLog($"Playing dialogue interrupted");
+            m_typewriter.onTextShowed.RemoveAllListeners();
+            m_typewriter.StopShowingText();
+            m_currentDialogueTitle = null;
+            OnDialogueInterrupted?.Invoke();
+        }
+    }
+    
+    public void KillCurrentDialogue()
+    {
+        m_dialogueKillCTS.Cancel();
     }
 
     public void ShowAllRemainingText()
