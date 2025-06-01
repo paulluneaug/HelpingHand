@@ -18,6 +18,14 @@ public class GraphBlackboard : MonoBehaviourSingleton<GraphBlackboard>
 
     public bool TryGetValue<T>(string key, out T result)
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            result = default;
+            return false;
+        }
+#endif
+        
         if (m_blackboard.TryGetValue(key, out object objectValue))
         {
             if (objectValue is T value)
