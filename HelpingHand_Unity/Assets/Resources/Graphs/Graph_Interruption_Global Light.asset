@@ -59,6 +59,8 @@ MonoBehaviour:
   m_content: "Encore avec les lumi\xE8res de la salle ? \xC9teins tout de suite !"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &-9086622756207219556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +120,8 @@ MonoBehaviour:
   m_content: "Bon c'est mieux comme \xE7a. Alors o\xF9 est-ce que j'en \xE9tais..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 11400000, guid: 748111cb5bcc5e74e9dc9539f6984aaf, type: 2}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &-8560536780818355489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +305,8 @@ MonoBehaviour:
     salle durant la repr\xE9sentation. Tu peux les \xE9teindre ?"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &-2765385272706123732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +366,8 @@ MonoBehaviour:
   m_content: "Sache que je passe un TR\xC8S mauvais moment. Reprenons..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 11400000, guid: 748111cb5bcc5e74e9dc9539f6984aaf, type: 2}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &-2751932113907057705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +629,8 @@ MonoBehaviour:
   m_content: Ha ha ! Qu'est-ce qu'on s'amuse, hein ?
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &-116271974007765571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,6 +813,8 @@ MonoBehaviour:
   m_content: "Tu m'as fait perdre le fil. O\xF9 est-ce que j'en \xE9tais..."
   m_canRepeat: 0
   m_audioEvent: {fileID: 11400000, guid: 748111cb5bcc5e74e9dc9539f6984aaf, type: 2}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &832965144980684856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,6 +952,8 @@ MonoBehaviour:
   m_content: "Tiens donc, les lumi\xE8res, \xE7a faisait longtemps !"
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &1065568671611667386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,6 +1013,8 @@ MonoBehaviour:
   m_content: "C'est quand tu veux pour \xE9teindre..."
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &1155235488444859843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,6 +1224,7 @@ MonoBehaviour:
   m_mustBeSet: 1
   m_doesTimeout: 1
   m_timeout: 5
+  m_loopAfterTimeout: 0
 --- !u!114 &3014503775287954927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,7 +1364,7 @@ MonoBehaviour:
     - Name: m_condition
       Entry: 7
       Data: 0|ConditionEntityState, Assembly-CSharp
-    - Name: m_baseScore
+    - Name: m_weight
       Entry: 3
       Data: 0
     - Name: m_state
@@ -1439,6 +1456,7 @@ MonoBehaviour:
   m_mustBeSet: 1
   m_doesTimeout: 1
   m_timeout: 5
+  m_loopAfterTimeout: 0
 --- !u!114 &5707384061461111984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,6 +1516,8 @@ MonoBehaviour:
   m_content: "\xC9teins.<waitfor=0.3> Les.<waitfor=0.3> Lumi\xE8res.<waitfor=0.3>"
   m_canRepeat: 1
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_waitUnscaled: 0
 --- !u!114 &6287551466669533299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,7 +1589,7 @@ MonoBehaviour:
     - Name: m_condition
       Entry: 7
       Data: 0|ConditionAnd, Assembly-CSharp
-    - Name: m_baseScore
+    - Name: m_weight
       Entry: 3
       Data: 1
     - Name: m_preconditions
@@ -1581,7 +1601,7 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 2|ConditionDialogue, Assembly-CSharp
-    - Name: m_baseScore
+    - Name: m_weight
       Entry: 3
       Data: 1
     - Name: m_dialogue
@@ -1596,7 +1616,7 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 3|ConditionDialogue, Assembly-CSharp
-    - Name: m_baseScore
+    - Name: m_weight
       Entry: 3
       Data: 1
     - Name: m_dialogue
@@ -1696,6 +1716,7 @@ MonoBehaviour:
   m_mustBeSet: 1
   m_doesTimeout: 1
   m_timeout: 5
+  m_loopAfterTimeout: 0
 --- !u!114 &7331391410199740346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1863,3 +1884,5 @@ MonoBehaviour:
   m_content: "Non, pas ces lumi\xE8res-l\xE0, tu vas trop vite, sacripan."
   m_canRepeat: 0
   m_audioEvent: {fileID: 0}
+  m_waitTime: 1
+  m_waitUnscaled: 0
