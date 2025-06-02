@@ -39,6 +39,7 @@ public class SingleSliderInteractiveObject : MonoBehaviour, ISlidingObject
         m_masterSlider.OnSliderPointerDown -= OnSliderPointerDown_Callback;
     }
 
+
     protected virtual void OnSliderValueChanged_Callback(float sliderValue)
     {
         OnSliderValueChanged?.Invoke(sliderValue);
