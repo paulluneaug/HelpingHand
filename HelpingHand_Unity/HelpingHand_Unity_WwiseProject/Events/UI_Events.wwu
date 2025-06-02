@@ -7,9 +7,9 @@
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
 			<ChildrenList>
-				<Folder Name="MainButton" ID="{8A677312-A3F2-48A5-BBE0-C7D218D34BCA}" ShortID="841523964">
+				<Folder Name="Buttons" ID="{8A677312-A3F2-48A5-BBE0-C7D218D34BCA}" ShortID="841523964">
 					<ChildrenList>
-						<Event Name="OnPointerUp" ID="{A42F4A5F-E1A5-4B3C-B2E1-BFF4A2CFBC93}">
+						<Event Name="ButtonPointerUp_Play" ID="{A42F4A5F-E1A5-4B3C-B2E1-BFF4A2CFBC93}">
 							<ChildrenList>
 								<Action Name="" ID="{B559391B-D9D1-4F1B-9B4C-98F8F05C7680}" ShortID="913715535">
 									<ReferenceList>
@@ -20,7 +20,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="OnPointerDown" ID="{0D686FC8-B55C-42F3-9111-9FE6F52A98AC}">
+						<Event Name="ButtonPointerDown_Play" ID="{0D686FC8-B55C-42F3-9111-9FE6F52A98AC}">
 							<ChildrenList>
 								<Action Name="" ID="{2AA69BA9-DE2A-4F53-A373-788BA5F39B01}" ShortID="177945268">
 									<ReferenceList>
@@ -31,23 +31,12 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="OnPointerEnter" ID="{9412698F-9C43-46E3-AC6A-24954FB792B8}">
+						<Event Name="ButtonPointerUp_Desactivate_Play" ID="{B92E2A1A-31FB-4C52-BD53-22D23FD161C8}">
 							<ChildrenList>
-								<Action Name="" ID="{B1AB8FFA-0988-4863-B513-19B754D08EFA}" ShortID="797800013">
+								<Action Name="" ID="{D3B054B4-B101-4784-9E2E-17E8666101B2}" ShortID="668401364">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="PointerEnter" ID="{2219F68A-51A6-473B-B478-E2504AEA6C04}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="OnPointerExit" ID="{BBE3389F-4321-41EB-8730-D20286E53FC8}">
-							<ChildrenList>
-								<Action Name="" ID="{66BD4267-96DB-48A6-8BAB-02A4D60B08EA}" ShortID="402618704">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PointerExit" ID="{2F743D38-4CD8-408B-BCE1-668644AA7B05}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+											<ObjectRef Name="Desactivate_PointerUp" ID="{CA54C417-024D-4946-93F5-CF0B18410EA5}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -127,7 +116,7 @@
 								<Action Name="" ID="{A8F3B259-E9BB-4CFB-9EEC-0D01E36C5F60}" ShortID="870418665">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Toggle" ID="{AF0B84A0-8212-4214-BD3E-EBE0268AAFCB}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+											<ObjectRef Name="ToggleMetal" ID="{AF0B84A0-8212-4214-BD3E-EBE0268AAFCB}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -138,7 +127,18 @@
 								<Action Name="" ID="{A916E14C-ED96-43BE-98D0-27F70500AA58}" ShortID="730572281">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="UnToggle" ID="{89046D4C-492B-49C0-8A38-EB0509C09C39}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+											<ObjectRef Name="UnToggleMetal" ID="{89046D4C-492B-49C0-8A38-EB0509C09C39}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Toggle_Desactivate_Play" ID="{2A29D105-B67F-43DC-8402-F1839C287DA9}">
+							<ChildrenList>
+								<Action Name="" ID="{F20580AD-4EA9-48E5-85F7-33896819B0F4}" ShortID="729864363">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Desactivate_Toggle" ID="{D82B08D7-4932-4978-9A28-A81871F9D80A}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -157,6 +157,94 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Folder Name="RotaryEncoder" ID="{0E248F76-42F6-4F78-A5F5-D1603F4223DD}" ShortID="42186394">
+					<ChildrenList>
+						<Event Name="RotaryEncoder_Left_Play" ID="{061C8557-A0DE-4BB1-BDDB-0BDDC1252ABE}">
+							<ChildrenList>
+								<Action Name="" ID="{C9D0E050-CB76-4889-96BF-1DD75A15A2E9}" ShortID="48448468">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LeftClick" ID="{CBC138D7-3A41-4A59-9687-46738E7947C3}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="RotaryEncoder_Right_Play" ID="{BE8E85BA-D5A3-4F97-A758-AC0DF7E9CBC0}">
+							<ChildrenList>
+								<Action Name="" ID="{16A8F76D-BE19-425D-934C-F315AA4D5836}" ShortID="894790045">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="RightClick" ID="{D314D3A8-9956-4236-ADEA-E220D9FCA40F}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="RotaryEncoder_Desactivate_Play" ID="{9715CFF5-71DB-47B0-ACF2-B66F8979969A}">
+							<ChildrenList>
+								<Action Name="" ID="{CE9D3000-A33E-4347-B377-8DDCE50BA395}" ShortID="399315954">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Desactivate" ID="{6ADDBF28-4014-4634-BF4B-4B610A773320}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Potentiometer" ID="{FF49C291-EBE8-4500-876D-63ABBDD5AF7A}" ShortID="1037321155">
+					<ChildrenList>
+						<Event Name="PotentiometerMin_Play" ID="{F6B1B7A3-B5C4-45A6-A726-DFDD75E822C5}">
+							<ChildrenList>
+								<Action Name="" ID="{A5FEB139-0958-4E72-9E58-C8249C8BC5DD}" ShortID="595494387">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Potentiometer_MinValue" ID="{EE7190C6-540D-40A9-9FD9-A38DFFA13627}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PotentiometerMax_Play" ID="{F13435C7-8238-4D71-9AD1-CBF75E5F6586}">
+							<ChildrenList>
+								<Action Name="" ID="{7F0BBCC0-A012-4609-8881-58A510800F8C}" ShortID="822339688">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Potentiometer_MaxValue" ID="{0E61A07A-F84B-4B3C-BBBD-16466873DE43}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PotentiometerLoop_Stop" ID="{9DCF4ABC-FC18-40B5-96DB-D2773C0BC1B8}">
+							<ChildrenList>
+								<Action Name="" ID="{C44FB511-7C28-454F-8523-BF15917342F1}" ShortID="366360901">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Fader_Loop" ID="{4BC55CE1-0C0B-4E83-BE3A-5258D7664E46}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PotentiometerLoop_Play" ID="{477F38F4-037F-4880-BB7B-341C9F8C72A8}">
+							<ChildrenList>
+								<Action Name="" ID="{58A388C6-FD8E-46D3-9DAF-184BE93BFD56}" ShortID="175761403">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Potentiometer_Loop" ID="{38683223-273C-4571-B7B6-0DCFDEF5F9FF}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

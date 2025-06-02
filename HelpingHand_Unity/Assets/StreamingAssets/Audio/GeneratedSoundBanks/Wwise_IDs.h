@@ -13,15 +13,17 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID BUTTONPOINTERDOWN_PLAY = 588833345U;
+        static const AkUniqueID BUTTONPOINTERUP_DESACTIVATE_PLAY = 488329938U;
+        static const AkUniqueID BUTTONPOINTERUP_PLAY = 941027980U;
         static const AkUniqueID FUNKYJINGLE_SETSWITCH = 4104299446U;
         static const AkUniqueID HEROICJINGLE_SETSWITCH = 3299137599U;
         static const AkUniqueID HORRORJINGLE_SETSWITCH = 3116989295U;
         static const AkUniqueID JINGLE_STOP = 3484940841U;
         static const AkUniqueID MAINGEAR_PLAY = 1290037556U;
-        static const AkUniqueID ONPOINTERDOWN = 1065012045U;
-        static const AkUniqueID ONPOINTERENTER = 414303029U;
-        static const AkUniqueID ONPOINTEREXIT = 3466097449U;
-        static const AkUniqueID ONPOINTERUP = 3836048698U;
+        static const AkUniqueID PLAY_DIRECTOR_DIALOGUE = 1900097235U;
+        static const AkUniqueID PLAY_DIRECTOR_DIALOGUE_INTERRUPT = 429245287U;
+        static const AkUniqueID PLAY_DIRECTOR_DIALOGUE_RESUME = 2523382879U;
         static const AkUniqueID PLAY_FACTORY = 3757240376U;
         static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
         static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
@@ -36,12 +38,20 @@ namespace AK
         static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
         static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
         static const AkUniqueID PLAY_THEATERAMBIENCE = 3213662481U;
+        static const AkUniqueID POTENTIOMETERLOOP_PLAY = 2105722347U;
+        static const AkUniqueID POTENTIOMETERLOOP_STOP = 969962113U;
+        static const AkUniqueID POTENTIOMETERMAX_PLAY = 710761403U;
+        static const AkUniqueID POTENTIOMETERMIN_PLAY = 581402781U;
+        static const AkUniqueID ROTARYENCODER_DESACTIVATE_PLAY = 1971551941U;
+        static const AkUniqueID ROTARYENCODER_LEFT_PLAY = 2135411543U;
+        static const AkUniqueID ROTARYENCODER_RIGHT_PLAY = 643908294U;
         static const AkUniqueID SADJINGLE_SETSWITCH = 792680301U;
         static const AkUniqueID SPOTLIGHT_OFF_PLAY = 1074187710U;
         static const AkUniqueID SPOTLIGHT_ON_PLAY = 1206761850U;
         static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
+        static const AkUniqueID TOGGLE_DESACTIVATE_PLAY = 2782143696U;
         static const AkUniqueID TOGGLE_PLAY = 2942539354U;
         static const AkUniqueID TYPEWRITER_PLAY = 1749211329U;
         static const AkUniqueID UNTOGGLE_PLAY = 3389532245U;
