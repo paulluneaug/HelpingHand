@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Events
 {
-    public abstract class BaseGameEvent : ScriptableObject, IGameEvent
+    public abstract class BaseGameEvent : SerializedScriptableObject, IGameEvent
     {
         [SerializeField]
         [ReadOnly]
@@ -38,7 +38,7 @@ namespace Events
         public event Action OnDeactivate;
         public event Action OnEventRaised;
 
-        protected void RaiseEvent()
+        private void RaiseEvent()
         {
             OnEventRaised?.Invoke();
         }
@@ -48,8 +48,6 @@ namespace Events
 
         public virtual void Raise()
         {
-            RaiseEvent();
-            
             if (!IsActive)
             {
                 return;
@@ -64,6 +62,8 @@ namespace Events
             {
                 m_actions[i]();
             }
+
+            RaiseEvent();
         }
 
         public void AddListener(IGameEventListener listener)
@@ -112,8 +112,6 @@ namespace Events
 
         public void Raise(T value)
         {
-            RaiseEvent();
-            
             if (!IsActive)
             {
                 return;
