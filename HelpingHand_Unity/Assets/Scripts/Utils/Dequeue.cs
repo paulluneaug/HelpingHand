@@ -46,7 +46,7 @@ public class Dequeue<T> : IEnumerable<T>
         {
             throw new ArgumentOutOfRangeException("index");
         }
-        int itemIndex = (m_rear + index) % m_capacity;
+        int itemIndex = (m_front + index) % m_capacity;
         return m_array[itemIndex];
     }
 

@@ -6,10 +6,13 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Splines;
 
+using UnityUtility.CustomAttributes;
 using UnityUtility.Easings;
 using UnityUtility.Extensions;
 using UnityUtility.MathU;
 using UnityUtility.Timer;
+
+using Title = UnityUtility.CustomAttributes.TitleAttribute;
 
 public class ItemDropper : MonoBehaviour
 {
@@ -20,26 +23,20 @@ public class ItemDropper : MonoBehaviour
         InTransition,
     }
 
-    [Serializable]
-    private class DropperChoice
-    {
-        [SerializeField] private Transform m_movingItem;
-
-        public Transform MovingItem => m_movingItem;
-    }
-
     private class DropperItem
     {
-        [NonSerialized] private readonly Transform m_item;
+        public DroppableItem Item => m_item;
+
+        [NonSerialized] private readonly DroppableItem m_item;
 
         [NonSerialized] private float m_startPosition;
         [NonSerialized] private float m_targetPosition;
         [NonSerialized] private float m_currentPosition;
 
         [NonSerialized] private readonly SplineContainer m_spline;
-        [NonSerialized] private readonly Easings.EasingFunction m_easingFunction;
 
-        public DropperItem(Transform item, SplineContainer spline, Easings.EasingFunction easingFunction)
+
+        public DropperItem(DroppableItem item, SplineContainer spline)
         {
             m_item = item;
 
@@ -47,8 +44,6 @@ public class ItemDropper : MonoBehaviour
             m_targetPosition = 0.0f;
 
             m_spline = spline;
-
-            m_easingFunction = easingFunction;
         }
 
         public void Init(float startPosition)
@@ -56,7 +51,7 @@ public class ItemDropper : MonoBehaviour
             m_currentPosition = startPosition;
             m_startPosition = startPosition;
 
-            UpdatePosition(startPosition);
+            UpdatePosition(startPosition, Easings.EasingFunction.Linear);
         }
 
         public void SetTarget(float target)
@@ -65,13 +60,13 @@ public class ItemDropper : MonoBehaviour
             m_targetPosition = target;
         }
 
-        public void UpdatePosition(float progress)
+        public void UpdatePosition(float progress, Easings.EasingFunction easingFunction)
         {
             float clampedProgress = MathUf.Clamp01(progress);
 
-            m_currentPosition = MathUf.Lerp(m_startPosition, m_targetPosition, Easings.Ease(clampedProgress, m_easingFunction));
+            m_currentPosition = MathUf.Lerp(m_startPosition, m_targetPosition, Easings.Ease(clampedProgress, easingFunction));
 
-            m_item.position = m_spline.EvaluatePosition(m_currentPosition);
+            m_item.transform.position = m_spline.EvaluatePosition(m_currentPosition);
         }
     }
 
@@ -85,21 +80,23 @@ public class ItemDropper : MonoBehaviour
     [SerializeField] private BaseVariable<bool> m_isActiveVariable;
 
     [Title("Options")]
-    [SerializeField] private DropperChoice[] m_choices;
+    [SerializeField] private DroppableItem[] m_choices;
+    [SerializeField, RequiredListLength(DISPLAYED_ITEMS), Range(0.0f, 1.0f)]
+    private float[] m_displayedItemsPositions = new float[DISPLAYED_ITEMS];
+    [SerializeField, Range(0, DISPLAYED_ITEMS - 1)] private int m_selectedItemIndex = 1;
+
+    [Title("Transition")]
     [SerializeField] private SplineContainer m_spline;
     [SerializeField] private float m_transitionTime;
     [SerializeField] private Easings.EasingFunction m_transitionEasingFunction;
-
-    [SerializeField, RequiredListLength(DISPLAYED_ITEMS), Range(0.0f, 1.0f)]
-    private float[] m_displayedItemsPositions = new float[DISPLAYED_ITEMS];
 
     // Cache
     [NonSerialized] private DropperState m_currentState;
     [NonSerialized] private int m_currentIndex;
     [NonSerialized] private Timer m_transitionTimer;
 
-    [NonSerialized] private Dequeue<DropperItem> m_displayedItems;
-    [NonSerialized] private Dequeue<DropperItem> m_storedItems;
+    [SerializeField] private Dequeue<DropperItem> m_displayedItems;
+    [SerializeField] private Dequeue<DropperItem> m_storedItems;
     [NonSerialized] private DropperItem m_storedMovingItem;
 
     [NonSerialized] private Queue<int> m_bufferedOffsets;
@@ -149,11 +146,7 @@ public class ItemDropper : MonoBehaviour
                 break;
 
             case DropperState.Ready:
-                if (m_bufferedOffsets.Count == 0)
-                {
-                    break;
-                }
-                ApplyOffset(m_bufferedOffsets.Dequeue());
+                ApplyOffsetIfNeeded();
 
                 break;
             case DropperState.InTransition:
@@ -162,6 +155,15 @@ public class ItemDropper : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void ApplyOffsetIfNeeded()
+    {
+        if (m_bufferedOffsets.Count == 0)
+        {
+            return;
+        }
+        ApplyOffset(m_bufferedOffsets.Dequeue());
     }
 
     private void UpdateTransition()
@@ -182,8 +184,13 @@ public class ItemDropper : MonoBehaviour
             transitionProgress = m_transitionTimer.Progress;
         }
 
-        m_displayedItems.ForEach(item => item.UpdatePosition(transitionProgress));
-        m_storedMovingItem.UpdatePosition(transitionProgress);
+        m_displayedItems.ForEach(item => item.UpdatePosition(transitionProgress, m_transitionEasingFunction));
+        m_storedMovingItem?.UpdatePosition(transitionProgress, m_transitionEasingFunction);
+
+        if (m_currentState  == DropperState.Ready)
+        {
+            ApplyOffsetIfNeeded();
+        }
     }
 
     private void OnIsActiveChanged(bool isActive)
@@ -208,8 +215,8 @@ public class ItemDropper : MonoBehaviour
 
         for (int iChoice = 0; iChoice < m_choices.Length; iChoice++)
         {
-            DropperChoice choice = m_choices[iChoice];
-            DropperItem item = new DropperItem(choice.MovingItem, m_spline, m_transitionEasingFunction);
+            DroppableItem choice = m_choices[iChoice];
+            DropperItem item = new DropperItem(choice, m_spline);
 
             if (iChoice < DISPLAYED_ITEMS)
             {
@@ -227,6 +234,9 @@ public class ItemDropper : MonoBehaviour
             displayedItem.Init(baseOffset + targetOffset);
             displayedItem.SetTarget(targetOffset);
         }
+
+        m_transitionTimer.Reset();
+        m_transitionTimer.Start();
     }
 
     private void Desactivate()
@@ -267,20 +277,32 @@ public class ItemDropper : MonoBehaviour
             DropperItem itemToStore = m_displayedItems.DequeueFront();
             DropperItem itemToDisplay = m_storedItems.DequeueFront();
 
-            m_displayedItems.EnqueueFront(itemToDisplay);
-            m_storedItems.EnqueueFront(itemToStore);
+            m_displayedItems.EnqueueRear(itemToDisplay);
+            m_storedItems.EnqueueRear(itemToStore);
+
             m_storedMovingItem = itemToStore;
+            m_storedMovingItem.SetTarget(0.0f);
+
+            itemToDisplay.SetTarget(1.0f);
+            itemToDisplay.UpdatePosition(1.0f, Easings.EasingFunction.Linear);
         }
         else
         {
             DropperItem itemToStore = m_displayedItems.DequeueRear();
             DropperItem itemToDisplay = m_storedItems.DequeueRear();
 
-            m_displayedItems.EnqueueRear(itemToDisplay);
-            m_storedItems.EnqueueRear(itemToStore);
+            m_displayedItems.EnqueueFront(itemToDisplay);
+            m_storedItems.EnqueueFront(itemToStore);
+
             m_storedMovingItem = itemToStore;
+            m_storedMovingItem.SetTarget(1.0f);
+
+            itemToDisplay.SetTarget(0.0f);
+            itemToDisplay.UpdatePosition(1.0f, Easings.EasingFunction.Linear);
         }
 
+        int index = 0;
+        m_displayedItems.ForEach(item => item.SetTarget(m_displayedItemsPositions[index++]));
 
         m_transitionTimer.Reset();
         m_transitionTimer.Start();
@@ -292,6 +314,13 @@ public class ItemDropper : MonoBehaviour
         {
             return;
         }
-    }
 
+        if (m_currentState != DropperState.Ready)
+        {
+            // @TODO Play error sound
+            return;
+        }
+
+        m_displayedItems.At(m_selectedItemIndex).Item.DropItem();
+    }
 }
