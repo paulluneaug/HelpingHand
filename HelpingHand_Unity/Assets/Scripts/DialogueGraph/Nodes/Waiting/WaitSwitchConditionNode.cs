@@ -4,8 +4,6 @@ using System.Threading;
 
 using Cysharp.Threading.Tasks;
 
-using Sirenix.OdinInspector;
-
 using UnityEngine;
 
 using Utils;
@@ -15,25 +13,12 @@ using XNode;
 [NodeWidth(350)]
 [CreateNodeMenu("Waiting/Wait Any Condition")]
 [NodeTint(0.2f, 0.1f, .3f)]
-public class WaitSwitchConditionNode : InterruptableNode
+public class WaitSwitchConditionNode : WaitNodeBase
 {
-    [Input]
-    public DialogueFlow m_in;
-
-    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
-    public List<ConditionBase> m_conditions = new();
-
     [Space]
+    [Output(dynamicPortList = true, backingValue = ShowBackingValue.Always, connectionType = ConnectionType.Multiple)]
     [SerializeField]
-    private bool m_doesTimeout;
-
-    [Output]
-    [ShowIf(nameof(m_doesTimeout))]
-    public DialogueFlow m_timeoutOut;
-
-    [SerializeField]
-    [ShowIfGroup(nameof(m_doesTimeout))]
-    private float m_timeout;
+    private List<ConditionBase> m_conditions = new();
 
     private readonly Dictionary<ConditionBase, bool> m_conditionTestsDictionary = new();
     private readonly Dictionary<ConditionBase, NodePort> m_conditionPortsDictionary = new();
@@ -42,11 +27,7 @@ public class WaitSwitchConditionNode : InterruptableNode
     private CancellationTokenSource m_timeoutSource;
     private readonly bool m_isTimeout;
 
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Attend et continue le flow vers le premier noeud dont la condition est vraie";
-    }
+    protected override string Infos => "Attend et continue le flow vers le premier port dont la condition est vraie";
 
     public override void Initialize()
     {
@@ -55,12 +36,75 @@ public class WaitSwitchConditionNode : InterruptableNode
         {
             condition.Initialize();
             m_conditionTestsDictionary[condition] = condition.Test();
+            ConditionBase c = condition;
+            m_conditionActionsDictionary[c] = () => OnConditionUpdated(c);
         }
 
         foreach (NodePort outputPort in DynamicOutputs)
         {
             ConditionBase condition = GetCondition(outputPort);
             m_conditionPortsDictionary[condition] = outputPort;
+        }
+    }
+    
+    private void OnConditionUpdated(ConditionBase condition)
+    {
+        DebugLog($"OnConditionUpdated");
+        m_conditionTestsDictionary[condition] = condition.Test();
+    }
+    
+    protected override void InitializeExecute(GraphRunnerHandler handler, NodePort inPort)
+    {
+        foreach (ConditionBase condition in m_conditions)
+        {
+            condition.OnPreconditionUpdated += m_conditionActionsDictionary[condition];
+        }
+    }
+
+    protected override void DisposeExecute(GraphRunnerHandler handler, NodePort inPort)
+    {
+        foreach (ConditionBase condition in m_conditions)
+        {
+            condition.OnPreconditionUpdated -= m_conditionActionsDictionary[condition];
+        }
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        
+        foreach (ConditionBase condition in m_conditions)
+        {
+            condition.Dispose();
+        }
+    }
+
+    protected override void UpdateWaitUntilTest()
+    {
+        m_continuePortQueue.Clear();
+        bool found = false;
+        foreach (ConditionBase condition in m_conditions)
+        {
+            if (m_conditionTestsDictionary[condition])
+            {
+                m_continuePortQueue.Enqueue(m_conditionPortsDictionary[condition], condition.Score());
+                found = true;
+            }
+        }
+
+        m_stopWait = found;
+    }
+
+    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
+    {
+        if (IsTimeout)
+        {
+            DebugLog($"Has timeout");
+            await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_timeoutOut)));
+        }
+        else
+        {
+            await ContinueFlow(handler, inPort, m_continuePortQueue.Peek());
         }
     }
 
@@ -71,97 +115,5 @@ public class WaitSwitchConditionNode : InterruptableNode
             return m_conditions[index];
         }
         throw new ArgumentOutOfRangeException($"{Debug_GetLogHeader()} wrong fieldname ({port.fieldName})");
-    }
-
-    protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
-    {
-        void OnConditionUpdated(ConditionBase condition)
-        {
-            m_conditionTestsDictionary[condition] = condition.Test();
-        }
-
-        foreach (ConditionBase condition in m_conditions)
-        {
-            ConditionBase c = condition;
-            m_conditionActionsDictionary[c] = () => OnConditionUpdated(c);
-            condition.OnPreconditionUpdated += m_conditionActionsDictionary[c];
-        }
-
-        while (true)
-        {
-            DebugLog($"Waiting for conditions");
-
-            CancellationToken cancellationToken = handler.StopToken;
-
-            if (m_doesTimeout)
-            {
-                DebugLog($"With timeout ({m_timeout} seconds)");
-                m_timeoutSource?.Dispose();
-                m_timeoutSource = new();
-                _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
-                CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
-                cancellationToken = linkedTokenSource.Token;
-            }
-
-            UniTask task = UniTask.WaitUntil(() =>
-            {
-                m_continuePortQueue.Clear();
-                bool found = false;
-                foreach (ConditionBase condition in m_conditions)
-                {
-                    if (m_conditionTestsDictionary[condition])
-                    {
-                        m_continuePortQueue.Enqueue(m_conditionPortsDictionary[condition], condition.Score());
-                        found = true;
-                    }
-                }
-
-                return found;
-            }, PlayerLoopTiming.Update, cancellationToken);
-
-            if (await task.SuppressCancellationThrow())
-            {
-                DebugLog($"Wait is interrupted");
-
-                if (!m_timeoutSource.IsCancellationRequested)
-                {
-                    DebugLog($"Pause/stop requested");
-                    // The graph is being paused => We have to wait its reactivation
-                    await HandlePauseStop(handler);
-                    continue;
-                }
-            }
-
-            break;
-        }
-    }
-
-    protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
-    {
-        foreach (ConditionBase condition in m_conditions)
-        {
-            condition.OnPreconditionUpdated -= m_conditionActionsDictionary[condition];
-        }
-
-        if (m_timeoutSource is { IsCancellationRequested: true })
-        {
-            DebugLog($"Wait is timeout");
-            await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_timeoutOut)));
-        }
-        else
-        {
-            DebugLog($"A condition is passed, continuing");
-            await ContinueFlow(handler, inPort, m_continuePortQueue.Peek());
-        }
-    }
-
-    public override void Dispose()
-    {
-        base.Dispose();
-        m_timeoutSource?.Dispose();
-        foreach (ConditionBase condition in m_conditions)
-        {
-            condition.Dispose();
-        }
     }
 }

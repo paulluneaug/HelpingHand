@@ -23,11 +23,7 @@ public class WaitDurationNode : InterruptableNode
     [LabelWidth(100)]
     private bool m_unscaled = false;
 
-    protected override void Init()
-    {
-        base.Init();
-        m_description = "Wait for n seconds before resuming the flow. Loops back if interrupted";
-    }
+    protected override string Infos => "Wait for n seconds before resuming the flow. Loops back if interrupted";
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {

@@ -17,13 +17,11 @@ using Debug = UnityEngine.Debug;
 public abstract class BaseNode : SerializableNode, IDisposable
 {
     [SerializeField]
-    protected bool m_showDebug = true;
+    [LabelWidth(125)]
+    [DetailedInfoBox("Infos", "@Infos")]
+    protected bool m_showDebugLog = true;
 
-    [SerializeField]
-    [HideLabel]
-    [FoldoutGroup("Description")]
-    [TextArea(1, 2)]
-    protected string m_description;
+    protected virtual string Infos => string.Empty;
 
     /// <summary>
     /// Initialize the node when the graph starts. Use this to reset the node state (non serialized variables)
@@ -165,7 +163,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
     protected void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
         
-        if (!m_showDebug)
+        if (!m_showDebugLog)
         {
             return;
         }

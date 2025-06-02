@@ -3,6 +3,7 @@ using System;
 using Sirenix.OdinInspector;
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public abstract class ConditionBase : IDisposable
@@ -10,7 +11,7 @@ public abstract class ConditionBase : IDisposable
     public event Action OnPreconditionUpdated;
 
     [SerializeField] [LabelWidth(100)] [PropertySpace(0, 8)]
-    protected int m_baseScore = 1;
+    protected int m_scoreMult = 1;
 
     protected void RaiseOnPreconditionUpdated()
     {
@@ -29,8 +30,5 @@ public abstract class ConditionBase : IDisposable
         OnPreconditionUpdated = null;
     }
 
-    public virtual int Score()
-    {
-        return m_baseScore;
-    }
+    public virtual int Score() => 1 * m_scoreMult;
 }

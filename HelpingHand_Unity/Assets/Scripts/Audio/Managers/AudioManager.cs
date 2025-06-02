@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 using Cysharp.Threading.Tasks;
@@ -8,20 +9,21 @@ using UnityEngine;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Singletons;
 
+using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
     #region Accessors
     [field: Title("Sub Managers")]
-  //  [field: SerializeField]
+    //  [field: SerializeField]
     public SwitchManager SwitchManager;
     public RTPCManager RTPCManager;
     public StateManager StateManager;
     public EventManager EventManager;
     public SoundbankManager SoundbankManager;
     #endregion
-
+    
     public override void Initialize()
     {
         SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
@@ -41,7 +43,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
 
         //On joue la musique principale dès que la scène se lance
-       // _ = EventManager.MainMusic_Play.Post(gameObject);
+        // EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
         EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
@@ -55,13 +57,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     {
         if (wwiseEvent == null)
         {
-            Debug.LogError($"{Debug_GetLogHeader()} wwiseEvent is null (check if it's set correctly and up to date :)");
+            DebugLog($"wwiseEvent is null (check if it's set correctly and up to date :)", LogType.Error);
             return;
         }
 
         if (!wwiseEvent.IsValid())
         {
-            Debug.LogError($"{Debug_GetLogHeader()} {wwiseEvent.Name} is invalid, check if it's set correctly and up to date");
+            DebugLog($"{wwiseEvent.Name} is invalid, check if it's set correctly and up to date", LogType.Error);
         }
 
         bool isEnded = false;
@@ -69,17 +71,17 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             isEnded = true;
         }, null);
-        
+
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
-            Debug.Log($"{Debug_GetLogHeader()} PostWwiseEventToObjectAsync interrupted");
+            DebugLog($"PostWwiseEventToObjectAsync interrupted");
             AkUnitySoundEngine.StopPlayingID(playingID);
             throw new OperationCanceledException();
         }
-        
-        Debug.Log($"{Debug_GetLogHeader()} PostWwiseEventToObjectAsync end");
+
+        DebugLog($"PostWwiseEventToObjectAsync end");
     }
-    
+
     #endregion
     #region Play UI Sounds
     public void PlayTypewriter(GameObject targetObject)
@@ -91,7 +93,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     {
         EventManager.ButtonOnPointerDown_Play.Post(targetObject);
     }
-    
+
     public void ToggleSound(bool isOn, GameObject targetObject)
     {
         if (isOn)
@@ -106,8 +108,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     #endregion
 
     public async UniTask PlayDialogueWithStatesAsync(string repetition, string etat, string objet, string narra, GameObject targetObject = null, CancellationToken cancellationToken = default)
-    {        
-        Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync {repetition}, {etat}, {objet}, {narra}");
+    {
+        DebugLog($"PlayDialogueWithStatesAsync {repetition}, {etat}, {objet}, {narra}");
 
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
         // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
@@ -115,7 +117,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         if (dialogueEventId == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
-            Debug.LogError($"{Debug_GetLogHeader()} L'event 'Dialogue_Event' est introuvable. Vérifier son nom et sa SoundBank.");
+            DebugLog($"L'event 'Dialogue_Event' est introuvable. Vérifier son nom et sa SoundBank.", LogType.Error);
             return;
         }
 
@@ -124,11 +126,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         uint etatID = AkUnitySoundEngine.GetIDFromString(etat);
         uint objetID = AkUnitySoundEngine.GetIDFromString(objet);
         uint narraID = AkUnitySoundEngine.GetIDFromString(narra);
+        // TODO ajouter le ton du narrateur
         //Rajouter des states ici si on en a besoin de + !
 
         if (repetitionID == 0 || etatID == 0 || objetID == 0)
         {
-            Debug.LogError($"{Debug_GetLogHeader()} Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}");
+            DebugLog($"Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}", LogType.Error);
             return;
         }
 
@@ -139,13 +142,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             isEnded = true;
         }, null);
-        
+
         AkPlaylist playlist = AkUnitySoundEngine.DynamicSequenceLockPlaylist(sequenceID);
 
         uint nodeID = AkUnitySoundEngine.ResolveDialogueEvent(dialogueEventId, args, (uint)args.Length);
         if (nodeID == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
-            Debug.LogError($"{Debug_GetLogHeader()} Aucun dialogue node trouvé pour ces states.");
+            DebugLog($"Aucun dialogue node trouvé pour ces states.", LogType.Error);
             AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
             AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             return;
@@ -157,20 +160,41 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
-            Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync interrupted");
+            DebugLog($"PlayDialogueWithStatesAsync interrupted");
             AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
             AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             throw new OperationCanceledException();
         }
-        
+
         AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
-        Debug.Log($"{Debug_GetLogHeader()} PlayDialogueWithStatesAsync end");
+        DebugLog($"PlayDialogueWithStatesAsync end");
     }
 
     #endregion
 
-    private string Debug_GetLogHeader()
+    /// <summary>
+    /// Debug log with header
+    /// TODO: move it project-wise 
+    /// </summary>
+    [Conditional("UNITY_EDITOR")]
+    private void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
-        return $"[{Time.frameCount}] <color=green>[{nameof(AudioManager)}]</color>";
+        string GetLogHeader()
+        {
+            return $"[{Time.frameCount}] <color=green>[{nameof(AudioManager)}]</color>";
+        }
+        
+        switch (logType)
+        {
+            case LogType.Error:
+                Debug.LogError($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Warning:
+                Debug.LogWarning($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Log:
+                Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
+        }
     }
 }

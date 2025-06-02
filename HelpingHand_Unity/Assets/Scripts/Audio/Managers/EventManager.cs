@@ -1,11 +1,12 @@
 using Sirenix.OdinInspector;
+
 using UnityEngine;
 
 using TitleAlignments = Sirenix.OdinInspector.TitleAlignments;
 using WwiseEvent = AK.Wwise.Event;
 public class EventManager : MonoBehaviour
 {
-    [InfoBox("➔<b>EventName.Post(gameObject);</b>",InfoMessageType.None)]
+    [InfoBox("➔<b>EventName.Post(gameObject);</b>", InfoMessageType.None)]
     [TitleGroup("Events", horizontalLine: true, alignment: TitleAlignments.Centered, boldTitle: true, indent: true)]
     public string Temp;
     #region Music Events
@@ -71,10 +72,7 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent DialogueEvent_Play;
     #endregion
 
-    #region Gear Events
-    [FoldoutGroup("Gear Events")][LabelWidth(200)] public WwiseEvent MainGear_Play;
-    #endregion
-
+    [System.Obsolete]
     public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
     {
         // Utilise l'ID de l'événement directement à partir du WwiseEvent
@@ -83,5 +81,5 @@ public class EventManager : MonoBehaviour
         // Joue l'événement avec le callback
         return AkUnitySoundEngine.PostEvent(eventID, gameObject, (uint)callbackType, callback, cookie);
     }
-     
+
 }

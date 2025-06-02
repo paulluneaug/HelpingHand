@@ -85,6 +85,7 @@ public class ActSequenceManager
     {
         if (m_mode == ActSequenceManagerMode.Single)
         {
+            m_currentAct = act;
             act.StartAct(GameManager.Instance.GetPuppet());
             return;
         }

@@ -1,6 +1,9 @@
 using Sirenix.OdinInspector;
+
 using UnityEngine;
+
 using UnityUtility.CustomAttributes;
+
 using WwiseState = AK.Wwise.State;
 
 #region Enums States
@@ -28,7 +31,7 @@ public enum MusicState
 public class StateManager : MonoBehaviour
 {
     #region Game States
-   // [TitleGroup("States", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: true)]
+    // [TitleGroup("States", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: true)]
     [FoldoutGroup("Game States")]
     [InfoBox("➔<b>SetGameState(GameState.MainMenu)</b>", InfoMessageType.None)]
     [FoldoutGroup("Game States")][LabelWidth(200)][SerializeField] private WwiseState m_game_Paused;

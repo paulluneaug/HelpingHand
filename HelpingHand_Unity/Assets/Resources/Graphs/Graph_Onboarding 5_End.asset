@@ -1,66 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6375639938786975348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
-  m_Name: Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -8, y: -264}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: -6375639938786975348}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: 3790325056312640404}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: -6375639938786975348}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: -5380636645386814925}
-        reroutePoints: []
-      - fieldName: m_in
-        node: {fileID: 6919239223013669110}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebug: 1
-  m_description: Wait for n seconds before resuming the flow. Loops back if interrupted
-  m_interruptable: 1
-  m_waitTime: 2
-  m_unscaled: 0
 --- !u!114 &-5380636645386814925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +26,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -6375639938786975348}
+        node: {fileID: 3790325056312640404}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -111,11 +50,15 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
+  m_showDebugLog: 1
   m_interruptable: 0
-  m_content: "<rainb>[Fin de la session, merci d'avoir test\xE9 !]"
+  m_contentNeutral: 
+  m_contentSatisfied: 
+  m_contentAnnoyed: 
+  m_contentPissed: 
   m_canRepeat: 0
+  m_waitTime: 0
+  m_waitUnscaled: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -133,7 +76,6 @@ MonoBehaviour:
   - {fileID: 4662089034119733656}
   - {fileID: -5380636645386814925}
   - {fileID: 3790325056312640404}
-  - {fileID: -6375639938786975348}
   - {fileID: 6919239223013669110}
   - {fileID: 8218632579131916569}
 --- !u!114 &3790325056312640404
@@ -174,7 +116,10 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -6375639938786975348}
+        node: {fileID: -5380636645386814925}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 6919239223013669110}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -189,11 +134,15 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_showDebug: 1
-  m_description: Display the content. Loops back if interrupted
+  m_showDebugLog: 1
   m_interruptable: 1
-  m_content: "Bon, on va maintenant attaquer les choses s\xE9rieuses..."
+  m_contentNeutral: 
+  m_contentSatisfied: 
+  m_contentAnnoyed: 
+  m_contentPissed: 
   m_canRepeat: 0
+  m_waitTime: 2
+  m_waitUnscaled: 0
   m_audioEvent: {fileID: 0}
 --- !u!114 &4662089034119733656
 MonoBehaviour:
@@ -245,8 +194,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_showDebug: 1
-  m_description: Start the graph here
+  m_showDebugLog: 1
   m_priority: 1
 --- !u!114 &6919239223013669110
 MonoBehaviour:
@@ -276,7 +224,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -6375639938786975348}
+        node: {fileID: 3790325056312640404}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -321,8 +269,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_showDebug: 1
-  m_description: 
+  m_showDebugLog: 1
   m_graph: {fileID: 11400000, guid: 9afa09cd95348d744a4d0ca3619131eb, type: 2}
   m_control: 3
   m_waitForCompletion: 0
@@ -524,8 +471,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_showDebug: 1
-  m_description: 
+  m_showDebugLog: 1
   m_graph: {fileID: 11400000, guid: 229670b60e4dc944aac17fe30987aacb, type: 2}
   m_control: 3
   m_waitForCompletion: 0
