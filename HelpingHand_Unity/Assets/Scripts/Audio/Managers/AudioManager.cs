@@ -50,8 +50,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         // EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
-        EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
-        EventManager.Theater_Ambience_Play.Post(gameObject);
+        //EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
+        //EventManager.Theater_Ambience_Play.Post(gameObject);
     }
 
     public override void OnDestroy()

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{26F15392-6941-A198-2EFB-C572C7BA8AF3}",
+    "Hash": "{9E80A6A4-A198-BDF0-1A26-1CFA31505C40}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -63,6 +63,14 @@
        "Name": "Hall_Small",
        "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Small",
        "GUID": "{D65B5F04-B83B-412C-9434-34A13A477E24}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "2891462749",
+       "Name": "Room_Medium_High_Absorbtion",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Rooms\\Room_Medium_High_Absorbtion",
+       "GUID": "{E22DBBB6-7656-4B93-A28D-C003FD416889}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
       },
@@ -266,9 +274,29 @@
         }
        ]
       }
+     },
+     {
+      "Id": "4103918620",
+      "Name": "Small_Room",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\Small_Room",
+      "GUID": "{3A2688FC-120B-4FC1-BA08-0148C3383F97}",
+      "Color": "4",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2891462749"
+        }
+       ]
+      }
      }
     ],
     "GameParameters": [
+     {
+      "Id": "257272959",
+      "Name": "RTPC_TimeOfDay",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_TimeOfDay",
+      "GUID": "{17A3DA49-E996-4475-941E-EEC36D853682}"
+     },
      {
       "Id": "640723851",
       "Name": "Dialogue_Cue",
@@ -286,6 +314,12 @@
       "Name": "RTPC_Music_SecondLayer",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music_SecondLayer",
       "GUID": "{1FE1F2CC-33D0-4274-81E1-144470087FC5}"
+     },
+     {
+      "Id": "1487758345",
+      "Name": "RTPC_NumberOfTimePlayed",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_NumberOfTimePlayed",
+      "GUID": "{0B6AC5BE-D3F8-4837-A589-28FF0B23537E}"
      },
      {
       "Id": "2116630962",
@@ -1423,6 +1457,6 @@
     ]
    }
   ],
-  "FileHash": "{DA817203-7504-837E-2066-3EEDC10B634C}"
+  "FileHash": "{8971C9E8-4299-8469-C80B-4212172A1AF8}"
  }
 }
