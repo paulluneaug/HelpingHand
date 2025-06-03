@@ -23,6 +23,8 @@ public class ButtonInputTrigger : InputTrigger
 
     protected override void ArmTrigger()
     {
+        m_buttonEvent.RemoveDownListener(OnButtonDown);
+        m_buttonEvent.RemoveUpListener(OnButtonUp);
         m_buttonEvent.AddDownListener(OnButtonDown);
         m_buttonEvent.AddUpListener(OnButtonUp);
     }

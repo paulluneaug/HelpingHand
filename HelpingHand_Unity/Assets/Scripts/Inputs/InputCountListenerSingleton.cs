@@ -38,7 +38,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
     {
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [Button("Load input events")]
     private void LoadAllInputEvents()
     {
