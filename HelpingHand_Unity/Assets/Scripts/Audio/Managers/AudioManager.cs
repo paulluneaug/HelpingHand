@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     public StateManager StateManager;
     public EventManager EventManager;
     public SoundbankManager SoundbankManager;
+
+    [SerializeField] private InputAudioEventControllersManager m_inputAudioEventsManager;
     #endregion
     
     public override void Initialize()
@@ -32,6 +34,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
         StateManager.SetGameState(GameState.None); //On initialise l'état du jeu à None (reset)
         StateManager.SetMusicState(MusicState.None); //On initialise l'état de la musique à None (reset)
+
+        m_inputAudioEventsManager.Init();
     }
 
     protected override void Start()
@@ -48,6 +52,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         // Ambiances de pièces qui se jouent dès le début
         EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         EventManager.Theater_Ambience_Play.Post(gameObject);
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        m_inputAudioEventsManager.Dispose();
     }
 
     #region Functions

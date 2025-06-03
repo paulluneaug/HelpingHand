@@ -17,7 +17,7 @@ public class InputAudioEventControllersManager : MonoBehaviour
     [Title("Rotary Encoders")]
     [SerializeField] private RotaryEncoderAudioEventController[] m_rotaryEncoderAudioEventControllers;
 
-    private void Start()
+    public void Init()
     {
         m_fadersAudioEventControllers.ForEach(fader => fader.Init());
         m_buttonsAudioEventControllers.ForEach(button => button.Init());
@@ -25,7 +25,7 @@ public class InputAudioEventControllersManager : MonoBehaviour
         m_rotaryEncoderAudioEventControllers.ForEach(rotary => rotary.Init());
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         m_fadersAudioEventControllers.ForEach(fader => fader.Dispose());
         m_buttonsAudioEventControllers.ForEach(button => button.Dispose());
