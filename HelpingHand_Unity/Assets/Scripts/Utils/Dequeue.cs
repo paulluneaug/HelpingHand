@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using UnityUtility.Extensions;
+
 public class Dequeue<T> : IEnumerable<T>
 {
     public int Count => m_size;
@@ -38,6 +40,11 @@ public class Dequeue<T> : IEnumerable<T>
         m_front = -1;
         m_rear = -1;
         m_size = 0;
+
+        for (int i = 0; i < m_size; ++i)
+        {
+            m_array[i] = default;
+        }
     }
 
     public T At(int index)
