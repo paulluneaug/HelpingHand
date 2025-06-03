@@ -20,7 +20,8 @@ public class ItemDropper : MonoBehaviour
     {
         Inactive,
         Ready,
-        InTransition,
+        Transition,
+        TransitionOut,
     }
 
     private class DropperItem
@@ -48,25 +49,36 @@ public class ItemDropper : MonoBehaviour
 
         public void Init(float startPosition)
         {
-            m_currentPosition = startPosition;
             m_startPosition = startPosition;
+            m_targetPosition = startPosition;
 
-            UpdatePosition(startPosition, Easings.EasingFunction.Linear);
+            SetPositionOnSpline(startPosition);
         }
 
-        public void SetTarget(float target)
+        public void SetTarget(float target, bool setStartPosition = true)
         {
-            m_startPosition = m_currentPosition;
+            if (setStartPosition)
+            {
+                m_startPosition = m_currentPosition;
+            }
             m_targetPosition = target;
         }
 
-        public void UpdatePosition(float progress, Easings.EasingFunction easingFunction)
+        public void SetPositionOnSpline(float position)
         {
-            float clampedProgress = MathUf.Clamp01(progress);
+            float clampedPosition = MathUf.Clamp01(position);
+            m_currentPosition = clampedPosition;
 
-            m_currentPosition = MathUf.Lerp(m_startPosition, m_targetPosition, Easings.Ease(clampedProgress, easingFunction));
+            m_item.transform.position = m_spline.EvaluatePosition(clampedPosition);
+        }
 
-            m_item.transform.position = m_spline.EvaluatePosition(m_currentPosition);
+        public void UpdatePosition(float transitionProgress, Easings.EasingFunction easingFunction)
+        {
+            float clampedProgress = MathUf.Clamp01(transitionProgress);
+
+            float position = MathUf.Lerp(m_startPosition, m_targetPosition, Easings.Ease(clampedProgress, easingFunction));
+            SetPositionOnSpline(position);
+
         }
     }
 
@@ -84,6 +96,7 @@ public class ItemDropper : MonoBehaviour
     [SerializeField, RequiredListLength(DISPLAYED_ITEMS), Range(0.0f, 1.0f)]
     private float[] m_displayedItemsPositions = new float[DISPLAYED_ITEMS];
     [SerializeField, Range(0, DISPLAYED_ITEMS - 1)] private int m_selectedItemIndex = 1;
+    [SerializeField] private bool m_bufferInputs;
 
     [Title("Transition")]
     [SerializeField] private SplineContainer m_spline;
@@ -149,8 +162,11 @@ public class ItemDropper : MonoBehaviour
                 ApplyOffsetIfNeeded();
 
                 break;
-            case DropperState.InTransition:
+            case DropperState.Transition:
                 UpdateTransition();
+                break;
+            case DropperState.TransitionOut:
+                UpdateTransitionOut();
                 break;
             default:
                 break;
@@ -193,6 +209,39 @@ public class ItemDropper : MonoBehaviour
         }
     }
 
+    private void UpdateTransitionOut()
+    {
+        if (!m_transitionTimer.IsRunning)
+        {
+            return;
+        }
+
+        float transitionProgress;
+        if (m_transitionTimer.Update(Time.deltaTime))
+        {
+            m_currentState = DropperState.Inactive;
+            transitionProgress = 1.0f;
+        }
+        else
+        {
+            transitionProgress = m_transitionTimer.Progress;
+        }
+
+        m_displayedItems.ForEach(item => item.UpdatePosition(transitionProgress, m_transitionEasingFunction));
+        m_storedMovingItem?.UpdatePosition(transitionProgress, m_transitionEasingFunction);
+
+        if (m_currentState == DropperState.Inactive)
+        {
+            Dispose();
+        }
+    }
+
+    private void Dispose()
+    {
+        m_displayedItems.Clear();
+        m_storedItems.Clear();
+    }
+
     private void OnIsActiveChanged(bool isActive)
     {
         if (isActive)
@@ -200,12 +249,13 @@ public class ItemDropper : MonoBehaviour
             Activate();
             return;
         }
+
         Desactivate();
     }
 
     private void Activate()
     {
-        m_currentState = DropperState.InTransition;
+        m_currentState = DropperState.Transition;
 
         m_selectorInput.AddStepLeftListener(OnSelectionChangedLeft);
         m_selectorInput.AddStepRightListener(OnSelectionChangedRight);
@@ -226,13 +276,13 @@ public class ItemDropper : MonoBehaviour
             m_storedItems.EnqueueFront(item);
         }
 
-        float baseOffset = 1.0f - m_displayedItemsPositions[0];
+        float baseOffset = -m_displayedItemsPositions[DISPLAYED_ITEMS - 1];
         for (int displayedIndex = 0; displayedIndex < m_displayedItems.Count; displayedIndex++)
         {
             DropperItem displayedItem = m_displayedItems.At(displayedIndex);
             float targetOffset = m_displayedItemsPositions[displayedIndex];
             displayedItem.Init(baseOffset + targetOffset);
-            displayedItem.SetTarget(targetOffset);
+            displayedItem.SetTarget(targetOffset, false);
         }
 
         m_transitionTimer.Reset();
@@ -241,14 +291,19 @@ public class ItemDropper : MonoBehaviour
 
     private void Desactivate()
     {
-        m_currentState = DropperState.Inactive;
-
         m_selectorInput.RemoveStepLeftListener(OnSelectionChangedLeft);
         m_selectorInput.RemoveStepRightListener(OnSelectionChangedRight);
         m_validationInput.RemoveListener(OnValidateInput);
 
-        m_displayedItems.Clear();
-        m_storedItems.Clear();
+        float baseOffset = 1.0f - m_displayedItemsPositions[0];
+        int index = 0;
+        m_displayedItems.ForEach(item => item.SetTarget(baseOffset + m_displayedItemsPositions[index++]));
+        m_storedMovingItem = null;
+
+        m_transitionTimer.Reset();
+        m_transitionTimer.Start();
+
+        m_currentState = DropperState.TransitionOut;
     }
 
     private void OnSelectionChangedLeft()
@@ -263,12 +318,17 @@ public class ItemDropper : MonoBehaviour
 
     private void OnSelectionChanged(int offset)
     {
+        if (!m_bufferInputs && m_currentState != DropperState.Ready)
+        {
+            return;
+        }
+
         m_bufferedOffsets.Enqueue(offset);
     }
 
     private void ApplyOffset(int offset)
     {
-        m_currentState = DropperState.InTransition;
+        m_currentState = DropperState.Transition;
         int optionsCount = m_choices.Length;
         m_currentIndex = (m_currentIndex + offset + optionsCount) % optionsCount;
 
@@ -283,8 +343,7 @@ public class ItemDropper : MonoBehaviour
             m_storedMovingItem = itemToStore;
             m_storedMovingItem.SetTarget(0.0f);
 
-            itemToDisplay.SetTarget(1.0f);
-            itemToDisplay.UpdatePosition(1.0f, Easings.EasingFunction.Linear);
+            itemToDisplay.SetPositionOnSpline(1.0f);
         }
         else
         {
@@ -297,8 +356,7 @@ public class ItemDropper : MonoBehaviour
             m_storedMovingItem = itemToStore;
             m_storedMovingItem.SetTarget(1.0f);
 
-            itemToDisplay.SetTarget(0.0f);
-            itemToDisplay.UpdatePosition(1.0f, Easings.EasingFunction.Linear);
+            itemToDisplay.SetPositionOnSpline(0.0f);
         }
 
         int index = 0;
