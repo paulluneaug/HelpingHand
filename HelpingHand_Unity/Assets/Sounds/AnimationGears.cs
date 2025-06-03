@@ -9,9 +9,9 @@ public class AnimationGears : MonoBehaviour
     public float m_Speed;
     public void GearRotate_Sound()
     {
-        AudioManager.Instance.EventManager.MainGear_Play.Post(Gear1);
-        AudioManager.Instance.EventManager.MainGear_Play.Post(Gear2);
-        AudioManager.Instance.EventManager.MainGear_Play.Post(Gear3);
+        //AudioManager.Instance.EventManager.MainGear_Play.Post(Gear1);
+        //AudioManager.Instance.EventManager.MainGear_Play.Post(Gear2);
+        //AudioManager.Instance.EventManager.MainGear_Play.Post(Gear3);
         Debug.Log("MainGear_Play playing");
     }
 }
