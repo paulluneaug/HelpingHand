@@ -3,24 +3,22 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class ButtonAudioEventController : IDisposable
+public class ButtonAudioEventController : AudioEventController
 {
     [SerializeField] private ButtonInputEvent m_buttonEvent;
 
     [SerializeField] private WwiseInputEventPair m_buttonUpEvents;
     [SerializeField] private WwiseInputEventPair m_buttonDownEvents;
 
-    [Tooltip("Can be null")]
-    [SerializeField] private GameObject m_audioSource;
 
-
-    public void Init()
+    public override void Init(GameObject defaultSource)
     {
+        base.Init(defaultSource);
         m_buttonEvent.ButtonDownEvent.OnEventRaised += OnButtonDownRaised;
         m_buttonEvent.ButtonUpEvent.OnEventRaised += OnButtonUpRaised;
     }
 
-    public void Dispose()
+    public override void Dispose()
     {
         m_buttonEvent.ButtonDownEvent.OnEventRaised -= OnButtonDownRaised;
         m_buttonEvent.ButtonUpEvent.OnEventRaised -= OnButtonUpRaised;
@@ -28,11 +26,11 @@ public class ButtonAudioEventController : IDisposable
 
     private void OnButtonDownRaised()
     {
-        _ = m_buttonDownEvents.PostEvent(m_buttonEvent.ButtonUpEvent.IsActive, m_audioSource);
+        _ = m_buttonDownEvents.PostEvent(m_buttonEvent.ButtonUpEvent.IsActive, m_source);
     }
 
     private void OnButtonUpRaised()
     {
-        _ = m_buttonUpEvents.PostEvent(m_buttonEvent.ButtonUpEvent.IsActive, m_audioSource);
+        _ = m_buttonUpEvents.PostEvent(m_buttonEvent.ButtonUpEvent.IsActive, m_source);
     }
 }

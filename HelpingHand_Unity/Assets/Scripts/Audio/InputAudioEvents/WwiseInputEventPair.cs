@@ -10,9 +10,10 @@ public class WwiseInputEventPair
     [SerializeField] private WwiseEvent m_activeEvent;
     [SerializeField] private WwiseEvent m_inactiveEvent;
 
-    public uint? PostEvent(bool active, GameObject gameObject)
+    public uint PostEvent(bool active, GameObject gameObject)
     {
         WwiseEvent eventToPost = active ? m_activeEvent : m_inactiveEvent;
-        return eventToPost?.Post(gameObject);
+        uint? eventID = eventToPost?.Post(gameObject);
+        return eventID.HasValue ? eventID.Value : AkUnitySoundEngine.AK_INVALID_PLAYING_ID;
     }
 }

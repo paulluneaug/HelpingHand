@@ -45,12 +45,6 @@ public class FaderAudioEventController : MonoBehaviour
     [NonSerialized] private float m_previousValue;
 
 
-
-    private void Awake()
-    {
-        m_init = false;
-    }
-
     public void Init()
     {
         m_faderVariable.OnEventRaised += OnSliderValueChanged;
@@ -74,8 +68,9 @@ public class FaderAudioEventController : MonoBehaviour
             return;
         }
 
+        float speed = UpdateFaderSpeed(Time.deltaTime);
         m_valueRTPC.SetValue(gameObject, m_faderVariable.Value);
-        m_speedRTPC.SetValue(gameObject, m_speed);
+        m_speedRTPC.SetValue(gameObject, speed);
 
         if (m_fadeoutTimer.Update(Time.deltaTime) && m_playingEventID != AkUnitySoundEngine.AK_INVALID_PLAYING_ID)
         {
@@ -87,16 +82,17 @@ public class FaderAudioEventController : MonoBehaviour
     public void Dispose()
     {
         m_faderVariable.OnEventRaised -= OnSliderValueChanged;
+        m_init = false;
     }
 
     private void OnSliderValueChanged()
     {
         float sliderValue = m_faderVariable.Value;
+        Debug.Log($"Slider value changed : {sliderValue}");
 
         if (m_playingEventID == AkUnitySoundEngine.AK_INVALID_PLAYING_ID)
         {
-            uint? eventID = m_loopEvent.PostEvent(m_faderVariable.IsActive, gameObject);
-            m_playingEventID = eventID.HasValue ? eventID.Value : AkUnitySoundEngine.AK_INVALID_PLAYING_ID;
+            m_playingEventID = m_loopEvent.PostEvent(m_faderVariable.IsActive, gameObject);
         }
 
         // Slider at the min value
@@ -142,11 +138,11 @@ public class FaderAudioEventController : MonoBehaviour
         return false;
     }
 
-    private void UpdateFaderSpeed(float deltaTime)
+    private float UpdateFaderSpeed(float deltaTime)
     {
         if (deltaTime <= 0.0f)
         {
-            return;
+            return m_speed;
         }
 
         float currentValue = m_faderVariable.Value;
@@ -157,5 +153,7 @@ public class FaderAudioEventController : MonoBehaviour
         m_speed = MathUf.Abs(newSpeed);
 
         m_previousValue = currentValue;
+
+        return m_speed;
     }
 }

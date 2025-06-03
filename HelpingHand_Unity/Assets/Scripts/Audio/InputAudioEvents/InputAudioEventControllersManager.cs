@@ -20,9 +20,9 @@ public class InputAudioEventControllersManager : MonoBehaviour
     public void Init()
     {
         m_fadersAudioEventControllers.ForEach(fader => fader.Init());
-        m_buttonsAudioEventControllers.ForEach(button => button.Init());
-        m_toggleAudioEventControllers.ForEach(toggle => toggle.Init());
-        m_rotaryEncoderAudioEventControllers.ForEach(rotary => rotary.Init());
+        m_buttonsAudioEventControllers.ForEach(button => button.Init(gameObject));
+        m_toggleAudioEventControllers.ForEach(toggle => toggle.Init(gameObject));
+        m_rotaryEncoderAudioEventControllers.ForEach(rotary => rotary.Init(gameObject));
     }
 
     public void Dispose()
