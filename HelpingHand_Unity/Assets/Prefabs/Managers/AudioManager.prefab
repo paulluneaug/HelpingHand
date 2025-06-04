@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2474730653719812921}
   - component: {fileID: 4850121078279685535}
+  - component: {fileID: 8159826670081347089}
   m_Layer: 0
   m_Name: SoundbankManager
   m_TagString: Untagged
@@ -70,6 +71,31 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 5092160c4e45e7a47867cccd67b19aab, type: 2}
   m_firstLevelSoundbanks: []
+--- !u!114 &8159826670081347089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24580654844935382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a3ad09eb0c2e340b5426058fb0beba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5092160c4e45e7a47867cccd67b19aab, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &2202033541879520298
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,8 +384,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2993456136828591498}
   - component: {fileID: 6724543359347016092}
-  - component: {fileID: 5700645452118278434}
-  - component: {fileID: 709363642578278094}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -406,46 +430,6 @@ MonoBehaviour:
   EventManager: {fileID: 6734624943240797219}
   SoundbankManager: {fileID: 4850121078279685535}
   m_inputAudioEventsManager: {fileID: 7920410349539384141}
---- !u!114 &5700645452118278434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273668227940694410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16cef25407db5804e99d3271dbbed78c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 1
-  isStaticObject: 0
-  usePositionOffsetData: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  scalingFactor: 1
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
---- !u!114 &709363642578278094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273668227940694410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6017585d0db02b4b878138603d21c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDefaultListener: 1
-  bOverrideScalingFactor: 0
-  scalingFactor: -1
-  listenerId: 0
 --- !u!1 &7791490373950067443
 GameObject:
   m_ObjectHideFlags: 0

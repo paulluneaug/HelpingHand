@@ -28,18 +28,19 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     
     public override void Initialize()
     {
-        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-
         RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
         StateManager.SetGameState(GameState.None); //On initialise l'état du jeu à None (reset)
         StateManager.SetMusicState(MusicState.None); //On initialise l'état de la musique à None (reset)
-
         m_inputAudioEventsManager.Init();
     }
 
     protected override void Start()
     {
+
+
+        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
+
         StateManager.SetGameState(GameState.MainMenu); //On initialise l'état du jeu à MainMenu
         StateManager.SetMusicState(MusicState.MainMenu); //On initialise l'état de la musique à MainMenu
 
