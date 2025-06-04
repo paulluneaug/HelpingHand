@@ -14,6 +14,7 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID BUTTONPOINTERDOWN_PLAY = 588833345U;
+        static const AkUniqueID BUTTONPOINTERDOWNDESACTIVATE_PLAY = 82125100U;
         static const AkUniqueID BUTTONPOINTERUP_DESACTIVATE_PLAY = 488329938U;
         static const AkUniqueID BUTTONPOINTERUP_PLAY = 941027980U;
         static const AkUniqueID FORGEAMB_PLAY = 1567708659U;
@@ -56,6 +57,7 @@ namespace AK
         static const AkUniqueID TOGGLE_DESACTIVATE_PLAY = 2782143696U;
         static const AkUniqueID TOGGLE_PLAY = 2942539354U;
         static const AkUniqueID TYPEWRITER_PLAY = 1749211329U;
+        static const AkUniqueID UNTOGGLE_DESACTIVATE_PLAY = 1552092911U;
         static const AkUniqueID UNTOGGLE_PLAY = 3389532245U;
         static const AkUniqueID VOICE_TEST = 3500533168U;
     } // namespace EVENTS

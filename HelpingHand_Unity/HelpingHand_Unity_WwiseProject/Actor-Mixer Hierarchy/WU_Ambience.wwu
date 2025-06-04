@@ -28,6 +28,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<BlendContainer Name="Room_Machinist_Blend" ID="{09DCF989-CD2C-49EF-B420-9F871B7D85A5}" ShortID="856480190">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-16</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -54,6 +61,7 @@
 											<ChildrenList>
 												<Sound Name="5 - Room tone Ventilation noise with light hum" ID="{1E1B25A5-9934-4C11-91E2-DD04C7B534E7}" ShortID="1048571961">
 													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 														<Property Name="MakeUpGain" Type="Real64">
 															<ValueList>
 																<Value>7</Value>
@@ -72,9 +80,10 @@
 														<AudioFileSource Name="5 - Room tone Ventilation noise with light hum" ID="{7ED9C9A3-83EE-443B-A7EA-34AA0766437E}">
 															<PropertyList>
 																<Property Name="CrossfadeDuration" Type="Real64" Value="2050.815"/>
-																<Property Name="LoopBegin" Type="Real64" Value="0.327500579453247"/>
-																<Property Name="LoopEnd" Type="Real64" Value="24.4617738281422"/>
+																<Property Name="LoopBegin" Type="Real64" Value="1.6945"/>
+																<Property Name="LoopEnd" Type="Real64" Value="22.55843"/>
 																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="24.6572615236971"/>
 															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>5 - Room tone Ventilation noise with light hum .wav</AudioFile>
@@ -114,7 +123,7 @@
 									<PropertyList>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
-												<Value>-5</Value>
+												<Value>-23</Value>
 											</ValueList>
 										</Property>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
@@ -828,7 +837,7 @@
 																		<PointList>
 																			<Point>
 																				<XPos>0</XPos>
-																				<YPos>-0</YPos>
+																				<YPos>0</YPos>
 																				<Flags>5</Flags>
 																			</Point>
 																			<Point>

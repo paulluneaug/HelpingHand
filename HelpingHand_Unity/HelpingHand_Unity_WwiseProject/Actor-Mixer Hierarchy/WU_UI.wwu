@@ -117,6 +117,13 @@
 							</ChildrenList>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="PointerUp" ID="{0CAB2ADD-F189-46B6-93A5-1481A5F78720}" ShortID="930512613">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -208,7 +215,7 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="Desactivate_PointerUp" ID="{CA54C417-024D-4946-93F5-CF0B18410EA5}" ShortID="424486332">
+						<RandomSequenceContainer Name="Desactivate_PointerDown" ID="{CA54C417-024D-4946-93F5-CF0B18410EA5}" ShortID="424486332">
 							<PropertyList>
 								<Property Name="Highpass" Type="int16">
 									<ValueList>
@@ -217,7 +224,7 @@
 								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-6</Value>
+										<Value>-16</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -235,6 +242,11 @@
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
 												<Value>17</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
 											</ValueList>
 										</Property>
 										<Property Name="MakeUpGain" Type="Real64">
@@ -269,11 +281,260 @@
 										<ActiveSource Name="HH_Desactivate_Button_PointerUp" ID="{0EB33D4C-725C-40D2-B947-9849130532C1}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-001" ID="{17624933-E54C-47DC-A0EB-F55946D888CE}" ShortID="476704074">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-001" ID="{EEED177B-07E8-4E68-B66F-769D5804275F}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-001.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="129199378"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-001" ID="{EEED177B-07E8-4E68-B66F-769D5804275F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-002" ID="{B1771FA6-E567-4325-8E02-CAC64F32103D}" ShortID="281007270">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-002" ID="{2D1D194D-46D7-4EC0-890D-662F45880EE3}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="736575303"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-002" ID="{2D1D194D-46D7-4EC0-890D-662F45880EE3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-003" ID="{A17B5A51-CD70-4282-A762-08C2117A2814}" ShortID="252093685">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-003" ID="{3669CD83-66D8-423E-8D39-F01CD011E398}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-003.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1071087432"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-003" ID="{3669CD83-66D8-423E-8D39-F01CD011E398}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-004" ID="{944FDFAB-2807-4858-B21A-4EC2D035F527}" ShortID="118324379">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-004" ID="{A3CBED2D-4612-4C7E-BCF5-BB1C78635BC3}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-004.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="473262098"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-004" ID="{A3CBED2D-4612-4C7E-BCF5-BB1C78635BC3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Desactivate_PointerUp" ID="{35BB68E2-FDCC-4A51-B696-354137F1D4D4}" ShortID="382013539">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>28</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-28</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-50</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="HH_Desactivate_Button_PointerUp" ID="{4722D014-158E-4252-B752-BE6A37B53537}" ShortID="383808929">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>17</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>4</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>330</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Button_PointerUp" ID="{FCA32DF1-DDC7-485F-893F-12CF3AD07C2B}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Button_PointerUp.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="172716645"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Button_PointerUp" ID="{FCA32DF1-DDC7-485F-893F-12CF3AD07C2B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-001" ID="{B579AC49-D7A2-4246-8952-2FE10B2EB4BE}" ShortID="668624989">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-001" ID="{CCA7A3E7-F5C1-4F80-A33A-C41EF268EF5D}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-001.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="129199378"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-001" ID="{CCA7A3E7-F5C1-4F80-A33A-C41EF268EF5D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-002" ID="{66D51AB2-D6D9-4061-89A7-112B44839AEB}" ShortID="692832066">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-002" ID="{FB813339-35B4-4FB4-BEA2-146E331AD160}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="736575303"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-002" ID="{FB813339-35B4-4FB4-BEA2-146E331AD160}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-003" ID="{855037EA-6BE7-4AAD-B8DE-8F7147191DC6}" ShortID="365936696">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-003" ID="{5C164663-9509-4085-BBF7-96F7BD2BC6F3}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-003.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1071087432"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-003" ID="{5C164663-9509-4085-BBF7-96F7BD2BC6F3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch-004" ID="{B68E34D6-2DE1-491C-BA81-F752F0F2BBB6}" ShortID="634330851">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch-004" ID="{A97EDA6C-AF46-4BFF-9E1F-3F98B4C79085}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch-004.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="473262098"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch-004" ID="{A97EDA6C-AF46-4BFF-9E1F-3F98B4C79085}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="Fader" ID="{41637079-D483-4B54-9CD8-8FA7B35A31A7}" ShortID="675507675">
+				<ActorMixer Name="Fader_UI" ID="{41637079-D483-4B54-9CD8-8FA7B35A31A7}" ShortID="675507675">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 					</PropertyList>
@@ -845,7 +1106,7 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="ToggleMetal" ID="{EB5034EE-C863-4886-8521-77A17A2BD444}" ShortID="483724787">
+				<ActorMixer Name="ToggleMetal_UI" ID="{EB5034EE-C863-4886-8521-77A17A2BD444}" ShortID="483724787">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Fader_UI_Mono" ID="{08E25ABF-48DC-4828-871A-284F3643F542}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1176,12 +1437,12 @@
 							<PropertyList>
 								<Property Name="Highpass" Type="int16">
 									<ValueList>
-										<Value>41</Value>
+										<Value>24</Value>
 									</ValueList>
 								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-7</Value>
+										<Value>-14</Value>
 									</ValueList>
 								</Property>
 								<Property Name="Pitch" Type="int32">
@@ -1199,14 +1460,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="HH_Desactivate_Toggle" ID="{5AAC27AB-017F-431B-B752-88C462EF2BDC}" ShortID="262249826">
-									<PropertyList>
-										<Property Name="Pitch" Type="int32">
-											<ValueList>
-												<Value>-200</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-001" ID="{682A6CE7-E281-41DC-AA99-604111F8C661}" ShortID="651505842">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1216,23 +1470,294 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="HH_Desactivate_Toggle" ID="{5489461D-646D-43A0-8295-6965700C0DEB}">
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-001" ID="{1D7D0411-2BF3-4CDC-9549-BAA1B952A12B}">
 											<Language>SFX</Language>
-											<AudioFile>HH_Desactivate_Toggle.wav</AudioFile>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-001.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="241966248"/>
+												<MediaID ID="742818625"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="HH_Desactivate_Toggle" ID="{5489461D-646D-43A0-8295-6965700C0DEB}" Platform="Linked"/>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-001" ID="{1D7D0411-2BF3-4CDC-9549-BAA1B952A12B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-002" ID="{DE2D76AE-FDE7-4A1C-9D63-BA1B354241A3}" ShortID="981751626">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-002" ID="{6BD2E6D7-D2F6-4C7B-9C69-B7306C587FFF}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="112230056"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-002" ID="{6BD2E6D7-D2F6-4C7B-9C69-B7306C587FFF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-003" ID="{0028DBF6-266A-422F-AE84-E1972111517A}" ShortID="775522314">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-003" ID="{D8B937C4-F4FF-423A-9947-445323FF4128}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-003.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="41757883"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-003" ID="{D8B937C4-F4FF-423A-9947-445323FF4128}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-004" ID="{D3248ACF-9808-4180-9E9D-D88B44C822E2}" ShortID="145851155">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-004" ID="{332E7AC7-C899-471C-B1D6-D61D675C3AFF}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-004.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="621512504"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-004" ID="{332E7AC7-C899-471C-B1D6-D61D675C3AFF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-005" ID="{475C5C6A-1CCC-461E-A28B-D5CDC12759D3}" ShortID="887562489">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-005" ID="{2A03E28F-9A4B-43DF-B99B-BA87424CDAD5}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-005.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="629642277"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-005" ID="{2A03E28F-9A4B-43DF-B99B-BA87424CDAD5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-006" ID="{E458866F-91BB-4575-8CD2-ED143F292E5E}" ShortID="461842423">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-006" ID="{CB7D0C44-EAB2-4127-96B5-5E68ABCDC553}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-006.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="214765898"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-006" ID="{CB7D0C44-EAB2-4127-96B5-5E68ABCDC553}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Desactivate_UnToggle" ID="{A07E3236-F035-4BEB-8455-6019AAC08BED}" ShortID="877989931">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>24</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-20</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-80</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-001" ID="{70DEBEDF-B4D4-4D81-BE76-DCB978A83A86}" ShortID="827259461">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-001" ID="{70E1874B-D766-4EE0-ACA6-21F71CEA2361}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-001.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="742818625"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-001" ID="{70E1874B-D766-4EE0-ACA6-21F71CEA2361}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-002" ID="{124D701D-7444-4716-88F3-CAA46A58F6F9}" ShortID="545948340">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-002" ID="{0E5DEE53-8E90-47E0-B3C7-9F9AEB879CD4}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="112230056"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-002" ID="{0E5DEE53-8E90-47E0-B3C7-9F9AEB879CD4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-003" ID="{8BB188DA-59A4-4926-B504-56FAD06D1481}" ShortID="599098431">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-003" ID="{3400E439-792B-4F34-92CB-5F97DE57CAAC}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-003.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="41757883"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-003" ID="{3400E439-792B-4F34-92CB-5F97DE57CAAC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-004" ID="{210B7FE0-3D23-48E7-A4CB-6565E1599FFF}" ShortID="144078375">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-004" ID="{BEAB4725-4EC4-43A3-9820-7B570BAB51E2}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-004.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="621512504"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-004" ID="{BEAB4725-4EC4-43A3-9820-7B570BAB51E2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-005" ID="{21C94215-F74D-488A-AB22-A7DB1B257CD9}" ShortID="216720373">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-005" ID="{40BA336D-C2DD-48F0-8277-146F99056A35}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-005.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="629642277"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-005" ID="{40BA336D-C2DD-48F0-8277-146F99056A35}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HH_Desactivate_Wood_Pitch_Longer-006" ID="{48EA4606-865C-4DE4-8CF7-4E985FF6B283}" ShortID="298500350">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HH_Desactivate_Wood_Pitch_Longer-006" ID="{1C0B3F43-6443-4359-8878-5D500AB3008E}">
+											<Language>SFX</Language>
+											<AudioFile>HH_Desactivate_Wood_Pitch_Longer-006.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="214765898"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="HH_Desactivate_Wood_Pitch_Longer-006" ID="{1C0B3F43-6443-4359-8878-5D500AB3008E}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="Typewriter" ID="{66A389FD-60EA-4BB2-AF9E-5A23771F645D}" ShortID="580728540">
+				<ActorMixer Name="Typewriter_UI" ID="{66A389FD-60EA-4BB2-AF9E-5A23771F645D}" ShortID="580728540">
 					<PropertyList>
 						<Property Name="MakeUpGain" Type="Real64">
 							<ValueList>
@@ -1595,7 +2120,7 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="RotaryEncoder" ID="{D7B9D9D4-FBB7-474E-BE58-59106C1DB4B0}" ShortID="1050603872">
+				<ActorMixer Name="RotaryEncoder_UI" ID="{D7B9D9D4-FBB7-474E-BE58-59106C1DB4B0}" ShortID="1050603872">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Fader_UI_Mono" ID="{08E25ABF-48DC-4828-871A-284F3643F542}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -2348,7 +2873,7 @@
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
-										<Value>-1100</Value>
+										<Value>-250</Value>
 									</ValueList>
 								</Property>
 								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
@@ -2374,10 +2899,14 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="HH_RotaryEncoder_Click-009" ID="{71B3ABF0-6C98-45B4-BB18-3D5A36A91FCF}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0517387115302622"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>HH_RotaryEncoder_Click-009.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="863277520"/>
+												<MediaID ID="610347756"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
@@ -2396,10 +2925,14 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="HH_RotaryEncoder_Click-012" ID="{2D22FC2B-6D7F-4B09-ACCF-0C6F7C7901E3}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.063592621958107"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>HH_RotaryEncoder_Click-012.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="517025595"/>
+												<MediaID ID="1003461969"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
@@ -2418,10 +2951,15 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="HH_RotaryEncoder_Click-014" ID="{F805B3BE-9A06-402A-B5A8-DE4F1D81309A}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0619152685828671"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>HH_RotaryEncoder_Click-014.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="1060281134"/>
+												<MediaID ID="700172971"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
@@ -2433,7 +2971,7 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="Potentiometer" ID="{9E1AA171-C759-4E41-A628-B81144C2B5A9}" ShortID="115384764">
+				<ActorMixer Name="Potentiometer_UI" ID="{9E1AA171-C759-4E41-A628-B81144C2B5A9}" ShortID="115384764">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 					</PropertyList>
