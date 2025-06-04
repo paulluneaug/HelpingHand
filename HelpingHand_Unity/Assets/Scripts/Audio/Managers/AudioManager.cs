@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     
     public override void Initialize()
     {
+        AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
         RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
         StateManager.SetGameState(GameState.None); //On initialise l'état du jeu à None (reset)
@@ -38,7 +39,6 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     protected override void Start()
     {
 
-
         SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
 
         StateManager.SetGameState(GameState.MainMenu); //On initialise l'état du jeu à MainMenu
@@ -48,16 +48,17 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
 
         //On joue la musique principale dès que la scène se lance
-        // EventManager.MainMusic_Play.Post(gameObject);
+         //EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
-        //EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
-        //EventManager.Theater_Ambience_Play.Post(gameObject);
+        EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
+        EventManager.Theater_Ambience_Play.Post(gameObject);
     }
 
     public override void OnDestroy()
     {
         base.OnDestroy();
+        AkUnitySoundEngine.UnregisterGameObj(gameObject);
 
         m_inputAudioEventsManager.Dispose();
     }

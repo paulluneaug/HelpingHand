@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2474730653719812921}
   - component: {fileID: 4850121078279685535}
-  - component: {fileID: 8159826670081347089}
   m_Layer: 0
   m_Name: SoundbankManager
   m_TagString: Untagged
@@ -71,31 +70,6 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 5092160c4e45e7a47867cccd67b19aab, type: 2}
   m_firstLevelSoundbanks: []
---- !u!114 &8159826670081347089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24580654844935382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a3ad09eb0c2e340b5426058fb0beba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 5092160c4e45e7a47867cccd67b19aab, type: 2}
-  decodeBank: 0
-  overrideLoadSetting: 0
-  loadAsynchronous: 0
-  saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
-  bankNameInternal: 
-  valueGuidInternal: 
 --- !u!1 &2202033541879520298
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +358,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2993456136828591498}
   - component: {fileID: 6724543359347016092}
+  - component: {fileID: 7433500000762565253}
+  - component: {fileID: 4410263241067196336}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -430,6 +406,46 @@ MonoBehaviour:
   EventManager: {fileID: 6734624943240797219}
   SoundbankManager: {fileID: 4850121078279685535}
   m_inputAudioEventsManager: {fileID: 7920410349539384141}
+--- !u!114 &7433500000762565253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273668227940694410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cef25407db5804e99d3271dbbed78c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 1
+  m_positionOffsetData:
+    KeepMe: 1
+    positionOffset: {x: 0, y: 3.21, z: -17.31}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &4410263241067196336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273668227940694410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6017585d0db02b4b878138603d21c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  bOverrideScalingFactor: 0
+  scalingFactor: -1
+  listenerId: 0
 --- !u!1 &7791490373950067443
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +700,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 3e58d75a37071744a8494c3d2152b7b9, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 60ac8fb6e902e3c4cb23ac2b5286c33f, type: 2}
     m_buttonDownEvents:
       m_activeEvent:
         idInternal: 0
@@ -693,7 +709,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
+        WwiseObjectReference: {fileID: 11400000, guid: 4ad0295d2b86d2a49ac9daeae2305049, type: 2}
   - m_audioSource: {fileID: 0}
     m_buttonEvent: {fileID: 11400000, guid: df5d153552bde234ca55db4b1537e4bb, type: 2}
     m_buttonUpEvents:
@@ -704,7 +720,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 3e58d75a37071744a8494c3d2152b7b9, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 60ac8fb6e902e3c4cb23ac2b5286c33f, type: 2}
     m_buttonDownEvents:
       m_activeEvent:
         idInternal: 0
@@ -713,7 +729,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
+        WwiseObjectReference: {fileID: 11400000, guid: 4ad0295d2b86d2a49ac9daeae2305049, type: 2}
   m_toggleAudioEventControllers:
   - m_audioSource: {fileID: 0}
     m_toggleEvent: {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
@@ -725,7 +741,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
+        WwiseObjectReference: {fileID: 11400000, guid: aacd7b27e14affa468fdb3195603ae12, type: 2}
     m_toggleDownEvents:
       m_activeEvent:
         idInternal: 0
@@ -734,7 +750,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: b177245873710004c882bd28c6311676, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 5b936c56f57af7949914f846e646d729, type: 2}
   - m_audioSource: {fileID: 0}
     m_toggleEvent: {fileID: 11400000, guid: 5530447aeca3c0346a760b0eed100dd9, type: 2}
     m_toggleUpEvents:
@@ -745,7 +761,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
+        WwiseObjectReference: {fileID: 11400000, guid: aacd7b27e14affa468fdb3195603ae12, type: 2}
     m_toggleDownEvents:
       m_activeEvent:
         idInternal: 0
@@ -754,7 +770,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: b177245873710004c882bd28c6311676, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 5b936c56f57af7949914f846e646d729, type: 2}
   m_rotaryEncoderAudioEventControllers:
   - m_audioSource: {fileID: 0}
     m_rotaryEncoderEvent: {fileID: 11400000, guid: f6ac82cc968eccd46b957e674e4a51d7, type: 2}
@@ -766,7 +782,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 88200838ab42efa43959bb17474fc0fe, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 3e40549218f28684b874600539d0b7ba, type: 2}
     m_stepRightEvents:
       m_activeEvent:
         idInternal: 0
@@ -775,7 +791,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 88200838ab42efa43959bb17474fc0fe, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 3e40549218f28684b874600539d0b7ba, type: 2}
   - m_audioSource: {fileID: 0}
     m_rotaryEncoderEvent: {fileID: 11400000, guid: 35c71e3adddf0f8489075245a0eecb89, type: 2}
     m_stepLeftEvents:
@@ -786,7 +802,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 88200838ab42efa43959bb17474fc0fe, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 3e40549218f28684b874600539d0b7ba, type: 2}
     m_stepRightEvents:
       m_activeEvent:
         idInternal: 0
@@ -795,7 +811,7 @@ MonoBehaviour:
       m_inactiveEvent:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 88200838ab42efa43959bb17474fc0fe, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 3e40549218f28684b874600539d0b7ba, type: 2}
 --- !u!1001 &1022446966084646823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,6 +829,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a874ecd5c019962409ecdbf5e55828a7, type: 2}
     - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_loopEvent.m_inactiveEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: a874ecd5c019962409ecdbf5e55828a7, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
       propertyPath: m_maxValueEvent.m_activeEvent.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 29b6522f83aa115458ec455876fbbcc5, type: 2}
@@ -821,11 +841,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 247a3b4c20a0ef0469c6c2fe7935e0b7, type: 2}
     - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_maxValueEvent.m_inactiveEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 29b6522f83aa115458ec455876fbbcc5, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
       propertyPath: m_stopFadoutEvent.m_activeEvent.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
     - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_stopFadoutEvent.m_inactiveEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
       propertyPath: m_stopImmediateEvent.m_activeEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_stopImmediateEvent.m_inactiveEvent.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
     - target: {fileID: 8577536282586208151, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
@@ -987,6 +1019,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a874ecd5c019962409ecdbf5e55828a7, type: 2}
     - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_loopEvent.m_inactiveEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: a874ecd5c019962409ecdbf5e55828a7, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
       propertyPath: m_maxValueEvent.m_activeEvent.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 29b6522f83aa115458ec455876fbbcc5, type: 2}
@@ -995,11 +1031,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 247a3b4c20a0ef0469c6c2fe7935e0b7, type: 2}
     - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_maxValueEvent.m_inactiveEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 29b6522f83aa115458ec455876fbbcc5, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
       propertyPath: m_stopFadoutEvent.m_activeEvent.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
     - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_stopFadoutEvent.m_inactiveEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
       propertyPath: m_stopImmediateEvent.m_activeEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
+    - target: {fileID: 5137374030482679964, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
+      propertyPath: m_stopImmediateEvent.m_inactiveEvent.WwiseObjectReference
       value: 
       objectReference: {fileID: 11400000, guid: 4d4ed0b923ff47541a3d9fd4aa92b9d7, type: 2}
     - target: {fileID: 8577536282586208151, guid: 44a86c461fb1faf43b9ad6541419065f, type: 3}
