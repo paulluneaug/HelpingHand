@@ -220,7 +220,7 @@
 								<Action Name="" ID="{C9D0E050-CB76-4889-96BF-1DD75A15A2E9}" ShortID="48448468">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="LeftClick" ID="{CBC138D7-3A41-4A59-9687-46738E7947C3}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+											<ObjectRef Name="OtherClick_Pitch" ID="{98EB832D-F0E1-4D6B-88B8-03370EE04BBB}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -231,7 +231,7 @@
 								<Action Name="" ID="{16A8F76D-BE19-425D-934C-F315AA4D5836}" ShortID="894790045">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="RightClick" ID="{D314D3A8-9956-4236-ADEA-E220D9FCA40F}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+											<ObjectRef Name="OtherClick" ID="{F222C876-9C14-49A9-94CD-1B2EE6E857DA}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -243,6 +243,13 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Desactivate" ID="{6ADDBF28-4014-4634-BF4B-4B610A773320}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{11E1F1B3-B7EF-4567-93D1-4DF3F9327465}" ShortID="50748139">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="OtherClick" ID="{F222C876-9C14-49A9-94CD-1B2EE6E857DA}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -294,6 +301,53 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Potentiometer_Loop" ID="{38683223-273C-4571-B7B6-0DCFDEF5F9FF}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PotentiometerMax_Desactivate_Play" ID="{BFA84D3D-7663-4F3F-A71D-C01A80A50D4E}">
+							<ChildrenList>
+								<Action Name="" ID="{DD6267AA-2479-4BDF-BB1F-05420EDE0A45}" ShortID="764126771">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Potentiometer_MaxValue_Desactivate" ID="{12D652B1-1E0B-4A1A-A346-7147CF69038F}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PotentiometerMin_Desactivate_Play" ID="{4C3DD293-4DB3-4CF9-847F-6A083F883D28}">
+							<ChildrenList>
+								<Action Name="" ID="{D1E1CC21-9DAE-44E0-887D-A374834B2522}" ShortID="27436899">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Potentiometer_MinValue_Desactivate" ID="{DE3A77CC-39A7-4485-A838-1A25ADFA41C1}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PotentiometerLoop_Desactivate_Play" ID="{580B73CB-46F3-409F-A2D5-959D5AE34851}">
+							<ChildrenList>
+								<Action Name="" ID="{555BC352-B200-4F69-BD73-579207DD1123}" ShortID="210699190">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Potentiometer_MaxValue_Desactivate" ID="{12D652B1-1E0B-4A1A-A346-7147CF69038F}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PotentiometerLoop_Desactivate_Stop" ID="{65A37543-D459-41CA-A5FE-CAF794121074}">
+							<ChildrenList>
+								<Action Name="" ID="{BA622343-4898-49D4-9F1D-6C31B1C0183C}" ShortID="89268636">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Potentiometer_Loop_Desactivate" ID="{5C33B126-AD23-49D7-9360-F8634DAF6467}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
