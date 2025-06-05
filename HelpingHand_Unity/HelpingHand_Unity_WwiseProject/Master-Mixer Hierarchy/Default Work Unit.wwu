@@ -426,6 +426,43 @@
 										</Local>
 									</Reference>
 								</ObjectList>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{4E0A3537-B75C-4757-B453-BB8EF94A0E21}" ShortID="837163477">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="RTPC_VoiceVolume" ID="{BD856B45-7B46-4698-980F-2BE0FCDC9D84}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{3FB64163-E0CA-48AC-A46C-F449822D0A8E}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
 							</ObjectLists>
 							<DuckingList>
 								<DuckItem>
@@ -489,17 +526,17 @@
 						<ObjectList Name="RTPC">
 							<Reference>
 								<Local>
-									<RTPC Name="" ID="{CD32F6BB-0F96-432C-A215-8D5B537926DE}" ShortID="66297971">
+									<RTPC Name="" ID="{B23277F2-0B90-4B42-A7B2-EDD499BC6976}" ShortID="553026451">
 										<PropertyList>
-											<Property Name="PropertyName" Type="string" Value="Volume"/>
+											<Property Name="PropertyName" Type="string" Value="BusVolume"/>
 										</PropertyList>
 										<ReferenceList>
 											<Reference Name="ControlInput">
-												<ObjectRef Name="RTPC_VolumeMaster" ID="{0313499F-BC79-472E-A504-C249B4DE71C1}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+												<ObjectRef Name="RTPC_MasterVolume" ID="{6B8E06A8-8189-4EF7-BBC6-C7E3459279F7}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
 											</Reference>
 											<Reference Name="Curve">
 												<Custom>
-													<Curve Name="" ID="{D9D08922-896B-4456-97DD-EB394C1E3D45}">
+													<Curve Name="" ID="{51304877-3D19-45BD-BB35-B3092B27A253}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -510,7 +547,7 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>100</XPos>
+																<XPos>1</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>

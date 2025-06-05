@@ -405,12 +405,13 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID DIALOGUE_CUE = 640723851U;
+        static const AkUniqueID RTPC_MASTERVOLUME = 2582501215U;
         static const AkUniqueID RTPC_MUSIC_FIRSTLAYER = 2116630962U;
         static const AkUniqueID RTPC_MUSIC_SECONDLAYER = 1485517750U;
         static const AkUniqueID RTPC_NUMBEROFTIMEPLAYED = 1487758345U;
         static const AkUniqueID RTPC_RANDOMSEEKPOSITION = 2865193319U;
         static const AkUniqueID RTPC_TIMEOFDAY = 257272959U;
-        static const AkUniqueID RTPC_VOLUMEMASTER = 424266135U;
+        static const AkUniqueID RTPC_VOICEVOLUME = 3304106241U;
         static const AkUniqueID SLIDERSPEED = 1460444787U;
         static const AkUniqueID SLIDERVALUE = 2333331917U;
     } // namespace GAME_PARAMETERS
