@@ -4,14 +4,19 @@ using UnityUtility.Singletons;
 
 public class CanvasManager : MonoBehaviourSingleton<CanvasManager>
 {
+    [SerializeField] private bool activateMainMenu;
     [SerializeField] private MainMenuManager m_mainMenuController;
     [SerializeField] private OptionsMenuController m_optionsMenuController;
 
+    
     protected override void Awake()
     {
         base.Awake();
-        m_mainMenuController.gameObject.SetActive(true);
-        m_optionsMenuController.CloseOptionMenu();
+        if (activateMainMenu)
+        {
+            m_mainMenuController.gameObject.SetActive(true);
+            m_optionsMenuController.CloseOptionMenu();
+        }
     }
 
     public void StartGame()

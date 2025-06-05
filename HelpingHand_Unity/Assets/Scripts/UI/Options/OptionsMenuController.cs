@@ -1,5 +1,7 @@
 using System;
 
+using TMPro;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,12 +11,14 @@ using UnityUtility.CustomAttributes;
 public class OptionsMenuController : MonoBehaviour 
 {
     public bool IsOpened => m_isOpened;
-
+    
     public event Action OnMenuOpened;
     public event Action OnMenuClosed;
 
     [SerializeField] private InputActionReference m_pauseAction;
-
+    [SerializeField] private TMP_Text m_dialogueText;
+    [SerializeField] private Image m_dialogueBackground;
+    
     [Title("UI components")]
     [SerializeField] private CanvasGroup m_menuOptions;
     [SerializeField] private Selectable m_firstSelectable;
@@ -126,15 +130,33 @@ public class OptionsMenuController : MonoBehaviour
     private void OnOptionSubtitleColorChanged(Color value)
     {
         m_gameOptions.SubtitleColor.Value = value;
+        m_dialogueText.color = value;
     }
 
     private void OnOptionSubtitleSizeChanged(SubtitleSize value)
     {
         m_gameOptions.SubtitleSize.Value = value;
+        switch (value)
+        {
+            case SubtitleSize.Small:
+                m_dialogueText.fontSize = 40.0f;
+                break;
+            case SubtitleSize.Medium:
+                m_dialogueText.fontSize = 60.0f;
+                break;
+            case SubtitleSize.Large:
+                m_dialogueText.fontSize = 80.0f;
+                break;
+        }
     }
 
     private void OnOptionSubtitleOpacityChanged(float value)
     {
+        Color tmpColor;
+
+        tmpColor = m_dialogueBackground.color;
+        tmpColor.a = value / 100.0f;
+        m_dialogueBackground.color = tmpColor;
         m_gameOptions.SubtitleOpacity.Value = value;
     }
 
