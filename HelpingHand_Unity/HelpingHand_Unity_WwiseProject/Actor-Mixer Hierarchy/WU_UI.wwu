@@ -1120,7 +1120,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-7</Value>
+										<Value>-9</Value>
 									</ValueList>
 								</Property>
 								<Property Name="Pitch" Type="int32">
@@ -1281,7 +1281,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-5</Value>
+										<Value>-8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2971,12 +2971,22 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="OtherClick" ID="{F222C876-9C14-49A9-94CD-1B2EE6E857DA}" ShortID="672279845">
 							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>17</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
 										<Value>-6</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-180</Value>
+									</ValueList>
+								</Property>
 								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
 								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.1"/>
 							</PropertyList>
@@ -3012,6 +3022,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="HH_RotaryEncoder_Click_2" ID="{32677DB9-B507-4AE6-9C46-01A5127D17C4}" ShortID="200625714">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-80</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3034,6 +3051,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="HH_RotaryEncoder_Click_3" ID="{846FF1F5-D0E5-4FF0-9776-7938144E43AC}" ShortID="3923896">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-80</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3078,6 +3102,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="HH_RotaryEncoder_Click_5" ID="{8C0C538F-5CFF-43CF-A790-04656B172F1A}" ShortID="925655447">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-160</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3125,6 +3156,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="OtherClick_Pitch" ID="{98EB832D-F0E1-4D6B-88B8-03370EE04BBB}" ShortID="78909781">
 							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>16</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
 										<Value>-6</Value>
@@ -3133,8 +3169,13 @@
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
-										<Value>-150</Value>
+										<Value>-350</Value>
 									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{6E04B4D2-8442-4942-AF7E-A2AF00F0EFC8}"/>
+										</ModifierInfo>
+									</ModifierList>
 								</Property>
 								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
 								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.1"/>

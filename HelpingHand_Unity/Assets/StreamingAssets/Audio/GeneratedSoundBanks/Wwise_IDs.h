@@ -17,8 +17,23 @@ namespace AK
         static const AkUniqueID BUTTONPOINTERDOWNDESACTIVATE_PLAY = 82125100U;
         static const AkUniqueID BUTTONPOINTERUP_DESACTIVATE_PLAY = 488329938U;
         static const AkUniqueID BUTTONPOINTERUP_PLAY = 941027980U;
+        static const AkUniqueID CURTAINLOOP_PLAY = 2848090300U;
+        static const AkUniqueID CURTAINMAX_PLAY = 3445812898U;
+        static const AkUniqueID CURTAINMIN_PLAY = 3264562480U;
         static const AkUniqueID FORGEAMB_PLAY = 1567708659U;
         static const AkUniqueID FUNKYJINGLE_SETSWITCH = 4104299446U;
+        static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_PLAY = 1520116072U;
+        static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_STOP = 3856209626U;
+        static const AkUniqueID GEARLOOP_CLICKY_MEDPITCH_PLAY = 432513484U;
+        static const AkUniqueID GEARLOOP_CLICKY_MEDPITCH_STOP = 2402298070U;
+        static const AkUniqueID GEARLOOP_CLICKY_SQUEAKY_PLAY = 4192366771U;
+        static const AkUniqueID GEARLOOP_CLICKY_SQUEAKY_STOP = 3280808857U;
+        static const AkUniqueID GEARLOOP_HEAVY_METAL_PLAY = 4114776091U;
+        static const AkUniqueID GEARLOOP_HEAVY_METAL_STOP = 2942662353U;
+        static const AkUniqueID GEARLOOP_HEAVY_PLAY = 3216386051U;
+        static const AkUniqueID GEARLOOP_HEAVY_STOP = 1277860297U;
+        static const AkUniqueID GEARLOOP_SOFT_PLAY = 2448047830U;
+        static const AkUniqueID GEARLOOP_SOFT_STOP = 3220058728U;
         static const AkUniqueID HEROICJINGLE_SETSWITCH = 3299137599U;
         static const AkUniqueID HORRORJINGLE_SETSWITCH = 3116989295U;
         static const AkUniqueID JINGLE_STOP = 3484940841U;
@@ -53,6 +68,8 @@ namespace AK
         static const AkUniqueID SADJINGLE_SETSWITCH = 792680301U;
         static const AkUniqueID SPOTLIGHT_OFF_PLAY = 1074187710U;
         static const AkUniqueID SPOTLIGHT_ON_PLAY = 1206761850U;
+        static const AkUniqueID STOP_CURTAINFADEOUT = 819184552U;
+        static const AkUniqueID STOP_CURTAINIMMEDIATE = 2591636753U;
         static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
@@ -393,6 +410,7 @@ namespace AK
         static const AkUniqueID RTPC_NUMBEROFTIMEPLAYED = 1487758345U;
         static const AkUniqueID RTPC_RANDOMSEEKPOSITION = 2865193319U;
         static const AkUniqueID RTPC_TIMEOFDAY = 257272959U;
+        static const AkUniqueID RTPC_VOLUMEMASTER = 424266135U;
         static const AkUniqueID SLIDERSPEED = 1460444787U;
         static const AkUniqueID SLIDERVALUE = 2333331917U;
     } // namespace GAME_PARAMETERS

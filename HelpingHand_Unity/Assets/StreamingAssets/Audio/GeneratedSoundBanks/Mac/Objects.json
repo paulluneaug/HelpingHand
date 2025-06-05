@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{A97744F7-3FE7-46E3-AF1C-2567B1452CD0}",
     "Language": "SFX",
-    "Hash": "{C7E0DD2D-D7B3-39B4-5778-6A1E072902CA}",
+    "Hash": "{247F0F83-57D0-9D2C-9515-B2F5D8AC0170}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Objects",
     "ShortName": "Objects",
     "Path": "Objects.bnk",
@@ -258,6 +258,70 @@
     ],
     "Events": [
      {
+      "Id": "2848090300",
+      "Name": "CurtainLoop_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Curtain\\CurtainLoop_Play",
+      "GUID": "{39B47981-4F3D-449F-8B40-537616D27951}",
+      "MaxAttenuation": "20",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "89491334"
+       },
+       {
+        "Id": "222587742"
+       },
+       {
+        "Id": "315206239"
+       },
+       {
+        "Id": "409372585"
+       },
+       {
+        "Id": "415837628"
+       },
+       {
+        "Id": "444303928"
+       },
+       {
+        "Id": "455263592"
+       },
+       {
+        "Id": "918281129"
+       }
+      ]
+     },
+     {
+      "Id": "3445812898",
+      "Name": "CurtainMax_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Curtain\\CurtainMax_Play",
+      "GUID": "{BF132A20-D4BD-451D-AA0E-62D882B22332}",
+      "MaxAttenuation": "20",
+      "DurationType": "OneShot",
+      "DurationMin": "0.04672895",
+      "DurationMax": "0.04672895",
+      "MediaRefs": [
+       {
+        "Id": "128187222"
+       }
+      ]
+     },
+     {
+      "Id": "3264562480",
+      "Name": "CurtainMin_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Curtain\\CurtainMin_Play",
+      "GUID": "{F058AF62-C700-4400-9AD7-52875A2969DA}",
+      "MaxAttenuation": "20",
+      "DurationType": "OneShot",
+      "DurationMin": "0.054932117",
+      "DurationMax": "0.054932117",
+      "MediaRefs": [
+       {
+        "Id": "128187222"
+       }
+      ]
+     },
+     {
       "Id": "3688189956",
       "Name": "Play_FaderLoop",
       "ObjectPath": "\\Events\\UI_Events\\Fader\\Play_FaderLoop",
@@ -294,9 +358,8 @@
      {
       "Id": "2367626798",
       "Name": "Play_SquareRockLoop",
-      "ObjectPath": "\\Events\\MovableObjects_Events\\Square_Rock\\Play_SquareRockLoop",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Square_Rock\\Play_SquareRockLoop",
       "GUID": "{F25EDB35-EE85-47D3-BABB-D5B444C285BA}",
-      "Color": "6",
       "MaxAttenuation": "20",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -314,9 +377,8 @@
      {
       "Id": "3543323798",
       "Name": "Play_SquareRockMax",
-      "ObjectPath": "\\Events\\MovableObjects_Events\\Square_Rock\\Play_SquareRockMax",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Square_Rock\\Play_SquareRockMax",
       "GUID": "{788D9A05-16B0-4D42-ADE7-6B3421F7D5E2}",
-      "Color": "6",
       "MaxAttenuation": "20",
       "DurationType": "OneShot",
       "DurationMin": "0.5828936",
@@ -330,9 +392,8 @@
      {
       "Id": "3409102904",
       "Name": "Play_SquareRockMin",
-      "ObjectPath": "\\Events\\MovableObjects_Events\\Square_Rock\\Play_SquareRockMin",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Square_Rock\\Play_SquareRockMin",
       "GUID": "{AAD420D5-AAFC-46B3-9089-76DF722FCB4D}",
-      "Color": "6",
       "MaxAttenuation": "20",
       "DurationType": "OneShot",
       "DurationMin": "1.5114595",
@@ -346,7 +407,7 @@
      {
       "Id": "1074187710",
       "Name": "Spotlight_Off_Play",
-      "ObjectPath": "\\Events\\Jingle_Events\\Spotlight_Off_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Spotlight_Off_Play",
       "GUID": "{D70231DA-8DFF-4E90-9489-714CE5F8FC1A}",
       "MaxAttenuation": "20",
       "DurationType": "OneShot",
@@ -394,7 +455,7 @@
      {
       "Id": "1206761850",
       "Name": "Spotlight_On_Play",
-      "ObjectPath": "\\Events\\Jingle_Events\\Spotlight_On_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Spotlight_On_Play",
       "GUID": "{3D093A44-506D-4246-BCE8-BC64459A944A}",
       "MaxAttenuation": "20",
       "DurationType": "OneShot",
@@ -440,11 +501,82 @@
       ]
      },
      {
+      "Id": "819184552",
+      "Name": "Stop_CurtainFadeout",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Curtain\\Stop_CurtainFadeout",
+      "GUID": "{8D53A155-B0F2-4DD4-9FD0-541CE4B7EF7F}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "89491334"
+       },
+       {
+        "Id": "222587742"
+       },
+       {
+        "Id": "315206239"
+       },
+       {
+        "Id": "409372585"
+       },
+       {
+        "Id": "415837628"
+       },
+       {
+        "Id": "444303928"
+       },
+       {
+        "Id": "455263592"
+       },
+       {
+        "Id": "918281129"
+       }
+      ]
+     },
+     {
+      "Id": "2591636753",
+      "Name": "Stop_CurtainImmediate",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Curtain\\Stop_CurtainImmediate",
+      "GUID": "{DE37DCFC-3580-4DE3-ACB3-6FBB1BCDC35D}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "89491334"
+       },
+       {
+        "Id": "222587742"
+       },
+       {
+        "Id": "315206239"
+       },
+       {
+        "Id": "409372585"
+       },
+       {
+        "Id": "415837628"
+       },
+       {
+        "Id": "444303928"
+       },
+       {
+        "Id": "455263592"
+       },
+       {
+        "Id": "918281129"
+       }
+      ]
+     },
+     {
       "Id": "1184221932",
       "Name": "Stop_SquareRockFadeout",
-      "ObjectPath": "\\Events\\MovableObjects_Events\\Square_Rock\\Stop_SquareRockFadeout",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Square_Rock\\Stop_SquareRockFadeout",
       "GUID": "{268D3A73-680A-4BF2-9BDE-52EFF2510793}",
-      "Color": "6",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
@@ -464,9 +596,8 @@
      {
       "Id": "2999759669",
       "Name": "Stop_SquareRockImmediate",
-      "ObjectPath": "\\Events\\MovableObjects_Events\\Square_Rock\\Stop_SquareRockImmediate",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Square_Rock\\Stop_SquareRockImmediate",
       "GUID": "{814C58D9-98BA-49A8-A22E-33C26816E2F3}",
-      "Color": "6",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
@@ -500,6 +631,6 @@
     ]
    }
   ],
-  "FileHash": "{C52BF40E-1FA0-E54B-11DB-697E16FE51CA}"
+  "FileHash": "{114A5689-C55A-8964-7044-D75F05D2159D}"
  }
 }
