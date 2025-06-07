@@ -326,28 +326,6 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{0873CF72-5271-421A-B96B-9B917A02826F}" ShortID="835336629">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="36"/>
-										<Property Name="SeekPercent" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{E05CF5FF-2F1F-43FB-8668-AC3C9F7B5393}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="100"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Curtain_Loop" ID="{86B0C7FD-BEDE-4C59-A581-886BF68F4591}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="CurtainMax_Play" ID="{BF132A20-D4BD-451D-AA0E-62D882B22332}">
@@ -404,6 +382,28 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Sun_Play" ID="{D6D8B378-39BB-4CC5-85BC-D8FEBEDFE285}">
+					<ChildrenList>
+						<Action Name="" ID="{F4290627-278D-4CC1-84ED-486DCC9E44E8}" ShortID="28811698">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sun" ID="{FA613F6F-1EAF-4F29-ABB1-F83CC88CEFFD}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Moon_Play" ID="{24863555-03DA-4B6E-B197-E77C60ACF7AA}">
+					<ChildrenList>
+						<Action Name="" ID="{5D074504-63C1-4291-A161-37C0E34FFF0C}" ShortID="652124378">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Moon" ID="{7F7662E8-174D-4A2D-B3B6-C9384211BDF0}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

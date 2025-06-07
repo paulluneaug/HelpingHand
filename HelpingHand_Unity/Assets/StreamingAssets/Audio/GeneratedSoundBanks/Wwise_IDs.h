@@ -40,6 +40,7 @@ namespace AK
         static const AkUniqueID MAINGEAR_PLAY = 1290037556U;
         static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
         static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
+        static const AkUniqueID MOON_PLAY = 880713307U;
         static const AkUniqueID PLAY_DIRECTOR_DIALOGUE = 1900097235U;
         static const AkUniqueID PLAY_DIRECTOR_DIALOGUE_INTERRUPT = 429245287U;
         static const AkUniqueID PLAY_DIRECTOR_DIALOGUE_RESUME = 2523382879U;
@@ -73,6 +74,7 @@ namespace AK
         static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
+        static const AkUniqueID SUN_PLAY = 3578106302U;
         static const AkUniqueID SUPERMARKETAMB_PLAY = 523382487U;
         static const AkUniqueID TAVERN_PLAY = 344062652U;
         static const AkUniqueID TOGGLE_DESACTIVATE_PLAY = 2782143696U;
