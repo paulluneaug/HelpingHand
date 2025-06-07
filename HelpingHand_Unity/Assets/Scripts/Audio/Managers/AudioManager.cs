@@ -9,6 +9,8 @@ using UnityEngine;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Singletons;
 
+using static RTPCManager;
+
 using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
 
@@ -25,11 +27,11 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     [SerializeField] private InputAudioEventControllersManager m_inputAudioEventsManager;
     #endregion
-    
+
     public override void Initialize()
     {
-        AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
-        RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
+        _ = AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
+        //RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
         StateManager.SetGameState(GameState.None); //On initialise l'état du jeu à None (reset)
         StateManager.SetMusicState(MusicState.None); //On initialise l'état de la musique à None (reset)
@@ -48,22 +50,47 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
 
         //On joue la musique principale dès que la scène se lance
-         //EventManager.MainMusic_Play.Post(gameObject);
+        //EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
-        EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
-        EventManager.Theater_Ambience_Play.Post(gameObject);
+        _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
+        _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
 
     public override void OnDestroy()
     {
         base.OnDestroy();
-        AkUnitySoundEngine.UnregisterGameObj(gameObject);
+        _ = AkUnitySoundEngine.UnregisterGameObj(gameObject);
 
         m_inputAudioEventsManager.Dispose();
     }
 
     #region Functions
+
+    public void SetVolume(BusRtpcType group, float value)
+    {
+        //float wwiseVolume = Mathf.Clamp(value, 0f, 100f);
+        switch (group)
+        {
+            case BusRtpcType.Master:
+                RTPCManager.RTPC_MasterVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.Music:
+                RTPCManager.RTPC_MusicVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.SFX:
+                RTPCManager.RTPC_SFXVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.Voice:
+                RTPCManager.RTPC_VoiceVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.UI:
+                break;
+            default:
+                break;
+        }
+    }
+
     #region PostWwise Events
 
     public async UniTask PostWwiseEventAsync(WwiseEvent wwiseEvent, GameObject targetObject = null, CancellationToken cancellationToken = default)
@@ -99,23 +126,23 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     #region Play UI Sounds
     public void PlayTypewriter(GameObject targetObject)
     {
-        EventManager.Typewriter_Play.Post(targetObject);
+        _ = EventManager.Typewriter_Play.Post(targetObject);
     }
 
     public void PlayButton(GameObject targetObject)
     {
-        EventManager.ButtonOnPointerDown_Play.Post(targetObject);
+        _ = EventManager.ButtonOnPointerDown_Play.Post(targetObject);
     }
 
     public void ToggleSound(bool isOn, GameObject targetObject)
     {
         if (isOn)
         {
-            EventManager.Toggle_Play.Post(targetObject);
+            _ = EventManager.Toggle_Play.Post(targetObject);
         }
         else
         {
-            EventManager.Untoggle_Play.Post(targetObject);
+            _ = EventManager.Untoggle_Play.Post(targetObject);
         }
     }
     #endregion
@@ -162,24 +189,24 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         if (nodeID == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
             DebugLog($"Aucun dialogue node trouvé pour ces states.", LogType.Error);
-            AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             return;
         }
 
-        playlist.Enqueue(nodeID);
-        AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-        AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
+        _ = playlist.Enqueue(nodeID);
+        _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
 
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
             DebugLog($"PlayDialogueWithStatesAsync interrupted");
-            AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
-            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             throw new OperationCanceledException();
         }
 
-        AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
         DebugLog($"PlayDialogueWithStatesAsync end");
     }
 
@@ -198,7 +225,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             return $"[{Time.frameCount}] <color=green>[{nameof(AudioManager)}]</color>";
         }
-        
+
         switch (logType)
         {
             case LogType.Error:
@@ -209,6 +236,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
                 break;
             case LogType.Log:
                 Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Assert:
+                break;
+            case LogType.Exception:
+                break;
+            default:
                 break;
         }
     }

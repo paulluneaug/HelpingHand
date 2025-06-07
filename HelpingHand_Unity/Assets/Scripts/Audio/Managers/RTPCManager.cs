@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 using AK.Wwise;
 
 using Sirenix.OdinInspector;
@@ -9,27 +7,29 @@ using UnityEngine;
 public class RTPCManager : MonoBehaviour
 {
     #region RTPCs
-    [TitleGroup("Music RTPCs", Order = 0)]
-    [InfoBox("➔ <b>SetMusicRtpc(MusicRtpcType.Layer1, 1f, gameObject);</b>", InfoMessageType.None)]
-    [FoldoutGroup("Music RTPCs/Parameters")][LabelWidth(150)] public RTPC FirstMusic_FirstLayer;
-    [FoldoutGroup("Music RTPCs/Parameters")][LabelWidth(150)] public RTPC FirstMusic_SecondLayer;
 
-    [TitleGroup("Ambience RTPCs", Order = 0)]
-    [InfoBox("➔ <b>SetAmbienceRtpc(AmbienceRtpcType.AudienceLevel, 0.8f, gameObject);</b>", InfoMessageType.None)]
-    [FoldoutGroup("Ambience RTPCs/Parameters")][LabelWidth(150)] public RTPC AmbienceLevelRTPC;
-    [FoldoutGroup("Ambience RTPCs/Parameters")][LabelWidth(150)] public RTPC AudienceLevelRTPC;
-    #endregion
+    [TitleGroup("Music RTPCs")]
+    [FoldoutGroup("Music RTPCs/Parameters")] public RTPC FirstMusic_FirstLayer;
+    [FoldoutGroup("Music RTPCs/Parameters")] public RTPC FirstMusic_SecondLayer;
 
-    #region Dictionnary
-    private Dictionary<MusicRtpcType, RTPC> m_musicRtpcs;
-    private Dictionary<AmbienceRtpcType, RTPC> m_ambienceRtpcs;
+    [TitleGroup("Ambience RTPCs")]
+    [FoldoutGroup("Ambience RTPCs/Parameters")] public RTPC AmbienceLevelRTPC;
+    [FoldoutGroup("Ambience RTPCs/Parameters")] public RTPC AudienceLevelRTPC;
+
+    [TitleGroup("Bus RTPCs")]
+    public RTPC RTPC_MasterVolume;
+    public RTPC RTPC_VoiceVolume;
+    public RTPC RTPC_UIVolume;
+    public RTPC RTPC_SFXVolume;
+    public RTPC RTPC_MusicVolume;
+
     #endregion
 
     [Header("Default Target Object")]
-    [Tooltip("If no target is specified when setting an RTPC, it will default to this GameObject.")]
     public GameObject TargetObject;
 
     #region Enums
+
     public enum MusicRtpcType
     {
         Layer1,
@@ -41,46 +41,84 @@ public class RTPCManager : MonoBehaviour
         RumbleLevel,
         AudienceLevel
     }
+
+    public enum BusRtpcType
+    {
+        Master,
+        Voice,
+        UI,
+        Music,
+        SFX
+    }
+
     #endregion
-    public void InitRtpcDictionaries()
+
+    public void InitRtpcManager()
     {
         if (TargetObject == null)
         {
             TargetObject = gameObject;
         }
+    }
 
-        m_musicRtpcs = new Dictionary<MusicRtpcType, RTPC>
-        {
-            { MusicRtpcType.Layer1, FirstMusic_FirstLayer },
-            { MusicRtpcType.Layer2, FirstMusic_SecondLayer },
-        };
+    #region Set Methods
 
-        m_ambienceRtpcs = new Dictionary<AmbienceRtpcType, RTPC>
-        {
-            { AmbienceRtpcType.RumbleLevel, AmbienceLevelRTPC },
-            { AmbienceRtpcType.AudienceLevel, AudienceLevelRTPC }
-        };
-    }
-    public void SetMusicRtpc(MusicRtpcType type, float value, GameObject target = null)
+    public void SetMusicRtpc(MusicRtpcType type, float value)
     {
-        if (m_musicRtpcs.TryGetValue(type, out var rtpcValue))
+        switch (type)
         {
-            rtpcValue.SetValue(target ?? TargetObject, value);
-        }
-        else
-        {
-            Debug.LogWarning($"[WwiseRTPCManager] Music RTPC not found for: {type}");
+            case MusicRtpcType.Layer1:
+                FirstMusic_FirstLayer.SetValue(TargetObject, value);
+                break;
+            case MusicRtpcType.Layer2:
+                FirstMusic_SecondLayer.SetValue(TargetObject, value);
+                break;
+            default:
+                Debug.LogWarning($"[RTPCManager] Unknown MusicRtpcType: {type}");
+                break;
         }
     }
-    public void SetAmbienceRtpc(AmbienceRtpcType type, float value, GameObject target = null)
+
+    public void SetAmbienceRtpc(AmbienceRtpcType type, float value)
     {
-        if (m_ambienceRtpcs.TryGetValue(type, out var rtpcValue))
+        switch (type)
         {
-            rtpcValue.SetValue(target ?? TargetObject, value);
-        }
-        else
-        {
-            Debug.LogWarning($"[WwiseRTPCManager] Ambience RTPC not found for: {type}");
+            case AmbienceRtpcType.RumbleLevel:
+                AmbienceLevelRTPC.SetValue(TargetObject, value);
+                break;
+            case AmbienceRtpcType.AudienceLevel:
+                AudienceLevelRTPC.SetValue(TargetObject, value);
+                break;
+            default:
+                Debug.LogWarning($"[RTPCManager] Unknown AmbienceRtpcType: {type}");
+                break;
         }
     }
+
+    public void SetBusRtpc(BusRtpcType type, float value)
+    {
+        switch (type)
+        {
+            case BusRtpcType.Master:
+                RTPC_MasterVolume.SetValue(TargetObject, value);
+                break;
+            case BusRtpcType.Voice:
+                RTPC_VoiceVolume.SetValue(TargetObject, value);
+                break;
+            case BusRtpcType.UI:
+                RTPC_UIVolume.SetValue(TargetObject, value);
+                break;
+            case BusRtpcType.Music:
+                RTPC_MusicVolume.SetValue(TargetObject, value);
+                break;
+            case BusRtpcType.SFX:
+                RTPC_SFXVolume.SetValue(TargetObject, value);
+                break;
+            default:
+                Debug.LogWarning($"[RTPCManager] Unknown BusRtpcType: {type}");
+                break;
+        }
+    }
+
+    #endregion
 }

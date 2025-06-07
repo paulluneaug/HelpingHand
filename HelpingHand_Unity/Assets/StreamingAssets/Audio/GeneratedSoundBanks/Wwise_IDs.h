@@ -21,6 +21,7 @@ namespace AK
         static const AkUniqueID CURTAINMAX_PLAY = 3445812898U;
         static const AkUniqueID CURTAINMIN_PLAY = 3264562480U;
         static const AkUniqueID FORGEAMB_PLAY = 1567708659U;
+        static const AkUniqueID FORGEAMB_STOP = 697830617U;
         static const AkUniqueID FUNKYJINGLE_SETSWITCH = 4104299446U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_PLAY = 1520116072U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_STOP = 3856209626U;
@@ -76,7 +77,9 @@ namespace AK
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
         static const AkUniqueID SUN_PLAY = 3578106302U;
         static const AkUniqueID SUPERMARKETAMB_PLAY = 523382487U;
-        static const AkUniqueID TAVERN_PLAY = 344062652U;
+        static const AkUniqueID SUPERMARKETAMB_STOP = 3548368645U;
+        static const AkUniqueID TAVERNAMB_PLAY = 3582522998U;
+        static const AkUniqueID TAVERNAMB_STOP = 59669512U;
         static const AkUniqueID TOGGLE_DESACTIVATE_PLAY = 2782143696U;
         static const AkUniqueID TOGGLE_PLAY = 2942539354U;
         static const AkUniqueID TYPEWRITER_PLAY = 1749211329U;
@@ -407,12 +410,16 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID DIALOGUE_CUE = 640723851U;
+        static const AkUniqueID RTPC_AMBVOLUME = 1226769967U;
         static const AkUniqueID RTPC_MASTERVOLUME = 2582501215U;
         static const AkUniqueID RTPC_MUSIC_FIRSTLAYER = 2116630962U;
         static const AkUniqueID RTPC_MUSIC_SECONDLAYER = 1485517750U;
+        static const AkUniqueID RTPC_MUSICVOLUME = 2378823330U;
         static const AkUniqueID RTPC_NUMBEROFTIMEPLAYED = 1487758345U;
         static const AkUniqueID RTPC_RANDOMSEEKPOSITION = 2865193319U;
+        static const AkUniqueID RTPC_SFXVOLUME = 2644490154U;
         static const AkUniqueID RTPC_TIMEOFDAY = 257272959U;
+        static const AkUniqueID RTPC_UIVOLUME = 3141145287U;
         static const AkUniqueID RTPC_VOICEVOLUME = 3304106241U;
         static const AkUniqueID SLIDERSPEED = 1460444787U;
         static const AkUniqueID SLIDERVALUE = 2333331917U;
