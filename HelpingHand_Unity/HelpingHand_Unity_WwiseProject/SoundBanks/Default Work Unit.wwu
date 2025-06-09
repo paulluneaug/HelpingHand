@@ -3,32 +3,62 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{A9249939-8E32-471F-8CBB-AD37D4F09A36}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="Main" ID="{E88F5082-7F8A-458A-BE23-93119E4493EE}">
-					<PropertyList>
-						<Property Name="Maximum" Type="int32">
-							<ValueList>
-								<Value>60000000</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
+				<SoundBank Name="DynamicDialogue" ID="{700C14A4-11B5-4D96-8011-387FA2F23A6A}">
 					<ObjectInclusionList>
-						<ObjectRef Name="WU_Ambience" ID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="UI_Events" ID="{1E54A499-1CE8-4834-8B1F-51D8E9CF2BEB}" WorkUnitID="{1E54A499-1CE8-4834-8B1F-51D8E9CF2BEB}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="WU_Puppet" ID="{6FDF2041-6F47-48DD-A184-5248662B832A}" WorkUnitID="{6FDF2041-6F47-48DD-A184-5248662B832A}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="WU_MovableObjects" ID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Jingle_Events" ID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Typewriter_Play" ID="{D04B0299-C94B-4B38-ACD6-A641DB9B4A5B}" WorkUnitID="{1E54A499-1CE8-4834-8B1F-51D8E9CF2BEB}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Gears_Events" ID="{710A550F-F692-4D26-9E88-5D021EC09188}" WorkUnitID="{710A550F-F692-4D26-9E88-5D021EC09188}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="WU_Voice" ID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Default Work Unit" ID="{F06F9D6B-E588-4F23-8AD1-785381AC89AA}" WorkUnitID="{F06F9D6B-E588-4F23-8AD1-785381AC89AA}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="UI" ID="{94033C0F-C7AC-4399-9819-9733CF8E3CC4}">
+					<ObjectInclusionList>
 						<ObjectRef Name="WU_UI" ID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
-				<SoundBank Name="DynamicDialogue" ID="{700C14A4-11B5-4D96-8011-387FA2F23A6A}">
+				<SoundBank Name="Puppet" ID="{9B3B80F2-29E6-43F8-92B9-D351A13E8BDD}">
 					<ObjectInclusionList>
-						<ObjectRef Name="WU_Voice" ID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Voice_Test" ID="{5CCFED4D-7A17-4EA4-BF05-B10D06284F7E}" WorkUnitID="{F6A53A21-B3AB-4597-B15E-99E8FFDE6B1E}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Default Work Unit" ID="{F06F9D6B-E588-4F23-8AD1-785381AC89AA}" WorkUnitID="{F06F9D6B-E588-4F23-8AD1-785381AC89AA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="WU_Puppet" ID="{6FDF2041-6F47-48DD-A184-5248662B832A}" WorkUnitID="{6FDF2041-6F47-48DD-A184-5248662B832A}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Gears" ID="{4D7488B0-DC37-44D3-B718-EC1C9213322E}">
+					<ObjectInclusionList>
+						<ObjectRef Name="WU_Gears" ID="{70BE0203-E363-4DA2-8122-52EFBE11FD55}" WorkUnitID="{70BE0203-E363-4DA2-8122-52EFBE11FD55}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Ambiences" ID="{F426FF36-9092-4776-8DC4-F168E590C178}">
+					<ObjectInclusionList>
+						<ObjectRef Name="WU_Ambience" ID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Music" ID="{79B06BAB-6E2A-4137-8954-38AF5CD9A52F}">
+					<ObjectInclusionList>
+						<ObjectRef Name="All_Musics" ID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="WU_Jingles" ID="{848CBA25-CE87-4160-A63A-9B179B015364}" WorkUnitID="{848CBA25-CE87-4160-A63A-9B179B015364}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Objects" ID="{A97744F7-3FE7-46E3-AF1C-2567B1452CD0}">
+					<ObjectInclusionList>
+						<ObjectRef Name="WU_MovableObjects" ID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Spotlight" ID="{0361D9B2-AA47-4AE1-870E-F32A6BFA4470}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stingers" ID="{E989E916-3AC8-4CE4-B9E5-12D97D97F6CD}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Main" ID="{119787B2-6F13-4649-8324-A5B95FE8C20B}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Default Work Unit" ID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

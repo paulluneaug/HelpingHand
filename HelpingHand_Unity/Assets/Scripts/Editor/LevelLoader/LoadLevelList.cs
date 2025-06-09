@@ -10,6 +10,12 @@ public static class LoadLevelList
         LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/Tests/Matthieu Test.unity");
     }
 
+    [MenuItem("Helping Hand/Levels/MenuTests", false, 0)]
+    private static void Open97e3c7ccd5c5fa54693bbdfa4ff947dc()
+    {
+        LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/Tests/MenuTests.unity");
+    }
+
     [MenuItem("Helping Hand/Levels/TestSequence0", false, 0)]
     private static void Open37888990636850d4bbf86fdc6aaf589e()
     {

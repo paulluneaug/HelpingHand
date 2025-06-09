@@ -11,6 +11,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/Inputs/Button")]
 public class ButtonInputEvent : BaseGameEvent
 {
+    public BoolVariable ButtonState => m_buttonState;
+    public GameEvent ButtonDownEvent => m_buttonDownEvent;
+    public GameEvent ButtonUpEvent => m_buttonUpEvent;
+
+
     [SerializeField]
     private GameEvent m_buttonDownEvent;
 
@@ -19,8 +24,6 @@ public class ButtonInputEvent : BaseGameEvent
 
     [SerializeField]
     private BoolVariable m_buttonState;
-
-    public BoolVariable ButtonState => m_buttonState;
 
 #if UNITY_EDITOR
     private void Awake()

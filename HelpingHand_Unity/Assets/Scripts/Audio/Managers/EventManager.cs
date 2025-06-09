@@ -72,6 +72,10 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent DialogueEvent_Play;
     #endregion
 
+    #region Gears Events
+    [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent MainGear_Play;
+    #endregion
+
     [System.Obsolete]
     public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
     {

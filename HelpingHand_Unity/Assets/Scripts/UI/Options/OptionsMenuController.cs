@@ -27,8 +27,14 @@ public class OptionsMenuController : MonoBehaviour
     [SerializeField] private UIAbstractOption<float> m_optionVolumeSFX;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeMusic;
     [SerializeField] private UIAbstractOption<WindowMode> m_optionScreenMode;
-    [SerializeField] private UIAbstractOption<float> m_optionGameSpeed;
+    
+    [SerializeField] private UIAbstractOption<Color> m_optionSubtitleColor;
+    [SerializeField] private UIAbstractOption<SubtitleSize> m_optionSubtitleSize;
+    [SerializeField] private UIAbstractOption<float> m_optionSubtitleOpacity;
+    [SerializeField] private UIAbstractOption<DialogueReadMode> m_optionDialogueReadMode;
+    
 
+    
     private UIAbstractDefaultable[] m_options;
     private bool m_isOpened;
 
@@ -41,8 +47,10 @@ public class OptionsMenuController : MonoBehaviour
             m_optionVolumeGlobal, 
             m_optionVolumeSFX, 
             m_optionVolumeMusic, 
-            m_optionScreenMode, 
-            m_optionGameSpeed 
+            m_optionScreenMode,
+            m_optionSubtitleSize,
+            m_optionSubtitleOpacity,
+            m_optionDialogueReadMode
         };
     }
 
@@ -55,12 +63,15 @@ public class OptionsMenuController : MonoBehaviour
         m_defaultButton.onClick.AddListener(OnDefaultButtonClicked);
         m_quitButton.onClick.AddListener(OnQuitButtonClicked);
 
-        m_optionVolumeGlobal.OnValueChangedEvent    += OnOptionVolumeGlobalChanged;
-        m_optionVolumeSFX.OnValueChangedEvent       += OnOptionVolumeSFXChanged;
-        m_optionVolumeMusic.OnValueChangedEvent     += OnOptionVolumeMusicChanged;
-        m_optionScreenMode.OnValueChangedEvent      += OnOptionScreenModeChanged;
-        m_optionGameSpeed.OnValueChangedEvent       += OnOptionGameSpeedChanged;
-
+        m_optionVolumeGlobal.OnValueChangedEvent       += OnOptionVolumeGlobalChanged;
+        m_optionVolumeSFX.OnValueChangedEvent          += OnOptionVolumeSFXChanged;
+        m_optionVolumeMusic.OnValueChangedEvent        += OnOptionVolumeMusicChanged;
+        m_optionScreenMode.OnValueChangedEvent         += OnOptionScreenModeChanged;
+        
+        m_optionSubtitleColor.OnValueChangedEvent      += OnOptionSubtitleColorChanged;
+        m_optionSubtitleSize.OnValueChangedEvent       += OnOptionSubtitleSizeChanged;
+        m_optionSubtitleOpacity.OnValueChangedEvent    += OnOptionSubtitleOpacityChanged;
+        m_optionDialogueReadMode.OnValueChangedEvent   += OnOptionDialogueReadModeChanged;
     }
 
     private void OnDestroy()
@@ -70,11 +81,15 @@ public class OptionsMenuController : MonoBehaviour
         m_defaultButton.onClick.RemoveListener(OnDefaultButtonClicked);
         m_quitButton.onClick.RemoveListener(OnQuitButtonClicked);
 
-        m_optionVolumeGlobal.OnValueChangedEvent    -= OnOptionVolumeGlobalChanged;
-        m_optionVolumeSFX.OnValueChangedEvent       -= OnOptionVolumeSFXChanged;
-        m_optionVolumeMusic.OnValueChangedEvent     -= OnOptionVolumeMusicChanged;
-        m_optionScreenMode.OnValueChangedEvent      -= OnOptionScreenModeChanged;
-        m_optionGameSpeed.OnValueChangedEvent       -= OnOptionGameSpeedChanged;
+        m_optionVolumeGlobal.OnValueChangedEvent       -= OnOptionVolumeGlobalChanged;
+        m_optionVolumeSFX.OnValueChangedEvent          -= OnOptionVolumeSFXChanged;
+        m_optionVolumeMusic.OnValueChangedEvent        -= OnOptionVolumeMusicChanged;
+        m_optionScreenMode.OnValueChangedEvent         -= OnOptionScreenModeChanged;
+        
+        m_optionSubtitleColor.OnValueChangedEvent      -= OnOptionSubtitleColorChanged;
+        m_optionSubtitleSize.OnValueChangedEvent       -= OnOptionSubtitleSizeChanged;
+        m_optionSubtitleOpacity.OnValueChangedEvent    -= OnOptionSubtitleOpacityChanged;
+        m_optionDialogueReadMode.OnValueChangedEvent   -= OnOptionDialogueReadModeChanged;
     }
 
     private void OnOptionVolumeGlobalChanged(float value)
@@ -108,9 +123,24 @@ public class OptionsMenuController : MonoBehaviour
         };
     }
 
-    private void OnOptionGameSpeedChanged(float gameSpeed)
+    private void OnOptionSubtitleColorChanged(Color value)
     {
-        m_gameOptions.GameSpeed.Value = gameSpeed;
+        m_gameOptions.SubtitleColor.Value = value;
+    }
+
+    private void OnOptionSubtitleSizeChanged(SubtitleSize value)
+    {
+        m_gameOptions.SubtitleSize.Value = value;
+    }
+
+    private void OnOptionSubtitleOpacityChanged(float value)
+    {
+        m_gameOptions.SubtitleOpacity.Value = value;
+    }
+
+    private void OnOptionDialogueReadModeChanged(DialogueReadMode value)
+    {
+        m_gameOptions.DialogueReadMode.Value = value;
     }
 
     private void OnGamePaused(InputAction.CallbackContext ctx)
