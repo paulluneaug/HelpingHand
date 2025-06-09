@@ -30,6 +30,8 @@ public abstract class ContinuousObjectController<TSettingsContainer> : MonoBehav
 
     private void Start()
     {
+        m_settings.Init();
+
         m_controllingVariable.AddListener(OnVariableChanged);
         m_controllingVariable.OnActivate += OnVariableActivate;
 
@@ -45,6 +47,8 @@ public abstract class ContinuousObjectController<TSettingsContainer> : MonoBehav
 
     private void OnDestroy()
     {
+        m_settings.Dispose();
+
         m_controllingVariable.RemoveListener(OnVariableChanged);
         m_controllingVariable.OnActivate -= OnVariableActivate;
     }

@@ -24,7 +24,7 @@ public class AnimatorSettingsContainer : IObjectSettingsContainer
 
         if (m_progressVariableHash == 0)
         {
-
+            return;
         }
 
         m_animator.SetFloat(m_progressVariableHash, progress);
