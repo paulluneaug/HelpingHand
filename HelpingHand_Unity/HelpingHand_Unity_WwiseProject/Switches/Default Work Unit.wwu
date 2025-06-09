@@ -4,12 +4,57 @@
 		<WorkUnit Name="Default Work Unit" ID="{4DC445F5-38FB-4469-BB16-12A29B098306}" PersistMode="Standalone">
 			<ChildrenList>
 				<SwitchGroup Name="Material" ID="{9089911A-A5DF-4CAA-BAC3-0C49E75D12B2}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="18"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Switch Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
 						<Switch Name="Wood" ID="{E6D327EE-7941-49F3-BE58-A140CD7C70DB}"/>
 						<Switch Name="Rock" ID="{07FDEB18-D359-4FD9-8396-2D846189012E}"/>
 						<Switch Name="Gravel" ID="{FCE96107-4A1B-439B-8995-96D1640EE58D}"/>
 						<Switch Name="Grass" ID="{908029FF-A343-43EC-9683-15C247DF06D8}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="Locomotion_Type" ID="{420E22CF-A5C2-4839-9124-99E4AC200830}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="5"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Switch Name="Walk" ID="{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}"/>
+						<Switch Name="Run" ID="{E279E3A7-7A91-49B2-A682-247F8B5BE2FA}"/>
+						<Switch Name="Stairs" ID="{581174D2-7C7E-4004-ADF0-92546EDF0246}"/>
+						<Switch Name="Idle" ID="{05B62766-73A2-464B-9C13-ED7758FEC675}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="DialogueCue" ID="{CEAE6464-245B-4D76-8E17-943D573E344B}">
+					<ChildrenList>
+						<Switch Name="d_01" ID="{2AFA2CF2-18FA-447C-B45E-AB02AB8D9D98}"/>
+						<Switch Name="d_02" ID="{2B7BE552-0D9E-449E-B3D8-7B34016BAF6F}"/>
+						<Switch Name="d_03" ID="{69C8D741-CABD-4AC0-A6D8-EC2EA1E84786}"/>
+						<Switch Name="d_04" ID="{F3AD162B-EE3A-4AFF-BB92-967451463BCC}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="DialObject" ID="{2028E89D-FF28-41A2-BA9E-A95259F52F77}">
+					<ChildrenList>
+						<Switch Name="Carotte" ID="{FADB250A-5E42-454C-B98F-FB9B42C2C586}"/>
+						<Switch Name="Epee" ID="{CEC09539-4B40-48BE-816A-6DAB1F52E0D0}"/>
+						<Switch Name="Marteau" ID="{92298A37-E0B8-4AD1-BF42-B3467CAAA5C0}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="DialLieu" ID="{F2E3C340-3476-4BEA-B67D-C2B707EA2989}">
+					<ChildrenList>
+						<Switch Name="Chateau" ID="{0333CD0D-D18B-4582-BD8A-17623F6CBC9B}"/>
+						<Switch Name="Jardin" ID="{5F580B62-9308-4519-8F27-16C4B6C8C542}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="JingleSwitch" ID="{59B9640E-EAB5-4833-B78D-2A1A11AB58ED}">
+					<ChildrenList>
+						<Switch Name="Funky" ID="{CD73DDAA-CAA7-4BC3-B095-4CA2D30EB39A}"/>
+						<Switch Name="Heroic" ID="{95206ED5-DDD0-4178-B485-0BF918DB407A}"/>
+						<Switch Name="Horror" ID="{30444FF8-1BB1-4728-AF16-92A49C937A47}"/>
+						<Switch Name="Sad" ID="{C1276216-3A52-4733-86A7-36A9DEE0F030}"/>
 					</ChildrenList>
 				</SwitchGroup>
 			</ChildrenList>

@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" SchemaVersion="123">
+	<AudioObjects>
+		<WorkUnit Name="WU_Voice" ID="{5C0A6213-0C8B-425E-865E-7676765FCD26}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Director_Voice" ID="{4CFB132E-7FEB-407E-B78C-171BEEDB4511}" ShortID="1062158516">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="VoiceBus" ID="{C628C558-A524-4C84-B5EA-B492F58CA446}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="Director_Dialogue" ID="{5DA55D9C-FC7A-4E14-915C-C25D14CA705A}" ShortID="947662527">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="DialogueCue" ID="{CEAE6464-245B-4D76-8E17-943D573E344B}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="d01_decor_vert" ID="{D0F19596-8898-46F8-B507-6FE54E18E265}" ShortID="320138840">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Soundly Voice Designer, Henri" ID="{12B57B0B-5F01-42B9-A99F-5BA8E21A04D9}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="113331526"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Soundly Voice Designer, Henri" ID="{12B57B0B-5F01-42B9-A99F-5BA8E21A04D9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="d02_maintenant_masque" ID="{ED7D6229-13E9-4110-A6F8-863D800447AB}" ShortID="134987909">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 1" ID="{6ABFF604-9195-4FAE-82D0-ADCC2B3BF347}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="770840643"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Soundly Voice Designer, Henri 1" ID="{6ABFF604-9195-4FAE-82D0-ADCC2B3BF347}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="d03" ID="{0B8A11EA-EB81-4401-A7B5-3911E313204A}" ShortID="142830449">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 1" ID="{D85C4806-33ED-4CE1-9305-6C3BB4ECC0CF}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="770840643"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 2" ID="{D856ECAF-9064-41EE-AD2B-A67F95BA88F4}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="831665859"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Soundly Voice Designer, Henri 2" ID="{D856ECAF-9064-41EE-AD2B-A67F95BA88F4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="d04_a_nouveau" ID="{53C5228D-1B45-4B13-9D69-3FBD9C9F5229}" ShortID="117940172">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 1" ID="{E78BA6E3-93E9-4A90-B32F-48B8E09C53EB}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="770840643"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 2" ID="{73BCAA81-0AB8-4F5D-B362-0C306E82CB60}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="831665859"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 3" ID="{5C5A121E-F6DE-4C4D-A93C-79E0039A95B9}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="478508623"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Soundly Voice Designer, Henri 3" ID="{5C5A121E-F6DE-4C4D-A93C-79E0039A95B9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="d05_fini_de_tamuser" ID="{6C2C2ACE-7C49-4EE6-9563-B9D9FE843D82}" ShortID="988381791">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 1" ID="{936FE0FE-1E6E-458C-B3A7-12FAECD9CBC7}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="770840643"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 2" ID="{3A432BAE-DB2B-4596-8D98-8ACA113F527A}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="831665859"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 3" ID="{26C72355-9864-4385-972D-762E0F37720E}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="478508623"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 5" ID="{CBC4E778-4047-47DE-944C-EF6C8FB4156A}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 5.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="482264565"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Soundly Voice Designer, Henri 5" ID="{CBC4E778-4047-47DE-944C-EF6C8FB4156A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="d06" ID="{B6E44434-C107-4EBC-80C5-357C052511A1}" ShortID="567061452">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 1" ID="{18C5E602-6AD7-485A-8644-7105F55CA3CB}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="770840643"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 2" ID="{DAA4710F-E13A-4BAD-9B74-14059DB443E0}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="831665859"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 3" ID="{5406DACF-8236-40AB-8929-94154E645BEF}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="478508623"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="Soundly Voice Designer, Henri 5" ID="{CC19F53A-18D0-4341-ADC3-20CEC2941F2B}">
+											<Language>English(US)</Language>
+											<AudioFile>Soundly Voice Designer, Henri 5.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="482264565"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Soundly Voice Designer, Henri 5" ID="{CC19F53A-18D0-4341-ADC3-20CEC2941F2B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="d02_maintenant_masque" ID="{ED7D6229-13E9-4110-A6F8-863D800447AB}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="d06" ID="{B6E44434-C107-4EBC-80C5-357C052511A1}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="d04_a_nouveau" ID="{53C5228D-1B45-4B13-9D69-3FBD9C9F5229}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="d01_decor_vert" ID="{D0F19596-8898-46F8-B507-6FE54E18E265}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="d05_fini_de_tamuser" ID="{6C2C2ACE-7C49-4EE6-9563-B9D9FE843D82}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="d03" ID="{0B8A11EA-EB81-4401-A7B5-3911E313204A}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+							</GroupingInfo>
+						</SwitchContainer>
+						<Sound Name="NARRA1" ID="{37E0300A-33A4-48BF-A73C-B2BBB63C0756}" ShortID="198010813">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="NARRA1" ID="{9590396F-0992-4A5E-8254-30CD11C447C6}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.129629999904309"/>
+										<Property Name="TrimEnd" Type="Real64" Value="3.22307325827604"/>
+									</PropertyList>
+									<Language>English(US)</Language>
+									<AudioFile>NARRA1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="244753239"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="NARRA1" ID="{9590396F-0992-4A5E-8254-30CD11C447C6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="NARRA2" ID="{86AF4973-91FB-4293-B6B1-89644D19F191}" ShortID="378720210">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="NARRA2" ID="{82CD7E39-E6C2-4DAA-AB03-B7372C6FF2F6}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.89648516453457"/>
+									</PropertyList>
+									<Language>English(US)</Language>
+									<AudioFile>NARRA2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="899923530"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="NARRA2" ID="{82CD7E39-E6C2-4DAA-AB03-B7372C6FF2F6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="NARRA3" ID="{B18835BB-B947-4C91-858A-392462155B4A}" ShortID="895113405">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="NARRA3" ID="{BF438860-4936-458C-956D-9A826F741361}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.0762120394383447"/>
+										<Property Name="TrimEnd" Type="Real64" Value="2.56072459697185"/>
+									</PropertyList>
+									<Language>English(US)</Language>
+									<AudioFile>NARRA3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="937978113"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="NARRA3" ID="{BF438860-4936-458C-956D-9A826F741361}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="NARRA4" ID="{885DD7EE-C5E8-4F0B-8942-B96E0520AEDE}" ShortID="504791179">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="NARRA4" ID="{DB68ED88-1E36-431D-88A5-389614E07EA6}">
+									<Language>English(US)</Language>
+									<AudioFile>NARRA4.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="851834108"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="NARRA4" ID="{DB68ED88-1E36-431D-88A5-389614E07EA6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R1_ARMURE2" ID="{4A4A4B7A-5137-4D5A-A150-29413E4BE18F}" ShortID="748135241">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R1_ARMURE2" ID="{39A8E131-F2E1-4D7A-B401-DB0B6FD1F783}">
+									<Language>English(US)</Language>
+									<AudioFile>R1_ARMURE2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="624877108"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R1_ARMURE2" ID="{39A8E131-F2E1-4D7A-B401-DB0B6FD1F783}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R1_ARMURE" ID="{EB8C16C3-E387-4236-8753-0A655A577422}" ShortID="760544749">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R1_ARMURE" ID="{1E1A92CC-4293-4B00-9D54-85DA02A18796}">
+									<Language>English(US)</Language>
+									<AudioFile>R1_ARMURE.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="957699505"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R1_ARMURE" ID="{1E1A92CC-4293-4B00-9D54-85DA02A18796}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R1_Carton" ID="{CCA160B7-085A-4E4A-8A7D-D7ECEB1B72EF}" ShortID="248567650">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R1_Carton" ID="{036286BC-1DB8-472C-A190-651C997ADF84}">
+									<Language>English(US)</Language>
+									<AudioFile>R1_Carton.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="26825"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R1_Carton" ID="{036286BC-1DB8-472C-A190-651C997ADF84}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R1_RIDEAUX_OFF1" ID="{E7E90021-2BD0-4548-9E85-96864B452FF9}" ShortID="523867355">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R1_RIDEAUX_OFF1" ID="{C73F2F3B-389D-4FB3-86BE-AEC2EDB3BBD9}">
+									<Language>English(US)</Language>
+									<AudioFile>R1_RIDEAUX_OFF1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="778569078"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R1_RIDEAUX_OFF1" ID="{C73F2F3B-389D-4FB3-86BE-AEC2EDB3BBD9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R1_RIDEAUX_OFF2" ID="{0C7DAE88-2511-439C-978F-C325E80AD0FA}" ShortID="355159360">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R1_RIDEAUX_OFF2" ID="{9F1B2458-7C9F-4CC3-B064-1F0D425D77A9}">
+									<Language>English(US)</Language>
+									<AudioFile>R1_RIDEAUX_OFF2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="778293721"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R1_RIDEAUX_OFF2" ID="{9F1B2458-7C9F-4CC3-B064-1F0D425D77A9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R1_RIDEAUX_ON" ID="{ECBF9D12-8A84-4EA4-8D77-2A11CE2E58A2}" ShortID="619395477">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R1_RIDEAUX_ON" ID="{C8B53828-C8A6-4F99-AD4E-3BC40D154476}">
+									<Language>English(US)</Language>
+									<AudioFile>R1_RIDEAUX_ON.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="496157053"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R1_RIDEAUX_ON" ID="{C8B53828-C8A6-4F99-AD4E-3BC40D154476}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R1_RIEN" ID="{E84CA13F-769C-4E14-AA90-316F0948E286}" ShortID="778601522">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R1_RIEN" ID="{1E3DC993-0B72-40E5-B826-DC24740EFB1F}">
+									<Language>English(US)</Language>
+									<AudioFile>R1_RIEN.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="492786611"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R1_RIEN" ID="{1E3DC993-0B72-40E5-B826-DC24740EFB1F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R2_Carton" ID="{A19DA7AF-B152-4E44-B8B9-10FBA1DC3498}" ShortID="709101670">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R2_Carton" ID="{A40E61A6-A13B-40B7-BE24-5CBD3AD2DB6D}">
+									<Language>English(US)</Language>
+									<AudioFile>R2_Carton.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="955394148"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R2_Carton" ID="{A40E61A6-A13B-40B7-BE24-5CBD3AD2DB6D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R2_RIDEAUX_OFF" ID="{02E75314-BB69-4BF5-AE98-99E1D90E38DB}" ShortID="480549625">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R2_RIDEAUX_OFF" ID="{B9D07D40-147B-41B2-A469-A88C685A2007}">
+									<Language>English(US)</Language>
+									<AudioFile>R2_RIDEAUX_OFF.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="900733909"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R2_RIDEAUX_OFF" ID="{B9D07D40-147B-41B2-A469-A88C685A2007}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R2_RIDEAUX_ON" ID="{3437C557-1A78-4D3D-9886-D76A865164AD}" ShortID="171300907">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R2_RIDEAUX_ON" ID="{896CD816-51D4-49AE-B9BB-B10A3AC16C44}">
+									<Language>English(US)</Language>
+									<AudioFile>R2_RIDEAUX_ON.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1021992566"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R2_RIDEAUX_ON" ID="{896CD816-51D4-49AE-B9BB-B10A3AC16C44}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R2_RIEN" ID="{90C779F2-C5B4-4822-9391-6C51A395D89D}" ShortID="275631790">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R2_RIEN" ID="{3C0F0ED5-03BD-4FBD-8C09-FB9C02E21187}">
+									<Language>English(US)</Language>
+									<AudioFile>R2_RIEN.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="774202556"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R2_RIEN" ID="{3C0F0ED5-03BD-4FBD-8C09-FB9C02E21187}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R3_RIDEAUX_OFF" ID="{00A6439E-76E6-442D-97CB-98A08E2D7D69}" ShortID="450903163">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R3_RIDEAUX_OFF" ID="{7D834290-E831-45A8-973F-4D8524EEEF20}">
+									<Language>English(US)</Language>
+									<AudioFile>R3_RIDEAUX_OFF.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="261507609"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R3_RIDEAUX_OFF" ID="{7D834290-E831-45A8-973F-4D8524EEEF20}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="R4_RIDEAUX_OFF" ID="{C24CDC18-A62F-438E-890D-8DDF7E69573D}" ShortID="616107828">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="R4_RIDEAUX_OFF" ID="{CB93F38B-7306-4C9A-A493-587B078E507C}">
+									<Language>English(US)</Language>
+									<AudioFile>R4_RIDEAUX_OFF.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="508132163"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="R4_RIDEAUX_OFF" ID="{CB93F38B-7306-4C9A-A493-587B078E507C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="REPRISE1" ID="{B0D07DAA-1404-494C-8E04-D7EE55C79BFE}" ShortID="886153499">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="REPRISE1" ID="{B5AA81A5-5CEF-4205-81DD-F1F4AF558480}">
+									<Language>English(US)</Language>
+									<AudioFile>REPRISE1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="921767825"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="REPRISE1" ID="{B5AA81A5-5CEF-4205-81DD-F1F4AF558480}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="REPRISE2" ID="{9D673168-FA73-4CAF-A8C7-5BFC9E95FAED}" ShortID="48201130">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="REPRISE2" ID="{F8A6C6C0-B5F5-4DD6-8B64-E802014D1D82}">
+									<Language>English(US)</Language>
+									<AudioFile>REPRISE2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="305102921"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="REPRISE2" ID="{F8A6C6C0-B5F5-4DD6-8B64-E802014D1D82}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="REPRISE3" ID="{218757C1-2BDC-4F66-B551-5D7ED37E6333}" ShortID="886638329">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="REPRISE3" ID="{5C824C67-7F0C-4650-93F4-4FD508009873}">
+									<Language>English(US)</Language>
+									<AudioFile>REPRISE3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="121085868"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="REPRISE3" ID="{5C824C67-7F0C-4650-93F4-4FD508009873}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SPOT_OFF_R1-001" ID="{5F1BD312-12A6-4E84-BF19-87E247015DCF}" ShortID="457317097">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SPOT_OFF_R1-001" ID="{3692F617-11CD-49CB-8707-AEC812FB0BDF}">
+									<Language>English(US)</Language>
+									<AudioFile>SPOT_OFF_R1-001.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="597692132"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SPOT_OFF_R1-001" ID="{3692F617-11CD-49CB-8707-AEC812FB0BDF}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SPOT_OFF_R2" ID="{F6E24FAD-E745-4ADF-923C-4523D5663FD2}" ShortID="459670469">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SPOT_OFF_R2" ID="{9EBCE777-27B5-40B5-A3C6-802EF2984D9C}">
+									<Language>English(US)</Language>
+									<AudioFile>SPOT_OFF_R2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="615475336"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SPOT_OFF_R2" ID="{9EBCE777-27B5-40B5-A3C6-802EF2984D9C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SPOT_OFF_R3" ID="{D2B00637-4B5A-4881-859B-C966A9FA754D}" ShortID="116388945">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SPOT_OFF_R3" ID="{C66B5A9D-480A-423D-B5FE-7FD98AD0B686}">
+									<Language>English(US)</Language>
+									<AudioFile>SPOT_OFF_R3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="429743932"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SPOT_OFF_R3" ID="{C66B5A9D-480A-423D-B5FE-7FD98AD0B686}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SPOT_ON_R1" ID="{9A50F940-087D-4C78-B0E9-386211BF42D0}" ShortID="933714492">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SPOT_ON_R1" ID="{19D2A743-0E32-459B-9FC3-470356B6FCDD}">
+									<Language>English(US)</Language>
+									<AudioFile>SPOT_ON_R1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="728420308"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SPOT_ON_R1" ID="{19D2A743-0E32-459B-9FC3-470356B6FCDD}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Voice_Briefing" ID="{DCF46A6B-5698-4E42-8FFF-6010EB040F73}" ShortID="152928442">
+					<PropertyList>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
