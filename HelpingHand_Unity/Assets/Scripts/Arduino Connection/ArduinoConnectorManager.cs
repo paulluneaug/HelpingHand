@@ -2,25 +2,31 @@ using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 
-using UnityEngine;
+using Sirenix.OdinInspector;
 
-using UnityUtility.CustomAttributes;
+using UnityEngine;
 
 using static CommandHeadersGlossary;
 
-public class ArduinoConnectorManager : MonoBehaviour
+[Serializable]
+public class ArduinoConnectorManager
 {
     private const int QUEUE_CAPACITY = 128;
 
+    [SerializeField] private bool m_enableArduinoConnection;
 
-    [Button(nameof(GetAvailablePorts))]
     [SerializeField] private ArduinoConnector m_arduinoConnector;
 
     [NonSerialized] private Queue<byte> m_recievedDatas;
 
 
-    private void Start()
+    public void Initialize()
     {
+        if (!m_enableArduinoConnection)
+        {
+            return;
+        }
+
         m_recievedDatas = new Queue<byte>(QUEUE_CAPACITY);
 
         m_arduinoConnector.Init();
@@ -28,14 +34,24 @@ public class ArduinoConnectorManager : MonoBehaviour
         m_arduinoConnector.OnMessageRecieved += OnArduinoMessageRecieved;
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
+        if (!m_enableArduinoConnection)
+        {
+            return;
+        }
+
         m_arduinoConnector.OnMessageRecieved -= OnArduinoMessageRecieved;
         m_arduinoConnector.Close();
     }
 
     public void SendIndicatorState(int indicatorState)
     {
+        if (!m_enableArduinoConnection)
+        {
+            return;
+        }
+
         Span<byte> messageBuffer = stackalloc byte[5];
         byte writeIndex = 0;
 
@@ -92,6 +108,7 @@ public class ArduinoConnectorManager : MonoBehaviour
         return true; // The command was processed and removed from the queue
     }
 
+    [Button]
     private void GetAvailablePorts()
     {
         Debug.Log("Available Ports :");
