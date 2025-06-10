@@ -6,7 +6,7 @@ public class AnimationGears : MonoBehaviour
     public GameObject Gear2;
     public GameObject Gear3;
     public GameObject Curtain;
-
+    public float m_Speed;
     public void GearRotate_Sound()
     {
         //AudioManager.Instance.EventManager.MainGear_Play.Post(Gear1);

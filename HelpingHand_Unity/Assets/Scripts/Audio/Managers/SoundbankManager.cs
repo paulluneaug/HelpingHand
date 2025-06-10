@@ -17,6 +17,7 @@ public class SoundbankManager : MonoBehaviour
     [TitleGroup("First Level SoundBanks", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: true)]
     [InfoBox("➔<b>LoadFirstLevelSoundbanks()</b>", InfoMessageType.None)]
     [SerializeField] private List<AK.Wwise.Bank> m_firstLevelSoundbanks;
+
     public void LoadStartupSoundbanks()
     {
         if (m_soundbanks.Count > 0) // Dans le cas où l'on a des soundbanks

@@ -1,5 +1,7 @@
 using System;
 
+using UnityEditor.TerrainTools;
+
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -31,7 +33,7 @@ public class VirtualToggle : VirtualInput<bool>
     [SerializeField] private Easings.EasingFunction m_transitionEasing;
 
     [NonSerialized] private Timer m_transitionTimer;
-
+ 
     private void Awake()
     {
         SetValueWithoutNotify(false);
@@ -51,6 +53,7 @@ public class VirtualToggle : VirtualInput<bool>
         {
             return;
         }
+
         if (m_transitionTimer.Update(Time.deltaTime))
         {
             m_transitionTimer.Stop();

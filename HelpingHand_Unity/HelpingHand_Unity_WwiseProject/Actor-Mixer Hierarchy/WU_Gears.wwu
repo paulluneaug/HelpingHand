@@ -855,13 +855,6 @@
 							</BlendTrackList>
 						</BlendContainer>
 						<Sound Name="Gear_Rolling_VariousSpeed_Alt_Stop" ID="{CC35B580-A659-43D1-BFF1-160316A685E5}" ShortID="227762640">
-							<PropertyList>
-								<Property Name="MakeUpGain" Type="Real64">
-									<ValueList>
-										<Value>-4</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -885,7 +878,7 @@
 						</Sound>
 					</ChildrenList>
 				</ActorMixer>
-				<Sound Name="HH_Gears_Loop_Speed" ID="{EB94229A-C526-4F1A-B30C-27CDD1717384}" ShortID="119735618">
+				<ActorMixer Name="GearLoop_Clicky_Squeaky_VariousSpeed" ID="{16C5AED4-DDAA-4BD2-81AF-BFA63C70AC0B}" ShortID="455740441">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -895,29 +888,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="HH_Gears_Loop_Speed" ID="{ACFDE960-626E-495F-BA12-320A3FFECA75}">
-							<Language>SFX</Language>
-							<AudioFile>HH_Gears_Loop_Speed.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="1031903054"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="HH_Gears_Loop_Speed" ID="{ACFDE960-626E-495F-BA12-320A3FFECA75}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
-				<ActorMixer Name="GearLoop_VariousSpeed_Click_Loop" ID="{16C5AED4-DDAA-4BD2-81AF-BFA63C70AC0B}" ShortID="455740441">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<BlendContainer Name="GearLoop_Click_VariousSpeed" ID="{0330877E-9159-45CB-9036-40FF73C01FEF}" ShortID="81152659">
+						<BlendContainer Name="GearLoop_Clicky_Squeaky_VariousSpeed" ID="{0330877E-9159-45CB-9036-40FF73C01FEF}" ShortID="81152659">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -2279,6 +2250,44 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="HH_Gears_Click_MedPitch-008" ID="{035D267A-855C-46F0-91ED-3BDA871D2649}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="HH_Gears_Loop_Speed" ID="{C2580179-6A4A-41C2-ACBC-D43A2E7EC615}" ShortID="423835159">
+					<PropertyList>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="HH_Gears_Loop_Speed" ID="{EB94229A-C526-4F1A-B30C-27CDD1717384}" ShortID="119735618">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="HH_Gears_Loop_Speed" ID="{ACFDE960-626E-495F-BA12-320A3FFECA75}">
+									<Language>SFX</Language>
+									<AudioFile>HH_Gears_Loop_Speed.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1031903054"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="HH_Gears_Loop_Speed" ID="{ACFDE960-626E-495F-BA12-320A3FFECA75}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
