@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     public event Action OnDialogueEnded;
     public event Action OnDialogueInterrupted;
 
+    [SerializeField] private DialoguePanelController m_panelController;
+
     [SerializeField]
     private TMP_Text m_uiText;
 
@@ -36,12 +38,28 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     private CancellationTokenSource m_dialogueKillCTS;
     private CancellationTokenSource m_currentCts;
 
+    private bool m_panelOpen = false;
+
+    protected override void Awake()
+    {
+        base.Start();
+        m_panelController.ClosePanel();
+        m_panelOpen = false;
+    }
+
+    public void OpenDialoguePanel()
+    {
+        OpenPanelIfNeeded();
+    }
+
     public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationTokenSource graphStopCTS, CancellationTokenSource killCTS)
     {
         if (!string.IsNullOrEmpty(m_currentDialogueTitle) || string.IsNullOrEmpty(dialogueTitle) || string.IsNullOrEmpty(content))
         {
             return;
         }
+
+        OpenPanelIfNeeded();
 
         m_currentDialogueTitle = dialogueTitle;
 
@@ -104,6 +122,16 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     public void ShowAllRemainingText()
     {
         m_typewriter.SkipTypewriter();
+    }
+
+    private void OpenPanelIfNeeded()
+    {
+        if (m_panelOpen)
+        {
+            return;
+        }
+        m_panelController.OpenPanel();
+        m_panelOpen = true;
     }
 
     /// <summary>
