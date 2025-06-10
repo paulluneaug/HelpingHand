@@ -13,7 +13,7 @@ using Separator = UnityUtility.CustomAttributes.SeparatorAttribute;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
-    private enum GameState
+    public enum GameState
     {
         MainMenu,
         Gameplay,
@@ -21,9 +21,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
+    public CanvasManager CanvasManager => m_canvasManager;
 
     public InputAction SkipDialogueInput => m_skipDialogueInput.action;
 
+    public GameState CurrentGameState => m_currentGameState;
 
     [Title("Act Sequence Manager")]
     [SerializeField] private ActSequenceManager m_actSequenceManager;
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Arduino Connector Manager")]
     [SerializeField] private ArduinoConnectorManager m_arduinoConnectorManager;
+
+    [Title("Canvas Manager")]
+    [SerializeField] private CanvasManager m_canvasManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
@@ -52,12 +57,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         base.Initialize();
 
+        m_currentGameState = m_startGameState;
+
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
+        m_canvasManager.Initialize();
 
         LoadGlobalObjectScene();
-
-        m_currentGameState = m_startGameState;
 
         m_skipDialogueInput.asset.Enable();
     }
@@ -86,6 +92,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void StartGameplay()
     {
         m_currentGameState = GameState.Gameplay;
+
+        DialogueManager.Instance.OpenDialoguePanel();
+
         m_actSequenceManager.StartSequence();
     }
 
@@ -160,9 +169,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     #endregion
 
-    public void StartGame()
-    {
-    }
 
     public void QuitGame()
     {

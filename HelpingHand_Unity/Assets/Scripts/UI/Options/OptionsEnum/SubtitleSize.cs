@@ -1,4 +1,4 @@
-﻿public enum SubtitleSize
+public enum SubtitleSize
 {
     Small,
     Medium,

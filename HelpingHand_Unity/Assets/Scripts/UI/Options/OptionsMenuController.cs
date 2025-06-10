@@ -1,19 +1,16 @@
 using System;
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 using UnityUtility.CustomAttributes;
 
-public class OptionsMenuController : MonoBehaviour 
+public class OptionsMenuController : MonoBehaviour
 {
     public bool IsOpened => m_isOpened;
 
     public event Action OnMenuOpened;
     public event Action OnMenuClosed;
-
-    [SerializeField] private InputActionReference m_pauseAction;
 
     [Title("UI components")]
     [SerializeField] private CanvasGroup m_menuOptions;
@@ -27,14 +24,14 @@ public class OptionsMenuController : MonoBehaviour
     [SerializeField] private UIAbstractOption<float> m_optionVolumeSFX;
     [SerializeField] private UIAbstractOption<float> m_optionVolumeMusic;
     [SerializeField] private UIAbstractOption<WindowMode> m_optionScreenMode;
-    
+
     [SerializeField] private UIAbstractOption<Color> m_optionSubtitleColor;
     [SerializeField] private UIAbstractOption<SubtitleSize> m_optionSubtitleSize;
     [SerializeField] private UIAbstractOption<float> m_optionSubtitleOpacity;
     [SerializeField] private UIAbstractOption<DialogueReadMode> m_optionDialogueReadMode;
-    
 
-    
+
+
     private UIAbstractDefaultable[] m_options;
     private bool m_isOpened;
 
@@ -42,11 +39,11 @@ public class OptionsMenuController : MonoBehaviour
 
     private void Awake()
     {
-        m_options = new UIAbstractDefaultable[] 
-        { 
-            m_optionVolumeGlobal, 
-            m_optionVolumeSFX, 
-            m_optionVolumeMusic, 
+        m_options = new UIAbstractDefaultable[]
+        {
+            m_optionVolumeGlobal,
+            m_optionVolumeSFX,
+            m_optionVolumeMusic,
             m_optionScreenMode,
             m_optionSubtitleSize,
             m_optionSubtitleOpacity,
@@ -57,39 +54,36 @@ public class OptionsMenuController : MonoBehaviour
     private void Start()
     {
         m_gameOptions = GameManager.Instance.GameOptionsManager;
-
-        m_pauseAction.action.performed += OnGamePaused;
-        m_saveButton.onClick.AddListener(OnSaveButtonClicked);
-        m_defaultButton.onClick.AddListener(OnDefaultButtonClicked);
-        m_quitButton.onClick.AddListener(OnQuitButtonClicked);
-
-        m_optionVolumeGlobal.OnValueChangedEvent       += OnOptionVolumeGlobalChanged;
-        m_optionVolumeSFX.OnValueChangedEvent          += OnOptionVolumeSFXChanged;
-        m_optionVolumeMusic.OnValueChangedEvent        += OnOptionVolumeMusicChanged;
-        m_optionScreenMode.OnValueChangedEvent         += OnOptionScreenModeChanged;
-        
-        m_optionSubtitleColor.OnValueChangedEvent      += OnOptionSubtitleColorChanged;
-        m_optionSubtitleSize.OnValueChangedEvent       += OnOptionSubtitleSizeChanged;
-        m_optionSubtitleOpacity.OnValueChangedEvent    += OnOptionSubtitleOpacityChanged;
-        m_optionDialogueReadMode.OnValueChangedEvent   += OnOptionDialogueReadModeChanged;
     }
 
     private void OnDestroy()
     {
-        m_pauseAction.action.performed -= OnGamePaused;
-        m_saveButton.onClick.RemoveListener(OnSaveButtonClicked);
-        m_defaultButton.onClick.RemoveListener(OnDefaultButtonClicked);
-        m_quitButton.onClick.RemoveListener(OnQuitButtonClicked);
+        UnsubscribeFromEvents();
+    }
 
-        m_optionVolumeGlobal.OnValueChangedEvent       -= OnOptionVolumeGlobalChanged;
-        m_optionVolumeSFX.OnValueChangedEvent          -= OnOptionVolumeSFXChanged;
-        m_optionVolumeMusic.OnValueChangedEvent        -= OnOptionVolumeMusicChanged;
-        m_optionScreenMode.OnValueChangedEvent         -= OnOptionScreenModeChanged;
-        
-        m_optionSubtitleColor.OnValueChangedEvent      -= OnOptionSubtitleColorChanged;
-        m_optionSubtitleSize.OnValueChangedEvent       -= OnOptionSubtitleSizeChanged;
-        m_optionSubtitleOpacity.OnValueChangedEvent    -= OnOptionSubtitleOpacityChanged;
-        m_optionDialogueReadMode.OnValueChangedEvent   -= OnOptionDialogueReadModeChanged;
+    public void OpenOptionMenu()
+    {
+        m_menuOptions.alpha = 1;
+        m_menuOptions.interactable = true;
+        m_menuOptions.blocksRaycasts = true;
+
+        SubscribeToEvents();
+
+        m_isOpened = true;
+        m_firstSelectable.Select();
+        OnMenuOpened?.Invoke();
+    }
+
+    public void CloseOptionMenu()
+    {
+        m_menuOptions.alpha = 0;
+        m_menuOptions.interactable = false;
+        m_menuOptions.blocksRaycasts = false;
+
+        UnsubscribeFromEvents();
+
+        m_isOpened = false;
+        OnMenuClosed?.Invoke();
     }
 
     private void OnOptionVolumeGlobalChanged(float value)
@@ -109,7 +103,7 @@ public class OptionsMenuController : MonoBehaviour
 
     private void SetVolume(string group, float value)
     {
-        var volume = value == 0 ? -80 : Mathf.Log10(value / 100f) * 20;
+        _ = value == 0 ? -80 : Mathf.Log10(value / 100f) * 20;
         // @TODO Set Volume
     }
 
@@ -143,26 +137,6 @@ public class OptionsMenuController : MonoBehaviour
         m_gameOptions.DialogueReadMode.Value = value;
     }
 
-    private void OnGamePaused(InputAction.CallbackContext ctx)
-    {
-        if (m_isOpened)
-        {
-            return;
-        }
-
-        OpenOptionMenu();
-    }
-
-    public void OpenOptionMenu()
-    {
-        m_menuOptions.alpha = 1;
-        m_menuOptions.interactable = true;
-        m_menuOptions.blocksRaycasts = true;
-        m_isOpened = true;
-        m_firstSelectable.Select();
-        OnMenuOpened?.Invoke();
-    }
-
     private void OnSaveButtonClicked()
     {
         // TODO save ?
@@ -177,17 +151,42 @@ public class OptionsMenuController : MonoBehaviour
         }
     }
 
-    public void CloseOptionMenu()
-    {
-        m_menuOptions.alpha = 0;
-        m_menuOptions.interactable = false;
-        m_menuOptions.blocksRaycasts = false;
-        m_isOpened = false;
-        OnMenuClosed?.Invoke();
-    }
-
     private void OnQuitButtonClicked()
     {
         GameManager.Instance.QuitGame();
+    }
+
+    private void SubscribeToEvents()
+    {
+        m_saveButton.onClick.AddListener(OnSaveButtonClicked);
+        m_defaultButton.onClick.AddListener(OnDefaultButtonClicked);
+        m_quitButton.onClick.AddListener(OnQuitButtonClicked);
+
+        m_optionVolumeGlobal.OnValueChangedEvent += OnOptionVolumeGlobalChanged;
+        m_optionVolumeSFX.OnValueChangedEvent += OnOptionVolumeSFXChanged;
+        m_optionVolumeMusic.OnValueChangedEvent += OnOptionVolumeMusicChanged;
+        m_optionScreenMode.OnValueChangedEvent += OnOptionScreenModeChanged;
+
+        m_optionSubtitleColor.OnValueChangedEvent += OnOptionSubtitleColorChanged;
+        m_optionSubtitleSize.OnValueChangedEvent += OnOptionSubtitleSizeChanged;
+        m_optionSubtitleOpacity.OnValueChangedEvent += OnOptionSubtitleOpacityChanged;
+        m_optionDialogueReadMode.OnValueChangedEvent += OnOptionDialogueReadModeChanged;
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        m_saveButton.onClick.RemoveListener(OnSaveButtonClicked);
+        m_defaultButton.onClick.RemoveListener(OnDefaultButtonClicked);
+        m_quitButton.onClick.RemoveListener(OnQuitButtonClicked);
+
+        m_optionVolumeGlobal.OnValueChangedEvent -= OnOptionVolumeGlobalChanged;
+        m_optionVolumeSFX.OnValueChangedEvent -= OnOptionVolumeSFXChanged;
+        m_optionVolumeMusic.OnValueChangedEvent -= OnOptionVolumeMusicChanged;
+        m_optionScreenMode.OnValueChangedEvent -= OnOptionScreenModeChanged;
+
+        m_optionSubtitleColor.OnValueChangedEvent -= OnOptionSubtitleColorChanged;
+        m_optionSubtitleSize.OnValueChangedEvent -= OnOptionSubtitleSizeChanged;
+        m_optionSubtitleOpacity.OnValueChangedEvent -= OnOptionSubtitleOpacityChanged;
+        m_optionDialogueReadMode.OnValueChangedEvent -= OnOptionDialogueReadModeChanged;
     }
 }
