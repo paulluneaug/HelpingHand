@@ -25,10 +25,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public InputAction SkipDialogueInput => m_skipDialogueInput.action;
 
 
-    [Title("Sub Managers", titleAlignment: TitleAlignments.Centered)]
-
+    [Title("Act Sequence Manager")]
     [SerializeField] private ActSequenceManager m_actSequenceManager;
+
+    [Title("Game Options Manager")]
     [SerializeField] private GameOptionsManager m_gameOptionsManager;
+
+    [Title("Arduino Connector Manager")]
+    [SerializeField] private ArduinoConnectorManager m_arduinoConnectorManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
@@ -47,7 +51,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public override void Initialize()
     {
         base.Initialize();
+
         m_actSequenceManager.Initialize();
+        m_arduinoConnectorManager.Initialize();
+
         LoadGlobalObjectScene();
 
         m_currentGameState = m_startGameState;
@@ -68,6 +75,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             default:
                 break;
         }
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_arduinoConnectorManager.Dispose();
     }
 
     public void StartGameplay()
