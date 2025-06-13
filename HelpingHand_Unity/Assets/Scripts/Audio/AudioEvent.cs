@@ -13,37 +13,45 @@ public class AudioEvent : ScriptableObject
     [LabelWidth(75)]
     private AK.Wwise.Event m_wwiseEvent;
 
-    [BoxGroup("Onboarding", ShowLabel = true)]
-    [HorizontalGroup("Onboarding/States")]
-    [LabelWidth(100)]
+    // === ONBOARDING ===
+    [GUIColor(0.8f, 0.95f, 1f)]
+    [BoxGroup("Audio/Onboarding", ShowLabel = true)]
+    [LabelText("Intro")]
     [SerializeField] private OnboardingIntroState m_onboardingIntroState;
 
-    [HorizontalGroup("Onboarding/States")]
-    [LabelWidth(100)]
+
+    [GUIColor(0.8f, 0.95f, 1f)]
+    [BoxGroup("Audio/Onboarding")]
+    [LabelText("Curtain (Onboarding)")]
     [SerializeField] private OnboardingCurtainState m_onboardingCurtainState;
 
-    [HorizontalGroup("Onboarding/States")]
-    [LabelWidth(100)]
+    [GUIColor(0.8f, 0.95f, 1f)]
+    [BoxGroup("Audio/Onboarding")]
+    [LabelText("Spot (Onboarding)")]
     [SerializeField] private OnboardingSpotState m_onboardingSpotState;
 
-    [BoxGroup("Interruptions", ShowLabel = true)]
-    [HorizontalGroup("Interruptions/States")]
-    [HideLabel]
+    // === INTERRUPTIONS ===
+    [GUIColor(0.95f, .8f, 0.8f)] // Couleur
+    [BoxGroup("Audio/Interruptions", ShowLabel = true)]
+    [LabelText("Curtain (Interruption)")]
     [SerializeField] private InterruptionCurtainState m_interruptionCurtainState;
 
-    [HorizontalGroup("Interruptions/States")]
-    [HideLabel]
+    [GUIColor(0.95f, .8f, 0.8f)]
+    [BoxGroup("Audio/Interruptions")]
+    [LabelText("Spot (Interruption)")]
     [SerializeField] private InterruptionSpotState m_interruptionSpotState;
 
-    [BoxGroup("Acte 1", ShowLabel = true)]
-    [HorizontalGroup("Acte 1/States")]
-    [LabelWidth(100)]
+    // === ACTE 1 ===
+    [GUIColor(0.7f, 1f, 0.8f)]
+    [BoxGroup("Audio/Acte 1", ShowLabel = true)]
+    [LabelText("Roue")]
     [SerializeField] private Acte1RoueState m_acte1roueState;
 
-    [HorizontalGroup("Acte 1/States")]
-    [LabelWidth(100)]
+    // === ACTE x ===
+    [GUIColor(0.7f, 1f, 0.8f)]
+    [BoxGroup("Audio/Acte x")]
+    [LabelText("Combat")]
     [SerializeField] private CombatState m_combatState;
-
 
     public async UniTask Play(GameObject target = null, CancellationToken cancellationToken = default)
     {
