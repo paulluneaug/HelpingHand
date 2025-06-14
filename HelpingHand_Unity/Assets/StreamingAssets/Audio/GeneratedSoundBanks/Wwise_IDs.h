@@ -87,7 +87,6 @@ namespace AK
     namespace DIALOGUE_EVENTS
     {
         static const AkUniqueID DIALOGUE_EVENT = 893562230U;
-        static const AkUniqueID ONBOARDING_INTRO_BACKUP = 2964166882U;
     } // namespace DIALOGUE_EVENTS
 
     namespace STATES
@@ -213,15 +212,14 @@ namespace AK
 
             namespace STATE
             {
-                static const AkUniqueID GAMEPLAY1STSECTION = 1738956672U;
-                static const AkUniqueID GAMEPLAY2NDSECTION = 311720168U;
-                static const AkUniqueID GAMEPLAY3RDSECTION = 490107267U;
-                static const AkUniqueID LEVEL_LOSE = 1003524675U;
-                static const AkUniqueID LEVEL_START = 352576276U;
-                static const AkUniqueID LEVEL_WIN = 2908556826U;
+                static const AkUniqueID BATTLE_THEME = 3421098005U;
+                static const AkUniqueID DEFEAT = 1593864692U;
                 static const AkUniqueID MAINMENU = 3604647259U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PAUSEMENU = 3494343696U;
+                static const AkUniqueID SAD_THEME = 3255068793U;
+                static const AkUniqueID THIRD_THEME = 645448998U;
+                static const AkUniqueID VICTORY = 2716678721U;
             } // namespace STATE
         } // namespace MUSICSTATE
 
@@ -419,12 +417,16 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID ACTE_1_ROUE_VOICE = 4195112387U;
         static const AkUniqueID AMBIENCES = 1017660616U;
-        static const AkUniqueID DYNAMICDIALOGUE = 1028808198U;
+        static const AkUniqueID BUSSES = 1485216320U;
+        static const AkUniqueID COMBAT_VOICE = 2523490214U;
+        static const AkUniqueID DYNAMICDIALOGUE_EVENT = 555220343U;
         static const AkUniqueID GEARS = 1551951747U;
-        static const AkUniqueID MAIN = 3161908922U;
+        static const AkUniqueID INTERRUPTIONS_VOICE = 3033301104U;
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID OBJECTS = 1695690031U;
+        static const AkUniqueID ONBOARDING_VOICE = 2906343541U;
         static const AkUniqueID PUPPET = 4266532147U;
         static const AkUniqueID UI = 1551306167U;
     } // namespace BANKS
