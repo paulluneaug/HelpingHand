@@ -75,6 +75,11 @@ public class WaitSwitchStateNode : WaitNodeBase
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
+        if (m_hasBeenKilled)
+        {
+            return;
+        }
+        
         if (IsTimeout)
         {
             DebugLog($"Has timeout");

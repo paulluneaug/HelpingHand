@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Intro 1.11.1
+  m_Name: Dialogue Interruption Intro 1.10.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 3720}
+  position: {x: -24, y: 3416}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: -8283942491266404913}
@@ -40,7 +41,19 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 1450827169149338407}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -4813686767603226751}
+        reroutePoints: []
       _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -8283942491266404913}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
@@ -55,14 +68,15 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 0
-  m_contentNeutral: "... Surprise ! Bon maintenant je me r\xE9p\xE8te vraiment."
+  m_contentNeutral: "... <waitfor=1>Surprise ! Bon maintenant je me r\xE9p\xE8te
+    vraiment."
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: e78c97cdcb08966418f4c2e6f8c3785f, type: 2}
 --- !u!114 &-6682832823668352582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,12 +90,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.7.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 2120}
+  position: {x: -24, y: 2072}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: -6682832823668352582}
@@ -107,6 +122,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -6682832823668352582}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -118,15 +142,15 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 0
-  m_contentNeutral: "Moi je peux durer 10 minutes facilement comme \xE7a, m\xEAme
-    pas la peine d'essayer."
+  m_contentNeutral: "<i>*b\xE2ille*</i>Moi je peux durer 10 minutes facilement comme
+    \xE7a, m\xEAme pas la peine d'essayer."
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: 11d644db55b57d644a844d4f2dcdadf7, type: 2}
 --- !u!114 &-6662595056671681130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +164,7 @@ MonoBehaviour:
   m_Name: Increment
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1752, y: 1528}
+  position: {x: -3192, y: 1192}
   folded: 0
   ports:
     keys:
@@ -219,7 +243,7 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_value: 0
   m_increment: 1
-  m_valueOut: 4
+  m_valueOut: 1
 --- !u!114 &-6317526157517102981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +257,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1480, y: 1528}
+  position: {x: -2920, y: 1192}
   folded: 0
   ports:
     keys:
@@ -288,13 +312,13 @@ MonoBehaviour:
       Data: 0|System.Int32, mscorlib
     - Name: 
       Entry: 3
-      Data: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
   m_showDebugLog: 1
   m_key: interruption counter
---- !u!114 &-5792737763565562759
+--- !u!114 &-4813686767603226751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,37 +327,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Intro 1.10.1
+  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
+  m_Name: Set State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 3320}
+  position: {x: 616, y: 4168}
   folded: 0
   ports:
     keys:
     - m_in
+    - m_inValue
     - m_out
     values:
     - _fieldName: m_in
-      _node: {fileID: -5792737763565562759}
+      _node: {fileID: -4813686767603226751}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_values 9
-        node: {fileID: -4404003727208574378}
+      - fieldName: m_out
+        node: {fileID: -8283942491266404913}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -4813686767603226751}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
     - _fieldName: m_out
-      _node: {fileID: -5792737763565562759}
+      _node: {fileID: -4813686767603226751}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 1450827169149338407}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -348,15 +379,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_interruptable: 0
-  m_contentNeutral: ...
-  m_contentSatisfied: 
-  m_contentAnnoyed: 
-  m_contentPissed: 
-  m_canRepeat: 0
-  m_waitTime: 1
-  m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: 460befeb1eaaf594b92a816475f7d4af, type: 2}
 --- !u!114 &-4404003727208574378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +394,7 @@ MonoBehaviour:
   m_Name: Switch Int
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1160, y: 1864}
+  position: {x: -2520, y: 1464}
   folded: 0
   ports:
     keys:
@@ -548,10 +572,7 @@ MonoBehaviour:
       _node: {fileID: -4404003727208574378}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_in
-        node: {fileID: -5792737763565562759}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -578,7 +599,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 4
+  m_value: 1
   m_values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b000000
   m_exactValues: 1
 --- !u!114 &-3351764092066318876
@@ -594,12 +615,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.6.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 1720}
+  position: {x: -24, y: 1624}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: -3351764092066318876}
@@ -625,6 +647,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -3351764092066318876}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -644,7 +675,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: 590209dc4bca6bc43b9ceff69f0d35f9, type: 2}
 --- !u!114 &-3169598999332034298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,12 +689,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.9.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 2920}
+  position: {x: -24, y: 2968}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: -3169598999332034298}
@@ -689,6 +721,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -3169598999332034298}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -707,7 +748,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: 7007d1a36ce665e4c810229a7780cb3e, type: 2}
 --- !u!114 &-2751932113907057705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,7 +762,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2328, y: 1832}
+  position: {x: -3768, y: 1816}
   folded: 0
   ports:
     keys:
@@ -773,7 +814,7 @@ MonoBehaviour:
   m_Name: Get Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2024, y: 1528}
+  position: {x: -3528, y: 1496}
   folded: 0
   ports:
     keys:
@@ -831,7 +872,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1304, y: 2024}
+  position: {x: 2360, y: 1624}
   folded: 0
   ports:
     keys:
@@ -886,7 +927,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 34.549202
+      Data: 17.2927647
     - Name: 
       Entry: 8
       Data: 
@@ -905,12 +946,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.1.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 344, y: -280}
+  position: {x: 344, y: -616}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: -1308505732004751957}
@@ -936,6 +978,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -1308505732004751957}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -955,7 +1006,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: e2c61632aa64d7f4188b6403c13b0a07, type: 2}
 --- !u!114 &-839820884094030023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,12 +1020,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.5.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 1320}
+  position: {x: -24, y: 1176}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: -839820884094030023}
@@ -1000,6 +1052,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -839820884094030023}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1019,7 +1080,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: 1b071f229fa6df443ad8e5a683e65581, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,9 +1113,11 @@ MonoBehaviour:
   - {fileID: -6682832823668352582}
   - {fileID: 5580034494665945653}
   - {fileID: -3169598999332034298}
-  - {fileID: -5792737763565562759}
   - {fileID: -8283942491266404913}
   - {fileID: 1079411525495307740}
+  - {fileID: -4813686767603226751}
+  - {fileID: 5160693425201341940}
+  - {fileID: 673875857927503632}
 --- !u!114 &532723407041991796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,12 +1131,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.4.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 920}
+  position: {x: -24, y: 728}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: 532723407041991796}
@@ -1099,6 +1163,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 532723407041991796}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1110,7 +1183,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 0
-  m_contentNeutral: "Oui tu t'amuses bien avec la console ? Tu voulais voir si j'allais
+  m_contentNeutral: "\xC7a va je ne te d\xE9range pas ? Tu voulais voir si j'allais
     r\xE9agir encore diff\xE9remment ?"
   m_contentSatisfied: 
   m_contentAnnoyed: 
@@ -1118,7 +1191,71 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: f61fa47a0aac94a4380dfae4233046e5, type: 2}
+--- !u!114 &673875857927503632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait Duration
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2744, y: 1848}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 673875857927503632}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 5160693425201341940}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 673875857927503632}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 673875857927503632}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 0
+  m_waitTime: 1
+  m_unscaled: 0
 --- !u!114 &1079411525495307740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,15 +1266,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Interruption Intro 1.12.1
+  m_Name: Dialogue Interruption Intro 1.11.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 4120}
+  position: {x: -24, y: 3864}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: 1079411525495307740}
@@ -1163,6 +1301,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 1079411525495307740}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1181,7 +1328,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: dde7bb9e3ac28d541bfe7ea793788b0c, type: 2}
 --- !u!114 &1155235488444859843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,7 +1421,7 @@ MonoBehaviour:
   m_Name: Restart graph
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1064, y: 2024}
+  position: {x: 2040, y: 1720}
   folded: 0
   ports:
     keys:
@@ -1314,9 +1461,6 @@ MonoBehaviour:
         node: {fileID: -3169598999332034298}
         reroutePoints: []
       - fieldName: m_out
-        node: {fileID: -5792737763565562759}
-        reroutePoints: []
-      - fieldName: m_out
         node: {fileID: -8283942491266404913}
         reroutePoints: []
       - fieldName: m_out
@@ -1331,6 +1475,9 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
+      - fieldName: m_in
+        node: {fileID: 5160693425201341940}
+        reroutePoints: []
       - fieldName: m_in
         node: {fileID: -1473288761436212494}
         reroutePoints: []
@@ -1363,12 +1510,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.2.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 120}
+  position: {x: -24, y: -168}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: 2569239990527171976}
@@ -1394,6 +1542,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 2569239990527171976}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1413,7 +1570,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: ab93ed14084cf3c4c9abf1dd5a3d504f, type: 2}
 --- !u!114 &2817404890311167004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,7 +1584,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1304, y: 1896}
+  position: {x: 2360, y: 1496}
   folded: 0
   ports:
     keys:
@@ -1469,12 +1626,13 @@ MonoBehaviour:
   m_Name: Interrupt With Condition
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2104, y: 1832}
+  position: {x: -3544, y: 1816}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: 3935527377422329109}
@@ -1500,6 +1658,15 @@ MonoBehaviour:
         node: {fileID: -4404003727208574378}
         reroutePoints: []
       _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 3935527377422329109}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
@@ -1568,6 +1735,79 @@ MonoBehaviour:
       Data: 
   m_showDebugLog: 1
   m_interruptable: 0
+--- !u!114 &5160693425201341940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
+  m_Name: Dialogue Interruption Intro 2
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2360, y: 1848}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 5160693425201341940}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 1450827169149338407}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 5160693425201341940}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 673875857927503632}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 5160693425201341940}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 0
+  m_contentNeutral: <i>*Tousse*</i> Reprenons...
+  m_contentSatisfied: 
+  m_contentAnnoyed: 
+  m_contentPissed: 
+  m_canRepeat: 0
+  m_waitTime: 1
+  m_waitUnscaled: 0
+  m_audioEvent: {fileID: 11400000, guid: 54bfe888c95d8db4d8631250d862198d, type: 2}
 --- !u!114 &5580034494665945653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,6 +1827,7 @@ MonoBehaviour:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: 5580034494665945653}
@@ -1612,6 +1853,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 5580034494665945653}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1631,7 +1881,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: 57587786c9a0b324d96003727d0744d4, type: 2}
 --- !u!114 &5714489469406970015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,12 +1895,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.3.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 520}
+  position: {x: -24, y: 280}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: 5714489469406970015}
@@ -1676,6 +1927,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 5714489469406970015}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1687,15 +1947,15 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 0
-  m_contentNeutral: "Que tu continues de t'acharner sur la console, je mets \xE7a
-    sur le compte de ton enthousiasme, d'accord ?"
+  m_contentNeutral: "Et tu continues ?! Je vais mettre \xE7a sur le compte de ton
+    enthousiasme, d'accord ?"
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: d2ba1ffd4015398418be10dc9ddfd9ca, type: 2}
 --- !u!114 &7395236894262672763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1709,12 +1969,13 @@ MonoBehaviour:
   m_Name: Dialogue Interruption Intro 1.1.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: -280}
+  position: {x: -24, y: -616}
   folded: 0
   ports:
     keys:
     - m_in
     - m_out
+    - m_kill
     values:
     - _fieldName: m_in
       _node: {fileID: 7395236894262672763}
@@ -1740,6 +2001,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 7395236894262672763}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -1759,4 +2029,4 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: d52b207c7192e834fa54a13e9d2a6b14, type: 2}

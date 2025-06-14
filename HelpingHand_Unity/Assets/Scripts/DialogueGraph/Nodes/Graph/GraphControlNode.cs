@@ -14,10 +14,12 @@ using XNode;
 public class GraphControlNode : BaseNode
 {
     [Input]
-    public DialogueFlow m_in;
+    [SerializeField]
+    private DialogueFlow m_in;
 
     [Output]
-    public DialogueFlow m_out;
+    [SerializeField]
+    private DialogueFlow m_out;
 
     [Input(ShowBackingValue.Never)]
     [ShowInInspector]
@@ -29,7 +31,7 @@ public class GraphControlNode : BaseNode
 
     [SerializeField]
     [HideLabel]
-    [HideIf("@GetInputPort(\"m_handlerIn\").GetInputValue() != null")]
+    [HideIf("@GetInputPort(\"m_handlerIn\").ConnectionCount > 0")]
     private SimpleGraph m_graph;
 
     [SerializeField]
@@ -59,7 +61,16 @@ public class GraphControlNode : BaseNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         m_handlerOut = GetInputPort(nameof(m_handlerIn)).GetInputValue<GraphRunnerHandler>();
-
+        if (m_handlerOut != null)
+        {
+            DebugLog($"[{GetInstanceID()}] Found handler: {m_handlerOut.GraphRunner.Graph.name}");
+        }
+        else
+        {
+            Debug.Assert(m_graph != null);
+            DebugLog($"[{GetInstanceID()}] Using graph: {m_graph.name}");
+        }
+        
         switch (m_control)
         {
             case GraphControlsEnum.Start:
@@ -81,6 +92,7 @@ public class GraphControlNode : BaseNode
 
     private async UniTask PlayGraph(GraphRunnerHandler handler)
     {
+        DebugLog($"[{GetInstanceID()}] PlayGraph");
         if (m_waitForCompletion)
         {
             if (m_handlerOut == null)
@@ -88,18 +100,18 @@ public class GraphControlNode : BaseNode
                 GraphRunner runner = await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CreateGraphRunner(m_graph);
                 m_handlerOut = runner.Handler;
             }
+            DebugLog($"[{GetInstanceID()}] Running {m_handlerOut.GraphRunner.Graph.name}");
             await m_handlerOut.GraphRunner.RunGraphAsync().AttachExternalCancellation(handler.StopToken);
         }
         else
         {
             if (m_handlerOut == null)
             {
-                CreateGraphRunnerAndForget().Forget();
+                GraphRunner runner = await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CreateGraphRunner(m_graph);
+                m_handlerOut = runner.Handler;
             }
-            else
-            {
-                m_handlerOut.GraphRunner.RunGraphAsync().Forget();
-            }
+            DebugLog($"[{GetInstanceID()}] Running {m_handlerOut.GraphRunner.Graph.name}");
+            m_handlerOut.GraphRunner.RunGraphAsync().Forget();
         }
     }
 
@@ -115,11 +127,12 @@ public class GraphControlNode : BaseNode
 
         if (m_handlerOut != null)
         {
+            DebugLog($"[{GetInstanceID()}] Stopping {m_handlerOut.GraphRunner.Graph.name}");
             m_handlerOut.GraphRunner.StopGraph();
         }
         else
         {
-            Debug.LogError($"{Debug_GetLogHeader()} StopGraph: no graph provided");
+            DebugLog($"StopGraph: no graph provided", LogType.Error);
         }
     }
 
@@ -159,12 +172,13 @@ public class GraphControlNode : BaseNode
         }
         else
         {
-            Debug.LogError($"{Debug_GetLogHeader()} ResumeGraph: no graph provided");
+            DebugLog($"{Debug_GetLogHeader()} ResumeGraph: no graph provided", LogType.Error);
         }
     }
 
     private async UniTaskVoid CreateGraphRunnerAndForget()
     {
+        DebugLog($"CreateGraphRunnerAndForget");
         GraphRunner runner = await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.CreateGraphRunner(m_graph);
         m_handlerOut = runner.Handler;
         runner.RunGraphAsync().Forget();

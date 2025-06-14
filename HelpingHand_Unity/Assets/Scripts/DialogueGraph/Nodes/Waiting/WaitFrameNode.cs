@@ -35,28 +35,30 @@ public class WaitFrameNode : InterruptableNode
     
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        while (true)
+        await base.ExecuteNode(handler, inPort);
+        
+        while (!m_hasBeenKilled)
         {
             UniTask task;
             switch (m_type)
             {
                 case WaitType.PreLateUpdate:
-                    task = UniTask.Yield(PlayerLoopTiming.PreLateUpdate, handler.StopToken);
+                    task = UniTask.Yield(PlayerLoopTiming.PreLateUpdate, m_killStopCTS.Token);
                     break;
                 case WaitType.PostLateUpdate:
-                    task = UniTask.Yield(PlayerLoopTiming.PostLateUpdate, handler.StopToken);
+                    task = UniTask.Yield(PlayerLoopTiming.PostLateUpdate, m_killStopCTS.Token);
                     break;
                 case WaitType.EndOfFrame:
                     DebugLog($"Waiting for end of frame");
-                    task = UniTask.WaitForEndOfFrame(handler.StopToken); 
+                    task = UniTask.WaitForEndOfFrame(m_killStopCTS.Token); 
                     break;
                 case WaitType.NextFrame:
                     DebugLog($"Waiting for next frame");
-                    task = UniTask.NextFrame(handler.StopToken);
+                    task = UniTask.NextFrame(m_killStopCTS.Token);
                     break;
                 case WaitType.FrameCount:
                     DebugLog($"Waiting for {m_frameCount} frames");
-                    task = UniTask.DelayFrame(m_frameCount, PlayerLoopTiming.Update, handler.StopToken);
+                    task = UniTask.DelayFrame(m_frameCount, PlayerLoopTiming.Update, m_killStopCTS.Token);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

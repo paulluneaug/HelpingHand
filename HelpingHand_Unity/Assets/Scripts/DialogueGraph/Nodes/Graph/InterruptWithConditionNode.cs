@@ -34,13 +34,15 @@ public class InterruptWithConditionNode : InterruptableNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        while (true)
+        await base.ExecuteNode(handler, inPort);
+        
+        while (!m_hasBeenKilled)
         {
             DebugLog($"Waiting for condition");
 
             OnConditionUpdated();
 
-            UniTask task = UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, handler.StopToken);
+            UniTask task = UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, m_killStopCTS.Token);
 
             if (await task.SuppressCancellationThrow())
             {

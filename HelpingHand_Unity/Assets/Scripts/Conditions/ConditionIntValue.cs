@@ -6,14 +6,30 @@ using UnityEngine;
 
 using UnityUtility.Extensions;
 
-[System.Serializable]
-public class ConditionIntVariable : ConditionBase
+[Serializable]
+public class ConditionIntValue : ConditionBase
 {
+    private enum ValueType
+    {
+        [LabelText("Global variable")] GlobalVariable,
+        [LabelText("Blackboard")] Blackboard
+    }
+
     [SerializeField]
+    [EnumToggleButtons]
+    private ValueType m_valueType;
+    
+    [SerializeField]
+    [ShowIf("@m_valueType == ValueType.GlobalVariable")]
     [LabelWidth(100)]
     [InlineEditor]
     private IntVariable m_variable;
 
+    [SerializeField]
+    [ShowIf("@m_valueType == ValueType.Blackboard")]
+    [LabelWidth(100)]
+    private string m_key;
+    
     [SerializeField]
     [LabelWidth(100)]
     private ComparisonOperation m_comparison;
@@ -48,8 +64,8 @@ public class ConditionIntVariable : ConditionBase
     public override void Initialize()
     {
         base.Initialize();
-        m_variable.RemoveListener(RaiseOnPreconditionUpdated);
-        m_variable.AddListener(RaiseOnPreconditionUpdated);
+        m_variable?.RemoveListener(RaiseOnPreconditionUpdated);
+        m_variable?.AddListener(RaiseOnPreconditionUpdated);
     }
 
     public override void Dispose()
@@ -64,10 +80,10 @@ public class ConditionIntVariable : ConditionBase
         {
             ComparisonOperation.Equal => CompareEquals(),
             ComparisonOperation.NotEqual => !CompareEquals(),
-            ComparisonOperation.StrictlyLowerThan => m_variable.Value < m_value,
-            ComparisonOperation.LowerOrEqualThan => m_variable.Value <= m_value,
-            ComparisonOperation.StrictlyGreaterThan => m_variable.Value > m_value,
-            ComparisonOperation.GreaterOrEqualThan => m_variable.Value >= m_value,
+            ComparisonOperation.StrictlyLowerThan => GetValue() < m_value,
+            ComparisonOperation.LowerOrEqualThan => GetValue() <= m_value,
+            ComparisonOperation.StrictlyGreaterThan => GetValue() > m_value,
+            ComparisonOperation.GreaterOrEqualThan => GetValue() >= m_value,
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -76,11 +92,32 @@ public class ConditionIntVariable : ConditionBase
     {
         if (m_useBounds)
         {
-            return m_variable.Value.Between(m_valueMin, m_valueMax, m_boundsInclusive);
+            return GetValue().Between(m_valueMin, m_valueMax, m_boundsInclusive);
         }
         else
         {
-            return m_value == m_variable.Value;
+            return m_value == GetValue();
         }
+    }
+
+    private int GetValue()
+    {
+        if (m_valueType == ValueType.GlobalVariable)
+        {
+            return m_variable.Value;
+        } 
+        else if (m_valueType == ValueType.Blackboard)
+        {
+            if (GraphBlackboard.Instance.TryGetValue(m_key, out int value))
+            {
+                return value;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException($"No value with key {m_key} in blackboard");
+            }
+        }
+
+        throw new ArgumentOutOfRangeException();
     }
 }

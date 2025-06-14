@@ -106,14 +106,18 @@ public class GraphController : MonoBehaviour
         // If graph is already running, wait for its completion
         if (m_graphDictionary.TryGetValue(graph, out GraphRunner existingRunner))
         {
-            bool isRunning = true;
-            existingRunner.OnGraphEnded += () => isRunning = false;
-            await UniTask.WaitUntil(() => isRunning == false);
+            if (existingRunner != null)
+            {
+                bool isRunning = true;
+                existingRunner.OnGraphEnded += () => isRunning = false;
+                await UniTask.WaitUntil(() => isRunning == false);
+            }
         }
         
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
         graphRunner.SetGraph(graph);
         m_graphDictionary[graph] = graphRunner;
+        graphRunner.OnGraphEnded += () => m_graphDictionary.Remove(graph);
         return graphRunner;
     }
 
