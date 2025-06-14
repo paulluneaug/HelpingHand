@@ -13,8 +13,8 @@ public class PuppetStringController : MonoBehaviour
         private readonly Transform m_puppetAttatchment;
         private readonly LineRenderer m_stringRenderer;
 
-        private Vector2 m_targetPosition;
-        private Vector2 m_currentPosition;
+        private Vector2 m_targetLocalPosition;
+        private Vector2 m_currentLocalPosition;
 
         public PuppetString(Transform puppet, Transform puppetAttatchment, LineRenderer stringRenderer)
         {
@@ -25,11 +25,13 @@ public class PuppetStringController : MonoBehaviour
 
         public void UpdateString(float deltaTime, float stringsHeight, float stringTargetFactor, float halfLife)
         {
-            m_targetPosition = GetAttachmentLocalPosition().XZ() * stringTargetFactor;
-            m_currentPosition = MathUf.SmoothLerp(m_currentPosition, m_targetPosition, deltaTime, halfLife);
+            m_targetLocalPosition = GetAttachmentLocalPosition().XZ() * stringTargetFactor;
+            m_currentLocalPosition = MathUf.SmoothLerp(m_currentLocalPosition, m_targetLocalPosition, deltaTime, halfLife);
 
             m_stringRenderer.SetPosition(0, m_puppetAttatchment.position);
-            m_stringRenderer.SetPosition(1, new Vector3(m_currentPosition.x, stringsHeight, m_currentPosition.y));
+
+            Vector3 stringPosition = new Vector3(m_puppetAttatchment.position.x + m_currentLocalPosition.x, stringsHeight, m_puppetAttatchment.position.z + m_currentLocalPosition.y);
+            m_stringRenderer.SetPosition(1, stringPosition);
         }
 
         private Vector3 GetAttachmentLocalPosition()
@@ -56,7 +58,7 @@ public class PuppetStringController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         float stringsHeight = transform.position.y + m_stringsHeightOffset;
         float deltaTime = Time.deltaTime;
