@@ -18,17 +18,25 @@ public class CanvasManager : MonoBehaviour
 
     public void Initialize()
     {
-        Action mainMenuAction = GameManager.Instance.CurrentGameState switch
-        {
-            GameManager.GameState.MainMenu => m_mainMenuController.OpenMainMenu,
-            GameManager.GameState.Gameplay => m_mainMenuController.CloseMainMenu,
-            _ => throw new NotImplementedException(),
-        };
-        mainMenuAction();
-
         m_optionsMenuController.CloseOptionMenu();
+        m_mainMenuController.CloseMainMenu();
+
 
         m_pauseAction.action.performed += OnOptionActionPerformed;
+    }
+
+    private void Start()
+    {
+        switch (GameManager.Instance.CurrentGameState)
+        {
+            case GameManager.GameState.MainMenu:
+                m_mainMenuController.OpenMainMenu();
+                break;
+            case GameManager.GameState.Gameplay:
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnDestroy()
@@ -44,12 +52,17 @@ public class CanvasManager : MonoBehaviour
 
     public void OpenOptions()
     {
+        m_mainMenuController.CloseMainMenu();
         m_optionsMenuController.OpenOptionMenu();
     }
 
     public void CloseOptions()
     {
         m_optionsMenuController.CloseOptionMenu();
+        if (GameManager.Instance.CurrentGameState == GameManager.GameState.MainMenu)
+        {
+            m_mainMenuController.OpenMainMenu();
+        }
     }
 
     private void OnOptionActionPerformed(InputAction.CallbackContext context)
