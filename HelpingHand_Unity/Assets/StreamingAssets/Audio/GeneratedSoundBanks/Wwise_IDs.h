@@ -87,6 +87,7 @@ namespace AK
     namespace DIALOGUE_EVENTS
     {
         static const AkUniqueID DIALOGUE_EVENT = 893562230U;
+        static const AkUniqueID ONBOARDING_INTRO_BACKUP = 2964166882U;
     } // namespace DIALOGUE_EVENTS
 
     namespace STATES
@@ -237,6 +238,7 @@ namespace AK
                 static const AkUniqueID INTERRUPTION_INTRO_141 = 2326111442U;
                 static const AkUniqueID INTERRUPTION_INTRO_151 = 2309333857U;
                 static const AkUniqueID INTERRUPTION_INTRO_161 = 2359666744U;
+                static const AkUniqueID INTERRUPTION_INTRO_171 = 2342889031U;
                 static const AkUniqueID INTERRUPTION_INTRO_181 = 2527442934U;
                 static const AkUniqueID INTERRUPTION_INTRO_182 = 2527442933U;
                 static const AkUniqueID INTERRUPTION_INTRO_183 = 2527442932U;
@@ -273,8 +275,8 @@ namespace AK
                 static const AkUniqueID INTRO_01 = 1697488981U;
                 static const AkUniqueID INTRO_02 = 1697488982U;
                 static const AkUniqueID NEXT_01 = 3504266440U;
-                static const AkUniqueID NEXT_02 = 3504266443U;
-                static const AkUniqueID NEXT_03 = 3504266442U;
+                static const AkUniqueID NEXT_21 = 3470711266U;
+                static const AkUniqueID NEXT_22 = 3470711265U;
                 static const AkUniqueID NO_INPUTS_01 = 1390664362U;
                 static const AkUniqueID NO_INPUTS_02 = 1390664361U;
                 static const AkUniqueID NO_INPUTS_03 = 1390664360U;
