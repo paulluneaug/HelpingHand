@@ -35,10 +35,14 @@ public class WaitFrameNode : InterruptableNode
     
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        await base.ExecuteNode(handler, inPort);
-        
         while (!m_hasBeenKilled)
         {
+            await base.ExecuteNode(handler, inPort);
+            if (m_hasBeenKilled)
+            {
+                break;
+            }
+            
             UniTask task;
             switch (m_type)
             {

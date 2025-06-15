@@ -27,10 +27,14 @@ public class WaitDurationNode : InterruptableNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        await base.ExecuteNode(handler, inPort);
-        
         while (!m_hasBeenKilled)
         {
+            await base.ExecuteNode(handler, inPort);
+            if (m_hasBeenKilled)
+            {
+                break;
+            }
+            
             DebugLog($"Waiting for {m_waitTime} seconds");
             if (await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, m_killStopCTS.Token).SuppressCancellationThrow())
             {
@@ -41,6 +45,7 @@ public class WaitDurationNode : InterruptableNode
                 }
                 else
                 {
+                    DebugLog("Paused / Stopped");
                     // The graph is being paused => We have to wait its reactivation
                     await HandlePauseStop(handler);
                 }

@@ -98,6 +98,12 @@ public abstract class WaitNodeBase : InterruptableNode
 
         while (!m_hasBeenKilled)
         {
+            await base.ExecuteNode(handler, inPort);
+            if (m_hasBeenKilled)
+            {
+                break;
+            }
+            
             UpdateWaitUntilTest();
 
             CancellationToken cancellationToken = m_killStopCTS.Token;
