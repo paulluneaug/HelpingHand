@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 2 Curtain Bad Inputs 2.2
+  m_Name: Dialogue Onboarding 2 Curtain Bad Input 2.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 3032, y: 1832}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
-  m_audioEvent: {fileID: 0}
+  m_audioEvent: {fileID: 11400000, guid: a5b4cef62642f3849987ea5269f2dac7, type: 2}
 --- !u!114 &-8593754463068087676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
-  m_Name: Dialogue Onboarding 2 Curtain Next 1.2
+  m_Name: Dialogue Onboarding 2 Curtain Next 2.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 3800, y: -456}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: Add To Int Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3992, y: 1768}
+  position: {x: 4136, y: 1912}
   folded: 0
   ports:
     keys:
@@ -307,6 +307,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_out
         node: {fileID: 8969448227153945682}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: 652997422395964937}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -369,7 +372,7 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_value: 0
   m_increment: 1
-  m_valueOut: 0
+  m_valueOut: 5
 --- !u!114 &-7529699739381909923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +439,7 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_interruptable: 1
   m_contentNeutral: "Mais qu'est-ce qui te prend autant de temps ? Concentre-toi
-    et l\xE8ve -<waitfor=0.2> ce -<waitfor=0.2> rideau\u2026"
+    et l\xE8ve ce rideau\u2026"
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
@@ -531,7 +534,7 @@ MonoBehaviour:
   m_Name: Wait Duration
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4616, y: 1528}
+  position: {x: 4664, y: 1528}
   folded: 0
   ports:
     keys:
@@ -875,7 +878,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 0
-  m_contentNeutral: Je plaisante, je pense que c'est utile de te le rappeler...
+  m_contentNeutral: "Je plaisante, je pense que c'est tr\xE8s utile de te le rappeler..."
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
@@ -954,7 +957,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 1
-  m_contentNeutral: D'ailleurs, il est temps de le lever, ce rideau. Utilise la console.
+  m_contentNeutral: Vas-y, utilise la console.
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
@@ -1316,7 +1319,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.25
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: e299c0934e53da0429a0cdbe36edc05f, type: 2}
 --- !u!114 &-1983015369630229926
@@ -2088,7 +2091,10 @@ MonoBehaviour:
       _node: {fileID: 652997422395964937}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: m_in
+        node: {fileID: -7790384003079716702}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -2245,7 +2251,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 55.5829
+      Data: 8.589866
     - Name: 
       Entry: 8
       Data: 
@@ -2396,7 +2402,7 @@ MonoBehaviour:
       Data: 0|System.Int32, mscorlib
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -3239,7 +3245,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 77.40912
+      Data: 61.6645737
     - Name: 
       Entry: 8
       Data: 
@@ -3313,7 +3319,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 72.82554
+      Data: 52.93024
     - Name: 
       Entry: 8
       Data: 
@@ -3433,7 +3439,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 0
+  m_value: 5
   m_values: 000000000200000004000000
   m_exactValues: 0
 --- !u!114 &4491544252652646829
@@ -3725,7 +3731,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 0
+  m_value: 5
   m_values: 0000000004000000
   m_exactValues: 0
 --- !u!114 &5190017492611899759
@@ -3741,7 +3747,7 @@ MonoBehaviour:
   m_Name: Get Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3992, y: 2024}
+  position: {x: 4136, y: 2168}
   folded: 0
   ports:
     keys:
@@ -3796,7 +3802,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4280, y: 1896}
+  position: {x: 4424, y: 2040}
   folded: 0
   ports:
     keys:
@@ -3850,7 +3856,13 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: m_inValue
-      Entry: 6
+      Entry: 7
+      Data: 0|System.Int32, mscorlib
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
       Data: 
   m_showDebugLog: 1
   m_key: current errors count
@@ -4510,7 +4522,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 51.0469856
+      Data: 8.227113
     - Name: 
       Entry: 8
       Data: 
@@ -4761,7 +4773,7 @@ MonoBehaviour:
       Data: 0|System.Int32, mscorlib
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
