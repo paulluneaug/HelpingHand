@@ -195,6 +195,11 @@ public class DialogueNode : InterruptableNode
                 m_hasBeenInterrupted = true;
                 EndDialogueNode();
             }
+            else if (m_waitingSkipCTS.IsCancellationRequested || m_audioSkipCTS.IsCancellationRequested)
+            {
+                DebugLog("Skipped");
+                EndDialogueNode();
+            }
             else
             {
                 Debug.Assert(m_killCTS.IsCancellationRequested);
@@ -218,6 +223,7 @@ public class DialogueNode : InterruptableNode
 
         UniTask GetWaitingTask()
         {
+            DebugLog($"Waiting {(GameManager.Instance.GameOptionsManager.DialogueReadMode.Value == DialogueReadMode.Auto ? m_waitTime : "next button")} to continue...");
             m_skipPressed = false;
             m_currentState = DialogueNodeState.Waiting;
 
@@ -294,8 +300,8 @@ public class DialogueNode : InterruptableNode
 
         if (skipCTS.IsCancellationRequested) // The skip token was cancelled
         {
-            DebugLog($"Skipped");
-            return;
+            DebugLog($"Main task skipped");
+            throw new OperationCanceledException();
         }
         
         if (!isCancelled) // The main task succeeded
