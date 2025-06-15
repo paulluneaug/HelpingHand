@@ -1,5 +1,3 @@
-using System;
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,8 +6,9 @@ using UnityUtility.CustomAttributes;
 public class CanvasManager : MonoBehaviour
 {
     [Title("Panels")]
-    [SerializeField] private MainMenuManager m_mainMenuController;
+    [SerializeField] private MainMenuController m_mainMenuController;
     [SerializeField] private OptionsMenuController m_optionsMenuController;
+    [SerializeField] private CreditsMenuController m_creditsMenuController;
 
     [Title("Actions")]
     [SerializeField] private InputActionReference m_pauseAction;
@@ -18,17 +17,26 @@ public class CanvasManager : MonoBehaviour
 
     public void Initialize()
     {
-        Action mainMenuAction = GameManager.Instance.CurrentGameState switch
-        {
-            GameManager.GameState.MainMenu => m_mainMenuController.OpenMainMenu,
-            GameManager.GameState.Gameplay => m_mainMenuController.CloseMainMenu,
-            _ => throw new NotImplementedException(),
-        };
-        mainMenuAction();
-
         m_optionsMenuController.CloseOptionMenu();
+        m_mainMenuController.CloseMainMenu();
+        m_creditsMenuController.CloseCreditsMenu();
+
 
         m_pauseAction.action.performed += OnOptionActionPerformed;
+    }
+
+    private void Start()
+    {
+        switch (GameManager.Instance.CurrentGameState)
+        {
+            case GameManager.GameState.MainMenu:
+                m_mainMenuController.OpenMainMenu();
+                break;
+            case GameManager.GameState.Gameplay:
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnDestroy()
@@ -44,16 +52,33 @@ public class CanvasManager : MonoBehaviour
 
     public void OpenOptions()
     {
+        m_mainMenuController.CloseMainMenu();
         m_optionsMenuController.OpenOptionMenu();
     }
 
     public void CloseOptions()
     {
         m_optionsMenuController.CloseOptionMenu();
+        if (GameManager.Instance.CurrentGameState == GameManager.GameState.MainMenu)
+        {
+            m_mainMenuController.OpenMainMenu();
+        }
     }
 
     private void OnOptionActionPerformed(InputAction.CallbackContext context)
     {
         OpenOptions();
+    }
+
+    public void CloseCredits()
+    {
+        m_mainMenuController.OpenMainMenu();
+        m_creditsMenuController.CloseCreditsMenu();
+    }
+
+    public void OpenCredits()
+    {
+        m_creditsMenuController.OpenCreditsMenu();
+        m_mainMenuController.CloseMainMenu();
     }
 }

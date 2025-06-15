@@ -15,7 +15,8 @@ public class GameOptionsManager
     public ObservableField<DialogueReadMode> DialogueReadMode = new ObservableField<DialogueReadMode>(global::DialogueReadMode.Auto);
     public ObservableField<SubtitleSize> SubtitleSize = new ObservableField<SubtitleSize>(global::SubtitleSize.Medium);
     public ObservableField<Color> SubtitleColor = new ObservableField<Color>(Color.black);
-    public ObservableField<float> SubtitleOpacity = new ObservableField<float>(1.0f);
+    public ObservableField<float> SubtitleBackgroundOpacity = new ObservableField<float>(1.0f);
+    public ObservableField<Color> SubtitleBackgroundColor = new ObservableField<Color>(Color.black);
 
     [Title("Font sizes", bold: false)]
     [SerializeField] private float m_smallFontSize = 80.0f;

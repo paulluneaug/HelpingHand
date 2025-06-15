@@ -186,6 +186,21 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     #endregion
 
 
+    public void ReturnToMainMenu()
+    {
+        switch (m_currentGameState)
+        {
+            case GameState.MainMenu:
+                m_canvasManager.CloseOptions();
+                break;
+            case GameState.Gameplay:
+                m_currentGameState = GameState.MainMenu;
+                m_canvasManager.CloseOptions();
+                m_actSequenceManager.StopSequence();
+                break;
+        }
+    }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR
