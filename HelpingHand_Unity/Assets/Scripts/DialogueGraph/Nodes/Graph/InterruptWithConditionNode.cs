@@ -58,6 +58,7 @@ public class InterruptWithConditionNode : InterruptableNode
             // then exit via cancelled out port
             if (await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.Interrupt(m_condition.Score(), handler))
             {
+                await UniTask.DelayFrame(1); // Needed. There is apparently a 1 frame delay when a token is cancelled, so we need to be sure to interrupt the dialogue BEFORE this continues
                 DebugLog($"Is interrupting. Continuing...");
                 break;
             }
