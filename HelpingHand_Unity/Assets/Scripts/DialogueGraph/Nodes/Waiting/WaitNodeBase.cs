@@ -119,9 +119,9 @@ public abstract class WaitNodeBase : InterruptableNode
             {
                 DebugLog($"Wait interrupted");
 
-                if (!m_timeoutSource.IsCancellationRequested)
+                if (!m_doesTimeout || !m_timeoutSource.IsCancellationRequested)
                 {
-                    DebugLog($"Paused/stopped");
+                    DebugLog($"Killed/Paused/Stopped");
                     // The graph is being paused => We have to wait its reactivation
                     await HandlePauseStop(handler);
                     continue;
