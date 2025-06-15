@@ -1,5 +1,3 @@
-using System;
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,8 +6,9 @@ using UnityUtility.CustomAttributes;
 public class CanvasManager : MonoBehaviour
 {
     [Title("Panels")]
-    [SerializeField] private MainMenuManager m_mainMenuController;
+    [SerializeField] private MainMenuController m_mainMenuController;
     [SerializeField] private OptionsMenuController m_optionsMenuController;
+    [SerializeField] private CreditsMenuController m_creditsMenuController;
 
     [Title("Actions")]
     [SerializeField] private InputActionReference m_pauseAction;
@@ -20,6 +19,7 @@ public class CanvasManager : MonoBehaviour
     {
         m_optionsMenuController.CloseOptionMenu();
         m_mainMenuController.CloseMainMenu();
+        m_creditsMenuController.CloseCreditsMenu();
 
 
         m_pauseAction.action.performed += OnOptionActionPerformed;
@@ -68,5 +68,17 @@ public class CanvasManager : MonoBehaviour
     private void OnOptionActionPerformed(InputAction.CallbackContext context)
     {
         OpenOptions();
+    }
+
+    public void CloseCredits()
+    {
+        m_mainMenuController.OpenMainMenu();
+        m_creditsMenuController.CloseCreditsMenu();
+    }
+
+    public void OpenCredits()
+    {
+        m_creditsMenuController.OpenCreditsMenu();
+        m_mainMenuController.CloseMainMenu();
     }
 }
