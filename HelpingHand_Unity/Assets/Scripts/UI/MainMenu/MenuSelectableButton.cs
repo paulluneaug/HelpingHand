@@ -35,7 +35,7 @@ public class MenuSelectableButton : MonoBehaviour, ISelectHandler, IDeselectHand
     [NonSerialized] private Timer m_transitionTimer;
     [NonSerialized] private bool m_selected = false;
 
-    private void Start()
+    private void Awake()
     {
         m_transitionTimer = new Timer(m_transitionTime, false);
         m_rectTransform = (RectTransform)transform;

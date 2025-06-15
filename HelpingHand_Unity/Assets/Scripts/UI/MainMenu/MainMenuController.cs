@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityUtility.CustomAttributes;
 
 [RequireComponent(typeof(RectTransform))]
-public class MainMenuManager : MonoBehaviour
+public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup m_mainMenuPanel;
     [SerializeField] private Selectable m_firstSelectable;
@@ -14,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     [Title("Buttons")]
     [SerializeField] private Button m_startGameButton;
     [SerializeField] private Button m_openOptionsButton;
+    [SerializeField] private Button m_creditsOptionsButton;
     [SerializeField] private Button m_quitGameButton;
 
     [NonSerialized] private bool m_open = false;
@@ -32,6 +33,7 @@ public class MainMenuManager : MonoBehaviour
 
         m_startGameButton.onClick.AddListener(OnStartGameButtonClicked);
         m_openOptionsButton.onClick.AddListener(OnOpenOptionsButtonClicked);
+        m_creditsOptionsButton.onClick.AddListener(OnCreditsButtonClicked);
         m_quitGameButton.onClick.AddListener(OnQuitGameButtonClicked);
 
         m_firstSelectable.Select();
@@ -53,6 +55,7 @@ public class MainMenuManager : MonoBehaviour
 
         m_startGameButton.onClick.RemoveListener(OnStartGameButtonClicked);
         m_openOptionsButton.onClick.RemoveListener(OnOpenOptionsButtonClicked);
+        m_creditsOptionsButton.onClick.RemoveListener(OnCreditsButtonClicked);
         m_quitGameButton.onClick.RemoveListener(OnQuitGameButtonClicked);
 
         m_open = false;
@@ -66,6 +69,11 @@ public class MainMenuManager : MonoBehaviour
     private void OnOpenOptionsButtonClicked()
     {
         GameManager.Instance.CanvasManager.OpenOptions();
+    }
+
+    private void OnCreditsButtonClicked()
+    {
+        GameManager.Instance.CanvasManager.OpenCredits();
     }
 
     private void OnQuitGameButtonClicked()
