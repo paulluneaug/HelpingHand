@@ -1,87 +1,16 @@
-
-#include <SoftwareSerial.h>
-#include <SerialCommand.h>
 #include <SimpleRotary.h>
 #include <Joystick.h>
+#include <Queue.h>
 
 #pragma region Type defs
 
-const int MAX_QUEUE_SIZE = 64;
+const int MAX_QUEUE_SIZE = 256;
 
-typedef struct {
-  byte items[MAX_QUEUE_SIZE];
-  int front;
-  int rear;
-  int count;
-} Queue;
 
-typedef struct {
+typedef struct 
+{
   byte rotation;
-  byte click;
 } RotaryState;
-
-#pragma endregion
-
-#pragma region Queue Functions
-
-////////////////
-// QUEUE
-////////////////
-
-// Function to initialize the queue
-void InitializeQueue(Queue* q) {
-  q->front = -1;
-  q->rear = 0;
-  q->count = 0;
-}
-
-// Function to check if the queue is empty
-bool IsEmpty(Queue* q) {
-  int frontMod = (q->front + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
-  int rearMod = (q->rear + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
-  return frontMod + 1 == rearMod;
-}
-
-// Function to check if the queue is full
-bool IsFull(Queue* q) {
-  int frontMod = (q->front + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
-  int rearMod = (q->rear + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
-  return frontMod == rearMod + 1;
-}
-
-// Function to add an element to the queue (Enqueue
-// operation)
-void Enqueue(Queue* q, byte value) {
-  if (IsFull(q)) {
-    return;
-  }
-  q->items[q->rear] = value;
-  q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
-  q->count++;
-}
-
-// Function to remove an element from the queue (Dequeue
-// operation)
-void Dequeue(Queue* q) {
-  if (IsEmpty(q)) {
-    return;
-  }
-  q->front = (q->front + 1) % MAX_QUEUE_SIZE;
-  q->count--;
-}
-
-// Function to get the element at the front of the queue
-// (Peek operation)
-byte Peek(Queue* q) {
-  if (IsEmpty(q)) {
-    return 0;  // return some default value or handle
-               // error differently
-  }
-  return q->items[(q->front + 1) % MAX_QUEUE_SIZE];
-}
-////////////////
-// END QUEUE
-////////////////
 
 #pragma endregion
 
@@ -89,21 +18,15 @@ byte Peek(Queue* q) {
 
 void InitializeRotaryState(RotaryState* rotaryState) {
   rotaryState->rotation = 0;
-  rotaryState->click = 0;
   return;
 }
 
-bool UpdateRotaryState(RotaryState* rotaryState, byte newRotation, byte newClick)
+bool UpdateRotaryState(RotaryState* rotaryState, byte newRotation)
 {
   bool changed = false;
   if (newRotation != rotaryState->rotation)
   {
     rotaryState->rotation = newRotation;
-    changed = true;
-  }
-  if (newClick != rotaryState->click)
-  {
-    rotaryState->click = newClick;
     changed = true;
   }
   return changed;
@@ -114,44 +37,82 @@ bool UpdateRotaryState(RotaryState* rotaryState, byte newRotation, byte newClick
 // Pins
 const int ROTARY_CLK_PIN = 4;
 const int ROTARY_DT_PIN = 3;
-const int ROTARY_SW_PIN = 2;
-const int FADER_X_PIN = 5;
-const int FADER_Y_PIN = 4;
+const int FADER_X_PIN = 6;
+const int FADER_Y_PIN = 7;
+
+const int INDICATORS_PINS [32] = 
+{
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+  -1,
+};
 
 // Headers
-const byte ROTARY_STATE_HEADER = 10;
-const byte DMX_COMMAND_HEADER = 20;
+const byte INDICATOR_STATE_HEADER = 10;
 const byte ERROR_HEADER = 245;
-const byte DEBUG_MODE_HEADER = 100; // d
 
 const int ROTARY_LEFT_BUTTON_INDEX = 0; 
-const int ROTARY_RIGHT_BUTTON_INDEX = 1; 
-const int ROTARY_CLICK_BUTTON_INDEX = 2; 
+const int ROTARY_RIGHT_BUTTON_INDEX = 1;
 
 
-const int BUFFER_SIZE = 32;
-
-bool m_debug;
+const int BUFFER_SIZE = 64;
 
 int m_wroteBytes = 0;
 byte m_readBuffer[BUFFER_SIZE];
 byte m_writeBuffer[BUFFER_SIZE];
 
 
-SimpleRotary m_rotary(ROTARY_CLK_PIN, ROTARY_DT_PIN, ROTARY_SW_PIN);
-RotaryState m_rotaryState;
+SimpleRotary m_rotary(ROTARY_CLK_PIN, ROTARY_DT_PIN, 40);
+RotaryState m_rotaryState{};
 
-Joystick_ m_joystick;
+Joystick_ m_joystick {};
 
-Queue m_recieveQueue;
+Queue<byte, MAX_QUEUE_SIZE> m_recieveQueue{};
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
-  m_debug = true;
+  for (int indicator = 0; indicator < 32; ++indicator)
+  {
+    int pin = INDICATORS_PINS[indicator];
+    if (pin == -1)
+    {
+      continue;
+    }
+    
+    pinMode(pin, OUTPUT);
+  }
 
-  InitializeQueue(&m_recieveQueue);
   InitJoystick();
   InitRotary();
 
@@ -169,15 +130,18 @@ void InitJoystick()
 
 void loop() 
 { 
-  //ReadSerial();
-
   m_wroteBytes = 0;
+
+  ReadSerial();
+
   UpdateRotary();
-  SendDataIfNeeded();
 
   m_joystick.setXAxis(analogRead(FADER_X_PIN));
   m_joystick.setYAxis(analogRead(FADER_Y_PIN));
 
+  m_joystick.sendState();
+
+  SendDataIfNeeded();
   delay(10);
 }
 
@@ -185,81 +149,80 @@ void ReadSerial()
 {
   if (Serial.available()) {
     int readBytes = Serial.readBytes(m_readBuffer, BUFFER_SIZE);
-    //SendError(readBytes);
+    SendError(readBytes);
 
     DispatchRecievedMessage(readBytes);
 
     Serial.flush();
+    m_dataRecieved = true;
   }
 }
 
 void DispatchRecievedMessage(int readBytes) {
-  for (int i = 0; i < readBytes; i++) {
-    Enqueue(&m_recieveQueue, m_readBuffer[i]);
+  for (int i = 0; i < readBytes; i++) 
+  {
+    m_recieveQueue.Enqueue(m_readBuffer[i]);
   }
 
   bool recievedEnoughDatas = true;
-  while (m_recieveQueue.count > 0 && recievedEnoughDatas) {
-    byte queueHead = Peek(&m_recieveQueue);
-    switch (queueHead) {
-      case DEBUG_MODE_HEADER:
-        recievedEnoughDatas &= TryProcessDebugCommand(&m_recieveQueue);
+  while (m_recieveQueue.Count() > 0 && recievedEnoughDatas) {
+    byte queueHead = m_recieveQueue.Peek();
+    switch (queueHead) 
+    {
+      case INDICATOR_STATE_HEADER:
+        recievedEnoughDatas &= TryProcessIndicatorStateCommand();
         break;
 
+
       default:  // The header is discarded if unknown
-        Dequeue(&m_recieveQueue);
+        m_recieveQueue.Dequeue();
         SendError(queueHead);
         break;
     }
   }
 }
 
-bool TryProcessDebugCommand(Queue* recievedDatas)
-{
-  Dequeue(recievedDatas);  // Dequeue the header
-  m_debug = !m_debug;
-  return true;
+bool TryProcessIndicatorStateCommand()
+{  
+  if (m_recieveQueue.Count() < 5)
+  {
+    return false;  // Should wait for more datas to arrive
+  }
+  m_recieveQueue.Dequeue();  // Dequeue the header
+
+  int indicatorStatePart0 = m_recieveQueue.Peek();
+  m_recieveQueue.Dequeue();
+  int indicatorStatePart1 = m_recieveQueue.Peek();
+  m_recieveQueue.Dequeue();
+  int indicatorStatePart2 = m_recieveQueue.Peek();
+  m_recieveQueue.Dequeue();
+  int indicatorStatePart3 = m_recieveQueue.Peek();
+  m_recieveQueue.Dequeue();
+  
+  int indicatorsState = 
+    indicatorStatePart0 << 0 |
+    indicatorStatePart1 << 8 |
+    indicatorStatePart2 << 16 |
+    indicatorStatePart3 << 24;
+
+  UpdateIndicators(indicatorsState);
 }
 
 void SendDataIfNeeded()
 {
   if (m_wroteBytes != 0)
   {
-    m_joystick.sendState();
-    if (m_debug)
-    {
-      Serial.println("");
-    }
-    else
-    {
-      Serial.write(m_writeBuffer, m_wroteBytes);
-    }
+    Serial.write(m_writeBuffer, m_wroteBytes);
   }
 }
 
 void UpdateRotary()
 {
   byte rotation = m_rotary.rotate();
-  byte click = digitalRead(ROTARY_SW_PIN) == HIGH ? 0 : 1;
 
-  if (UpdateRotaryState(&m_rotaryState, rotation, click))
+  if (UpdateRotaryState(&m_rotaryState, rotation))
   {
-    m_joystick.setButton(ROTARY_CLICK_BUTTON_INDEX, click);
     UpdateRotaryDirectionButtons(rotation);
-    if (m_debug)
-    {
-      Serial.print(rotation);
-      Serial.print(" ");
-      Serial.print(click);
-      Serial.print(" ");
-      m_wroteBytes++;
-    }
-    else
-    {
-      m_writeBuffer[m_wroteBytes++] = ROTARY_STATE_HEADER;
-      m_writeBuffer[m_wroteBytes++] = rotation;
-      m_writeBuffer[m_wroteBytes++] = click;
-    }
   }
 }
 
@@ -282,6 +245,23 @@ void UpdateRotaryDirectionButtons(byte rotationCode)
     default:
       break;
   };
+}
+
+void UpdateIndicators(int indicatorsState)
+{
+  for (int bitIndex = 0; bitIndex < 32; ++bitIndex)
+  {
+    int pin = INDICATORS_PINS[bitIndex];
+    bool on = (indicatorsState & (1 << bitIndex)) != 0;
+
+    m_joystick.setButton(bitIndex, on ? HIGH : LOW);
+    if (pin == -1)
+    {
+      continue;
+    }
+    
+    digitalWrite(pin, on ? HIGH : LOW);
+  }
 }
 
 void SendError(byte errorCode) 
