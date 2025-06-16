@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Entity States/State")]
+[CreateAssetMenu(menuName = "Scriptable Objects/States/State")]
 public class EntityState : BaseVariable<bool>
 {
     public bool IsSet => Value;
