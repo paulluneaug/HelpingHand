@@ -27,7 +27,7 @@
 							<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="VoiceBus" ID="{C628C558-A524-4C84-B5EA-B492F58CA446}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -754,6 +754,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Acte_1_Roue_Bad_Input_3" ID="{F87E5F5B-1A3E-4946-88BD-CBBC32065D42}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.191351869794288"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.191351869794288"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Gameplay\Acte_1_Roue\Acte_1_Roue_Bad_Input_3.wav</AudioFile>
 													<MediaIDList>
@@ -984,6 +989,10 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Acte_1_Roue_Next_4" ID="{E5F74783-3CE5-49A0-95FA-2E501698238D}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Gameplay\Acte_1_Roue\Acte_1_Roue_Next_4.wav</AudioFile>
 													<MediaIDList>
@@ -1009,6 +1018,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Acte_1_Roue_No_Input_1" ID="{24FF10DA-EE84-479F-9FE5-41CB9447FE62}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.300955980096668"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.87354538629882"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Gameplay\Acte_1_Roue\Acte_1_Roue_No_Input_1.wav</AudioFile>
 													<MediaIDList>
@@ -1034,6 +1048,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Acte_1_Roue_No_Input_2_1" ID="{78F203F5-A65D-431C-86ED-F4DD28B11B6A}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0814262853992833"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.98643469090932"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Gameplay\Acte_1_Roue\Acte_1_Roue_No_Input_2.1.wav</AudioFile>
 													<MediaIDList>
@@ -1059,6 +1078,10 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Acte_1_Roue_No_Input_2_2" ID="{D883632A-8935-466A-9FE6-0A1F76F7C0D4}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Gameplay\Acte_1_Roue\Acte_1_Roue_No_Input_2.2.wav</AudioFile>
 													<MediaIDList>
@@ -1114,6 +1137,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Acte_1_Roue_Validated_2" ID="{97B2AF52-C525-4D56-9D8F-DC10E53D7E25}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.350946748321588"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.5096659244692"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Gameplay\Acte_1_Roue\Acte_1_Roue_Validated_2.wav</AudioFile>
 													<MediaIDList>
@@ -1750,6 +1778,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Interruption_Curtain-04_02" ID="{FFDDE0DC-8590-4415-B6DD-F65F7C2155DA}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.151585012740412"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.151585012740412"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Interruption\Interruption_Curtain\Interruption_Curtain-04_01_Random\Interruption_Curtain-04_02.wav</AudioFile>
 															<MediaIDList>
@@ -1915,9 +1948,10 @@
 														<ActiveSource Name="Interruption_Curtain_3_2_02" ID="{60FB6F8D-3F1E-45A1-AF62-87FA32B84783}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="Interruption_Curtain_3_2_03" ID="{9B92265A-1679-4550-BA11-D6B373568097}" ShortID="987266805">
+												<RandomSequenceContainer Name="New Sequence Container" ID="{A4E2643A-DEE8-493D-9D5D-8E8E65E3C0DE}" ShortID="960392321">
 													<PropertyList>
-														<Property Name="IsVoice" Type="bool" Value="True"/>
+														<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+														<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -1928,18 +1962,90 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="Interruption_Curtain_3_2_03" ID="{3A0E7F37-F0B2-42A0-811E-B1D027110442}">
-															<Language>English(US)</Language>
-															<AudioFile>Interruption\Interruption_Curtain\Interruption_Curtain_3.2_01_Random\Interruption_Curtain_3.2_03.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="371353586"/>
-															</MediaIDList>
-														</AudioFileSource>
+														<Sound Name="Interruption_Curtain_3_2_03" ID="{9B92265A-1679-4550-BA11-D6B373568097}" ShortID="987266805">
+															<PropertyList>
+																<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+																<Property Name="Priority" Type="int16">
+																	<ValueList>
+																		<Value>100</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Interruption_Curtain_3_2_03" ID="{3A0E7F37-F0B2-42A0-811E-B1D027110442}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="1.73229105458468"/>
+																	</PropertyList>
+																	<Language>English(US)</Language>
+																	<AudioFile>Interruption\Interruption_Curtain\Interruption_Curtain_3.2_01_Random\Interruption_Curtain_3.2_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="371353586"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Interruption_Curtain_3_2_03" ID="{3A0E7F37-F0B2-42A0-811E-B1D027110442}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Interruption_Curtain_3_2_04" ID="{C0A330A2-AC25-46CD-B377-58FAA384E66C}" ShortID="1030947248">
+															<PropertyList>
+																<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+																<Property Name="Priority" Type="int16">
+																	<ValueList>
+																		<Value>100</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Interruption_Curtain_3_2_03" ID="{7E3994CA-4CE5-479B-8B72-1D2120BADE4B}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502113381404834"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="1.77971298520158"/>
+																	</PropertyList>
+																	<Language>English(US)</Language>
+																	<AudioFile>Interruption\Interruption_Curtain\Interruption_Curtain_3.2_01_Random\Interruption_Curtain_3.2_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="644891725"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Interruption_Curtain_3_2_03" ID="{7E3994CA-4CE5-479B-8B72-1D2120BADE4B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
 													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="Interruption_Curtain_3_2_03" ID="{3A0E7F37-F0B2-42A0-811E-B1D027110442}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
+													<ObjectLists>
+														<ObjectList Name="Playlist">
+															<Reference>
+																<ObjectRef Name="Interruption_Curtain_3_2_03" ID="{9B92265A-1679-4550-BA11-D6B373568097}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+															</Reference>
+															<Reference>
+																<ObjectRef Name="Interruption_Curtain_3_2_04" ID="{C0A330A2-AC25-46CD-B377-58FAA384E66C}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<Sound Name="Interruption_Curtain_1_1_1" ID="{5AD51136-6B09-4F76-9E88-00A1727EA709}" ShortID="632395384">
@@ -2513,6 +2619,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Interruption_Spots_1_1_1_01" ID="{C380EB24-22B2-4F00-8AC7-5675DE5B183D}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.114206968284235"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.22716511230159"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Interruption\Interruption_Spots\Interruption_Spots_1.1.1_01_Random\Interruption_Spots_1.1.1_01.wav</AudioFile>
 															<MediaIDList>
@@ -2538,6 +2649,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Interruption_Spots_1_1_1_02" ID="{0D58CEEB-6AD0-47E6-AC27-7A1AA4EBC129}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.187571141777969"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.38546862430248"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Interruption\Interruption_Spots\Interruption_Spots_1.1.1_01_Random\Interruption_Spots_1.1.1_02.wav</AudioFile>
 															<MediaIDList>
@@ -2862,6 +2978,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Interruption_Spots_2_1_2_01" ID="{56076CAA-F1A1-4FED-BDAB-DB70419B697E}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.0414044711647964"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0414044711647964"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Interruption\Interruption_Spots\Interruption_Spots_2.1.2_01_Random\Interruption_Spots_2.1.2_01.wav</AudioFile>
 															<MediaIDList>
@@ -2949,6 +3070,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Interruption_Spots_2_1_3_02" ID="{7A892274-CD38-4B7C-807C-C43C931B28D4}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.133198444171914"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.133198444171914"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Interruption\Interruption_Spots\Interruption_Spots_2.1.3_01_Random\Interruption_Spots_2.1.3_02.wav</AudioFile>
 															<MediaIDList>
@@ -3011,6 +3137,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Interruption_Spots_3_1_1_01" ID="{0B661F5D-2513-44E8-95BB-4188EE969865}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.289498329162598"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.289498329162598"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Interruption\Interruption_Spots\Interruption_Spots_3.1.1_01_Random\Interruption_Spots_3.1.1_01.wav</AudioFile>
 															<MediaIDList>
@@ -3123,6 +3254,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Interruption_Spots_3_1_3_03" ID="{09648481-A9B9-4AD7-934B-C234ED570E56}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.201574115954059"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.201574115954059"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Interruption\Interruption_Spots\Interruption_Spots_3.1.3_01_Random\Interruption_Spots_3.1.3_03.wav</AudioFile>
 															<MediaIDList>
@@ -3175,6 +3311,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Interruption_Spots_1_1_3" ID="{666E054D-E67A-4D99-A441-B3DAD45740B1}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.0596931837086138"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0596931837086138"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Interruption\Interruption_Spots\Interruption_Spots_1.1.3.wav</AudioFile>
 													<MediaIDList>
@@ -3263,6 +3404,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_2_1_01" ID="{C728E636-DFC7-434C-BA1C-9ABF48F3EEA4}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0625364422404727"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0954503592091425"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.2.1_Random\Onboarding_1_Interruption_Intro_1.2.1_01.wav</AudioFile>
 															<MediaIDList>
@@ -3325,6 +3471,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_3_1" ID="{000CBC13-DEA7-4AD8-B640-ADC55D6F7EB4}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0463630012159694"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.17267017555866"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.3.1_Random\Onboarding_1_Interruption_Intro_1.3.1.wav</AudioFile>
 															<MediaIDList>
@@ -3350,6 +3501,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_3_1_alt" ID="{FA139179-0958-4CF1-B143-52196DAFB02E}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.160031284239426"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.781284808284379"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.3.1_Random\Onboarding_1_Interruption_Intro_1.3.1_alt.wav</AudioFile>
 															<MediaIDList>
@@ -3387,6 +3543,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_5_1" ID="{7D187DE1-7AAA-4E16-9827-F9B6CA727A75}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.0712799789881942"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0712799789881942"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.5.1_Random\Onboarding_1_Interruption_Intro_1.5.1.wav</AudioFile>
 															<MediaIDList>
@@ -3412,6 +3573,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_5_1_alt_01" ID="{773E5D57-7C65-4D56-ADDD-78167F180767}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.388838339953533"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.388838339953533"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.5.1_Random\Onboarding_1_Interruption_Intro_1.5.1_alt_01.wav</AudioFile>
 															<MediaIDList>
@@ -3437,6 +3603,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_5_1_alt_02" ID="{541A2CB6-D0FD-43DA-9954-B5A9517CEC31}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.389355916001223"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.11484721102573"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.5.1_Random\Onboarding_1_Interruption_Intro_1.5.1_alt_02.wav</AudioFile>
 															<MediaIDList>
@@ -3474,6 +3645,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_8_2" ID="{13EE6D2E-4216-4D78-9C33-33F058DF8560}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.0488382849362817"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0488382849362817"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.8.2_Random\Onboarding_1_Interruption_Intro_1.8.2.wav</AudioFile>
 															<MediaIDList>
@@ -3575,6 +3751,11 @@
 															</ReferenceList>
 															<ChildrenList>
 																<AudioFileSource Name="Onboarding_1_Intro_02" ID="{39948108-47DD-4D32-8A61-03A4A77A5325}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0.0741733191627087"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.0741733191627087"/>
+																	</PropertyList>
 																	<Language>English(US)</Language>
 																	<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_02_Random\Onboarding_1_Intro_02.wav</AudioFile>
 																	<MediaIDList>
@@ -3601,9 +3782,9 @@
 															<ChildrenList>
 																<AudioFileSource Name="Onboarding_1_Intro_02_alt" ID="{A286C80F-D8EA-41EC-9B40-588831452216}">
 																	<PropertyList>
-																		<Property Name="FadeInDuration" Type="Real64" Value="0.0442612345299024"/>
-																		<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0296353067830163"/>
 																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.0104470912477758"/>
 																	</PropertyList>
 																	<Language>English(US)</Language>
 																	<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_02_Random\Onboarding_1_Intro_02_alt.wav</AudioFile>
@@ -3803,6 +3984,10 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Intro_07_01" ID="{911D5EE9-076F-450D-B8F7-DE9E2183A1B2}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0893199597254838"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_07_Random\Onboarding_1_Intro_07_01.wav</AudioFile>
 															<MediaIDList>
@@ -3828,6 +4013,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Intro_07_02" ID="{AC0D5A17-880A-4900-A9C2-06B0C649869A}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.0403326293422837"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0403326293422837"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_07_Random\Onboarding_1_Intro_07_02.wav</AudioFile>
 															<MediaIDList>
@@ -3865,6 +4055,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Intro_08" ID="{A1B39DB5-A2C3-4956-90A6-C4FEAF6A6C3A}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.0880080420191925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0880080420191925"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_08_Random\Onboarding_1_Intro_08.wav</AudioFile>
 															<MediaIDList>
@@ -3890,6 +4085,10 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_1_Intro_08_alt" ID="{701BA422-D4C3-46A4-A135-9AB9BF401933}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0455324531781792"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_08_Random\Onboarding_1_Intro_08_alt.wav</AudioFile>
 															<MediaIDList>
@@ -4017,6 +4216,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_7_1" ID="{405671B2-D59F-4F1C-8D70-6A82AFDCEB41}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.100921120580667"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.100921120580667"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.7.1.wav</AudioFile>
 													<MediaIDList>
@@ -4042,6 +4246,12 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_8_1" ID="{C4D8309A-7E5C-4783-83D5-8C2975604F96}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.223659843501478"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0835652162532995"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.81172373416007"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.8.1.wav</AudioFile>
 													<MediaIDList>
@@ -4067,6 +4277,12 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_1_Interruption_Intro_1_8_3" ID="{4ADFE209-1E13-4320-A065-5AE12449797C}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.108156303958137"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0476818114224047"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.29903858735459"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Interruption_Intro_1.8.3.wav</AudioFile>
 													<MediaIDList>
@@ -4092,6 +4308,12 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_1_Intro_01" ID="{B426E872-DDC9-45FB-83EF-AC5CF3431C6E}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0696082917770537"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.216559129973056"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.60188153227249"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_01.wav</AudioFile>
 													<MediaIDList>
@@ -4117,6 +4339,12 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_1_Intro_04" ID="{9849B35C-212C-4A21-BE9C-F21682C632E0}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0359911818315486"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.127968646512173"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.54495480973807"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_04.wav</AudioFile>
 													<MediaIDList>
@@ -4142,6 +4370,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_1_Intro_05" ID="{E0761576-DB9F-47F4-9B59-5B571ECA7A74}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.084580271944354"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.30590484762664"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_05.wav</AudioFile>
 													<MediaIDList>
@@ -4192,6 +4425,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_1_Intro_10" ID="{47FD33A8-79E8-4030-BD76-64784E301A08}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.0485798273936357"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0485798273936357"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_1_Intro\Onboarding_1_Intro_10.wav</AudioFile>
 													<MediaIDList>
@@ -4239,6 +4477,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Good_Input_3" ID="{E3D0F736-7322-4187-8A3E-70F9F9E87A44}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.60726863790267"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Good_Input_3_Random\Onboarding_2_Curtain_Good_Input_3.wav</AudioFile>
 															<MediaIDList>
@@ -4264,6 +4507,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Good_Input_3_01" ID="{13F966EC-A679-471C-B249-D866959E8520}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.79540732704137"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Good_Input_3_Random\Onboarding_2_Curtain_Good_Input_3_01.wav</AudioFile>
 															<MediaIDList>
@@ -4289,6 +4537,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Good_Input_3_02" ID="{74C139AD-CBF7-4260-B75A-C79A65BF3CF6}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.60976124650968"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Good_Input_3_Random\Onboarding_2_Curtain_Good_Input_3_02.wav</AudioFile>
 															<MediaIDList>
@@ -4326,6 +4579,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Intro_2_1" ID="{69980711-57DE-4852-A06C-95E2CF054984}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.384341655981423"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.384341655981423"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Intro_2_1_Random\Onboarding_2_Curtain_Intro_2_1.wav</AudioFile>
 															<MediaIDList>
@@ -4351,6 +4609,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Intro_2_1_alt" ID="{BF6A8368-2FE2-4649-A96F-684B1E0B749D}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.140634903813353"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.140634903813353"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Intro_2_1_Random\Onboarding_2_Curtain_Intro_2_1_alt.wav</AudioFile>
 															<MediaIDList>
@@ -4376,6 +4639,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Intro_2_1_alt2" ID="{12A85C79-4852-4F35-B662-BAA6F3EAA8AE}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.225428725036457"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.225428725036457"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Intro_2_1_Random\Onboarding_2_Curtain_Intro_2_1_alt2.wav</AudioFile>
 															<MediaIDList>
@@ -4413,6 +4681,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Intro_2_2" ID="{5C3DE41A-AF0C-4090-8F50-F7B002F9CCB3}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.531859563128783"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.531859563128783"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Intro_2_2_Random\Onboarding_2_Curtain_Intro_2_2.wav</AudioFile>
 															<MediaIDList>
@@ -4438,6 +4711,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Intro_2_2_alt" ID="{E9976307-EDD6-4539-8B09-AEC24F1D6C1F}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.158607225213507"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.158607225213507"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Intro_2_2_Random\Onboarding_2_Curtain_Intro_2_2_alt.wav</AudioFile>
 															<MediaIDList>
@@ -4463,6 +4741,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Intro_2_2_alt2" ID="{F01E4AF0-404A-4A90-98C4-063F08FE44F6}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.138222838589067"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.138222838589067"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Intro_2_2_Random\Onboarding_2_Curtain_Intro_2_2_alt2.wav</AudioFile>
 															<MediaIDList>
@@ -4500,6 +4783,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Next_1_01" ID="{9BD9BBE7-6774-4EA7-8126-CED68AE75CED}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.47638058919246"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Next_1_Random\Onboarding_2_Curtain_Next_1_01.wav</AudioFile>
 															<MediaIDList>
@@ -4525,6 +4813,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Next_1_02" ID="{E4B3ED70-AC3F-4BB9-9F52-8A5671B41395}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.112034168967319"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.15955368759451"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Next_1_Random\Onboarding_2_Curtain_Next_1_02.wav</AudioFile>
 															<MediaIDList>
@@ -4550,6 +4843,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Next_1_03" ID="{DC145538-9571-491A-978B-E290DA7493C6}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.200193256631543"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.988771780871715"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Next_1_Random\Onboarding_2_Curtain_Next_1_03.wav</AudioFile>
 															<MediaIDList>
@@ -4587,6 +4885,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Next_2_1_01" ID="{6DE9EBB2-7303-4B5A-89FB-3EC5E0E26ADF}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.126238845559237"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.80301759831268"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Next_2.1_Random\Onboarding_2_Curtain_Next_2.1_01.wav</AudioFile>
 															<MediaIDList>
@@ -4798,6 +5101,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Validated_1_01" ID="{65321657-FF16-4991-8CFE-8B3CD9C78AE8}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.818191232657669"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.02937189207455"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_1_Random\Onboarding_2_Curtain_Validated_1_01.wav</AudioFile>
 															<MediaIDList>
@@ -4823,6 +5131,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Validated_1_02" ID="{F88F8873-D728-4D5B-B159-7B0B09A2DE25}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.202667464222452"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.1623179848501"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_1_Random\Onboarding_2_Curtain_Validated_1_02.wav</AudioFile>
 															<MediaIDList>
@@ -4848,6 +5161,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Validated_1_03" ID="{83290201-5328-493D-B586-2474C9D53EE3}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.257441560624063"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.52440112409025"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_1_Random\Onboarding_2_Curtain_Validated_1_03.wav</AudioFile>
 															<MediaIDList>
@@ -4873,6 +5191,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Validated_1_04" ID="{51152132-C4D1-4A77-A7DD-4483EB98B298}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.205351801496921"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.16097581621287"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_1_Random\Onboarding_2_Curtain_Validated_1_04.wav</AudioFile>
 															<MediaIDList>
@@ -4898,6 +5221,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Validated_1_05" ID="{73819865-FD3E-4A5C-A13D-D2593752F231}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.26178046333121"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.53163262860216"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_1_Random\Onboarding_2_Curtain_Validated_1_05.wav</AudioFile>
 															<MediaIDList>
@@ -4912,6 +5240,10 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Onboarding_2_Curtain_Validated_3_Random" ID="{DDD2D635-02D8-43E6-BAF4-3C56CF8AD8A1}" ShortID="631694241">
+											<PropertyList>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -4921,31 +5253,6 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="Onboarding_2_Curtain_Validated_3_01" ID="{5E867D79-B5A1-4EE8-ABB6-F903DBD7372A}" ShortID="718475826">
-													<PropertyList>
-														<Property Name="IsVoice" Type="bool" Value="True"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="Onboarding_2_Curtain_Validated_3_01" ID="{A37D18E9-4FAE-4715-8AC0-222D35AF4FF1}">
-															<Language>English(US)</Language>
-															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_3_Random\Onboarding_2_Curtain_Validated_3_01.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="282856237"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="Onboarding_2_Curtain_Validated_3_01" ID="{A37D18E9-4FAE-4715-8AC0-222D35AF4FF1}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 												<Sound Name="Onboarding_2_Curtain_Validated_3_02" ID="{EBC20B19-732A-4DEC-A521-CAD28794AD10}" ShortID="596859205">
 													<PropertyList>
 														<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -4960,6 +5267,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_Validated_3_02" ID="{9D868B34-3D66-4286-85FC-9CDDB15E0540}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0358935653573216"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.64811287599035"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_3_Random\Onboarding_2_Curtain_Validated_3_02.wav</AudioFile>
 															<MediaIDList>
@@ -4971,7 +5283,101 @@
 														<ActiveSource Name="Onboarding_2_Curtain_Validated_3_02" ID="{9D868B34-3D66-4286-85FC-9CDDB15E0540}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<RandomSequenceContainer Name="Onboarding_2_Curtain_Validated_3_01_start" ID="{79F38AE3-4E65-453B-9516-17CA240E8345}" ShortID="628498565">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Onboarding_2_Curtain_Validated_3_01_start_alt" ID="{5E867D79-B5A1-4EE8-ABB6-F903DBD7372A}" ShortID="718475826">
+															<PropertyList>
+																<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+																<Property Name="Priority" Type="int16">
+																	<ValueList>
+																		<Value>100</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Onboarding_2_Curtain_Validated_3_01" ID="{A37D18E9-4FAE-4715-8AC0-222D35AF4FF1}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0.142940956373813"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.142940956373813"/>
+																	</PropertyList>
+																	<Language>English(US)</Language>
+																	<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_3_Random\Onboarding_2_Curtain_Validated_3_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="282856237"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Onboarding_2_Curtain_Validated_3_01" ID="{A37D18E9-4FAE-4715-8AC0-222D35AF4FF1}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Onboarding_2_Curtain_Validated_3_01_start" ID="{62357DD3-F901-45FB-9DB7-3A30129A684B}" ShortID="1014798709">
+															<PropertyList>
+																<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+																<Property Name="Priority" Type="int16">
+																	<ValueList>
+																		<Value>100</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Onboarding_2_Curtain_Validated_3_02" ID="{DE387CDB-1495-4025-90BD-F130D0CF8430}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.272192870626355"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="1.58230790507911"/>
+																	</PropertyList>
+																	<Language>English(US)</Language>
+																	<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_3_Random\Onboarding_2_Curtain_Validated_3_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="115238557"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Onboarding_2_Curtain_Validated_3_02" ID="{DE387CDB-1495-4025-90BD-F130D0CF8430}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Playlist">
+													<Reference>
+														<ObjectRef Name="Onboarding_2_Curtain_Validated_3_01_start" ID="{79F38AE3-4E65-453B-9516-17CA240E8345}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+													<Reference>
+														<ObjectRef Name="Onboarding_2_Curtain_Validated_3_02" ID="{EBC20B19-732A-4DEC-A521-CAD28794AD10}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</RandomSequenceContainer>
 										<Sound Name="Onboarding_2_Curtain_Bad_Input_1" ID="{54CAF3C9-EA6F-419C-8460-2C7D9C5595FC}" ShortID="401899498">
 											<PropertyList>
@@ -4987,6 +5393,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Bad_Input_1" ID="{F19ACA1A-1824-4DE7-8ABD-556F3B5671AA}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.250212310687401"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.58637637879949"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Bad_Input_1.wav</AudioFile>
 													<MediaIDList>
@@ -5012,6 +5423,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Bad_Input_2_2" ID="{CF2B65E3-DFA5-45EF-91A5-C7D5568150FE}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0966651910160175"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.27508423511099"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Bad_Input_2.2.wav</AudioFile>
 													<MediaIDList>
@@ -5037,6 +5453,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Bad_Input_3" ID="{1C8C59D5-F063-411C-88C1-75E509F3E900}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.293028419668024"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.293028419668024"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Bad_Input_3.wav</AudioFile>
 													<MediaIDList>
@@ -5112,6 +5533,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Expo_3" ID="{6AF4BF56-DC38-46D6-93B5-229B0983F351}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.14171549697673"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.68206187038464"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Expo_3.wav</AudioFile>
 													<MediaIDList>
@@ -5137,6 +5563,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Good_Input_2" ID="{C378DC74-F0B6-42E0-B7F0-8FA153964520}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.357815544779708"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.357815544779708"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Good_Input_2.wav</AudioFile>
 													<MediaIDList>
@@ -5162,6 +5593,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Intro_1" ID="{0BD94CA2-1CA7-4E00-ABCF-503E9DBD4D15}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.103956141122958"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.103956141122958"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Intro_1.wav</AudioFile>
 													<MediaIDList>
@@ -5187,6 +5623,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_No_Input_2" ID="{EC7F0BDF-6DB1-4685-881A-474076433EAC}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.053730873733825"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.053730873733825"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_No_Input_2.wav</AudioFile>
 													<MediaIDList>
@@ -5212,6 +5653,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_No_Input_3" ID="{040A27A9-AF2E-4B6C-9BC3-86A96059AB6E}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.0653313956080942"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0653313956080942"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_No_Input_3.wav</AudioFile>
 													<MediaIDList>
@@ -5237,6 +5683,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Validated_2" ID="{B15E6A6D-CBD2-4250-B8A7-4BAEB7C5596D}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.252482896369207"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.86803818854242"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_Validated_2.wav</AudioFile>
 													<MediaIDList>
@@ -5262,6 +5713,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Bad_Input_2_1" ID="{310FC5D0-4F6E-437B-B476-76F02167CEA8}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.113475613477753"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.113475613477753"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding_2_Curtain_Bad_Input_2.1.wav</AudioFile>
 													<MediaIDList>
@@ -5287,6 +5743,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_2_Curtain_Good_Input_1" ID="{A1A7AF9A-8080-4024-8CC8-DF9D803BB33B}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.141081305142253"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.141081305142253"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding_2_Curtain_Good_Input_1.wav</AudioFile>
 													<MediaIDList>
@@ -5450,6 +5911,10 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_2_Curtain_No_Input_4_2" ID="{4819BAE7-4F47-4933-A6B5-E90B9BCE3BB4}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_2_Curtain\Onboarding_2_Curtain_No_Input_4_2.wav</AudioFile>
 															<MediaIDList>
@@ -5512,6 +5977,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Bad_Input_1_1_01" ID="{DBD4A90E-0583-483D-AF44-FFD771E31D84}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.136151144615562"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.136151144615562"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Bad_Input_1.1_01_Random\Onboarding_3_Spots_Bad_Input_1.1_01.wav</AudioFile>
 															<MediaIDList>
@@ -5537,6 +6007,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Bad_Input_1_1_02" ID="{0BB7B13D-C89C-4BB5-904A-B4FF0345B62C}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.0576502436280515"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0576502436280515"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Bad_Input_1.1_01_Random\Onboarding_3_Spots_Bad_Input_1.1_02.wav</AudioFile>
 															<MediaIDList>
@@ -5613,6 +6088,10 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Onboarding_3_Spots_Bad_Input_2_01_Random" ID="{C67E8E00-745B-4595-9A31-44455E5C4355}" ShortID="522205904">
+											<PropertyList>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -5622,31 +6101,6 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="Onboarding_3_Spots_Bad_Input_2_01" ID="{0ACED6A9-5D4C-42CC-AA8E-0AB00FFB0FAF}" ShortID="554143813">
-													<PropertyList>
-														<Property Name="IsVoice" Type="bool" Value="True"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="Onboarding_3_Spots_Bad_Input_2_01" ID="{DC380D12-3C9D-4E28-B241-0897BF2D2DCE}">
-															<Language>English(US)</Language>
-															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Bad_Input_2_01_Random\Onboarding_3_Spots_Bad_Input_2_01.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="267311412"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="Onboarding_3_Spots_Bad_Input_2_01" ID="{DC380D12-3C9D-4E28-B241-0897BF2D2DCE}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 												<Sound Name="Onboarding_3_Spots_Bad_Input_2_02" ID="{F41692D0-B12F-4C4D-9B0F-29125C425555}" ShortID="102293746">
 													<PropertyList>
 														<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -5661,6 +6115,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Bad_Input_2_02" ID="{2FAD6311-4B5B-4515-AC38-E8472DC03641}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="2.71197950020598"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.71197950020598"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Bad_Input_2_01_Random\Onboarding_3_Spots_Bad_Input_2_02.wav</AudioFile>
 															<MediaIDList>
@@ -5672,7 +6131,101 @@
 														<ActiveSource Name="Onboarding_3_Spots_Bad_Input_2_02" ID="{2FAD6311-4B5B-4515-AC38-E8472DC03641}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<RandomSequenceContainer Name="Onboarding_3_Spots_Bad_Input_2_01_Random" ID="{05F846A4-9B58-45F3-A450-4ECB18016386}" ShortID="177379984">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Onboarding_3_Spots_Bad_Input_2_01" ID="{0ACED6A9-5D4C-42CC-AA8E-0AB00FFB0FAF}" ShortID="554143813">
+															<PropertyList>
+																<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+																<Property Name="Priority" Type="int16">
+																	<ValueList>
+																		<Value>100</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Onboarding_3_Spots_Bad_Input_2_01" ID="{DC380D12-3C9D-4E28-B241-0897BF2D2DCE}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.102796425576221"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="2.23987998703578"/>
+																	</PropertyList>
+																	<Language>English(US)</Language>
+																	<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Bad_Input_2_01_Random\Onboarding_3_Spots_Bad_Input_2_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="267311412"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Onboarding_3_Spots_Bad_Input_2_01" ID="{DC380D12-3C9D-4E28-B241-0897BF2D2DCE}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Onboarding_3_Spots_Bad_Input_2_start" ID="{8C6AB8DC-F47C-4185-B79A-9AD1A9400FDF}" ShortID="677506738">
+															<PropertyList>
+																<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+																<Property Name="Priority" Type="int16">
+																	<ValueList>
+																		<Value>100</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Onboarding_3_Spots_Bad_Input_2_02" ID="{64C59B97-CD00-488E-A38A-8CFD4F5B9B4E}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="2.3598426093153"/>
+																	</PropertyList>
+																	<Language>English(US)</Language>
+																	<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Bad_Input_2_01_Random\Onboarding_3_Spots_Bad_Input_2_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="256202411"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Onboarding_3_Spots_Bad_Input_2_02" ID="{64C59B97-CD00-488E-A38A-8CFD4F5B9B4E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Playlist">
+													<Reference>
+														<ObjectRef Name="Onboarding_3_Spots_Bad_Input_2_01_Random" ID="{05F846A4-9B58-45F3-A450-4ECB18016386}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+													<Reference>
+														<ObjectRef Name="Onboarding_3_Spots_Bad_Input_2_02" ID="{F41692D0-B12F-4C4D-9B0F-29125C425555}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Onboarding_3_Spots_Intro_4_01_Random" ID="{0B1DC0F5-5B1E-43EB-ADEC-5E3A4A42D75D}" ShortID="407984423">
 											<ReferenceList>
@@ -5698,6 +6251,12 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Intro_4_01" ID="{C6FBCAA1-459E-4CE4-BB3E-B07190534E60}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.151903545777179"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.477863237757376"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.48109128329777"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Intro_4_01_Random\Onboarding_3_Spots_Intro_4_01.wav</AudioFile>
 															<MediaIDList>
@@ -5723,6 +6282,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Intro_4_02" ID="{FD24F491-219A-446F-ABC0-A2277D1F16F2}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.228641679440264"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.228641679440264"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Intro_4_01_Random\Onboarding_3_Spots_Intro_4_02.wav</AudioFile>
 															<MediaIDList>
@@ -5748,6 +6312,12 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Intro_4_03" ID="{C1B54CE6-BB06-4A24-B49A-821A2E459444}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0559610368935868"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0559610368935866"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.00973110272844"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Intro_4_01_Random\Onboarding_3_Spots_Intro_4_03.wav</AudioFile>
 															<MediaIDList>
@@ -5785,6 +6355,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Next_1_01" ID="{D9C77BF5-FADE-4CFF-B469-1A8B86D050B3}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.427624726771251"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.1150429512709"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Next_1_01_Random\Onboarding_3_Spots_Next_1_01.wav</AudioFile>
 															<MediaIDList>
@@ -5810,6 +6385,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Next_1_02" ID="{C1342B5D-AFDD-40FF-8554-068C35566C77}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0140573729961252"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.133545043463189"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Next_1_01_Random\Onboarding_3_Spots_Next_1_02.wav</AudioFile>
 															<MediaIDList>
@@ -5835,6 +6415,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Next_1_03" ID="{B3B86333-10B2-410F-9F3B-903D6C51FD76}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.0930546683377015"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.24279682956337"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Next_1_01_Random\Onboarding_3_Spots_Next_1_03.wav</AudioFile>
 															<MediaIDList>
@@ -5860,6 +6445,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Next_1_04" ID="{781964F9-8CE2-4E9F-8854-BB732DCF0DEF}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.105691055236529"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.12878050012581"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Next_1_01_Random\Onboarding_3_Spots_Next_1_04.wav</AudioFile>
 															<MediaIDList>
@@ -5922,6 +6512,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Next_4_02" ID="{933AABD2-C010-4175-9DC5-E52F71564274}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.120533838504698"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.19220257788557"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Next_4_01_Random\Onboarding_3_Spots_Next_4_02.wav</AudioFile>
 															<MediaIDList>
@@ -5947,6 +6542,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Next_4_03" ID="{3E9B36E5-0467-426B-89A4-929FA3A3C8A5}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.094583331084833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.09975380637781"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Next_4_01_Random\Onboarding_3_Spots_Next_4_03.wav</AudioFile>
 															<MediaIDList>
@@ -5984,6 +6584,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Validated_1" ID="{D2D91CB1-C2FF-46C9-8D7C-736DFA9CDB58}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.05381522871103"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Validated_1_Random\Onboarding_3_Spots_Validated_1.wav</AudioFile>
 															<MediaIDList>
@@ -6009,6 +6614,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Validated_1_01" ID="{5AA80008-7623-428B-904F-490D54AD2E21}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.04987989983837"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Validated_1_Random\Onboarding_3_Spots_Validated_1_01.wav</AudioFile>
 															<MediaIDList>
@@ -6071,6 +6681,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Validated_2" ID="{CDA77CE3-66D2-4646-BB3D-92D26C620314}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.131201775798248"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.131201775798248"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Validated_2_Random\Onboarding_3_Spots_Validated_2.wav</AudioFile>
 															<MediaIDList>
@@ -6096,6 +6711,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Validated_2_01" ID="{85EC0853-8CF7-4B40-8993-113F95A98DFD}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.168688475953502"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.168688475953502"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Validated_2_Random\Onboarding_3_Spots_Validated_2_01.wav</AudioFile>
 															<MediaIDList>
@@ -6121,6 +6741,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Onboarding_3_Spots_Validated_2_02" ID="{1CCE8EDF-BC4D-42D4-A400-A431A773FA4F}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0.127101720304553"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.127101720304553"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Validated_2_Random\Onboarding_3_Spots_Validated_2_02.wav</AudioFile>
 															<MediaIDList>
@@ -6210,6 +6835,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_3_Spots_Expo_1" ID="{96C04794-B4B8-42FE-A515-7C2466A99236}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.061181585302374"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.061181585302374"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Expo_1.wav</AudioFile>
 													<MediaIDList>
@@ -6310,6 +6940,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Onboarding_3_Spots_Intro_3" ID="{718E08E7-929E-4340-A2F9-C18708B7FF13}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.0836286473432825"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0836286473432825"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Onboarding\Onboarding_3_Spots\Onboarding_3_Spots_Intro_3.wav</AudioFile>
 													<MediaIDList>
