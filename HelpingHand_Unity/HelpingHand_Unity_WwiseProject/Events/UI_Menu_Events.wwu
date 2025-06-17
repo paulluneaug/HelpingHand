@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{6DBABDB0-D179-45DF-A03F-83666FA3F44A}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="UI_Menu_Events" ID="{6DBABDB0-D179-45DF-A03F-83666FA3F44A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="MainButton" ID="{D8340993-2C7B-448B-8C1A-EAADB41343F7}" ShortID="989900222">
+					<ChildrenList>
+						<Event Name="ButtonClick_Play" ID="{9086F1DF-9A95-400E-8D81-4E9135383551}">
+							<ChildrenList>
+								<Action Name="" ID="{C749F947-AA78-48E2-A4C3-BE0118E41772}" ShortID="1044325766">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Click" ID="{1ED88D2E-0B03-4623-9A81-3BB62275FD94}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ButtonSelected_Play" ID="{6A063B21-07D5-4A00-BE44-8CDD52DACF3A}">
+							<ChildrenList>
+								<Action Name="" ID="{C6F04AC9-DED5-44CB-A026-2BF4FE079BD9}" ShortID="612654072">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Selected" ID="{5F8CE961-11DB-430E-A4F5-D808A552848A}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GearTransitionLoop_Play" ID="{C5232AAE-DBDD-4184-89E0-08EDA4746A7D}">
+							<ChildrenList>
+								<Action Name="" ID="{489A8293-D80F-46E0-A80E-C3AB3462A223}" ShortID="748975674">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GearTransitionLoop" ID="{CC8AD8C5-1A56-45E0-8F6C-B1622BE73311}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{729895B2-514A-4B98-820C-2BEE1A2A25CA}" ShortID="973815468">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="36"/>
+										<Property Name="SeekPercent" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{95AFA4E6-BE2D-46EF-A05D-7AAB023E301C}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GearTransitionLoop" ID="{CC8AD8C5-1A56-45E0-8F6C-B1622BE73311}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GearTransitionLoop_Stop" ID="{AF1ADBD4-462B-4FBD-AA86-ECB5F4CB0F71}">
+							<ChildrenList>
+								<Action Name="" ID="{1D25B86F-10C8-40A8-AE59-9186F9CC90A1}" ShortID="682442789">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GearTransitionLoop" ID="{CC8AD8C5-1A56-45E0-8F6C-B1622BE73311}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="OptionsMenu" ID="{875A62BF-9E6D-478C-A74D-30A04CA36B70}" ShortID="483568546">
+					<ChildrenList>
+						<Event Name="ArrowButtonClick_Play" ID="{AC416DFF-3A56-4962-9FD2-F58A2BF004B6}">
+							<ChildrenList>
+								<Action Name="" ID="{D277D227-FBCB-4477-8A0D-24956D0E98DA}" ShortID="729048390">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="ArrowButtonClick" ID="{D2670D2E-9603-4F64-BDE8-C156B4C4C695}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="TopButtonClick_Play" ID="{8C13BA5C-DC7E-4F0D-9CEB-AD8DF8E980EC}">
+							<ChildrenList>
+								<Action Name="" ID="{3ADBE868-5241-481F-A217-8DD75356DC2E}" ShortID="589170459">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="OptionsTopButtons_Click" ID="{CE5D80A3-EB39-44A8-8258-630667F18909}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

@@ -13,6 +13,7 @@ using static RTPCManager;
 
 using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -24,6 +25,9 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     public StateManager StateManager;
     public EventManager EventManager;
     public SoundbankManager SoundbankManager;
+
+    public UnityEngine.SceneManagement.Scene MainMenu;
+    public UnityEngine.SceneManagement.Scene Gameplay;
 
     [SerializeField] private InputAudioEventControllersManager m_inputAudioEventsManager;
     #endregion
@@ -40,11 +44,30 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     protected override void Start()
     {
-
+        UnityEngine.SceneManagement.Scene activeScene = SceneManager.GetActiveScene();
         SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
 
-        StateManager.SetGameState(GameState.MainMenu); //On initialise l'état du jeu à MainMenu
-        StateManager.SetMusicState(MusicState.MainMenu); //On initialise l'état de la musique à MainMenu
+
+        switch (activeScene.name)
+        {
+            case "EntryScene":
+                StateManager.SetGameState(GameState.MainMenu);
+                StateManager.SetMusicState(MusicState.MainMenu);
+                _ = EventManager.MainMusic_Play.Post(gameObject);
+                Debug.Log("EntryScene");
+                break;
+            case "Matthieu Test":
+                StateManager.SetGameState(GameState.Gameplay);
+                StateManager.SetMusicState(MusicState.None);
+
+                Debug.Log("Gameplay");
+                break;
+            default:
+                StateManager.SetGameState(GameState.None);
+                StateManager.SetMusicState(MusicState.None);
+                break;
+        }
+
 
         RTPCManager.FirstMusic_FirstLayer.SetValue(null, 0);
         RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);

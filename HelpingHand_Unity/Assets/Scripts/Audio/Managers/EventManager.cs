@@ -57,6 +57,15 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent MenuOpenSound_Play;
     [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent MenuCloseSound_Play;
     [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent Typewriter_Play;
+
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OnSelectButton_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OnClick_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent GearTransitionLoop_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent GearTransitionLoop_Stop;
+
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent ArrowButtonClick_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OptionsTopButtonClick_Play;
+
     #endregion
     #region Puppet Events
     [FoldoutGroup("Puppet Events")][LabelWidth(200)] public WwiseEvent Footsteps_Play;
@@ -76,6 +85,10 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent MainGear_Play;
     #endregion
 
+    #region Music Events 
+    [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchMusic_Play;
+
+    #endregion 
     [System.Obsolete]
     public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
     {
