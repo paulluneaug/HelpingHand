@@ -409,6 +409,7 @@ namespace AK
         static const AkUniqueID RTPC_NUMBEROFTIMEPLAYED = 1487758345U;
         static const AkUniqueID RTPC_RANDOMSEEKPOSITION = 2865193319U;
         static const AkUniqueID RTPC_SFXVOLUME = 2644490154U;
+        static const AkUniqueID RTPC_SIDECHAINUI = 209224339U;
         static const AkUniqueID RTPC_TIMEOFDAY = 257272959U;
         static const AkUniqueID RTPC_UIVOLUME = 3141145287U;
         static const AkUniqueID RTPC_VOICEVOLUME = 3304106241U;
@@ -447,6 +448,7 @@ namespace AK
         static const AkUniqueID PUPPETBUS = 1406467327U;
         static const AkUniqueID RVB = 695384145U;
         static const AkUniqueID SFXBUS = 3803850708U;
+        static const AkUniqueID UI_MENUSBUS = 2401090920U;
         static const AkUniqueID UIBUS = 1372881427U;
         static const AkUniqueID VOICEBUS = 2045367873U;
     } // namespace BUSSES

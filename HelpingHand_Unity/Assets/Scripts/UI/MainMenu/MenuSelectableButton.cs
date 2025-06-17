@@ -35,6 +35,8 @@ public class MenuSelectableButton : MonoBehaviour, ISelectHandler, IDeselectHand
     [NonSerialized] private Timer m_transitionTimer;
     [NonSerialized] private bool m_selected = false;
 
+    private bool m_isTransitionAudioPlaying = false;
+
     private void Awake()
     {
         m_transitionTimer = new Timer(m_transitionTime, false);
@@ -42,39 +44,54 @@ public class MenuSelectableButton : MonoBehaviour, ISelectHandler, IDeselectHand
     }
 
     private void Update()
+{
+    if (!m_transitionTimer.IsRunning)
     {
-        if (!m_transitionTimer.IsRunning)
+        // Stop loop if it was running
+        if (m_isTransitionAudioPlaying)
         {
-            return;
+            _ = AudioManager.Instance.EventManager.GearTransitionLoop_Stop.Post(gameObject);
+            m_isTransitionAudioPlaying = false;
         }
 
-        bool finished = m_transitionTimer.Update(Time.deltaTime);
-        if (finished)
-        {
-            m_transitionTimer.Stop();
-        }
-        float progress = finished ? 1.0f : m_transitionTimer.Progress;
-
-        if (!m_selected)
-        {
-            progress = 1.0f - progress;
-        }
-
-        float lerpFactor = Easings.Ease(progress, m_easingFunction);
-        m_rectTransform.anchoredPosition = Vector2.Lerp(m_deselectedState.Position.anchoredPosition, m_selectedState.Position.anchoredPosition, lerpFactor);
-        m_buttonText.color = Color.Lerp(m_deselectedState.TextColor, m_selectedState.TextColor, lerpFactor);
-
-        if (m_selected)
-        {
-            m_cogController.UpdateTransition(lerpFactor);
-        }
-
+        return;
     }
+
+    // Start loop if it's not already playing
+    if (!m_isTransitionAudioPlaying)
+    {
+        _ = AudioManager.Instance.EventManager.GearTransitionLoop_Play.Post(gameObject);
+        m_isTransitionAudioPlaying = true;
+    }
+
+    bool finished = m_transitionTimer.Update(Time.deltaTime);
+    if (finished)
+    {
+        m_transitionTimer.Stop();
+    }
+
+    float progress = finished ? 1.0f : m_transitionTimer.Progress;
+
+    if (!m_selected)
+    {
+        progress = 1.0f - progress;
+    }
+
+    float lerpFactor = Easings.Ease(progress, m_easingFunction);
+    m_rectTransform.anchoredPosition = Vector2.Lerp(m_deselectedState.Position.anchoredPosition, m_selectedState.Position.anchoredPosition, lerpFactor);
+    m_buttonText.color = Color.Lerp(m_deselectedState.TextColor, m_selectedState.TextColor, lerpFactor);
+
+    if (m_selected)
+    {
+        m_cogController.UpdateTransition(lerpFactor);
+    }
+}
 
     public void OnSelect(BaseEventData eventData)
     {
         OnSelectionChanged(true);
         m_cogController.SetTarget(m_cogRotation);
+       _ =  AudioManager.Instance.EventManager.OnSelectButton_Play.Post(gameObject);
     }
     public void OnDeselect(BaseEventData eventData)
     {
