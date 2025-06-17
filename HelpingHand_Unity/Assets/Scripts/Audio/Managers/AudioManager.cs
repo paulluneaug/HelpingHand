@@ -42,44 +42,57 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         m_inputAudioEventsManager.Init();
     }
 
-    protected override void Start()
+    #region Scene change
+    private void OnEnable()
     {
-        UnityEngine.SceneManagement.Scene activeScene = SceneManager.GetActiveScene();
-        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-
-
-        switch (activeScene.name)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
         {
             case "EntryScene":
                 StateManager.SetGameState(GameState.MainMenu);
                 StateManager.SetMusicState(MusicState.MainMenu);
                 _ = EventManager.MainMusic_Play.Post(gameObject);
-                Debug.Log("EntryScene");
+                DebugLog("EntryScene - MainMenu music playing");
                 break;
-            case "Matthieu Test":
-                StateManager.SetGameState(GameState.Gameplay);
-                StateManager.SetMusicState(MusicState.None);
 
-                Debug.Log("Gameplay");
+            case "0_Onboarding":
+                StateManager.SetGameState(GameState.Gameplay);
+                StateManager.SetMusicState(MusicState.Onboarding_1);
+                Debug.Log("Switched music to Onboarding 1st theme");
                 break;
+
             default:
-                StateManager.SetGameState(GameState.None);
-                StateManager.SetMusicState(MusicState.None);
+               // StateManager.SetGameState(GameState.None);
+               // StateManager.SetMusicState(MusicState.None);
                 break;
         }
+    }
+    #endregion
 
+    private void Awake()
+    {
+        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
+    }
 
-        RTPCManager.FirstMusic_FirstLayer.SetValue(null, 0);
-        RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
+    protected override void Start()
+    {
+       // SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
 
         //On joue la musique principale dès que la scène se lance
-        //EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
         _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
 
+ 
     public override void OnDestroy()
     {
         base.OnDestroy();

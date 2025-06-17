@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{C085CE1B-30B2-B50A-DEFB-867558D416A5}",
+    "Hash": "{103E58EE-414F-CB08-FAD3-7F58E68F2C9A}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -23,6 +23,14 @@
        "GUID": "{C9203F2A-6B37-497F-87FD-3A537CA8E21D}",
        "LibName": "Wwise Guitar Distortion",
        "LibId": "8257539"
+      },
+      {
+       "Id": "193924255",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\VoiceBus\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
+       "GUID": "{74A3E342-8E44-45FC-AC1A-47EB0383121D}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
       }
      ],
      "ShareSets": [
@@ -142,6 +150,13 @@
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\VoiceBus",
       "GUID": "{885A9AFA-38F3-428E-9F93-414DA2023D0C}",
       "Color": "10",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "193924255"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "3633416828",
@@ -270,6 +285,12 @@
       "Name": "Dialogue_Cue",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\Dialogue_Cue",
       "GUID": "{467BFAD3-E0A9-4797-9008-8309D82DC1E1}"
+     },
+     {
+      "Id": "1202556277",
+      "Name": "RTPC_VoiceSidechain",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_VoiceSidechain",
+      "GUID": "{FC0214DA-C992-47AB-8A16-27E31BD66F4E}"
      },
      {
       "Id": "1226769967",
@@ -849,6 +870,12 @@
         "Name": "Victory",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Victory",
         "GUID": "{CA32540D-6A03-4251-8220-B8202C9D85C8}"
+       },
+       {
+        "Id": "3056272968",
+        "Name": "Unboarding",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Unboarding",
+        "GUID": "{AA7618E5-F84E-43E6-9F36-96EC45CC9E20}"
        },
        {
         "Id": "3255068793",
@@ -1601,6 +1628,6 @@
     ]
    }
   ],
-  "FileHash": "{CEC212C3-955C-2FCE-E407-ADD7BEED1A9B}"
+  "FileHash": "{A702178C-4062-B90B-304A-7D18F6D7B9B5}"
  }
 }

@@ -222,6 +222,7 @@ namespace AK
                 static const AkUniqueID PAUSEMENU = 3494343696U;
                 static const AkUniqueID SAD_THEME = 3255068793U;
                 static const AkUniqueID THIRD_THEME = 645448998U;
+                static const AkUniqueID UNBOARDING = 3056272968U;
                 static const AkUniqueID VICTORY = 2716678721U;
             } // namespace STATE
         } // namespace MUSICSTATE
@@ -413,6 +414,7 @@ namespace AK
         static const AkUniqueID RTPC_SIDECHAINUI = 209224339U;
         static const AkUniqueID RTPC_TIMEOFDAY = 257272959U;
         static const AkUniqueID RTPC_UIVOLUME = 3141145287U;
+        static const AkUniqueID RTPC_VOICESIDECHAIN = 1202556277U;
         static const AkUniqueID RTPC_VOICEVOLUME = 3304106241U;
         static const AkUniqueID SLIDERSPEED = 1460444787U;
         static const AkUniqueID SLIDERVALUE = 2333331917U;
