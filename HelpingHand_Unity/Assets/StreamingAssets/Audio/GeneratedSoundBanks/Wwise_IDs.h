@@ -24,8 +24,7 @@ namespace AK
         static const AkUniqueID CURTAINLOOP_PLAY = 2848090300U;
         static const AkUniqueID CURTAINMAX_PLAY = 3445812898U;
         static const AkUniqueID CURTAINMIN_PLAY = 3264562480U;
-        static const AkUniqueID FORGEAMB_PLAY = 1567708659U;
-        static const AkUniqueID FORGEAMB_STOP = 697830617U;
+        static const AkUniqueID DRAGONDUNGEONAMB_PLAY = 1884592839U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_PLAY = 1520116072U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_STOP = 3856209626U;
         static const AkUniqueID GEARLOOP_CLICKY_MEDPITCH_PLAY = 432513484U;
@@ -44,6 +43,8 @@ namespace AK
         static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
         static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
         static const AkUniqueID MOON_PLAY = 880713307U;
+        static const AkUniqueID MUSIC_PLAY = 202194903U;
+        static const AkUniqueID MUSIC_STOP = 3227181061U;
         static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
         static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
         static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
@@ -54,7 +55,6 @@ namespace AK
         static const AkUniqueID PLAY_SQUAREROCKLOOP = 2367626798U;
         static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
         static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
-        static const AkUniqueID PLAY_SWITCHMUSIC = 2394141991U;
         static const AkUniqueID PLAY_THEATERAMBIENCE = 3213662481U;
         static const AkUniqueID POTENTIOMETERLOOP_DESACTIVATE_PLAY = 3002555589U;
         static const AkUniqueID POTENTIOMETERLOOP_DESACTIVATE_STOP = 132241219U;
@@ -75,16 +75,14 @@ namespace AK
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
         static const AkUniqueID SUN_PLAY = 3578106302U;
-        static const AkUniqueID SUPERMARKETAMB_PLAY = 523382487U;
-        static const AkUniqueID SUPERMARKETAMB_STOP = 3548368645U;
-        static const AkUniqueID TAVERNAMB_PLAY = 3582522998U;
-        static const AkUniqueID TAVERNAMB_STOP = 59669512U;
+        static const AkUniqueID THREEAMB_WHEEL_PLAY = 956314474U;
         static const AkUniqueID TOGGLE_DESACTIVATE_PLAY = 2782143696U;
         static const AkUniqueID TOGGLE_PLAY = 2942539354U;
         static const AkUniqueID TOPBUTTONCLICK_PLAY = 1581211267U;
         static const AkUniqueID TYPEWRITER_PLAY = 1749211329U;
         static const AkUniqueID UNTOGGLE_DESACTIVATE_PLAY = 1552092911U;
         static const AkUniqueID UNTOGGLE_PLAY = 3389532245U;
+        static const AkUniqueID VILLAGEAMB_PLAY = 2034844254U;
     } // namespace EVENTS
 
     namespace DIALOGUE_EVENTS
@@ -217,10 +215,12 @@ namespace AK
             {
                 static const AkUniqueID BATTLE_THEME = 3421098005U;
                 static const AkUniqueID DEFEAT = 1593864692U;
+                static const AkUniqueID HORRIBLEMUSIC_THEME = 2538596653U;
                 static const AkUniqueID MAINMENU = 3604647259U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PAUSEMENU = 3494343696U;
                 static const AkUniqueID SAD_THEME = 3255068793U;
+                static const AkUniqueID SUSPENSE_THEME = 3591643255U;
                 static const AkUniqueID THIRD_THEME = 645448998U;
                 static const AkUniqueID UNBOARDING = 3056272968U;
                 static const AkUniqueID VICTORY = 2716678721U;

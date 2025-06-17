@@ -86,7 +86,10 @@ public class EventManager : MonoBehaviour
     #endregion
 
     #region Music Events 
-    [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchMusic_Play;
+    [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToBattleMusic;
+    [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToSadMusic;
+    [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToSuspenseMusic;
+    [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToHorribleMusic;
 
     #endregion 
     [System.Obsolete]

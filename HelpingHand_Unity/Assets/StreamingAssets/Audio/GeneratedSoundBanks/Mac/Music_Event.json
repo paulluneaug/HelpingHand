@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{6ABE72B6-BE0E-4AB3-A2FD-9A6F449357DC}",
     "Language": "SFX",
-    "Hash": "{24E7A524-9B0F-A3FA-D30D-CF6B7A187299}",
+    "Hash": "{518EEA96-93D0-81A8-0D79-3923DAE07C2C}",
     "ObjectPath": "\\SoundBanks\\Music\\Music_Event",
     "ShortName": "Music_Event",
     "Path": "Music_Event.bnk",
@@ -212,12 +212,86 @@
       ]
      },
      {
-      "Id": "2394141991",
-      "Name": "Play_SwitchMusic",
-      "ObjectPath": "\\Events\\Gameplay_Events\\Music\\Play_SwitchMusic",
+      "Id": "202194903",
+      "Name": "Music_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Music\\Music_Play",
       "GUID": "{1D646A9B-B5F7-4A2E-B872-A8EEAE536619}",
       "Color": "14",
       "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3421098005",
+         "GUID": "{CEF747E8-7ED4-46F5-85C1-629B1B652F7B}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "348157284"
+         },
+         {
+          "Id": "513333657"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3255068793",
+         "GUID": "{5D4ACF21-0E3C-4FD7-8207-1BA3CD76BE1C}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "162869733"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3604647259",
+         "GUID": "{C7C23DE9-EE37-44F9-BDF3-7664A0DAB82D}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "157245378"
+         },
+         {
+          "Id": "833450451"
+         },
+         {
+          "Id": "976484802"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3056272968",
+         "GUID": "{AA7618E5-F84E-43E6-9F36-96EC45CC9E20}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "157245378"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "3227181061",
+      "Name": "Music_Stop",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Music\\Music_Stop",
+      "GUID": "{038E7B69-689C-4EC2-A65E-DD016F9E79C0}",
+      "Color": "14",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
       "SwitchContainers": [
        {
         "SwitchValue": {
@@ -309,6 +383,12 @@
         "GUID": "{6214A6E5-4723-4C52-960F-E457264CDF4D}"
        },
        {
+        "Id": "2538596653",
+        "Name": "HorribleMusic_Theme",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\HorribleMusic_Theme",
+        "GUID": "{7263746E-249F-41DC-9B83-C01D8F471CF1}"
+       },
+       {
         "Id": "2716678721",
         "Name": "Victory",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Victory",
@@ -339,6 +419,12 @@
         "GUID": "{8C4E780E-9F08-46B0-8275-5358FD588057}"
        },
        {
+        "Id": "3591643255",
+        "Name": "Suspense_Theme",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Suspense_Theme",
+        "GUID": "{ED4DD2EA-557B-4CBC-89A9-74CC2B86422A}"
+       },
+       {
         "Id": "3604647259",
         "Name": "MainMenu",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MainMenu",
@@ -349,6 +435,6 @@
     ]
    }
   ],
-  "FileHash": "{E6EB510D-2A25-784D-E648-4E5B386C2D8B}"
+  "FileHash": "{31A71970-347B-E310-4527-4549C3AEC659}"
  }
 }
