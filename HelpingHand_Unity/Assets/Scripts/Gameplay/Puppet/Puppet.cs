@@ -1,5 +1,7 @@
 using System;
 
+using Events;
+
 using Sirenix.OdinInspector;
 
 using Unity.Mathematics;
@@ -11,16 +13,25 @@ using UnityUtility.MathU;
 
 public class Puppet : MonoBehaviour, ILateAwaker
 {
-    private static readonly int s_isWalkingAnimatorParameter = Animator.StringToHash("IsWalking");
-
     public bool HasReachedEndOfSpline => m_hasReachedEndOfSpline;
 
-    [Title("Components References")]
-    [SerializeField] private Animator m_puppetAnimator;
+    [Title("Component References")]
+    [SerializeField] private Transform m_objectInHandParent;
 
-    [Title("Variable References")]
+    [Title("Animation")]
+    [SerializeField] private Animator m_puppetAnimator;
+    [SerializeField] private PuppetAnimatorParameterContainer m_animatorParameterContainer;
+
+    [Title("Game Variable References")]
     [SerializeField] private BaseVariable<SplineContainer> m_splineToFollow;
     [SerializeField] private BaseVariable<float> m_speedAlongSpline;
+
+    [Space]
+
+    [SerializeField] private BaseVariable<bool> m_lookUp;
+    [SerializeField] private GameEvent m_strike;
+    [SerializeField] private BaseVariable<bool> m_victory;
+    [SerializeField] private BaseVariable<bool> m_defeat;
 
 
     // Cache
@@ -34,7 +45,14 @@ public class Puppet : MonoBehaviour, ILateAwaker
     public void LateAwake()
     {
         GameManager.Instance.RegisterPuppet(this);
+
         m_splineToFollow.AddListener(OnSplineToFollowChanged);
+        m_lookUp.AddListener(SetLookUpAnimation);
+        m_strike.AddListener(StrikeAnimation);
+        m_victory.AddListener(SetVictoryAnimation);
+        m_defeat.AddListener(SetDefeatAnimation);
+
+        m_animatorParameterContainer.Init();
 
         StopWalk();
     }
@@ -46,6 +64,10 @@ public class Puppet : MonoBehaviour, ILateAwaker
             GameManager.Instance.UnregisterPuppet();
         }
         m_splineToFollow.RemoveListener(OnSplineToFollowChanged);
+        m_lookUp.RemoveListener(SetLookUpAnimation);
+        m_strike.RemoveListener(StrikeAnimation);
+        m_victory.RemoveListener(SetVictoryAnimation);
+        m_defeat.RemoveListener(SetDefeatAnimation);
     }
 
     private void Update()
@@ -73,7 +95,7 @@ public class Puppet : MonoBehaviour, ILateAwaker
     {
         if (m_splineToFollow.Value == null)
         {
-            throw new NullReferenceException("Puppet has non spline to follow");
+            throw new NullReferenceException("Puppet has no spline to follow");
         }
         m_hasReachedEndOfSpline = false;
         SetWalkState(true);
@@ -129,9 +151,36 @@ public class Puppet : MonoBehaviour, ILateAwaker
         }
     }
 
+    #region Animator controller
     private void SetWalkState(bool walk)
     {
         m_isWalking = walk;
-        m_puppetAnimator.SetBool(s_isWalkingAnimatorParameter, walk);
+        m_puppetAnimator.SetBool(m_animatorParameterContainer.IsWalking, walk);
     }
+
+    private void SetIsHoldingObjectAnimation(bool holdingObject)
+    {
+        m_puppetAnimator.SetBool(m_animatorParameterContainer.HoldsObject, holdingObject);
+    }
+
+    private void SetLookUpAnimation(bool lookUp)
+    {
+        m_puppetAnimator.SetBool(m_animatorParameterContainer.LookUp, lookUp);
+    }
+
+    private void StrikeAnimation()
+    {
+        m_puppetAnimator.SetTrigger(m_animatorParameterContainer.Strike);
+    }
+
+    private void SetVictoryAnimation(bool victory)
+    {
+        m_puppetAnimator.SetBool(m_animatorParameterContainer.Defeat, victory);
+    }
+
+    private void SetDefeatAnimation(bool defeat)
+    {
+        m_puppetAnimator.SetBool(m_animatorParameterContainer.Defeat, defeat);
+    }
+    #endregion
 }
