@@ -17,7 +17,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button m_creditsOptionsButton;
     [SerializeField] private Button m_quitGameButton;
 
-    [NonSerialized] private bool m_open = false;
+    [NonSerialized] private bool m_open = true;
 
 
     public void OpenMainMenu()

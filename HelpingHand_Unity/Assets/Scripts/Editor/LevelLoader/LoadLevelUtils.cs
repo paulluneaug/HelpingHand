@@ -17,5 +17,6 @@ public static class LoadLevelUtils
 
         _ = EditorSceneManager.OpenScene(startupScenesReferences.EntryScene, OpenSceneMode.Single);
         _ = EditorSceneManager.OpenScene(startupScenesReferences.GloabalObjectsScene, OpenSceneMode.Additive);
+        _ = EditorSceneManager.OpenScene(startupScenesReferences.VirtualControllerScene, OpenSceneMode.Additive);
     }
 }

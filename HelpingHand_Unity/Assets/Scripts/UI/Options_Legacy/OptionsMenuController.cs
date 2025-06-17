@@ -54,7 +54,7 @@ public class OptionsMenuController : SerializedMonoBehaviour
 
     private List<IOptionController> m_optionControllers;
 
-    private bool m_open = false;
+    private bool m_open = true;
 
     private GameOptionsManager m_gameOptions;
 
