@@ -104,6 +104,10 @@
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
+							<GameParameterRef Name="RTPC_SidechainUI" ID="{DED85F5F-D362-40AC-8C19-841B90CE6DB2}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
 							<GameParameterRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}"/>
 							<Value>0</Value>
 						</RTPCValue>
@@ -136,6 +140,10 @@
 							<Value>5.30199468703859E-312</Value>
 						</RTPCValue>
 						<RTPCValue>
+							<GameParameterRef Name="RTPC_VoiceSidechain" ID="{FC0214DA-C992-47AB-8A16-27E31BD66F4E}"/>
+							<Value>-48</Value>
+						</RTPCValue>
+						<RTPCValue>
 							<GameParameterRef Name="RTPC_NumberOfTimePlayed" ID="{0B6AC5BE-D3F8-4837-A589-28FF0B23537E}"/>
 							<Value>0.0463678516228747</Value>
 						</RTPCValue>
@@ -145,7 +153,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="RTPC_MusicVolume" ID="{8976F519-EE1B-4D4F-A369-2E7C1C8D978E}"/>
-							<Value>1</Value>
+							<Value>0.998509687034277</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="RTPC_AmbVolume" ID="{0FAF8660-9FF0-4DF0-8C93-927A12E6C2BC}"/>
@@ -162,7 +170,7 @@
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="MainMenu" ID="{1AE6E78C-D972-4999-8EEA-37F43B3F76CF}"/>
-						<CurrentStateRef Name="MainMenu" ID="{C7C23DE9-EE37-44F9-BDF3-7664A0DAB82D}"/>
+						<CurrentStateRef Name="Battle_Theme" ID="{CEF747E8-7ED4-46F5-85C1-629B1B652F7B}"/>
 						<CurrentStateRef Name="None" ID="{EDA73E68-5676-4866-933C-C8658572B29F}"/>
 						<CurrentStateRef Name="None" ID="{A2CCF5AB-1F16-458B-AAB7-065146F75091}"/>
 						<CurrentStateRef Name="None" ID="{0D8DBD78-EBDD-459D-A214-662FC46FDB92}"/>
@@ -173,7 +181,7 @@
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
 						<CurrentSwitchRef Name="Carotte" ID="{FADB250A-5E42-454C-B98F-FB9B42C2C586}"/>
-						<CurrentSwitchRef Name="Sad" ID="{C1276216-3A52-4733-86A7-36A9DEE0F030}"/>
+						<CurrentSwitchRef Name="Funky" ID="{CD73DDAA-CAA7-4BC3-B095-4CA2D30EB39A}"/>
 						<CurrentSwitchRef Name="Idle" ID="{05B62766-73A2-464B-9C13-ED7758FEC675}"/>
 						<CurrentSwitchRef Name="Chateau" ID="{0333CD0D-D18B-4582-BD8A-17623F6CBC9B}"/>
 						<CurrentSwitchRef Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
@@ -198,6 +206,18 @@
 				<SoundcasterSession Name="UI Menus" ID="{1492E1E7-D294-43DE-AA85-959674F97486}">
 					<ModuleList>
 						<Module>
+							<ObjectRef Name="Play_SwitchMusic" ID="{1D646A9B-B5F7-4A2E-B872-A8EEAE536619}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Acte_1_Roue_Intro_1" ID="{7E132268-3F8D-420B-964A-D86969836024}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Acte_1_Roue_Intro_2" ID="{9E25E5DD-F787-4D84-921D-264F56D69BF9}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="ButtonClick_Play" ID="{9086F1DF-9A95-400E-8D81-4E9135383551}" WorkUnitID="{6DBABDB0-D179-45DF-A03F-83666FA3F44A}"/>
 							<Position X="1" Y="0"/>
 						</Module>
@@ -213,10 +233,41 @@
 							<ObjectRef Name="GearTransitionLoop_Stop" ID="{AF1ADBD4-462B-4FBD-AA86-ECB5F4CB0F71}" WorkUnitID="{6DBABDB0-D179-45DF-A03F-83666FA3F44A}"/>
 							<Position X="2" Y="1"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="Click" ID="{1ED88D2E-0B03-4623-9A81-3BB62275FD94}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="OptionsTopButtons_Click" ID="{CE5D80A3-EB39-44A8-8258-630667F18909}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+							<Position X="3" Y="1"/>
+						</Module>
 					</ModuleList>
-					<RTPCValueList ShowAll="true"/>
-					<CurrentStateList ShowAll="true"/>
-					<CurrentSwitchList ShowAll="true"/>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_SidechainUI" ID="{DED85F5F-D362-40AC-8C19-841B90CE6DB2}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_VoiceSidechain" ID="{FC0214DA-C992-47AB-8A16-27E31BD66F4E}"/>
+							<Value>-48</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="MainMenu" ID="{1AE6E78C-D972-4999-8EEA-37F43B3F76CF}"/>
+						<CurrentStateRef Name="Battle_Theme" ID="{CEF747E8-7ED4-46F5-85C1-629B1B652F7B}"/>
+						<CurrentStateRef Name="None" ID="{EDA73E68-5676-4866-933C-C8658572B29F}"/>
+						<CurrentStateRef Name="None" ID="{A2CCF5AB-1F16-458B-AAB7-065146F75091}"/>
+						<CurrentStateRef Name="None" ID="{0D8DBD78-EBDD-459D-A214-662FC46FDB92}"/>
+						<CurrentStateRef Name="None" ID="{4E80F4A4-D940-4E77-BD4D-F0B50CD3ABF7}"/>
+						<CurrentStateRef Name="None" ID="{3B98128F-6165-473D-8950-6FC29A264C63}"/>
+						<CurrentStateRef Name="None" ID="{2B3D178F-09C0-48EE-BDD7-9206E43421A8}"/>
+						<CurrentStateRef Name="None" ID="{D3E1893D-7C7E-4C9C-93F7-4E8418AEB459}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Sad" ID="{C1276216-3A52-4733-86A7-36A9DEE0F030}"/>
+						<CurrentSwitchRef Name="Idle" ID="{05B62766-73A2-464B-9C13-ED7758FEC675}"/>
+						<CurrentSwitchRef Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
+					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>

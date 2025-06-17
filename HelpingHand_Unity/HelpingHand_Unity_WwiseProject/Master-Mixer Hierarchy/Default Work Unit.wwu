@@ -166,6 +166,51 @@
 											</RTPC>
 										</Local>
 									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{63860B6D-712B-430B-B1A6-72FFF32E3C36}" ShortID="498744111">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="RTPC_VoiceSidechain" ID="{FC0214DA-C992-47AB-8A16-27E31BD66F4E}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{52E93ACD-BD1B-4F7B-A46F-2A17BEEDA6AC}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>-48</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>-47.06978</XPos>
+																		<YPos>-0</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>-39.95349</XPos>
+																		<YPos>-2.36646</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
 								</ObjectList>
 							</ObjectLists>
 						</Bus>
@@ -179,6 +224,21 @@
 								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ChildrenList>
+								<Bus Name="UI_MenusBus" ID="{C3D61355-00D3-4E6F-B379-D338E09B589F}">
+									<DuckingList>
+										<DuckItem>
+											<BusRef Name="MusicBus" ID="{BD99B950-434B-4A6C-ABFA-A11374C2A0BE}"/>
+											<DuckingParam>
+												<Volume>-4</Volume>
+												<FadeInTime>0.5</FadeInTime>
+												<FadeOutTime>0</FadeOutTime>
+												<FadeCurve>FadeExp1</FadeCurve>
+											</DuckingParam>
+										</DuckItem>
+									</DuckingList>
+								</Bus>
+							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
 									<Reference>
@@ -437,6 +497,30 @@
 								</Reference>
 							</ReferenceList>
 							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{B3851314-EC7A-4B10-927B-77CB9CF94687}" ShortID="705014623">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Meter (Custom)" ID="{74A3E342-8E44-45FC-AC1A-47EB0383121D}" ShortID="193924255" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+																<PropertyList>
+																	<Property Name="AttackTime" Type="Real32" Value="0.1"/>
+																	<Property Name="Hold" Type="Real32" Value="0.4"/>
+																	<Property Name="MeterMode" Type="int32" Value="1"/>
+																</PropertyList>
+																<PluginData>
+	<GameParameter Name="RTPC_VoiceSidechain" ID="{FC0214DA-C992-47AB-8A16-27E31BD66F4E}"/>
+</PluginData>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
 								<ObjectList Name="RTPC">
 									<Reference>
 										<Local>

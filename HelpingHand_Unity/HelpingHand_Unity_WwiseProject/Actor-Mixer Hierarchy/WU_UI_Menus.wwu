@@ -13,7 +13,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="UI_MenusBus" ID="{C3D61355-00D3-4E6F-B379-D338E09B589F}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -21,7 +21,12 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-3</Value>
+										<Value>7</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -60,9 +65,14 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Selected" ID="{5F8CE961-11DB-430E-A4F5-D808A552848A}" ShortID="397183784">
 							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ValueList>
+										<Value>0.3</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-3</Value>
+										<Value>3</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -102,6 +112,26 @@
 						<RandomSequenceContainer Name="GearTransitionLoop" ID="{CC8AD8C5-1A56-45E0-8F6C-B1622BE73311}" ShortID="199604961">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>9</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>16</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>730</Value>
+									</ValueList>
+								</Property>
 								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 							</PropertyList>
@@ -149,7 +179,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="UI_MenusBus" ID="{C3D61355-00D3-4E6F-B379-D338E09B589F}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -260,7 +290,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="UI_MenusBus" ID="{C3D61355-00D3-4E6F-B379-D338E09B589F}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -274,6 +304,11 @@
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
 										<Value>-680</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
