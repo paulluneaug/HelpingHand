@@ -23,6 +23,9 @@ public class RTPCManager : MonoBehaviour
     public RTPC RTPC_SFXVolume;
     public RTPC RTPC_MusicVolume;
 
+
+    public RTPC RTPC_TimeOfDay;
+
     #endregion
 
     [Header("Default Target Object")]
