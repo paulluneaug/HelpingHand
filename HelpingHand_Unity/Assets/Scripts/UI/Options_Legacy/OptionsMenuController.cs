@@ -148,23 +148,30 @@ public class OptionsMenuController : SerializedMonoBehaviour
 
     private void OnOptionVolumeGlobalChanged(float value)
     {
-        SetVolume("GlobalVolume", value);
+        AudioManager.Instance.RTPCManager.RTPC_MasterVolume.SetGlobalValue(value);
     }
 
-    private void OnOptionVolumeSFXChanged(float value)
+    //private void OnOptionVolumeSFXChanged(float value)
+    //{
+    //    AudioManager.Instance.RTPCManager.RTPC_SFXVolume.SetGlobalValue(value);
+    //}
+
+    //private void OnOptionVolumeMusicChanged(float value)
+    //{
+    //    AudioManager.Instance.RTPCManager.RTPC_MusicVolume.SetGlobalValue(value);
+    //}
+
+    private void OnOptionVolumeVoiceChanged(float value)
     {
-        SetVolume("SFXVolume", value);
+        AudioManager.Instance.RTPCManager.RTPC_VoiceVolume.SetGlobalValue(value);
     }
 
-    private void OnOptionVolumeMusicChanged(float value)
-    {
-        SetVolume("MusicVolume", value);
-    }
+
 
     private void SetVolume(string group, float value)
     {
-        _ = value == 0 ? -80 : Mathf.Log10(value / 100f) * 20;
-        // @TODO Set Volume
+        //_ = value == 0 ? -80 : Mathf.Log10(value / 100f) * 20;
+        // Pas utilisé pour système avec Wwise
     }
 
     private void OnOptionScreenModeChanged(WindowMode value)
