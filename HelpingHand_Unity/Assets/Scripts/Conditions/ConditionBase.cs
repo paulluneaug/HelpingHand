@@ -3,7 +3,6 @@ using System;
 using Sirenix.OdinInspector;
 
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [System.Serializable]
 public abstract class ConditionBase : IDisposable

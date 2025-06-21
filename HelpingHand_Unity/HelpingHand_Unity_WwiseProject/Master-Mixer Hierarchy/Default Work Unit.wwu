@@ -222,6 +222,23 @@
 										</ObjectList>
 									</ObjectLists>
 								</AuxBus>
+								<AuxBus Name="Small_Room" ID="{3A2688FC-120B-4FC1-BA08-0148C3383F97}">
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{A814D730-EA32-468A-A09E-E1CA3E2F06C2}" ShortID="982158700">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<ObjectRef Name="Room_Medium_High_Absorbtion" ID="{E22DBBB6-7656-4B93-A28D-C003FD416889}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
 							</ChildrenList>
 						</Bus>
 						<Bus Name="VoiceBus" ID="{C628C558-A524-4C84-B5EA-B492F58CA446}">
@@ -468,6 +485,45 @@
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{CD32F6BB-0F96-432C-A215-8D5B537926DE}" ShortID="66297971">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Volume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="RTPC_VolumeMaster" ID="{0313499F-BC79-472E-A504-C249B4DE71C1}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{D9D08922-896B-4456-97DD-EB394C1E3D45}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

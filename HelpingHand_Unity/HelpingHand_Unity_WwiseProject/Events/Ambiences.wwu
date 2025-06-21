@@ -7,28 +7,309 @@
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
 			<ChildrenList>
-				<Event Name="Play_TheaterAmbience" ID="{4E4E41BB-0879-499C-916E-3F5537A47A04}">
+				<Folder Name="Ambiences_Lore" ID="{78FA6E44-AA00-4547-B984-087D4096EACF}" ShortID="110462739">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="8"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<Action Name="" ID="{60C5D27B-9D74-4C8D-9116-8F6D372FC830}" ShortID="675677785">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Theater_Blend" ID="{651FE094-CC41-4865-BD59-1EE796400970}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Play_Factory" ID="{416F0965-34A7-415D-9DD0-B79E6AEA6D9F}">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool" Value="False"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{80791543-9AC8-41D9-9AD1-3C174D298FBA}" ShortID="364998366">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Factory_Ambience" ID="{01CC0A4E-FAF2-4039-B99E-02774BFD5BC8}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B5C63591-0BEB-4240-9F68-AED87708B2F4}" ShortID="797378493">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Day_Forest_Ambience" ID="{76F9A6AE-E393-426C-A504-DD358F782141}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{48876087-21AD-4FEB-B175-0F3165DB9574}" ShortID="1056988008">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Night_Forest_Ambience" ID="{09A7ADAA-C017-4CC1-9E5F-52946730D027}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{8261C301-65E5-46BB-BC91-E831AF929F6A}" ShortID="610412615">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Factory_Ambience" ID="{01CC0A4E-FAF2-4039-B99E-02774BFD5BC8}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_ForestNight" ID="{F89FAC05-800C-4966-9B41-28106CCAF8B5}">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool" Value="False"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{12DC0F60-8E85-49B5-948F-E3839958DEC9}" ShortID="174371326">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Night_Forest_Ambience" ID="{09A7ADAA-C017-4CC1-9E5F-52946730D027}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{8DC5B6E2-B9AA-415E-AD4A-DFB2AAA5E525}" ShortID="557713066">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Factory_Ambience" ID="{01CC0A4E-FAF2-4039-B99E-02774BFD5BC8}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{1E0BFFBA-E8C7-45DD-82D3-0571A79FAB21}" ShortID="457322227">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Day_Forest_Ambience" ID="{76F9A6AE-E393-426C-A504-DD358F782141}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{5ED1B408-DCD6-435D-AC08-272692FDD36B}" ShortID="71340692">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Night_Forest_Ambience" ID="{09A7ADAA-C017-4CC1-9E5F-52946730D027}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_ForestDay_" ID="{1F7CF726-7417-4446-B2E0-9D71F6E15BC1}">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool" Value="False"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{6AA93A9E-2911-40D5-8653-1D17394D31AA}" ShortID="949308122">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Day_Forest_Ambience" ID="{76F9A6AE-E393-426C-A504-DD358F782141}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{08E7494C-6A6B-4029-AF80-9FE4F1022CAA}" ShortID="257835732">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Night_Forest_Ambience" ID="{09A7ADAA-C017-4CC1-9E5F-52946730D027}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{6160D050-9B04-4EC0-B101-2A8276FFFA15}" ShortID="46432449">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Factory_Ambience" ID="{01CC0A4E-FAF2-4039-B99E-02774BFD5BC8}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{CB166773-9AD3-45A5-AEA3-BD09F2D73484}" ShortID="919720545">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Day_Forest_Ambience" ID="{76F9A6AE-E393-426C-A504-DD358F782141}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ForgeAmb_Play" ID="{EE9E3625-9768-4288-B6FC-555DD73B6478}">
+							<ChildrenList>
+								<Action Name="" ID="{E7BD726E-6594-4529-A066-9C52ADF5153A}" ShortID="1054736482">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="3"/>
+										<Property Name="FadeTime" Type="Real64" Value="5"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="5">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{81E56E69-D06A-4E93-86C6-9B5015D8E0F6}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="RTPC_NumberOfTimePlayed" ID="{0B6AC5BE-D3F8-4837-A589-28FF0B23537E}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{19200D55-DAB7-479D-B23D-F9BC0918C9E6}" ShortID="596424830">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Forge_Ambience" ID="{A9C1DBE3-510B-4446-909D-E41DE583ADCD}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3386B7AC-C566-438C-9229-B39D38A2A282}" ShortID="844539305">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="36"/>
+										<Property Name="SeekPercent" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{4A028D78-D41E-496E-AF66-ECF9ABBB3B0A}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Forge_Ambience" ID="{A9C1DBE3-510B-4446-909D-E41DE583ADCD}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="SupermarketAmb_Play" ID="{D436A825-6C29-49CB-915A-5DD8FBC114C6}">
+							<ChildrenList>
+								<Action Name="" ID="{1F517464-B8CD-4FA9-8107-8574CEAD7A48}" ShortID="447930814">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Supermarket_Ambience" ID="{32BA5DF2-8A04-4C06-B29C-105BF1EF209E}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{CEAEDC88-7322-4985-9CE8-8D95969E2130}" ShortID="1043240256">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="36"/>
+										<Property Name="SeekPercent" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{33E599EA-2D50-4285-9CFD-19B8FEB35B58}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Supermarket_Ambience" ID="{32BA5DF2-8A04-4C06-B29C-105BF1EF209E}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Tavern_Play" ID="{4C729DD3-4216-4C19-9E42-CC216BBA4750}">
+							<ChildrenList>
+								<Action Name="" ID="{0A819E91-A7F8-48DB-A36C-EBC2568C317B}" ShortID="499618451">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="3"/>
+										<Property Name="FadeTime" Type="Real64" Value="5"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="5">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{1748BFA4-E81D-404E-A59E-6F30FB404E73}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="RTPC_NumberOfTimePlayed" ID="{0B6AC5BE-D3F8-4837-A589-28FF0B23537E}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{1015BEB6-6C69-481B-96A2-AB374A2EBD87}" ShortID="1037317173">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Tavern_Ambience" ID="{28C80FB2-757D-4CD9-945C-5A296B729F43}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{45ABF5B2-6ABD-4311-BA85-EF271BC9705E}" ShortID="625818383">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="36"/>
+										<Property Name="SeekPercent" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{D42CCAE5-ADD9-4664-9AE7-3FCC573170C3}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Tavern_Ambience" ID="{28C80FB2-757D-4CD9-945C-5A296B729F43}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
-				<Event Name="Play_RoomMachinist" ID="{EE3BDAE5-8C45-4DFC-A9BB-29CE2C07086C}">
+				</Folder>
+				<Folder Name="Ambiences_Salle" ID="{42D2DCE6-A897-4626-A0ED-11B72B9E296F}" ShortID="216355022">
 					<ChildrenList>
-						<Action Name="" ID="{F7FC98F7-0892-43E5-A36F-C07BE26B8D80}" ShortID="690187481">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Room_Machinist_Blend" ID="{09DCF989-CD2C-49EF-B420-9F871B7D85A5}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Play_RoomMachinist" ID="{EE3BDAE5-8C45-4DFC-A9BB-29CE2C07086C}">
+							<ChildrenList>
+								<Action Name="" ID="{F7FC98F7-0892-43E5-A36F-C07BE26B8D80}" ShortID="690187481">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Room_Machinist_Blend" ID="{09DCF989-CD2C-49EF-B420-9F871B7D85A5}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_TheaterAmbience" ID="{4E4E41BB-0879-499C-916E-3F5537A47A04}">
+							<ChildrenList>
+								<Action Name="" ID="{60C5D27B-9D74-4C8D-9116-8F6D372FC830}" ShortID="675677785">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Theater_Blend" ID="{651FE094-CC41-4865-BD59-1EE796400970}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

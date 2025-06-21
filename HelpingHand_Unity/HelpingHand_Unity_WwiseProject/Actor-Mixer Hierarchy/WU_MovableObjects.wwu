@@ -463,6 +463,481 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
+				<ActorMixer Name="Curtain" ID="{782643DF-47BA-47DC-86D9-E51EE9D38C7D}" ShortID="944534616">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Attenuation_20m" ID="{D4611497-0313-43A7-B599-AED0829A8BB2}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="MovableObjects" ID="{51897EA3-0262-4290-8514-0ED0E17EF86F}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="MovableObjectsBus" ID="{14655D3F-C790-42EC-9B70-6531E995B34A}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<BlendContainer Name="Curtain_Loop" ID="{86B0C7FD-BEDE-4C59-A581-886BF68F4591}" ShortID="710830554">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>29</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>6</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideConversion" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Mono" ID="{378FFCEF-9BE3-4D72-A9AC-3C240D18937C}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 01 SND117022 S00 1" ID="{3F1341CE-01CF-4A35-85F9-55C18FC6D799}" ShortID="576167335">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 01 SND117022 S00 1" ID="{34D765E8-9A6B-4D9E-9D1B-818BFE27C6A3}">
+											<Language>SFX</Language>
+											<AudioFile>Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 01 SND117022 S00 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="918281129"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 01 SND117022 S00 1" ID="{34D765E8-9A6B-4D9E-9D1B-818BFE27C6A3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 02 SND117021" ID="{C8C5904D-A933-4683-A479-96BDF3485429}" ShortID="656883538">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 02 SND117021" ID="{3329E1BC-6030-40D3-8E12-FF6D21CCB1A0}">
+											<Language>SFX</Language>
+											<AudioFile>Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 02 SND117021.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="455263592"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 02 SND117021" ID="{3329E1BC-6030-40D3-8E12-FF6D21CCB1A0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<RandomSequenceContainer Name="Cloth_loop" ID="{B49ED830-4129-4473-973E-400515C97258}" ShortID="287104152">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>28</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.1"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="HH_Curtain-001" ID="{C23988AC-0E32-44E9-AF3B-FA21EC3659AC}" ShortID="245274767">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HH_Curtain-001" ID="{43D7CF33-8BF5-474C-8929-E1EBC078EA8A}">
+													<Language>SFX</Language>
+													<AudioFile>HH_Curtain-001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="409372585"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HH_Curtain-001" ID="{43D7CF33-8BF5-474C-8929-E1EBC078EA8A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HH_Curtain-002" ID="{0E35A73C-5BDC-4853-A5E2-BE0974ACDFBC}" ShortID="137332745">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HH_Curtain-002" ID="{4B360514-1C11-4454-AAEB-82A038A857C8}">
+													<Language>SFX</Language>
+													<AudioFile>HH_Curtain-002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="222587742"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HH_Curtain-002" ID="{4B360514-1C11-4454-AAEB-82A038A857C8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HH_Curtain-003" ID="{A32F2B2F-B9C8-4F8E-9237-8365E258435A}" ShortID="624896013">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HH_Curtain-003" ID="{65B75FC0-E611-4ADF-9564-753FD2067B70}">
+													<Language>SFX</Language>
+													<AudioFile>HH_Curtain-003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="315206239"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HH_Curtain-003" ID="{65B75FC0-E611-4ADF-9564-753FD2067B70}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HH_Curtain-004" ID="{033A6187-363B-4B3F-8413-2EF6E1AED96B}" ShortID="617374775">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HH_Curtain-004" ID="{D4A38746-DAA4-4B79-A20D-8F65CDB86E86}">
+													<Language>SFX</Language>
+													<AudioFile>HH_Curtain-004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="415837628"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HH_Curtain-004" ID="{D4A38746-DAA4-4B79-A20D-8F65CDB86E86}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HH_Curtain-005" ID="{44E31F57-7D79-4D80-BB46-9B769C3EAED5}" ShortID="949862615">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HH_Curtain-005" ID="{CDFBD07F-4FFF-45DE-B108-6CBB18659CC5}">
+													<Language>SFX</Language>
+													<AudioFile>HH_Curtain-005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="89491334"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HH_Curtain-005" ID="{CDFBD07F-4FFF-45DE-B108-6CBB18659CC5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HH_Curtain-006" ID="{0D500593-A9A8-4C50-ABE4-6A55504AC455}" ShortID="184144766">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HH_Curtain-006" ID="{807C819C-514E-405F-BCE5-04A4DF621AD8}">
+													<Language>SFX</Language>
+													<AudioFile>HH_Curtain-006.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="444303928"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HH_Curtain-006" ID="{807C819C-514E-405F-BCE5-04A4DF621AD8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<BlendTrackList>
+								<BlendTrack Name="Gears" ID="{E410CA76-112D-41C4-9BC6-7B3A1793B8C5}" ShortID="115898836">
+									<PropertyList>
+										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="LayerCrossFadeControlInput">
+											<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{47E805D1-7898-45A7-97E9-6778FF206340}" ShortID="724601236">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{4154E1B7-9DBB-49F4-B25E-A00EB2EE32A0}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-50</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>50</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<BlendTrackAssocList>
+										<BlendTrackAssoc>
+											<ItemRef Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 02 SND117021" ID="{C8C5904D-A933-4683-A479-96BDF3485429}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>0.708833068614994</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+										<BlendTrackAssoc>
+											<ItemRef Name="Machines, Industrial, Rotating Mechanism, Unstable, Vintage, Rattle, Friction, Loop Sequence 01 SND117022 S00 1" ID="{3F1341CE-01CF-4A35-85F9-55C18FC6D799}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0.406800031766201</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>1</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+									</BlendTrackAssocList>
+								</BlendTrack>
+								<BlendTrack Name="Cloth" ID="{73AD4159-39DF-45B1-9864-5A9225BF806E}" ShortID="239422639">
+									<PropertyList>
+										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="LayerCrossFadeControlInput">
+											<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{192630FA-571C-436E-8689-AD898673AFD0}" ShortID="451536177">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{CAEF6FDD-745F-4117-807E-7F9262B079A4}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-250</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>100</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<BlendTrackAssocList>
+										<BlendTrackAssoc>
+											<ItemRef Name="Cloth_loop" ID="{B49ED830-4129-4473-973E-400515C97258}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>1</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+									</BlendTrackAssocList>
+								</BlendTrack>
+							</BlendTrackList>
+						</BlendContainer>
+						<RandomSequenceContainer Name="Curtain_MaxValue" ID="{C0371E9F-F6DD-44FA-9231-9D12EE6CA440}" ShortID="862767942">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385" ID="{82B3DF34-8071-4A40-ACC9-0DE164B0C68D}" ShortID="35956853">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385" ID="{49EC528D-02A5-486E-BDFD-8A8F69829896}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.00343771579256096"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.00343771579256096"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="128187222"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385" ID="{49EC528D-02A5-486E-BDFD-8A8F69829896}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Curtain_MinValue" ID="{82721A04-876A-45B7-8247-DC7366BE159B}" ShortID="786886366">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-280</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385" ID="{59EA2E73-D235-4738-AB4E-17CF4218F189}" ShortID="282690829">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385" ID="{3BE4998F-8B1D-45D5-BF56-7CCFEA53E5EA}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.00343771579256096"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.00343771579256096"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="128187222"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Communications, Camera, SLR, Canon A1, 35mm, Viewfinder Lock, Unlock, Curtain, Shutter SND50385" ID="{3BE4998F-8B1D-45D5-BF56-7CCFEA53E5EA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Curtain_Release" ID="{96B69F28-FDB3-42B4-AF98-A13AF9E77E60}" ShortID="755821677">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

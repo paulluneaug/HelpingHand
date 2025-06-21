@@ -22,20 +22,25 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     public StateManager StateManager;
     public EventManager EventManager;
     public SoundbankManager SoundbankManager;
+
+    [SerializeField] private InputAudioEventControllersManager m_inputAudioEventsManager;
     #endregion
     
     public override void Initialize()
     {
-        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-
+        AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
         RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
         StateManager.SetGameState(GameState.None); //On initialise l'état du jeu à None (reset)
         StateManager.SetMusicState(MusicState.None); //On initialise l'état de la musique à None (reset)
+        m_inputAudioEventsManager.Init();
     }
 
     protected override void Start()
     {
+
+        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
+
         StateManager.SetGameState(GameState.MainMenu); //On initialise l'état du jeu à MainMenu
         StateManager.SetMusicState(MusicState.MainMenu); //On initialise l'état de la musique à MainMenu
 
@@ -43,11 +48,19 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
 
         //On joue la musique principale dès que la scène se lance
-        // EventManager.MainMusic_Play.Post(gameObject);
+         //EventManager.MainMusic_Play.Post(gameObject);
 
         // Ambiances de pièces qui se jouent dès le début
         EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         EventManager.Theater_Ambience_Play.Post(gameObject);
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        AkUnitySoundEngine.UnregisterGameObj(gameObject);
+
+        m_inputAudioEventsManager.Dispose();
     }
 
     #region Functions
@@ -171,6 +184,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     }
 
     #endregion
+
+
 
     /// <summary>
     /// Debug log with header
