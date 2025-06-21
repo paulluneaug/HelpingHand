@@ -1,4 +1,5 @@
 #include <Joystick.h>
+#include <SimpleRotary.h>
 
 // Utils
 #include <Queue.h>
@@ -44,18 +45,59 @@ ReadMux* m_multiplexers[] =
 };
 #pragma endregion
 
+#pragma region Indicators
+int m_indicators[] =
+{
+  PinGlossary::LED_INDICATOR_0, 
+  PinGlossary::LED_INDICATOR_1, 
+  PinGlossary::LED_INDICATOR_2, 
+  PinGlossary::LED_INDICATOR_3, 
+  PinGlossary::LED_INDICATOR_4, 
+  PinGlossary::LED_INDICATOR_5, 
+  PinGlossary::LED_INDICATOR_6, 
+  PinGlossary::LED_INDICATOR_7, 
+  PinGlossary::LED_INDICATOR_8, 
+  PinGlossary::LED_INDICATOR_9, 
+  PinGlossary::LED_INDICATOR_10,
+};
+
+int m_musicIndicators[] =
+{
+  PinGlossary::LED_MUSIC_0,
+  PinGlossary::LED_MUSIC_1,
+  PinGlossary::LED_MUSIC_2,
+  PinGlossary::LED_MUSIC_3
+};
+
+int m_simonIndicators[] =
+{
+  PinGlossary::LED_SIMON_RED,
+  PinGlossary::LED_SIMON_GREEN,
+  PinGlossary::LED_SIMON_BLUE,
+  PinGlossary::LED_SIMON_WHITE
+};
+
+int m_binaryIndicators[] =
+{
+  -1,
+  PinGlossary::LED_BINARY_0,
+  PinGlossary::LED_BINARY_1,
+  PinGlossary::LED_BINARY_2
+};
+#pragma endregion
+
 #pragma region Input Controllers
 
-Fader m_motorizedFader(PinGlossary::M_FADER, PinGlossary::H_BRIDGE_IN0, PinGlossary::H_BRIDGE_IN1, PinGlossary::H_BRIDGE_ENA);
+Fader m_motorizedFader(PinGlossary::M_FADER, PinGlossary::H_BRIDGE_IN1, PinGlossary::H_BRIDGE_IN0, PinGlossary::H_BRIDGE_ENA);
 
 #pragma region Rotaries
-RotaryController m_musicRotary(&m_joystick, PinGlossary::MUSIC_ROTARY_CLK, PinGlossary::MUSIC_ROTARY_DT, ButtonGlossary::MUSIC_ROTARY_LEFT, ButtonGlossary::MUSIC_ROTARY_RIGHT);
+SimpleRotary m_musicRotary(PinGlossary::MUSIC_ROTARY_CLK, PinGlossary::MUSIC_ROTARY_DT, 64);
+
 RotaryController m_selectRotary(&m_joystick, PinGlossary::SELECT_ROTARY_CLK, PinGlossary::SELECT_ROTARY_DT, ButtonGlossary::SELECT_ROTARY_LEFT, ButtonGlossary::SELECT_ROTARY_RIGHT);
 RotaryController m_dropperRotary(&m_joystick, PinGlossary::DROPPER_ROTARY_CLK, PinGlossary::DROPPER_ROTARY_DT, ButtonGlossary::DROPPER_ROTARY_LEFT, ButtonGlossary::DROPPER_ROTARY_RIGHT);
-
+//
 RotaryController* m_rotaryControllers[] = 
 {
-  &m_musicRotary,
   &m_selectRotary,
   &m_dropperRotary,
 };
@@ -84,15 +126,15 @@ ButtonController m_dropperBtn(&m_mux0, MuxAdressGlossary::MUX0_DROPER_BTN, &m_jo
 #pragma endregion
 
 #pragma region Mux 1
-ButtonController m_btnSimonGreen(&m_mux1, MuxAdressGlossary::MUX1_SIMON_GREEN, &m_joystick, ButtonGlossary::SIMON_GREEN_BTN);
 ButtonController m_btnSimonRed(&m_mux1, MuxAdressGlossary::MUX1_SIMON_RED, &m_joystick, ButtonGlossary::SIMON_RED_BTN);
-ButtonController m_btnSimonWhite(&m_mux1, MuxAdressGlossary::MUX1_SIMON_WHITE, &m_joystick, ButtonGlossary::SIMON_WHITE_BTN);
+ButtonController m_btnSimonGreen(&m_mux1, MuxAdressGlossary::MUX1_SIMON_GREEN, &m_joystick, ButtonGlossary::SIMON_GREEN_BTN);
 ButtonController m_btnSimonBlue(&m_mux1, MuxAdressGlossary::MUX1_SIMON_BLUE, &m_joystick, ButtonGlossary::SIMON_BLUE_BTN);
+ButtonController m_btnSimonWhite(&m_mux1, MuxAdressGlossary::MUX1_SIMON_WHITE, &m_joystick, ButtonGlossary::SIMON_WHITE_BTN);
 
-MuxAdress m_btnJoystickNorth(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_0);
-MuxAdress m_btnJoystickWest(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_1);
-MuxAdress m_btnJoystickSouth(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_2);
-MuxAdress m_btnJoystickEast(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_3);
+MuxAdress m_btnJoystickNorth(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_3);
+MuxAdress m_btnJoystickWest(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_0);
+MuxAdress m_btnJoystickSouth(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_1);
+MuxAdress m_btnJoystickEast(&m_mux1, MuxAdressGlossary::MUX1_JOYSTICK_2);
 #pragma endregion
 
 #pragma region Mux 2
@@ -150,16 +192,42 @@ ButtonController* m_buttonControllers[] =
   &m_btnStartMusic,
 
   &m_btnFlamethrower,
-  &m_btnStartMusic,
-  &m_btnStartMusic
+  &m_flamethrowerToggle_0,
+  &m_flamethrowerToggle_1
 };
 
+
+ButtonController* m_simonButtons[] =
+{
+  &m_btnSimonRed,
+  &m_btnSimonGreen,
+  &m_btnSimonBlue,
+  &m_btnSimonWhite
+};
 #pragma endregion
 
 
 // Simon
-SimonController m_simon(2, 3, 4, 5, 1.0f, 0.5f);
+SimonController m_simon(PinGlossary::LED_SIMON_RED, PinGlossary::LED_SIMON_GREEN, PinGlossary::LED_SIMON_BLUE, PinGlossary::LED_SIMON_WHITE, 1.0f, 0.5f);
 byte m_simonSequence[16];
+
+// Music Selection
+int m_selectedMusicIndex;
+
+// Binary indicator
+int m_binaryIndicatorState;
+
+// Flamethrower
+bool m_flamethrowerIndicatorLit;
+
+// Simon default behaviour
+bool m_simonLedState[] = 
+{
+  false,
+  false,
+  false,
+  false
+};
 
 // Game loop
 unsigned long m_frameStart;
@@ -172,7 +240,25 @@ void setup() {
   m_frameStart = 0;
   m_frameEnd = 0;
 
+  m_selectedMusicIndex = 0;
+  for (int musicPin : m_musicIndicators){ pinMode(musicPin, OUTPUT); }
+  digitalWrite(m_musicIndicators[m_selectedMusicIndex], HIGH);
+
+  for (int indicatorPin : m_indicators){ pinMode(indicatorPin, OUTPUT); }
+
+  m_binaryIndicatorState = 0;
+  for (int binaryPin : m_binaryIndicators){ if (binaryPin == -1) {continue;} pinMode(binaryPin, OUTPUT); }
+
+  m_flamethrowerIndicatorLit = false;
+  pinMode(PinGlossary::LED_FLAMETHROWER, OUTPUT);
+
+  m_motorizedFader.Init();
   m_joystick.begin();
+
+  for (ReadMux* mux : m_multiplexers)
+  {
+    mux->Init();
+  }
 
 }
 
@@ -187,10 +273,15 @@ void loop()
 
   m_motorizedFader.Update(deltaTime);
 
-  UpdateRotaries();
+  UpdateRotaries(deltaTime);
   UpdateButtons();
   UpdateAxis();
   UpdateJoystick();
+
+  UpdateFlamethrowerIndicator();
+  UpdateBinaryIndicator();
+  UpdateMusicSelection();
+  UpdateSimonButtons();
 
   m_simon.Update(deltaTime);
 
@@ -198,7 +289,7 @@ void loop()
 
   SendDataIfNeeded();
 
-  delay(10);
+  //delay(2);
 
   m_frameEnd = millis();
 }
@@ -214,7 +305,8 @@ void ReadSerial()
   }
 }
 
-void DispatchRecievedMessage(int readBytes) {
+void DispatchRecievedMessage(int readBytes) 
+{
   for (int i = 0; i < readBytes; i++) 
   {
     m_recieveQueue.Enqueue(m_readBuffer[i]);
@@ -298,7 +390,7 @@ bool TryProcessSimonSequenceCommand()
     }
   }
 
-  m_simon.StartSequence(m_simonSequence, sequenceLength);
+  //m_simon.StartSequence(m_simonSequence, sequenceLength);
 }
 
 void SendDataIfNeeded()
@@ -309,11 +401,11 @@ void SendDataIfNeeded()
   }
 }
 
-void UpdateRotaries()
+void UpdateRotaries(float deltaTime)
 {
   for (RotaryController* rotary : m_rotaryControllers)
   {
-    rotary->Update();
+    rotary->Update(deltaTime);
   }
 }
 
@@ -335,7 +427,11 @@ void UpdateAxis()
   m_joystick.setRyAxis(m_propsSelectorFader.ReadAnalog());
   m_joystick.setRzAxis(m_motorizedFader.ReadValue());
 
-  m_joystick.setRudder(m_spotIntensityPot.ReadAnalog());
+  m_joystick.setAccelerator(m_spotIntensityPot.ReadAnalog());
+  m_joystick.setBrake (m_spotIntensityPot.ReadAnalog());
+  m_joystick.setSteering(m_spotIntensityPot.ReadAnalog());
+  m_joystick.setRudder (m_spotIntensityPot.ReadAnalog());
+  m_joystick.setThrottle(m_spotIntensityPot.ReadAnalog());
 }
 
 void UpdateJoystick()
@@ -384,6 +480,99 @@ void UpdateIndicators(int indicatorsState)
     //
     //digitalWrite(pin, on ? HIGH : LOW);
   }
+}
+
+void UpdateFlamethrowerIndicator()
+{
+  bool shouldLit = m_flamethrowerToggle_0.GetValue() && m_flamethrowerToggle_1.GetValue();
+  if (shouldLit == m_flamethrowerIndicatorLit)
+  {
+    return;
+  }
+
+  m_flamethrowerIndicatorLit = shouldLit;
+  digitalWrite(PinGlossary::LED_FLAMETHROWER, shouldLit ? HIGH : LOW);
+
+  //m_motorizedFader.SetTarget(shouldLit ? 0 : 1023);
+}
+
+void UpdateBinaryIndicator()
+{
+  int toggle0 = m_binaryToggle_0.GetValue() ? 1 : 0;
+  int toggle1 = m_binaryToggle_1.GetValue() ? 1 : 0;
+
+  int binaryState = 0;
+  binaryState |= toggle0 << 0;
+  binaryState |= toggle1 << 1;
+
+  if (binaryState == m_binaryIndicatorState)
+  {
+    return;
+  }
+
+  m_binaryIndicatorState = binaryState;
+
+  for (int i = 0; i < 4; ++i)
+  {
+    if (m_binaryIndicators[i] == -1)
+    {
+      continue;
+    }
+
+    digitalWrite(m_binaryIndicators[i], m_binaryIndicatorState == i ? HIGH : LOW);
+  }
+}
+
+void UpdateMusicSelection()
+{
+  bool changed = false;
+  switch(m_musicRotary.rotate())
+  {
+    case 0:
+      break;
+    case 1: // clockwise
+      m_selectedMusicIndex = (m_selectedMusicIndex + 1 + 4) % 4;
+      changed = true;
+      break;
+    case 2: // counter clockwise
+      m_selectedMusicIndex = (m_selectedMusicIndex - 1 + 4) % 4;
+      changed = true;
+      break;
+    default:
+      break;
+  };
+
+  if (!changed)
+  {
+    return;
+  }
+
+  for (int iPin = 0; iPin < 4 ;++iPin)
+  {
+    digitalWrite(m_musicIndicators[iPin], iPin == m_selectedMusicIndex ? HIGH : LOW);
+  }
+
+  m_joystick.setButton(ButtonGlossary::MUSIC_0, ((m_selectedMusicIndex & (1 << 0)) != 0) ? 1 : 0);
+  m_joystick.setButton(ButtonGlossary::MUSIC_1, ((m_selectedMusicIndex & (1 << 1)) != 0) ? 1 : 0);
+}
+
+void UpdateSimonButtons()
+{
+  if (m_simon.IsRunning())
+  {
+    return;
+  }
+
+  for (int i = 0; i < 4; ++i)
+  {
+    bool buttonState = m_simonButtons[i]->GetValue();
+    if (buttonState != m_simonLedState[i])
+    {
+      digitalWrite(m_simonIndicators[i], buttonState ? HIGH : LOW);
+      m_simonLedState[i] = buttonState;
+    }
+  }
+
 }
 
 void SendError(byte errorCode) 
