@@ -17,6 +17,7 @@ public class Puppet : MonoBehaviour, ILateAwaker
 
     [Title("Component References")]
     [SerializeField] private Transform m_objectInHandParent;
+    [SerializeField] private Transform m_objectOnHeadParent;
 
     [Title("Animation")]
     [SerializeField] private Animator m_puppetAnimator;
@@ -25,6 +26,9 @@ public class Puppet : MonoBehaviour, ILateAwaker
     [Title("Game Variable References")]
     [SerializeField] private BaseVariable<SplineContainer> m_splineToFollow;
     [SerializeField] private BaseVariable<float> m_speedAlongSpline;
+
+    [SerializeField] private BaseVariable<ObjectInHand> m_objectInHand;
+    [SerializeField] private BaseVariable<ObjectOnHead> m_objectOnHead;
 
     [Space]
 
@@ -53,6 +57,9 @@ public class Puppet : MonoBehaviour, ILateAwaker
         m_defeat.AddListener(SetDefeatAnimation);
 
         m_animatorParameterContainer.Init();
+
+        m_objectInHand.Value = ObjectInHand.None;
+        m_objectOnHead.Value = ObjectOnHead.None;
 
         StopWalk();
     }
@@ -132,6 +139,22 @@ public class Puppet : MonoBehaviour, ILateAwaker
         {
             SetWalkState(true);
         }
+    }
+
+    public void HoldObjectInHand(DroppableHandProp handObject)
+    {
+        handObject.transform.SetParent(m_objectInHandParent);
+        handObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+        m_objectInHand.Value = handObject.ObjectType;
+    }
+
+    public void HoldObjectOnHead(DroppableHeadProp headObject)
+    {
+        headObject.transform.SetParent(m_objectOnHeadParent);
+        headObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+        m_objectOnHead.Value = headObject.ObjectType;
     }
 
     private void UpdatePositionAndRotation(float time)
