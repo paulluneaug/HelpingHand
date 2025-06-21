@@ -72,7 +72,7 @@ public class AudioEvent : ScriptableObject
     [GUIColor(1f, 1f, 0.5f)]
     [FoldoutGroup("Succes")]
     [LabelText("Succes")]
-    [SerializeField] private FinState m_succesState;
+    [SerializeField] private SuccesState m_succesState;
 
 
     // === FIN ===
