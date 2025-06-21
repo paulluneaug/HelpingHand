@@ -14,6 +14,7 @@ using static RTPCManager;
 using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
 using UnityEngine.SceneManagement;
+using System.Text;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -182,7 +183,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         }
     }
     #endregion
-
+    // Méthode qui joue un Dialogue Event avec série de string qui représentent le nom des States, gameObject sur lequel les sons sont joués, token d'annulation
     public async UniTask PlayDialogueWithStatesAsync(
         string onboardingIntro,
         string onboardingCurtain,
@@ -191,13 +192,18 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         string interruptionSpots,
         string roueState,
         string combatState,
+        string interruptionRoue,
+        string interruptionSucces,
+        string equipementState,
+        string finState,
+        string successState,
         GameObject targetObject = null,
         CancellationToken cancellationToken = default)
     {
-        DebugLog($"PlayDialogueWithStatesAsync: {onboardingIntro}, {onboardingCurtain}, {onboardingSpots}, {interruptionCurtain}, {interruptionSpots}, {roueState}, {combatState}");
+        //DebugLog($"PlayDialogueWithStatesAsync: {onboardingIntro}, {onboardingCurtain}, {onboardingSpots}, {interruptionCurtain}, {interruptionSpots}, {roueState}, {combatState}");
+
+        //Récupération de l’ID Wwise de l’event Dialogue_Event -> sensible à la casse
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
-        // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
-        // Il faut référencer l'ID stocké dans la soundbank
 
         if (dialogueEventId == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
@@ -205,35 +211,74 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             return;
         }
 
-        // Récupération des State IDs depuis les noms
+        // uint = ID interne Wwise associé à un string (pas de casse et de lien direct avec Wwise puisque dans ce cas on associe les IDs aux states dans le tableau juste après
         uint onboardingIntroID = AkUnitySoundEngine.GetIDFromString(onboardingIntro);
         uint onboardingCurtainID = AkUnitySoundEngine.GetIDFromString(onboardingCurtain);
         uint onboardingSpotsID = AkUnitySoundEngine.GetIDFromString(onboardingSpots);
+
         uint interruptionCurtainID = AkUnitySoundEngine.GetIDFromString(interruptionCurtain);
         uint interruptionSpotsID = AkUnitySoundEngine.GetIDFromString(interruptionSpots);
+        uint interruptionRoueID = AkUnitySoundEngine.GetIDFromString(interruptionRoue);
+        uint interruptionSuccesID = AkUnitySoundEngine.GetIDFromString(interruptionSucces);
+
+        uint equipementID = AkUnitySoundEngine.GetIDFromString(equipementState);
         uint roueStateID = AkUnitySoundEngine.GetIDFromString(roueState);
         uint combatStateID = AkUnitySoundEngine.GetIDFromString(combatState);
+        uint finStateID = AkUnitySoundEngine.GetIDFromString(finState);
 
+        uint SuccesID = AkUnitySoundEngine.GetIDFromString(successState);
 
-        // TODO ajouter le ton du narrateur
-        //Rajouter des states ici si on en a besoin de + !
-
-        //if (onboarding_introID == 0 || onboarding_curtainID == 0 || onboarding_spotID == 0)
-        //{
-        //    DebugLog($"Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}", LogType.Error);
-        //    return;
-        //}
-
+        //Tableau d'argument  qui contient la liste des ID qui correspondent à chaque valeur (State) de monDialogue Event -> même ordre que dans Wwise!
         uint[] args = new uint[]
         {
         onboardingIntroID,
         onboardingCurtainID,
         onboardingSpotsID,
+
         interruptionCurtainID,
         interruptionSpotsID,
+        interruptionRoueID,
+        interruptionSuccesID,
+
+        equipementID,
         roueStateID,
-        combatStateID
+        combatStateID,
+        finStateID,
+
+        SuccesID,
         };
+
+        #region Debug
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("Dialogue State Argument Wwise :");
+
+        void AppendIfNotIgnore(string label, string value, uint id)
+        {
+            if (!string.Equals(value, "IGNORE", StringComparison.OrdinalIgnoreCase))
+            {
+                sb.Append($" {label}: {value}");
+            }
+        }
+
+        AppendIfNotIgnore("Onboarding Intro", onboardingIntro, onboardingIntroID);
+        AppendIfNotIgnore("Onboarding Curtain", onboardingCurtain, onboardingCurtainID);
+        AppendIfNotIgnore("Onboarding Spots", onboardingSpots, onboardingSpotsID);
+
+        AppendIfNotIgnore("Interruption Curtain", interruptionCurtain, interruptionCurtainID);
+        AppendIfNotIgnore("Interruption Spots", interruptionSpots, interruptionSpotsID);
+        AppendIfNotIgnore("Interruption Roue", interruptionRoue, interruptionRoueID);
+        AppendIfNotIgnore("Interruption Succès", interruptionSucces, interruptionSuccesID);
+
+        AppendIfNotIgnore("Équipement", equipementState, equipementID);
+        AppendIfNotIgnore("Roue", roueState, roueStateID);
+        AppendIfNotIgnore("Combat", combatState, combatStateID);
+        AppendIfNotIgnore("Fin", finState, finStateID);
+        AppendIfNotIgnore("Succès", successState, SuccesID);
+
+        Debug.Log(sb.ToString());
+
+
+        #endregion
 
         bool isEnded = false;
         uint sequenceID = AkUnitySoundEngine.DynamicSequenceOpen(gameObject, (uint)AkCallbackType.AK_EndOfDynamicSequenceItem, (inCookie, inType, inInfo) =>

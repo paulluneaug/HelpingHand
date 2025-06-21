@@ -107,21 +107,24 @@ namespace AK
                 static const AkUniqueID BAD_INPUTS_1 = 1406341206U;
                 static const AkUniqueID BAD_INPUTS_2 = 1406341205U;
                 static const AkUniqueID BAD_INPUTS_3 = 1406341204U;
-                static const AkUniqueID BAD_INPUTS_4 = 1406341203U;
-                static const AkUniqueID BAD_INPUTS_41 = 1212330648U;
-                static const AkUniqueID BAD_INPUTS_42 = 1212330651U;
+                static const AkUniqueID GOOD_INPUT_1 = 4283854443U;
+                static const AkUniqueID GOOD_INPUT_2 = 4283854440U;
+                static const AkUniqueID GOOD_INPUT_3 = 4283854441U;
+                static const AkUniqueID INTRO_001 = 2597544973U;
                 static const AkUniqueID INTRO_01 = 1697488981U;
+                static const AkUniqueID INTRO_002 = 2597544974U;
                 static const AkUniqueID INTRO_02 = 1697488982U;
+                static const AkUniqueID INTRO_003 = 2597544975U;
                 static const AkUniqueID INTRO_03 = 1697488983U;
                 static const AkUniqueID INTRO_04 = 1697488976U;
                 static const AkUniqueID INTRO_05 = 1697488977U;
                 static const AkUniqueID INTRO_06 = 1697488978U;
-                static const AkUniqueID INTRO_07 = 1697488979U;
-                static const AkUniqueID INTRO_08 = 1697488988U;
+                static const AkUniqueID INTRO_071 = 2580767384U;
+                static const AkUniqueID INTRO_072 = 2580767387U;
                 static const AkUniqueID NEXT_01 = 3504266440U;
                 static const AkUniqueID NEXT_02 = 3504266443U;
-                static const AkUniqueID NEXT_03 = 3504266442U;
-                static const AkUniqueID NEXT_04 = 3504266445U;
+                static const AkUniqueID NEXT_031 = 2564133327U;
+                static const AkUniqueID NEXT_032 = 2564133324U;
                 static const AkUniqueID NO_INPUTS_01 = 1390664362U;
                 static const AkUniqueID NO_INPUTS_21 = 1424219632U;
                 static const AkUniqueID NO_INPUTS_22 = 1424219635U;
@@ -142,18 +145,63 @@ namespace AK
             namespace STATE
             {
                 static const AkUniqueID DAY_01 = 3876032357U;
+                static const AkUniqueID DAY_02 = 3876032358U;
+                static const AkUniqueID EQUIP_01 = 627355959U;
+                static const AkUniqueID EQUIP_02 = 627355956U;
+                static const AkUniqueID EQUIP_03 = 627355957U;
+                static const AkUniqueID EQUIP_04 = 627355954U;
+                static const AkUniqueID EQUIP_05 = 627355955U;
+                static const AkUniqueID EQUIP_06 = 627355952U;
+                static const AkUniqueID EQUIP_07 = 627355953U;
+                static const AkUniqueID INTRO_001 = 2597544973U;
                 static const AkUniqueID INTRO_01 = 1697488981U;
+                static const AkUniqueID INTRO_002 = 2597544974U;
                 static const AkUniqueID INTRO_02 = 1697488982U;
+                static const AkUniqueID INTRO_003 = 2597544975U;
                 static const AkUniqueID INTRO_03 = 1697488983U;
                 static const AkUniqueID INTRO_04 = 1697488976U;
                 static const AkUniqueID INTRO_05 = 1697488977U;
                 static const AkUniqueID INTRO_06 = 1697488978U;
                 static const AkUniqueID INTRO_07 = 1697488979U;
+                static const AkUniqueID INTRO_SIMON_01 = 3107782984U;
+                static const AkUniqueID INTRO_SIMON_11 = 3091005399U;
+                static const AkUniqueID INTRO_SIMON_12 = 3091005396U;
+                static const AkUniqueID INTRO_SIMON_13 = 3091005397U;
+                static const AkUniqueID INTRO_SIMON_14 = 3091005394U;
+                static const AkUniqueID INTRO_SIMON_15 = 3091005395U;
+                static const AkUniqueID MONSTER_01 = 2596930697U;
+                static const AkUniqueID MONSTER_02 = 2596930698U;
+                static const AkUniqueID MUSIC_01 = 1973439780U;
+                static const AkUniqueID MUSIC_02 = 1973439783U;
+                static const AkUniqueID MUSIC_03 = 1973439782U;
+                static const AkUniqueID MUSIC_04 = 1973439777U;
+                static const AkUniqueID MUSIC_05 = 1973439776U;
+                static const AkUniqueID MUSIC_12 = 1956662192U;
+                static const AkUniqueID MUSIC_022 = 1381594199U;
                 static const AkUniqueID NIGHT_11 = 1598379338U;
                 static const AkUniqueID NIGHT_12 = 1598379337U;
                 static const AkUniqueID NIGHT_13 = 1598379336U;
                 static const AkUniqueID NIGHT_14 = 1598379343U;
                 static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID SIMON_TOUR_11 = 1605208299U;
+                static const AkUniqueID SIMON_TOUR_12 = 1605208296U;
+                static const AkUniqueID SIMON_TOUR_13 = 1605208297U;
+                static const AkUniqueID SIMON_TOUR_14 = 1605208302U;
+                static const AkUniqueID SIMON_TOUR_15 = 1605208303U;
+                static const AkUniqueID SIMON_TOUR_21 = 1588430710U;
+                static const AkUniqueID SIMON_TOUR_22 = 1588430709U;
+                static const AkUniqueID SIMON_TOUR_23 = 1588430708U;
+                static const AkUniqueID SIMON_TOUR_24 = 1588430707U;
+                static const AkUniqueID SIMON_TOUR_31 = 1571652997U;
+                static const AkUniqueID SIMON_TOUR_32 = 1571652998U;
+                static const AkUniqueID SIMON_TOUR_33 = 1571652999U;
+                static const AkUniqueID SIMON_TOUR_34 = 1571652992U;
+                static const AkUniqueID SIMON_TOUR_41 = 1554875408U;
+                static const AkUniqueID SIMON_TOUR_42 = 1554875411U;
+                static const AkUniqueID SIMON_TOUR_43 = 1554875410U;
+                static const AkUniqueID SIMON_TOUR_44 = 1554875413U;
+                static const AkUniqueID SIMON_TOUR_45 = 1554875412U;
+                static const AkUniqueID SIMON_TOUR_46 = 1554875415U;
                 static const AkUniqueID SLEEP_01 = 4240571428U;
                 static const AkUniqueID SLEEP_02 = 4240571431U;
             } // namespace STATE
@@ -165,7 +213,107 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID AMURERIE_01 = 1923020441U;
+                static const AkUniqueID AMURERIE_02 = 1923020442U;
+                static const AkUniqueID AMURERIE_03 = 1923020443U;
+                static const AkUniqueID ARME_01 = 3110368936U;
+                static const AkUniqueID ARME_02 = 3110368939U;
+                static const AkUniqueID ARME_03 = 3110368938U;
+                static const AkUniqueID ARME_04 = 3110368941U;
+                static const AkUniqueID ARME_05 = 3110368940U;
+                static const AkUniqueID ARME_06 = 3110368943U;
+                static const AkUniqueID ARME_07 = 3110368942U;
+                static const AkUniqueID BAGUETTE_01 = 3705058010U;
+                static const AkUniqueID BAGUETTE_02 = 3705058009U;
+                static const AkUniqueID BAGUETTE_03 = 3705058008U;
+                static const AkUniqueID BALAI_01 = 3862153566U;
+                static const AkUniqueID BALAI_02 = 3862153565U;
+                static const AkUniqueID BALAI_03 = 3862153564U;
+                static const AkUniqueID BALAI_04 = 3862153563U;
+                static const AkUniqueID BALAI_05 = 3862153562U;
+                static const AkUniqueID BERET_01 = 3150475731U;
+                static const AkUniqueID BERET_02 = 3150475728U;
+                static const AkUniqueID BERET_031 = 1837837362U;
+                static const AkUniqueID BERET_032 = 1837837361U;
+                static const AkUniqueID CAROTTE_01 = 3072650097U;
+                static const AkUniqueID CAROTTE_02 = 3072650098U;
+                static const AkUniqueID CAROTTE_03 = 3072650099U;
+                static const AkUniqueID CAROTTE_04 = 3072650100U;
+                static const AkUniqueID CASQUE_01 = 921251183U;
+                static const AkUniqueID CASQUE_02 = 921251180U;
+                static const AkUniqueID CASQUE_03 = 921251181U;
+                static const AkUniqueID CASQUEAUDIO_01 = 1067569355U;
+                static const AkUniqueID CASQUEAUDIO_02 = 1067569352U;
+                static const AkUniqueID CASQUEAUDIO_03 = 1067569353U;
+                static const AkUniqueID CASQUEAUDIO_041 = 4189828219U;
+                static const AkUniqueID CASQUEAUDIO_042 = 4189828216U;
+                static const AkUniqueID CASQUEAUDIO_050 = 4206605805U;
+                static const AkUniqueID CHOPE_01 = 2304485108U;
+                static const AkUniqueID CHOPE_02 = 2304485111U;
+                static const AkUniqueID CHOPE_03 = 2304485110U;
+                static const AkUniqueID CHOPE_04 = 2304485105U;
+                static const AkUniqueID EPEE_01 = 952818014U;
+                static const AkUniqueID EPEE_02 = 952818013U;
+                static const AkUniqueID EPEE_03 = 952818012U;
+                static const AkUniqueID EPEE_04 = 952818011U;
+                static const AkUniqueID EQUIP_01 = 627355959U;
+                static const AkUniqueID EQUIP_02 = 627355956U;
+                static const AkUniqueID EQUIP_03 = 627355957U;
+                static const AkUniqueID EQUIP_04 = 627355954U;
+                static const AkUniqueID EQUIP_CLASSIQUE_01 = 449541576U;
+                static const AkUniqueID EQUIP_CLASSIQUE_02 = 449541579U;
+                static const AkUniqueID EQUIP_CLASSIQUE_03 = 449541578U;
+                static const AkUniqueID EQUIP_CLASSIQUE_04 = 449541581U;
+                static const AkUniqueID EQUIP_CLASSIQUE_05 = 449541580U;
+                static const AkUniqueID EQUIP_CLASSIQUE_06 = 449541583U;
+                static const AkUniqueID EQUIP_WHIPPIN_01 = 2776393237U;
+                static const AkUniqueID EQUIP_WHIPPIN_02 = 2776393238U;
+                static const AkUniqueID EQUIP_WHIPPIN_03 = 2776393239U;
+                static const AkUniqueID EQUIP_WHIPPIN_04 = 2776393232U;
+                static const AkUniqueID EQUIP_WHIPPIN_05 = 2776393233U;
+                static const AkUniqueID EQUIP_WHIPPIN_06 = 2776393234U;
+                static const AkUniqueID EQUIP_WHIPPIN_07 = 2776393235U;
+                static const AkUniqueID EQUIP_WHIPPIN_08 = 2776393244U;
+                static const AkUniqueID EQUIP_WHIPPIN_09 = 2776393245U;
+                static const AkUniqueID EQUIP_WHIPPIN_10 = 2793170823U;
+                static const AkUniqueID EQUIP_WHIPPIN_11 = 2793170822U;
+                static const AkUniqueID EQUIP_WHIPPIN_12 = 2793170821U;
+                static const AkUniqueID INTRO_01 = 1697488981U;
+                static const AkUniqueID INTRO_02 = 1697488982U;
+                static const AkUniqueID INTRO_03 = 1697488983U;
+                static const AkUniqueID INTRO_04 = 1697488976U;
+                static const AkUniqueID INTRO_05 = 1697488977U;
+                static const AkUniqueID INTRO_06 = 1697488978U;
+                static const AkUniqueID INTRO_07 = 1697488979U;
+                static const AkUniqueID INTRO_08 = 1697488988U;
+                static const AkUniqueID LAPIN_01 = 131360425U;
+                static const AkUniqueID LAPIN_02 = 131360426U;
+                static const AkUniqueID LAPIN_03 = 131360427U;
+                static const AkUniqueID LAPIN_04 = 131360428U;
+                static const AkUniqueID LAPIN_051 = 6136422U;
+                static const AkUniqueID LAPIN_052 = 6136421U;
+                static const AkUniqueID LIEU_01 = 1515094696U;
+                static const AkUniqueID LIEU_02 = 1515094699U;
+                static const AkUniqueID LIEU_03 = 1515094698U;
+                static const AkUniqueID LIEU_04 = 1515094701U;
+                static const AkUniqueID LIEU_05 = 1515094700U;
+                static const AkUniqueID LIEU_06 = 1515094703U;
+                static const AkUniqueID LIEU_07 = 1515094702U;
+                static const AkUniqueID LIEU_08 = 1515094689U;
                 static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID POULET_01 = 2334006600U;
+                static const AkUniqueID POULET_02 = 2334006603U;
+                static const AkUniqueID POULET_03 = 2334006602U;
+                static const AkUniqueID POULET_04 = 2334006605U;
+                static const AkUniqueID SUPERMARCHE_01 = 3707803386U;
+                static const AkUniqueID SUPERMARCHE_02 = 3707803385U;
+                static const AkUniqueID SUPERMARCHE_03 = 3707803384U;
+                static const AkUniqueID TAVERNE_01 = 1289185594U;
+                static const AkUniqueID TAVERNE_02 = 1289185593U;
+                static const AkUniqueID TAVERNE_03 = 1289185592U;
+                static const AkUniqueID TAVERNE_04 = 1289185599U;
+                static const AkUniqueID VIDE_01 = 2600799127U;
+                static const AkUniqueID VIDE_02 = 2600799124U;
             } // namespace STATE
         } // namespace EQUIPEMENT
 
@@ -175,6 +323,63 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID _01 = 1627589345U;
+                static const AkUniqueID _11 = 1644366930U;
+                static const AkUniqueID _12 = 1644366929U;
+                static const AkUniqueID _13 = 1644366928U;
+                static const AkUniqueID _14 = 1644366935U;
+                static const AkUniqueID _15 = 1644366934U;
+                static const AkUniqueID _16 = 1644366933U;
+                static const AkUniqueID _17 = 1644366932U;
+                static const AkUniqueID _18 = 1644366939U;
+                static const AkUniqueID _19 = 1644366938U;
+                static const AkUniqueID _21 = 1661144519U;
+                static const AkUniqueID _22 = 1661144516U;
+                static const AkUniqueID _23 = 1661144517U;
+                static const AkUniqueID _24 = 1661144514U;
+                static const AkUniqueID _25 = 1661144515U;
+                static const AkUniqueID _26 = 1661144512U;
+                static const AkUniqueID _27 = 1661144513U;
+                static const AkUniqueID _28 = 1661144526U;
+                static const AkUniqueID _29 = 1661144527U;
+                static const AkUniqueID _31 = 1677922232U;
+                static const AkUniqueID _32 = 1677922235U;
+                static const AkUniqueID _33 = 1677922234U;
+                static const AkUniqueID _34 = 1677922237U;
+                static const AkUniqueID _35 = 1677922236U;
+                static const AkUniqueID _36 = 1677922239U;
+                static const AkUniqueID _37 = 1677922238U;
+                static const AkUniqueID _38 = 1677922225U;
+                static const AkUniqueID _41 = 1694699821U;
+                static const AkUniqueID _42 = 1694699822U;
+                static const AkUniqueID _43 = 1694699823U;
+                static const AkUniqueID _44 = 1694699816U;
+                static const AkUniqueID _45 = 1694699817U;
+                static const AkUniqueID _46 = 1694699818U;
+                static const AkUniqueID _47 = 1694699819U;
+                static const AkUniqueID _48 = 1694699812U;
+                static const AkUniqueID _49 = 1694699813U;
+                static const AkUniqueID _51 = 1711477406U;
+                static const AkUniqueID _52 = 1711477405U;
+                static const AkUniqueID _53 = 1711477404U;
+                static const AkUniqueID _54 = 1711477403U;
+                static const AkUniqueID _55 = 1711477402U;
+                static const AkUniqueID _56 = 1711477401U;
+                static const AkUniqueID _57 = 1711477400U;
+                static const AkUniqueID _58 = 1711477399U;
+                static const AkUniqueID _59 = 1711477398U;
+                static const AkUniqueID _110 = 2630640934U;
+                static const AkUniqueID _111 = 2630640935U;
+                static const AkUniqueID _112 = 2630640932U;
+                static const AkUniqueID _113 = 2630640933U;
+                static const AkUniqueID _114 = 2630640930U;
+                static const AkUniqueID _115 = 2630640931U;
+                static const AkUniqueID _116 = 2630640928U;
+                static const AkUniqueID _210 = 2765009013U;
+                static const AkUniqueID _410 = 819202535U;
+                static const AkUniqueID _411 = 819202534U;
+                static const AkUniqueID _510 = 886460042U;
+                static const AkUniqueID _511 = 886460043U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace FIN
@@ -219,6 +424,15 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID _11 = 1644366930U;
+                static const AkUniqueID _12 = 1644366929U;
+                static const AkUniqueID _13 = 1644366928U;
+                static const AkUniqueID _21 = 1661144519U;
+                static const AkUniqueID _22 = 1661144516U;
+                static const AkUniqueID _23 = 1661144517U;
+                static const AkUniqueID _31 = 1677922232U;
+                static const AkUniqueID _32 = 1677922235U;
+                static const AkUniqueID _33 = 1677922234U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace INTERRUPTION_ROUE
@@ -249,6 +463,10 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID _11 = 1644366930U;
+                static const AkUniqueID _12 = 1644366929U;
+                static const AkUniqueID _13 = 1644366928U;
+                static const AkUniqueID _14 = 1644366935U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace INTERRUPTION_SUCCES
@@ -278,6 +496,12 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID INTERRUPTION_INTRO_21 = 1751850173U;
+                static const AkUniqueID INTERRUPTION_INTRO_22 = 1751850174U;
+                static const AkUniqueID INTERRUPTION_INTRO_23 = 1751850175U;
+                static const AkUniqueID INTERRUPTION_INTRO_24 = 1751850168U;
+                static const AkUniqueID INTERRUPTION_INTRO_25 = 1751850169U;
+                static const AkUniqueID INTERRUPTION_INTRO_26 = 1751850170U;
                 static const AkUniqueID INTERRUPTION_INTRO_111 = 2376444333U;
                 static const AkUniqueID INTERRUPTION_INTRO_112 = 2376444334U;
                 static const AkUniqueID INTERRUPTION_INTRO_121 = 2426777188U;
@@ -289,6 +513,9 @@ namespace AK
                 static const AkUniqueID INTERRUPTION_INTRO_181 = 2527442934U;
                 static const AkUniqueID INTERRUPTION_INTRO_182 = 2527442933U;
                 static const AkUniqueID INTERRUPTION_INTRO_183 = 2527442932U;
+                static const AkUniqueID INTERRUPTION_INTRO_191 = 2510665221U;
+                static const AkUniqueID INTERRUPTION_INTRO_1101 = 2815039989U;
+                static const AkUniqueID INTERRUPTION_INTRO_1111 = 2831817574U;
                 static const AkUniqueID INTRO_01 = 1697488981U;
                 static const AkUniqueID INTRO_02 = 1697488982U;
                 static const AkUniqueID INTRO_03 = 1697488983U;
@@ -369,7 +596,43 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID GLOBAL_01 = 1436309010U;
+                static const AkUniqueID GLOBAL_02 = 1436309009U;
+                static const AkUniqueID GLOBAL_04 = 1436309015U;
+                static const AkUniqueID GLOBAL_06 = 1436309013U;
+                static const AkUniqueID GLOBAL_07 = 1436309012U;
+                static const AkUniqueID GLOBAL_08 = 1436309019U;
+                static const AkUniqueID GLOBAL_031 = 3575347969U;
+                static const AkUniqueID GLOBAL_032 = 3575347970U;
+                static const AkUniqueID GLOBAL_051 = 3676013715U;
+                static const AkUniqueID GLOBAL_052 = 3676013712U;
                 static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID SON_11 = 706605972U;
+                static const AkUniqueID SON_12 = 706605975U;
+                static const AkUniqueID SON_13 = 706605974U;
+                static const AkUniqueID SON_14 = 706605969U;
+                static const AkUniqueID SON_15 = 706605968U;
+                static const AkUniqueID SON_21 = 656273117U;
+                static const AkUniqueID SON_22 = 656273118U;
+                static const AkUniqueID SON_31 = 673050702U;
+                static const AkUniqueID SON_32 = 673050701U;
+                static const AkUniqueID SON_33 = 673050700U;
+                static const AkUniqueID SON_41 = 622717943U;
+                static const AkUniqueID SON_51 = 639495528U;
+                static const AkUniqueID SON_52 = 639495531U;
+                static const AkUniqueID SON_61 = 589162641U;
+                static const AkUniqueID SON_71 = 605940226U;
+                static const AkUniqueID SON_72 = 605940225U;
+                static const AkUniqueID VISUEL_11 = 2174831690U;
+                static const AkUniqueID VISUEL_21 = 2191609407U;
+                static const AkUniqueID VISUEL_31 = 2208386960U;
+                static const AkUniqueID VISUEL_32 = 2208386963U;
+                static const AkUniqueID VISUEL_41 = 2225164549U;
+                static const AkUniqueID VISUEL_42 = 2225164550U;
+                static const AkUniqueID VISUEL_51 = 2241942262U;
+                static const AkUniqueID VISUEL_52 = 2241942261U;
+                static const AkUniqueID VISUEL_53 = 2241942260U;
+                static const AkUniqueID VISUEL_54 = 2241942259U;
             } // namespace STATE
         } // namespace SUCCES
 
