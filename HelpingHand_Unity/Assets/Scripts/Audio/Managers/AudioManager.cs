@@ -187,14 +187,21 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         string onboardingIntro,
         string onboardingCurtain,
         string onboardingSpots,
+
         string interruptionCurtain,
         string interruptionSpots,
+        string interruptionRoue,
+        string interruptionSucces,
+
+        string equipementState,
         string roueState,
         string combatState,
+        string finState,
+        string succesState,
         GameObject targetObject = null,
         CancellationToken cancellationToken = default)
     {
-        DebugLog($"PlayDialogueWithStatesAsync: {onboardingIntro}, {onboardingCurtain}, {onboardingSpots}, {interruptionCurtain}, {interruptionSpots}, {roueState}, {combatState}");
+        DebugLog($"PlayDialogueWithStatesAsync: {onboardingIntro}, {onboardingCurtain}, {onboardingSpots}, {interruptionCurtain}, {interruptionSpots},{interruptionRoue},{interruptionSucces},{equipementState},{roueState}, {combatState},{finState},{succesState}");
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
         // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
         // Il faut référencer l'ID stocké dans la soundbank
@@ -205,37 +212,43 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             return;
         }
 
-        // Récupération des State IDs depuis les noms
+        // Récupération des State IDs de Wwise depuis les noms
         uint onboardingIntroID = AkUnitySoundEngine.GetIDFromString(onboardingIntro);
         uint onboardingCurtainID = AkUnitySoundEngine.GetIDFromString(onboardingCurtain);
         uint onboardingSpotsID = AkUnitySoundEngine.GetIDFromString(onboardingSpots);
+
         uint interruptionCurtainID = AkUnitySoundEngine.GetIDFromString(interruptionCurtain);
         uint interruptionSpotsID = AkUnitySoundEngine.GetIDFromString(interruptionSpots);
+        uint interruptionSuccesID = AkUnitySoundEngine.GetIDFromString(interruptionSucces);
+        uint interruptionRoueID = AkUnitySoundEngine.GetIDFromString(interruptionRoue);
+
+        uint equipementStateID = AkUnitySoundEngine.GetIDFromString(equipementState);
         uint roueStateID = AkUnitySoundEngine.GetIDFromString(roueState);
         uint combatStateID = AkUnitySoundEngine.GetIDFromString(combatState);
+        uint finStateID = AkUnitySoundEngine.GetIDFromString(finState);
 
 
-        // TODO ajouter le ton du narrateur
-        //Rajouter des states ici si on en a besoin de + !
-
-        //if (onboarding_introID == 0 || onboarding_curtainID == 0 || onboarding_spotID == 0)
-        //{
-        //    DebugLog($"Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}", LogType.Error);
-        //    return;
-        //}
 
         uint[] args = new uint[]
         {
         onboardingIntroID,
         onboardingCurtainID,
         onboardingSpotsID,
+
         interruptionCurtainID,
         interruptionSpotsID,
+        interruptionSuccesID,
+        interruptionRoueID,
+
+        equipementStateID,
         roueStateID,
-        combatStateID
+        combatStateID,
+        finStateID
         };
 
         bool isEnded = false;
+
+        //Logique de démarrage dynamic sequence
         uint sequenceID = AkUnitySoundEngine.DynamicSequenceOpen(gameObject, (uint)AkCallbackType.AK_EndOfDynamicSequenceItem, (inCookie, inType, inInfo) =>
         {
             isEnded = true;

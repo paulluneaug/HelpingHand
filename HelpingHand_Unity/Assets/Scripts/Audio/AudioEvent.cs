@@ -37,7 +37,22 @@ public class AudioEvent : ScriptableObject
     [LabelText("Spot (Interruption)")]
     [SerializeField] private InterruptionSpotState m_interruptionSpotState;
 
+    [GUIColor(0.95f, 0.8f, 0.8f)]
+    [FoldoutGroup("Interruptions")]
+    [LabelText("Roue (Interruption)")]
+    [SerializeField] private InterruptionRoueState m_interruptionRoueState;
+
+    [GUIColor(0.95f, 0.8f, 0.8f)]
+    [FoldoutGroup("Interruptions")]
+    [LabelText("Succes (Interruption)")]
+    [SerializeField] private InterruptionSuccesState m_interruptionSuccesState;
+
     // === ACTE 1 ===
+    [GUIColor(0.7f, 1f, 0.8f)]
+    [FoldoutGroup("Acte 1")]
+    [LabelText("Equipement")]
+    [SerializeField] private EquipementState m_equipementState;
+
     [GUIColor(0.7f, 1f, 0.8f)]
     [FoldoutGroup("Acte 1")]
     [LabelText("Roue")]
@@ -47,6 +62,20 @@ public class AudioEvent : ScriptableObject
     [FoldoutGroup("Acte 1")]
     [LabelText("Combat")]
     [SerializeField] private CombatState m_combatState;
+
+    [GUIColor(0.7f, 1f, 0.8f)]
+    [FoldoutGroup("Acte 1")]
+    [LabelText("Fin")]
+    [SerializeField] private FinState m_finState;
+
+    //Succes
+    [GUIColor(1f, 1f, 0.5f)]
+    [FoldoutGroup("Succes")]
+    [LabelText("Succes")]
+    [SerializeField] private FinState m_succesState;
+
+
+    // === FIN ===
 
     public async UniTask Play(GameObject target = null, CancellationToken cancellationToken = default)
     {
@@ -60,10 +89,18 @@ public class AudioEvent : ScriptableObject
                 m_onboardingIntroState.ToString(),
                 m_onboardingCurtainState.ToString(),
                 m_onboardingSpotState.ToString(),
+
                 m_interruptionCurtainState.ToString(),
                 m_interruptionSpotState.ToString(),
+                m_interruptionRoueState.ToString(),
+                m_interruptionSuccesState.ToString(),
+
                 m_acte1roueState.ToString(),
                 m_combatState.ToString(),
+                m_equipementState.ToString(),
+                m_finState.ToString(),
+                m_succesState.ToString(),
+
                 target,
                 cancellationToken
             );
