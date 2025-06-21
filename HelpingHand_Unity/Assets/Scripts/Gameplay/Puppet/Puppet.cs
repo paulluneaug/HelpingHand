@@ -153,7 +153,7 @@ public class Puppet : MonoBehaviour, ILateAwaker
         m_objectInHand.OnPuppetHeldObjectChanged(handObject.ObjectType);
     }
 
-    public void HoldObjectOnHead(DroppableHeadProp headObject)
+    public void WearObjectOnHead(DroppableHeadProp headObject)
     {
         headObject.transform.SetParent(m_objectOnHeadParent);
         headObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);

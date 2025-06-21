@@ -8,6 +8,7 @@ public class DroppableHeadProp : DroppableItem
 
     public override void DropItem()
     {
-        throw new System.NotImplementedException();
+        ActivateModel();
+        GameManager.Instance.GetPuppet().WearObjectOnHead(this);
     }
 }

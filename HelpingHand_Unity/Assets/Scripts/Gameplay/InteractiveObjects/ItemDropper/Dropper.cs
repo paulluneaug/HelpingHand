@@ -9,12 +9,11 @@ using UnityEngine.Splines;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Easings;
 using UnityUtility.Extensions;
-using UnityUtility.MathU;
 using UnityUtility.Timer;
 
 using Title = UnityUtility.CustomAttributes.TitleAttribute;
 
-public class ItemDropper : MonoBehaviour
+public class Dropper : MonoBehaviour
 {
     private enum DropperState
     {
@@ -24,67 +23,13 @@ public class ItemDropper : MonoBehaviour
         TransitionOut,
     }
 
-    private class DropperItem
-    {
-        public DroppableItem Item => m_item;
-
-        [NonSerialized] private readonly DroppableItem m_item;
-
-        [NonSerialized] private float m_startPosition;
-        [NonSerialized] private float m_targetPosition;
-        [NonSerialized] private float m_currentPosition;
-
-        [NonSerialized] private readonly SplineContainer m_spline;
-
-
-        public DropperItem(DroppableItem item, SplineContainer spline)
-        {
-            m_item = item;
-
-            m_startPosition = 0.0f;
-            m_targetPosition = 0.0f;
-
-            m_spline = spline;
-        }
-
-        public void Init(float startPosition)
-        {
-            m_startPosition = startPosition;
-            m_targetPosition = startPosition;
-
-            SetPositionOnSpline(startPosition);
-        }
-
-        public void SetTarget(float target, bool setStartPosition = true)
-        {
-            if (setStartPosition)
-            {
-                m_startPosition = m_currentPosition;
-            }
-            m_targetPosition = target;
-        }
-
-        public void SetPositionOnSpline(float position)
-        {
-            float clampedPosition = MathUf.Clamp01(position);
-            m_currentPosition = clampedPosition;
-
-            m_item.transform.position = m_spline.EvaluatePosition(clampedPosition);
-        }
-
-        public void UpdatePosition(float transitionProgress, Easings.EasingFunction easingFunction)
-        {
-            float clampedProgress = MathUf.Clamp01(transitionProgress);
-
-            float position = MathUf.Lerp(m_startPosition, m_targetPosition, Easings.Ease(clampedProgress, easingFunction));
-            SetPositionOnSpline(position);
-
-        }
-    }
 
 
 
     private const int DISPLAYED_ITEMS = 3;
+
+    [Title("Components references")]
+    [SerializeField] private DropperItemPool m_dropperItemPool;
 
     [Title("Variable references")]
     [SerializeField] private RotaryEncoderInputEvent m_selectorInput;
@@ -238,7 +183,15 @@ public class ItemDropper : MonoBehaviour
 
     private void Dispose()
     {
+        void ReleaseItem(DropperItem item)
+        {
+            item.ResetItem();
+            m_dropperItemPool.Release(item);
+        }
+
+        m_displayedItems.ForEach(ReleaseItem);
         m_displayedItems.Clear();
+        m_storedItems.ForEach(ReleaseItem);
         m_storedItems.Clear();
     }
 
@@ -266,7 +219,9 @@ public class ItemDropper : MonoBehaviour
         for (int iChoice = 0; iChoice < m_choices.Length; iChoice++)
         {
             DroppableItem choice = m_choices[iChoice];
-            DropperItem item = new DropperItem(choice, m_spline);
+            DropperItem item = m_dropperItemPool.Request().Object;
+            item.gameObject.SetActive(true);
+            item.Init(choice, m_spline);
 
             if (iChoice < DISPLAYED_ITEMS)
             {
@@ -281,7 +236,7 @@ public class ItemDropper : MonoBehaviour
         {
             DropperItem displayedItem = m_displayedItems.At(displayedIndex);
             float targetOffset = m_displayedItemsPositions[displayedIndex];
-            displayedItem.Init(baseOffset + targetOffset);
+            displayedItem.StartItem(baseOffset + targetOffset);
             displayedItem.SetTarget(targetOffset, false);
         }
 
@@ -379,6 +334,6 @@ public class ItemDropper : MonoBehaviour
             return;
         }
 
-        m_displayedItems.At(m_selectedItemIndex).Item.DropItem();
+        m_displayedItems.At(m_selectedItemIndex).DropItem();
     }
 }

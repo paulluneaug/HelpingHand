@@ -9,6 +9,7 @@ public class DroppableHandProp : DroppableItem
 
     public override void DropItem()
     {
-        throw new System.NotImplementedException();
+        ActivateModel();
+        GameManager.Instance.GetPuppet().HoldObjectInHand(this);
     }
 }
