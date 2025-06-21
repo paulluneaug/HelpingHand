@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID ACHIEVEMENT_PLAY = 530013535U;
         static const AkUniqueID ARROWBUTTONCLICK_PLAY = 2803013081U;
+        static const AkUniqueID BUENDIA_PLAY = 343639240U;
         static const AkUniqueID BUTTONCLICK_PLAY = 2553422748U;
         static const AkUniqueID BUTTONPOINTERDOWN_PLAY = 588833345U;
         static const AkUniqueID BUTTONPOINTERDOWNDESACTIVATE_PLAY = 82125100U;
@@ -25,6 +26,7 @@ namespace AK
         static const AkUniqueID CURTAINMAX_PLAY = 3445812898U;
         static const AkUniqueID CURTAINMIN_PLAY = 3264562480U;
         static const AkUniqueID DRAGONDUNGEONAMB_PLAY = 1884592839U;
+        static const AkUniqueID FROG_PLAY = 2682153788U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_PLAY = 1520116072U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_STOP = 3856209626U;
         static const AkUniqueID GEARLOOP_CLICKY_MEDPITCH_PLAY = 432513484U;
@@ -64,9 +66,13 @@ namespace AK
         static const AkUniqueID POTENTIOMETERMAX_PLAY = 710761403U;
         static const AkUniqueID POTENTIOMETERMIN_DESACTIVATE_PLAY = 2710208311U;
         static const AkUniqueID POTENTIOMETERMIN_PLAY = 581402781U;
+        static const AkUniqueID RICKROLL_PLAY = 2059907074U;
         static const AkUniqueID ROTARYENCODER_DESACTIVATE_PLAY = 1971551941U;
         static const AkUniqueID ROTARYENCODER_LEFT_PLAY = 2135411543U;
         static const AkUniqueID ROTARYENCODER_RIGHT_PLAY = 643908294U;
+        static const AkUniqueID SOUND1_PLAY = 2143040304U;
+        static const AkUniqueID SOUND2_PLAY = 1790927701U;
+        static const AkUniqueID SOUND3_PLAY = 2960913830U;
         static const AkUniqueID SPOTLIGHT_OFF_PLAY = 1074187710U;
         static const AkUniqueID SPOTLIGHT_ON_PLAY = 1206761850U;
         static const AkUniqueID STOP_CURTAINFADEOUT = 819184552U;
@@ -371,55 +377,6 @@ namespace AK
 
     namespace SWITCHES
     {
-        namespace DIALLIEU
-        {
-            static const AkUniqueID GROUP = 2112814044U;
-
-            namespace SWITCH
-            {
-                static const AkUniqueID CHATEAU = 4134473986U;
-                static const AkUniqueID JARDIN = 103162457U;
-            } // namespace SWITCH
-        } // namespace DIALLIEU
-
-        namespace DIALOBJECT
-        {
-            static const AkUniqueID GROUP = 3815437198U;
-
-            namespace SWITCH
-            {
-                static const AkUniqueID CAROTTE = 1668622101U;
-                static const AkUniqueID EPEE = 766317640U;
-                static const AkUniqueID MARTEAU = 3932397148U;
-            } // namespace SWITCH
-        } // namespace DIALOBJECT
-
-        namespace DIALOGUECUE
-        {
-            static const AkUniqueID GROUP = 376468136U;
-
-            namespace SWITCH
-            {
-                static const AkUniqueID D_01 = 3311727983U;
-                static const AkUniqueID D_02 = 3311727980U;
-                static const AkUniqueID D_03 = 3311727981U;
-                static const AkUniqueID D_04 = 3311727978U;
-            } // namespace SWITCH
-        } // namespace DIALOGUECUE
-
-        namespace JINGLESWITCH
-        {
-            static const AkUniqueID GROUP = 1774320658U;
-
-            namespace SWITCH
-            {
-                static const AkUniqueID FUNKY = 1900220284U;
-                static const AkUniqueID HEROIC = 1630613029U;
-                static const AkUniqueID HORROR = 1040437717U;
-                static const AkUniqueID SAD = 443572635U;
-            } // namespace SWITCH
-        } // namespace JINGLESWITCH
-
         namespace LOCOMOTION_TYPE
         {
             static const AkUniqueID GROUP = 748991833U;
