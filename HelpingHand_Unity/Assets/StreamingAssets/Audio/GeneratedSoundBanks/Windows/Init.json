@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{103E58EE-414F-CB08-FAD3-7F58E68F2C9A}",
+    "Hash": "{6124D000-5968-EBC5-79AF-769FF7D20D29}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -149,7 +149,7 @@
       "Name": "VoiceBus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\VoiceBus",
       "GUID": "{885A9AFA-38F3-428E-9F93-414DA2023D0C}",
-      "Color": "10",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -206,7 +206,8 @@
       "Id": "3803850708",
       "Name": "SfxBus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SfxBus",
-      "GUID": "{2A04E057-5A03-4B6D-A72F-4641264E8BCB}"
+      "GUID": "{2A04E057-5A03-4B6D-A72F-4641264E8BCB}",
+      "Color": "24"
      }
     ],
     "AuxBusses": [
@@ -366,6 +367,38 @@
      }
     ],
     "StateGroups": [
+     {
+      "Id": "626838023",
+      "Name": "Succes",
+      "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Succes\\Succes",
+      "GUID": "{C5134087-59AE-4BEE-B8B9-7C7033DE29E8}",
+      "Color": "19",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Succes\\Succes\\None",
+        "GUID": "{FDE4A891-A786-43EE-A968-C4256847955F}",
+        "Color": "19"
+       }
+      ]
+     },
+     {
+      "Id": "646348293",
+      "Name": "Interruption_Succes",
+      "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Interruptions\\Interruption_Succes",
+      "GUID": "{AED8B56F-DDD9-4A88-9BA5-0006890B5D4F}",
+      "Color": "9",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Interruptions\\Interruption_Succes\\None",
+        "GUID": "{1777709F-F14A-46D0-8C56-8AECAC7EF765}",
+        "Color": "9"
+       }
+      ]
+     },
      {
       "Id": "669047086",
       "Name": "Onboarding_3_Spots",
@@ -848,12 +881,6 @@
       "GUID": "{49A19883-63E6-428D-BBDB-602040BC333D}",
       "States": [
        {
-        "Id": "645448998",
-        "Name": "Third_Theme",
-        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Third_Theme",
-        "GUID": "{4D7ABDF6-CCC1-4739-A866-BDE6A358D79C}"
-       },
-       {
         "Id": "748895195",
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\None",
@@ -905,13 +932,29 @@
         "Id": "3591643255",
         "Name": "Suspense_Theme",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Suspense_Theme",
-        "GUID": "{ED4DD2EA-557B-4CBC-89A9-74CC2B86422A}"
+        "GUID": "{4D7ABDF6-CCC1-4739-A866-BDE6A358D79C}"
        },
        {
         "Id": "3604647259",
         "Name": "MainMenu",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MainMenu",
         "GUID": "{C7C23DE9-EE37-44F9-BDF3-7664A0DAB82D}"
+       }
+      ]
+     },
+     {
+      "Id": "1049582392",
+      "Name": "Fin",
+      "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Gameplay\\Fin",
+      "GUID": "{8EEBEAC7-6C59-459F-A429-39789935D93E}",
+      "Color": "25",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Gameplay\\Fin\\None",
+        "GUID": "{F4C33BFE-8468-42C4-9436-EBC6BC06FA8C}",
+        "Color": "25"
        }
       ]
      },
@@ -997,6 +1040,22 @@
         "Name": "_212",
         "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Interruptions\\Interruption_Curtain\\_212",
         "GUID": "{1B51B024-3E02-4C67-BAA5-CF505B8F0BAA}",
+        "Color": "9"
+       }
+      ]
+     },
+     {
+      "Id": "1869134688",
+      "Name": "Interruption_Roue",
+      "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Interruptions\\Interruption_Roue",
+      "GUID": "{0A6F836F-540A-4ED9-BB80-604385A4894D}",
+      "Color": "9",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Interruptions\\Interruption_Roue\\None",
+        "GUID": "{14383B21-6AAD-4D80-B19E-D502E9E12A35}",
         "Color": "9"
        }
       ]
@@ -1111,6 +1170,22 @@
         "Name": "Sleep_02",
         "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Gameplay\\Combat\\Sleep_02",
         "GUID": "{01E16DB5-C163-453D-A069-D67D43AE7BDF}",
+        "Color": "25"
+       }
+      ]
+     },
+     {
+      "Id": "2995846792",
+      "Name": "Equipement",
+      "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Gameplay\\Equipement",
+      "GUID": "{9733AD7B-2896-4B24-9F0D-C6B3DF55378A}",
+      "Color": "25",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Dialogue_States\\Gameplay\\Equipement\\None",
+        "GUID": "{C11BBEA7-6724-47B3-A05A-0D695D06C20A}",
         "Color": "25"
        }
       ]
@@ -1640,6 +1715,6 @@
     ]
    }
   ],
-  "FileHash": "{6B18A5F9-8BEC-2284-9FAF-7A2CD207AF8B}"
+  "FileHash": "{BF3553E1-A2BD-58DB-BF96-CB0BC904E5C8}"
  }
 }
