@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
+    public SimonManager SimonManager => m_simonManager;
 
     public InputAction SkipDialogueInput => m_skipDialogueInput.action;
 
@@ -38,6 +39,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Canvas Manager")]
     [SerializeField] private CanvasManager m_canvasManager;
+
+    [Title("Simon Manager")]
+    [SerializeField] private SimonManager m_simonManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
