@@ -484,6 +484,9 @@ namespace AK
                 static const AkUniqueID SAD_THEME = 3255068793U;
                 static const AkUniqueID SUSPENSE_THEME = 3591643255U;
                 static const AkUniqueID UNBOARDING = 3056272968U;
+                static const AkUniqueID UNBOARDING_2 = 2754831415U;
+                static const AkUniqueID UNBOARDING_3 = 2754831414U;
+                static const AkUniqueID UNBOARDING_4 = 2754831409U;
                 static const AkUniqueID VICTORY = 2716678721U;
             } // namespace STATE
         } // namespace MUSICSTATE
