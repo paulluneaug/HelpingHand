@@ -64,6 +64,40 @@ public class ArduinoConnectorManager
         m_arduinoConnector.Send(messageBuffer);
     }
 
+    public void SendSimonSequence(SimonSequence simonSequence)
+    {
+        if (!m_enableArduinoConnection)
+        {
+            return;
+        }
+
+        int sequenceLength = simonSequence.Sequence.Length;
+
+        if (sequenceLength == 0)
+        {
+            return;
+        }
+
+        int dataOffset = 2; // Header + size
+
+        int bufferSize = dataOffset + sequenceLength / 4 + sequenceLength % 4 != 0 ? 1 : 0;
+
+        Span<byte> messageBuffer = stackalloc byte[bufferSize];
+        messageBuffer.Fill(0);
+
+        messageBuffer[0] = SIMON_SEQUENCE_HEADER;
+        messageBuffer[1] = (byte)sequenceLength;
+
+        for (int sequenceIndex = 0; sequenceIndex < sequenceLength; sequenceIndex++)
+        {
+            int byteIndex = dataOffset + sequenceIndex / 4;
+            int byteOffset = (sequenceIndex % 4) * 2;
+            messageBuffer[byteIndex] |= (byte)((byte)simonSequence.Sequence[sequenceIndex] << byteOffset);
+        }
+
+        m_arduinoConnector.Send(messageBuffer);
+    }
+
     private void OnArduinoMessageRecieved(byte[] buffer, int recievedBytesCount)
     {
         for (int i = 0; i < recievedBytesCount; i++)
