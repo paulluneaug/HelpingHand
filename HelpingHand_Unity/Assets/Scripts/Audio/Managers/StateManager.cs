@@ -19,12 +19,16 @@ public enum MusicState
 {
     None,
     MainMenu,
-    GameplayFirstSection,
-    GameplaySecondSection,
-    GameplayThirdSection,
     PauseMenu,
     LevelWin,
-    LevelLose
+    LevelLose,
+    Onboarding_1,
+    Onboarding_2,
+    Onboarding_3,
+    BattleTheme,
+    SadTheme,
+    SuspenseTheme,
+    HorribleMusicTheme
 }
 #endregion
 
@@ -45,13 +49,20 @@ public class StateManager : MonoBehaviour
     #region Music States
     [FoldoutGroup("Music States")]
     [InfoBox("➔<b>SetMusicState(MusicState.MainMenu)</b>", InfoMessageType.None)]
-    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Gameplay1stSection;
-    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Gameplay2ndSection;
-    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Gameplay3rdSection;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Unboarding_1;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Unboarding_2;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Unboarding_3;
 
     [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_MainMenu;
-    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Level_Lose;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_LevelLose;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_LevelWin;
     [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_None;
+
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_BattleTheme;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_SadTheme;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_SuspenseTheme;
+
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_HorribleMusicTheme;
     [Disable][SerializeField] public MusicState CurrentMusicState;
     #endregion
 
@@ -86,39 +97,62 @@ public class StateManager : MonoBehaviour
         CurrentGameState = GameState; //On met à jour l'état actuel
     }
 
-    public void SetMusicState(MusicState MusicState) // Change l'état des states liés à la musique
+    public void SetMusicState(MusicState MusicState)
     {
         if (MusicState == CurrentMusicState)
-        {
-            //Debug.Log("MusicState is already" + MusicState + "."); //On ne change pas l'état si c'est déjà le bon
             return;
-        }
 
         switch (MusicState)
         {
-            default: //Cas pas défaut = mainmenu
             case MusicState.MainMenu:
                 m_music_MainMenu.SetValue();
                 break;
-            case MusicState.GameplayFirstSection:
-                m_music_Gameplay1stSection.SetValue();
+
+            case MusicState.LevelWin:
+                m_music_LevelWin.SetValue(); // À remplacer si tu as un m_music_LevelWin
                 break;
+
             case MusicState.LevelLose:
-                m_music_Level_Lose.SetValue();
+                m_music_LevelLose.SetValue();
                 break;
+
+            case MusicState.Onboarding_1:
+                m_music_Unboarding_1.SetValue();
+                break;
+
+            case MusicState.Onboarding_2:
+                m_music_Unboarding_2.SetValue();
+                break;
+
+            case MusicState.Onboarding_3:
+                m_music_Unboarding_3.SetValue();
+                break;
+
+            case MusicState.BattleTheme:
+                m_music_BattleTheme.SetValue();
+                break;
+
+            case MusicState.SadTheme:
+                m_music_SadTheme.SetValue();
+                break;
+
+            case MusicState.SuspenseTheme:
+                m_music_SuspenseTheme.SetValue();
+                break;
+
+            case MusicState.HorribleMusicTheme:
+                m_music_HorribleMusicTheme.SetValue();
+                break;
+
             case MusicState.None:
+            default:
                 m_music_None.SetValue();
                 break;
-            case MusicState.GameplaySecondSection:
-                break;
-            case MusicState.GameplayThirdSection:
-                break;
-            case MusicState.PauseMenu:
-                break;
-            case MusicState.LevelWin:
-                break;
         }
-        CurrentMusicState = MusicState; //On met à jour l'état actuel
-        //Debug.Log("New Wwise GameState: " + MusicState + ".");
+
+        CurrentMusicState = MusicState;
     }
+
+
+    //Debug.Log("New Wwise GameState: " + MusicState + ".");
 }

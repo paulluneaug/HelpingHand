@@ -8,7 +8,9 @@ public class StartupScenesReferences : ScriptableSingleton<StartupScenesReferenc
 {
     public SceneReference EntryScene => m_entryScene;
     public SceneReference GloabalObjectsScene => m_gloabalObjectsScene;
+    public SceneReference VirtualControllerScene => m_virtualControllerScene;
 
     [SerializeField] private SceneReference m_entryScene;
     [SerializeField] private SceneReference m_gloabalObjectsScene;
+    [SerializeField] private SceneReference m_virtualControllerScene;
 }

@@ -36,7 +36,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     private DialogueNode m_currentDialogue;
     private string m_currentDialogueTitle;
     private CancellationTokenSource m_dialogueKillCTS;
-    private CancellationTokenSource m_currentCts;
+    private CancellationTokenSource m_currentCTS;
 
     private bool m_panelOpen = false;
 
@@ -52,7 +52,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         OpenPanelIfNeeded();
     }
 
-    public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationTokenSource graphStopCTS, CancellationTokenSource killCTS)
+    public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationTokenSource stopCTS, CancellationTokenSource killCTS)
     {
         if (!string.IsNullOrEmpty(m_currentDialogueTitle) || string.IsNullOrEmpty(dialogueTitle) || string.IsNullOrEmpty(content))
         {
@@ -64,10 +64,10 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         m_currentDialogueTitle = dialogueTitle;
 
         m_dialogueKillCTS = killCTS;
-        m_currentCts?.Dispose();
-        m_currentCts = CancellationTokenSource.CreateLinkedTokenSource(m_dialogueKillCTS.Token, graphStopCTS.Token);
+        m_currentCTS?.Dispose();
+        m_currentCTS = CancellationTokenSource.CreateLinkedTokenSource(m_dialogueKillCTS.Token, stopCTS.Token);
         
-        DebugLog($"Play \"{content.Truncate(30)}\"");
+        DebugLog($"Showing content: \"{content.Truncate(30)}\"");
         
         m_typewriter.onTextShowed.AddListener(OnTextShowed);
         bool isTextShowed = false;
@@ -75,14 +75,14 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         
         OnDialogueStarted?.Invoke();
 
-        if (await UniTask.WaitUntil(() => isTextShowed, PlayerLoopTiming.Update, m_currentCts.Token).SuppressCancellationThrow())
+        if (await UniTask.WaitUntil(() => isTextShowed, PlayerLoopTiming.Update, m_currentCTS.Token).SuppressCancellationThrow())
         {
             InterruptDialogue();
             if (m_dialogueKillCTS.IsCancellationRequested)
             {
-                // We have dialogue kill
+                // It is dialogue kill
                 DebugLog($"Killed!");
-                killCTS.Cancel();
+                // m_dialogueKillCTS.Cancel(); // ?????
             }
             else
             {
@@ -106,17 +106,22 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
 
         void InterruptDialogue()
         {
-            DebugLog($"Playing dialogue interrupted");
+            DebugLog($"Interrupting current dialogue ");
             m_typewriter.onTextShowed.RemoveAllListeners();
             m_typewriter.StopShowingText();
             m_currentDialogueTitle = null;
             OnDialogueInterrupted?.Invoke();
         }
     }
+
+    public void SetDialogueKillCTS(CancellationTokenSource killCTS)
+    {
+        m_dialogueKillCTS = killCTS;
+    }
     
     public void KillCurrentDialogue()
     {
-        m_dialogueKillCTS.Cancel();
+        m_dialogueKillCTS?.Cancel();
     }
 
     public void ShowAllRemainingText()

@@ -1,9 +1,12 @@
+using Sirenix.OdinInspector;
+
 using UnityEngine;
 
+[RequireComponent(typeof(VirtualIndicator))]
 public class SimpleIndicatorController : MonoBehaviour
 {
-    [SerializeField] private VirtualIndicator m_indicator;
-    [SerializeField] private VirtualInput<bool> m_controllingInput;
+    [SerializeField][Required] private VirtualIndicator m_indicator;
+    [SerializeField][Required] private VirtualInput<bool> m_controllingInput;
 
     [SerializeField] private bool m_inverse = false;
 
@@ -25,6 +28,11 @@ public class SimpleIndicatorController : MonoBehaviour
         m_controllingInput.OnActivate -= OnInputActivate;
 
         m_controllingInput.OnDeactivate -= OnInputDeactivate;
+    }
+
+    private void Awake()
+    {
+        m_indicator = GetComponent<VirtualIndicator>();
     }
 
     private void Start()

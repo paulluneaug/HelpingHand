@@ -48,6 +48,8 @@ namespace Events
 
         public virtual void Raise()
         {
+            RaiseEvent();
+            
             if (!IsActive)
             {
                 return;
@@ -62,8 +64,6 @@ namespace Events
             {
                 m_actions[i]();
             }
-
-            RaiseEvent();
         }
 
         public void AddListener(IGameEventListener listener)
@@ -112,6 +112,8 @@ namespace Events
 
         public void Raise(T value)
         {
+            Raise();
+            
             if (!IsActive)
             {
                 return;
@@ -126,8 +128,6 @@ namespace Events
             {
                 m_typedActions[i](value);
             }
-
-            Raise();
         }
 
         public void AddListener(IGameEventListener<T> listener)

@@ -136,6 +136,11 @@
 				</Conversion>
 				<Conversion Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}">
 					<PropertyList>
+						<Property Name="AllowChannelUpmix" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Channels" Type="int32">
 							<ValueList>
 								<Value Platform="Windows">0</Value>
@@ -169,10 +174,18 @@
 					</PropertyList>
 					<ConversionPluginInfoList>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{CDB6579E-6489-47C2-8248-1D99977B97CF}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
+							<ConversionPlugin Name="" ID="{CDB6579E-6489-47C2-8248-1D99977B97CF}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="100"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Mac">
-							<ConversionPlugin Name="" ID="{6D944DEC-84A0-4364-9B03-DEAF063CEC9A}" PluginName="WEM Opus" CompanyID="0" PluginID="20"/>
+							<ConversionPlugin Name="" ID="{6D944DEC-84A0-4364-9B03-DEAF063CEC9A}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
+								<PropertyList>
+									<Property Name="Quality" Type="int32" Value="100"/>
+								</PropertyList>
+							</ConversionPlugin>
 						</ConversionPluginInfo>
 					</ConversionPluginInfoList>
 				</Conversion>

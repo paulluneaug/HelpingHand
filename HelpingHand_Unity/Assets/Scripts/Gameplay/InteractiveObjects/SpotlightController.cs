@@ -69,6 +69,11 @@ public class SpotlightController : MonoBehaviour
 
     private void UpdateManualMovement()
     {
+        if (!m_manualInput.IsActive)
+        {
+            return;
+        }
+        
         Vector2 input = m_manualInput.Value.normalized;
         float angle = m_manualRotationSpeed * Time.deltaTime;
 

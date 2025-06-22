@@ -470,7 +470,7 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
-							<ObjectRef Name="Attenuation_20m" ID="{D4611497-0313-43A7-B599-AED0829A8BB2}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+							<ObjectRef Name="Attenuation_100m" ID="{77B02558-D2ED-4774-9DA5-22E0BC8203B6}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
 						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="MovableObjects" ID="{51897EA3-0262-4290-8514-0ED0E17EF86F}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -937,7 +937,30 @@
 							</ReferenceList>
 						</RandomSequenceContainer>
 					</ChildrenList>
+					<PositioningInfo>
+						<Position Name="" ID="{C85F2907-58BA-4E5C-81D9-8140A915DB2D}"/>
+					</PositioningInfo>
 				</ActorMixer>
+				<RandomSequenceContainer Name="Sun" ID="{FA613F6F-1EAF-4F29-ABB1-F83CC88CEFFD}" ShortID="618653410">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Moon" ID="{7F7662E8-174D-4A2D-B3B6-C9384211BDF0}" ShortID="468976382">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

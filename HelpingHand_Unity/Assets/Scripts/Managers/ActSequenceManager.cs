@@ -66,6 +66,16 @@ public class ActSequenceManager
 
     }
 
+    public void StopSequence()
+    {
+        if (m_currentAct != null)
+        {
+            FinishCurrentAct();
+        }
+        Initialize();
+        m_currentState = ActSequenceManagerState.NotStarted;
+    }
+
     public void UpdateSequence(float deltaTime)
     {
         if (m_mode == ActSequenceManagerMode.Single)
