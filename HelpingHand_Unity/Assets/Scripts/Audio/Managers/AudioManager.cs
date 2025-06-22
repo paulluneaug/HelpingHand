@@ -9,8 +9,12 @@ using UnityEngine;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Singletons;
 
+using static RTPCManager;
+
 using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
+using UnityEngine.SceneManagement;
+using System.Text;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -23,47 +27,107 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     public EventManager EventManager;
     public SoundbankManager SoundbankManager;
 
+    public UnityEngine.SceneManagement.Scene MainMenu;
+    public UnityEngine.SceneManagement.Scene Gameplay;
+
     [SerializeField] private InputAudioEventControllersManager m_inputAudioEventsManager;
     #endregion
-    
+
     public override void Initialize()
     {
-        AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
-        RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
+        _ = AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
+        //RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
         StateManager.SetGameState(GameState.None); //On initialise l'état du jeu à None (reset)
         StateManager.SetMusicState(MusicState.None); //On initialise l'état de la musique à None (reset)
         m_inputAudioEventsManager.Init();
     }
 
-    protected override void Start()
+    #region Scene change
+    private void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "EntryScene":
+                StateManager.SetGameState(GameState.MainMenu);
+                StateManager.SetMusicState(MusicState.MainMenu);
+                _ = EventManager.MainMusic_Play.Post(gameObject);
+                DebugLog("EntryScene - MainMenu music playing");
+                break;
 
+            case "0_Onboarding":
+                StateManager.SetGameState(GameState.Gameplay);
+                StateManager.SetMusicState(MusicState.Onboarding_1);
+                Debug.Log("Switched music to Onboarding 1st theme");
+                break;
+
+            default:
+               // StateManager.SetGameState(GameState.None);
+               // StateManager.SetMusicState(MusicState.None);
+                break;
+        }
+    }
+    #endregion
+
+    private void Awake()
+    {
         SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-
-        StateManager.SetGameState(GameState.MainMenu); //On initialise l'état du jeu à MainMenu
-        StateManager.SetMusicState(MusicState.MainMenu); //On initialise l'état de la musique à MainMenu
-
-        RTPCManager.FirstMusic_FirstLayer.SetValue(null, 0);
-        RTPCManager.FirstMusic_SecondLayer.SetValue(null, 0);
-
-        //On joue la musique principale dès que la scène se lance
-         //EventManager.MainMusic_Play.Post(gameObject);
-
-        // Ambiances de pièces qui se jouent dès le début
-        EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
-        EventManager.Theater_Ambience_Play.Post(gameObject);
     }
 
+    protected override void Start()
+    {
+       // SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
+
+        //On joue la musique principale dès que la scène se lance
+
+        // Ambiances de pièces qui se jouent dès le début
+        _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
+        _ = EventManager.Theater_Ambience_Play.Post(gameObject);
+    }
+
+ 
     public override void OnDestroy()
     {
         base.OnDestroy();
-        AkUnitySoundEngine.UnregisterGameObj(gameObject);
+        _ = AkUnitySoundEngine.UnregisterGameObj(gameObject);
 
         m_inputAudioEventsManager.Dispose();
     }
 
     #region Functions
+
+    public void SetVolume(BusRtpcType group, float value)
+    {
+        //float wwiseVolume = Mathf.Clamp(value, 0f, 100f);
+        switch (group)
+        {
+            case BusRtpcType.Master:
+                RTPCManager.RTPC_MasterVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.Music:
+                RTPCManager.RTPC_MusicVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.SFX:
+                RTPCManager.RTPC_SFXVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.Voice:
+                RTPCManager.RTPC_VoiceVolume.SetValue(null, value);
+                break;
+            case BusRtpcType.UI:
+                break;
+            default:
+                break;
+        }
+    }
+
     #region PostWwise Events
 
     public async UniTask PostWwiseEventAsync(WwiseEvent wwiseEvent, GameObject targetObject = null, CancellationToken cancellationToken = default)
@@ -99,34 +163,47 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     #region Play UI Sounds
     public void PlayTypewriter(GameObject targetObject)
     {
-        EventManager.Typewriter_Play.Post(targetObject);
+        _ = EventManager.Typewriter_Play.Post(targetObject);
     }
 
     public void PlayButton(GameObject targetObject)
     {
-        EventManager.ButtonOnPointerDown_Play.Post(targetObject);
+        _ = EventManager.ButtonOnPointerDown_Play.Post(targetObject);
     }
 
     public void ToggleSound(bool isOn, GameObject targetObject)
     {
         if (isOn)
         {
-            EventManager.Toggle_Play.Post(targetObject);
+            _ = EventManager.Toggle_Play.Post(targetObject);
         }
         else
         {
-            EventManager.Untoggle_Play.Post(targetObject);
+            _ = EventManager.Untoggle_Play.Post(targetObject);
         }
     }
     #endregion
-
-    public async UniTask PlayDialogueWithStatesAsync(string repetition, string etat, string objet, string narra, GameObject targetObject = null, CancellationToken cancellationToken = default)
+    // Méthode qui joue un Dialogue Event avec série de string qui représentent le nom des States, gameObject sur lequel les sons sont joués, token d'annulation
+    public async UniTask PlayDialogueWithStatesAsync(
+        string onboardingIntro,
+        string onboardingCurtain,
+        string onboardingSpots,
+        string interruptionCurtain,
+        string interruptionSpots,
+        string roueState,
+        string combatState,
+        string interruptionRoue,
+        string interruptionSucces,
+        string equipementState,
+        string finState,
+        string successState,
+        GameObject targetObject = null,
+        CancellationToken cancellationToken = default)
     {
-        DebugLog($"PlayDialogueWithStatesAsync {repetition}, {etat}, {objet}, {narra}");
+        //DebugLog($"PlayDialogueWithStatesAsync: {onboardingIntro}, {onboardingCurtain}, {onboardingSpots}, {interruptionCurtain}, {interruptionSpots}, {roueState}, {combatState}");
 
+        //Récupération de l’ID Wwise de l’event Dialogue_Event -> sensible à la casse
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
-        // Pour référencer le dialogue event : pas possible de faire une variable comme un event classique
-        // Il faut référencer l'ID stocké dans la soundbank
 
         if (dialogueEventId == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
@@ -134,21 +211,74 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             return;
         }
 
-        // Récupération des State IDs depuis les noms
-        uint repetitionID = AkUnitySoundEngine.GetIDFromString(repetition);
-        uint etatID = AkUnitySoundEngine.GetIDFromString(etat);
-        uint objetID = AkUnitySoundEngine.GetIDFromString(objet);
-        uint narraID = AkUnitySoundEngine.GetIDFromString(narra);
-        // TODO ajouter le ton du narrateur
-        //Rajouter des states ici si on en a besoin de + !
+        // uint = ID interne Wwise associé à un string (pas de casse et de lien direct avec Wwise puisque dans ce cas on associe les IDs aux states dans le tableau juste après
+        uint onboardingIntroID = AkUnitySoundEngine.GetIDFromString(onboardingIntro);
+        uint onboardingCurtainID = AkUnitySoundEngine.GetIDFromString(onboardingCurtain);
+        uint onboardingSpotsID = AkUnitySoundEngine.GetIDFromString(onboardingSpots);
 
-        if (repetitionID == 0 || etatID == 0 || objetID == 0)
+        uint interruptionCurtainID = AkUnitySoundEngine.GetIDFromString(interruptionCurtain);
+        uint interruptionSpotsID = AkUnitySoundEngine.GetIDFromString(interruptionSpots);
+        uint interruptionRoueID = AkUnitySoundEngine.GetIDFromString(interruptionRoue);
+        uint interruptionSuccesID = AkUnitySoundEngine.GetIDFromString(interruptionSucces);
+
+        uint equipementID = AkUnitySoundEngine.GetIDFromString(equipementState);
+        uint roueStateID = AkUnitySoundEngine.GetIDFromString(roueState);
+        uint combatStateID = AkUnitySoundEngine.GetIDFromString(combatState);
+        uint finStateID = AkUnitySoundEngine.GetIDFromString(finState);
+
+        uint SuccesID = AkUnitySoundEngine.GetIDFromString(successState);
+
+        //Tableau d'argument  qui contient la liste des ID qui correspondent à chaque valeur (State) de monDialogue Event -> même ordre que dans Wwise!
+        uint[] args = new uint[]
         {
-            DebugLog($"Échec de conversion des states: {repetition}, {etat}, {objet}, {narra}", LogType.Error);
-            return;
+        onboardingIntroID,
+        onboardingCurtainID,
+        onboardingSpotsID,
+
+        interruptionCurtainID,
+        interruptionSpotsID,
+        interruptionRoueID,
+        interruptionSuccesID,
+
+        equipementID,
+        roueStateID,
+        combatStateID,
+        finStateID,
+
+        SuccesID,
+        };
+
+        #region Debug
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("Dialogue State Argument Wwise :");
+
+        void AppendIfNotIgnore(string label, string value, uint id)
+        {
+            if (!string.Equals(value, "IGNORE", StringComparison.OrdinalIgnoreCase))
+            {
+                sb.Append($" {label}: {value}");
+            }
         }
 
-        uint[] args = new uint[] { etatID, objetID, repetitionID, narraID };
+        AppendIfNotIgnore("Onboarding Intro", onboardingIntro, onboardingIntroID);
+        AppendIfNotIgnore("Onboarding Curtain", onboardingCurtain, onboardingCurtainID);
+        AppendIfNotIgnore("Onboarding Spots", onboardingSpots, onboardingSpotsID);
+
+        AppendIfNotIgnore("Interruption Curtain", interruptionCurtain, interruptionCurtainID);
+        AppendIfNotIgnore("Interruption Spots", interruptionSpots, interruptionSpotsID);
+        AppendIfNotIgnore("Interruption Roue", interruptionRoue, interruptionRoueID);
+        AppendIfNotIgnore("Interruption Succès", interruptionSucces, interruptionSuccesID);
+
+        AppendIfNotIgnore("Équipement", equipementState, equipementID);
+        AppendIfNotIgnore("Roue", roueState, roueStateID);
+        AppendIfNotIgnore("Combat", combatState, combatStateID);
+        AppendIfNotIgnore("Fin", finState, finStateID);
+        AppendIfNotIgnore("Succès", successState, SuccesID);
+
+        Debug.Log(sb.ToString());
+
+
+        #endregion
 
         bool isEnded = false;
         uint sequenceID = AkUnitySoundEngine.DynamicSequenceOpen(gameObject, (uint)AkCallbackType.AK_EndOfDynamicSequenceItem, (inCookie, inType, inInfo) =>
@@ -162,24 +292,24 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         if (nodeID == AkUnitySoundEngine.AK_INVALID_UNIQUE_ID)
         {
             DebugLog($"Aucun dialogue node trouvé pour ces states.", LogType.Error);
-            AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             return;
         }
 
-        playlist.Enqueue(nodeID);
-        AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
-        AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
+        _ = playlist.Enqueue(nodeID);
+        _ = AkUnitySoundEngine.DynamicSequenceUnlockPlaylist(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequencePlay(sequenceID);
 
         if (await UniTask.WaitUntil(() => isEnded, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow())
         {
             DebugLog($"PlayDialogueWithStatesAsync interrupted");
-            AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
-            AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceStop(sequenceID);
+            _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
             throw new OperationCanceledException();
         }
 
-        AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
+        _ = AkUnitySoundEngine.DynamicSequenceClose(sequenceID);
         DebugLog($"PlayDialogueWithStatesAsync end");
     }
 
@@ -198,7 +328,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             return $"[{Time.frameCount}] <color=green>[{nameof(AudioManager)}]</color>";
         }
-        
+
         switch (logType)
         {
             case LogType.Error:
@@ -209,6 +339,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
                 break;
             case LogType.Log:
                 Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Assert:
+                break;
+            case LogType.Exception:
+                break;
+            default:
                 break;
         }
     }

@@ -33,6 +33,7 @@ public class DialogueNode : InterruptableNode
     public ObservableField<bool> HasBeenRead => m_hasBeenRead;
     public int ReadCount => m_readCount;
 
+    [Space]
     [Input]
     [SerializeField]
     private DialogueFlow m_in;
@@ -112,30 +113,29 @@ public class DialogueNode : InterruptableNode
     protected override string Infos => "Display dialogue content with 4 variations. Re-execute from the beginings if interrupted.";
 	// Cache
     [NonSerialized] private DialogueNodeState m_currentState;
-    [NonSerialized] private CancellationTokenSource m_skipAudioCTS;
-    [NonSerialized] private CancellationTokenSource m_skipWaitingCTS;
+    [NonSerialized] private CancellationTokenSource m_audioSkipCTS;
+    [NonSerialized] private CancellationTokenSource m_audioLinkedCTS;
+    [NonSerialized] private CancellationTokenSource m_waitingSkipCTS;
+    [NonSerialized] private CancellationTokenSource m_waitingLinkedCTS;
 
     [NonSerialized] private UniTask m_displayTask;
     [NonSerialized] private UniTask m_audioTask;
 
     [NonSerialized] private bool m_skipPressed;
 
-    [NonSerialized] private bool m_hasBeenKilled;
-    
     public override void Initialize()
     {
+        base.Initialize();
         m_hasBeenRead.Value = false;
         m_readCount = 0; // Quid si on relance plusieurs fois le même graph, le compteur est reset
-        m_hasBeenKilled = false;
-        m_hasBeenInterrupted = false;
     }
 
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
+        // TODO gérer m_hasBeenKilled
         if (m_hasBeenKilled)
         {
             DebugLog($"Has been killed");
-            await UniTask.CompletedTask;
             return;
         }
         
@@ -156,31 +156,35 @@ public class DialogueNode : InterruptableNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
+        await base.ExecuteNode(handler, inPort);
+        if (m_hasBeenKilled)
+        {
+            DebugLog($"Dialogue has already been killed");
+            return;
+        }
+        
         DebugLog($"Play");
         StartDialogueNode();
 
-        CancellationTokenSource[] tokenSources = new CancellationTokenSource[5];
-        int nextSourceIndex = 0;
+        m_audioSkipCTS?.Dispose();
+        m_audioSkipCTS = new CancellationTokenSource();
+        m_audioLinkedCTS?.Dispose();
+        m_audioLinkedCTS = m_audioSkipCTS.Token.LinkWith(m_killCTS.Token, handler.StopToken);
+        m_waitingSkipCTS?.Dispose();
+        m_waitingSkipCTS = new CancellationTokenSource();
+        m_waitingLinkedCTS?.Dispose();
+        m_waitingLinkedCTS = m_waitingSkipCTS.Token.LinkWith(m_killCTS.Token, handler.StopToken);
 
-        CancellationTokenSource killCTS = new();
-        tokenSources[nextSourceIndex++] = killCTS;
-        
-        (CancellationTokenSource skipAudioCTS, CancellationTokenSource skipAudioLinkedCTS) = GetSkippableTokenSources(handler.StopToken, killCTS.Token);
-        tokenSources[nextSourceIndex++] = skipAudioCTS;
-        tokenSources[nextSourceIndex++] = skipAudioLinkedCTS;
-
-        m_skipAudioCTS = skipAudioCTS;
-
-        m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopSource, killCTS);
+        m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopSource, m_killCTS);
         m_audioTask = m_audioEvent ?
-            MakeSkippable(m_audioEvent.Play(null, skipAudioLinkedCTS.Token), skipAudioCTS, skipAudioLinkedCTS) :
+            MakeSkippable(m_audioEvent.Play(null, m_audioLinkedCTS.Token), m_audioSkipCTS, m_audioLinkedCTS) :
             UniTask.CompletedTask;
 
-        UniTask dialogueTask = UniTask.WhenAll(m_displayTask, m_audioTask).ContinueWith(GetFollowingTask);
+        UniTask task = UniTask.WhenAll(m_displayTask, m_audioTask).ContinueWith(GetWaitingTask);
 
-        DebugLog($"Wait for dialogue end");
+        DebugLog($"Wait for dialogue to end");
 
-        if (await dialogueTask.SuppressCancellationThrow())
+        if (await task.SuppressCancellationThrow())
         {
             // Normalement le dialogue pouvait être interrompu, pas besoin de retester
             // On arrive ici si le dialogue est interrompu au milieu d'une phrase par un autre dialogue
@@ -189,12 +193,18 @@ public class DialogueNode : InterruptableNode
             {
                 DebugLog($"Interrupted by stop/pause");
                 m_hasBeenInterrupted = true;
-                EndDialogueNode(tokenSources);
+                EndDialogueNode();
+            }
+            else if (m_waitingSkipCTS.IsCancellationRequested || m_audioSkipCTS.IsCancellationRequested)
+            {
+                DebugLog("Skipped");
+                EndDialogueNode();
             }
             else
             {
-                DebugLog($"Killed by kill node");
-                EndDialogueNode(tokenSources);
+                Debug.Assert(m_killCTS.IsCancellationRequested);
+                DebugLog($"Killed");
+                EndDialogueNode();
                 // Kill the branch (don't continue the flow)
                 m_hasBeenKilled = true;
             }
@@ -202,29 +212,29 @@ public class DialogueNode : InterruptableNode
             return;
         }
 
+        
+        // We signal the skip token to stop skip tasks from running
+        m_waitingSkipCTS.Cancel();
+        m_audioSkipCTS.Cancel();
+        
         m_hasBeenRead.Value = true;
         m_readCount++;
-        EndDialogueNode(tokenSources);
+        EndDialogueNode();
 
-        UniTask GetFollowingTask()
+        UniTask GetWaitingTask()
         {
+            DebugLog($"Waiting {(GameManager.Instance.GameOptionsManager.DialogueReadMode.Value == DialogueReadMode.Auto ? m_waitTime + "s" : "for next button")} to continue...");
             m_skipPressed = false;
             m_currentState = DialogueNodeState.Waiting;
 
-            (CancellationTokenSource skipWaitingCTS, CancellationTokenSource skipWaitingLinkedCTS) = GetSkippableTokenSources(handler.StopToken, killCTS.Token);
-            tokenSources[nextSourceIndex++] = skipWaitingCTS;
-            tokenSources[nextSourceIndex++] = skipWaitingLinkedCTS;
-
-            m_skipWaitingCTS = skipWaitingCTS;
-
             UniTask followingTask = GameManager.Instance.GameOptionsManager.DialogueReadMode.Value switch
             {
-                DialogueReadMode.Manual => UniTask.WaitUntil(() => m_skipPressed, cancellationToken: skipWaitingLinkedCTS.Token),
-                DialogueReadMode.Auto => UniTask.WaitForSeconds(m_waitTime, m_waitUnscaled, PlayerLoopTiming.Update, skipWaitingLinkedCTS.Token),
+                DialogueReadMode.Manual => UniTask.WaitUntil(() => m_skipPressed, cancellationToken: m_killStopCTS.Token),
+                DialogueReadMode.Auto => UniTask.WaitForSeconds(m_waitTime, m_waitUnscaled, cancellationToken: m_killStopCTS.Token),
                 _ => throw new ArgumentOutOfRangeException(),
             };
 
-            return MakeSkippable(followingTask, skipWaitingCTS, skipWaitingLinkedCTS);
+            return MakeSkippable(followingTask, m_waitingSkipCTS, m_waitingLinkedCTS);
         }
     }
 
@@ -235,9 +245,10 @@ public class DialogueNode : InterruptableNode
         GameManager.Instance.SkipDialogueInput.performed += OnSkipDialogue;
     }
 
-    private void EndDialogueNode(CancellationTokenSource[] usedSources)
+    private void EndDialogueNode()
     {
-        usedSources.ForEach(source => source?.Dispose());
+        DialogueManager.Instance.SetDialogueKillCTS(null);
+        
         if (GameManager.ApplicationIsQuitting)
         {
             return;
@@ -269,11 +280,11 @@ public class DialogueNode : InterruptableNode
                     OnSkipDialogue(context);
                     return;
                 }
-                m_skipAudioCTS.Cancel();
+                m_audioSkipCTS.Cancel();
                 break;
 
             case DialogueNodeState.Waiting:
-                m_skipWaitingCTS.Cancel();
+                m_waitingSkipCTS.Cancel();
                 break;
 
             default:
@@ -281,27 +292,16 @@ public class DialogueNode : InterruptableNode
         }
     }
 
-    private (CancellationTokenSource skipCTS, CancellationTokenSource linkedCTS) GetSkippableTokenSources(CancellationToken stopToken, CancellationToken killToken)
+    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource linkedSkipCTS)
     {
-        CancellationTokenSource skipSource = new ();
-        CancellationTokenSource skipKill = CancellationTokenSource.CreateLinkedTokenSource(killToken, skipSource.Token);
-        return (skipKill, CancellationTokenSource.CreateLinkedTokenSource(skipKill.Token, stopToken));
-    }
+        UniTask skipTask = UniTask.WaitUntilCanceled(linkedSkipCTS.Token);
 
-    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource linkedCTS)
-    {
-        UniTask skipTask = UniTask.WaitUntilCanceled(skipCTS.Token);
-
-        // TODO I don't know why isCancelled is false even though skipCTS is cancelled by a kill node (through the kill CTS)
         (bool isCancelled, int _) = await UniTask.WhenAny(task, skipTask).SuppressCancellationThrow();
 
-        // TODO I had to invert these two
-        
-        if (skipCTS.IsCancellationRequested) // Only the skip+kill token was cancelled
+        if (skipCTS.IsCancellationRequested) // The skip token was cancelled
         {
-            m_hasBeenKilled = true;
-            DebugLog($"Skip / killed");
-            return;
+            DebugLog($"Main task skipped");
+            throw new OperationCanceledException();
         }
         
         if (!isCancelled) // The main task succeeded
@@ -310,8 +310,9 @@ public class DialogueNode : InterruptableNode
             return;
         }
 
-        // The handler's StopToken was cancelled
+        // A token in the task was cancelled (eg. the kill or stop tokens)
         // so we bubble up the cancellation exception
+        DebugLog($"MakeSkippable: Killed or stopped");
         throw new OperationCanceledException();
     }
     
@@ -334,5 +335,15 @@ public class DialogueNode : InterruptableNode
         }
 
         return m_contentNeutral;
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        
+        m_audioSkipCTS?.Dispose();
+        m_audioLinkedCTS?.Dispose();
+        m_waitingSkipCTS?.Dispose();
+        m_waitingLinkedCTS?.Dispose();
     }
 }

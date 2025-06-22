@@ -1,0 +1,22 @@
+public enum OnboardingSpotState
+{
+    IGNORE,
+    Intro_01,
+    Intro_02,
+    Intro_03,
+    Intro_04,
+    Expo_1,
+    Expo_2,
+    No_Inputs_01,
+    No_Inputs_02,
+    Bad_Inputs_11,
+    Bad_Inputs_12,
+    Bad_Inputs_21,
+    Validated_01,
+    Validated_02,
+    Validated_03,
+    Next_01,
+    Next_02,
+    Next_03,
+    Next_04
+}
