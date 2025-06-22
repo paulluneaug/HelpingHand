@@ -1,5 +1,7 @@
 using System;
 
+using Sirenix.OdinInspector;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +12,7 @@ public class VirtualRotaryEncoder : VirtualInput<int>, IPointerDownHandler, IDra
 {
     protected override BaseVariable<int> InputEvent => m_event.Index;
 
-    [SerializeField] private RotaryEncoderInputEvent m_event;
+    [SerializeField][Required] private RotaryEncoderInputEvent m_event;
     [SerializeField] private GameObject m_stepMarkerPrefab;
 
     [SerializeField] private int m_stepCount;

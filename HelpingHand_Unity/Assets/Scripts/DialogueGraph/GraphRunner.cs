@@ -21,6 +21,8 @@ public class GraphRunner : MonoBehaviour
     public event Action OnGraphResumed;
 
     public GraphRunnerHandler Handler => m_graphRunnerHandler;
+    
+    public SimpleGraph Graph => m_graph;
 
     private GraphRunnerHandler m_graphRunnerHandler;
 

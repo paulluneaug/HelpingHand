@@ -34,13 +34,19 @@ public class InterruptWithConditionNode : InterruptableNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        while (true)
+        while (!m_hasBeenKilled)
         {
+            await base.ExecuteNode(handler, inPort);
+            if (m_hasBeenKilled)
+            {
+                break;
+            }
+            
             DebugLog($"Waiting for condition");
 
             OnConditionUpdated();
 
-            UniTask task = UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, handler.StopToken);
+            UniTask task = UniTask.WaitUntil(TestInterruption, PlayerLoopTiming.Update, m_killStopCTS.Token);
 
             if (await task.SuppressCancellationThrow())
             {
@@ -56,6 +62,7 @@ public class InterruptWithConditionNode : InterruptableNode
             // then exit via cancelled out port
             if (await GameManager.Instance.ActSequenceManager.CurrentAct.GraphController.Interrupt(m_condition.Score(), handler))
             {
+                await UniTask.DelayFrame(1); // Needed. There is apparently a 1 frame delay when a token is cancelled, so we need to be sure to interrupt the dialogue BEFORE this continues
                 DebugLog($"Is interrupting. Continuing...");
                 break;
             }

@@ -19,6 +19,9 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
 
     [SerializeField]
     private Light m_light;
+
+    [SerializeField] 
+    private AK.Wwise.Event m_sfx;
     
     [FoldoutGroup("Texts")] 
     [SerializeField]
@@ -91,6 +94,7 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     private void OnAchievementSet(Achievement achievement)
     {
         SetAchievement(achievement).Forget();
+        m_sfx.Post(gameObject);
     }
 
     private async UniTaskVoid SetAchievement(Achievement achievement)

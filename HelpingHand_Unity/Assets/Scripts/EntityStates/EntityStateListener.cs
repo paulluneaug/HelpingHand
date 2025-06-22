@@ -7,6 +7,7 @@ public class EntityStateListener : MonoBehaviour
 {
     [SerializeField]
     [PropertySpace(0, 4)]
+    [Required]
     private EntityState m_state;
 
     [SerializeField]

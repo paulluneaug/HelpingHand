@@ -1,0 +1,26 @@
+public enum OnboardingCurtainState
+{
+    IGNORE,
+    Intro_01,
+    Intro_02,
+    Expo_1,
+    Expo_2,
+    Expo_3,
+    No_Inputs_01,
+    No_Inputs_02,
+    No_Inputs_03,
+    No_Inputs_04,
+    Bad_Inputs_1,
+    Bad_Inputs_21,
+    Bad_Inputs_22,
+    Bad_Inputs_31,
+    Good_Inputs_01,
+    Good_Inputs_02,
+    Good_Inputs_03,
+    Validated_01,
+    Validated_02,
+    Validated_03,
+    Next_01,
+    Next_21,
+    Next_22
+}

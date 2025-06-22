@@ -9,9 +9,26 @@
 			<ChildrenList>
 				<SwitchContainer Name="Foosteps" ID="{47C3CEE7-C54A-4EB1-95A0-E877C301AB3B}" ShortID="760917271">
 					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+						<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
 						<Property Name="SwitchBehavior" Type="int16" Value="1"/>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Attenuation_100m" ID="{77B02558-D2ED-4774-9DA5-22E0BC8203B6}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
@@ -19,7 +36,7 @@
 							<ObjectRef Name="Walk" ID="{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="PuppetBus" ID="{0C548E98-D102-418C-8456-F1B6C0DB13FC}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 						<Reference Name="SwitchGroupOrStateGroup">
 							<ObjectRef Name="Locomotion_Type" ID="{420E22CF-A5C2-4839-9124-99E4AC200830}" WorkUnitID="{4DC445F5-38FB-4469-BB16-12A29B098306}"/>

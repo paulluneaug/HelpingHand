@@ -44,21 +44,21 @@ public class DialoguePanelController : MonoBehaviour
 
     private void UpdateSubtitleSettings()
     {
-        m_subtitleBackground.color = m_subtitleBackground.color.WhereA(m_optionsManager.SubtitleOpacity.Value / 100.0f);
+        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value / 100.0f);
         m_subtitleText.color = m_optionsManager.SubtitleColor.Value;
         m_subtitleText.fontSize = m_optionsManager.ToFontSize(m_optionsManager.SubtitleSize.Value);
     }
 
     private void SubscribeToEvents()
     {
-        m_optionsManager.SubtitleOpacity.OnValueChanged += OnSubtitleOpacityChanged;
+        m_optionsManager.SubtitleBackgroundOpacity.OnValueChanged += OnSubtitleOpacityChanged;
         m_optionsManager.SubtitleColor.OnValueChanged += OnSubtitleColorChanged;
         m_optionsManager.SubtitleSize.OnValueChanged += OnSubtitleSizeChanged;
     }
 
     private void UnsubscribeFromEvents()
     {
-        m_optionsManager.SubtitleOpacity.OnValueChanged -= OnSubtitleOpacityChanged;
+        m_optionsManager.SubtitleBackgroundOpacity.OnValueChanged -= OnSubtitleOpacityChanged;
         m_optionsManager.SubtitleColor.OnValueChanged -= OnSubtitleColorChanged;
         m_optionsManager.SubtitleSize.OnValueChanged -= OnSubtitleSizeChanged;
     }
