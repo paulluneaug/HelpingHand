@@ -291,13 +291,63 @@
 							<Position X="4" Y="3"/>
 						</Module>
 					</ModuleList>
-					<RTPCValueList ShowAll="true"/>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}"/>
+							<Value>0.2</Value>
+						</RTPCValue>
+					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="Battle_Theme" ID="{CEF747E8-7ED4-46F5-85C1-629B1B652F7B}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
-						<CurrentSwitchRef Name="Idle" ID="{05B62766-73A2-464B-9C13-ED7758FEC675}"/>
+						<CurrentSwitchRef Name="Carot" ID="{DFF9BD2D-A42B-45FA-B0B4-5F269D2296E8}"/>
+						<CurrentSwitchRef Name="Walk" ID="{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}"/>
+						<CurrentSwitchRef Name="Chicken" ID="{20E53FA0-26D2-4540-A560-8FED0AFCC00D}"/>
 						<CurrentSwitchRef Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="Item Dropper" ID="{C10B8D0C-8989-4525-AB96-30FFA1AF9C0D}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_FallingObject" ID="{C5AEE718-AE80-445E-A1E3-5F3750D0CF50}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Smoke_Impact" ID="{BA74222A-593C-4134-89D6-019365F1D3DB}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_WeaponCatch" ID="{77E17996-F958-452A-AAD5-261F143A0D0C}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_HatCatch" ID="{99D46073-51B6-47A0-A0B6-417A5A6DC330}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_ItemDropperMovingLoop" ID="{08CF5795-0214-49B4-BFC3-5F0202BFF02F}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_ItemDropperBox_Open" ID="{0F7B3023-EB24-49CE-80C0-7DCC7C36A1A1}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Stop_ItemDropperMovingLoop_Fadeout" ID="{5B4F92EA-7599-491B-8E3B-359ED49CEE38}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}"/>
+							<Value>0.2</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Carot" ID="{DFF9BD2D-A42B-45FA-B0B4-5F269D2296E8}"/>
+						<CurrentSwitchRef Name="Chicken" ID="{20E53FA0-26D2-4540-A560-8FED0AFCC00D}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>
