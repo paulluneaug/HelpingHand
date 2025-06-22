@@ -413,7 +413,6 @@ namespace AK
                 static const AkUniqueID _311 = 684834457U;
                 static const AkUniqueID _312 = 684834458U;
                 static const AkUniqueID _321 = 735167312U;
-                static const AkUniqueID _331 = 718389759U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace INTERRUPTION_CURTAIN

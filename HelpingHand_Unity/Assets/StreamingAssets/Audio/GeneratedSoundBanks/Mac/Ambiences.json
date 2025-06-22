@@ -11,7 +11,7 @@
     "GUID": "{F426FF36-9092-4776-8DC4-F168E590C178}",
     "Color": "8",
     "Language": "SFX",
-    "Hash": "{5DEE6E32-9C9E-C03F-1AEA-3DF786FC86F1}",
+    "Hash": "{33AD6F14-AB10-D4E7-1E86-BA48D57E1ED4}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Ambiences",
     "ShortName": "Ambiences",
     "Path": "Ambiences.bnk",
@@ -41,12 +41,12 @@
       "CachePath": "06/{062B11C1-0EB6-67C4-B673-F71B85BA016D}.wem"
      },
      {
-      "Id": "91753449",
+      "Id": "72574503",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "HH_Tavern_Ambience.wav",
-      "CachePath": "34/{345C59DC-C71F-312D-903E-42986EAFC2ED}.wem"
+      "ShortName": "ANM_Village_Spring_Amb.wav",
+      "CachePath": "30/{3074967C-95EC-04D5-E649-8483941C8768}.wem"
      },
      {
       "Id": "109631179",
@@ -249,6 +249,14 @@
       "CachePath": "CC/{CC2C1241-53BF-E326-084E-F9CB4B1AA1D1}.wem"
      },
      {
+      "Id": "749775051",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ANM_AmbienceFinalBoss.wav",
+      "CachePath": "C5/{C52B36EA-1505-E74C-2DEB-19B473224309}.wem"
+     },
+     {
       "Id": "760378150",
       "Language": "SFX",
       "Streaming": "false",
@@ -360,9 +368,12 @@
       "ObjectPath": "\\Events\\Ambiences\\Ambiences_Lore\\DragonDungeonAmb_Play",
       "GUID": "{04858D9F-B944-4C07-9B30-8889577EA7BB}",
       "Color": "8",
-      "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "749775051"
+       }
+      ]
      },
      {
       "Id": "2948635231",
@@ -415,9 +426,6 @@
        },
        {
         "Id": "36346259"
-       },
-       {
-        "Id": "91753449"
        },
        {
         "Id": "109631179"
@@ -551,9 +559,12 @@
       "ObjectPath": "\\Events\\Ambiences\\Ambiences_Lore\\VillageAmb_Play",
       "GUID": "{309FB066-5059-4301-A1D7-706B22AD725A}",
       "Color": "8",
-      "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "72574503"
+       }
+      ]
      }
     ],
     "GameParameters": [
@@ -578,6 +589,6 @@
     ]
    }
   ],
-  "FileHash": "{0E53AAD4-B75E-98DE-5F6D-9A0525A57C38}"
+  "FileHash": "{1091CC67-7762-445C-A726-FA0D8789BE51}"
  }
 }
