@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/States/State")]
-public class EntityState : BaseVariable<bool>
+public class EntityState : BoolVariable
 {
     public bool IsSet => Value;
 
