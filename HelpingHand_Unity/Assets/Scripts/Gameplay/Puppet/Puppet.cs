@@ -11,12 +11,15 @@ using UnityEngine.Splines;
 
 using UnityUtility.MathU;
 
+using Separator = UnityUtility.CustomAttributes.SeparatorAttribute;
+
 public class Puppet : MonoBehaviour, ILateAwaker
 {
     public bool HasReachedEndOfSpline => m_hasReachedEndOfSpline;
 
     [Title("Component References")]
     [SerializeField] private Transform m_objectInHandParent;
+    [SerializeField] private Transform m_objectOnHeadParent;
 
     [Title("Animation")]
     [SerializeField] private Animator m_puppetAnimator;
@@ -26,7 +29,12 @@ public class Puppet : MonoBehaviour, ILateAwaker
     [SerializeField] private BaseVariable<SplineContainer> m_splineToFollow;
     [SerializeField] private BaseVariable<float> m_speedAlongSpline;
 
-    [Space]
+    [Separator]
+
+    [SerializeField] private PuppetObjectInHandStateCollection m_objectInHand;
+    [SerializeField] private PuppetObjectOnHeadStateCollection m_objectOnHead;
+
+    [Separator]
 
     [SerializeField] private BaseVariable<bool> m_lookUp;
     [SerializeField] private GameEvent m_strike;
@@ -53,6 +61,9 @@ public class Puppet : MonoBehaviour, ILateAwaker
         m_defeat.AddListener(SetDefeatAnimation);
 
         m_animatorParameterContainer.Init();
+
+        m_objectInHand.OnPuppetHeldObjectChanged(ObjectInHand.None);
+        m_objectOnHead.OnPuppetWornObjectChanged(ObjectOnHead.None);
 
         StopWalk();
     }
@@ -132,6 +143,22 @@ public class Puppet : MonoBehaviour, ILateAwaker
         {
             SetWalkState(true);
         }
+    }
+
+    public void HoldObjectInHand(DroppableHandProp handObject)
+    {
+        handObject.transform.SetParent(m_objectInHandParent);
+        handObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+        m_objectInHand.OnPuppetHeldObjectChanged(handObject.ObjectType);
+    }
+
+    public void WearObjectOnHead(DroppableHeadProp headObject)
+    {
+        headObject.transform.SetParent(m_objectOnHeadParent);
+        headObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+        m_objectOnHead.OnPuppetWornObjectChanged(headObject.ObjectType);
     }
 
     private void UpdatePositionAndRotation(float time)

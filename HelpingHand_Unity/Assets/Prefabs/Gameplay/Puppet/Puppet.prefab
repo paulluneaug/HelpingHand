@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2724095491697563951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1089685917391417337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7508089109125909199}
+  m_Layer: 0
+  m_Name: ObjectOnHeadParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7508089109125909199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089685917391417337}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0, y: 0.01022, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5902324480102860244}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1541241101810741202
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 3648213094928316676}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.01043, z: 0}
+  m_LocalPosition: {x: -0, y: 0.00987, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -288,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_objectInHandParent: {fileID: 8081674001127151981}
+  m_objectOnHeadParent: {fileID: 7508089109125909199}
   m_puppetAnimator: {fileID: 2661020871082555161}
   m_animatorParameterContainer:
     m_isWalkingParameterName: IsWalking
@@ -298,6 +330,18 @@ MonoBehaviour:
     m_defeatParameterName: Defeat
   m_splineToFollow: {fileID: 11400000, guid: 60ee3b3bf0ac9624881a0ffafaab0cc7, type: 2}
   m_speedAlongSpline: {fileID: 11400000, guid: 8511053f1da8db94db54f050ab643e84, type: 2}
+  m_objectInHand:
+    m_swordInHandState: {fileID: 11400000, guid: 139dad21f73bc244aa9382986daa0be5, type: 2}
+    m_broomInHandState: {fileID: 11400000, guid: 47c36b84ddf42034a876e5cd4618d2a8, type: 2}
+    m_carrotInHandState: {fileID: 11400000, guid: c25c13013fce58d4a8b1df5dc4922910, type: 2}
+    m_mugInHandState: {fileID: 11400000, guid: 05549f6494f50c34e93cc2c67b5a648d, type: 2}
+    m_baguetteInHandState: {fileID: 11400000, guid: 85084d2f68054a44b963f398f4b4f1a3, type: 2}
+  m_objectOnHead:
+    m_helmetOnHeadState: {fileID: 11400000, guid: 14b15db79efdcc649a302ba9cf9a335e, type: 2}
+    m_bunnyEarsOnHeadState: {fileID: 11400000, guid: 3d1541369e397104b889b83f1f36571b, type: 2}
+    m_chickenHatOnHeadState: {fileID: 11400000, guid: 55815047a79d934408b080bf722bcedb, type: 2}
+    m_headphonesOnHeadState: {fileID: 11400000, guid: 8cb080fe6c7f69b45886a343e649620c, type: 2}
+    m_beretOnHeadState: {fileID: 11400000, guid: 3a2aa036cea1d484495660a512b367ab, type: 2}
   m_lookUp: {fileID: 11400000, guid: 5d9aad4a7356b23448db78100a31a353, type: 2}
   m_strike: {fileID: 11400000, guid: a1256d67e4f6c2447a632d3bd8eaa064, type: 2}
   m_victory: {fileID: 11400000, guid: f5b06af9227ab5a4ebfc5b3cacf686cd, type: 2}
@@ -1076,6 +1120,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2625045648845147996, guid: 2b11bb84317ba0642bcbc7907ba68ea2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1205658606607189398}
+    - targetCorrespondingSourceObject: {fileID: 2625045648845147996, guid: 2b11bb84317ba0642bcbc7907ba68ea2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7508089109125909199}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b11bb84317ba0642bcbc7907ba68ea2, type: 3}
 --- !u!95 &2661020871082555161 stripped
