@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Scene References")]
     [SerializeField] private SceneReference m_globalObjectsScene;
+    [SerializeField] private SceneReference m_virtualControllerScene;
     [Separator]
 
     [Title("Input References")]
@@ -64,7 +65,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_canvasManager.Initialize();
 
         LoadGlobalObjectScene();
-
+#if !PRODUCTION_BUILD
+        LoadVirtualControllerScene(); // TODO disable in production build
+#endif
         m_skipDialogueInput.asset.Enable();
     }
 
@@ -121,12 +124,25 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             return;
         }
-        SceneManager.LoadScene(m_globalObjectsScene);
+        SceneManager.LoadScene(m_globalObjectsScene, LoadSceneMode.Additive);
 #else
-        SceneManager.LoadScene(m_globalObjectsScene);
+        SceneManager.LoadScene(m_globalObjectsScene, LoadSceneMode.Additive);
 #endif
     }
 
+    private void LoadVirtualControllerScene()
+    {
+#if UNITY_EDITOR
+        if (SceneManager.GetSceneByPath(m_virtualControllerScene.ScenePath) != default)
+        {
+            return;
+        }
+        SceneManager.LoadScene(m_virtualControllerScene, LoadSceneMode.Additive);
+#else
+        SceneManager.LoadScene(m_virtualControllerScene, LoadSceneMode.Additive);
+#endif
+    }
+    
     #endregion
 
     #region Updates
@@ -169,6 +185,21 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     #endregion
 
+
+    public void ReturnToMainMenu()
+    {
+        switch (m_currentGameState)
+        {
+            case GameState.MainMenu:
+                m_canvasManager.CloseOptions();
+                break;
+            case GameState.Gameplay:
+                m_currentGameState = GameState.MainMenu;
+                m_canvasManager.CloseOptions();
+                m_actSequenceManager.StopSequence();
+                break;
+        }
+    }
 
     public void QuitGame()
     {

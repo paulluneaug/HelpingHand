@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[NodeTint(0.4f, 0.2f, 0f)] 
 [CreateNodeMenu("Flow/Continue")] 
+[NodeTint(0.4f, 0.2f, 0f)] 
 [NodeWidth(150)]
 public class SimpleContinueFlowNode : BaseNode
 {

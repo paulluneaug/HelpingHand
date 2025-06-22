@@ -3,164 +3,258 @@
 	<States>
 		<WorkUnit Name="Dialogue_States" ID="{8B54E347-6E2A-4D5A-A4C9-E479BDC841F4}" OwnerID="{22C30C11-8221-445C-A271-F47A5E00DF88}" PersistMode="Nested">
 			<ChildrenList>
-				<StateGroup Name="Etat" ID="{C102ED49-CBF9-4371-9DB3-2C817DD29BFB}">
+				<Folder Name="Interruptions" ID="{FAEEF616-4865-4C52-BDF0-4AA55C93E4BB}" ShortID="1043990729">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="9"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<State Name="None" ID="{1E6559EB-771A-476D-9F53-E4FC31A131DF}"/>
-						<State Name="On" ID="{9DA6FE43-92AB-4D0D-A242-1F75F8FC1047}"/>
-						<State Name="Off" ID="{A13FA060-64D7-4AD8-B715-59EE9CAA85E1}"/>
+						<StateGroup Name="Interruption_Curtain" ID="{FFD8275A-E47C-4B64-B283-618398C5309A}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{D3E1893D-7C7E-4C9C-93F7-4E8418AEB459}"/>
+								<State Name="_111" ID="{257E9FAD-6478-4EF3-9723-B80096B61BE8}"/>
+								<State Name="_112" ID="{B7A4929E-530F-4C93-9F90-A43CF72F2D6A}"/>
+								<State Name="_121" ID="{AC8E1B07-2ED1-4E62-972E-E6AAA7F414E6}"/>
+								<State Name="_211" ID="{65628EC6-9644-46E6-9A0E-4A2186544437}"/>
+								<State Name="_212" ID="{1B51B024-3E02-4C67-BAA5-CF505B8F0BAA}"/>
+								<State Name="_221" ID="{CE8A2A28-E3DA-481A-B8A6-120A86EF415C}"/>
+								<State Name="_311" ID="{F840F8C5-98CA-4354-980F-2AF906B52038}"/>
+								<State Name="_312" ID="{6F5190F3-C2F7-413E-B08A-78D02F8F4CC7}"/>
+								<State Name="_321" ID="{A4A8E9CB-5859-46E4-BE5C-B712A6E6BC8A}"/>
+								<State Name="_331" ID="{CF54D87E-CDC2-43DF-B163-277E9066AF03}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Interruption_Spots" ID="{9ACCF0CA-FCD8-43C8-B0A8-BC7FBB1A1FC5}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{A2CCF5AB-1F16-458B-AAB7-065146F75091}"/>
+								<State Name="_111" ID="{EEB58495-C0CD-4555-AA11-F6A909D1CD41}"/>
+								<State Name="_112" ID="{8A062AEA-1F43-45D3-91DF-BEC65FC50E0D}"/>
+								<State Name="_211" ID="{98026804-25DA-442B-A362-3FF35A292BD8}"/>
+								<State Name="_212" ID="{D8A86412-CD07-433E-ABA3-38057380E8D2}"/>
+								<State Name="_311" ID="{CD8AF334-2DFE-45FE-825E-875DC3BE9E8C}"/>
+								<State Name="_312" ID="{87B87DDB-8F0E-40D4-85F8-867E3C0CBB04}"/>
+								<State Name="_313" ID="{DC1D8D40-53A7-43FD-9E90-FEE5C766CC2C}"/>
+								<State Name="_113" ID="{D8FF6511-74C3-413D-B6B7-CF3408DDB2A7}"/>
+								<State Name="_114" ID="{BFCC27F8-4E45-4BB8-83C6-70A93B22E030}"/>
+								<State Name="_213" ID="{E0A8DCD4-2070-4418-BFBC-B8D93801BB95}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Interruption_Roue" ID="{0A6F836F-540A-4ED9-BB80-604385A4894D}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{14383B21-6AAD-4D80-B19E-D502E9E12A35}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Interruption_Succes" ID="{AED8B56F-DDD9-4A88-9BA5-0006890B5D4F}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{1777709F-F14A-46D0-8C56-8AECAC7EF765}"/>
+							</ChildrenList>
+						</StateGroup>
 					</ChildrenList>
-				</StateGroup>
-				<StateGroup Name="Repetition" ID="{33459F11-2715-4016-9EEC-30401C5683B6}">
+				</Folder>
+				<Folder Name="Onboarding" ID="{E69410D9-BC5A-4253-B397-C1469291F3A2}" ShortID="617615538">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="15"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<State Name="None" ID="{7EA2C8C0-41D5-49B6-ABF0-584A4EC44D56}"/>
-						<State Name="R3" ID="{089C6F7B-E039-4E29-8D21-EAFDF43237D6}"/>
-						<State Name="R1" ID="{A2D7201B-12FA-46BB-A810-61C3E42A0291}"/>
-						<State Name="R2" ID="{516543C3-5B86-4523-B622-96B7A8FCB09C}"/>
-						<State Name="R4" ID="{3FD09C1F-04F1-47FB-889D-866001DFC79B}"/>
+						<StateGroup Name="Onboarding_1_Intro" ID="{C13CD7C5-A8FF-42E5-BFAC-E404B758D92E}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="15"/>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{EDA73E68-5676-4866-933C-C8658572B29F}"/>
+								<State Name="Intro_01" ID="{63338BF5-68D0-43F2-869E-DB5725D8217C}"/>
+								<State Name="Intro_02" ID="{02839F17-4ED9-4348-BB9F-C2A61C844112}"/>
+								<State Name="Intro_03" ID="{1E0C51E6-4799-44D1-B144-0100E3E4E962}"/>
+								<State Name="Intro_04" ID="{DBC8E82E-441D-4273-BC3F-38F31253062D}"/>
+								<State Name="Intro_05" ID="{BB9ACD43-54F5-4FD5-988B-002B7ABB89ED}"/>
+								<State Name="Intro_06" ID="{F9F5DEB6-F559-4B9B-AB99-A8AA807B3619}"/>
+								<State Name="Intro_07" ID="{4E5D7D4B-D0B3-49AC-854A-1CDCC73CB5AD}"/>
+								<State Name="Intro_08" ID="{F234F478-182E-4013-8F82-52ABD9027632}"/>
+								<State Name="Intro_09" ID="{9B35AFA5-85A8-43D4-B526-91D7D26B215D}"/>
+								<State Name="Intro_10" ID="{CB0BB44D-1064-4C5C-B5E2-5F5AD8B5FD6C}"/>
+								<State Name="Interruption_Intro_111" ID="{8C24F29D-7ED7-4689-9A77-E4F9D9BCD16F}"/>
+								<State Name="Interruption_Intro_112" ID="{7623E47D-9BA0-4A15-8A59-69ACB7A75166}"/>
+								<State Name="Interruption_Intro_121" ID="{4D658549-C8DE-4B17-B7D0-F76A89C2DACF}"/>
+								<State Name="Interruption_Intro_131" ID="{87E50599-377E-46F1-97C0-F82DB614810E}"/>
+								<State Name="Interruption_Intro_141" ID="{7DE5108D-869F-4884-8CA7-793204EFAFF2}"/>
+								<State Name="Interruption_Intro_151" ID="{3BA35735-E376-4331-9D2F-1699CDFF4ECC}"/>
+								<State Name="Interruption_Intro_161" ID="{6F822BB1-B295-4878-90FF-BCDF35B09079}"/>
+								<State Name="Interruption_Intro_181" ID="{319F69E9-2851-4BC2-93B2-75A9EEE17D01}"/>
+								<State Name="Interruption_Intro_182" ID="{F6C2D0FB-91EA-4D40-B058-67F00F64ECAC}"/>
+								<State Name="Interruption_Intro_183" ID="{73D956C0-C4AA-47CD-9CCA-D34B57570906}"/>
+								<State Name="Interruption_Intro_171" ID="{004C666C-A7BA-430F-ADC1-0F7282C13EB7}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Onboarding_2_Curtain" ID="{A614E006-2B66-4407-81A4-79AF0351F97A}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{0D8DBD78-EBDD-459D-A214-662FC46FDB92}"/>
+								<State Name="No_Inputs_02" ID="{E590C01D-8FC6-4E61-8B00-AE5BB91C6865}"/>
+								<State Name="No_Inputs_01" ID="{C9774B91-01FF-49A5-8F57-88FC552D268D}"/>
+								<State Name="No_Inputs_03" ID="{3D464BE9-DA47-4440-8147-5A37817A4C6A}"/>
+								<State Name="No_Inputs_04" ID="{50DF0136-B3AD-49F0-81B3-14F74E93A362}"/>
+								<State Name="Bad_Inputs_1" ID="{A2C80A4F-06B7-42D1-9298-1C266653BA06}"/>
+								<State Name="Bad_Inputs_31" ID="{C3FDEC77-9171-4FB7-8385-E7B234A23B22}"/>
+								<State Name="Good_Inputs_01" ID="{721AE937-B988-4FF5-98CA-4EC6DE8B83AB}"/>
+								<State Name="Good_Inputs_02" ID="{B9A28F7D-D6AF-4ACC-BE98-3CC924B3514C}"/>
+								<State Name="Good_Inputs_03" ID="{8D8BF2F0-F039-4960-BC68-6433FF7E0E76}"/>
+								<State Name="Validated_01" ID="{F77D5288-4EF5-4741-814F-B0374A0B0943}"/>
+								<State Name="Validated_02" ID="{45B62DBC-7178-4A7B-B498-4C5760F10523}"/>
+								<State Name="Validated_03" ID="{BEEE36FC-AC5C-4260-AC4F-042A56081B79}"/>
+								<State Name="Bad_Inputs_21" ID="{A5C210C2-A1F9-4C5A-BC50-4B01275A11C9}"/>
+								<State Name="Bad_Inputs_22" ID="{F9EFFC37-ECDC-4921-92AF-994575DE4255}"/>
+								<State Name="Next_01" ID="{55723E1F-C006-4327-840D-9A493AB9B9E5}"/>
+								<State Name="Next_21" ID="{8FCBE8A6-5FFF-40FA-8C0D-36DF68525740}"/>
+								<State Name="Next_22" ID="{38764823-95C9-479E-8723-5FFC20B51A99}"/>
+								<State Name="Intro_01" ID="{E287E907-3707-4FD7-AF1B-A971074F3257}"/>
+								<State Name="Intro_02" ID="{4ACF3409-D18B-4662-965F-A7A62597A7A6}"/>
+								<State Name="Expo_1" ID="{FCB80809-CEAE-4D73-A071-719551782FB9}"/>
+								<State Name="Expo_2" ID="{002CFF5B-0725-47E2-B964-1A3D907E0AE1}"/>
+								<State Name="Expo_3" ID="{723AF3A3-688F-45EB-BCDC-4D7BC3E40876}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Onboarding_3_Spots" ID="{B806A437-5FD1-45B9-AE9B-23DD40243306}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="15"/>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{4E80F4A4-D940-4E77-BD4D-F0B50CD3ABF7}"/>
+								<State Name="No_Inputs_02" ID="{13B69CB6-C1B5-46CD-9067-986A4897F40B}"/>
+								<State Name="No_Inputs_01" ID="{7B369CFA-8C1A-405A-ADC8-8DE714C6C88A}"/>
+								<State Name="Bad_Inputs_11" ID="{2679B628-FD72-4695-A711-DD35F0D97704}"/>
+								<State Name="Bad_Inputs_12" ID="{70BABD34-2052-4DC6-9162-52B62FD7377E}"/>
+								<State Name="Validated_01" ID="{ABC310F5-39E7-4F42-825C-E3B030CA618B}"/>
+								<State Name="Validated_02" ID="{8C4F3994-6594-4790-939F-261797866FAE}"/>
+								<State Name="Validated_03" ID="{50F80971-8F7D-4689-AD89-65E352AA1C75}"/>
+								<State Name="Bad_Inputs_21" ID="{89722C6E-073C-4C39-B394-0E7201C5775D}"/>
+								<State Name="Next_01" ID="{B7AB320B-878A-4C94-9F94-ACA4E709D5EF}"/>
+								<State Name="Next_02" ID="{0482C4E0-8958-4457-91E5-0D19789DEE6A}"/>
+								<State Name="Next_03" ID="{65BBF6F6-EE42-49CF-A18D-A18ABA4CD36E}"/>
+								<State Name="Intro_01" ID="{6BA7478F-8865-4F73-A0FD-338B11ED9AF0}"/>
+								<State Name="Intro_02" ID="{77094715-C7DC-44FA-A4AF-F7CEE5A5E7FA}"/>
+								<State Name="Expo_1" ID="{3E2BAD74-6CD5-4686-B65A-573A94AE6E0A}"/>
+								<State Name="Expo_2" ID="{1E455CE6-1935-458E-B312-21FFF76F74C8}"/>
+								<State Name="Intro_03" ID="{148EB6B9-C822-423D-904D-5E8A6CC51A71}"/>
+								<State Name="Intro_04" ID="{E3CED6D3-14B3-425F-AB39-59EF00668B0E}"/>
+								<State Name="Next_04" ID="{70A94620-5BA5-42E4-802E-A75E4C01D087}"/>
+							</ChildrenList>
+						</StateGroup>
 					</ChildrenList>
-				</StateGroup>
-				<StateGroup Name="Objet" ID="{538112AD-9598-4A43-B1D9-07D5177FA6BF}">
+				</Folder>
+				<Folder Name="Gameplay" ID="{503DD6AA-4167-49F6-BD00-47B51782415A}" ShortID="308011465">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="25"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<State Name="None" ID="{553ED2D3-9EE5-48AD-8D4A-E327FEC26BEA}"/>
-						<State Name="Spot" ID="{F270F06C-D10B-4F58-800C-AF7E56ECCE0F}"/>
-						<State Name="Rideaux" ID="{B8CBA2B4-685B-4A84-AE74-2F894722B9D6}"/>
-						<State Name="Armure" ID="{326E98F7-80B0-4605-8333-2085D25F3D4C}"/>
-						<State Name="Carton" ID="{38B76B5E-51BA-4059-88D8-95C0035BE122}"/>
-						<State Name="Rien" ID="{4D67E723-8F7C-4E13-B9A2-6AD254D4C4A6}"/>
+						<StateGroup Name="Acte_1_Roue" ID="{52D82553-6F87-4B0F-8B3C-02ABB9A0F38D}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="24"/>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{2B3D178F-09C0-48EE-BDD7-9206E43421A8}"/>
+								<State Name="No_Inputs_22" ID="{2BB6396F-437A-4EF2-A427-B79784DE3780}"/>
+								<State Name="No_Inputs_01" ID="{AFAFFBE9-9CE0-44C0-8466-1E1656928D7C}"/>
+								<State Name="Bad_Inputs_2" ID="{46513BFE-AE1F-4C5C-B1DF-C7CA8367B24B}"/>
+								<State Name="Bad_Inputs_3" ID="{01FFEEB6-7B35-485A-84ED-5B593E0EE498}"/>
+								<State Name="Validated_01" ID="{45CDD220-51C4-4CD8-9A01-89044F735996}"/>
+								<State Name="Validated_02" ID="{9BCD129F-887C-41A7-B2AC-48852DCE72B1}"/>
+								<State Name="Validated_03" ID="{83B7EC60-8313-4FA3-A051-DBC6ED6E9D6D}"/>
+								<State Name="Bad_Inputs_1" ID="{AAF5576D-18F2-482D-9571-B58B392FAE42}"/>
+								<State Name="Next_01" ID="{38329655-82A3-44D2-A584-6829201346CC}"/>
+								<State Name="Next_02" ID="{45D37D7F-5FAA-4C75-A40A-AD7EBE12010E}"/>
+								<State Name="Next_03" ID="{7E4823C2-951C-4AE5-9791-D93761ECE996}"/>
+								<State Name="Intro_01" ID="{3E005816-4400-4BA9-BBB6-28BCD34D85B3}"/>
+								<State Name="Intro_02" ID="{1C73735B-EA48-47F8-BA90-A916AA2BC356}"/>
+								<State Name="Intro_03" ID="{5692155A-3F92-4BFA-B41A-5335A31ED489}"/>
+								<State Name="Intro_04" ID="{D8085737-7D3D-4660-A7C5-9CABF3C7283A}"/>
+								<State Name="Next_04" ID="{6AFAFC1D-23DF-44F2-AEBE-D40E474BFAA0}"/>
+								<State Name="Intro_05" ID="{AF66073C-B8F9-4ADB-BE35-A6A4F9518249}"/>
+								<State Name="Intro_06" ID="{0A60DC2A-DBC1-4A55-BDBA-66E53CEAFF9D}"/>
+								<State Name="Intro_07" ID="{F8A8AE38-1F56-4E7B-BDB5-BE8D14ECEF02}"/>
+								<State Name="Intro_08" ID="{7116826E-0C07-4DD7-9DD0-C9CA297E29D7}"/>
+								<State Name="No_Inputs_21" ID="{AEE870E5-1DF8-45F4-9858-C2359BF2D192}"/>
+								<State Name="No_Inputs_31" ID="{41A30035-AA5C-4011-B17C-4F2F6C2E3A22}"/>
+								<State Name="No_Inputs_32" ID="{B5968C46-4DCE-4E80-87E2-A46DDB376A17}"/>
+								<State Name="Bad_Inputs_4" ID="{5B33721E-665E-49CD-89BE-C86685F29668}"/>
+								<State Name="Bad_Inputs_41" ID="{26F44650-A4E5-4F0F-B11F-AF822049B5B2}"/>
+								<State Name="Bad_Inputs_42" ID="{8B825306-A754-4A81-BEF0-66B96DD790B7}"/>
+								<State Name="Validated_04" ID="{810DA528-32AF-4B93-8DB8-C6060B7DE9AA}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Combat" ID="{CFA1496F-66D0-4849-9F98-536CA9AE6E79}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{3B98128F-6165-473D-8950-6FC29A264C63}"/>
+								<State Name="Intro_01" ID="{64D97FF5-22BB-4124-B2F1-8ADE2BEC398F}"/>
+								<State Name="Intro_02" ID="{B193CE5A-2F6A-40F6-AC04-64EE0A154AA8}"/>
+								<State Name="Intro_03" ID="{AEE135EE-64BA-43B1-BEBC-792D5F711B93}"/>
+								<State Name="Intro_04" ID="{450AB8BD-0396-4810-A552-37818170B8C2}"/>
+								<State Name="Intro_05" ID="{6DA83A21-0070-408F-A900-E459809AE97B}"/>
+								<State Name="Intro_06" ID="{8FEEBE2B-3443-40C7-9D96-E0B653295C15}"/>
+								<State Name="Intro_07" ID="{1B8A3B06-A1E0-4FA6-B540-CF0BC482DD34}"/>
+								<State Name="Day_01" ID="{2AF2CBF8-05DF-442C-B438-48F1E3DE7257}"/>
+								<State Name="Night_11" ID="{C28FDDD4-E649-432B-BAC7-8722D722436D}"/>
+								<State Name="Night_13" ID="{E5B9962E-D78A-42B5-819D-C1DCCB0BFA5B}"/>
+								<State Name="Night_12" ID="{7D55E92A-21B9-42CD-91FD-D16AAA6380E1}"/>
+								<State Name="Night_14" ID="{BF0D93A2-CBC3-477C-B1DF-51B83171930F}"/>
+								<State Name="Sleep_01" ID="{BB377B2C-D197-4E0C-A08C-E60B095BCFCF}"/>
+								<State Name="Sleep_02" ID="{01E16DB5-C163-453D-A069-D67D43AE7BDF}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Fin" ID="{8EEBEAC7-6C59-459F-A429-39789935D93E}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{F4C33BFE-8468-42C4-9436-EBC6BC06FA8C}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Equipement" ID="{9733AD7B-2896-4B24-9F0D-C6B3DF55378A}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{C11BBEA7-6724-47B3-A05A-0D695D06C20A}"/>
+							</ChildrenList>
+						</StateGroup>
 					</ChildrenList>
-				</StateGroup>
-				<StateGroup Name="Narra" ID="{1E8E7DC1-B1A8-4849-BB0B-66B9DA0D660E}">
+				</Folder>
+				<Folder Name="Succes" ID="{2823C268-F9D5-44F2-9BB5-47227C998631}" ShortID="760225076">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<State Name="None" ID="{351D6124-A198-408F-A321-D67C48A8D838}"/>
-						<State Name="Narra1" ID="{EF78AECB-7F8C-449E-AE26-48CE9FBFF654}"/>
-						<State Name="Narra2" ID="{72FA087A-7746-4498-9942-27D8E2243B4E}"/>
-						<State Name="Narra3" ID="{522AA627-4E4A-4FAC-8C64-0AC1E5ECA4EA}"/>
-						<State Name="Narra4" ID="{1C756A0B-9EC0-4D0B-8364-C5318A9AB2B8}"/>
-						<State Name="Narra5" ID="{EF31D1F5-BA22-4131-837F-3842AF8AAE75}"/>
-						<State Name="Narra6" ID="{1E6D09BE-C910-4976-8247-382D38C2F713}"/>
-						<State Name="Narra7" ID="{F581576D-459F-427F-8D63-3ABFD8620B17}"/>
+						<StateGroup Name="Succes" ID="{C5134087-59AE-4BEE-B8B9-7C7033DE29E8}">
+							<ChildrenList>
+								<State Name="None" ID="{FDE4A891-A786-43EE-A968-C4256847955F}"/>
+							</ChildrenList>
+						</StateGroup>
 					</ChildrenList>
-				</StateGroup>
-				<StateGroup Name="Onboarding" ID="{C13CD7C5-A8FF-42E5-BFAC-E404B758D92E}">
-					<ChildrenList>
-						<State Name="None" ID="{EDA73E68-5676-4866-933C-C8658572B29F}"/>
-						<State Name="Intro_01" ID="{63338BF5-68D0-43F2-869E-DB5725D8217C}"/>
-						<State Name="Intro_02" ID="{02839F17-4ED9-4348-BB9F-C2A61C844112}"/>
-						<State Name="Intro_03" ID="{1E0C51E6-4799-44D1-B144-0100E3E4E962}"/>
-						<State Name="Intro_04" ID="{DBC8E82E-441D-4273-BC3F-38F31253062D}"/>
-						<State Name="Intro_05" ID="{BB9ACD43-54F5-4FD5-988B-002B7ABB89ED}"/>
-						<State Name="Intro_06" ID="{F9F5DEB6-F559-4B9B-AB99-A8AA807B3619}"/>
-						<State Name="Intro_07" ID="{4E5D7D4B-D0B3-49AC-854A-1CDCC73CB5AD}"/>
-						<State Name="Intro_08" ID="{F234F478-182E-4013-8F82-52ABD9027632}"/>
-						<State Name="Intro_09" ID="{9B35AFA5-85A8-43D4-B526-91D7D26B215D}"/>
-						<State Name="Intro_10" ID="{CB0BB44D-1064-4C5C-B5E2-5F5AD8B5FD6C}"/>
-						<State Name="Intro_11" ID="{A2A602B0-D53D-43A5-940E-376DFC89C901}"/>
-					</ChildrenList>
-				</StateGroup>
-				<StateGroup Name="Onboarding_Global_Lights" ID="{FFD8275A-E47C-4B64-B283-618398C5309A}">
-					<ChildrenList>
-						<State Name="None" ID="{D3E1893D-7C7E-4C9C-93F7-4E8418AEB459}"/>
-						<State Name="No_Inputs_1_02" ID="{A10B6893-B3CE-4C86-B006-146BF5A2F404}"/>
-						<State Name="No_Inputs_1_01" ID="{3559D104-DAF5-4175-AFFE-618C918013C7}"/>
-						<State Name="No_Inputs_1_03" ID="{77C58221-8859-41B7-A928-C6B7B6AB96F8}"/>
-						<State Name="No_Inputs_1_04" ID="{5A4767D9-AA6B-40F7-9850-09C294A587EE}"/>
-						<State Name="Bad_Inputs_1_02" ID="{28BAA469-4CE4-412E-9AF3-48A5CC1F3D81}"/>
-						<State Name="Bad_Inputs_1_01" ID="{A23B0F59-0682-4D72-991F-AEC6D2DE8FC2}"/>
-						<State Name="Bad_Inputs_1_03" ID="{F71B27A6-53B5-481C-A17A-FAC3C28EFC8F}"/>
-						<State Name="Bad_Inputs_1_04" ID="{B085A813-5E99-42AD-9E44-A8E7973FAB21}"/>
-						<State Name="Good_Inputs_1_01" ID="{68634895-D0C6-483D-8900-6A41E2758A02}"/>
-						<State Name="Good_Inputs_1_02" ID="{8F01FCC3-F1BA-4E0E-80C6-9F91F21A2C7A}"/>
-						<State Name="Good_Inputs_1_03" ID="{188EA161-CBF3-4158-BA8C-1962B435E0FB}"/>
-						<State Name="Validated_1_01" ID="{02BD0820-EE63-49C5-8E05-DCBBE9295F47}"/>
-						<State Name="Validated_1_02" ID="{87F22C80-F088-42A2-8E4E-E69EFFFFAF11}"/>
-						<State Name="Validated_1_03" ID="{257E9FAD-6478-4EF3-9723-B80096B61BE8}"/>
-						<State Name="Good_Inputs_2_01" ID="{3AC29345-3798-4484-AE4A-C77BAACF80CE}"/>
-						<State Name="Good_Inputs_2_02" ID="{6426E10C-94F9-4796-8ADA-757BCCCCDE5A}"/>
-						<State Name="Good_Inputs_2_03" ID="{D9696CFF-8710-41DF-A5CE-770EBDD24302}"/>
-						<State Name="Bad_Inputs_2_01" ID="{9285579D-0783-4851-8856-AB89F9331AEE}"/>
-						<State Name="Bad_Inputs_2_02" ID="{2793A3AE-236F-47C6-AF00-958893132288}"/>
-						<State Name="Bad_Inputs_2_03" ID="{C544CDE9-AB17-42B9-B82F-E6E9E56718D0}"/>
-						<State Name="No_Inputs_2_01" ID="{EAEC2D58-D0D3-4D79-AEF9-7746345CBB2D}"/>
-						<State Name="No_Inputs_2_02" ID="{9A809D2A-28CB-44F2-9E90-DFBD77D47F60}"/>
-						<State Name="No_Inputs_2_03" ID="{A7DCDDFB-6FDC-4CEF-B208-0C3039751726}"/>
-						<State Name="Next_2_01" ID="{64C7C49C-0EF7-44DE-B3AB-E3EF6FC86091}"/>
-						<State Name="Next_2_02" ID="{E52988A1-874B-4ADF-A41A-38D276C1CAF4}"/>
-						<State Name="Next_2_03" ID="{97EF0447-16DB-4402-BB70-9AB0466401E9}"/>
-						<State Name="Intro_01" ID="{DFC61D5F-0F3D-4A6B-9F03-910CBBB62FE4}"/>
-						<State Name="Intro_02" ID="{59D0F7FC-788B-4DE1-A5CF-5F0DE63BCC8D}"/>
-						<State Name="Intro_03" ID="{8084FB8B-CD75-406C-8F7A-1FDC9A017F0F}"/>
-					</ChildrenList>
-				</StateGroup>
-				<StateGroup Name="Onboarding_Curtains" ID="{A614E006-2B66-4407-81A4-79AF0351F97A}">
-					<ChildrenList>
-						<State Name="None" ID="{0D8DBD78-EBDD-459D-A214-662FC46FDB92}"/>
-						<State Name="No_Inputs_1_02" ID="{E590C01D-8FC6-4E61-8B00-AE5BB91C6865}"/>
-						<State Name="No_Inputs_1_01" ID="{C9774B91-01FF-49A5-8F57-88FC552D268D}"/>
-						<State Name="No_Inputs_1_03" ID="{3D464BE9-DA47-4440-8147-5A37817A4C6A}"/>
-						<State Name="No_Inputs_1_04" ID="{50DF0136-B3AD-49F0-81B3-14F74E93A362}"/>
-						<State Name="Bad_Inputs_1_02" ID="{CFF7D082-E18E-4012-BF64-7C4AB3CD34AD}"/>
-						<State Name="Bad_Inputs_1_01" ID="{A2C80A4F-06B7-42D1-9298-1C266653BA06}"/>
-						<State Name="Bad_Inputs_1_03" ID="{6874D670-B295-440A-9304-3365E68126D7}"/>
-						<State Name="Bad_Inputs_1_04" ID="{C3FDEC77-9171-4FB7-8385-E7B234A23B22}"/>
-						<State Name="Good_Inputs_1_01" ID="{721AE937-B988-4FF5-98CA-4EC6DE8B83AB}"/>
-						<State Name="Good_Inputs_1_02" ID="{B9A28F7D-D6AF-4ACC-BE98-3CC924B3514C}"/>
-						<State Name="Good_Inputs_1_03" ID="{8D8BF2F0-F039-4960-BC68-6433FF7E0E76}"/>
-						<State Name="Validated_1_01" ID="{F77D5288-4EF5-4741-814F-B0374A0B0943}"/>
-						<State Name="Validated_1_02" ID="{45B62DBC-7178-4A7B-B498-4C5760F10523}"/>
-						<State Name="Validated_1_03" ID="{BEEE36FC-AC5C-4260-AC4F-042A56081B79}"/>
-						<State Name="Good_Inputs_2_01" ID="{1E8AB2D4-54C2-452B-A9DA-DBF6265A079D}"/>
-						<State Name="Good_Inputs_2_02" ID="{1DE340FF-F91E-43CE-8944-A7850D2A4997}"/>
-						<State Name="Good_Inputs_2_03" ID="{C33B83A3-E4F0-427B-88C9-4E319EB495B0}"/>
-						<State Name="Bad_Inputs_2_01" ID="{ECFD12DC-462C-4CC5-8E78-4B4BE0DA5C8E}"/>
-						<State Name="Bad_Inputs_2_02" ID="{A5C210C2-A1F9-4C5A-BC50-4B01275A11C9}"/>
-						<State Name="Bad_Inputs_2_03" ID="{F9EFFC37-ECDC-4921-92AF-994575DE4255}"/>
-						<State Name="No_Inputs_2_01" ID="{7922F34D-B15A-4575-8D36-8FE79D98BB3E}"/>
-						<State Name="No_Inputs_2_02" ID="{5F286474-3C62-4CBE-8DF2-FA61BAEAD381}"/>
-						<State Name="No_Inputs_2_03" ID="{D7C71695-4415-4288-8B3A-1B447F4DDFED}"/>
-						<State Name="Next_2_01" ID="{55723E1F-C006-4327-840D-9A493AB9B9E5}"/>
-						<State Name="Next_2_02" ID="{8FCBE8A6-5FFF-40FA-8C0D-36DF68525740}"/>
-						<State Name="Next_2_03" ID="{38764823-95C9-479E-8723-5FFC20B51A99}"/>
-						<State Name="Intro_01" ID="{E287E907-3707-4FD7-AF1B-A971074F3257}"/>
-						<State Name="Intro_02" ID="{4ACF3409-D18B-4662-965F-A7A62597A7A6}"/>
-						<State Name="Intro_03" ID="{CF4CB4EF-0870-402E-939F-E506ED29AC0A}"/>
-						<State Name="Intro_04" ID="{6A624930-B1D8-4B61-A4B5-689A5FD476C7}"/>
-						<State Name="Intro_05" ID="{2E719994-5774-4A5A-B461-E4DFC59D7B60}"/>
-					</ChildrenList>
-				</StateGroup>
-				<StateGroup Name="Onboarding_Scene_Lights" ID="{C383FF78-1D86-4994-8683-223CC1EF8563}">
-					<ChildrenList>
-						<State Name="None" ID="{0CB3BCA7-B532-4228-B55B-A94F79F522BD}"/>
-						<State Name="No_Inputs_1_02" ID="{49EF6648-7D5E-4639-9F34-86DAC1F33A52}"/>
-						<State Name="No_Inputs_1_01" ID="{6889CBE5-D3FA-4F2B-8C19-608D6626CDFC}"/>
-						<State Name="No_Inputs_1_03" ID="{96D97077-8D0C-4F44-98D9-DE5A7B7D44D0}"/>
-						<State Name="No_Inputs_1_04" ID="{94E4049E-89CB-494C-8C85-E670AF602889}"/>
-						<State Name="Bad_Inputs_1_02" ID="{E5547B4A-F4FC-421C-9F24-D9E6292A154E}"/>
-						<State Name="Bad_Inputs_1_01" ID="{7994FF8F-F1CB-4B7F-9E2C-BCBF8002EE1B}"/>
-						<State Name="Bad_Inputs_1_03" ID="{E9A292AF-2943-4AD1-B1A2-E563384A692F}"/>
-						<State Name="Bad_Inputs_1_04" ID="{3A7CBA89-9657-4274-8160-3FDA7D7E4CAE}"/>
-						<State Name="Good_Inputs_1_01" ID="{635157A5-58C9-433C-B389-3150F9033B09}"/>
-						<State Name="Good_Inputs_1_02" ID="{DB4A1F96-4252-4514-ABE2-4D5037D8B10A}"/>
-						<State Name="Good_Inputs_1_03" ID="{738C385E-545C-4C0A-B85A-2839856A2056}"/>
-						<State Name="Validated_1_01" ID="{5082856A-A269-4121-AC47-C434B5F49BC3}"/>
-						<State Name="Validated_1_02" ID="{512B4EA3-76C8-4BC0-8336-1056A229CD67}"/>
-						<State Name="Validated_1_03" ID="{7581AE87-9F42-45A8-9F96-79CB1ED4D9F6}"/>
-						<State Name="Good_Inputs_2_01" ID="{0140C9D7-6D84-4A34-82E4-7142147A3CDA}"/>
-						<State Name="Good_Inputs_2_02" ID="{ED528005-553D-4C74-BDB6-CCE39D299517}"/>
-						<State Name="Good_Inputs_2_03" ID="{A9DF9899-5D58-43EB-9F8E-C4C67ECDB76B}"/>
-						<State Name="Bad_Inputs_2_01" ID="{8E2F76BC-88F3-4996-B5FB-91A9DEF12647}"/>
-						<State Name="Bad_Inputs_2_02" ID="{C82C5C25-BCDA-4BC6-9733-5EF996B01134}"/>
-						<State Name="Bad_Inputs_2_03" ID="{6049E3F7-E7EC-434D-BEEA-A93620F4F946}"/>
-						<State Name="No_Inputs_2_01" ID="{67843F19-EA40-4981-A55E-135FC3C96BA7}"/>
-						<State Name="No_Inputs_2_02" ID="{6C53C192-5848-40C3-8F56-8250609C0609}"/>
-						<State Name="No_Inputs_2_03" ID="{B4638012-2A6F-46C6-860C-B3C3E4BBB577}"/>
-						<State Name="Next_2_01" ID="{6BCF5512-74B4-4AB3-A72D-10FFD2169494}"/>
-						<State Name="Next_2_02" ID="{E96E6A16-B775-4DB1-8611-D108A21D53DA}"/>
-						<State Name="Next_2_03" ID="{B058BC93-5482-4E98-9DA6-78FC57ACDB28}"/>
-						<State Name="Intro_01" ID="{EEAA0DEF-D42C-416F-BC1B-581ED747DDC5}"/>
-						<State Name="Intro_02" ID="{E1E57F83-E843-4A9E-84E9-3EAA8E5E7339}"/>
-						<State Name="Intro_03" ID="{D45EB1EB-5BF9-4C75-B562-872D1D7AEBD6}"/>
-					</ChildrenList>
-				</StateGroup>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</States>

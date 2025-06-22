@@ -50,9 +50,15 @@ public abstract class WaitNodeBase : InterruptableNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
+        await base.ExecuteNode(handler, inPort);
+        if (m_hasBeenKilled)
+        {
+            return;
+        }
+        
         if (m_loopAfterTimeout)
         {
-            while (true)
+            while (!m_hasBeenKilled)
             {
                 await ExecuteNodeInternal(handler, inPort);
                 if (IsTimeout)
@@ -90,11 +96,17 @@ public abstract class WaitNodeBase : InterruptableNode
     {
         InitializeExecute(handler, inPort);
 
-        while (true)
+        while (!m_hasBeenKilled)
         {
+            await base.ExecuteNode(handler, inPort);
+            if (m_hasBeenKilled)
+            {
+                break;
+            }
+            
             UpdateWaitUntilTest();
 
-            CancellationToken cancellationToken = handler.StopToken;
+            CancellationToken cancellationToken = m_killStopCTS.Token;
 
             if (m_doesTimeout)
             {
@@ -103,7 +115,7 @@ public abstract class WaitNodeBase : InterruptableNode
                 m_timeoutSource?.Dispose();
                 m_timeoutSource = new();
                 m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
-                CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(handler.StopToken, m_timeoutSource.Token);
+                CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(m_killStopCTS.Token, m_timeoutSource.Token);
                 cancellationToken = linkedTokenSource.Token;
             }
 
@@ -113,9 +125,9 @@ public abstract class WaitNodeBase : InterruptableNode
             {
                 DebugLog($"Wait interrupted");
 
-                if (!m_timeoutSource.IsCancellationRequested)
+                if (!m_doesTimeout || !m_timeoutSource.IsCancellationRequested)
                 {
-                    DebugLog($"Paused/stopped");
+                    DebugLog($"Killed/Paused/Stopped");
                     // The graph is being paused => We have to wait its reactivation
                     await HandlePauseStop(handler);
                     continue;
@@ -130,6 +142,11 @@ public abstract class WaitNodeBase : InterruptableNode
     {
         DisposeExecute(handler, inPort);
 
+        if (m_hasBeenKilled)
+        {
+            return;
+        }
+        
         if (IsTimeout)
         {
             DebugLog($"Has timeout");

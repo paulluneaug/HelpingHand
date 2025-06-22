@@ -10,7 +10,7 @@ public class InputGroup : MonoBehaviour, ILateStarter
     private BaseGameEvent[] m_inputs;
 
     [SerializeField]
-    private EntityState m_indicatorState;
+    private IndicatorState m_indicatorState;
 
     [SerializeField]
     private bool m_activateAtStart = false;

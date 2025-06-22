@@ -1,5 +1,7 @@
 using System;
 
+using Sirenix.OdinInspector;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,7 +13,7 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
 {
     protected override BaseVariable<bool> InputEvent => m_event.ButtonState;
 
-    [SerializeField] private ButtonInputEvent m_event;
+    [SerializeField][Required] private ButtonInputEvent m_event;
 
     [SerializeField] private Color m_buttonReleasedColor;
     [SerializeField] private Color m_buttonPressedColor;

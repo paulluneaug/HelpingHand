@@ -4,6 +4,18 @@ using UnityEditor;
 public static class LoadLevelList
 {
 
+    [MenuItem("Helping Hand/Levels/0_Onboarding", false, 0)]
+    private static void Openc13a3d6c6f8ba904690678345995468c()
+    {
+        LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/0_Onboarding.unity");
+    }
+
+    [MenuItem("Helping Hand/Levels/1_Acte1", false, 0)]
+    private static void Openb38b1e854d66a1d4e9c9b71d90075e93()
+    {
+        LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/1_Acte1.unity");
+    }
+
     [MenuItem("Helping Hand/Levels/Matthieu Test", false, 0)]
     private static void Open15e8b0ab92e7e7f4cb03088a83900a99()
     {
@@ -14,23 +26,5 @@ public static class LoadLevelList
     private static void Open97e3c7ccd5c5fa54693bbdfa4ff947dc()
     {
         LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/Tests/MenuTests.unity");
-    }
-
-    [MenuItem("Helping Hand/Levels/TestSequence0", false, 0)]
-    private static void Open37888990636850d4bbf86fdc6aaf589e()
-    {
-        LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/Tests/TestSequence0.unity");
-    }
-
-    [MenuItem("Helping Hand/Levels/TestSequence1", false, 0)]
-    private static void Openf0df0b76b66bce24395cbbb94d9435ad()
-    {
-        LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/Tests/TestSequence1.unity");
-    }
-
-    [MenuItem("Helping Hand/Levels/TestSequence2", false, 0)]
-    private static void Open677a338ff646d3042b13e8f07cefedb3()
-    {
-        LoadLevelUtils.LoadLevel("Assets/Scenes/Levels/Tests/TestSequence2.unity");
     }
 }

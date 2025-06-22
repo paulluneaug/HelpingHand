@@ -1,13 +1,14 @@
+using Sirenix.OdinInspector;
+
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class VirtualFader : VirtualInput<float>
 {
     protected override BaseVariable<float> InputEvent => m_inputEvent;
 
-    [FormerlySerializedAs("m_linkedVariable")]
     [SerializeField]
+    [Required]
     private FaderInputEvent m_inputEvent;
 
     [SerializeField]
