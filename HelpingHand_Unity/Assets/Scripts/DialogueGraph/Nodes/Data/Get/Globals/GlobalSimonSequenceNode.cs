@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 
 using UnityEngine;
 
-[CreateNodeMenu("Data/Get/Global Variables/Transform")] 
+[CreateNodeMenu("Data/Get/Global Variables/Simon Sequence")] 
 public class GlobalSimonSequenceNode : GlobalVariableNode<SimonSequenceVariable>
 {
     [Output(ShowBackingValue.Always)] [SerializeField] [InlineEditor]

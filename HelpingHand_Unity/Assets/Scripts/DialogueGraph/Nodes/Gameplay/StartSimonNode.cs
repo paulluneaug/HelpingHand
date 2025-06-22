@@ -34,7 +34,9 @@ public class StartSimonNode : BaseNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         m_sucess = false;
-        m_sucess = await HandleCancellation(handler, GameManager.Instance.SimonManager.StartSequence(m_sequence.Value));
+
+        SimonSequenceVariable sequence = GetInputPort(nameof(m_sequence)).GetInputValue<SimonSequenceVariable>();
+        m_sucess = await HandleCancellation(handler, GameManager.Instance.SimonManager.StartSequence(sequence.Value));
     }
 
     private async UniTask<bool> HandleCancellation(GraphRunnerHandler handler, UniTask<bool> task)
