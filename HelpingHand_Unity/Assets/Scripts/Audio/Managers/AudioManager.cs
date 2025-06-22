@@ -79,15 +79,11 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     private void Awake()
     {
-        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
+        SoundbankManager.LoadAllSoundbanks(); //Charge toutes les soundbanks: temporaire ! Load les soundbanks au fur et à mesure pour optimiser
     }
 
     protected override void Start()
     {
-       // SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-
-        //On joue la musique principale dès que la scène se lance
-
         // Ambiances de pièces qui se jouent dès le début
         _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         _ = EventManager.Theater_Ambience_Play.Post(gameObject);
