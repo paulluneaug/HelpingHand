@@ -77,10 +77,6 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent Theater_Ambience_Play;
     #endregion
 
-    #region Dialogue Events
-    [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent DialogueEvent_Play;
-    #endregion
-
     #region Gears Events
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent MainGear_Play;
     #endregion
@@ -91,7 +87,46 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToSuspenseMusic;
     [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToHorribleMusic;
 
+    #endregion
+
+    #region ItemDropper Events 
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_FallingObject;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_HatCatch;
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_WeaponCatch;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperBox_Open;
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperMovingLoop;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Stop_ItemDropperMovingLoop_Fadeout;
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_Smoke_Impact;
+
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperLeaving;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperError;
+
+    //Hat
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedBeret;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedChicken;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedHatEmpty;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedHeadphones;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedHelmet;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedRabbit;
+
+    //Weapon
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedBaguette;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedBeer;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedBroom;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedCarot;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedEmpty;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedSword;
+
+
+
     #endregion 
+
+
     [System.Obsolete]
     public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
     {
