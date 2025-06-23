@@ -324,7 +324,7 @@ void DispatchRecievedMessage(int readBytes)
         break;
 
       case HeaderGlossary::SIMON_SEQUENCE_HEADER:
-        recievedEnoughDatas &= TryProcessIndicatorStateCommand();
+        recievedEnoughDatas &= TryProcessSimonSequenceCommand();
         break;
 
       case HeaderGlossary::ACK_HEADER:
@@ -378,7 +378,9 @@ bool TryProcessSimonSequenceCommand()
   }
 
   byte sequenceLength = m_recieveQueue.At(1); // Position of the sequenceLength in the command
-  if (m_recieveQueue.Count() < sequenceLength + 2)
+  int bufferExpectedLength = 2 + sequenceLength / 4 + ((sequenceLength % 4 != 0) ? 1 : 0);
+
+  if (m_recieveQueue.Count() < bufferExpectedLength)
   {
     return false; // Should wait for more datas to arrive
   }
@@ -400,7 +402,10 @@ bool TryProcessSimonSequenceCommand()
     }
   }
 
-  //m_simon.StartSequence(m_simonSequence, sequenceLength);
+  m_motorizedFader.SetTarget(m_motorizedFader.ReadValue() > 512 ? 0 : 1023);
+  m_simon.StartSequence(m_simonSequence, sequenceLength);
+
+
 }
 
 bool TryProcessAckCommand()
