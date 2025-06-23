@@ -2,26 +2,15 @@ using UnityEngine;
 
 public abstract class DroppableItem : MonoBehaviour
 {
+    public Sprite Preview => m_preview;
+
     [SerializeField] protected GameObject m_model;
-    [SerializeField] protected GameObject m_preview;
+    [SerializeField] private Sprite m_preview;
+
 
     private void Awake()
     {
         DeactivateModel();
-    }
-
-    public void ActivatePreview(Transform parent)
-    {
-        m_preview.transform.SetParent(parent);
-        m_preview.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        m_preview.SetActive(true);
-    }
-
-    public void DeactivatePreview()
-    {
-        m_preview.transform.SetParent(transform);
-        m_preview.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        m_preview.SetActive(false);
     }
 
     public void ActivateModel()

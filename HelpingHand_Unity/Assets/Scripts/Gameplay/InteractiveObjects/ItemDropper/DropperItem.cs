@@ -8,7 +8,8 @@ using UnityUtility.MathU;
 
 public class DropperItem : MonoBehaviour
 {
-    [SerializeField] private Transform m_previewParent;
+    [SerializeField] private SpriteRenderer m_previewRenderer;
+    [SerializeField] private Sprite m_defaultSprite;
 
     [NonSerialized] private DroppableItem m_item;
 
@@ -29,7 +30,7 @@ public class DropperItem : MonoBehaviour
         m_spline = spline;
 
         m_item.DeactivateModel();
-        m_item.ActivatePreview(m_previewParent);
+        m_previewRenderer.sprite = m_item.Preview;
     }
 
     public void StartItem(float startPosition)
@@ -69,12 +70,12 @@ public class DropperItem : MonoBehaviour
     public void DropItem()
     {
         m_item.DropItem();
-        m_item.DeactivatePreview();
+        m_previewRenderer.sprite = m_defaultSprite;
     }
 
     public void ResetItem()
     {
-        m_item.DeactivatePreview();
+        m_previewRenderer.sprite = m_defaultSprite;
         m_item = null;
 
         m_startPosition = 0.0f;
