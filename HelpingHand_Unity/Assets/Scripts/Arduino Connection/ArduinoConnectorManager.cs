@@ -1,23 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.Security.Policy;
 
 using Sirenix.OdinInspector;
 
 using UnityEngine;
+
+using UnityUtility.Extensions;
 
 using static CommandHeadersGlossary;
 
 [Serializable]
 public class ArduinoConnectorManager
 {
-    private const int QUEUE_CAPACITY = 128;
 
     [SerializeField] private bool m_enableArduinoConnection;
 
-    [SerializeField] private ArduinoConnector m_arduinoConnector;
+    [NonSerialized] private bool m_ready = false;
 
-    [NonSerialized] private Queue<byte> m_recievedDatas;
+    [NonSerialized] private ArduinoConnector m_arduinoConnector;
+
+    [NonSerialized] private ArduinoConnector[] m_testedConnectors;
 
 
     public void Initialize()
@@ -26,12 +30,39 @@ public class ArduinoConnectorManager
         {
             return;
         }
+        m_ready = false;
 
-        m_recievedDatas = new Queue<byte>(QUEUE_CAPACITY);
+        string[] portNames = SerialPort.GetPortNames();
+        m_testedConnectors = new ArduinoConnector[portNames.Length];
 
-        m_arduinoConnector.Init();
+        for(int i = 0; i < portNames.Length; ++i)
+        {
+            m_testedConnectors[i] = new ArduinoConnector();
+            m_testedConnectors[i].OnSynAckRecieved += OnSynAckRecieved;
+            m_testedConnectors[i].Init(portNames[i]);
+        }
 
+        m_testedConnectors.ForEach(connector => connector.SendAck());
+    }
+
+    private void DisposeIfInvalid(ArduinoConnector testedConnector, ArduinoConnector validConnector)
+    {
+        if (testedConnector == validConnector)
+        {
+            return;
+        }
+        testedConnector.Close();
+    }
+
+    private void OnSynAckRecieved(ArduinoConnector validConnector)
+    {
+        m_testedConnectors.ForEach((ArduinoConnector testedConnector) => DisposeIfInvalid(testedConnector, validConnector));
+
+        m_arduinoConnector = validConnector;
         m_arduinoConnector.OnMessageRecieved += OnArduinoMessageRecieved;
+        m_ready = true;
+
+        m_testedConnectors = null;
     }
 
     public void Dispose()
@@ -98,27 +129,49 @@ public class ArduinoConnectorManager
         m_arduinoConnector.Send(messageBuffer);
     }
 
+    [Button]
+    private void FaderUp()
+    {
+        SendFaderPosition(true);
+    }
+
+    [Button]
+    private void FaderDown()
+    {
+        SendFaderPosition(false);
+    }
+
+
+    public void SendFaderPosition(bool high)
+    {
+        if (!m_enableArduinoConnection)
+        {
+            return;
+        }
+        Span<byte> messageBuffer = stackalloc byte[2];
+        byte writeIndex = 0;
+
+        messageBuffer[writeIndex++] = FADER_POSITION_HEADER;
+        messageBuffer[writeIndex++] = (byte)(high ? 1 : 0);
+
+        m_arduinoConnector.Send(messageBuffer);
+    }
+
     private void OnArduinoMessageRecieved(byte[] buffer, int recievedBytesCount)
     {
-        for (int i = 0; i < recievedBytesCount; i++)
-        {
-            m_recievedDatas.Enqueue(buffer[i]);
-        }
-
-
         bool recievedEnoughDatas = true;
-        while (m_recievedDatas.Count > 0 && recievedEnoughDatas)
+        while (m_arduinoConnector.RecievedDatas.Count > 0 && recievedEnoughDatas)
         {
-            byte queueHead = m_recievedDatas.Peek();
+            byte queueHead = m_arduinoConnector.RecievedDatas.Peek();
             switch (queueHead)
             {
                 case ERROR_HEADER:
-                    recievedEnoughDatas &= TryProcessErrorDatas(m_recievedDatas);
+                    recievedEnoughDatas &= TryProcessErrorDatas(m_arduinoConnector.RecievedDatas);
                     break;
 
                 default: // The header is discarded if unknown
                     Debug.LogError($"Unknown Header ({queueHead}) Next commands might not be working properly");
-                    _ = m_recievedDatas.Dequeue();
+                    _ = m_arduinoConnector.RecievedDatas.Dequeue();
                     break;
             }
         }

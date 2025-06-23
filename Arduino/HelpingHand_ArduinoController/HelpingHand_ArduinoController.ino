@@ -22,6 +22,9 @@
 const int MAX_QUEUE_SIZE = 256;
 const int BUFFER_SIZE = 64;
 
+// Misc
+const int FLAMETHROWER_THRESHOLD = 900;
+
 int m_wroteBytes = 0;
 byte m_readBuffer[BUFFER_SIZE];
 byte m_writeBuffer[BUFFER_SIZE];
@@ -56,9 +59,7 @@ int m_indicators[] =
   PinGlossary::LED_INDICATOR_5, 
   PinGlossary::LED_INDICATOR_6, 
   PinGlossary::LED_INDICATOR_7, 
-  PinGlossary::LED_INDICATOR_8, 
-  PinGlossary::LED_INDICATOR_9, 
-  PinGlossary::LED_INDICATOR_10,
+  PinGlossary::LED_INDICATOR_8
 };
 
 int m_musicIndicators[] =
@@ -148,8 +149,8 @@ ButtonController m_btnSFX_5(&m_mux2, MuxAdressGlossary::MUX2_SFX_5, &m_joystick,
 ButtonController m_btnStartMusic(&m_mux2, MuxAdressGlossary::MUX2_START_MUSIC_BTN, &m_joystick, ButtonGlossary::START_MUSIC);
 
 ButtonController m_btnFlamethrower(&m_mux2, MuxAdressGlossary::MUX2_FLAMETHROWER_BTN, &m_joystick, ButtonGlossary::FLAMETHROWER_BTN);
-ButtonController m_flamethrowerToggle_0(&m_mux2, MuxAdressGlossary::MUX2_FLAMETHROWER_TOGGLE_0, &m_joystick, ButtonGlossary::FLAMETHROWER_TOGGLE_0);
-ButtonController m_flamethrowerToggle_1(&m_mux2, MuxAdressGlossary::MUX2_FLAMETHROWER_TOGGLE_1, &m_joystick, ButtonGlossary::FLAMETHROWER_TOGGLE_1);
+MuxAdress m_flamethrowerToggle_0(&m_mux2, MuxAdressGlossary::MUX2_FLAMETHROWER_TOGGLE_0);
+MuxAdress m_flamethrowerToggle_1(&m_mux2, MuxAdressGlossary::MUX2_FLAMETHROWER_TOGGLE_1);
 
 MuxAdress m_flamethrowerPot(&m_mux2, MuxAdressGlossary::MUX2_FLAMETHROWER_POT);
 MuxAdress m_dayNightPot(&m_mux2, MuxAdressGlossary::MUX2_DAY_NIGHT_POT);
@@ -191,9 +192,7 @@ ButtonController* m_buttonControllers[] =
 
   &m_btnStartMusic,
 
-  &m_btnFlamethrower,
-  &m_flamethrowerToggle_0,
-  &m_flamethrowerToggle_1
+  &m_btnFlamethrower
 };
 
 
@@ -240,6 +239,11 @@ void setup() {
   m_frameStart = 0;
   m_frameEnd = 0;
 
+  for (ReadMux* mux : m_multiplexers)
+  {
+    mux->Init();
+  }
+
   m_selectedMusicIndex = 0;
   for (int musicPin : m_musicIndicators){ pinMode(musicPin, OUTPUT); }
   digitalWrite(m_musicIndicators[m_selectedMusicIndex], HIGH);
@@ -250,15 +254,13 @@ void setup() {
   for (int binaryPin : m_binaryIndicators){ if (binaryPin == -1) {continue;} pinMode(binaryPin, OUTPUT); }
 
   m_flamethrowerIndicatorLit = false;
-  pinMode(PinGlossary::LED_FLAMETHROWER, OUTPUT);
+  pinMode(PinGlossary::LED_FLAMETHROWER_TOGGLE, OUTPUT);
+  pinMode(PinGlossary::LED_FLAMETHROWER_POT, OUTPUT);
+  pinMode(PinGlossary::LED_FLAMETHROWER_BUTTON, OUTPUT);
 
   m_motorizedFader.Init();
   m_joystick.begin();
 
-  for (ReadMux* mux : m_multiplexers)
-  {
-    mux->Init();
-  }
 
 }
 
@@ -278,7 +280,7 @@ void loop()
   UpdateAxis();
   UpdateJoystick();
 
-  UpdateFlamethrowerIndicator();
+  UpdateFlamethrower();
   UpdateBinaryIndicator();
   UpdateMusicSelection();
   UpdateSimonButtons();
@@ -323,6 +325,14 @@ void DispatchRecievedMessage(int readBytes)
 
       case HeaderGlossary::SIMON_SEQUENCE_HEADER:
         recievedEnoughDatas &= TryProcessIndicatorStateCommand();
+        break;
+
+      case HeaderGlossary::ACK_HEADER:
+        recievedEnoughDatas &= TryProcessAckCommand();
+        break;
+
+      case HeaderGlossary::FADER_POSITION_HEADER:
+        recievedEnoughDatas &= TryProcessFaderPositionCommand();
         break;
 
 
@@ -393,6 +403,35 @@ bool TryProcessSimonSequenceCommand()
   //m_simon.StartSequence(m_simonSequence, sequenceLength);
 }
 
+bool TryProcessAckCommand()
+{  
+  if (m_recieveQueue.Count() < 2)
+  {
+    return false;  // Should wait for more datas to arrive
+  }
+
+  m_recieveQueue.Dequeue();  // Dequeue the header
+  byte ackParameter = m_recieveQueue.Peek();
+  m_recieveQueue.Dequeue();  // Dequeue the parameter
+
+  m_writeBuffer[m_wroteBytes++] = HeaderGlossary::SYNACK_HEADER;
+  m_writeBuffer[m_wroteBytes++] = ackParameter;
+  
+}
+
+bool TryProcessFaderPositionCommand()
+{  
+  if (m_recieveQueue.Count() < 2)
+  {
+    return false;  // Should wait for more datas to arrive
+  }
+
+  m_recieveQueue.Dequeue();  // Dequeue the header
+  int position = m_recieveQueue.Peek() == 0 ? 0 : 1023;
+  m_recieveQueue.Dequeue();  // Dequeue the position
+  m_motorizedFader.SetTarget(position);
+}
+
 void SendDataIfNeeded()
 {
   if (m_wroteBytes != 0)
@@ -419,19 +458,13 @@ void UpdateButtons()
 
 void UpdateAxis()
 {
-  m_joystick.setXAxis(m_flamethrowerPot.ReadAnalog());
+  m_joystick.setXAxis(m_spotIntensityPot.ReadAnalog());
   m_joystick.setYAxis(m_dayNightPot.ReadAnalog());
   m_joystick.setZAxis(m_propsFader_0.ReadAnalog());
 
   m_joystick.setRxAxis(m_propsFader_1.ReadAnalog());
   m_joystick.setRyAxis(m_propsSelectorFader.ReadAnalog());
   m_joystick.setRzAxis(m_motorizedFader.ReadValue());
-
-  m_joystick.setAccelerator(m_spotIntensityPot.ReadAnalog());
-  m_joystick.setBrake (m_spotIntensityPot.ReadAnalog());
-  m_joystick.setSteering(m_spotIntensityPot.ReadAnalog());
-  m_joystick.setRudder (m_spotIntensityPot.ReadAnalog());
-  m_joystick.setThrottle(m_spotIntensityPot.ReadAnalog());
 }
 
 void UpdateJoystick()
@@ -482,16 +515,18 @@ void UpdateIndicators(int indicatorsState)
   }
 }
 
-void UpdateFlamethrowerIndicator()
+void UpdateFlamethrower()
 {
-  bool shouldLit = m_flamethrowerToggle_0.GetValue() && m_flamethrowerToggle_1.GetValue();
-  if (shouldLit == m_flamethrowerIndicatorLit)
-  {
-    return;
-  }
+  bool toggleShouldLit = m_flamethrowerToggle_0.ReadDigital() && m_flamethrowerToggle_1.ReadDigital();
+  m_joystick.setButton(ButtonGlossary::FLAMETHROWER_TOGGLE, toggleShouldLit ? 1 : 0);
 
-  m_flamethrowerIndicatorLit = shouldLit;
-  digitalWrite(PinGlossary::LED_FLAMETHROWER, shouldLit ? HIGH : LOW);
+  bool potShouldLit = m_flamethrowerPot.ReadAnalog() > FLAMETHROWER_THRESHOLD;
+  m_joystick.setButton(ButtonGlossary::FLAMETHROWER_POT, potShouldLit ? 1 : 0);
+
+
+  digitalWrite(PinGlossary::LED_FLAMETHROWER_TOGGLE, toggleShouldLit ? HIGH : LOW);
+  digitalWrite(PinGlossary::LED_FLAMETHROWER_POT, toggleShouldLit && potShouldLit ? HIGH : LOW);
+  digitalWrite(PinGlossary::LED_FLAMETHROWER_BUTTON, toggleShouldLit && potShouldLit ? HIGH : LOW);
 
   //m_motorizedFader.SetTarget(shouldLit ? 0 : 1023);
 }
