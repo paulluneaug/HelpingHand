@@ -37,9 +37,6 @@ public class ConditionInputCount : ConditionBase
         [LabelText("Global variable")] GlobalVariable,
         [LabelText("Blackboard")] Blackboard
     }
-    
-    [SerializeField] [LabelWidth(100)]
-    private int m_count;
 
     [SerializeField] [LabelWidth(100)] [EnumToggleButtons]
     private TimeType m_timeType;
@@ -91,6 +88,10 @@ public class ConditionInputCount : ConditionBase
     [LabelWidth(100)]
     [EnumToggleButtons]
     private ComparisonOperation m_countType;
+    
+    [SerializeField] 
+    [LabelWidth(100)]
+    private int m_count;
 
     private IEnumerable<BaseGameEvent> m_effectiveInputList;
 
