@@ -13,12 +13,12 @@ using static SimonSequence;
 [Serializable]
 public class SimonManager
 {
-    [SerializeField] private SerializedDictionary<SimonColor, BaseVariable<bool>> m_simonActions;
+    [SerializeField] private SerializedDictionary<SimonColor, ButtonInputEvent> m_simonButtons;
 
     [NonSerialized] private readonly Queue<SimonColor> m_inputQueue = new Queue<SimonColor>();
 
     [NonSerialized] private bool m_listenForInputs = false;
-    [NonSerialized] private Action<bool>[] m_eventActions;
+    [NonSerialized] private Action[] m_eventActions;
 
     [NonSerialized] private UniTask<bool>? m_currentSimonTask = null;
     [NonSerialized] private bool m_cancelTask;
@@ -27,14 +27,14 @@ public class SimonManager
     {
         m_listenForInputs = false;
 
-        m_eventActions = new Action<bool>[m_simonActions.Count];
+        m_eventActions = new Action[m_simonButtons.Count];
 
         int actionIndex = 0;
-        foreach (KeyValuePair<SimonColor, BaseVariable<bool>> pair in m_simonActions)
+        foreach (KeyValuePair<SimonColor, ButtonInputEvent> pair in m_simonButtons)
         {
             SimonColor color = pair.Key;
-            m_eventActions[actionIndex] = (bool inputValue) => OnSimonInputPerformed(inputValue, color);
-            pair.Value.AddListener(m_eventActions[actionIndex++]);
+            m_eventActions[actionIndex] = () =>OnSimonInputPerformed(color);
+            pair.Value.AddDownListener(m_eventActions[actionIndex++]);
         }
 
 
@@ -43,7 +43,7 @@ public class SimonManager
     public void Dispose()
     {
         int actionIndex = 0;
-        foreach (KeyValuePair<SimonColor, BaseVariable<bool>> pair in m_simonActions)
+        foreach (KeyValuePair<SimonColor, ButtonInputEvent> pair in m_simonButtons)
         {
             pair.Value.AddListener(m_eventActions[actionIndex++]);
         }
@@ -106,12 +106,8 @@ public class SimonManager
 
 
 
-    private void OnSimonInputPerformed(bool inputValue, SimonColor color)
+    private void OnSimonInputPerformed(SimonColor color)
     {
-        if (!inputValue)
-        {
-            return;
-        }
         if (!m_listenForInputs)
         {
             return;

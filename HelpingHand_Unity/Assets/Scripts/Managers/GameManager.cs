@@ -1,5 +1,7 @@
 using System;
 
+using Cysharp.Threading.Tasks;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -80,6 +82,19 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     protected override void Start()
     {
         base.Start();
+        StartAsync().Forget();
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_arduinoConnectorManager.Dispose();
+        m_simonManager.Dispose();
+    }
+
+    private async UniTask StartAsync()
+    {
+        await UniTask.WaitUntil(() => m_arduinoConnectorManager.IsReady);
         switch (m_currentGameState)
         {
             case GameState.MainMenu:
@@ -90,13 +105,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             default:
                 break;
         }
-    }
-
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        m_arduinoConnectorManager.Dispose();
-        m_simonManager.Dispose();
     }
 
     public void StartGameplay()

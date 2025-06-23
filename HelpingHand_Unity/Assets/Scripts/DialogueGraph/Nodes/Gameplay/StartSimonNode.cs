@@ -52,7 +52,7 @@ public class StartSimonNode : BaseNode
 
                 return await HandleCancellation(handler, GameManager.Instance.SimonManager.ResumeSequence());
             }
-            else // Cancelled => need to move back?
+            else 
             {
                 return false;
             }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Security.Policy;
 
+using Cysharp.Threading.Tasks;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -14,6 +16,7 @@ using static CommandHeadersGlossary;
 [Serializable]
 public class ArduinoConnectorManager
 {
+    public bool IsReady => !m_enableArduinoConnection || m_ready;
 
     [SerializeField] private bool m_enableArduinoConnection;
 
@@ -41,12 +44,18 @@ public class ArduinoConnectorManager
             m_testedConnectors[i].OnSynAckRecieved += OnSynAckRecieved;
             m_testedConnectors[i].Init(portNames[i]);
         }
+        SendAcks().Forget();
+    }
 
+    private async UniTask SendAcks()
+    {
+        await UniTask.WaitForSeconds(1.0f);
         m_testedConnectors.ForEach(connector => connector.SendAck());
     }
 
     private void DisposeIfInvalid(ArduinoConnector testedConnector, ArduinoConnector validConnector)
     {
+        testedConnector.OnSynAckRecieved -= OnSynAckRecieved;
         if (testedConnector == validConnector)
         {
             return;
@@ -82,6 +91,11 @@ public class ArduinoConnectorManager
         {
             return;
         }
+        if (!m_ready)
+        {
+            Debug.LogError("Ardunio connection not ready");
+            return;
+        }
 
         Span<byte> messageBuffer = stackalloc byte[5];
         byte writeIndex = 0;
@@ -101,6 +115,11 @@ public class ArduinoConnectorManager
         {
             return;
         }
+        if (!m_ready)
+        {
+            Debug.LogError("Ardunio connection not ready");
+            return;
+        }
 
         int sequenceLength = simonSequence.Sequence.Length;
 
@@ -111,7 +130,7 @@ public class ArduinoConnectorManager
 
         int dataOffset = 2; // Header + size
 
-        int bufferSize = dataOffset + sequenceLength / 4 + sequenceLength % 4 != 0 ? 1 : 0;
+        int bufferSize = dataOffset + sequenceLength / 4 + ((sequenceLength % 4 != 0) ? 1 : 0);
 
         Span<byte> messageBuffer = stackalloc byte[bufferSize];
         messageBuffer.Fill(0);
@@ -146,6 +165,11 @@ public class ArduinoConnectorManager
     {
         if (!m_enableArduinoConnection)
         {
+            return;
+        }
+        if (!m_ready)
+        {
+            Debug.LogError("Ardunio connection not ready");
             return;
         }
         Span<byte> messageBuffer = stackalloc byte[2];
