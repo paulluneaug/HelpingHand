@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue Succes Visuel 5.4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1832, y: 8}
+  position: {x: 2120, y: 8}
   folded: 0
   ports:
     keys:
@@ -110,7 +110,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 2878624616378641440}
+        node: {fileID: 2245519001099104639}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_priority: 10
+  m_priority: 20
 --- !u!114 &-672711187346118981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: Dialogue Succes Visuel 5.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1032, y: 8}
+  position: {x: 1320, y: 8}
   folded: 0
   ports:
     keys:
@@ -294,6 +294,74 @@ MonoBehaviour:
   - {fileID: 3442904629416104499}
   - {fileID: -8046008712432757277}
   - {fileID: -4836047342246714901}
+  - {fileID: 2245519001099104639}
+--- !u!114 &2245519001099104639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait Duration
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 648, y: 8}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 2245519001099104639}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -4836047342246714901}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 2245519001099104639}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 2878624616378641440}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 2245519001099104639}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 1
+  m_waitTime: 2
+  m_unscaled: 0
 --- !u!114 &2878624616378641440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +375,7 @@ MonoBehaviour:
   m_Name: Dialogue Succes Visuel 5.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 632, y: 8}
+  position: {x: 920, y: 8}
   folded: 0
   ports:
     keys:
@@ -321,7 +389,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -4836047342246714901}
+        node: {fileID: 2245519001099104639}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -380,7 +448,7 @@ MonoBehaviour:
   m_Name: Dialogue Succes Visuel 5.3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1432, y: 8}
+  position: {x: 1720, y: 8}
   folded: 0
   ports:
     keys:

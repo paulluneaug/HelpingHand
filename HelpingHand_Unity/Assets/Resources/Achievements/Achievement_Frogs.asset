@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: e12521f60753d494ab7a006b33e85274, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -23,19 +24,25 @@ MonoBehaviour:
     SerializationNodes:
     - Name: m_condition
       Entry: 7
-      Data: 0|ConditionAnd, Assembly-CSharp
+      Data: 0|ConditionTrigger, Assembly-CSharp
     - Name: m_scoreMult
       Entry: 3
       Data: 1
-    - Name: m_preconditions
+    - Name: m_trigger
       Entry: 7
-      Data: 1|ConditionBase[], Assembly-CSharp
-    - Name: 
-      Entry: 12
+      Data: 1|ButtonInputTrigger, Assembly-CSharp
+    - Name: m_canReactivate
+      Entry: 5
+      Data: true
+    - Name: m_reactivateTime
+      Entry: 4
       Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
+    - Name: m_buttonEvent
+      Entry: 10
+      Data: 0
+    - Name: m_timeToTrigger
+      Entry: 4
+      Data: 0.05
     - Name: 
       Entry: 8
       Data: 
