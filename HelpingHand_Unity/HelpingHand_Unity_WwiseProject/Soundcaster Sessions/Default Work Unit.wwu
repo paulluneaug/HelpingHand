@@ -89,7 +89,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}"/>
-							<Value>0.167388167388167</Value>
+							<Value>1</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="RTPC_TimeOfDay" ID="{17A3DA49-E996-4475-941E-EEC36D853682}"/>
@@ -125,7 +125,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="RTPC_MusicVolume" ID="{8976F519-EE1B-4D4F-A369-2E7C1C8D978E}"/>
-							<Value>0.998509687034277</Value>
+							<Value>1</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="RTPC_AmbVolume" ID="{0FAF8660-9FF0-4DF0-8C93-927A12E6C2BC}"/>
@@ -141,7 +141,7 @@
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="Gameplay" ID="{1F7D27F0-853A-4FBA-BD84-B4A6E0FB254F}"/>
+						<CurrentStateRef Name="None" ID="{E186DF10-74E4-41DD-88F7-86B0DFDD56E1}"/>
 						<CurrentStateRef Name="Sad_Theme" ID="{5D4ACF21-0E3C-4FD7-8207-1BA3CD76BE1C}"/>
 						<CurrentStateRef Name="None" ID="{EDA73E68-5676-4866-933C-C8658572B29F}"/>
 						<CurrentStateRef Name="None" ID="{A2CCF5AB-1F16-458B-AAB7-065146F75091}"/>
@@ -152,7 +152,9 @@
 						<CurrentStateRef Name="None" ID="{D3E1893D-7C7E-4C9C-93F7-4E8418AEB459}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Baguette" ID="{B50F9ACA-C657-4652-A02F-4AC2167E1918}"/>
 						<CurrentSwitchRef Name="Idle" ID="{05B62766-73A2-464B-9C13-ED7758FEC675}"/>
+						<CurrentSwitchRef Name="Beret" ID="{7339FB68-E355-49FE-90B8-4446F6405347}"/>
 						<CurrentSwitchRef Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
@@ -349,6 +351,42 @@
 						<CurrentSwitchRef Name="Carot" ID="{DFF9BD2D-A42B-45FA-B0B4-5F269D2296E8}"/>
 						<CurrentSwitchRef Name="Chicken" ID="{20E53FA0-26D2-4540-A560-8FED0AFCC00D}"/>
 					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="FlameThrower" ID="{C42FCF11-C473-4993-AEA3-5DB2EB087F0E}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Flamethrower_SwitchTurnOn_Play" ID="{6B1715A3-2FD5-4A30-AE93-98E8CFC57651}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Flamethrower_SwitchTurnOff_Play" ID="{6B01FD0B-8C60-426E-85CB-19EDEC842ED8}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Flamethrower_Potentiometer_Play" ID="{1E13A86C-4F54-48D6-80BA-6C6E8CE1D6AA}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Flamethrower_Play" ID="{297F76A6-1874-4B58-B50A-91F8B2232F5A}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_Music_SecondLayer" ID="{1FE1F2CC-33D0-4274-81E1-144470087FC5}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}"/>
+							<Value>1</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>
