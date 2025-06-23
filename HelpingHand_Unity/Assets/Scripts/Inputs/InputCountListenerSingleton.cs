@@ -19,9 +19,6 @@ using Object = UnityEngine.Object;
 public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountListenerSingleton>
 {
     [SerializeField]
-    private float m_window = 15f;
-
-    [SerializeField]
     private List<BaseGameEvent> m_inputEvents;
 
     [SerializeField]
