@@ -16,6 +16,7 @@ public class ArduinoInputTester : MonoBehaviour
         
         public void Update()
         {
+            if (m_action != null) { return; }
             m_value = m_action.action.ReadValue<float>();
         }
     }
@@ -38,8 +39,11 @@ public class ArduinoInputTester : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        bool arduinoInput = m_arduinoInput.action.IsPressed();
-        Debug.Log($"[{Time.frameCount}] Arduino Action pressed : {arduinoInput}");
+        if (m_arduinoInput != null) 
+        { 
+            bool arduinoInput = m_arduinoInput.action.IsPressed();
+            Debug.Log($"[{Time.frameCount}] Arduino Action pressed : {arduinoInput}");
+        }
 
         m_testedActions.ForEach( action => action.Update() );
     }
