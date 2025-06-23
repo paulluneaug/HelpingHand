@@ -130,21 +130,6 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
         }
     }
 
-    private void Update()
-    {
-        if (Time.time > m_nextWindowTime)
-        {
-            var keys = m_eventTimes.Keys.ToArray();
-            foreach (BaseGameEvent gameEvent in keys)
-            {
-                List<float> times = m_eventTimes[gameEvent];
-                m_eventTimes[gameEvent] = times.Where(t => (Time.time - t) < m_window).ToList();
-            }
-
-            m_nextWindowTime = Time.time + m_window;
-        }
-    }
-
     private void OnInputUsed(BaseGameEvent inputEvent)
     {
         if (!m_eventTimes.TryAdd(inputEvent, new List<float> { Time.time }))
