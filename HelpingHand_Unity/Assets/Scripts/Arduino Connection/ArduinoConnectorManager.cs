@@ -159,6 +159,11 @@ public class ArduinoConnectorManager
         {
             return;
         }
+        if (!m_ready)
+        {
+            Debug.LogError("Ardunio connection not ready");
+            return;
+        }
         Span<byte> messageBuffer = stackalloc byte[2];
         byte writeIndex = 0;
 

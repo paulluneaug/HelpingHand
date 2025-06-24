@@ -444,7 +444,7 @@ void SendDataIfNeeded()
 {
   if (m_wroteBytes != 0)
   {
-    //Serial.write(m_writeBuffer, m_wroteBytes);
+    Serial.write(m_writeBuffer, m_wroteBytes);
   }
 }
 
@@ -509,17 +509,12 @@ void UpdateJoystick()
 
 void UpdateIndicators(int indicatorsState)
 {
-  for (int bitIndex = 0; bitIndex < 32; ++bitIndex)
+  int bitIndex = 0;
+  for (int pin : m_indicators)
   {
-    //int pin = INDICATORS_PINS[bitIndex];
-    //bool on = (indicatorsState & (1 << bitIndex)) != 0;
-
-    //if (pin == -1)
-    //{
-    //  continue;
-    //}
-    //
-    //digitalWrite(pin, on ? HIGH : LOW);
+    bool isOn = (indicatorsState & (1 << bitIndex)) != 0;
+    digitalWrite(pin, isOn ? HIGH : LOW);
+    ++bitIndex;
   }
 }
 
