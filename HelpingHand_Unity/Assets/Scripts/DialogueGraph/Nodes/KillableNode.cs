@@ -29,8 +29,6 @@ public abstract class KillableNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        RenewCTS(handler.StopToken);
-        
         if (inPort.fieldName.Equals(nameof(m_kill)))
         {
             DebugLog($"Killing node");
@@ -41,6 +39,11 @@ public abstract class KillableNode : BaseNode
         {
             DebugLog($"Reset kill status");
             m_hasBeenKilled = false;
+            RenewCTS(handler.StopToken);
+        }
+        else
+        {
+            RenewCTS(handler.StopToken);
         }
 
         await base.ExecuteNode(handler, inPort);
@@ -50,6 +53,7 @@ public abstract class KillableNode : BaseNode
     {
         if (m_hasBeenKilled)
         {
+            DebugLog($"Killed! Stopping here");
             return;
         }
         
@@ -58,6 +62,7 @@ public abstract class KillableNode : BaseNode
 
     private void RenewCTS(CancellationToken stopToken)
     {
+        DebugLog($"Kill CTS renewed");
         m_killCTS?.Dispose();
         m_killCTS = new CancellationTokenSource();
         m_killStopCTS?.Dispose();

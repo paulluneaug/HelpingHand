@@ -1,3 +1,5 @@
+using System;
+
 using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
@@ -28,34 +30,28 @@ public class WaitDurationNode : InterruptableNode
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         await base.ExecuteNode(handler, inPort);
-        
-        while (!m_hasBeenKilled)
+        if (m_hasBeenKilled)
         {
-            DebugLog($"Waiting for {m_waitTime} seconds");
-            if (await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, m_killStopCTS.Token).SuppressCancellationThrow())
-            {
-                DebugLog($"Wait interrupted");
-                if (m_hasBeenKilled)
-                {
-                    DebugLog("Killed");
-                }
-                else
-                {
-                    DebugLog("Paused / Stopped");
-                    // The graph is being paused => We have to wait its reactivation
-                    await HandlePauseStop(handler);
-                }
-                
-                await base.ExecuteNode(handler, inPort);
-                if (m_hasBeenKilled)
-                {
-                    break;
-                }
-                continue;
-            }
-
-            DebugLog($"Wait done");
-            break;
+            DebugLog($"Killed! skipping");
+            return;
         }
+        
+        DebugLog($"Waiting for {m_waitTime} seconds");
+        if (await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, m_killStopCTS.Token).SuppressCancellationThrow())
+        {
+            DebugLog($"Wait interrupted");
+            if (m_hasBeenKilled)
+            {
+                DebugLog($"Killed! skipping");
+                return;
+            }
+            
+            DebugLog($"Paused / Stopped");
+            // The graph is being paused => We have to wait its reactivation
+            await HandlePauseStop(handler);
+            await ExecuteNode(handler, inPort);
+        }
+
+        DebugLog($"Wait done");
     }
 }
