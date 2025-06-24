@@ -370,11 +370,23 @@
 							<ObjectRef Name="Flamethrower_Play" ID="{297F76A6-1874-4B58-B50A-91F8B2232F5A}" WorkUnitID="{B89C7276-E3D7-4A5F-BDBB-CE7C5BDFCA7C}"/>
 							<Position X="1" Y="1"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="GearTransitionLoop" ID="{CC8AD8C5-1A56-45E0-8F6C-B1622BE73311}" WorkUnitID="{048BDCFF-6B74-4AEE-B4CE-1575756E216C}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Curtain_Loop" ID="{86B0C7FD-BEDE-4C59-A581-886BF68F4591}" WorkUnitID="{23FD49BB-91C3-4A0A-BB1F-4D537E01897E}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Onboarding_1_Intro_07_Random" ID="{B8BA3C6E-6AA0-492D-92F7-0636989E9A2E}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+							<Position X="3" Y="1"/>
+						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="SliderSpeed" ID="{B70FFE04-DA1B-41F9-A5AC-E76632D9B9A6}"/>
-							<Value>0</Value>
+							<Value>0.0521739130434783</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="RTPC_Music_SecondLayer" ID="{1FE1F2CC-33D0-4274-81E1-144470087FC5}"/>
@@ -384,11 +396,32 @@
 							<GameParameterRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}"/>
 							<Value>1</Value>
 						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_SFXVolume" ID="{93A59540-D2F8-44AF-BC44-C1B5469BBEB2}"/>
+							<Value>1</Value>
+						</RTPCValue>
 					</RTPCValueList>
-					<CurrentStateList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Gameplay" ID="{1F7D27F0-853A-4FBA-BD84-B4A6E0FB254F}"/>
+						<CurrentStateRef Name="Unboarding" ID="{AA7618E5-F84E-43E6-9F36-96EC45CC9E20}"/>
+						<CurrentStateRef Name="None" ID="{EDA73E68-5676-4866-933C-C8658572B29F}"/>
+						<CurrentStateRef Name="None" ID="{A2CCF5AB-1F16-458B-AAB7-065146F75091}"/>
+						<CurrentStateRef Name="None" ID="{0D8DBD78-EBDD-459D-A214-662FC46FDB92}"/>
+						<CurrentStateRef Name="None" ID="{F4C33BFE-8468-42C4-9436-EBC6BC06FA8C}"/>
+						<CurrentStateRef Name="None" ID="{4E80F4A4-D940-4E77-BD4D-F0B50CD3ABF7}"/>
+						<CurrentStateRef Name="None" ID="{3B98128F-6165-473D-8950-6FC29A264C63}"/>
+						<CurrentStateRef Name="None" ID="{1777709F-F14A-46D0-8C56-8AECAC7EF765}"/>
+						<CurrentStateRef Name="None" ID="{2B3D178F-09C0-48EE-BDD7-9206E43421A8}"/>
+						<CurrentStateRef Name="None" ID="{C11BBEA7-6724-47B3-A05A-0D695D06C20A}"/>
+						<CurrentStateRef Name="None" ID="{D3E1893D-7C7E-4C9C-93F7-4E8418AEB459}"/>
+						<CurrentStateRef Name="None" ID="{FDE4A891-A786-43EE-A968-C4256847955F}"/>
+						<CurrentStateRef Name="None" ID="{14383B21-6AAD-4D80-B19E-D502E9E12A35}"/>
+					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">
-						<CurrentSwitchRef Name="Walk" ID="{A72EB209-0AE8-41BC-8269-5F0ED42EEFE5}"/>
-						<CurrentSwitchRef Name="Wood" ID="{E6D327EE-7941-49F3-BE58-A140CD7C70DB}"/>
+						<CurrentSwitchRef Name="Baguette" ID="{B50F9ACA-C657-4652-A02F-4AC2167E1918}"/>
+						<CurrentSwitchRef Name="Idle" ID="{05B62766-73A2-464B-9C13-ED7758FEC675}"/>
+						<CurrentSwitchRef Name="Beret" ID="{7339FB68-E355-49FE-90B8-4446F6405347}"/>
+						<CurrentSwitchRef Name="Dirt" ID="{33F4CA73-33EE-436C-94C4-B2CDA72356AD}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>

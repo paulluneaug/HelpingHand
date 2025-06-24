@@ -7,7 +7,22 @@
 				<ActorMixer Name="SoundBoard" ID="{E989E916-3AC8-4CE4-B9E5-12D97D97F6CD}" ShortID="982500947">
 					<PropertyList>
 						<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+						<Property Name="Highpass" Type="int16">
+							<ValueList>
+								<Value>48</Value>
+							</ValueList>
+						</Property>
 						<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>47</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>6</Value>
@@ -18,6 +33,11 @@
 								<Value>True</Value>
 							</ValueList>
 						</Property>
+						<Property Name="UserAuxSendVolume0" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -26,10 +46,18 @@
 						<Reference Name="OutputBus">
 							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<RandomSequenceContainer Name="Buendia" ID="{B61AFA5B-32CB-4747-A364-A68F168C474C}" ShortID="913742399">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -129,6 +157,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Frog" ID="{3F33E8F3-CDD1-4316-B202-445AD85B9B2A}" ShortID="72064798">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -388,7 +421,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -787,12 +820,19 @@
 					</ChildrenList>
 				</ActorMixer>
 				<Sound Name="HH_achievement_jingle" ID="{46D91B80-1280-44E8-86B0-E4E470B063F7}" ShortID="469958991">
+					<PropertyList>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -1657,6 +1697,13 @@
 							</BlendTrackList>
 						</BlendContainer>
 						<RandomSequenceContainer Name="Switch_TurnOff" ID="{73E28640-E533-4D88-AD2F-A69E2A449616}" ShortID="415845299">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1837,6 +1884,13 @@
 							</ObjectLists>
 						</RandomSequenceContainer>
 						<BlendContainer Name="Switch_TurnOn" ID="{A1DDA013-B910-4F51-9C45-7E36296CA4A1}" ShortID="371436374">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
