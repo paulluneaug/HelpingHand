@@ -178,6 +178,16 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             _ = EventManager.Untoggle_Play.Post(targetObject);
         }
     }
+
+    public void PlayUINavigationSound()
+    {
+        _ = EventManager.OnUINavigation_Play.Post(gameObject);
+    }
+
+    public void PlayUISubmitSound()
+    {
+        _ = EventManager.OnUISubmit_Play.Post(gameObject);
+    }
     #endregion
     // Méthode qui joue un Dialogue Event avec série de string qui représentent le nom des States, gameObject sur lequel les sons sont joués, token d'annulation
     public async UniTask PlayDialogueWithStatesAsync(
