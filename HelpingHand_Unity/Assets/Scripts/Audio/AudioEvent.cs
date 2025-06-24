@@ -88,7 +88,7 @@ public class AudioEvent : ScriptableObject
     [GUIColor(0.7f, 1f, 0.8f)]
     [FoldoutGroup("Acte 1")]
     [LabelText("Combat2")]
-    [SerializeField] private CombatState m_combat2State;
+    [SerializeField] private Combat2State m_combat2State;
 
     public async UniTask Play(GameObject target = null, CancellationToken cancellationToken = default)
     {

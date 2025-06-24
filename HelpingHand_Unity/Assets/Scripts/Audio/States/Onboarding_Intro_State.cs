@@ -28,5 +28,9 @@ public enum OnboardingIntroState
     Interruption_Intro_23,
     Interruption_Intro_24,
     Interruption_Intro_25,
-    Interruption_Intro_26
+    Interruption_Intro_26,
+
+    Interruption_Intro_191,
+    Interruption_Intro_1101,
+    Interruption_Intro_1111
 }

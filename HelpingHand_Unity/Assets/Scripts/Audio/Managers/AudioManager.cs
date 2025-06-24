@@ -296,6 +296,11 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         AppendIfNotIgnore("Fin", finState, finStateID);
         AppendIfNotIgnore("Succès", successState, SuccesID);
 
+        // Ajout des 3 nouveaux états
+        AppendIfNotIgnore("Combat 2", combat2State, combat2StateID);
+        AppendIfNotIgnore("Interruption Light Intensity", interruptionLightIntensity, interruptionLightIntensityID);
+        AppendIfNotIgnore("Interruption Joystick", interruptionJoystick, interruptionJoystickID);
+
         Debug.Log(sb.ToString());
 
 
