@@ -66,6 +66,9 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent ArrowButtonClick_Play;
     [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OptionsTopButtonClick_Play;
 
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OnUISubmit_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OnUINavigation_Play;
+
     #endregion
     #region Puppet Events
     [FoldoutGroup("Puppet Events")][LabelWidth(200)] public WwiseEvent Footsteps_Play;
