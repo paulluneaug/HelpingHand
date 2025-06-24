@@ -8,6 +8,8 @@ public class CreditsMenuController : MonoBehaviour
     [SerializeField] private CanvasGroup m_canvasGroup;
     [SerializeField] private Button m_backToMenuButton;
 
+    [SerializeField] private Selectable m_notNavigable;
+
     [NonSerialized] private bool m_open = true;
     
     public void OpenCreditsMenu()
@@ -40,7 +42,8 @@ public class CreditsMenuController : MonoBehaviour
         m_canvasGroup.blocksRaycasts = false;
 
         m_backToMenuButton.onClick.RemoveListener(OnBackToMenuClicked);
-        
+        m_notNavigable.Select();
+
         m_open = false;
     }
 
