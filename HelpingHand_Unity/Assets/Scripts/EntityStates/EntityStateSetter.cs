@@ -15,6 +15,11 @@ public class EntityStateSetter : SerializedMonoBehaviour
 
     private void Start()
     {
+        if (m_state == null)
+        {
+            Debug.LogWarning($"State is null", gameObject);
+            return;
+        }
         m_condition.Initialize();
         m_condition.OnPreconditionUpdated += OnConditionUpdated;
         m_state.SetValueWithoutNotify(m_condition.Test());
@@ -22,6 +27,11 @@ public class EntityStateSetter : SerializedMonoBehaviour
 
     private void OnConditionUpdated()
     {
+        if (m_state == null)
+        {
+            Debug.LogWarning($"State is null", gameObject);
+            return;
+        }
         m_state.Value = m_condition.Test();
     }
 }
