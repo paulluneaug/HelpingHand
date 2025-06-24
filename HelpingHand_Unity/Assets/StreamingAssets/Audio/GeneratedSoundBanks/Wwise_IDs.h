@@ -233,6 +233,50 @@ namespace AK
             } // namespace STATE
         } // namespace COMBAT
 
+        namespace COMBAT_2
+        {
+            static const AkUniqueID GROUP = 3389506874U;
+
+            namespace STATE
+            {
+                static const AkUniqueID CONCLU_SIMON_01 = 488659094U;
+                static const AkUniqueID CONCLU_SIMON_02 = 488659093U;
+                static const AkUniqueID CONCLU_SIMON_03 = 488659092U;
+                static const AkUniqueID CONCLU_SIMON_06 = 488659089U;
+                static const AkUniqueID CONCLU_SIMON_07 = 488659088U;
+                static const AkUniqueID CONCLU_SIMON_08 = 488659103U;
+                static const AkUniqueID CONCLU_SIMON_09 = 488659102U;
+                static const AkUniqueID CONCLU_SIMON_10 = 471881508U;
+                static const AkUniqueID CONCLU_SIMON_11 = 471881509U;
+                static const AkUniqueID CONCLU_SIMON_12 = 471881510U;
+                static const AkUniqueID CONCLU_SIMON_13 = 471881511U;
+                static const AkUniqueID CONCLU_SIMON_14 = 471881504U;
+                static const AkUniqueID CONCLU_SIMON_15 = 471881505U;
+                static const AkUniqueID CONCLU_SIMON_16 = 471881506U;
+                static const AkUniqueID CONCLU_SIMON_21 = 522214396U;
+                static const AkUniqueID CONCLU_SIMON_22 = 522214399U;
+                static const AkUniqueID CONCLU_SIMON_23 = 522214398U;
+                static const AkUniqueID CONCLU_SIMON_31 = 505436683U;
+                static const AkUniqueID CONCLU_SIMON_32 = 505436680U;
+                static const AkUniqueID CONCLU_SIMON_33 = 505436681U;
+                static const AkUniqueID CONCLU_SIMON_41 = 421548650U;
+                static const AkUniqueID CONCLU_SIMON_42 = 421548649U;
+                static const AkUniqueID CONCLU_SIMON_51 = 404771065U;
+                static const AkUniqueID CONCLU_SIMON_52 = 404771066U;
+                static const AkUniqueID CONCLU_SIMON_53 = 404771067U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID OUTRO_01 = 2681056580U;
+                static const AkUniqueID OUTRO_02 = 2681056583U;
+                static const AkUniqueID OUTRO_03 = 2681056582U;
+                static const AkUniqueID OUTRO_04 = 2681056577U;
+                static const AkUniqueID OUTRO_051 = 3502750705U;
+                static const AkUniqueID OUTRO_521 = 1438368029U;
+                static const AkUniqueID OUTRO_522 = 1438368030U;
+                static const AkUniqueID OUTRO_531 = 1455145614U;
+                static const AkUniqueID OUTRO_532 = 1455145613U;
+            } // namespace STATE
+        } // namespace COMBAT_2
+
         namespace EQUIPEMENT
         {
             static const AkUniqueID GROUP = 2995846792U;
@@ -406,6 +450,10 @@ namespace AK
                 static const AkUniqueID FIN_510 = 2565101043U;
                 static const AkUniqueID FIN_511 = 2565101042U;
                 static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID TRANSITION_02 = 2728638437U;
+                static const AkUniqueID TRANSITION_11 = 2711860853U;
+                static const AkUniqueID TRANSITION_12 = 2711860854U;
+                static const AkUniqueID TRANSITION_13 = 2711860855U;
             } // namespace STATE
         } // namespace FIN
 
@@ -441,6 +489,41 @@ namespace AK
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace INTERRUPTION_CURTAIN
+
+        namespace INTERRUPTION_JOYSTICK
+        {
+            static const AkUniqueID GROUP = 1369786921U;
+
+            namespace STATE
+            {
+                static const AkUniqueID _11 = 1644366930U;
+                static const AkUniqueID _12 = 1644366929U;
+                static const AkUniqueID _13 = 1644366928U;
+                static const AkUniqueID _21 = 1661144519U;
+                static const AkUniqueID _22 = 1661144516U;
+                static const AkUniqueID _31 = 1677922232U;
+                static const AkUniqueID _32 = 1677922235U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace INTERRUPTION_JOYSTICK
+
+        namespace INTERRUPTION_LIGHTINTENSITY
+        {
+            static const AkUniqueID GROUP = 647819320U;
+
+            namespace STATE
+            {
+                static const AkUniqueID _11 = 1644366930U;
+                static const AkUniqueID _12 = 1644366929U;
+                static const AkUniqueID _21 = 1661144519U;
+                static const AkUniqueID _22 = 1661144516U;
+                static const AkUniqueID _31 = 1677922232U;
+                static const AkUniqueID _32 = 1677922235U;
+                static const AkUniqueID _41 = 1694699821U;
+                static const AkUniqueID _42 = 1694699822U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace INTERRUPTION_LIGHTINTENSITY
 
         namespace INTERRUPTION_ROUE
         {
