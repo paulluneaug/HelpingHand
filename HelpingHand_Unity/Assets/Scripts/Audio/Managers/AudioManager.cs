@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Diagnostics;
 using System.Threading;
 
@@ -204,6 +204,9 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         string equipementState,
         string finState,
         string successState,
+        string combat2State,
+        string interruptionLightIntensity,
+        string interruptionJoystick,
         GameObject targetObject = null,
         CancellationToken cancellationToken = default)
     {
@@ -235,6 +238,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         uint SuccesID = AkUnitySoundEngine.GetIDFromString(successState);
 
+        uint combat2StateID = AkUnitySoundEngine.GetIDFromString(combat2State);
+        uint interruptionLightIntensityID = AkUnitySoundEngine.GetIDFromString(interruptionLightIntensity);
+        uint interruptionJoystickID = AkUnitySoundEngine.GetIDFromString(interruptionJoystick);
+
+
+
         //Tableau d'argument  qui contient la liste des ID qui correspondent à chaque valeur (State) de monDialogue Event -> même ordre que dans Wwise!
         uint[] args = new uint[]
         {
@@ -253,6 +262,11 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         finStateID,
 
         SuccesID,
+
+        combat2StateID,
+        interruptionLightIntensityID,
+        interruptionJoystickID,
+
         };
 
         #region Debug
