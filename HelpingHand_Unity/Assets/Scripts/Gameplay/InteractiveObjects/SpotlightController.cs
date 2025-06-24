@@ -95,7 +95,6 @@ public class SpotlightController : MonoBehaviour
         if (m_target == null || m_target.Value == null)
         {
             Debug.LogError($"No target assigned");
-            Debug.Break();
             return;
         }
         float angle = m_followTargetRotationSpeed * Time.deltaTime;
@@ -104,6 +103,12 @@ public class SpotlightController : MonoBehaviour
 
     private bool IsTargetInCone()
     {
+        if (m_target == null || m_target.Value == null)
+        {
+            Debug.LogError($"No target assigned");
+            return false;
+        }
+
         Vector3 toTarget = m_target.Value.position - m_spotTransform.position;
         float angleToTarget = Vector3.Angle(m_spotTransform.forward, toTarget);
         return angleToTarget < m_spotAngle;
@@ -114,7 +119,7 @@ public class SpotlightController : MonoBehaviour
         m_mode = manualMode ? SpotlightMode.Manual : SpotlightMode.FollowTarget;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         GizmosExtensions.DrawConeFromAngle(transform.position, transform.forward, m_coneHeight, m_spotMaxRange * MathUf.DEG_2_RAD);

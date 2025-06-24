@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 using Unity.Mathematics;
 
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Splines;
 
 using UnityUtility.MathU;
@@ -143,6 +144,16 @@ public class Puppet : MonoBehaviour, ILateAwaker
         {
             SetWalkState(true);
         }
+    }
+
+    public bool IsHoldingObjectInHand()
+    {
+        return m_objectInHand.HeldObject != ObjectInHand.None;
+    }
+
+    public bool IsWearingObjectOnHead()
+    {
+        return m_objectOnHead.WornObject != ObjectOnHead.None;
     }
 
     public void HoldObjectInHand(DroppableHandProp handObject)
