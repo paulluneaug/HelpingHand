@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2584, y: 2376}
+  position: {x: 248, y: 8}
   folded: 0
   ports:
     keys:
@@ -40,6 +40,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 5643508250976966138}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 517630983391893581}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -70,7 +73,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: e304c83bdb5109c448b7427ca325b8f2, type: 2}
@@ -87,7 +90,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Balai 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2056, y: 2808}
+  position: {x: 3368, y: -1032}
   folded: 0
   ports:
     keys:
@@ -144,7 +147,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: c48849db453be2f46987af8f17f5a5af, type: 2}
@@ -161,7 +164,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Carotte 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2424, y: 3304}
+  position: {x: 3736, y: -536}
   folded: 0
   ports:
     keys:
@@ -214,7 +217,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: fc77fc2f14924c444b28076133f1b035, type: 2}
@@ -231,7 +234,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Carotte 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 3304}
+  position: {x: 2632, y: -536}
   folded: 0
   ports:
     keys:
@@ -244,8 +247,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_states 4
-        node: {fileID: 517630983391893581}
+      - fieldName: m_out
+        node: {fileID: 4767301682375494563}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -288,10 +291,64 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 8bcd55dfdb436e84cad0939e7f52d9bd, type: 2}
+--- !u!114 &-6442596502401151440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b538c1d0b6c78241b6f2d422b0d77f7, type: 3}
+  m_Name: Kill Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2392, y: -1528}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -6442596502401151440}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_states 2
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -6442596502401151440}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 6873808165342556201}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &-5445962267649411860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +362,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Vide 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1688, y: 3816}
+  position: {x: 3000, y: -24}
   folded: 0
   ports:
     keys:
@@ -358,10 +415,64 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 77ec2cb9df855b643896456f139546f5, type: 2}
+--- !u!114 &-5142102765018972165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b538c1d0b6c78241b6f2d422b0d77f7, type: 3}
+  m_Name: Kill Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2392, y: -24}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -5142102765018972165}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_states 5
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -5142102765018972165}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 966715277044220306}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &-4886479536719651972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +486,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Epee 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 1336}
+  position: {x: 2632, y: -2504}
   folded: 0
   ports:
     keys:
@@ -388,8 +499,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_states 0
-        node: {fileID: 517630983391893581}
+      - fieldName: m_out
+        node: {fileID: 411043373890514811}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -432,7 +543,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 468a91b5b1f068d4b870b32f5e6c9356, type: 2}
@@ -449,7 +560,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Balai 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1688, y: 2808}
+  position: {x: 3000, y: -1032}
   folded: 0
   ports:
     keys:
@@ -506,7 +617,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 85453cd8b78a545488c2d9376902b0ac, type: 2}
@@ -523,7 +634,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Carotte 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2056, y: 3304}
+  position: {x: 3368, y: -536}
   folded: 0
   ports:
     keys:
@@ -580,7 +691,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: db342088657233243bf6907142d4ae57, type: 2}
@@ -597,7 +708,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Balai 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 2808}
+  position: {x: 2632, y: -1032}
   folded: 0
   ports:
     keys:
@@ -610,8 +721,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_states 3
-        node: {fileID: 517630983391893581}
+      - fieldName: m_out
+        node: {fileID: -595576312691215898}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -653,7 +764,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: a9e5e6714f555ae4b9b5bd9b75b4d6ce, type: 2}
@@ -670,7 +781,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Epee 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2424, y: 1336}
+  position: {x: 3736, y: -2504}
   folded: 0
   ports:
     keys:
@@ -723,7 +834,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 3dce07b442c2be2468099c031aa66744, type: 2}
@@ -740,7 +851,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 5
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1112, y: 2376}
+  position: {x: 1752, y: 504}
   folded: 0
   ports:
     keys:
@@ -797,10 +908,64 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 437447ef4b3616544bcae3834d5a55a8, type: 2}
+--- !u!114 &-595576312691215898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b538c1d0b6c78241b6f2d422b0d77f7, type: 3}
+  m_Name: Kill Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2392, y: -1032}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -595576312691215898}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_states 3
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -595576312691215898}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -2410750891733925640}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +1010,12 @@ MonoBehaviour:
   - {fileID: 966715277044220306}
   - {fileID: -5445962267649411860}
   - {fileID: 517630983391893581}
+  - {fileID: 411043373890514811}
+  - {fileID: 2852737775932785771}
+  - {fileID: -6442596502401151440}
+  - {fileID: -595576312691215898}
+  - {fileID: 4767301682375494563}
+  - {fileID: -5142102765018972165}
 --- !u!114 &209937822675426914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,7 +1029,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Epee 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2056, y: 1336}
+  position: {x: 3368, y: -2504}
   folded: 0
   ports:
     keys:
@@ -915,7 +1086,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 5eca753f918d1414a875ce04832c649c, type: 2}
@@ -932,7 +1103,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Chope 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2424, y: 1816}
+  position: {x: 3736, y: -2024}
   folded: 0
   ports:
     keys:
@@ -986,10 +1157,67 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: baffeabddf78f2f4a869991a5289048e, type: 2}
+--- !u!114 &411043373890514811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b538c1d0b6c78241b6f2d422b0d77f7, type: 3}
+  m_Name: Kill Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2392, y: -2504}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 411043373890514811}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_states 0
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      - fieldName: m_states 0
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 411043373890514811}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -4886479536719651972}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &517630983391893581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +1231,7 @@ MonoBehaviour:
   m_Name: Wait Box selection
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 184, y: 2408}
+  position: {x: 1496, y: -1432}
   folded: 0
   ports:
     keys:
@@ -1042,7 +1270,10 @@ MonoBehaviour:
       _node: {fileID: 517630983391893581}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: m_out
+        node: {fileID: -9073862530683782023}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1071,7 +1302,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -4886479536719651972}
+        node: {fileID: 411043373890514811}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1083,7 +1314,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 1150451497978542743}
+        node: {fileID: 2852737775932785771}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1095,7 +1326,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 6873808165342556201}
+        node: {fileID: -6442596502401151440}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1107,7 +1338,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -2410750891733925640}
+        node: {fileID: -595576312691215898}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1119,7 +1350,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -7561974810636281421}
+        node: {fileID: 4767301682375494563}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1131,7 +1362,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 966715277044220306}
+        node: {fileID: -5142102765018972165}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1152,12 +1383,12 @@ MonoBehaviour:
   m_timeout: 0
   m_loopAfterTimeout: 0
   m_states:
-  - {fileID: 11400000, guid: e08b3406d9d838940ac2809d509b9d19, type: 2}
-  - {fileID: 11400000, guid: ecf6854037dbbba4bbb3e318ddfaf988, type: 2}
-  - {fileID: 11400000, guid: 86cedf65269cc024b91ea0b1c62301c9, type: 2}
-  - {fileID: 11400000, guid: d22044c8d651aa54b9fb2d8fbd31ca2d, type: 2}
-  - {fileID: 11400000, guid: 69079a3743980e644bb3fc33ffecafc5, type: 2}
-  - {fileID: 11400000, guid: b6879898e035176438929d2e952ddefe, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &966715277044220306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,7 +1402,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Vide 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 3816}
+  position: {x: 2632, y: -24}
   folded: 0
   ports:
     keys:
@@ -1184,8 +1415,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_states 5
-        node: {fileID: 517630983391893581}
+      - fieldName: m_out
+        node: {fileID: -5142102765018972165}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1228,7 +1459,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 2d831745a3bdf3f469d3777d7621a5b8, type: 2}
@@ -1245,7 +1476,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Chope 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 1816}
+  position: {x: 2632, y: -2024}
   folded: 0
   ports:
     keys:
@@ -1258,8 +1489,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_states 1
-        node: {fileID: 517630983391893581}
+      - fieldName: m_out
+        node: {fileID: 2852737775932785771}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1302,7 +1533,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: a485d2d7b8a5f76479149a1205ec8bf0, type: 2}
@@ -1319,7 +1550,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Epee 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1688, y: 1336}
+  position: {x: 3000, y: -2504}
   folded: 0
   ports:
     keys:
@@ -1376,7 +1607,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 782774d81731bfd42b6d09686e28c88e, type: 2}
@@ -1393,7 +1624,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Balai 5
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2792, y: 2808}
+  position: {x: 4104, y: -1032}
   folded: 0
   ports:
     keys:
@@ -1446,10 +1677,67 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 4ebdc10dd5b130c4080f24cf3145dced, type: 2}
+--- !u!114 &2852737775932785771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b538c1d0b6c78241b6f2d422b0d77f7, type: 3}
+  m_Name: Kill Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2392, y: -2024}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 2852737775932785771}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_states 1
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      - fieldName: m_states 1
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 2852737775932785771}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 1150451497978542743}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &3187848406800477549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,7 +1751,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 7
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -376, y: 2376}
+  position: {x: 2488, y: 504}
   folded: 0
   ports:
     keys:
@@ -1517,7 +1805,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 93fb674f4f37dbb4d97de85b74cd3f2d, type: 2}
@@ -1534,7 +1822,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 6
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -744, y: 2376}
+  position: {x: 2120, y: 504}
   folded: 0
   ports:
     keys:
@@ -1591,7 +1879,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 00851e5ab30bd3044b70b22094ed3e3f, type: 2}
@@ -1608,7 +1896,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2824, y: 2376}
+  position: {x: 0, y: 0}
   folded: 0
   ports:
     keys:
@@ -1647,6 +1935,60 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_priority: 1
+--- !u!114 &4767301682375494563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b538c1d0b6c78241b6f2d422b0d77f7, type: 3}
+  m_Name: Kill Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2392, y: -536}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 4767301682375494563}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_states 4
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 4767301682375494563}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -7561974810636281421}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &4964703445138372841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,7 +2002,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Chope 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1688, y: 1816}
+  position: {x: 3000, y: -2024}
   folded: 0
   ports:
     keys:
@@ -1716,7 +2058,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 9a25f83da2bdabb4db3805f39d99d998, type: 2}
@@ -1733,7 +2075,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1848, y: 2376}
+  position: {x: 1016, y: 504}
   folded: 0
   ports:
     keys:
@@ -1789,7 +2131,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 0.1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 9a98a4ecf01cdad40a02bbfe2c71662d, type: 2}
@@ -1806,7 +2148,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Baguette 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1688, y: 2312}
+  position: {x: 3000, y: -1528}
   folded: 0
   ports:
     keys:
@@ -1863,7 +2205,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 4988ca8e11dabab4cb0d954eecd50010, type: 2}
@@ -1880,7 +2222,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2216, y: 2376}
+  position: {x: 648, y: 504}
   folded: 0
   ports:
     keys:
@@ -1937,7 +2279,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 46fa91cb876eaa44e8d3b482413a586b, type: 2}
@@ -1954,7 +2296,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Chope 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2056, y: 1816}
+  position: {x: 3368, y: -2024}
   folded: 0
   ports:
     keys:
@@ -2011,7 +2353,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: cb92f40962039db42989e61b31077559, type: 2}
@@ -2028,7 +2370,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Baguette 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 2312}
+  position: {x: 2632, y: -1528}
   folded: 0
   ports:
     keys:
@@ -2041,8 +2383,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_states 2
-        node: {fileID: 517630983391893581}
+      - fieldName: m_out
+        node: {fileID: -6442596502401151440}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2084,7 +2426,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: c6bf4ed2c9b91e34baaf0c15e824b166, type: 2}
@@ -2101,7 +2443,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1480, y: 2376}
+  position: {x: 1384, y: 504}
   folded: 0
   ports:
     keys:
@@ -2158,7 +2500,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 5685bcceee088fc43a353b84af3bdd22, type: 2}
@@ -2175,7 +2517,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Carotte 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1688, y: 3304}
+  position: {x: 3000, y: -536}
   folded: 0
   ports:
     keys:
@@ -2231,7 +2573,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 391bbfc90ae7fcc4fa40131eaa12951f, type: 2}
@@ -2248,7 +2590,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Balai 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2424, y: 2808}
+  position: {x: 3736, y: -1032}
   folded: 0
   ports:
     keys:
@@ -2304,7 +2646,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: b5ca26b1f3ebe0343abaaae1285a26de, type: 2}
@@ -2321,7 +2663,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Baguette 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2056, y: 2312}
+  position: {x: 3368, y: -1528}
   folded: 0
   ports:
     keys:
@@ -2375,7 +2717,7 @@ MonoBehaviour:
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
-  m_canRepeat: 1
+  m_canRepeat: 0
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 3683634554962e64ea9e7b2185bea9f6, type: 2}
