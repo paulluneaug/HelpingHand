@@ -12,6 +12,9 @@ public abstract class KillableNode : BaseNode
     [SerializeField]
     [Input]
     private DialogueFlow m_kill;
+    
+    [Input]
+    public DialogueFlow m_resetKill;
 
     protected bool m_hasBeenKilled;
     
@@ -33,6 +36,11 @@ public abstract class KillableNode : BaseNode
             DebugLog($"Killing node");
             m_hasBeenKilled = true;
             m_killCTS.Cancel();
+        }
+        else if (inPort.fieldName.Equals(nameof(m_resetKill)))
+        {
+            DebugLog($"Reset kill status");
+            m_hasBeenKilled = false;
         }
 
         await base.ExecuteNode(handler, inPort);
