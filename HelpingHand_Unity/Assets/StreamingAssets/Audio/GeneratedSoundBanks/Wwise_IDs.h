@@ -57,6 +57,8 @@ namespace AK
         static const AkUniqueID MUSIC_PLAY = 202194903U;
         static const AkUniqueID MUSIC_STOP = 3227181061U;
         static const AkUniqueID NOMORE_SPOTLIGHT_BREAK_PLAY = 874823607U;
+        static const AkUniqueID OPTIONSMENU_CLOSE_PLAY = 54378862U;
+        static const AkUniqueID OPTIONSMENU_OPEN_PLAY = 3485407632U;
         static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
         static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
         static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
@@ -64,7 +66,9 @@ namespace AK
         static const AkUniqueID PLAY_FADERMIN = 3359161110U;
         static const AkUniqueID PLAY_FALLINGOBJECT = 1934872110U;
         static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
+        static const AkUniqueID PLAY_FOOTSTEPS_RUN = 2983625421U;
         static const AkUniqueID PLAY_HATCATCH = 1645376510U;
+        static const AkUniqueID PLAY_IDLE = 41941568U;
         static const AkUniqueID PLAY_ITEMDROPPERBOX_OPEN = 2840424175U;
         static const AkUniqueID PLAY_ITEMDROPPERMOVINGLOOP = 3924877025U;
         static const AkUniqueID PLAY_ROOMMACHINIST = 2948635231U;
@@ -72,6 +76,7 @@ namespace AK
         static const AkUniqueID PLAY_SQUAREROCKLOOP = 2367626798U;
         static const AkUniqueID PLAY_SQUAREROCKMAX = 3543323798U;
         static const AkUniqueID PLAY_SQUAREROCKMIN = 3409102904U;
+        static const AkUniqueID PLAY_STRIKE = 2877831972U;
         static const AkUniqueID PLAY_THEATERAMBIENCE = 3213662481U;
         static const AkUniqueID PLAY_WEAPONCATCH = 1788416131U;
         static const AkUniqueID POTENTIOMETERLOOP_DESACTIVATE_PLAY = 3002555589U;

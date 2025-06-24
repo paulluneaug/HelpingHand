@@ -104,6 +104,8 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Stop_ItemDropperMovingLoop_Fadeout;
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_Smoke_Impact;
 
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_FallingObjectAndSmokeImpact;
+
 
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperLeaving;
 
