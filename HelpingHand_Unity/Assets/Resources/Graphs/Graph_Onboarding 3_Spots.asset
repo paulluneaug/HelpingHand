@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Intro 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2968, y: 1112}
+  position: {x: 264, y: -8}
   folded: 0
   ports:
     keys:
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: d27863e5b55b1a2458e54b9dad418e42, type: 2}
 --- !u!114 &-9124188286496206220
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: Switch Condition
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2744, y: -360}
+  position: {x: 5976, y: -1480}
   folded: 0
   ports:
     keys:
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Next 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3400, y: -1064}
+  position: {x: 6632, y: -2200}
   folded: 0
   ports:
     keys:
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 088218200f08a4c4094b1a0a6dece1ce, type: 2}
 --- !u!114 &-7330156378163721570
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: Current errors count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4440, y: -424}
+  position: {x: 7672, y: -1544}
   folded: 0
   ports:
     keys:
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: Start interruption Spots
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2712, y: -904}
+  position: {x: 8072, y: -1128}
   folded: 0
   ports:
     keys:
@@ -671,7 +671,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 4491544252652646829}
+        node: {fileID: 4704326520787028717}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Name: Wait Duration
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4376, y: 1944}
+  position: {x: 8136, y: 824}
   folded: 0
   ports:
     keys:
@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Expo 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -8, y: 1512}
+  position: {x: 3752, y: 392}
   folded: 0
   ports:
     keys:
@@ -877,7 +877,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 2
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: f9bf6a92f808a7545ae1a868d57106b0, type: 2}
 --- !u!114 &-6310571771393336078
@@ -893,7 +893,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Validated 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1880, y: -552}
+  position: {x: 5112, y: -1704}
   folded: 0
   ports:
     keys:
@@ -964,6 +964,83 @@ MonoBehaviour:
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 3f74f4aa779e88b4c9393b63426a7267, type: 2}
+--- !u!114 &-5949655720870212834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait Duration
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1832, y: 424}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_resetKill
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -5949655720870212834}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_values 1
+        node: {fileID: 7271398769560861026}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -5949655720870212834}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 540052437931104792}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_resetKill
+      _node: {fileID: -5949655720870212834}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -5949655720870212834}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 1
+  m_waitTime: 0.5
+  m_unscaled: 0
 --- !u!114 &-5651529186245255295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,7 +1054,7 @@ MonoBehaviour:
   m_Name: Continue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4008, y: -104}
+  position: {x: 7240, y: -1224}
   folded: 0
   ports:
     keys:
@@ -1040,7 +1117,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Bad Input 1.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2968, y: 1192}
+  position: {x: 6728, y: 8}
   folded: 0
   ports:
     keys:
@@ -1108,7 +1185,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: cf84228ce9d7b6345b8636177ac3f639, type: 2}
 --- !u!114 &-5096285385017571111
@@ -1124,7 +1201,7 @@ MonoBehaviour:
   m_Name: Wait Duration
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -232, y: 1512}
+  position: {x: 3464, y: 552}
   folded: 0
   ports:
     keys:
@@ -1201,7 +1278,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Next 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3400, y: -88}
+  position: {x: 6632, y: -1208}
   folded: 0
   ports:
     keys:
@@ -1268,7 +1345,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 766d2fe7ceb4d7f44a02da5697906dcf, type: 2}
 --- !u!114 &-4371676715320391880
@@ -1284,7 +1361,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Bad Input 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2600, y: 1656}
+  position: {x: 6360, y: 504}
   folded: 0
   ports:
     keys:
@@ -1352,7 +1429,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 1
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 412e135b1c9164241a122f972fe7c9c1, type: 2}
 --- !u!114 &-3872584405748340550
@@ -1368,7 +1445,7 @@ MonoBehaviour:
   m_Name: Current errors count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1432, y: -776}
+  position: {x: 4664, y: -1896}
   folded: 0
   ports:
     keys:
@@ -1423,7 +1500,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Expo 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 360, y: 1512}
+  position: {x: 4120, y: 392}
   folded: 0
   ports:
     keys:
@@ -1485,13 +1562,13 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 1
-  m_contentNeutral: "\xC0 propos d'espoir, j'aimerai bien un caf\xE9. M\xE9laniiiiie
+  m_contentNeutral: "\xC0 propos d'espoir, j'aimerais bien un caf\xE9. M\xE9laniiiiie
     ?!"
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 03a0f3725684ba1469b23fbb7114481a, type: 2}
 --- !u!114 &-1860199979714996343
@@ -1507,7 +1584,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Next 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3400, y: -584}
+  position: {x: 6632, y: -1704}
   folded: 0
   ports:
     keys:
@@ -1574,7 +1651,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 9e85a1fe205203c4f94ef59ef0e5714c, type: 2}
 --- !u!114 &-1815964309291539433
@@ -1590,7 +1667,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 968, y: -1096}
+  position: {x: 4184, y: -2216}
   folded: 0
   ports:
     keys:
@@ -1632,7 +1709,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Validated 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1880, y: -1016}
+  position: {x: 5112, y: -2200}
   folded: 0
   ports:
     keys:
@@ -1715,7 +1792,7 @@ MonoBehaviour:
   m_Name: 'Dialogue Onboarding 3 Spots No Input 1 '
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2616, y: 2216}
+  position: {x: 6360, y: 1064}
   folded: 0
   ports:
     keys:
@@ -1783,7 +1860,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: bd5303006608b454e868f5a967d9df38, type: 2}
 --- !u!114 &-1375031070266753538
@@ -1799,7 +1876,7 @@ MonoBehaviour:
   m_Name: Current errors count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3672, y: 2424}
+  position: {x: 7432, y: 1304}
   folded: 0
   ports:
     keys:
@@ -1854,7 +1931,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1352, y: 1544}
+  position: {x: 5176, y: 424}
   folded: 0
   ports:
     keys:
@@ -1896,7 +1973,7 @@ MonoBehaviour:
   m_Name: Total errors count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4440, y: -584}
+  position: {x: 7672, y: -1704}
   folded: 0
   ports:
     keys:
@@ -1951,7 +2028,7 @@ MonoBehaviour:
   m_Name: Enable input
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2216, y: 888}
+  position: {x: 1016, y: -440}
   folded: 0
   ports:
     keys:
@@ -1984,7 +2061,10 @@ MonoBehaviour:
       _node: {fileID: -771046990313841852}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: m_in
+        node: {fileID: 4114248053018278260}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -2000,7 +2080,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_inValue: 1
-  m_variable: {fileID: 11400000, guid: 3092043864e71c143a0c06580864c61d, type: 2}
+  m_variable: {fileID: 11400000, guid: 2aa3f8660c911884a83319a51db8fcc2, type: 2}
 --- !u!114 &-532063954026977233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,7 +2094,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Validated 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1880, y: -88}
+  position: {x: 5112, y: -1208}
   folded: 0
   ports:
     keys:
@@ -2097,7 +2177,7 @@ MonoBehaviour:
   m_Name: Add To Int Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4728, y: -536}
+  position: {x: 7960, y: -1656}
   folded: 0
   ports:
     keys:
@@ -2179,7 +2259,7 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_value: 0
   m_increment: 4
-  m_valueOut: 4
+  m_valueOut: 8
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2251,6 +2331,8 @@ MonoBehaviour:
   - {fileID: -937559767454507141}
   - {fileID: 7454262370982490241}
   - {fileID: -9124188286496206220}
+  - {fileID: 4114248053018278260}
+  - {fileID: -5949655720870212834}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2264,7 +2346,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Bad Input 1.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2600, y: 1192}
+  position: {x: 6360, y: 8}
   folded: 0
   ports:
     keys:
@@ -2332,7 +2414,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 46c5023dd466920439ec9eb39af702aa, type: 2}
 --- !u!114 &251243950942914511
@@ -2348,7 +2430,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Next 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3400, y: 392}
+  position: {x: 6632, y: -712}
   folded: 0
   ports:
     keys:
@@ -2415,7 +2497,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 74b782324e90d9840bff6122d6095ebe, type: 2}
 --- !u!114 &540052437931104792
@@ -2431,7 +2513,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Intro 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1400, y: 1448}
+  position: {x: 2056, y: 424}
   folded: 0
   ports:
     keys:
@@ -2445,8 +2527,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_values 1
-        node: {fileID: 7271398769560861026}
+      - fieldName: m_out
+        node: {fileID: -5949655720870212834}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2498,7 +2580,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: cf952dbad862ce241b1da44bff261abb, type: 2}
 --- !u!114 &652997422395964937
@@ -2514,7 +2596,7 @@ MonoBehaviour:
   m_Name: Continue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3240, y: 2504}
+  position: {x: 7000, y: 1384}
   folded: 0
   ports:
     keys:
@@ -2571,7 +2653,7 @@ MonoBehaviour:
   m_Name: Add To Int Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3672, y: 2168}
+  position: {x: 7432, y: 1048}
   folded: 0
   ports:
     keys:
@@ -2667,7 +2749,7 @@ MonoBehaviour:
   m_Name: Wait for spots on
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -600, y: 616}
+  position: {x: 2952, y: -488}
   folded: 0
   ports:
     keys:
@@ -2769,7 +2851,7 @@ MonoBehaviour:
   m_Name: Wait Duration
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 728, y: 1512}
+  position: {x: 4504, y: 568}
   folded: 0
   ports:
     keys:
@@ -2846,7 +2928,7 @@ MonoBehaviour:
   m_Name: Switch bad / no input
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1336, y: 1784}
+  position: {x: 5160, y: 664}
   folded: 0
   ports:
     keys:
@@ -2905,7 +2987,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: ceb0ca9439df8f34c91ec90e37968b43, type: 2}
+    - {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -2965,7 +3047,7 @@ MonoBehaviour:
       Data: 2
     - Name: m_countType
       Entry: 3
-      Data: 5
+      Data: 0
     - Name: m_truthType
       Entry: 3
       Data: 0
@@ -2974,7 +3056,7 @@ MonoBehaviour:
       Data: 1
     - Name: m_operation
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: m_count
       Entry: 3
       Data: 1
@@ -3002,7 +3084,7 @@ MonoBehaviour:
   m_Name: Continue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3496, y: 1608}
+  position: {x: 7256, y: 488}
   folded: 0
   ports:
     keys:
@@ -3059,7 +3141,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2424, y: 632}
+  position: {x: 808, y: -696}
   folded: 0
   ports:
     keys:
@@ -3101,7 +3183,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Intro 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2232, y: 1112}
+  position: {x: 1000, y: -8}
   folded: 0
   ports:
     keys:
@@ -3168,7 +3250,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: c10cb0459985ebb43881e88822df0469, type: 2}
 --- !u!114 &3893200796945212773
@@ -3184,7 +3266,7 @@ MonoBehaviour:
   m_Name: Kill Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 328, y: -392}
+  position: {x: 3560, y: -1512}
   folded: 0
   ports:
     keys:
@@ -3241,7 +3323,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 936, y: -968}
+  position: {x: 4168, y: -2088}
   folded: 0
   ports:
     keys:
@@ -3296,7 +3378,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 52.1718025
+      Data: 83.09549
     - Name: 
       Entry: 8
       Data: 
@@ -3315,7 +3397,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1576, y: 1432}
+  position: {x: 5400, y: 312}
   folded: 0
   ports:
     keys:
@@ -3370,12 +3452,75 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 49.4909668
+      Data: 81.0403
     - Name: 
       Entry: 8
       Data: 
   m_showDebugLog: 1
   m_key: timer input count
+--- !u!114 &4114248053018278260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
+  m_Name: Enable input
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1288, y: -440}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 4114248053018278260}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -771046990313841852}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 4114248053018278260}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 4114248053018278260}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: 5c4896a5bee6df344b439b72ce933a87, type: 2}
 --- !u!114 &4150210900661882403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3389,7 +3534,7 @@ MonoBehaviour:
   m_Name: Switch on error count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1368, y: -616}
+  position: {x: 4600, y: -1736}
   folded: 0
   ports:
     keys:
@@ -3506,7 +3651,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots Intro 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2600, y: 1112}
+  position: {x: 632, y: -8}
   folded: 0
   ports:
     keys:
@@ -3580,7 +3725,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: dbd893a01e38a704c8aef00182959bfe, type: 2}
 --- !u!114 &4491544252652646829
@@ -3596,7 +3741,7 @@ MonoBehaviour:
   m_Name: Continue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2408, y: -488}
+  position: {x: 5640, y: -1608}
   folded: 0
   ports:
     keys:
@@ -3629,9 +3774,6 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -9124188286496206220}
         reroutePoints: []
-      - fieldName: m_in
-        node: {fileID: -7045018180593551216}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -3659,7 +3801,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -3208, y: 1112}
+  position: {x: 0, y: 0}
   folded: 0
   ports:
     keys:
@@ -3714,7 +3856,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 4536, y: -136}
+  position: {x: 7768, y: -1256}
   folded: 0
   ports:
     keys:
@@ -3742,6 +3884,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -45700086232415820}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -7045018180593551216}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -3791,7 +3936,7 @@ MonoBehaviour:
   m_Name: Value Int
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2936, y: 744}
+  position: {x: 296, y: -376}
   folded: 0
   ports:
     keys:
@@ -3833,7 +3978,7 @@ MonoBehaviour:
   m_Name: Dialogue Onboarding 3 Spots No Input 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2616, y: 2680}
+  position: {x: 6360, y: 1560}
   folded: 0
   ports:
     keys:
@@ -3895,12 +4040,13 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 1
-  m_contentNeutral: J'ai tout mon temps. <waitfor=1>En fait non, j'attends. Les projecteurs.
+  m_contentNeutral: J'ai tout mon temps. <waitfor=0.5>En fait non, j'attends. Les
+    projecteurs.
   m_contentSatisfied: 
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 1
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 429ba3e9b09d6a447baabef1d467959a, type: 2}
 --- !u!114 &6425178165369696990
@@ -3916,7 +4062,7 @@ MonoBehaviour:
   m_Name: Dialogue Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2120, y: 1624}
+  position: {x: 5880, y: 504}
   folded: 0
   ports:
     keys:
@@ -3997,7 +4143,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3960, y: 2296}
+  position: {x: 7720, y: 1176}
   folded: 0
   ports:
     keys:
@@ -4074,7 +4220,7 @@ MonoBehaviour:
   m_Name: Continue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -952, y: 1288}
+  position: {x: 2504, y: 168}
   folded: 0
   ports:
     keys:
@@ -4134,7 +4280,7 @@ MonoBehaviour:
   m_Name: Switch on error count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1816, y: 1208}
+  position: {x: 1416, y: 88}
   folded: 0
   ports:
     keys:
@@ -4206,7 +4352,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: m_in
-        node: {fileID: 540052437931104792}
+        node: {fileID: -5949655720870212834}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -4222,7 +4368,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 0
+  m_value: 4
   m_values: 0000000004000000
   m_exactValues: 0
 --- !u!114 &7330314375828568836
@@ -4238,7 +4384,7 @@ MonoBehaviour:
   m_Name: Wait Frame
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1352, y: 1304}
+  position: {x: 5176, y: 184}
   folded: 0
   ports:
     keys:
@@ -4318,7 +4464,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 5064, y: -248}
+  position: {x: 8296, y: -1368}
   folded: 0
   ports:
     keys:
@@ -4392,7 +4538,7 @@ MonoBehaviour:
   m_Name: Total errors count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1768, y: 1048}
+  position: {x: 1464, y: -72}
   folded: 0
   ports:
     keys:
@@ -4447,7 +4593,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2216, y: 680}
+  position: {x: 1016, y: -648}
   folded: 0
   ports:
     keys:
@@ -4502,7 +4648,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 14.7440023
+      Data: 56.0442162
     - Name: 
       Entry: 8
       Data: 
@@ -4521,7 +4667,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2968, y: 872}
+  position: {x: 264, y: -248}
   folded: 0
   ports:
     keys:
@@ -4595,7 +4741,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 5000, y: -472}
+  position: {x: 8232, y: -1592}
   folded: 0
   ports:
     keys:
@@ -4653,7 +4799,7 @@ MonoBehaviour:
       Data: 0|System.Int32, mscorlib
     - Name: 
       Entry: 3
-      Data: 4
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -4672,7 +4818,7 @@ MonoBehaviour:
   m_Name: Loop
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1000, y: 1512}
+  position: {x: 4824, y: 392}
   folded: 0
   ports:
     keys:
@@ -4742,7 +4888,7 @@ MonoBehaviour:
   m_Name: Dialogue Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2136, y: 2472}
+  position: {x: 5896, y: 1352}
   folded: 0
   ports:
     keys:
