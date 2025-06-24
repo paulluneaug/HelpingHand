@@ -21,6 +21,6 @@ public class KillDialogueNode : BaseNode
         DebugLog($"Killing dialogue!");
         DialogueManager.Instance.KillCurrentDialogue();
         // Note: audio is cancelled with the dialogue
-        await UniTask.CompletedTask;
+        await UniTask.WaitForEndOfFrame(handler.StopToken);
     }
 }
