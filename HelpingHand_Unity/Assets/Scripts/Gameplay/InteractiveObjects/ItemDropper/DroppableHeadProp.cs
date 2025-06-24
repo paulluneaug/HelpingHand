@@ -11,4 +11,9 @@ public class DroppableHeadProp : DroppableItem
         ActivateModel();
         GameManager.Instance.GetPuppet().WearObjectOnHead(this);
     }
+
+    public override bool CanDrop()
+    {
+        return !GameManager.Instance.GetPuppet().IsWearingObjectOnHead();
+    }
 }

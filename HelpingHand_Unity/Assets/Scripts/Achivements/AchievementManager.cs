@@ -22,6 +22,9 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
 
     [SerializeField] 
     private AK.Wwise.Event m_sfx;
+
+    [SerializeField]
+    private IntVariable m_achievementsCount;
     
     [FoldoutGroup("Texts")] 
     [SerializeField]
@@ -94,12 +97,19 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     private void OnAchievementSet(Achievement achievement)
     {
         SetAchievement(achievement).Forget();
-        m_sfx.Post(gameObject);
+        ShowAchievement(achievement).Forget();
     }
-
+    
     private async UniTaskVoid SetAchievement(Achievement achievement)
     {
         SetAchievementTexts(achievement);
+        m_achievementsCount.Value++;
+        await UniTask.Delay(200);
+        m_sfx.Post(gameObject);
+    }
+
+    private async UniTaskVoid ShowAchievement(Achievement achievement)
+    {
         await ShowPanel();
         await UniTask.Delay((int)m_showDuration * 1000);
         await HidePanel();
@@ -111,16 +121,12 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         m_bodyText.text = achievement.body;
     }
 
-    [HorizontalGroup("Buttons")]
-    [Button("Show")]
     private async UniTask ShowPanel()
     {
         m_light.enabled = true;
         await m_transform.DOLocalMoveY(m_showY, m_showAnimationDuration).SetEase(m_showAnimationEase).ToUniTask();
     }
 
-    [HorizontalGroup("Buttons")]
-    [Button("Hide")]
     private async UniTask HidePanel()
     {
         m_light.enabled = false;

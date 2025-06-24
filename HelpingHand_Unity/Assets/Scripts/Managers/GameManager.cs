@@ -1,5 +1,7 @@
 using System;
 
+using Events;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public InputAction SkipDialogueInput => m_skipDialogueInput.action;
 
     public GameState CurrentGameState => m_currentGameState;
+
+    public event Action<GameState> OnGameStateChanged;
 
     [Title("Act Sequence Manager")]
     [SerializeField] private ActSequenceManager m_actSequenceManager;
@@ -94,7 +98,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void StartGameplay()
     {
+        // Initialize all variables
+        BaseGameEvent[] allEvents = Resources.LoadAll<BaseGameEvent>(string.Empty);
+        foreach (BaseGameEvent gameEvent in allEvents)
+        {
+            gameEvent.Initialize();
+        }
+        
         m_currentGameState = GameState.Gameplay;
+        OnGameStateChanged?.Invoke(m_currentGameState);
 
         DialogueManager.Instance.OpenDialoguePanel();
 
@@ -197,6 +209,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_currentGameState = GameState.MainMenu;
                 m_canvasManager.CloseOptions();
                 m_actSequenceManager.StopSequence();
+                OnGameStateChanged?.Invoke(m_currentGameState);
                 break;
         }
     }

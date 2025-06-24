@@ -62,6 +62,11 @@
 												<Sound Name="5 - Room tone Ventilation noise with light hum" ID="{1E1B25A5-9934-4C11-91E2-DD04C7B534E7}" ShortID="1048571961">
 													<PropertyList>
 														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
 														<Property Name="MakeUpGain" Type="Real64">
 															<ValueList>
 																<Value>7</Value>
@@ -210,6 +215,13 @@
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="HH_Ambience_RoomTone" ID="{F27DF47F-0D8B-4A69-969F-360625FA7A62}" ShortID="873871434">
+													<PropertyList>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -910,6 +922,13 @@
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="HH_Amb_Fire_Forge" ID="{7C35CF33-063F-4CF6-8C1E-8F08648B42E9}" ShortID="308532662">
+													<PropertyList>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -969,6 +988,11 @@
 															</ValueList>
 														</Property>
 														<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -1416,6 +1440,13 @@
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="HH_Supermarket_Day" ID="{77CD8193-C1F4-46A9-A13B-4BA815CCA257}" ShortID="729307427">
+													<PropertyList>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1479,6 +1510,13 @@
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="HH_Supermarket_Night" ID="{6F501305-D5F2-464E-A7F7-FA19C2E37FE6}" ShortID="19810271">
+													<PropertyList>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -2146,6 +2184,18 @@
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="HH_Tavern_Ambience" ID="{F5969278-9A83-4A83-9E4B-2C0C54257F32}" ShortID="155182604">
+													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -2215,6 +2265,11 @@
 												<Sound Name="HH_Tavern_Night_Ambience" ID="{018E4A85-B3D0-403E-A52E-2AE925747F99}" ShortID="222346353">
 													<PropertyList>
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -2283,6 +2338,11 @@
 												<Sound Name="HH_Tavern_Day_Outside_Ambience" ID="{7025FE72-59FF-4FFE-B0B0-0BD5536DAB99}" ShortID="399062928">
 													<PropertyList>
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -2466,6 +2526,68 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Loop" ID="{6BA7A66D-D997-41CC-B927-BC77D3612BBB}" ShortID="338594781">
+									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_Village_Spring_Amb" ID="{03275373-BA56-48EA-B804-FD8D76CEF5EB}" ShortID="357815895">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="CenterPercentage" Type="int32">
+													<ValueList>
+														<Value>100</Value>
+													</ValueList>
+												</Property>
+												<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="AmbBus" ID="{1808A7C8-6E5F-4188-ADEF-CF7E64F64B42}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_Village_Spring_Amb" ID="{F93F2327-8DB5-4E39-8EC6-DBF03469F7EA}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_Village_Spring_Amb.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="72574503"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_Village_Spring_Amb" ID="{F93F2327-8DB5-4E39-8EC6-DBF03469F7EA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="ANM_Village_Spring_Amb" ID="{03275373-BA56-48EA-B804-FD8D76CEF5EB}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+							</ChildrenList>
 						</BlendContainer>
 						<BlendContainer Name="Ambience_Dragon" ID="{CFCDD983-ACD8-4FC8-B658-787A63B9794D}" ShortID="812774646">
 							<ReferenceList>
@@ -2476,6 +2598,68 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Loop" ID="{D6A909C5-4DDF-43FE-A86E-1C30BF98E93F}" ShortID="575074172">
+									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_AmbienceFinalBoss" ID="{6957F463-B10C-44CE-AAE0-DE0516A9AD4B}" ShortID="1007451419">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="CenterPercentage" Type="int32">
+													<ValueList>
+														<Value>100</Value>
+													</ValueList>
+												</Property>
+												<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="AmbBus" ID="{1808A7C8-6E5F-4188-ADEF-CF7E64F64B42}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_AmbienceFinalBoss" ID="{6B6EB0F0-2151-4D35-AAAC-316C5AB90A48}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_AmbienceFinalBoss.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="749775051"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_AmbienceFinalBoss" ID="{6B6EB0F0-2151-4D35-AAAC-316C5AB90A48}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="ANM_AmbienceFinalBoss" ID="{6957F463-B10C-44CE-AAE0-DE0516A9AD4B}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+							</ChildrenList>
 						</BlendContainer>
 					</ChildrenList>
 				</ActorMixer>
