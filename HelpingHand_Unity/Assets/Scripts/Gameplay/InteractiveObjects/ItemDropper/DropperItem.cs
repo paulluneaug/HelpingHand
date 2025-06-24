@@ -5,16 +5,25 @@ using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.VFX;
 
+using UnityUtility.CustomAttributes;
 using UnityUtility.Easings;
 using UnityUtility.MathU;
 using UnityUtility.Timer;
 
 public class DropperItem : MonoBehaviour
 {
+    [Title("Preview")]
     [SerializeField] private SpriteRenderer m_previewRenderer;
     [SerializeField] private Sprite m_defaultSprite;
+
+    [Title("Misc")]
     [SerializeField] private VisualEffect m_fallVFX;
     [SerializeField] private float m_equipDelay;
+
+    [Title("Animation")]
+    [SerializeField] private Animator m_animator;
+    [NonSerialized] private int m_openParameter = Animator.StringToHash("Open");
+    [NonSerialized] private int m_shakeParameter = Animator.StringToHash("Shake");
 
     [NonSerialized] private DroppableItem m_item;
 
@@ -43,6 +52,8 @@ public class DropperItem : MonoBehaviour
 
         m_item.DeactivateModel();
         m_previewRenderer.sprite = m_item.Preview;
+
+        m_animator.SetBool(m_openParameter, false);
     }
 
     public void StartItem(float startPosition)
@@ -91,6 +102,8 @@ public class DropperItem : MonoBehaviour
         // @TODO Play open trappe sound
         _ = AudioManager.Instance.EventManager.Play_ItemDropperBox_Open.Post(lootbox);
 
+        m_animator.SetBool(m_openParameter, true);
+
         m_alreadyDroppedItem = true;
 
         m_fallVFX.Play();
@@ -108,6 +121,8 @@ public class DropperItem : MonoBehaviour
         m_targetPosition = 0.0f;
 
         m_spline = null;
+
+        m_animator.SetBool(m_openParameter, false);
     }
 
     private void Update()
