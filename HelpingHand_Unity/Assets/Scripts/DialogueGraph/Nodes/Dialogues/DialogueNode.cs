@@ -177,7 +177,7 @@ public class DialogueNode : InterruptableNode
 
         m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopSource, m_killCTS);
         m_audioTask = m_audioEvent ?
-            MakeSkippable(m_audioEvent.Play(null, m_audioLinkedCTS.Token), m_audioSkipCTS, m_audioLinkedCTS) :
+            MakeSkippable(m_audioEvent.Play(null, m_audioLinkedCTS.Token), m_audioSkipCTS, m_killStopCTS) :
             UniTask.CompletedTask;
 
         UniTask task = UniTask.WhenAll(m_displayTask, m_audioTask).ContinueWith(GetWaitingTask);
@@ -234,7 +234,7 @@ public class DialogueNode : InterruptableNode
                 _ => throw new ArgumentOutOfRangeException(),
             };
 
-            return MakeSkippable(followingTask, m_waitingSkipCTS, m_waitingLinkedCTS);
+            return MakeSkippable(followingTask, m_waitingSkipCTS, m_killStopCTS);
         }
     }
 
@@ -292,12 +292,20 @@ public class DialogueNode : InterruptableNode
         }
     }
 
-    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource linkedSkipCTS)
+    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource killStopCTS)
     {
-        UniTask skipTask = UniTask.WaitUntilCanceled(linkedSkipCTS.Token);
+        // UniTask skipTask = UniTask.WaitUntilCanceled(linkedSkipCTS.Token);
+        UniTask skipTask = UniTask.WaitUntilCanceled(skipCTS.Token);
+        UniTask killStopTask = UniTask.WaitUntilCanceled(killStopCTS.Token);
 
-        (bool isCancelled, int _) = await UniTask.WhenAny(task, skipTask).SuppressCancellationThrow();
+        (bool isCancelled, int _) = await UniTask.WhenAny(task, skipTask, killStopTask).SuppressCancellationThrow();
 
+        if (killStopCTS.IsCancellationRequested)
+        {
+            DebugLog($"MakeSkippable: Killed or stopped");
+            throw new OperationCanceledException();
+        }
+        
         if (skipCTS.IsCancellationRequested) // The skip token was cancelled
         {
             DebugLog($"Main task skipped");
