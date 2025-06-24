@@ -401,11 +401,9 @@ bool TryProcessSimonSequenceCommand()
       m_recieveQueue.Dequeue();
     }
   }
-
-  m_motorizedFader.SetTarget(m_motorizedFader.ReadValue() > 512 ? 0 : 1023);
+  
   m_simon.StartSequence(m_simonSequence, sequenceLength);
-
-
+  m_motorizedFader.SetTarget(m_motorizedFader.ReadValue() > 512 ? 0 : 1023);
 }
 
 bool TryProcessAckCommand()
