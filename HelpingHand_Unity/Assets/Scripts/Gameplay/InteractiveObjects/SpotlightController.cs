@@ -114,7 +114,7 @@ public class SpotlightController : MonoBehaviour
         m_mode = manualMode ? SpotlightMode.Manual : SpotlightMode.FollowTarget;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         GizmosExtensions.DrawConeFromAngle(transform.position, transform.forward, m_coneHeight, m_spotMaxRange * MathUf.DEG_2_RAD);
