@@ -79,21 +79,22 @@ public class DropperItem : MonoBehaviour
 
     }
 
-    public void DropItem()
+    public void DropItem(GameObject lootbox)
     {
-        if (m_alreadyDroppedItem)
+        if (m_alreadyDroppedItem || !m_item.CanDrop())
         {
+
+            _ = AudioManager.Instance.EventManager.Play_ItemDropperError.Post(lootbox);
             return;
         }
 
-        if (!m_item.CanDrop())
-        {
-            return;
-        }
+        // @TODO Play open trappe sound
+        _ = AudioManager.Instance.EventManager.Play_ItemDropperBox_Open.Post(lootbox);
 
         m_alreadyDroppedItem = true;
 
         m_fallVFX.Play();
+        // Jouer son fall + smoke (après .2sec)
         m_equipTimer.Start();
         m_previewRenderer.sprite = m_defaultSprite;
     }

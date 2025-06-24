@@ -355,9 +355,7 @@ public class Dropper : MonoBehaviour
             return;
         }
 
-        m_displayedItems.At(m_selectedItemIndex).DropItem();
+        m_displayedItems.At(m_selectedItemIndex).DropItem(gameObject);
 
-        // @TODO Play open trappe sound
-        _ = AudioManager.Instance.EventManager.Play_ItemDropperBox_Open.Post(gameObject);
     }
 }
