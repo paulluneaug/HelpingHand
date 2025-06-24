@@ -18,7 +18,7 @@ public class InputActionTrigger<T> : IDisposable
     [SerializeField] private InputActionReference m_action;
     [SerializeField] private BaseVariable<T> m_linkedVariable;
 
-    [SerializeField, EnumToggleButtons] private TriggerBehaviour m_behaviour; 
+    [SerializeField, EnumToggleButtons] private TriggerBehaviour m_behaviour;
 
     public void Initialize()
     {
@@ -40,7 +40,7 @@ public class InputActionTrigger<T> : IDisposable
 
     public void Update()
     {
-        if (m_behaviour != TriggerBehaviour.OnUpdate) 
+        if (m_behaviour != TriggerBehaviour.OnUpdate)
         {
             return;
         }

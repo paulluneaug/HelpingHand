@@ -1,8 +1,6 @@
 using System;
 using System.Threading;
 
-using Sirenix.Utilities;
-
 public static partial class Extensions
 {
     public static string Truncate(this string value, int maxChars)

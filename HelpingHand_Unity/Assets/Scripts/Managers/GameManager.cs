@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             gameEvent.Initialize();
         }
-        
+
         m_currentGameState = GameState.Gameplay;
         OnGameStateChanged?.Invoke(m_currentGameState);
 
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         SceneManager.LoadScene(m_virtualControllerScene, LoadSceneMode.Additive);
 #endif
     }
-    
+
     #endregion
 
     #region Updates
@@ -210,6 +210,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_canvasManager.CloseOptions();
                 m_actSequenceManager.StopSequence();
                 OnGameStateChanged?.Invoke(m_currentGameState);
+                break;
+            default:
                 break;
         }
     }

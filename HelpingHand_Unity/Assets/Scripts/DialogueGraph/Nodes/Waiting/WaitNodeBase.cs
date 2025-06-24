@@ -14,7 +14,7 @@ public abstract class WaitNodeBase : InterruptableNode
     [Input]
     [SerializeField]
     private DialogueFlow m_in;
-    
+
     [Output]
     [SerializeField]
     private DialogueFlow m_out;
@@ -32,13 +32,13 @@ public abstract class WaitNodeBase : InterruptableNode
     [ShowIf(nameof(m_doesTimeout))]
     private float m_timeout;
 
-    [SerializeField] 
+    [SerializeField]
     [ShowIf(nameof(m_doesTimeout))]
     [LabelText("Loop after timeout?")]
     private bool m_loopAfterTimeout;
-    
+
     private CancellationTokenSource m_timeoutSource;
-    
+
     protected bool m_stopWait;
     protected bool IsTimeout => m_timeoutSource is { IsCancellationRequested: true };
 
@@ -55,7 +55,7 @@ public abstract class WaitNodeBase : InterruptableNode
         {
             return;
         }
-        
+
         if (m_loopAfterTimeout)
         {
             while (!m_hasBeenKilled)
@@ -66,12 +66,12 @@ public abstract class WaitNodeBase : InterruptableNode
                     DebugLog($"Has timeout");
                     await ContinueFlow(handler, inPort, GetOutputPort(nameof(m_timeoutOut)));
                     handler.CurrentNodes.Add(this);
-                    
+
                     DebugLog($"Looping...");
                 }
                 else
                 {
-                    break; 
+                    break;
                 }
             }
         }
@@ -82,7 +82,7 @@ public abstract class WaitNodeBase : InterruptableNode
     }
 
     protected virtual void InitializeExecute(GraphRunnerHandler handler, NodePort inPort) { }
-    
+
     protected virtual void DisposeExecute(GraphRunnerHandler handler, NodePort inPort) { }
 
     protected virtual bool WaitUntilTest()
@@ -103,7 +103,7 @@ public abstract class WaitNodeBase : InterruptableNode
             {
                 break;
             }
-            
+
             UpdateWaitUntilTest();
 
             CancellationToken cancellationToken = m_killStopCTS.Token;
@@ -114,7 +114,7 @@ public abstract class WaitNodeBase : InterruptableNode
 
                 m_timeoutSource?.Dispose();
                 m_timeoutSource = new();
-                m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
+                _ = m_timeoutSource.CancelAfterSlim(TimeSpan.FromSeconds(m_timeout));
                 CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(m_killStopCTS.Token, m_timeoutSource.Token);
                 cancellationToken = linkedTokenSource.Token;
             }
@@ -146,7 +146,7 @@ public abstract class WaitNodeBase : InterruptableNode
         {
             return;
         }
-        
+
         if (IsTimeout)
         {
             DebugLog($"Has timeout");

@@ -41,7 +41,7 @@ public class InterruptWithConditionNode : InterruptableNode
             {
                 break;
             }
-            
+
             DebugLog($"Waiting for condition");
 
             OnConditionUpdated();

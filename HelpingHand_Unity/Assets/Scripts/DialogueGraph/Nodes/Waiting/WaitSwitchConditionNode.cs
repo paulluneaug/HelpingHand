@@ -46,13 +46,13 @@ public class WaitSwitchConditionNode : WaitNodeBase
             m_conditionPortsDictionary[condition] = outputPort;
         }
     }
-    
+
     private void OnConditionUpdated(ConditionBase condition)
     {
         DebugLog($"OnConditionUpdated");
         m_conditionTestsDictionary[condition] = condition.Test();
     }
-    
+
     protected override void InitializeExecute(GraphRunnerHandler handler, NodePort inPort)
     {
         foreach (ConditionBase condition in m_conditions)
@@ -72,7 +72,7 @@ public class WaitSwitchConditionNode : WaitNodeBase
     public override void Dispose()
     {
         base.Dispose();
-        
+
         foreach (ConditionBase condition in m_conditions)
         {
             condition.Dispose();
@@ -101,7 +101,7 @@ public class WaitSwitchConditionNode : WaitNodeBase
         {
             return;
         }
-        
+
         if (IsTimeout)
         {
             DebugLog($"Has timeout");

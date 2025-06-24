@@ -30,7 +30,7 @@ public class InputActionTriggersManager : SerializedMonoBehaviour
         m_vector2InputTriggers.ForEach(trigger => trigger.Update());
     }
 
-    private void OnDestroy()  
+    private void OnDestroy()
     {
         m_boolInputTriggers.ForEach(trigger => trigger.Dispose());
         m_floatInputTriggers.ForEach(trigger => trigger.Dispose());

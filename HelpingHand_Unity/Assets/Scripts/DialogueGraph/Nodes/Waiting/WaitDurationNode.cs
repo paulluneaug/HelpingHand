@@ -1,5 +1,3 @@
-using System;
-
 using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
@@ -35,7 +33,7 @@ public class WaitDurationNode : InterruptableNode
             DebugLog($"Killed! skipping");
             return;
         }
-        
+
         DebugLog($"Waiting for {m_waitTime} seconds");
         if (await UniTask.WaitForSeconds(m_waitTime, m_unscaled, PlayerLoopTiming.Update, m_killStopCTS.Token).SuppressCancellationThrow())
         {
@@ -45,7 +43,7 @@ public class WaitDurationNode : InterruptableNode
                 DebugLog($"Killed! skipping");
                 return;
             }
-            
+
             DebugLog($"Paused / Stopped");
             // The graph is being paused => We have to wait its reactivation
             await HandlePauseStop(handler);

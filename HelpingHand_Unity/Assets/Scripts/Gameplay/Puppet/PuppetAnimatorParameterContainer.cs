@@ -14,7 +14,7 @@ public class PuppetAnimatorParameterContainer
     public int Victory => m_victoryParameterHash;
     public int Defeat => m_defeatParameterHash;
 
-    [Title("Animator Parameters", bold:false)]
+    [Title("Animator Parameters", bold: false)]
     [SerializeField] private string m_isWalkingParameterName = "IsWalking";
     [SerializeField] private string m_holdsObjectParameterName = "HoldsObject";
     [SerializeField] private string m_lookUpParameterName = "LookUp";

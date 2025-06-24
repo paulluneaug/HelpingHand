@@ -22,8 +22,8 @@ public class DropperItem : MonoBehaviour
 
     [Title("Animation")]
     [SerializeField] private Animator m_animator;
-    [NonSerialized] private int m_openParameter = Animator.StringToHash("Open");
-    [NonSerialized] private int m_shakeParameter = Animator.StringToHash("Shake");
+    [NonSerialized] private readonly int m_openParameter = Animator.StringToHash("Open");
+    [NonSerialized] private readonly int m_shakeParameter = Animator.StringToHash("Shake");
 
     [NonSerialized] private DroppableItem m_item;
 

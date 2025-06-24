@@ -70,7 +70,7 @@ public class GraphControlNode : BaseNode
             Debug.Assert(m_graph != null);
             DebugLog($"[{GetInstanceID()}] Using graph: {m_graph.name}");
         }
-        
+
         switch (m_control)
         {
             case GraphControlsEnum.Start:

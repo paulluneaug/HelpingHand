@@ -2,10 +2,7 @@ using System;
 
 using Sirenix.OdinInspector;
 
-using UnityEditor.TerrainTools;
-
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 using UnityUtility.Easings;
@@ -35,7 +32,7 @@ public class VirtualToggle : VirtualInput<bool>
     [SerializeField] private Easings.EasingFunction m_transitionEasing;
 
     [NonSerialized] private Timer m_transitionTimer;
- 
+
     private void Awake()
     {
         SetValueWithoutNotify(false);

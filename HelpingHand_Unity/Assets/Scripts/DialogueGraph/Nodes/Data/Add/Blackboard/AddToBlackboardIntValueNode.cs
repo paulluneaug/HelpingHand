@@ -26,8 +26,8 @@ public class AddToBlackboardIntValueNode : BaseNode
     [Output]
     [SerializeField]
     private DialogueFlow m_out;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private string m_key;
 
     [ShowInInspector]
@@ -45,7 +45,7 @@ public class AddToBlackboardIntValueNode : BaseNode
         {
             m_currentValue = value;
         }
-        
+
         if (this.TryGetValueFromInputPort(nameof(m_increment), out int increment))
         {
             m_increment = increment;
@@ -56,7 +56,7 @@ public class AddToBlackboardIntValueNode : BaseNode
         m_valueOut = m_currentValue;
 
         GraphBlackboard.Instance.Blackboard[m_key] = m_currentValue;
-        
+
         await UniTask.CompletedTask;
     }
 }

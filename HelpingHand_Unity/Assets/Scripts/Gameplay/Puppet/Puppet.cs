@@ -7,7 +7,6 @@ using Sirenix.OdinInspector;
 using Unity.Mathematics;
 
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Splines;
 
 using UnityUtility.MathU;
@@ -186,6 +185,8 @@ public class Puppet : MonoBehaviour, ILateAwaker
             case ObjectInHand.Baguette:
                 _ = AudioManager.Instance.EventManager.SelectedBaguette.Post(null);
                 break;
+            default:
+                break;
                 //Pour jouer des sons différents selon l'objet, quand la marionnette ATTRAPE L'OBJET
         }
     }
@@ -219,6 +220,8 @@ public class Puppet : MonoBehaviour, ILateAwaker
                 break;
             case ObjectOnHead.Beret:
                 _ = AudioManager.Instance.EventManager.SelectedBeret.Post(null);
+                break;
+            default:
                 break;
                 //Pour jouer des sons différents selon l'objet, quand la marionnette ATTRAPE L'OBJET
         }

@@ -11,14 +11,14 @@ public class CreditsMenuController : MonoBehaviour
     [SerializeField] private Selectable m_notNavigable;
 
     [NonSerialized] private bool m_open = true;
-    
+
     public void OpenCreditsMenu()
     {
         if (m_open)
         {
             return;
         }
-        
+
         m_canvasGroup.alpha = 1;
         m_canvasGroup.interactable = true;
         m_canvasGroup.blocksRaycasts = true;
@@ -36,7 +36,7 @@ public class CreditsMenuController : MonoBehaviour
         {
             return;
         }
-        
+
         m_canvasGroup.alpha = 0;
         m_canvasGroup.interactable = false;
         m_canvasGroup.blocksRaycasts = false;

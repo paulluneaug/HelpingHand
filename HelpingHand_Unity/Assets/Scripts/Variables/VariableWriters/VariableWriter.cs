@@ -1,7 +1,3 @@
-using System;
-
-using DG.Tweening.Core.Easing;
-
 using UnityEngine;
 
 public class VariableWriter<T> : MonoBehaviour

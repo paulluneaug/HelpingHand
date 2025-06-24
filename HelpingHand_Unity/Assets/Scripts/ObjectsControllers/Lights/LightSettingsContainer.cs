@@ -48,7 +48,7 @@ public class LightSettings
 {
     public float Intensity => m_intensity;
     public float Range => m_range;
-    public Vector2 SpotAngles  => m_spotAngles;
+    public Vector2 SpotAngles => m_spotAngles;
 
     [SerializeField, Min(0.0f)] private float m_intensity;
     [SerializeField, Min(0.0f)] private float m_range;

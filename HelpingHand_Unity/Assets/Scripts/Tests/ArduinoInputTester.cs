@@ -13,7 +13,7 @@ public class ArduinoInputTester : MonoBehaviour
     {
         [SerializeField] private InputActionReference m_action;
         [SerializeField, Disable] private float m_value;
-        
+
         public void Update()
         {
             m_value = m_action.action.ReadValue<float>();
@@ -41,6 +41,6 @@ public class ArduinoInputTester : MonoBehaviour
         bool arduinoInput = m_arduinoInput.action.IsPressed();
         Debug.Log($"[{Time.frameCount}] Arduino Action pressed : {arduinoInput}");
 
-        m_testedActions.ForEach( action => action.Update() );
+        m_testedActions.ForEach(action => action.Update());
     }
 }

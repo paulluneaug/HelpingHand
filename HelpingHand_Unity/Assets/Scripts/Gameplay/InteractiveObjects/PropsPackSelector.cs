@@ -1,7 +1,8 @@
-using UnityUtility.CustomAttributes;
+using System;
 
 using UnityEngine;
-using System;
+
+using UnityUtility.CustomAttributes;
 
 public class PropsPackSelector : MonoBehaviour
 {
@@ -122,6 +123,7 @@ public class PropsPackSelector : MonoBehaviour
             <= 0.3333f => SelectedPack.Tavern,
             <= 0.6666f => SelectedPack.Armory,
             > 0.6666f => SelectedPack.Market,
+            _ => throw new NotImplementedException(),
         };
     }
 }

@@ -51,7 +51,7 @@ namespace Events
         public virtual void Raise()
         {
             RaiseEvent();
-            
+
             if (!IsActive)
             {
                 return;
@@ -115,7 +115,7 @@ namespace Events
         public void Raise(T value)
         {
             Raise();
-            
+
             if (!IsActive)
             {
                 return;

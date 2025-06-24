@@ -35,7 +35,7 @@ public class DialogueSequenceNode : BaseNode
     private NodePort[] m_orderedNodePorts;
     private int m_sequenceIndex;
     private Queue<int> m_randomQueue;
-    
+
     protected override string Infos => "Continue le flow vers le premier dialogue de la séquence qui n'a pas été lu.\n" +
                                        "Peut boucler après avoir lu tous les dialogues (ou sort dans \"else\").\n" +
                                        "Peut choisir les ports séquentiellement ou au hasard.";
@@ -49,7 +49,7 @@ public class DialogueSequenceNode : BaseNode
 
     private void InitializeRandomQueue()
     {
-        System.Random rnd = new (Guid.NewGuid().GetHashCode());
+        System.Random rnd = new(Guid.NewGuid().GetHashCode());
         m_randomQueue = new Queue<int>(Enumerable.Range(0, m_orderedNodePorts.Length).OrderBy(r => rnd.Next()));
     }
 
@@ -89,8 +89,8 @@ public class DialogueSequenceNode : BaseNode
             if (m_randomQueue.TryDequeue(out sequenceIndex))
             {
                 return true;
-            } 
-            else 
+            }
+            else
             {
                 if (m_loop)
                 {
