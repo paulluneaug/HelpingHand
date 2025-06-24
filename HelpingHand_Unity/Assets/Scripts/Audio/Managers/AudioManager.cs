@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public override void Initialize()
     {
+        SoundbankManager.LoadAllSoundbanks(); //Charge toutes les soundbanks: temporaire ! Load les soundbanks au fur et à mesure pour optimiser
         _ = AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
         //RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
@@ -76,11 +77,6 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         }
     }
     #endregion
-
-    private void Awake()
-    {
-        SoundbankManager.LoadAllSoundbanks(); //Charge toutes les soundbanks: temporaire ! Load les soundbanks au fur et à mesure pour optimiser
-    }
 
     protected override void Start()
     {
