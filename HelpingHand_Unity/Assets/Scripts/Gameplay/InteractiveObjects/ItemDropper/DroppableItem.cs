@@ -22,5 +22,7 @@ public abstract class DroppableItem : MonoBehaviour
         m_model.SetActive(false);
     }
 
+    public abstract bool CanDrop();
+
     public abstract void DropItem();
 }

@@ -25,6 +25,8 @@ public class DropperItem : MonoBehaviour
     [NonSerialized] private SplineContainer m_spline;
     [NonSerialized] private Timer m_equipTimer;
 
+    [NonSerialized] private bool m_alreadyDroppedItem;
+
 
     public void Init(DroppableItem item, SplineContainer spline)
     {
@@ -36,6 +38,8 @@ public class DropperItem : MonoBehaviour
         m_targetPosition = 0.0f;
 
         m_spline = spline;
+
+        m_alreadyDroppedItem = false;
 
         m_item.DeactivateModel();
         m_previewRenderer.sprite = m_item.Preview;
@@ -77,6 +81,18 @@ public class DropperItem : MonoBehaviour
 
     public void DropItem()
     {
+        if (m_alreadyDroppedItem)
+        {
+            return;
+        }
+
+        if (!m_item.CanDrop())
+        {
+            return;
+        }
+
+        m_alreadyDroppedItem = true;
+
         m_fallVFX.Play();
         m_equipTimer.Start();
         m_previewRenderer.sprite = m_defaultSprite;
