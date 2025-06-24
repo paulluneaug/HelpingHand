@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: Value Int
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2744, y: -904}
+  position: {x: -2600, y: -632}
   folded: 0
   ports:
     keys:
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2744, y: -552}
+  position: {x: -2872, y: -632}
   folded: 0
   ports:
     keys:
@@ -621,6 +621,8 @@ MonoBehaviour:
   - {fileID: 2164527267246702206}
   - {fileID: -7476739758704822213}
   - {fileID: -8747472839980631825}
+  - {fileID: 6009036239904462868}
+  - {fileID: 1547431544495795268}
 --- !u!114 &1060379355310468115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,6 +739,72 @@ MonoBehaviour:
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: bec25e12e68f2164488fd38714a57b10, type: 2}
+--- !u!114 &1547431544495795268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861111cfcc696654fab140f1a707dc7e, type: 3}
+  m_Name: Set Global Float
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -2328, y: -504}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 1547431544495795268}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 2164527267246702206}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 1547431544495795268}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_TimeNow
+        node: {fileID: 6009036239904462868}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 1547431544495795268}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 0
+  m_variable: {fileID: 11400000, guid: 5ea0f187a07b5814c817cade080b8851, type: 2}
 --- !u!114 &2164527267246702206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +818,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2744, y: -776}
+  position: {x: -2600, y: -504}
   folded: 0
   ports:
     keys:
@@ -764,7 +832,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 4662089034119733656}
+        node: {fileID: 4874867157616026814}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -786,7 +854,10 @@ MonoBehaviour:
       _node: {fileID: 2164527267246702206}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: m_in
+        node: {fileID: 1547431544495795268}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1141,9 +1212,6 @@ MonoBehaviour:
         node: {fileID: 4874867157616026814}
         reroutePoints: []
       - fieldName: m_in
-        node: {fileID: 2164527267246702206}
-        reroutePoints: []
-      - fieldName: m_in
         node: {fileID: -8747472839980631825}
         reroutePoints: []
       _direction: 1
@@ -1183,7 +1251,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -2744, y: -424}
+  position: {x: -2872, y: -504}
   folded: 0
   ports:
     keys:
@@ -1219,7 +1287,10 @@ MonoBehaviour:
       _node: {fileID: 4874867157616026814}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: m_in
+        node: {fileID: 2164527267246702206}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1238,7 +1309,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 1.03444374
+      Data: 4.428417
     - Name: 
       Entry: 8
       Data: 
@@ -1318,6 +1389,48 @@ MonoBehaviour:
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 63e25020588b6db42bf8b395e9c16f18, type: 2}
+--- !u!114 &6009036239904462868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c5f3f9e1b9e3a46bd25695bf2c7850, type: 3}
+  m_Name: Value Time Now
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -2328, y: -632}
+  folded: 0
+  ports:
+    keys:
+    - m_TimeNow
+    values:
+    - _fieldName: m_TimeNow
+      _node: {fileID: 6009036239904462868}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_inValue
+        node: {fileID: 1547431544495795268}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_TimeNow: 0
 --- !u!114 &7209371068473495525
 MonoBehaviour:
   m_ObjectHideFlags: 0

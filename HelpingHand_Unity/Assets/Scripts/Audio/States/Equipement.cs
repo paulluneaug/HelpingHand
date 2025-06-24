@@ -32,8 +32,6 @@ public enum EquipementState
     Supermarché_02,
     Supermarché_03,
 
-    Equipement_03,
-
     Arme_01,
     Arme_02,
     Arme_03,
@@ -94,7 +92,6 @@ public enum EquipementState
     Beret_01,
     Beret_02,
     Beret_031,
-    Beret_04,
     Beret_032,
 
     CasqueAudio_01,

@@ -7,7 +7,22 @@
 				<ActorMixer Name="SoundBoard" ID="{E989E916-3AC8-4CE4-B9E5-12D97D97F6CD}" ShortID="982500947">
 					<PropertyList>
 						<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+						<Property Name="Highpass" Type="int16">
+							<ValueList>
+								<Value>48</Value>
+							</ValueList>
+						</Property>
 						<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>47</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>6</Value>
@@ -18,6 +33,11 @@
 								<Value>True</Value>
 							</ValueList>
 						</Property>
+						<Property Name="UserAuxSendVolume0" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -26,10 +46,18 @@
 						<Reference Name="OutputBus">
 							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<RandomSequenceContainer Name="Buendia" ID="{B61AFA5B-32CB-4747-A364-A68F168C474C}" ShortID="913742399">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -110,6 +138,10 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="ANM_RickRoll" ID="{C10B49FC-3EFD-4759-9B3B-39DDB7FB134B}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="4.74106100741631"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>ANM_RickRoll.wav</AudioFile>
 											<MediaIDList>
@@ -125,6 +157,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Frog" ID="{3F33E8F3-CDD1-4316-B202-445AD85B9B2A}" ShortID="72064798">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -384,7 +421,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -783,12 +820,19 @@
 					</ChildrenList>
 				</ActorMixer>
 				<Sound Name="HH_achievement_jingle" ID="{46D91B80-1280-44E8-86B0-E4E470B063F7}" ShortID="469958991">
+					<PropertyList>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -1367,6 +1411,1291 @@
 								</Reference>
 							</ReferenceList>
 						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Flamethrower" ID="{8065617F-BC60-47A2-A1AD-6FA154476B78}" ShortID="312758041">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<BlendContainer Name="BlendPotentiometer" ID="{6604729F-E282-43B2-9CD8-9FAB5CB9BEBB}" ShortID="377096302">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Loop" ID="{99830FCD-A21B-4926-A3E9-5E71C8379C75}" ShortID="1068852633">
+									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_Loop_Flamethrower_Potentiometer" ID="{6EACEEA3-CE69-40BE-9E86-5A0E53B1A838}" ShortID="517719056">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_Loop_Flamethrower_Potentiometer" ID="{6AAFECAA-58B0-4DAE-B0B1-0F82205BBA52}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_Loop_Flamethrower_Potentiometer.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="913996487"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_Loop_Flamethrower_Potentiometer" ID="{6AAFECAA-58B0-4DAE-B0B1-0F82205BBA52}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="ANM_Loop_Flamethrower_Potentiometer" ID="{6EACEEA3-CE69-40BE-9E86-5A0E53B1A838}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Loop_01" ID="{B0CF8A21-C733-4266-9676-ADD942A4A1A2}" ShortID="4208165">
+									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_Loop_Flamethrower_Potentiometer_Alt" ID="{BF60BAA1-56D9-4C5A-854B-F611046DDE82}" ShortID="502297876">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt" ID="{B74B867B-C403-4009-B7B9-EE025B2EF003}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_Loop_Flamethrower_Potentiometer_Alt.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="961847889"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt" ID="{B74B867B-C403-4009-B7B9-EE025B2EF003}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="ANM_Loop_Flamethrower_Potentiometer_Alt" ID="{BF60BAA1-56D9-4C5A-854B-F611046DDE82}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<BlendTrackList>
+								<BlendTrack Name="BlendPotentiometer" ID="{51AC4AFF-293F-4254-8760-0645DFBFF400}" ShortID="534942153">
+									<PropertyList>
+										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="LayerCrossFadeControlInput">
+											<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{7794346A-2383-49E5-B44B-7A8E851DD87F}" ShortID="131011269">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{469AB808-E1B1-4E1A-BC4A-DA102B224BEE}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-2500</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>1900</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<BlendTrackAssocList>
+										<BlendTrackAssoc>
+											<ItemRef Name="Loop" ID="{99830FCD-A21B-4926-A3E9-5E71C8379C75}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>1</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+									</BlendTrackAssocList>
+								</BlendTrack>
+								<BlendTrack Name="BlendPotentiometer2" ID="{5AA0D512-348B-4073-A84B-799BFAE9CEA1}" ShortID="619718215">
+									<PropertyList>
+										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="LayerCrossFadeControlInput">
+											<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{61F16941-C9E0-42B6-B7E2-294ECD6562C3}" ShortID="819864810">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{F6132415-2C89-4E56-AD88-3E7A1198AF63}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-2500</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>1900</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{169418D6-EAAB-4F7C-ADCA-BA61EC8CA722}" ShortID="585736236">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="SliderValue" ID="{0A68DDF5-EA5D-435C-84BA-5DAD8B88D482}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{46393E3D-93C7-4D04-A8C9-754AE1630D5F}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.5</XPos>
+																				<YPos>-1.02704</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<BlendTrackAssocList>
+										<BlendTrackAssoc>
+											<ItemRef Name="Loop_01" ID="{B0CF8A21-C733-4266-9676-ADD942A4A1A2}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>1</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+									</BlendTrackAssocList>
+								</BlendTrack>
+							</BlendTrackList>
+						</BlendContainer>
+						<RandomSequenceContainer Name="Switch_TurnOff" ID="{73E28640-E533-4D88-AD2F-A69E2A449616}" ShortID="415845299">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="ANM_Loop_Flamethrower_SwitchOff_01" ID="{191F48A2-8516-45C8-B6CC-42E13079018B}" ShortID="409316380">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ANM_Loop_Flamethrower_SwitchOff_01" ID="{E2962F46-8617-45F7-932B-6111FEAA65B9}">
+											<Language>SFX</Language>
+											<AudioFile>ANM_Loop_Flamethrower_SwitchOff_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="939146115"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_Loop_Flamethrower_SwitchOff_01" ID="{E2962F46-8617-45F7-932B-6111FEAA65B9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ANM_Loop_Flamethrower_SwitchOff_02" ID="{D3A7DE76-0C9B-42F0-9BF7-D8E10A9910F0}" ShortID="871748572">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ANM_Loop_Flamethrower_SwitchOff_02" ID="{26C3148E-E70E-4A42-9CC8-39013F3E668B}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.011861147339811"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ANM_Loop_Flamethrower_SwitchOff_02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="108977847"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_Loop_Flamethrower_SwitchOff_02" ID="{26C3148E-E70E-4A42-9CC8-39013F3E668B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ANM_Loop_Flamethrower_SwitchOff_03" ID="{22BD0D73-D791-429C-BDB9-203E1D6F32E5}" ShortID="1038781512">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ANM_Loop_Flamethrower_SwitchOff_03" ID="{B727CCEA-3E96-46B4-9E16-89A4D8A78ABD}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.00659192468702178"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0285650069770944"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ANM_Loop_Flamethrower_SwitchOff_03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="372608706"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_Loop_Flamethrower_SwitchOff_03" ID="{B727CCEA-3E96-46B4-9E16-89A4D8A78ABD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Flamethrower" ID="{068EF174-AAAE-40EF-9FCF-B70B128107B2}" ShortID="620335936">
+							<PropertyList>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Fire, Burst, Cinematic, Impact, Flames Escaping SND42835 1" ID="{CE73C57E-732C-4478-B016-B8725B8BAC57}" ShortID="324754831">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Fire, Burst, Cinematic, Impact, Flames Escaping SND42835 1" ID="{5F032B8D-4A63-4863-89C2-297BE9EF365C}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="2.55593220338983"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.70508474576271"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Fire, Burst, Cinematic, Impact, Flames Escaping SND42835 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="4201185"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Fire, Burst, Cinematic, Impact, Flames Escaping SND42835 1" ID="{5F032B8D-4A63-4863-89C2-297BE9EF365C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Scifi, Mechanism, Steampunk, Bucket Gun, Tonal, Reload SND133205" ID="{679B8357-76C0-4464-8A89-F1323424C4B4}" ShortID="358657300">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Scifi, Mechanism, Steampunk, Bucket Gun, Tonal, Reload SND133205" ID="{A177781B-BB36-4936-986E-9F1EFE199880}">
+											<Language>SFX</Language>
+											<AudioFile>Scifi, Mechanism, Steampunk, Bucket Gun, Tonal, Reload SND133205.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="332752573"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Scifi, Mechanism, Steampunk, Bucket Gun, Tonal, Reload SND133205" ID="{A177781B-BB36-4936-986E-9F1EFE199880}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Playlist">
+									<Reference>
+										<ObjectRef Name="Scifi, Mechanism, Steampunk, Bucket Gun, Tonal, Reload SND133205" ID="{679B8357-76C0-4464-8A89-F1323424C4B4}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="Fire, Burst, Cinematic, Impact, Flames Escaping SND42835 1" ID="{CE73C57E-732C-4478-B016-B8725B8BAC57}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</RandomSequenceContainer>
+						<BlendContainer Name="Switch_TurnOn" ID="{A1DDA013-B910-4F51-9C45-7E36296CA4A1}" ShortID="371436374">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Switch_TurnOn" ID="{C66ADD8B-87DB-4EEF-A361-037AA8AED684}" ShortID="844656864">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_Loop_Flamethrower_Potentiometer_Alt_01" ID="{64B95871-12AC-4694-AEB5-D13589914F9A}" ShortID="524629869">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt_01" ID="{187D45D2-ADEB-410E-9957-262792AD3F0D}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.431943757520919"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0496275750632139"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.534875024318695"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>ANM_Loop_Flamethrower_Potentiometer_Alt_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="397320632"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt_01" ID="{187D45D2-ADEB-410E-9957-262792AD3F0D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_Loop_Flamethrower_Potentiometer_Alt_02" ID="{D26E3F23-E2A4-4A3E-9D46-185BAC2E85AB}" ShortID="187251929">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt_02" ID="{5019363B-C882-4C7E-B2F2-E2F69D79A26C}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.528029418483223"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0203800828186507"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.676248214698739"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>ANM_Loop_Flamethrower_Potentiometer_Alt_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="632198716"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt_02" ID="{5019363B-C882-4C7E-B2F2-E2F69D79A26C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_Loop_Flamethrower_Potentiometer_Alt_03" ID="{8C956399-0A38-4CDD-8FE5-F9E00D5E5655}" ShortID="451357947">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt_03" ID="{D0811062-7AC6-4B1E-9E60-2ED9BA85ADE8}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.680250015455423"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.831416643912849"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>ANM_Loop_Flamethrower_Potentiometer_Alt_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="799008491"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_Loop_Flamethrower_Potentiometer_Alt_03" ID="{D0811062-7AC6-4B1E-9E60-2ED9BA85ADE8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<Sound Name="ANM_Loop_Flamethrower_SwitchOnBass" ID="{2AC3F9A4-045B-473E-BE94-7FC4657E5289}" ShortID="264577020">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ANM_Loop_Flamethrower_SwitchOnBass" ID="{E984EBBD-0487-4FCE-940B-4E3A8F6A29FF}">
+											<Language>SFX</Language>
+											<AudioFile>ANM_Loop_Flamethrower_SwitchOnBass.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="434258863"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_Loop_Flamethrower_SwitchOnBass" ID="{E984EBBD-0487-4FCE-940B-4E3A8F6A29FF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</BlendContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Décor" ID="{8582EFB7-F946-4F00-A5B2-BF479AD64842}" ShortID="166704093">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Attenuation_100m" ID="{77B02558-D2ED-4774-9DA5-22E0BC8203B6}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="Cardboard_Slide" ID="{8C66CBA0-FD1C-484E-9D62-52EF6F5C25A8}" ShortID="377385468">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00" ID="{BBA02E42-C7FF-4E2D-8002-87E8E9F19256}" ShortID="24754906">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00" ID="{74E9A920-14D5-48A1-AA06-18D190C17528}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="1.11976483458773"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.66674663235726"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="186469650"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00" ID="{74E9A920-14D5-48A1-AA06-18D190C17528}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02" ID="{1BD64061-5288-42D1-934A-934C7C14954A}" ShortID="747145949">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02" ID="{881F2325-F7B2-4889-B2ED-ECE8297BA9E7}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.639520642735542"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.153764526122207"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.31398776709122"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="859552284"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02" ID="{881F2325-F7B2-4889-B2ED-ECE8297BA9E7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06" ID="{7CDEC4B6-10B7-4432-8CA7-C2523C3F5E0D}" ShortID="551306388">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06" ID="{0071260A-2D7E-467C-BF50-15AD85D32E4B}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.747015251677059"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.212027342385108"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.77622914470008"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="436640736"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06" ID="{0071260A-2D7E-467C-BF50-15AD85D32E4B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Cardboard_Slide_Pitched" ID="{63FF91D6-5B22-4956-936A-8144246CB00A}" ShortID="70188918">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-1130</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00" ID="{D0DC2235-1259-4008-9DBB-E513BDC0BD6D}" ShortID="275211575">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00" ID="{6BD08D28-7C45-4E49-BE87-25E242707CE2}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="1.11976483458773"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.66674663235726"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="186469650"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00" ID="{6BD08D28-7C45-4E49-BE87-25E242707CE2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02" ID="{DEAD5996-3A47-4470-B5CB-C41F08583403}" ShortID="1003249339">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02" ID="{79CF6FD6-EB75-4B18-B493-AA788CAB5264}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.639520642735542"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.153764526122207"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.31398776709122"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="859552284"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02" ID="{79CF6FD6-EB75-4B18-B493-AA788CAB5264}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06" ID="{7D2E9E99-2242-4EBA-A2A4-D35D57E52596}" ShortID="577388987">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06" ID="{93D87834-3496-4AC4-97AD-38ADC864746A}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.747015251677059"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.212027342385108"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.77622914470008"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="436640736"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06" ID="{93D87834-3496-4AC4-97AD-38ADC864746A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Simon" ID="{C94C645D-C424-4929-B00F-CEF2DCD8C1ED}" ShortID="180152983">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="LED_01" ID="{85CB017F-8A6C-4515-AF1D-BC7A58AACD21}" ShortID="944484478">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>350</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0" ID="{5E108D17-4F0E-41C9-88D6-F3A007604F67}" ShortID="231805907">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0" ID="{985E21F2-D790-4EAE-A04D-983ED15C3E1A}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.146783059226142"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="49287072"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0" ID="{985E21F2-D790-4EAE-A04D-983ED15C3E1A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="LED_02" ID="{6305339F-576A-4AFD-8ABB-3BBCC44A7C9F}" ShortID="300113908">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-410</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Square Wave SND3495" ID="{5C8E8CA2-7E0B-46B6-97D6-7C9CF1701109}" ShortID="98734190">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Square Wave SND3495" ID="{F2559BB6-D143-4371-BA83-FDCE843299DE}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0712266658147176"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Square Wave SND3495.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="949670891"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Square Wave SND3495" ID="{F2559BB6-D143-4371-BA83-FDCE843299DE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="LED_03" ID="{81C46B05-0EEB-46AB-A294-72FE0CAB0F15}" ShortID="427464386">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-200</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0" ID="{5E26D4FF-99B2-42D6-9A0C-006D488C1F2D}" ShortID="536405286">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-11</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0" ID="{F5263C54-4E11-40B4-9752-E81D229CA87B}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.088038370768229"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="327984920"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0" ID="{F5263C54-4E11-40B4-9752-E81D229CA87B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="LED_04" ID="{C22A87D0-B10E-4311-8C89-0BCE2EF5FF42}" ShortID="962307573">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-580</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3" ID="{8FE476F0-CBDD-402D-823E-14E99759C82B}" ShortID="955630466">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3" ID="{0E81424E-FA22-4864-991E-AA174FD3659E}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.0712642180977005"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="442013035"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3" ID="{0E81424E-FA22-4864-991E-AA174FD3659E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="TestSequence" ID="{FC3DAB48-A0A7-4E93-9611-BD41CB17FDDE}" ShortID="1006240688">
+							<PropertyList>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="LED_04" ID="{855D80F1-EF74-4CAA-883C-113DB618913A}" ShortID="444801422">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-580</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3" ID="{58C832B6-9444-4CC0-AA02-A20199034BCD}" ShortID="89041202">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3" ID="{03A5336D-7F3D-42C4-A9C0-0F1DE054D00B}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.0712642180977005"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="442013035"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Archived, Test Tone, 1000 Hz, Triangle Wave SND3494 - Pitch 49_3" ID="{03A5336D-7F3D-42C4-A9C0-0F1DE054D00B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="LED_02" ID="{D477256A-C704-4AB5-8BD0-9B2DEC40DEDD}" ShortID="366202414">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-410</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Archived, Test Tone, 1000 Hz, Square Wave SND3495" ID="{F56581B4-3C6F-4CD8-8EF3-F9A7E85DB90D}" ShortID="992285532">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Square Wave SND3495" ID="{91F2136D-C4CD-4AB8-896E-0EC90CB36597}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.0712266658147176"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Archived, Test Tone, 1000 Hz, Square Wave SND3495.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="949670891"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Archived, Test Tone, 1000 Hz, Square Wave SND3495" ID="{91F2136D-C4CD-4AB8-896E-0EC90CB36597}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="LED_01" ID="{ADC4656E-2523-46EF-8CD9-5750E6A0221D}" ShortID="1062827072">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>350</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0" ID="{96315B55-73D6-454F-B9FF-8C6968546431}" ShortID="261663850">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0" ID="{B1C18F84-4497-4BCF-9F33-11468A983F63}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.146783059226142"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="49287072"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sine Wave SND3496 - Pitch 48_0" ID="{B1C18F84-4497-4BCF-9F33-11468A983F63}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="LED_03" ID="{0FB8EBC7-D42E-4F86-95FC-B2AEDC41F057}" ShortID="74181575">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-200</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0" ID="{6F8D2A89-C6A6-4CD0-B302-10CCF1F9B8D2}" ShortID="907313092">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-11</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0" ID="{60D7ED60-FFF8-4270-ABEC-AC9B8A837CA9}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.088038370768229"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="327984920"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Archived, Test Tone, 1000 Hz, Sawtooth Wave SND3497 - Pitch 52_0" ID="{60D7ED60-FFF8-4270-ABEC-AC9B8A837CA9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Playlist">
+									<Reference>
+										<ObjectRef Name="LED_04" ID="{855D80F1-EF74-4CAA-883C-113DB618913A}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="LED_04" ID="{855D80F1-EF74-4CAA-883C-113DB618913A}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="LED_04" ID="{855D80F1-EF74-4CAA-883C-113DB618913A}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="LED_02" ID="{D477256A-C704-4AB5-8BD0-9B2DEC40DEDD}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="LED_01" ID="{ADC4656E-2523-46EF-8CD9-5750E6A0221D}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="LED_03" ID="{0FB8EBC7-D42E-4F86-95FC-B2AEDC41F057}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="LED_01" ID="{ADC4656E-2523-46EF-8CD9-5750E6A0221D}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

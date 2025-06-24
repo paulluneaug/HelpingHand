@@ -24,6 +24,8 @@ public class RTPCManager : MonoBehaviour
     public RTPC RTPC_MusicVolume;
 
     public RTPC RTPC_TimeOfDay;
+    
+    public BaseVariable<float> TimeOfDay;
 
     #endregion
 

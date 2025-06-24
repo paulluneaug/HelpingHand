@@ -613,7 +613,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3227203933481479768}
-  - component: {fileID: 3643726348951660504}
   m_Layer: 31
   m_Name: Toggle Group 2 Blue
   m_TagString: Untagged
@@ -642,62 +641,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -70.5}
   m_SizeDelta: {x: 211.5, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3643726348951660504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956283763124252835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 89cedc610a29ba849b0d8655561c650e, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionTrigger, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_trigger
-      Entry: 7
-      Data: 1|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: true
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: aeb8820ce6c7fe841ab093ea694ff031, type: 2}
 --- !u!1 &2968296031644028436
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +726,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7782833023924513005}
-  - component: {fileID: 2416530887059441917}
   m_Layer: 31
   m_Name: Toggle Group 1
   m_TagString: Untagged
@@ -817,110 +759,6 @@ RectTransform:
   m_AnchoredPosition: {x: 337.75, y: -57}
   m_SizeDelta: {x: 205.5, y: 332.5}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &2416530887059441917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356413427184814068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5109a54dc2600547888ad14c9f56c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 135777a591be66a47a6e37334e3b0cd0, type: 2}
-    - {fileID: 11400000, guid: b9e3d544aed655c4c94d8ba56ae5055d, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionAnd, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_preconditions
-      Entry: 7
-      Data: 1|ConditionBase[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 2|ConditionEntityState, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_state
-      Entry: 10
-      Data: 0
-    - Name: m_mustBeSet
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 3|ConditionEntityState, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_state
-      Entry: 10
-      Data: 1
-    - Name: m_mustBeSet
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_onConditionTrue:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 816dac3bdc0d21d4f8d536bf6bf0eed2, type: 2}
-        m_TargetAssemblyTypeName: EntityState, Assembly-CSharp
-        m_MethodName: Set
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_onConditionFalse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 816dac3bdc0d21d4f8d536bf6bf0eed2, type: 2}
-        m_TargetAssemblyTypeName: EntityState, Assembly-CSharp
-        m_MethodName: Unset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3800395202739685175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +848,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6933223350964202010}
-  - component: {fileID: 9072879637260078831}
   m_Layer: 31
   m_Name: Toggle Group 2 Red
   m_TagString: Untagged
@@ -1039,62 +876,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 70.5}
   m_SizeDelta: {x: 211.5, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9072879637260078831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4408912470740043660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 6104715c2ab4ab44ca0deb95a9216f30, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionTrigger, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_trigger
-      Entry: 7
-      Data: 1|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: true
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: b9e3d544aed655c4c94d8ba56ae5055d, type: 2}
 --- !u!1 &4736937927314031334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1078,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8884234608372164261}
-  - component: {fileID: 7338070521499396263}
   m_Layer: 31
   m_Name: Toggle Group 2 Green
   m_TagString: Untagged
@@ -1326,62 +1106,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 211.5, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7338070521499396263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704525176219745960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: f0e9ba0bf01bf1140bf9bfaf01fcefcc, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionTrigger, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_trigger
-      Entry: 7
-      Data: 1|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: true
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: c2bc68d3c9bd5884488d73a242b3eea2, type: 2}
 --- !u!1 &5880674319781871106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,45 +1553,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3037490371115998475}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
---- !u!1 &4707367045778678562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-  m_PrefabInstance: {fileID: 137588852242838807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3037490371115998475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4707367045778678562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c87c6895d4257447bd875c8f0b4287d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_doUnregisterOnDisable: 1
-  m_event: {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-  m_response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fa366f79a572c2f449f280f02a532161, type: 2}
-        m_TargetAssemblyTypeName: BaseVariable`1[[System.Boolean, mscorlib
-        m_MethodName: set_Value
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &5997716849762524916 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5968672378203712483, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
@@ -6636,45 +6323,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4486365906045148593}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
---- !u!1 &2382976574594211299 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-  m_PrefabInstance: {fileID: 7037214886354193366}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4486365906045148593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2382976574594211299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c87c6895d4257447bd875c8f0b4287d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_doUnregisterOnDisable: 1
-  m_event: {fileID: 11400000, guid: 7fc07124ba808d44f81f7851abfa5c1c, type: 2}
-  m_response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 28ec90a296b3e5e4998923972bc67536, type: 2}
-        m_TargetAssemblyTypeName: BaseVariable`1[[System.Boolean, mscorlib
-        m_MethodName: set_Value
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &3710348442678009909 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5968672378203712483, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}

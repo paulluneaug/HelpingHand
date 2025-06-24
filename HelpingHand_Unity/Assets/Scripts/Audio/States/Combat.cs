@@ -12,7 +12,6 @@ public enum CombatState
     Intro_06,
     Intro_07,
 
-    Combat_02,
     Music_01,
     Music_012,
     Music_02,
@@ -42,7 +41,6 @@ public enum CombatState
     Equip_05,
     Equip_06,
     Equip_07,
-    Combat_05,
 
     Intro_Simon_01,
     Intro_Simon_11,

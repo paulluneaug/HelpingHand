@@ -3,12 +3,18 @@ using System;
 
 using UnityEngine;
 using UnityEngine.Splines;
+using UnityEngine.VFX;
+
 using UnityUtility.Easings;
 using UnityUtility.MathU;
+using UnityUtility.Timer;
 
 public class DropperItem : MonoBehaviour
 {
-    [SerializeField] private Transform m_previewParent;
+    [SerializeField] private SpriteRenderer m_previewRenderer;
+    [SerializeField] private Sprite m_defaultSprite;
+    [SerializeField] private VisualEffect m_fallVFX;
+    [SerializeField] private float m_equipDelay;
 
     [NonSerialized] private DroppableItem m_item;
 
@@ -17,19 +23,26 @@ public class DropperItem : MonoBehaviour
     [NonSerialized] private float m_currentPosition;
 
     [NonSerialized] private SplineContainer m_spline;
+    [NonSerialized] private Timer m_equipTimer;
+
+    [NonSerialized] private bool m_alreadyDroppedItem;
 
 
     public void Init(DroppableItem item, SplineContainer spline)
     {
         m_item = item;
 
+        m_equipTimer = new Timer(m_equipDelay, false);
+
         m_startPosition = 0.0f;
         m_targetPosition = 0.0f;
 
         m_spline = spline;
 
+        m_alreadyDroppedItem = false;
+
         m_item.DeactivateModel();
-        m_item.ActivatePreview(m_previewParent);
+        m_previewRenderer.sprite = m_item.Preview;
     }
 
     public void StartItem(float startPosition)
@@ -66,20 +79,48 @@ public class DropperItem : MonoBehaviour
 
     }
 
-    public void DropItem()
+    public void DropItem(GameObject lootbox)
     {
-        m_item.DropItem();
-        m_item.DeactivatePreview();
+        if (m_alreadyDroppedItem || !m_item.CanDrop())
+        {
+
+            _ = AudioManager.Instance.EventManager.Play_ItemDropperError.Post(lootbox);
+            return;
+        }
+
+        // @TODO Play open trappe sound
+        _ = AudioManager.Instance.EventManager.Play_ItemDropperBox_Open.Post(lootbox);
+
+        m_alreadyDroppedItem = true;
+
+        m_fallVFX.Play();
+        // Jouer son fall + smoke (après .2sec)
+        m_equipTimer.Start();
+        m_previewRenderer.sprite = m_defaultSprite;
     }
 
     public void ResetItem()
     {
-        m_item.DeactivatePreview();
+        m_previewRenderer.sprite = m_defaultSprite;
         m_item = null;
 
         m_startPosition = 0.0f;
         m_targetPosition = 0.0f;
 
         m_spline = null;
+    }
+
+    private void Update()
+    {
+        if (!m_equipTimer.IsRunning)
+        {
+            return;
+        }
+
+        if (m_equipTimer.Update(Time.deltaTime))
+        {
+            m_equipTimer.Stop();
+            m_item.DropItem();
+        }
     }
 }

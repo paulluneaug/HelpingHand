@@ -21,7 +21,7 @@ public class Achievement : EntityState
 
     private void OnConditionUpdated()
     {
-        if (m_condition.Test())
+        if (!IsSet && m_condition.Test())
         {
             Set();
             if (m_condition != null)

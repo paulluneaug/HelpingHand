@@ -15,6 +15,7 @@ using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
 using UnityEngine.SceneManagement;
 using System.Text;
+using static UnityEngine.Rendering.DebugUI;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -35,6 +36,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public override void Initialize()
     {
+        SoundbankManager.LoadAllSoundbanks(); //Charge toutes les soundbanks: temporaire ! Load les soundbanks au fur et à mesure pour optimiser
         _ = AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
         //RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
@@ -77,23 +79,18 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     }
     #endregion
 
-    private void Awake()
-    {
-        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-    }
-
     protected override void Start()
     {
-       // SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-
-        //On joue la musique principale dès que la scène se lance
-
         // Ambiances de pièces qui se jouent dès le début
         _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
+    private void Update()
+    {
+        RTPCManager.RTPC_TimeOfDay.SetValue(gameObject, RTPCManager.TimeOfDay.Value);
+    }
 
- 
+
     public override void OnDestroy()
     {
         base.OnDestroy();
@@ -181,6 +178,16 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             _ = EventManager.Untoggle_Play.Post(targetObject);
         }
+    }
+
+    public void PlayUINavigationSound()
+    {
+        _ = EventManager.OnUINavigation_Play.Post(gameObject);
+    }
+
+    public void PlayUISubmitSound()
+    {
+        _ = EventManager.OnUISubmit_Play.Post(gameObject);
     }
     #endregion
     // Méthode qui joue un Dialogue Event avec série de string qui représentent le nom des States, gameObject sur lequel les sons sont joués, token d'annulation
