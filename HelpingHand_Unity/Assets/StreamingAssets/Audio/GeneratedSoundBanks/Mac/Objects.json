@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{A97744F7-3FE7-46E3-AF1C-2567B1452CD0}",
     "Language": "SFX",
-    "Hash": "{A8945528-5455-7F75-4068-D24C46D42D30}",
+    "Hash": "{66FE6A67-30BD-F9E1-62B9-632AA754C36F}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Objects",
     "ShortName": "Objects",
     "Path": "Objects.bnk",
@@ -166,6 +166,14 @@
       "Location": "Memory",
       "ShortName": "ANM_Roomba_TurnOn.wav",
       "CachePath": "E0/{E0D0554B-B0C3-91E1-3FE5-FBCB2A64A394}.wem"
+     },
+     {
+      "Id": "186469650",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S00.wav",
+      "CachePath": "F1/{F117E68A-55F1-EFDB-6A98-CC6F05E17973}.wem"
      },
      {
       "Id": "200794581",
@@ -374,6 +382,14 @@
       "Location": "Memory",
       "ShortName": "Cardboard_Box_Sliding_03.wav",
       "CachePath": "63/{6397F7D6-3D96-5230-67E7-8DB9E759F950}.wem"
+     },
+     {
+      "Id": "436640736",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S06.wav",
+      "CachePath": "C9/{C9FFA8AC-D353-1030-E42B-C502E21D2095}.wem"
      },
      {
       "Id": "439427394",
@@ -712,6 +728,14 @@
       "CachePath": "B8/{B8C052C6-77D5-3292-252C-ABE634786990}.wem"
      },
      {
+      "Id": "859552284",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tools, Hand, Sledgehammer, Impact On Cardboard Box, Hard, Pick Up Box 02 SND51514 S02.wav",
+      "CachePath": "39/{39798B7D-EFFE-C55B-B3FA-C2ED447500E7}.wem"
+     },
+     {
       "Id": "859775089",
       "Language": "SFX",
       "Streaming": "false",
@@ -979,6 +1003,48 @@
       ]
      },
      {
+      "Id": "1915762278",
+      "Name": "Decor_Slide_Hidden_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Décor\\Decor_Slide_Hidden_Play",
+      "GUID": "{4FE6DDDA-D079-4DAE-8877-02DB13F36056}",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "2.228494",
+      "DurationMax": "3.2013967",
+      "MediaRefs": [
+       {
+        "Id": "186469650"
+       },
+       {
+        "Id": "436640736"
+       },
+       {
+        "Id": "859552284"
+       }
+      ]
+     },
+     {
+      "Id": "4223034519",
+      "Name": "Decor_Slide_Reveal_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Décor\\Decor_Slide_Reveal_Play",
+      "GUID": "{AC57195B-0A80-4562-8BE7-BE67F76E5EE2}",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "1.1602232",
+      "DurationMax": "1.6667466",
+      "MediaRefs": [
+       {
+        "Id": "186469650"
+       },
+       {
+        "Id": "436640736"
+       },
+       {
+        "Id": "859552284"
+       }
+      ]
+     },
+     {
       "Id": "3520457680",
       "Name": "Flamethrower_Play",
       "ObjectPath": "\\Events\\Gameplay_Events\\Flamethrower\\Flamethrower_Play",
@@ -1138,6 +1204,7 @@
       "Name": "Play_FallingObject",
       "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_FallingObject",
       "GUID": "{C5AEE718-AE80-445E-A1E3-5F3750D0CF50}",
+      "MaxAttenuation": "150",
       "DurationType": "OneShot",
       "DurationMin": "1.035057",
       "DurationMax": "1.035057",
@@ -1155,6 +1222,7 @@
       "Name": "Play_HatCatch",
       "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_HatCatch",
       "GUID": "{99D46073-51B6-47A0-A0B6-417A5A6DC330}",
+      "MaxAttenuation": "150",
       "DurationType": "OneShot",
       "DurationMin": "0.453",
       "DurationMax": "4.2997293",
@@ -1240,6 +1308,7 @@
       "Name": "Play_ItemDropperBox_Open",
       "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_ItemDropperBox_Open",
       "GUID": "{0F7B3023-EB24-49CE-80C0-7DCC7C36A1A1}",
+      "MaxAttenuation": "150",
       "DurationType": "OneShot",
       "DurationMin": "0.79247916",
       "DurationMax": "1.031875",
@@ -1299,6 +1368,7 @@
       "Name": "Play_ItemDropperMovingLoop",
       "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_ItemDropperMovingLoop",
       "GUID": "{08CF5795-0214-49B4-BFC3-5F0202BFF02F}",
+      "MaxAttenuation": "150",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -1320,6 +1390,7 @@
       "Name": "Play_Smoke_Impact",
       "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_Smoke_Impact",
       "GUID": "{BA74222A-593C-4134-89D6-019365F1D3DB}",
+      "MaxAttenuation": "150",
       "DurationType": "OneShot",
       "DurationMin": "2.3908005",
       "DurationMax": "3.296875",
@@ -1395,6 +1466,7 @@
       "Name": "Play_WeaponCatch",
       "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_WeaponCatch",
       "GUID": "{77E17996-F958-452A-AAD5-261F143A0D0C}",
+      "MaxAttenuation": "150",
       "DurationType": "OneShot",
       "DurationMin": "0.36535418",
       "DurationMax": "2.429625",
@@ -1555,6 +1627,7 @@
       "Name": "SmokeImpact_Play",
       "ObjectPath": "\\Events\\Gameplay_Events\\Gameplay\\Item Dropper\\SmokeImpact_Play",
       "GUID": "{9C4C7D46-8F32-4ABE-A356-F2C11F704FD8}",
+      "MaxAttenuation": "150",
       "DurationType": "OneShot",
       "DurationMin": "2.1722083",
       "DurationMax": "3.296875",
@@ -2028,6 +2101,6 @@
     ]
    }
   ],
-  "FileHash": "{BE8CD067-88D3-E292-B005-D5C3D571FC0D}"
+  "FileHash": "{80E9392A-A230-C86A-EDEF-EFDA7DB5C0B2}"
  }
 }

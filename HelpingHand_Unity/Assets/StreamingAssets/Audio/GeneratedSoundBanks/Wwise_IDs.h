@@ -27,6 +27,8 @@ namespace AK
         static const AkUniqueID CURTAINLOOP_PLAY = 2848090300U;
         static const AkUniqueID CURTAINMAX_PLAY = 3445812898U;
         static const AkUniqueID CURTAINMIN_PLAY = 3264562480U;
+        static const AkUniqueID DECOR_SLIDE_HIDDEN_PLAY = 1915762278U;
+        static const AkUniqueID DECOR_SLIDE_REVEAL_PLAY = 4223034519U;
         static const AkUniqueID DRAGONDUNGEONAMB_PLAY = 1884592839U;
         static const AkUniqueID FLAMETHROWER_PLAY = 3520457680U;
         static const AkUniqueID FLAMETHROWER_POTENTIOMETER_PLAY = 241698166U;

@@ -15,6 +15,7 @@ using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
 using UnityEngine.SceneManagement;
 using System.Text;
+using static UnityEngine.Rendering.DebugUI;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -84,8 +85,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
+    private void Update()
+    {
+        RTPCManager.RTPC_TimeOfDay.SetValue(gameObject, RTPCManager.TimeOfDay.Value);
+    }
 
- 
+
     public override void OnDestroy()
     {
         base.OnDestroy();
