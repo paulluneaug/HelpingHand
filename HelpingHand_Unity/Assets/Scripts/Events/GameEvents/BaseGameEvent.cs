@@ -13,6 +13,8 @@ namespace Events
         [ReadOnly]
         protected bool m_isActive = true;
 
+        public virtual void Initialize() { }
+
         public bool IsActive
         {
             get => m_isActive;
