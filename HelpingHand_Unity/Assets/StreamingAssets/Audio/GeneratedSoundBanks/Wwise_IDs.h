@@ -88,6 +88,10 @@ namespace AK
         static const AkUniqueID ROTARYENCODER_DESACTIVATE_PLAY = 1971551941U;
         static const AkUniqueID ROTARYENCODER_LEFT_PLAY = 2135411543U;
         static const AkUniqueID ROTARYENCODER_RIGHT_PLAY = 643908294U;
+        static const AkUniqueID SIMON_LIGHT1_TURNON_PLAY = 2438284647U;
+        static const AkUniqueID SIMON_LIGHT2_TURNON_PLAY = 2523129872U;
+        static const AkUniqueID SIMON_LIGHT3_TURNON_PLAY = 3688184017U;
+        static const AkUniqueID SIMON_LIGHT4_TURNON_PLAY = 1553928474U;
         static const AkUniqueID SMOKEIMPACT_PLAY = 839627559U;
         static const AkUniqueID SOUND1_PLAY = 2143040304U;
         static const AkUniqueID SOUND2_PLAY = 1790927701U;
