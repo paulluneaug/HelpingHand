@@ -28,6 +28,8 @@ public class OptionsMenuController : SerializedMonoBehaviour
     [SerializeField] private Button m_defaultButton;
     [SerializeField] private Button m_mainMenuButton;
 
+    [SerializeField] private Selectable m_notNavigable;
+
     [Title("Description")]
     [SerializeField] private TMP_Text m_descriptionText;
     [SerializeField] private Image m_descriptionBackground;
@@ -142,6 +144,7 @@ public class OptionsMenuController : SerializedMonoBehaviour
         UnsubscribeFromEvents();
 
         OnMenuClosed?.Invoke();
+        m_notNavigable.Select();
 
         m_open = false;
     }

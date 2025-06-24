@@ -10,6 +10,7 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup m_mainMenuPanel;
     [SerializeField] private Selectable m_firstSelectable;
+    [SerializeField] private Selectable m_notNavigable;
 
     [Title("Buttons")]
     [SerializeField] private Button m_startGameButton;
@@ -57,6 +58,8 @@ public class MainMenuController : MonoBehaviour
         m_openOptionsButton.onClick.RemoveListener(OnOpenOptionsButtonClicked);
         m_creditsOptionsButton.onClick.RemoveListener(OnCreditsButtonClicked);
         m_quitGameButton.onClick.RemoveListener(OnQuitGameButtonClicked);
+
+        m_notNavigable.Select();
 
         m_open = false;
     }
