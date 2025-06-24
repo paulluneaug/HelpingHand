@@ -12,4 +12,9 @@ public class DroppableHandProp : DroppableItem
         ActivateModel();
         GameManager.Instance.GetPuppet().HoldObjectInHand(this);
     }
+
+    public override bool CanDrop()
+    {
+        return !GameManager.Instance.GetPuppet().IsHoldingObjectInHand();
+    }
 }
