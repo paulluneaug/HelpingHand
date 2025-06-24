@@ -103,6 +103,7 @@ public class GraphController : MonoBehaviour
 
     public async UniTask<GraphRunner> CreateGraphRunner(SimpleGraph graph)
     {
+        Debug.Assert(graph != null);
         // If graph is already running, wait for its completion
         if (m_graphDictionary.TryGetValue(graph, out GraphRunner existingRunner))
         {
@@ -176,11 +177,6 @@ public class GraphController : MonoBehaviour
             {
                 HandleInterruptionQueue();
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartSequence();
         }
     }
 

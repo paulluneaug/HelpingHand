@@ -1,5 +1,7 @@
 using System;
 
+using Events;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -94,6 +96,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void StartGameplay()
     {
+        // Initialize all variables
+        BaseGameEvent[] allEvents = Resources.LoadAll<BaseGameEvent>(string.Empty);
+        foreach (BaseGameEvent gameEvent in allEvents)
+        {
+            gameEvent.Initialize();
+        }
+        
         m_currentGameState = GameState.Gameplay;
 
         DialogueManager.Instance.OpenDialoguePanel();
