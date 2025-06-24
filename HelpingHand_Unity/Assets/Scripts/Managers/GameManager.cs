@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public GameState CurrentGameState => m_currentGameState;
 
+    public event Action<GameState> OnGameStateChanged;
+
     [Title("Act Sequence Manager")]
     [SerializeField] private ActSequenceManager m_actSequenceManager;
 
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
         
         m_currentGameState = GameState.Gameplay;
+        OnGameStateChanged?.Invoke(m_currentGameState);
 
         DialogueManager.Instance.OpenDialoguePanel();
 
@@ -206,6 +209,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_currentGameState = GameState.MainMenu;
                 m_canvasManager.CloseOptions();
                 m_actSequenceManager.StopSequence();
+                OnGameStateChanged?.Invoke(m_currentGameState);
                 break;
         }
     }

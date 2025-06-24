@@ -94,7 +94,6 @@ public class SpotlightController : MonoBehaviour
     {
         if (m_target == null || m_target.Value == null)
         {
-            Debug.LogError($"No target assigned");
             return;
         }
         float angle = m_followTargetRotationSpeed * Time.deltaTime;
@@ -105,7 +104,6 @@ public class SpotlightController : MonoBehaviour
     {
         if (m_target == null || m_target.Value == null)
         {
-            Debug.LogError($"No target assigned");
             return false;
         }
 
