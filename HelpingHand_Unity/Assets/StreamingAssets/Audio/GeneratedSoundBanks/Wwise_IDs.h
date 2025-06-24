@@ -22,6 +22,7 @@ namespace AK
         static const AkUniqueID BUTTONPOINTERUP_DESACTIVATE_PLAY = 488329938U;
         static const AkUniqueID BUTTONPOINTERUP_PLAY = 941027980U;
         static const AkUniqueID BUTTONSELECTED_PLAY = 4110412019U;
+        static const AkUniqueID CAT_PLAY = 3951437324U;
         static const AkUniqueID COFFEE_MACHINE_NOTWORKINGANYMORE_PLAY = 274793956U;
         static const AkUniqueID COFFEE_MACHINE_PLAY = 405291700U;
         static const AkUniqueID CURTAINLOOP_PLAY = 2848090300U;
