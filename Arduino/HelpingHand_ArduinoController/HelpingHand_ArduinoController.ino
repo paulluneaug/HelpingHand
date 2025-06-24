@@ -421,6 +421,9 @@ bool TryProcessAckCommand()
 
   m_writeBuffer[m_wroteBytes++] = HeaderGlossary::SYNACK_HEADER;
   m_writeBuffer[m_wroteBytes++] = ackParameter;
+
+  
+  //m_joystick.begin();
   
 }
 
@@ -441,7 +444,7 @@ void SendDataIfNeeded()
 {
   if (m_wroteBytes != 0)
   {
-    Serial.write(m_writeBuffer, m_wroteBytes);
+    //Serial.write(m_writeBuffer, m_wroteBytes);
   }
 }
 

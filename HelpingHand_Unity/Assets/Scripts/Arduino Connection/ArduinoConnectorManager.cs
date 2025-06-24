@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Security.Policy;
 
@@ -8,6 +9,7 @@ using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 using UnityUtility.Extensions;
 
@@ -16,62 +18,52 @@ using static CommandHeadersGlossary;
 [Serializable]
 public class ArduinoConnectorManager
 {
+    [Serializable]
+    private class ControllerSettings
+    {
+        public string SerialPort;
+    }
+
     public bool IsReady => !m_enableArduinoConnection || m_ready;
 
     [SerializeField] private bool m_enableArduinoConnection;
+    [SerializeField] private string m_controllerSettingsJsonPath;
 
     [NonSerialized] private bool m_ready = false;
 
     [NonSerialized] private ArduinoConnector m_arduinoConnector;
 
-    [NonSerialized] private ArduinoConnector[] m_testedConnectors;
-
 
     public void Initialize()
     {
+
         if (!m_enableArduinoConnection)
         {
             return;
         }
         m_ready = false;
 
-        string[] portNames = SerialPort.GetPortNames();
-        m_testedConnectors = new ArduinoConnector[portNames.Length];
+        string controllerSettingsJson = File.ReadAllText(Path.Combine(".", "ExternalAssets", m_controllerSettingsJsonPath));
+        ControllerSettings settings = JsonUtility.FromJson<ControllerSettings>(controllerSettingsJson);
 
-        for(int i = 0; i < portNames.Length; ++i)
-        {
-            m_testedConnectors[i] = new ArduinoConnector();
-            m_testedConnectors[i].OnSynAckRecieved += OnSynAckRecieved;
-            m_testedConnectors[i].Init(portNames[i]);
-        }
+        m_arduinoConnector = new ArduinoConnector();
+        m_arduinoConnector.OnSynAckRecieved += OnSynAckRecieved;
+        m_arduinoConnector.Init(settings.SerialPort);
+
         SendAcks().Forget();
     }
 
     private async UniTask SendAcks()
     {
         await UniTask.WaitForSeconds(1.0f);
-        m_testedConnectors.ForEach(connector => connector.SendAck());
+        m_arduinoConnector.SendAck();
     }
 
-    private void DisposeIfInvalid(ArduinoConnector testedConnector, ArduinoConnector validConnector)
+    private void OnSynAckRecieved()
     {
-        testedConnector.OnSynAckRecieved -= OnSynAckRecieved;
-        if (testedConnector == validConnector)
-        {
-            return;
-        }
-        testedConnector.Close();
-    }
-
-    private void OnSynAckRecieved(ArduinoConnector validConnector)
-    {
-        m_testedConnectors.ForEach((ArduinoConnector testedConnector) => DisposeIfInvalid(testedConnector, validConnector));
-
-        m_arduinoConnector = validConnector;
+        m_arduinoConnector.OnSynAckRecieved -= OnSynAckRecieved;
         m_arduinoConnector.OnMessageRecieved += OnArduinoMessageRecieved;
         m_ready = true;
-
-        m_testedConnectors = null;
     }
 
     public void Dispose()
@@ -165,11 +157,6 @@ public class ArduinoConnectorManager
     {
         if (!m_enableArduinoConnection)
         {
-            return;
-        }
-        if (!m_ready)
-        {
-            Debug.LogError("Ardunio connection not ready");
             return;
         }
         Span<byte> messageBuffer = stackalloc byte[2];

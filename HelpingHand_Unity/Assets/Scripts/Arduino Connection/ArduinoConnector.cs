@@ -14,7 +14,7 @@ public class ArduinoConnector
     private const int QUEUE_CAPACITY = 128;
 
     public event Action<byte[], int> OnMessageRecieved;
-    public event Action<ArduinoConnector> OnSynAckRecieved;
+    public event Action OnSynAckRecieved;
 
     public Queue<byte> RecievedDatas => m_recievedDatas;
 
@@ -136,7 +136,7 @@ public class ArduinoConnector
                 else if (TryProcessSynAck())
                 {
                     m_synackRecieved = true;
-                    OnSynAckRecieved?.Invoke(this);
+                    OnSynAckRecieved?.Invoke();
                     continue;
                 }
             }
