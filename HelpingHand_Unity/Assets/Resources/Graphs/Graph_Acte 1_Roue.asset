@@ -265,6 +265,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 4704326520787028717}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -2948872242504997584}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1027,6 +1030,80 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
+--- !u!114 &-2948872242504997584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e928cc46fe1085e4383f08dfdf17308a, type: 3}
+  m_Name: Graph Control
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 9016, y: -1864}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_handlerIn
+    - m_handlerOut
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -2948872242504997584}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -7578802770505397335}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -2948872242504997584}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerIn
+      _node: {fileID: -2948872242504997584}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerOut
+      _node: {fileID: -2948872242504997584}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_graph: {fileID: 11400000, guid: c171fac901c301a4ba39971c268e5694, type: 2}
+  m_control: 0
+  m_waitForCompletion: 0
 --- !u!114 &-1815964309291539433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +1967,7 @@ MonoBehaviour:
   - {fileID: -4373705784368117950}
   - {fileID: 6843726660389076375}
   - {fileID: 2272220283041489524}
+  - {fileID: -2948872242504997584}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0

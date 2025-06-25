@@ -119,6 +119,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             gameEvent.Initialize();
         }
+        
+        // TODO Initialize all singletons
 
         m_currentGameState = GameState.Gameplay;
         OnGameStateChanged?.Invoke(m_currentGameState);
