@@ -1055,7 +1055,7 @@
                     "path": "<HID::Arduino LLC Arduino Due>/button16",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1110,7 +1110,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "Left Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1143,7 +1143,7 @@
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1159,6 +1159,16 @@
                 {
                     "devicePath": "<HID::Arduino LLC Arduino Due>",
                     "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]
