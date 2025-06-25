@@ -18896,31 +18896,6 @@
 										<ActiveSource Name="Combat_Music 2_2" ID="{B2D5335E-91DE-4345-AEAA-55366C239192}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Combat_Music 5" ID="{8E446686-0711-4286-A1AD-590F77468997}" ShortID="611274851">
-									<PropertyList>
-										<Property Name="IsVoice" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Combat_Music 5" ID="{EBCD6E1F-7745-4043-8CC8-F759A78903CD}">
-											<Language>English(US)</Language>
-											<AudioFile>Combat\Combat_Music 5.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="196632192"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Combat_Music 5" ID="{EBCD6E1F-7745-4043-8CC8-F759A78903CD}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 								<Sound Name="Combat_Simon tour 1_1" ID="{549A7376-CD2E-44B8-BFA8-CC2BCC4E6BCA}" ShortID="648365699">
 									<PropertyList>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -19221,6 +19196,103 @@
 										<ActiveSource Name="Combat_Simon tour 4_6" ID="{7537656B-05E4-482D-AF57-B7DC532CA318}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<RandomSequenceContainer Name="Combat_Music 5" ID="{10778848-D8E4-4125-9E50-0F3E8079618A}" ShortID="842722703">
+									<PropertyList>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Combat_Music 5" ID="{8E446686-0711-4286-A1AD-590F77468997}" ShortID="611274851">
+											<PropertyList>
+												<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Priority" Type="int16">
+													<ValueList>
+														<Value>100</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Combat_Music 5" ID="{EBCD6E1F-7745-4043-8CC8-F759A78903CD}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.613975934339798"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Combat\Combat_Music 5.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="808330865"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Combat_Music 5" ID="{EBCD6E1F-7745-4043-8CC8-F759A78903CD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Combat_Music 5_01" ID="{F1A335AC-B4E2-401E-BB83-8F16946ACDB2}" ShortID="661552778">
+											<PropertyList>
+												<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Priority" Type="int16">
+													<ValueList>
+														<Value>100</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Combat_Music 5" ID="{6241C5BB-FFDF-4875-A5C4-8DAF2BF16088}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.656130571263895"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Combat\Combat_Music 5.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="196632192"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Combat_Music 5" ID="{6241C5BB-FFDF-4875-A5C4-8DAF2BF16088}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="Combat_Music 5" ID="{8E446686-0711-4286-A1AD-590F77468997}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+											<Reference>
+												<ObjectRef Name="Combat_Music 5_01" ID="{F1A335AC-B4E2-401E-BB83-8F16946ACDB2}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="Succes" ID="{8EE7E084-C27F-4B48-8753-938B5C6D2646}" ShortID="307019705">
