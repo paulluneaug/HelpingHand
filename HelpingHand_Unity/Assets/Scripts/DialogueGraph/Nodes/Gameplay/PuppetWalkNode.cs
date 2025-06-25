@@ -9,10 +9,12 @@ using XNode;
 public class PuppetWalkNode : BaseNode
 {
     [Input]
-    public DialogueFlow In;
+    [SerializeField]
+    private DialogueFlow m_in;
 
     [Output]
-    public DialogueFlow Out;
+    [SerializeField]
+    public DialogueFlow m_out;
 
     [SerializeField]
     [LabelWidth(125)]
@@ -40,8 +42,10 @@ public class PuppetWalkNode : BaseNode
 
     private async UniTask WalkAsync(GraphRunnerHandler handler)
     {
+        DebugLog($"BeginWalk");
         m_puppet.BeginWalk();
         await HandleCancellation(handler);
+        DebugLog($"StopWalk");
         m_puppet.StopWalk();
     }
 
@@ -65,5 +69,6 @@ public class PuppetWalkNode : BaseNode
 
             }
         }
+        DebugLog($"End of spline reached");
     }
 }

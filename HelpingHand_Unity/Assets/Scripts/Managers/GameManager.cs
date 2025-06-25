@@ -137,6 +137,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             gameEvent.Initialize();
         }
+        
+        // TODO Initialize all singletons
 
         m_arduinoConnectorManager.SendFaderPosition(false);
 

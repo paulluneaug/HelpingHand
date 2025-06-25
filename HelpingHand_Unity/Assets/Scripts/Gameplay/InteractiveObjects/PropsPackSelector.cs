@@ -120,6 +120,7 @@ public class PropsPackSelector : MonoBehaviour
     {
         return value switch
         {
+            < 0.1f => SelectedPack.None, 
             <= 0.3333f => SelectedPack.Tavern,
             <= 0.6666f => SelectedPack.Armory,
             > 0.6666f => SelectedPack.Market,

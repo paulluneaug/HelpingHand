@@ -18,6 +18,14 @@ public class GraphBlackboard : MonoBehaviourSingleton<GraphBlackboard>
 
     public SerializedDictionary<string, object> Blackboard => m_blackboard;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        m_blackboard = new();
+    }
+    
+    // TODO reinitialize
+
     public bool TryGetValue<T>(string key, out T result)
     {
 #if UNITY_EDITOR
