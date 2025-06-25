@@ -176,7 +176,7 @@ public class DialogueNode : InterruptableNode
 
         m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopSource, m_killCTS);
         m_audioTask = m_audioEvent ?
-            MakeSkippable(m_audioEvent.Play(null, m_audioLinkedCTS.Token), m_audioSkipCTS, m_killStopCTS) :
+            MakeSkippable(m_audioEvent.Play(null, m_audioLinkedCTS.Token), m_audioSkipCTS, m_audioLinkedCTS, m_killStopCTS) :
             UniTask.CompletedTask;
 
         UniTask task = UniTask.WhenAll(m_displayTask, m_audioTask).ContinueWith(GetWaitingTask);
@@ -233,7 +233,7 @@ public class DialogueNode : InterruptableNode
                 _ => throw new ArgumentOutOfRangeException(),
             };
 
-            return MakeSkippable(followingTask, m_waitingSkipCTS, m_killStopCTS);
+            return MakeSkippable(followingTask, m_waitingSkipCTS, m_waitingLinkedCTS, m_killStopCTS);
         }
     }
 
@@ -291,10 +291,10 @@ public class DialogueNode : InterruptableNode
         }
     }
 
-    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource killStopCTS)
+    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource skipStopCTS, CancellationTokenSource killStopCTS)
     {
         // UniTask skipTask = UniTask.WaitUntilCanceled(linkedSkipCTS.Token);
-        UniTask skipTask = UniTask.WaitUntilCanceled(skipCTS.Token);
+        UniTask skipTask = UniTask.WaitUntilCanceled(skipStopCTS.Token);
         UniTask killStopTask = UniTask.WaitUntilCanceled(killStopCTS.Token);
 
         (bool isCancelled, int _) = await UniTask.WhenAny(task, skipTask, killStopTask).SuppressCancellationThrow();

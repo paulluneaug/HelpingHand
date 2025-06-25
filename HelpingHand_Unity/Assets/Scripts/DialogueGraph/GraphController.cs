@@ -93,8 +93,9 @@ public class GraphController : MonoBehaviour
 
     private async UniTaskVoid StartMainSequenceGraph(SimpleGraph graph)
     {
+        Debug.Log($"[{Time.frameCount}] <color=red>Starting main sequence {graph.name}</color>");
         GraphRunner graphRunner = await CreateGraphRunner(graph);
-        graphRunner.OnGraphEnded += OnGraphEnded;
+        graphRunner.OnGraphStopped += OnGraphStopped;
         graphRunner.OnGraphPaused += OnGraphPaused;
         graphRunner.OnGraphResumed += OnGraphResumed;
         graphRunner.StartGraph();
@@ -153,8 +154,9 @@ public class GraphController : MonoBehaviour
         }
     }
 
-    private void OnGraphEnded()
+    private void OnGraphStopped()
     {
+        Debug.Log($"[{Time.frameCount}] <color=red>{m_currentGraphRunner.Graph.name} stopped</color>");
         m_currentGraphRunner = null;
         if (m_graphQueue.TryDequeue(out SimpleGraph graph))
         {

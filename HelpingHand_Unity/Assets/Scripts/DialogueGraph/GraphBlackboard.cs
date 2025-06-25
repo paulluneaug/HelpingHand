@@ -50,7 +50,8 @@ public class GraphBlackboard : MonoBehaviourSingleton<GraphBlackboard>
         }
         else
         {
-            throw new KeyNotFoundException($"Cannot find [{key}] in the blackboard");
+            // throw new KeyNotFoundException($"Cannot find [{key}] in the blackboard");
+            Debug.LogError($"Cannot find [{key}] in the blackboard");
         }
 
         result = default;
