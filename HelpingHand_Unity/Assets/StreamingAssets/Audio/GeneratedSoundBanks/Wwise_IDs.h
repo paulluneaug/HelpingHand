@@ -826,6 +826,7 @@ namespace AK
     {
         static const AkUniqueID DIALOGUE_CUE = 640723851U;
         static const AkUniqueID RTPC_AMBVOLUME = 1226769967U;
+        static const AkUniqueID RTPC_AMBVOLUME_01 = 3133306163U;
         static const AkUniqueID RTPC_MASTERVOLUME = 2582501215U;
         static const AkUniqueID RTPC_MUSIC_FIRSTLAYER = 2116630962U;
         static const AkUniqueID RTPC_MUSIC_SECONDLAYER = 1485517750U;

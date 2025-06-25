@@ -87,6 +87,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     private void Update()
     {
         RTPCManager.RTPC_TimeOfDay.SetValue(gameObject, RTPCManager.TimeOfDay.Value);
+        Debug.Log(RTPCManager.TimeOfDay.Value);
     }
 
 
