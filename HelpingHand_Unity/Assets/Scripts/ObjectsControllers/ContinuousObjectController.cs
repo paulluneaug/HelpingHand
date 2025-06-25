@@ -10,12 +10,14 @@ public abstract class ContinuousObjectController<TSettingsContainer> : MonoBehav
     where TSettingsContainer : IObjectSettingsContainer
 {
     public BaseVariable<float> Variable => m_controllingVariable;
+    public TSettingsContainer SettingsContainer => m_settings;
 
     [Title("Variable")]
     [SerializeField] private BaseVariable<float> m_controllingVariable;
 
     [Title("Settings")]
     [SerializeField] private TSettingsContainer m_settings;
+    [SerializeField] private bool m_inverse = false;
 
     [Title("Transition")]
     [SerializeField] private float m_smoothHalfLife = 0.1f;
@@ -42,7 +44,7 @@ public abstract class ContinuousObjectController<TSettingsContainer> : MonoBehav
     private void Update()
     {
         m_currentValue = Easings.Ease(MathUf.SmoothLerp(m_currentValue, m_target, Time.deltaTime, m_smoothHalfLife), m_easingFunction);
-        m_settings.UpdateSettings(m_currentValue);
+        m_settings.UpdateSettings(m_inverse ? 1.0f - m_currentValue : m_currentValue);
     }
 
     private void OnDestroy()
@@ -60,7 +62,8 @@ public abstract class ContinuousObjectController<TSettingsContainer> : MonoBehav
         {
             return;
         }
-        m_settings.UpdateSettings(Easings.Ease(m_debugProgress, m_easingFunction));
+        float value = Easings.Ease(m_debugProgress, m_easingFunction);
+        m_settings.UpdateSettings(m_inverse ? 1.0f - value : value);
     }
 #endif
 
