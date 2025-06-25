@@ -158,6 +158,7 @@ namespace AK
                 static const AkUniqueID INTRO_04 = 1697488976U;
                 static const AkUniqueID INTRO_05 = 1697488977U;
                 static const AkUniqueID INTRO_06 = 1697488978U;
+                static const AkUniqueID INTRO_08 = 1697488988U;
                 static const AkUniqueID INTRO_071 = 2580767384U;
                 static const AkUniqueID INTRO_072 = 2580767387U;
                 static const AkUniqueID NEXT_01 = 3504266440U;
