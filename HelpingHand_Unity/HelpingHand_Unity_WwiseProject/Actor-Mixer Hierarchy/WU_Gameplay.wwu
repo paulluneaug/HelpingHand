@@ -655,7 +655,7 @@
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>3</Value>
+										<Value>12</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -830,10 +830,9 @@
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-3</Value>
+										<Value>6</Value>
 									</ValueList>
 								</Property>
-								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
@@ -3062,7 +3061,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -3307,6 +3306,13 @@
 							</BlendTrackList>
 						</BlendContainer>
 						<ActorMixer Name="AutoFollow" ID="{D6B036F8-2803-4DC6-A1D1-9011183C3038}" ShortID="996257757">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3400,6 +3406,335 @@
 								</RandomSequenceContainer>
 							</ChildrenList>
 						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="LED_TurnOn" ID="{B1D62D6B-7980-45F6-BC4E-E9A212ACB83A}" ShortID="883812903">
+					<PropertyList>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UserAuxSendVolume0" Type="Real64">
+							<ValueList>
+								<Value>5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<BlendContainer Name="LED_TurnOn" ID="{07D652EB-B9F7-420F-81B3-B7C263BD0326}" ShortID="783060815">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="RandomLED_TurnOn" ID="{F5281515-1942-4332-8222-A24C63992722}" ShortID="900050395">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>710</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{F1E13925-CF41-4B49-A28B-3334841961CF}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_LedLight_01" ID="{7640F2BF-4459-43E4-874C-3A1DE118BD2C}" ShortID="214925250">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LedLight_01" ID="{44DFB687-3D44-4196-962F-8359AA985691}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LedLight_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="790014301"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LedLight_01" ID="{44DFB687-3D44-4196-962F-8359AA985691}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LedLight_02" ID="{1EBE554A-9C1F-414B-8B7F-4A750E7A7A33}" ShortID="462002429">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LedLight_02" ID="{EC60F361-603C-433D-99EB-79992EB60D64}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LedLight_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="818209497"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LedLight_02" ID="{EC60F361-603C-433D-99EB-79992EB60D64}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LedLight_03" ID="{FFB601A6-1A28-4116-ABD9-7A8AC9A54DFA}" ShortID="466194223">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LedLight_03" ID="{F8C69FE2-6E84-477F-81F7-B375010A6C6B}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LedLight_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="263886193"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LedLight_03" ID="{F8C69FE2-6E84-477F-81F7-B375010A6C6B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LedLight_04" ID="{AFC7DF46-7C9E-4F84-A480-BF94F203365C}" ShortID="730268438">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LedLight_04" ID="{C0F70FCB-55A3-45E2-ACBC-1FCC6A3E8A50}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LedLight_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="864225869"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LedLight_04" ID="{C0F70FCB-55A3-45E2-ACBC-1FCC6A3E8A50}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="RandomLED_TurnOn_Melodic" ID="{951640B1-E13E-4DAB-9D07-07A1F95D9C04}" ShortID="967223941">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{93025ACD-7E77-431D-BE9F-B6D0291DB5A8}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_LED_TurnOn_Melodic_01" ID="{1C6D39FF-8635-46D4-9EE4-8981B948472A}" ShortID="257593582">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>300</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_01" ID="{D5A10A9D-B91E-4DD1-BBE9-7B9B7E3CF8DB}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LED_TurnOn_Melodic_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="417771496"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LED_TurnOn_Melodic_01" ID="{D5A10A9D-B91E-4DD1-BBE9-7B9B7E3CF8DB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LED_TurnOn_Melodic_02" ID="{A5021818-BF59-4490-827F-8B3193C0CAD4}" ShortID="1001349487">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_02" ID="{5FBB1DA8-E3CE-4901-9B85-2A7692B1F5FA}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LED_TurnOn_Melodic_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="644132716"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LED_TurnOn_Melodic_02" ID="{5FBB1DA8-E3CE-4901-9B85-2A7692B1F5FA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LED_TurnOn_Melodic_03" ID="{4A9CCC52-425B-4FC7-A547-85930980F0DE}" ShortID="890834104">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>200</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_03" ID="{6C4A0376-7D1E-45C1-8D11-5A9E9F4406EC}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LED_TurnOn_Melodic_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="110841641"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LED_TurnOn_Melodic_03" ID="{6C4A0376-7D1E-45C1-8D11-5A9E9F4406EC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LED_TurnOn_Melodic_04" ID="{BA1986A7-71D6-4528-A826-97BA3B38F7E9}" ShortID="9524274">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_01" ID="{C4006D73-ECA1-4FBC-8F2A-203E760F2CE0}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LED_TurnOn_Melodic_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="417771496"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LED_TurnOn_Melodic_01" ID="{C4006D73-ECA1-4FBC-8F2A-203E760F2CE0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LED_TurnOn_Melodic_05" ID="{0555BBDA-DD64-4E0B-837F-2E5ACFB22BDD}" ShortID="766170317">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_02" ID="{37B22874-7BDF-42B2-BC42-F275C44923A0}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LED_TurnOn_Melodic_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="644132716"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LED_TurnOn_Melodic_02" ID="{37B22874-7BDF-42B2-BC42-F275C44923A0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_LED_TurnOn_Melodic_06" ID="{F2B2CF8A-A946-4378-B712-462F04ADBDA0}" ShortID="854879911">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_03" ID="{D1C338D9-5E7F-4C72-BEB1-A6D116B5691B}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_LED_TurnOn_Melodic_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="110841641"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_LED_TurnOn_Melodic_03" ID="{D1C338D9-5E7F-4C72-BEB1-A6D116B5691B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</BlendContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

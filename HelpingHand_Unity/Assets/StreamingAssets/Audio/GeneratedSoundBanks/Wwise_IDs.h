@@ -56,6 +56,7 @@ namespace AK
         static const AkUniqueID GEARLOOP_SOFT_STOP = 3220058728U;
         static const AkUniqueID GEARTRANSITIONLOOP_PLAY = 1204435148U;
         static const AkUniqueID GEARTRANSITIONLOOP_STOP = 3174219734U;
+        static const AkUniqueID LED_TURNON_PLAY = 2316737410U;
         static const AkUniqueID LIGHTINTENSITY_LOOP_PLAY = 2438463452U;
         static const AkUniqueID LIGHTINTENSITY_LOOP_STOP = 1192168006U;
         static const AkUniqueID MAINGEAR_PLAY = 1290037556U;
