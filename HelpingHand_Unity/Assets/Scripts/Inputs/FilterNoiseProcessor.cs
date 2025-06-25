@@ -48,7 +48,6 @@ public class FilterNoiseProcessor : InputProcessor<float>
         {
             return m_previousValue;
         }
-        Debug.LogWarning($"RATE : {changeRate}");
         m_previousValue = filteredValue;
         return filteredValue;
     }
