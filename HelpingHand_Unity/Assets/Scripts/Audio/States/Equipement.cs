@@ -99,7 +99,7 @@ public enum EquipementState
     CasqueAudio_03,
     CasqueAudio_041,
     CasqueAudio_042,
-    CasqueAudio_05,
+    CasqueAudio_050,
 
     Equip_Classique_01,
     Equip_Classique_02,
