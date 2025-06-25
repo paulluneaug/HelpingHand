@@ -87,7 +87,6 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     private void Update()
     {
         RTPCManager.RTPC_TimeOfDay.SetValue(gameObject, RTPCManager.TimeOfDay.Value);
-        Debug.Log(RTPCManager.TimeOfDay.Value);
     }
 
 
@@ -210,8 +209,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         GameObject targetObject = null,
         CancellationToken cancellationToken = default)
     {
-        //DebugLog($"PlayDialogueWithStatesAsync: {onboardingIntro}, {onboardingCurtain}, {onboardingSpots}, {interruptionCurtain}, {interruptionSpots}, {roueState}, {combatState}");
-
+        
         //Récupération de l’ID Wwise de l’event Dialogue_Event -> sensible à la casse
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
 
