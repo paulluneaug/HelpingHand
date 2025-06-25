@@ -14,7 +14,7 @@ public class MusicController : MonoBehaviour
         [SerializeField] private EntityState m_musicPlayingState;
         [SerializeField] private EntityState m_musicPlayedState;
 
-        [SerializeField] private WwiseEvent m_switchToMusic;
+        [SerializeField] private MusicState m_musicState;
 
         public void SetIsPlaying(bool isPlaying)
         {
@@ -23,7 +23,8 @@ public class MusicController : MonoBehaviour
 
         public void SwitchToMusic(GameObject go)
         {
-            _ = m_switchToMusic.Post(go);
+            AudioManager.Instance.StateManager.SetMusicState(m_musicState);
+            //_ = m_switchToMusic.Post(go);
         }
 
     }
@@ -35,10 +36,6 @@ public class MusicController : MonoBehaviour
 
     [Title("Entity states")]
     [SerializeField, RequiredListLength(MinLength = 4, MaxLength = 4)] private MusicStates[] m_states = new MusicStates[4];
-
-    [Title("Wwise Events")]
-    [SerializeField] private WwiseEvent m_startMusic;
-    [SerializeField] private WwiseEvent m_stopMusic;
 
     // Cache
     [NonSerialized] private int m_selectedMusic = 0;
@@ -89,13 +86,12 @@ public class MusicController : MonoBehaviour
         m_playingMusic = !m_playingMusic;
         if (m_playingMusic) 
         {
-
-            _ = m_startMusic.Post(gameObject);
+            m_states[m_selectedMusic].SwitchToMusic(gameObject);
             m_states[m_selectedMusic].SetIsPlaying(true);
         }
         else
         {
-            _ = m_stopMusic.Post(gameObject);
+            AudioManager.Instance.StateManager.SetMusicState(MusicState.None);
             m_states[m_selectedMusic].SetIsPlaying(false);
         }
     }
@@ -123,12 +119,11 @@ public class MusicController : MonoBehaviour
 
         m_selectedMusic = newSelectedMusic;
         // Stop music
-        _ = m_stopMusic.Post(gameObject);
         m_states[m_selectedMusic].SetIsPlaying(false);
 
         m_playingMusic = false;
 
-        m_states[m_selectedMusic].SwitchToMusic(gameObject);
+        AudioManager.Instance.StateManager.SetMusicState(MusicState.None);
     }
 
 }
