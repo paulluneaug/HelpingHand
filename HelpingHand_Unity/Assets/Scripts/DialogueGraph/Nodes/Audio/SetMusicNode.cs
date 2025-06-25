@@ -1,12 +1,14 @@
 using Cysharp.Threading.Tasks;
 
+using Sirenix.OdinInspector;
+
 using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Audio/Stop Music")]
+[CreateNodeMenu("Audio/Set Music")]
 [NodeTint(0.6f, 0.1f, 0.1f)]
-public class StopMusicNode : BaseNode
+public class SetMusicNode : BaseNode
 {
     [Input]
     [SerializeField]
@@ -14,10 +16,14 @@ public class StopMusicNode : BaseNode
 
     [Output]
     [SerializeField]
-    public DialogueFlow m_out;
+    private DialogueFlow m_out;
+
+    [SerializeField]
+    [HideLabel]
+    private MusicState m_music;
     
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        AudioManager.Instance.StateManager.SetMusicState(MusicState.None); 
+        AudioManager.Instance.StateManager.SetMusicState(m_music); 
     }
 }

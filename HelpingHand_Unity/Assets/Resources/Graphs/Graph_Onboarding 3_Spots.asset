@@ -2258,8 +2258,8 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_value: 0
-  m_increment: 4
-  m_valueOut: 8
+  m_increment: 0
+  m_valueOut: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2333,6 +2333,7 @@ MonoBehaviour:
   - {fileID: -9124188286496206220}
   - {fileID: 4114248053018278260}
   - {fileID: -5949655720870212834}
+  - {fileID: 3100284070715163775}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,6 +2839,58 @@ MonoBehaviour:
   m_loopAfterTimeout: 1
   m_state: {fileID: 11400000, guid: fbab481a51f2b014299227b4a341c6d3, type: 2}
   m_mustBeSet: 1
+--- !u!114 &3100284070715163775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311ca771d80c67146aab2a11ab24d084, type: 3}
+  m_Name: Set Music
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -88, y: -488}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 3100284070715163775}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 3100284070715163775}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_music: 7
 --- !u!114 &3133525340483410510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3378,7 +3431,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 83.09549
+      Data: 46.3378143
     - Name: 
       Entry: 8
       Data: 
@@ -3635,7 +3688,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 4
+  m_value: 0
   m_values: 000000000200000004000000
   m_exactValues: 0
 --- !u!114 &4187286247091809083
@@ -3818,6 +3871,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_in
         node: {fileID: -9155270020945013057}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 3100284070715163775}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -4368,7 +4424,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 4
+  m_value: 0
   m_values: 0000000004000000
   m_exactValues: 0
 --- !u!114 &7330314375828568836
@@ -4519,7 +4575,7 @@ MonoBehaviour:
       Data: 0|System.Int32, mscorlib
     - Name: 
       Entry: 3
-      Data: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -4648,7 +4704,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 56.0442162
+      Data: 41.9349823
     - Name: 
       Entry: 8
       Data: 
@@ -4799,7 +4855,7 @@ MonoBehaviour:
       Data: 0|System.Int32, mscorlib
     - Name: 
       Entry: 3
-      Data: 8
+      Data: 0
     - Name: 
       Entry: 8
       Data: 

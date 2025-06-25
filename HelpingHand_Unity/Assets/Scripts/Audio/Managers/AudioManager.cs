@@ -63,17 +63,6 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
                 _ = EventManager.MainMusic_Play.Post(gameObject);
                 DebugLog("EntryScene - MainMenu music playing");
                 break;
-
-            case "0_Onboarding":
-                StateManager.SetGameState(GameState.Gameplay);
-                StateManager.SetMusicState(MusicState.Onboarding_1);
-                Debug.Log("Switched music to Onboarding 1st theme");
-                break;
-
-            default:
-                // StateManager.SetGameState(GameState.None);
-                // StateManager.SetMusicState(MusicState.None);
-                break;
         }
     }
     #endregion
