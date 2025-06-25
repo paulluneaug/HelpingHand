@@ -14,6 +14,8 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ACHIEVEMENT_PLAY = 530013535U;
+        static const AkUniqueID ALTMACHINE_LOOP_PLAY = 3428432119U;
+        static const AkUniqueID ALTMACHINE_LOOP_STOP = 2116874277U;
         static const AkUniqueID ARROWBUTTONCLICK_PLAY = 2803013081U;
         static const AkUniqueID AUTOFOLLOWSPOT_TURNOFF_PLAY = 3033356147U;
         static const AkUniqueID AUTOFOLLOWSPOT_TURNON_PLAY = 870673709U;
@@ -99,6 +101,8 @@ namespace AK
         static const AkUniqueID POTENTIOMETERMIN_DESACTIVATE_PLAY = 2710208311U;
         static const AkUniqueID POTENTIOMETERMIN_PLAY = 581402781U;
         static const AkUniqueID RICKROLL_PLAY = 2059907074U;
+        static const AkUniqueID ROOM_MACHINE_START_LOOP_PLAY = 3347882385U;
+        static const AkUniqueID ROOM_MACHINE_STOP = 4139965001U;
         static const AkUniqueID ROOMBA_TURNOFF_PLAY = 798155015U;
         static const AkUniqueID ROOMBA_TURNON_PLAY = 2009218001U;
         static const AkUniqueID ROTARYENCODER_DESACTIVATE_PLAY = 1971551941U;
@@ -121,6 +125,10 @@ namespace AK
         static const AkUniqueID SUN_PLAY = 3578106302U;
         static const AkUniqueID SUPERMARKETAMB_PLAY = 523382487U;
         static const AkUniqueID SUPERMARKETAMB_STOP = 3548368645U;
+        static const AkUniqueID SWITCHTOBATTLEMUSIC = 3383663553U;
+        static const AkUniqueID SWITCHTOHORRIBLEMUSIC = 2853249254U;
+        static const AkUniqueID SWITCHTOSADMUSIC = 2202502871U;
+        static const AkUniqueID SWITCHTOSUSPENSEMUSIC = 1154495047U;
         static const AkUniqueID TAVERNAMB_PLAY = 3582522998U;
         static const AkUniqueID TAVERNAMB_STOP = 59669512U;
         static const AkUniqueID TOGGLE_DESACTIVATE_PLAY = 2782143696U;

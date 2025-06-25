@@ -11,7 +11,7 @@
     "GUID": "{6ABE72B6-BE0E-4AB3-A2FD-9A6F449357DC}",
     "Color": "14",
     "Language": "SFX",
-    "Hash": "{EE47A5B5-6CCA-82BF-BD6E-2B21AC14B73C}",
+    "Hash": "{B9B46A3F-58DF-FD85-9A5B-102DDB8F1554}",
     "ObjectPath": "\\SoundBanks\\Music\\Music_Event",
     "ShortName": "Music_Event",
     "Path": "Music_Event.bnk",
@@ -65,7 +65,7 @@
       "Id": "833450451",
       "Language": "SFX",
       "Streaming": "false",
-      "Location": "OtherBank",
+      "Location": "Memory",
       "ShortName": "ANM_MainMenuTheme_SFX.wav",
       "CachePath": "B3/{B3979A06-5350-B6CE-2BFC-F5DD7A4D15A5}.wem"
      },
@@ -506,6 +506,129 @@
           "Id": "113956183"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3421098005",
+         "GUID": "{CEF747E8-7ED4-46F5-85C1-629B1B652F7B}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "348157284"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3255068793",
+         "GUID": "{5D4ACF21-0E3C-4FD7-8207-1BA3CD76BE1C}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "162869733"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3591643255",
+         "GUID": "{4D7ABDF6-CCC1-4739-A866-BDE6A358D79C}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "265629733"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3604647259",
+         "GUID": "{C7C23DE9-EE37-44F9-BDF3-7664A0DAB82D}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "157245378"
+         },
+         {
+          "Id": "833450451"
+         },
+         {
+          "Id": "976484802"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3056272968",
+         "GUID": "{AA7618E5-F84E-43E6-9F36-96EC45CC9E20}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "157245378"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2538596653",
+         "GUID": "{7263746E-249F-41DC-9B83-C01D8F471CF1}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "1000059020"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2754831415",
+         "GUID": "{AF7DB06F-F9D6-429D-92A9-76D7169AC317}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "862047926"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2754831414",
+         "GUID": "{8C7FF999-DF1E-4F08-9FA0-A0222F87F150}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "891514069"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2754831409",
+         "GUID": "{AB2CD0BB-EA34-4998-AB92-20655D366AF7}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "113956183"
+         }
+        ]
        }
       ]
      },
@@ -644,6 +767,86 @@
         ]
        }
       ]
+     },
+     {
+      "Id": "3383663553",
+      "Name": "SwitchToBattleMusic",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Music\\SwitchToBattleMusic",
+      "GUID": "{E38D5598-3B16-49DF-981C-4C914BFD54A6}",
+      "Color": "14",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "3421098005",
+        "Name": "Battle_Theme",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Battle_Theme",
+        "GUID": "{CEF747E8-7ED4-46F5-85C1-629B1B652F7B}"
+       }
+      ]
+     },
+     {
+      "Id": "2853249254",
+      "Name": "SwitchToHorribleMusic",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Music\\SwitchToHorribleMusic",
+      "GUID": "{1F6405DA-5390-4428-9276-1248C3565698}",
+      "Color": "14",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "2538596653",
+        "Name": "HorribleMusic_Theme",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\HorribleMusic_Theme",
+        "GUID": "{7263746E-249F-41DC-9B83-C01D8F471CF1}"
+       }
+      ]
+     },
+     {
+      "Id": "2202502871",
+      "Name": "SwitchToSadMusic",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Music\\SwitchToSadMusic",
+      "GUID": "{760B0190-F6E8-4477-9134-5B776E4EBADE}",
+      "Color": "14",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "3255068793",
+        "Name": "Sad_Theme",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Sad_Theme",
+        "GUID": "{5D4ACF21-0E3C-4FD7-8207-1BA3CD76BE1C}"
+       }
+      ]
+     },
+     {
+      "Id": "1154495047",
+      "Name": "SwitchToSuspenseMusic",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Music\\SwitchToSuspenseMusic",
+      "GUID": "{89A6BB95-7730-4BA5-8CD3-1FB3B04199B5}",
+      "Color": "14",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "3591643255",
+        "Name": "Suspense_Theme",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Suspense_Theme",
+        "GUID": "{4D7ABDF6-CCC1-4739-A866-BDE6A358D79C}"
+       }
+      ]
      }
     ],
     "StateGroups": [
@@ -736,6 +939,6 @@
     ]
    }
   ],
-  "FileHash": "{77323FFA-D449-1E89-FF5D-E5FE27B7B4E2}"
+  "FileHash": "{85DD760F-B601-BFA1-7AC3-E168E23F9BCA}"
  }
 }
