@@ -21,30 +21,33 @@ public class ArduinoConnectorManager
     [Serializable]
     private class ControllerSettings
     {
+        public bool EnableArduinoConnection;
         public string SerialPort;
+        
     }
 
     public bool IsReady => !m_enableArduinoConnection || m_ready;
 
-    [SerializeField] private bool m_enableArduinoConnection;
     [SerializeField] private string m_controllerSettingsJsonPath;
 
     [NonSerialized] private bool m_ready = false;
 
     [NonSerialized] private ArduinoConnector m_arduinoConnector;
+    [NonSerialized] private bool m_enableArduinoConnection;
 
 
     public void Initialize()
     {
+        string controllerSettingsJson = File.ReadAllText(Path.Combine(".", "ExternalAssets", m_controllerSettingsJsonPath));
+        ControllerSettings settings = JsonUtility.FromJson<ControllerSettings>(controllerSettingsJson);
+
+        m_enableArduinoConnection = settings.EnableArduinoConnection;
 
         if (!m_enableArduinoConnection)
         {
             return;
         }
         m_ready = false;
-
-        string controllerSettingsJson = File.ReadAllText(Path.Combine(".", "ExternalAssets", m_controllerSettingsJsonPath));
-        ControllerSettings settings = JsonUtility.FromJson<ControllerSettings>(controllerSettingsJson);
 
         m_arduinoConnector = new ArduinoConnector();
         m_arduinoConnector.OnSynAckRecieved += OnSynAckRecieved;
