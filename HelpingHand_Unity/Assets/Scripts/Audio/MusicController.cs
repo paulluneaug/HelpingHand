@@ -51,6 +51,11 @@ public class MusicController : MonoBehaviour
     private void OnDestroy()
     {
         Dispose();
+
+        if (GameManager.ApplicationIsQuitting)
+        {
+            return;
+        }
         GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
     }
 
