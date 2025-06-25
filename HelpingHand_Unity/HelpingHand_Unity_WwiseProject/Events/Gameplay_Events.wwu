@@ -121,6 +121,36 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="LightIntensity" ID="{1CFB99E8-C439-4105-ADEC-C17ADBBE9279}" ShortID="209797978">
+							<ChildrenList>
+								<Event Name="LightIntensity_Loop_Play" ID="{AC3FB06C-77E6-41A5-8FDC-EFB04EDBFFDC}">
+									<ChildrenList>
+										<Action Name="" ID="{665CC39C-ACFE-4A9F-A932-0011C463BE6C}" ShortID="704454528">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spotlight_Increase" ID="{B71E67C4-4107-4637-AC13-044C6D64B92B}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LightIntensity_Loop_Stop" ID="{A2107C50-8F1A-44A9-B94E-A64F35ACA1FA}">
+									<ChildrenList>
+										<Action Name="" ID="{95973DF0-A629-4D68-AF9B-CB6F94FFB05F}" ShortID="452670993">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spotlight_Increase" ID="{B71E67C4-4107-4637-AC13-044C6D64B92B}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Event Name="Spotlight_On_Play" ID="{3D093A44-506D-4246-BCE8-BC64459A944A}">
