@@ -527,12 +527,15 @@
 							</BlendTrackList>
 						</BlendContainer>
 						<BlendContainer Name="Ambience_Village" ID="{9203E3ED-EE10-49B8-BB2C-5F6E4D5AA1F5}" ShortID="474136251">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+									<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -602,7 +605,6 @@
 									<PropertyList>
 										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
 									</PropertyList>
-									<ReferenceList/>
 								</BlendTrack>
 							</BlendTrackList>
 						</BlendContainer>
