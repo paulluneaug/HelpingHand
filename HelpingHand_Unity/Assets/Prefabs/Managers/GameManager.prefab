@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &525645668232359268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4607580933234456570}
+  m_Layer: 0
+  m_Name: PuppetStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4607580933234456570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525645668232359268}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -3.268, y: 0.5, z: 1.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7759498392667776304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4172762714902102336
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +117,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3212841012535011140}
+  - {fileID: 4607580933234456570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2186480663098209708
@@ -108,10 +140,6 @@ MonoBehaviour:
     - m_sceneAsset: {fileID: 102900000, guid: b38b1e854d66a1d4e9c9b71d90075e93, type: 3}
       m_scenePath: Assets/Scenes/Levels/1_Acte1.unity
   m_gameOptionsManager:
-    IsHighContrast:
-      m_underlyingValue: 0
-    GameSpeed:
-      m_underlyingValue: 1
     IsWindowed:
       m_underlyingValue: 0
     DialogueReadMode:
@@ -127,6 +155,11 @@ MonoBehaviour:
     m_smallFontSize: 60
     m_mediumFontSize: 70
     m_largeFontSize: 80
+    m_smallBackgroundWidth: 1850
+    m_mediumBackgroundWidth: 2150
+    m_largeBackgroundWidth: 2400
+    m_windowedWidth: 1920
+    m_windowedHeight: 1080
   m_arduinoConnectorManager:
     m_controllerSettingsJsonPath: ControllerSettings.json
   m_canvasManager: {fileID: 0}
@@ -148,4 +181,5 @@ MonoBehaviour:
   m_virtualControllerScene:
     m_sceneAsset: {fileID: 102900000, guid: 9c01f7f2cc2575049b584b489770031e, type: 3}
     m_scenePath: Assets/Scenes/VirtualController.unity
-  m_skipDialogueInput: {fileID: -3219817992006672339, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_skipDialogueInput: {fileID: 11400000, guid: 48e13a27343be6f409900f5417b71e33, type: 2}
+  m_puppetStart: {fileID: 4607580933234456570}

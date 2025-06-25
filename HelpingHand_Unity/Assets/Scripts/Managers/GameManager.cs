@@ -63,6 +63,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [Title("Input References")]
     [SerializeField] private ButtonInputEvent m_skipDialogueInput;
 
+    [Title("Misc")]
+    [SerializeField] private Transform m_puppetStart;
+
     // Cache
     [NonSerialized] private Puppet m_puppet;
     [NonSerialized] private GameState m_currentGameState;
@@ -83,7 +86,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_simonManager.Initialize();
 
         LoadGlobalObjectScene();
-#if !PRODUCTION_BUILD
+#if UNITY_EDITOR
         LoadVirtualControllerScene(); // TODO disable in production build
 #endif
     }
@@ -140,7 +143,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         
         // TODO Initialize all singletons
 
-        m_arduinoConnectorManager.SendFaderPosition(false);
+        m_arduinoConnectorManager.SendFaderPosition(true);
+
+        m_puppet.transform.SetPositionAndRotation(m_puppetStart.position, m_puppetStart.rotation);
 
         m_currentGameState = GameState.Gameplay;
         OnGameStateChanged?.Invoke(m_currentGameState);

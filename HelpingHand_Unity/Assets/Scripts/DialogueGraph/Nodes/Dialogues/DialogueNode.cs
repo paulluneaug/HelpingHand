@@ -246,12 +246,11 @@ public class DialogueNode : InterruptableNode
 
     private void EndDialogueNode()
     {
-        DialogueManager.Instance.SetDialogueKillCTS(null);
-
         if (GameManager.ApplicationIsQuitting)
         {
             return;
         }
+        DialogueManager.Instance.SetDialogueKillCTS(null);
         GameManager.Instance.SkipDialogueInput.RemoveDownListener(OnSkipDialogue);
     }
 
