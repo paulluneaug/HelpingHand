@@ -91,6 +91,20 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="SwitchToNoMusic" ID="{CAB5ECA9-40CD-4808-8388-8762239C17FC}">
+							<ChildrenList>
+								<Action Name="" ID="{F15155F1-6A92-43F9-A11E-92F66A8F58FC}" ShortID="121630221">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="None" ID="{862F5953-983F-432E-B44E-12484D84D351}" WorkUnitID="{22C30C11-8221-445C-A271-F47A5E00DF88}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Gameplay" ID="{69FF0351-EB7C-45E6-B210-CF85AABEDB23}" ShortID="321940818">
@@ -942,6 +956,113 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="Habillage" ID="{5447DAE5-6362-46F6-ACC7-A5699C621FE5}" ShortID="173797263">
+					<ChildrenList>
+						<Event Name="Room_Machine_Start_Loop_Play" ID="{279EFDCA-4D3E-49BF-8D86-E63FA8487490}">
+							<ChildrenList>
+								<Action Name="" ID="{7DFF9A0A-4122-4615-B8E5-0E3F288671C9}" ShortID="648442161">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Machine_Startup" ID="{69E1AADC-19E3-4255-8C49-C6936C055B50}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Room_Machine_Stop" ID="{65F506E7-BA0C-4E04-9255-CBC334356973}">
+							<ChildrenList>
+								<Action Name="" ID="{9154A3E3-9112-4BEF-9D27-8D323826DFB6}" ShortID="810225344">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Machine_Startup" ID="{69E1AADC-19E3-4255-8C49-C6936C055B50}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{9A934C4D-E9AF-4EF7-9E7C-0442964A3FF3}" ShortID="606500937">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Machine_UI_Stopping" ID="{96603033-684C-44D5-89F5-C378EC6C1CE8}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="AltMachine_Loop_Play" ID="{41E52273-747F-423A-9B3F-C7EF6EDDB564}">
+							<ChildrenList>
+								<Action Name="" ID="{DE4152AD-BE48-4274-8C44-41A8D449349D}" ShortID="313934274">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="HH_Machine_Alt" ID="{5E35AEDC-D18E-4E28-8AB6-692AB5701E0A}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="AltMachine_Loop_Stop" ID="{AC355B84-8C84-40AE-A06F-BC0276604033}">
+							<ChildrenList>
+								<Action Name="" ID="{DFD0218E-4175-4C28-B1D8-F83EEB203D20}" ShortID="152780703">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="HH_Machine_Alt" ID="{5E35AEDC-D18E-4E28-8AB6-692AB5701E0A}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Spotlight_Puppet_On_Play" ID="{50449A87-5BB5-4C1E-A6A1-FC7C82A1543E}">
+					<ChildrenList>
+						<Action Name="" ID="{0650DF6C-3D31-45BE-B2AD-23D9A5B7CDF5}" ShortID="34507034">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spotlight_Puppet_Off" ID="{0502367F-25A7-4571-B890-62A6134529F0}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{74A8DAF7-A350-438E-ACFB-FEEA2CBB21A9}" ShortID="901066086">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spotlight_Puppet_On" ID="{208A67D6-DCF7-478D-A684-25416C646737}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Spotlight_Puppet_Off_Play" ID="{4FA4D98F-2CF3-43BF-A8E8-39F492D55935}">
+					<ChildrenList>
+						<Action Name="" ID="{2FB47141-745F-4C98-B372-EB3DC354443C}" ShortID="138482286">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spotlight_Puppet_Off" ID="{0502367F-25A7-4571-B890-62A6134529F0}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{818751BC-9035-48D6-92C3-F3DA95900ACA}" ShortID="1004871828">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spotlight_Puppet_On" ID="{208A67D6-DCF7-478D-A684-25416C646737}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

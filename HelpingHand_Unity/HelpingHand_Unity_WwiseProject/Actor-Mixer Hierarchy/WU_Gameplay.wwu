@@ -780,64 +780,6 @@
 										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Lever Pull, Switch On 01 SND134638 S03" ID="{7508159D-4FF2-4640-A582-D3227E80BE17}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{596537AA-7524-4FAE-835E-50AE7CBE2232}" ShortID="915387482">
-									<PropertyList>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>-3</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{22D31C69-14E0-433F-B152-13AD632BE81C}">
-											<Language>SFX</Language>
-											<AudioFile>Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1049269323"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{22D31C69-14E0-433F-B152-13AD632BE81C}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{573DF169-F43E-4815-80BE-CA04C69E08CF}" ShortID="795021517">
-									<PropertyList>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>-3</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{E17F1BB7-83D8-483E-892C-4CE1C5644657}">
-											<Language>SFX</Language>
-											<AudioFile>Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1005658524"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{E17F1BB7-83D8-483E-892C-4CE1C5644657}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Spotlight_Off" ID="{47FCEEC3-57E0-4386-A103-D2A9EDC76BCC}" ShortID="1031661802">
@@ -985,7 +927,36 @@
 										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Lever Pull, Switch On 01 SND134638 S03" ID="{A00E4C30-FE88-4402-BE8D-18C97311C0F3}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{7884B667-D950-435B-83ED-D6E8B6AEB466}" ShortID="34151333">
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Spotlight_Puppet_On" ID="{208A67D6-DCF7-478D-A684-25416C646737}" ShortID="980284240">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>13</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Attenuation_20m" ID="{D4611497-0313-43A7-B599-AED0829A8BB2}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{7476E399-A64F-4E47-B1C7-25C4F52975DB}" ShortID="264448052">
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -1002,7 +973,99 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{F6CE665B-E542-4AF3-AF53-E704863915EE}">
+										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{82945381-F183-453C-8C11-092C39A4B7CE}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1049269323"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{82945381-F183-453C-8C11-092C39A4B7CE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{A2AC81C6-331B-486F-A569-5E20E1135990}" ShortID="824622812">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{061EA843-A843-4C22-9878-CC63F3BFF87D}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1005658524"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{061EA843-A843-4C22-9878-CC63F3BFF87D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Spotlight_Puppet_Off" ID="{0502367F-25A7-4571-B890-62A6134529F0}" ShortID="71285161">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>6</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-1000</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Attenuation_20m" ID="{D4611497-0313-43A7-B599-AED0829A8BB2}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{12BAFA72-FC55-4505-BE76-A0A410FD1362}" ShortID="479161121">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{4A36A344-64A1-41FB-9E28-C3A9B4A94FD1}">
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.757260980639291"/>
 												<Property Name="LoopBegin" Type="Real64" Value="0.11061116534086"/>
@@ -1017,10 +1080,10 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{F6CE665B-E542-4AF3-AF53-E704863915EE}" Platform="Linked"/>
+										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S00" ID="{4A36A344-64A1-41FB-9E28-C3A9B4A94FD1}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{47E8C368-477D-415F-8213-C58328B17756}" ShortID="64084524">
+								<Sound Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{FA97829E-39C7-4B6C-AA92-890FB144E83B}" ShortID="422307803">
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -1037,7 +1100,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{8F615965-82BE-4842-91E8-FED0647B934D}">
+										<AudioFileSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{77FB36E7-2D8E-4882-A6E0-60D4A311873B}">
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.686302903398353"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
@@ -1051,7 +1114,7 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{8F615965-82BE-4842-91E8-FED0647B934D}" Platform="Linked"/>
+										<ActiveSource Name="Mechanical, Switch, Designed, Spotlight, Dramatic, Switch On 01 SND134634 S03" ID="{77FB36E7-2D8E-4882-A6E0-60D4A311873B}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -1099,6 +1162,17 @@
 					</ReferenceList>
 					<ChildrenList>
 						<ActorMixer Name="Spotlight_Break" ID="{3891DD47-4587-4E6B-BCCF-E1A24848A868}" ShortID="711006664">
+							<PropertyList>
+								<Property Name="3DPosition" Type="int16" Value="1"/>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="SpeakerPanning" Type="int16" Value="1"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1110,6 +1184,7 @@
 							<ChildrenList>
 								<RandomSequenceContainer Name="Spotlight_Broken" ID="{164EEF4A-91B9-4048-A818-FA4F3CCAD6C0}" ShortID="952674932">
 									<PropertyList>
+										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 									</PropertyList>
 									<ReferenceList>
@@ -1118,6 +1193,9 @@
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Hall" ID="{168AA74E-F128-4A65-AB94-C40BE7738E4E}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1230,8 +1308,92 @@
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{23C63FCC-08EC-4731-A3C7-ABB26BB37F05}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="-66.4418212478921"/>
+										<Property Name="PanY" Type="Real64" Value="38.3363471971067"/>
+									</PropertyList>
+								</Panner>
+								<Position Name="" ID="{A6CDA17A-EDF2-4B16-970F-9DED2E698463}">
+									<ChildrenList>
+										<Path2D Name="Spotlight_Break_Path" ID="{913FD3FF-F6B1-4560-991E-79AF9EB844C7}">
+											<PointList>
+												<Point>
+													<XPos>-41.11675</XPos>
+													<YPos>47.74011</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+												<Point>
+													<XPos>-11.67513</XPos>
+													<YPos>80.79097</YPos>
+													<Flags>0</Flags>
+													<Time>5000</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+										<Path2D Name="Spotlight_Break_Path_01" ID="{E73E3B1B-3E56-40DA-8ECF-F6DD09F39275}">
+											<PointList>
+												<Point>
+													<XPos>74.11167</XPos>
+													<YPos>-2.54238</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+												<Point>
+													<XPos>11.1675</XPos>
+													<YPos>-55.9322</YPos>
+													<Flags>0</Flags>
+													<Time>5000</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+										<Path2D Name="Spotlight_Break_Path_02" ID="{52DF44EE-8086-440D-AB23-BDA9033CEC56}">
+											<PointList>
+												<Point>
+													<XPos>-8.62944</XPos>
+													<YPos>-19.49153</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+												<Point>
+													<XPos>-49.238578680203</XPos>
+													<YPos>-14.6892655367232</YPos>
+													<Flags>0</Flags>
+													<Time>5000</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+									</ChildrenList>
+								</Position>
+							</PositioningInfo>
 						</ActorMixer>
 						<ActorMixer Name="Roomba" ID="{768992D4-D6ED-4BCA-95D5-5B61182B33FC}" ShortID="407405004">
+							<PropertyList>
+								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UserAuxSendVolume0" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1239,9 +1401,19 @@
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="ANM_Roomba_TurnOff" ID="{418C7DA9-ABCE-489D-8030-9BA21ED2693B}" ShortID="744526427">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1267,6 +1439,8 @@
 									<PropertyList>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="6"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 									</PropertyList>
@@ -1281,7 +1455,13 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="Loop" ID="{99CA7EDE-A11C-4668-ABD5-1C508CA25FF2}" ShortID="163232618">
 											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="5"/>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 											</PropertyList>
@@ -3797,6 +3977,13 @@
 							</ObjectLists>
 						</BlendContainer>
 						<ActorMixer Name="Steve_Le" ID="{99883B27-D91A-4EF1-A22C-DCC8D34AC5F3}" ShortID="528507085">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
