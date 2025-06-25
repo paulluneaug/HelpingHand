@@ -114,8 +114,8 @@ public class Dropper : MonoBehaviour
                 UpdateTransitionOut();
 
                 // @TODO Play transition de fin (tout le monde part)
-
-                _ = AudioManager.Instance.EventManager.Play_ItemDropperLeaving.Post(gameObject);
+                // Ben du coup non
+                //_ = AudioManager.Instance.EventManager.Play_ItemDropperLeaving.Post(gameObject);
                 break;
             default:
                 break;
@@ -273,8 +273,8 @@ public class Dropper : MonoBehaviour
         m_currentState = DropperState.TransitionOut;
 
         // @TODO Play loop transition (les caisses partent)
-
-        _ = AudioManager.Instance.EventManager.Play_ItemDropperLeaving.Post(gameObject);
+        //Je crois qu'il se joue au tout début du jeu
+       // _ = AudioManager.Instance.EventManager.Play_ItemDropperLeaving.Post(gameObject);
     }
 
     private void OnSelectionChangedLeft()

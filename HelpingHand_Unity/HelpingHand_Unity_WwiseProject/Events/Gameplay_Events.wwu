@@ -106,14 +106,63 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Folder Name="Item Dropper" ID="{8CE47960-D458-4EEB-B7AA-DD50E93DF7A9}" ShortID="433293651">
+						<Folder Name="LightIntensity" ID="{1CFB99E8-C439-4105-ADEC-C17ADBBE9279}" ShortID="209797978">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ChildrenList>
-								<Event Name="SmokeImpact_Play" ID="{9C4C7D46-8F32-4ABE-A356-F2C11F704FD8}">
+								<Event Name="LightIntensity_Loop_Play" ID="{AC3FB06C-77E6-41A5-8FDC-EFB04EDBFFDC}">
 									<ChildrenList>
-										<Action Name="" ID="{E9134E04-1107-460C-8963-DDEB657772F5}" ShortID="691397164">
+										<Action Name="" ID="{665CC39C-ACFE-4A9F-A932-0011C463BE6C}" ShortID="704454528">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Smoke_Impact" ID="{D0CDE686-4585-4147-A62B-88DC5FC0DC17}" WorkUnitID="{5557F52E-C75C-4591-977A-56C9F9AA2BA4}"/>
+													<ObjectRef Name="Spotlight_Increase" ID="{B71E67C4-4107-4637-AC13-044C6D64B92B}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LightIntensity_Loop_Stop" ID="{A2107C50-8F1A-44A9-B94E-A64F35ACA1FA}">
+									<ChildrenList>
+										<Action Name="" ID="{95973DF0-A629-4D68-AF9B-CB6F94FFB05F}" ShortID="452670993">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spotlight_Increase" ID="{B71E67C4-4107-4637-AC13-044C6D64B92B}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="AutoFollowSpot" ID="{E3D0CB6C-B394-42C6-9B4B-AFB1D5F87F6C}" ShortID="328840318">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Event Name="AutoFollowSpot_TurnOn_Play" ID="{7F37DBB2-98C2-45CC-A94E-6A690A073366}">
+									<ChildrenList>
+										<Action Name="" ID="{11A7C8BC-93FE-4C63-98DB-179A07FC32AB}" ShortID="626490753">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TurnOn" ID="{48F44071-2FD8-4785-B108-F9454E4572FF}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="AutoFollowSpot_TurnOff_Play" ID="{3D959DC1-EAA3-474E-AC5F-64A95633B56A}">
+									<ChildrenList>
+										<Action Name="" ID="{A42B8DF1-2347-4F80-A175-F15FE1BA2D84}" ShortID="928597555">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TurnOff" ID="{C3399B0F-5D94-43A6-B958-7CB4E018F46C}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -687,9 +736,35 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Play_BoxLeaving" ID="{30417D8E-E346-4E45-A38A-516A350A9CFE}">
+							<ChildrenList>
+								<Action Name="" ID="{939BBDE7-0877-4656-A7FA-3723CEBB942D}" ShortID="579549722">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Box_Leaving" ID="{A07E3877-6197-450C-AEE0-73600BEA69A1}" WorkUnitID="{5557F52E-C75C-4591-977A-56C9F9AA2BA4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_BoxError" ID="{141DC000-6077-4131-B252-18666609677A}">
+							<ChildrenList>
+								<Action Name="" ID="{06D4137A-F620-4D92-B443-A811F895A8FA}" ShortID="938259315">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Box_Error" ID="{E351CD71-FC50-4E19-8C8B-65D44E74FD1E}" WorkUnitID="{5557F52E-C75C-4591-977A-56C9F9AA2BA4}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Flamethrower" ID="{71BB2DFD-D6DF-4927-98CA-5EBDA42ED94B}" ShortID="266625153">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Event Name="Flamethrower_Play" ID="{297F76A6-1874-4B58-B50A-91F8B2232F5A}">
 							<ChildrenList>
@@ -835,6 +910,36 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="Simon_TestSequence_444_2_1_3_1_Play" ID="{CAB0D328-7737-4BB0-952B-55EAA4319A92}"/>
+					</ChildrenList>
+				</Folder>
+				<Event Name="LED_TurnOn_Play" ID="{374B3C79-8990-4B74-9774-27C7C1577238}">
+					<ChildrenList>
+						<Action Name="" ID="{9A03ADA6-9891-4735-9B21-57FE7696939A}" ShortID="259112608">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LED_TurnOn" ID="{07D652EB-B9F7-420F-81B3-B7C263BD0326}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="Achievements" ID="{DBC64F35-65E6-45ED-ACBD-941445953855}" ShortID="468768973">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="SteveSucces_Play" ID="{5254BDA4-E120-4AA3-9E4B-E75022F8BF80}">
+							<ChildrenList>
+								<Action Name="" ID="{8583D734-DFC1-4D11-A39A-3182A2C543CB}" ShortID="985819830">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="StevePoisson" ID="{721C0305-83F2-4DAA-BDA4-9B58F2177763}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

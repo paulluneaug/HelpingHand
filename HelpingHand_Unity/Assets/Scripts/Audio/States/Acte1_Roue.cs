@@ -38,4 +38,6 @@ public enum Acte1RoueState
     Intro_002,
     Intro_003,
 
+    Intro_08
+
 }

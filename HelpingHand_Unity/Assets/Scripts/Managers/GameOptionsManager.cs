@@ -17,14 +17,9 @@ public class GameOptionsManager
     public ObservableField<Color> SubtitleBackgroundColor = new ObservableField<Color>(Color.black);
 
     [Title("Font sizes", bold: false)]
-    [SerializeField] private float m_smallFontSize = 60.0f;
-    [SerializeField] private float m_mediumFontSize = 70.0f;
-    [SerializeField] private float m_largeFontSize = 80.0f;
-
-    [Title("Background sizes", bold: false)]
-    [SerializeField] private float m_smallBackgroundWidth = 1850.0f;
-    [SerializeField] private float m_mediumBackgroundWidth = 2150.0f;
-    [SerializeField] private float m_largeBackgroundWidth = 2400.0f;
+    [SerializeField] private float m_smallFontSize = 80.0f;
+    [SerializeField] private float m_mediumFontSize = 100.0f;
+    [SerializeField] private float m_largeFontSize = 120.0f;
 
     [Title("Resolution")]
     [SerializeField] private int m_windowedWidth = 1920;
@@ -49,17 +44,6 @@ public class GameOptionsManager
         {
             global::SubtitleSize.Small => m_smallFontSize,
             global::SubtitleSize.Medium => m_mediumFontSize,
-            global::SubtitleSize.Large => m_largeBackgroundWidth,
-            _ => m_mediumFontSize,
-        };
-    }
-
-    public float ToBackgroundWidth(SubtitleSize size)
-    {
-        return size switch
-        {
-            global::SubtitleSize.Small => m_smallBackgroundWidth,
-            global::SubtitleSize.Medium => m_mediumBackgroundWidth,
             global::SubtitleSize.Large => m_largeFontSize,
             _ => m_mediumFontSize,
         };

@@ -1680,6 +1680,143 @@
 								</Sound>
 							</ChildrenList>
 						</BlendContainer>
+						<BlendContainer Name="Box_Leaving" ID="{A07E3877-6197-450C-AEE0-73600BEA69A1}" ShortID="970157581">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>200</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="CARDBOARD_BOX_MOVE_LOOP_FASTER" ID="{7A07F2B0-7868-48DF-B45C-9A01AF2373CE}" ShortID="392284974">
+									<PropertyList>
+										<Property Name="PlayMechanismResetPlaylistEachPlay" Type="bool" Value="False"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_FASTER" ID="{DCE0672A-FD54-4997-830F-9A94D6939529}" ShortID="164093595">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_FASTER" ID="{15F7A644-E506-404A-ACC2-BE67C1EFA23C}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.878625"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_FASTER.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="72082616"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_FASTER" ID="{15F7A644-E506-404A-ACC2-BE67C1EFA23C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_FASTER" ID="{DCE0672A-FD54-4997-830F-9A94D6939529}" WorkUnitID="{5557F52E-C75C-4591-977A-56C9F9AA2BA4}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</BlendContainer>
+						<BlendContainer Name="Box_Error" ID="{E351CD71-FC50-4E19-8C8B-65D44E74FD1E}" ShortID="628953146">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_SLOW" ID="{65DF5E9C-C378-4059-AA59-7C664FA37D17}" ShortID="1001879066">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Attenuation_100m" ID="{77B02558-D2ED-4774-9DA5-22E0BC8203B6}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_SLOW" ID="{A60C05C1-89BF-45EC-8598-49B517787412}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.394055443011977"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.475937091282732"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_SLOW.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="747618120"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_ITEM_DROPPER_CARDBOARD_BOX_MOVE_LOOP_SLOW" ID="{A60C05C1-89BF-45EC-8598-49B517787412}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="User Interface, Alert, Alarm, Notification, Warning, Error, Percussive, Warning SND129833 - Pitch 200" ID="{843ECBA2-1D06-41BF-B38C-150934014F59}" ShortID="1073258092">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="User Interface, Alert, Alarm, Notification, Warning, Error, Percussive, Warning SND129833 - Pitch 200" ID="{C02D6FE9-E81B-45F0-AAED-750B42E800AD}">
+											<Language>SFX</Language>
+											<AudioFile>User Interface, Alert, Alarm, Notification, Warning, Error, Percussive, Warning SND129833 - Pitch 200.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="835945771"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="User Interface, Alert, Alarm, Notification, Warning, Error, Percussive, Warning SND129833 - Pitch 200" ID="{C02D6FE9-E81B-45F0-AAED-750B42E800AD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</BlendContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

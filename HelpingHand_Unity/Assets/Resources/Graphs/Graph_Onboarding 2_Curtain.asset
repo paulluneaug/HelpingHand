@@ -2322,6 +2322,7 @@ MonoBehaviour:
   - {fileID: 6964787990765847147}
   - {fileID: -8757437671029876813}
   - {fileID: 1603023537287337518}
+  - {fileID: 8032394613516034840}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,7 +2764,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 3.713708
+      Data: 18.725172
     - Name: 
       Entry: 8
       Data: 
@@ -3809,7 +3810,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 5.625842
+      Data: 25.8703823
     - Name: 
       Entry: 8
       Data: 
@@ -4096,6 +4097,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_in
         node: {fileID: 1877881304733183429}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 8032394613516034840}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -4902,6 +4906,58 @@ MonoBehaviour:
   m_interruptable: 1
   m_type: 2
   m_frameCount: 0
+--- !u!114 &8032394613516034840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311ca771d80c67146aab2a11ab24d084, type: 3}
+  m_Name: Set Music
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -104, y: -536}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 8032394613516034840}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 8032394613516034840}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_music: 6
 --- !u!114 &8051007202408458156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5129,7 +5185,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 3.36119246
+      Data: 18.0325832
     - Name: 
       Entry: 8
       Data: 
