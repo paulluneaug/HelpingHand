@@ -64,6 +64,7 @@ public class CanvasManager : MonoBehaviour
     public void CloseOptions()
     {
         m_optionsMenuController.CloseOptionMenu();
+
         if (GameManager.Instance.CurrentGameState == GameManager.GameState.MainMenu)
         {
             m_mainMenuController.OpenMainMenu();
@@ -83,10 +84,15 @@ public class CanvasManager : MonoBehaviour
         if (m_paused)
         {
             OpenOptions();
+            AudioManager.Instance.StateManager.SetGameState(GameState.Paused);
+            Debug.Log("PAUSED");
         }
         else
         {
             CloseOptions();
+            AudioManager.Instance.StateManager.SetGameState(GameState.Gameplay);
+
+            Debug.Log("GAMEPLAY");
         }
     }
 
