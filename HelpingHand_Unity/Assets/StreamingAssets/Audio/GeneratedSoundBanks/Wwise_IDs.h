@@ -115,6 +115,8 @@ namespace AK
         static const AkUniqueID SPOTLIGHT_BREAK_PLAY = 2800173644U;
         static const AkUniqueID SPOTLIGHT_OFF_PLAY = 1074187710U;
         static const AkUniqueID SPOTLIGHT_ON_PLAY = 1206761850U;
+        static const AkUniqueID SPOTLIGHT_PUPPET_OFF_PLAY = 2539472199U;
+        static const AkUniqueID SPOTLIGHT_PUPPET_ON_PLAY = 2555459601U;
         static const AkUniqueID STEVESUCCES_PLAY = 2803590085U;
         static const AkUniqueID STOP_CURTAINFADEOUT = 819184552U;
         static const AkUniqueID STOP_CURTAINIMMEDIATE = 2591636753U;
