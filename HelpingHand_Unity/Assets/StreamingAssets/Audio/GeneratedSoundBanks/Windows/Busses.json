@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{119787B2-6F13-4649-8324-A5B95FE8C20B}",
     "Language": "SFX",
-    "Hash": "{032FD7A5-D85B-CDE0-7BAB-FDE420C4EC55}",
+    "Hash": "{46511B45-4560-D9C6-91F1-09A2AABE2D89}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Busses",
     "ShortName": "Busses",
     "Path": "Busses.bnk",
@@ -152,6 +152,14 @@
       "CachePath": "B7/{B74670B8-B1E5-B4E9-B2F2-575FAC34FA95}.wem"
      },
      {
+      "Id": "540723331",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ANM_AutoFollow_TurnOn.wav",
+      "CachePath": "CC/{CC1AFA04-D1D6-0B12-49F7-23D76271FD01}.wem"
+     },
+     {
       "Id": "586748973",
       "Language": "SFX",
       "Streaming": "false",
@@ -214,6 +222,14 @@
       "Location": "Memory",
       "ShortName": "ANM_Spotlight_Broken_03.wav",
       "CachePath": "D1/{D1A81EB3-2987-BED3-0274-2C01094613EC}.wem"
+     },
+     {
+      "Id": "758911823",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ANM_AutoFollow_TurnOff.wav",
+      "CachePath": "8C/{8CBF9646-D10E-F8C9-C908-980FE0383D81}.wem"
      },
      {
       "Id": "785398829",
@@ -343,6 +359,34 @@
      ]
     },
     "Events": [
+     {
+      "Id": "3033356147",
+      "Name": "AutoFollowSpot_TurnOff_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Gameplay\\AutoFollowSpot\\AutoFollowSpot_TurnOff_Play",
+      "GUID": "{3D959DC1-EAA3-474E-AC5F-64A95633B56A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.9560417",
+      "DurationMax": "1.9560417",
+      "MediaRefs": [
+       {
+        "Id": "758911823"
+       }
+      ]
+     },
+     {
+      "Id": "870673709",
+      "Name": "AutoFollowSpot_TurnOn_Play",
+      "ObjectPath": "\\Events\\Gameplay_Events\\Gameplay\\AutoFollowSpot\\AutoFollowSpot_TurnOn_Play",
+      "GUID": "{7F37DBB2-98C2-45CC-A94E-6A690A073366}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.12725",
+      "DurationMax": "1.12725",
+      "MediaRefs": [
+       {
+        "Id": "540723331"
+       }
+      ]
+     },
      {
       "Id": "3951437324",
       "Name": "Cat_Play",
@@ -902,6 +946,6 @@
     ]
    }
   ],
-  "FileHash": "{EBA012DE-086A-4BBC-2924-4FDEBFD34437}"
+  "FileHash": "{EC8D76FA-0608-B6C4-E52B-A8567B3306C8}"
  }
 }

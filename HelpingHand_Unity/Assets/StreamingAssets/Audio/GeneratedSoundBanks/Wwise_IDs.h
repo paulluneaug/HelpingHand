@@ -15,6 +15,8 @@ namespace AK
     {
         static const AkUniqueID ACHIEVEMENT_PLAY = 530013535U;
         static const AkUniqueID ARROWBUTTONCLICK_PLAY = 2803013081U;
+        static const AkUniqueID AUTOFOLLOWSPOT_TURNOFF_PLAY = 3033356147U;
+        static const AkUniqueID AUTOFOLLOWSPOT_TURNON_PLAY = 870673709U;
         static const AkUniqueID BUENDIA_PLAY = 343639240U;
         static const AkUniqueID BUTTONCLICK_PLAY = 2553422748U;
         static const AkUniqueID BUTTONPOINTERDOWN_PLAY = 588833345U;
