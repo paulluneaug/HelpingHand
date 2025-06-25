@@ -274,6 +274,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Son_1" ID="{03C3832E-F0A8-4FE7-AF05-CD7CE82B5C27}" ShortID="589337684">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -408,6 +413,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Son_2" ID="{C51F9BF9-23E8-4EBC-969C-8A4DA6CDB968}" ShortID="1033255067">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
 										<Value>4</Value>
@@ -569,6 +579,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Son_3" ID="{6F77CDC1-610A-44E5-B49E-3586ADB63886}" ShortID="750506093">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -655,7 +670,7 @@
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>12</Value>
+										<Value>13</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -3781,6 +3796,112 @@
 								</ObjectList>
 							</ObjectLists>
 						</BlendContainer>
+						<ActorMixer Name="Steve_Le" ID="{99883B27-D91A-4EF1-A22C-DCC8D34AC5F3}" ShortID="528507085">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="StevePoisson" ID="{721C0305-83F2-4DAA-BDA4-9B58F2177763}" ShortID="141065405">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="ANM_AchievementPoissonV0" ID="{02F9B7B8-CEEA-4208-9235-5A9123DAB02C}" ShortID="210671380">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_AchievementPoissonV0" ID="{5C5FC8D1-9E8E-4EC5-86B8-4761B2AA4FE1}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_AchievementPoissonV0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="89820208"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_AchievementPoissonV0" ID="{5C5FC8D1-9E8E-4EC5-86B8-4761B2AA4FE1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_AchievementPoisson_2" ID="{70C24F79-C537-44EF-8A66-07EF0C431210}" ShortID="576432518">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_AchievementPoisson_2" ID="{9AE5FA72-77C9-4F30-9261-0AA330EC9127}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_AchievementPoisson_2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="212764215"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_AchievementPoisson_2" ID="{9AE5FA72-77C9-4F30-9261-0AA330EC9127}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ANM_AchievementPoisson_3" ID="{FE4581A1-740A-4B8F-97EF-CF094ACF208C}" ShortID="223289595">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_AchievementPoisson_3" ID="{A8E5B544-9712-4F6A-ACBD-03B736B2A1A3}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_AchievementPoisson_3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="760383166"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_AchievementPoisson_3" ID="{A8E5B544-9712-4F6A-ACBD-03B736B2A1A3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="ANM_AchievementPoissonV0" ID="{02F9B7B8-CEEA-4208-9235-5A9123DAB02C}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+											<Reference>
+												<ObjectRef Name="ANM_AchievementPoisson_2" ID="{70C24F79-C537-44EF-8A66-07EF0C431210}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+											<Reference>
+												<ObjectRef Name="ANM_AchievementPoisson_3" ID="{FE4581A1-740A-4B8F-97EF-CF094ACF208C}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
