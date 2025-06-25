@@ -53,4 +53,14 @@ public class ActManager : MonoBehaviour
     {
 
     }
+
+    public void PauseAct()
+    {
+        m_graphController.PauseGraphs();
+    }
+
+    public void ResumeAct()
+    {
+        m_graphController.ResumeGraphs();
+    }
 }
