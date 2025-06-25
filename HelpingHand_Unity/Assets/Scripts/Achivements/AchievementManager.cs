@@ -19,9 +19,6 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     private bool m_startHidden = true;
 
     [SerializeField]
-    private Light m_light;
-
-    [SerializeField]
     private AK.Wwise.Event m_sfx;
 
     [SerializeField]
@@ -83,7 +80,6 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         }
 
         m_transform.localPosition = new Vector3(m_transform.localPosition.x, m_startHidden ? m_hideY : m_showY, m_transform.localPosition.z);
-        m_light.enabled = !m_startHidden;
     }
 
     public override void OnDestroy()
@@ -124,13 +120,11 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
 
     private async UniTask ShowPanel()
     {
-        m_light.enabled = true;
         await m_transform.DOLocalMoveY(m_showY, m_showAnimationDuration).SetEase(m_showAnimationEase).ToUniTask();
     }
 
     private async UniTask HidePanel()
     {
-        m_light.enabled = false;
         await m_transform.DOLocalMoveY(m_hideY, m_hideAnimationDuration).SetEase(m_hideAnimationEase).ToUniTask();
     }
 }

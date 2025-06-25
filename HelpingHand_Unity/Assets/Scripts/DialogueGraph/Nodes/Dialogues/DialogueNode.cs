@@ -241,7 +241,7 @@ public class DialogueNode : InterruptableNode
     {
         m_hasBeenInterrupted = false;
         m_currentState = DialogueNodeState.Started;
-        GameManager.Instance.SkipDialogueInput.performed += OnSkipDialogue;
+        GameManager.Instance.SkipDialogueInput.AddDownListener(OnSkipDialogue);
     }
 
     private void EndDialogueNode()
@@ -252,10 +252,10 @@ public class DialogueNode : InterruptableNode
         {
             return;
         }
-        GameManager.Instance.SkipDialogueInput.performed -= OnSkipDialogue;
+        GameManager.Instance.SkipDialogueInput.RemoveDownListener(OnSkipDialogue);
     }
 
-    private void OnSkipDialogue(InputAction.CallbackContext context)
+    private void OnSkipDialogue()
     {
         m_skipPressed = true;
         switch (m_currentState)
@@ -265,7 +265,7 @@ public class DialogueNode : InterruptableNode
                 m_currentState = DialogueNodeState.Displayed;
                 if (m_displayTask.Status != UniTaskStatus.Pending) // If the text is already displayed
                 {
-                    OnSkipDialogue(context);
+                    OnSkipDialogue();
                     return;
                 }
 
@@ -276,7 +276,7 @@ public class DialogueNode : InterruptableNode
                 m_currentState = DialogueNodeState.Waiting;
                 if (m_audioTask.Status != UniTaskStatus.Pending) // If the audio is already finished
                 {
-                    OnSkipDialogue(context);
+                    OnSkipDialogue();
                     return;
                 }
                 m_audioSkipCTS.Cancel();

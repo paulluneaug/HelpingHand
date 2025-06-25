@@ -14,7 +14,6 @@ public class DropperItem : MonoBehaviour
 {
     [Title("Preview")]
     [SerializeField] private SpriteRenderer m_previewRenderer;
-    [SerializeField] private Sprite m_defaultSprite;
 
     [Title("Misc")]
     [SerializeField] private VisualEffect m_fallVFX;
@@ -109,12 +108,10 @@ public class DropperItem : MonoBehaviour
         m_fallVFX.Play();
         _ = AudioManager.Instance.EventManager.Play_FallingObjectAndSmokeImpact.Post(lootbox);
         m_equipTimer.Start();
-        m_previewRenderer.sprite = m_defaultSprite;
     }
 
     public void ResetItem()
     {
-        m_previewRenderer.sprite = m_defaultSprite;
         m_item = null;
 
         m_startPosition = 0.0f;

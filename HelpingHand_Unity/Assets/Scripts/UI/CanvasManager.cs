@@ -1,3 +1,5 @@
+using System;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +13,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private CreditsMenuController m_creditsMenuController;
 
     [Title("Actions")]
-    [SerializeField] private InputActionReference m_pauseAction;
+    [SerializeField] private ButtonInputEvent m_pauseEvent;
+
+    [NonSerialized] private bool m_paused;
 
 
 
@@ -22,7 +26,8 @@ public class CanvasManager : MonoBehaviour
         m_creditsMenuController.CloseCreditsMenu();
 
 
-        m_pauseAction.action.performed += OnOptionActionPerformed;
+        m_pauseEvent.AddDownListener(OnPause);
+        m_paused = false;
     }
 
     private void Start()
@@ -41,7 +46,7 @@ public class CanvasManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        m_pauseAction.action.performed -= OnOptionActionPerformed;
+        m_pauseEvent.RemoveDownListener(OnPause);
     }
 
     public void StartGame()
@@ -65,9 +70,24 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    private void OnOptionActionPerformed(InputAction.CallbackContext context)
+    private void OnPause()
     {
-        OpenOptions();
+        GameManager gameManager = GameManager.Instance;
+        if (gameManager.CurrentGameState != GameManager.GameState.Gameplay)
+        {
+            return;
+        }
+
+        m_paused = !m_paused;
+        gameManager.Paused.Value = m_paused;
+        if (m_paused)
+        {
+            OpenOptions();
+        }
+        else
+        {
+            CloseOptions();
+        }
     }
 
     public void CloseCredits()
