@@ -51,22 +51,36 @@ public class ConditionInputCount : ConditionBase
         [LabelText("Blackboard")] Blackboard
     }
 
-    [SerializeField] [LabelWidth(100)] [EnumToggleButtons]
+    [SerializeField]
+    [LabelWidth(100)]
+    [EnumToggleButtons]
     private TimeType m_timeType;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeWindow")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_timeType == TimeType.TimeWindow")]
     private float m_timeWindow;
 
-    [SerializeField] [LabelWidth(100)] [EnumToggleButtons] [ShowIf("@m_timeType == TimeType.TimeStart")]
+    [SerializeField]
+    [LabelWidth(100)]
+    [EnumToggleButtons]
+    [ShowIf("@m_timeType == TimeType.TimeStart")]
     private StartTimeType m_startTimeType;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.GlobalVariable")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.GlobalVariable")]
     private FloatVariable m_floatVariable;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.Blackboard")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.Blackboard")]
     private string m_blackboardKey;
 
-    [SerializeField] [EnumToggleButtons] [LabelWidth(100)] [OnValueChanged("OnTypeChanged")]
+    [SerializeField]
+    [EnumToggleButtons]
+    [LabelWidth(100)]
+    [OnValueChanged("OnTypeChanged")]
     private InputListType m_type;
 
     private void OnTypeChanged()
@@ -93,17 +107,17 @@ public class ConditionInputCount : ConditionBase
     private BaseGameEvent[] m_anyButEvents = Array.Empty<BaseGameEvent>();
 
     [FormerlySerializedAs("m_counttType")]
-    [SerializeField] 
-    [EnumToggleButtons] 
+    [SerializeField]
+    [EnumToggleButtons]
     [LabelWidth(100)]
     private CountType m_countType;
-    
-    [SerializeField] 
-    [EnumToggleButtons] 
+
+    [SerializeField]
+    [EnumToggleButtons]
     [ShowIf("@m_countType == CountType.Individually")]
     [LabelWidth(100)]
     private TruthType m_truthType;
-    
+
     [SerializeField]
     [EnumToggleButtons]
     [ShowIf("@m_countType == CountType.Together")]
@@ -115,8 +129,8 @@ public class ConditionInputCount : ConditionBase
     [LabelWidth(100)]
     [EnumToggleButtons]
     private ComparisonOperation m_operation;
-    
-    [SerializeField] 
+
+    [SerializeField]
     [LabelWidth(100)]
     private int m_count;
 

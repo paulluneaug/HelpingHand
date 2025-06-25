@@ -114,7 +114,7 @@ public class GraphController : MonoBehaviour
                 await UniTask.WaitUntil(() => isRunning == false);
             }
         }
-        
+
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
         graphRunner.SetGraph(graph);
         m_graphDictionary[graph] = graphRunner;

@@ -100,7 +100,9 @@ public class StateManager : MonoBehaviour
     public void SetMusicState(MusicState MusicState)
     {
         if (MusicState == CurrentMusicState)
+        {
             return;
+        }
 
         switch (MusicState)
         {
@@ -143,7 +145,8 @@ public class StateManager : MonoBehaviour
             case MusicState.HorribleMusicTheme:
                 m_music_HorribleMusicTheme.SetValue();
                 break;
-
+            case MusicState.PauseMenu:
+                break;
             case MusicState.None:
             default:
                 m_music_None.SetValue();

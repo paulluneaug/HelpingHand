@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
 
-using UnityEngine;
 using DG.Tweening;
 
 using Sirenix.OdinInspector;
 
 using TMPro;
+
+using UnityEngine;
 
 using UnityUtility.Singletons;
 
@@ -20,28 +21,28 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     [SerializeField]
     private Light m_light;
 
-    [SerializeField] 
+    [SerializeField]
     private AK.Wwise.Event m_sfx;
 
     [SerializeField]
     private IntVariable m_achievementsCount;
-    
-    [FoldoutGroup("Texts")] 
+
+    [FoldoutGroup("Texts")]
     [SerializeField]
     private TMP_Text m_titleText;
-    
-    [FoldoutGroup("Texts")] 
+
+    [FoldoutGroup("Texts")]
     [SerializeField]
     private TMP_Text m_bodyText;
 
-    [FoldoutGroup("Animations")] 
+    [FoldoutGroup("Animations")]
     [SerializeField]
     private float m_showDuration = 2f;
 
-    [FoldoutGroup("Animations")] 
+    [FoldoutGroup("Animations")]
     [SerializeField]
     private Transform m_transform;
-    
+
     [BoxGroup("Animations/Show")]
     [SerializeField]
     private float m_showY = 2.6f;
@@ -53,11 +54,11 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     [BoxGroup("Animations/Show")]
     [SerializeField]
     private Ease m_showAnimationEase = Ease.OutBounce;
-    
+
     [BoxGroup("Animations/Hide")]
     [SerializeField]
     private float m_hideY = 5f;
-    
+
     [BoxGroup("Animations/Hide")]
     [SerializeField]
     private float m_hideAnimationDuration = .5f;
@@ -65,7 +66,7 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     [BoxGroup("Animations/Hide")]
     [SerializeField]
     private Ease m_hideAnimationEase = Ease.InQuad;
-    
+
     private Achievement[] m_allAchievements;
     private Dictionary<Achievement, Action> m_achivementActions;
 
@@ -99,13 +100,13 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         SetAchievement(achievement).Forget();
         ShowAchievement(achievement).Forget();
     }
-    
+
     private async UniTaskVoid SetAchievement(Achievement achievement)
     {
         SetAchievementTexts(achievement);
         m_achievementsCount.Value++;
         await UniTask.Delay(200);
-        m_sfx.Post(gameObject);
+        _ = m_sfx.Post(gameObject);
     }
 
     private async UniTaskVoid ShowAchievement(Achievement achievement)

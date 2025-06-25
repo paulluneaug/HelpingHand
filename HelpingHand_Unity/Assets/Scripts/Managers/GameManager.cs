@@ -2,6 +2,8 @@ using System;
 
 using Events;
 
+using Cysharp.Threading.Tasks;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -24,10 +26,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
+    public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager ;
+    public SimonManager SimonManager => m_simonManager;
 
     public InputAction SkipDialogueInput => m_skipDialogueInput.action;
 
     public GameState CurrentGameState => m_currentGameState;
+
+    public event Action<GameState> OnGameStateChanged;
 
     [Title("Act Sequence Manager")]
     [SerializeField] private ActSequenceManager m_actSequenceManager;
@@ -40,6 +46,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Canvas Manager")]
     [SerializeField] private CanvasManager m_canvasManager;
+
+    [Title("Simon Manager")]
+    [SerializeField] private SimonManager m_simonManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
@@ -65,6 +74,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
         m_canvasManager.Initialize();
+        m_simonManager.Initialize();
 
         LoadGlobalObjectScene();
 #if !PRODUCTION_BUILD
@@ -76,6 +86,19 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     protected override void Start()
     {
         base.Start();
+        StartAsync().Forget();
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_arduinoConnectorManager.Dispose();
+        m_simonManager.Dispose();
+    }
+
+    private async UniTask StartAsync()
+    {
+        await UniTask.WaitUntil(() => m_arduinoConnectorManager.IsReady);
         switch (m_currentGameState)
         {
             case GameState.MainMenu:
@@ -88,12 +111,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
     }
 
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        m_arduinoConnectorManager.Dispose();
-    }
-
     public void StartGameplay()
     {
         // Initialize all variables
@@ -102,8 +119,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             gameEvent.Initialize();
         }
-        
+
         m_currentGameState = GameState.Gameplay;
+        OnGameStateChanged?.Invoke(m_currentGameState);
 
         DialogueManager.Instance.OpenDialoguePanel();
 
@@ -151,7 +169,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         SceneManager.LoadScene(m_virtualControllerScene, LoadSceneMode.Additive);
 #endif
     }
-    
+
     #endregion
 
     #region Updates
@@ -206,6 +224,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_currentGameState = GameState.MainMenu;
                 m_canvasManager.CloseOptions();
                 m_actSequenceManager.StopSequence();
+                OnGameStateChanged?.Invoke(m_currentGameState);
+                break;
+            default:
                 break;
         }
     }

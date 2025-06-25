@@ -29,7 +29,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
 
     private readonly Dictionary<BaseGameEvent, Action> m_eventActions = new();
     private readonly Dictionary<BaseGameEvent, List<float>> m_eventTimes = new();
-    private float m_nextWindowTime;
+    private readonly float m_nextWindowTime;
 
     public override void Initialize()
     {
@@ -87,8 +87,8 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
 
         return count;
     }
-    
-    
+
+
     /// <summary>
     /// How many triggers from these inputs, for each inputs, in the time window provided?
     /// </summary>
@@ -139,7 +139,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
         foreach (BaseGameEvent inputEvent in m_inputEvents)
         {
             BaseGameEvent evt = inputEvent;
-            m_eventActions[evt] = () => OnInputUsed(evt); 
+            m_eventActions[evt] = () => OnInputUsed(evt);
             evt.OnEventRaised -= m_eventActions[evt];
             evt.OnEventRaised += m_eventActions[evt];
         }

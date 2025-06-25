@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using UnityUtility.CustomAttributes;
 using UnityUtility.Extensions;
 
-public abstract class UIOptionEnumController<TEnum> : 
+public abstract class UIOptionEnumController<TEnum> :
     UIAbstractOption<TEnum> where TEnum : struct
 {
     [Title("Components")]

@@ -41,7 +41,7 @@ public class WaitSwitchStateNode : WaitNodeBase
     public override void Dispose()
     {
         base.Dispose();
-        
+
         foreach (EntityState state in m_states)
         {
             state.RemoveListener(UpdateWaitUntilTest);
@@ -79,7 +79,7 @@ public class WaitSwitchStateNode : WaitNodeBase
         {
             return;
         }
-        
+
         if (IsTimeout)
         {
             DebugLog($"Has timeout");

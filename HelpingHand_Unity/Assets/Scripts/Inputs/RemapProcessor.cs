@@ -12,8 +12,8 @@ public class RemapProcessor : InputProcessor<float>
 {
     public float InitialRangeX;
     public float InitialRangeY;
-    public float TargetRangeX;
-    public float TargetRangeY;
+    public float TargetRangeX = 0.0f;
+    public float TargetRangeY = 1.0f;
 
 #if UNITY_EDITOR
     static RemapProcessor()

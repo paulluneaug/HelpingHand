@@ -5,17 +5,17 @@ using UnityEngine;
 using XNode;
 
 [CreateNodeMenu("Flow/Loop")]
-[NodeTint(0.4f, 0.2f, 0f)] 
+[NodeTint(0.4f, 0.2f, 0f)]
 public class LoopNode : BaseNode
 {
     [Input]
     [SerializeField]
     private DialogueFlow m_in;
 
-    [Input] 
+    [Input]
     [SerializeField]
     private DialogueFlow m_breakLoop;
-    
+
     [Output]
     [SerializeField]
     private DialogueFlow m_out;
@@ -36,7 +36,7 @@ public class LoopNode : BaseNode
             m_isLooping = false;
         }
     }
-    
+
     protected override async UniTask ContinueFlow(GraphRunnerHandler handler, NodePort inPort)
     {
         while (m_isLooping)

@@ -1,5 +1,6 @@
-using Sirenix.OdinInspector;
 using System;
+
+using Sirenix.OdinInspector;
 
 using UnityEngine;
 
@@ -33,6 +34,8 @@ public class DiscreetObjectController<TSettingsContainer> : MonoBehaviour, IBase
         m_transitionTimer = new Timer(m_transitionTime, false);
         m_controllingVariable.AddListener(OnVariableChanged);
         m_controllingVariable.OnActivate += OnVariableActivate;
+
+        OnVariableChanged(m_controllingVariable.Value);
     }
 
     private void Update()

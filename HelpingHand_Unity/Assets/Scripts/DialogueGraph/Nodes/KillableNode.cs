@@ -12,12 +12,12 @@ public abstract class KillableNode : BaseNode
     [SerializeField]
     [Input]
     private DialogueFlow m_kill;
-    
+
     [Input]
     public DialogueFlow m_resetKill;
 
     protected bool m_hasBeenKilled;
-    
+
     protected CancellationTokenSource m_killCTS;
     protected CancellationTokenSource m_killStopCTS;
 
@@ -56,7 +56,7 @@ public abstract class KillableNode : BaseNode
             DebugLog($"Killed! Stopping here");
             return;
         }
-        
+
         await base.ContinueFlow(handler, inPort);
     }
 

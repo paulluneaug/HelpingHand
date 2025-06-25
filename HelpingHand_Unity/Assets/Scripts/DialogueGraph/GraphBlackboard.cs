@@ -6,12 +6,14 @@ using Sirenix.Serialization;
 
 using UnityEngine;
 
-using UnityUtility.Singletons;
 using UnityUtility.SerializedDictionary;
+using UnityUtility.Singletons;
 
 public class GraphBlackboard : MonoBehaviourSingleton<GraphBlackboard>
 {
-    [OdinSerialize] [SerializeField] [ReadOnly]
+    [OdinSerialize]
+    [SerializeField]
+    [ReadOnly]
     private SerializedDictionary<string, object> m_blackboard = new();
 
     public SerializedDictionary<string, object> Blackboard => m_blackboard;
@@ -25,7 +27,7 @@ public class GraphBlackboard : MonoBehaviourSingleton<GraphBlackboard>
             return false;
         }
 #endif
-        
+
         if (m_blackboard.TryGetValue(key, out object objectValue))
         {
             if (objectValue is T value)
