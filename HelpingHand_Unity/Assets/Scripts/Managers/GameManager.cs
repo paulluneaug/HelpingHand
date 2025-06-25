@@ -2,6 +2,8 @@ using System;
 
 using Events;
 
+using Cysharp.Threading.Tasks;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
+    public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager ;
+    public SimonManager SimonManager => m_simonManager;
 
     public InputAction SkipDialogueInput => m_skipDialogueInput.action;
 
@@ -42,6 +46,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Canvas Manager")]
     [SerializeField] private CanvasManager m_canvasManager;
+
+    [Title("Simon Manager")]
+    [SerializeField] private SimonManager m_simonManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
@@ -67,6 +74,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
         m_canvasManager.Initialize();
+        m_simonManager.Initialize();
 
         LoadGlobalObjectScene();
 #if !PRODUCTION_BUILD
@@ -78,6 +86,19 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     protected override void Start()
     {
         base.Start();
+        StartAsync().Forget();
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_arduinoConnectorManager.Dispose();
+        m_simonManager.Dispose();
+    }
+
+    private async UniTask StartAsync()
+    {
+        await UniTask.WaitUntil(() => m_arduinoConnectorManager.IsReady);
         switch (m_currentGameState)
         {
             case GameState.MainMenu:
@@ -88,12 +109,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             default:
                 break;
         }
-    }
-
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        m_arduinoConnectorManager.Dispose();
     }
 
     public void StartGameplay()

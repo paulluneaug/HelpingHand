@@ -2,11 +2,9 @@ using UnityEngine;
 
 using UnityUtility.CustomAttributes;
 
-public class IndicatorStateTester : MonoBehaviour
+public class IndicatorsController : MonoBehaviour
 {
-    [SerializeField] private ArduinoConnectorManager m_connectorManager;
-
-    [SerializeField] private bool[] m_indicators;
+    [SerializeField] private BaseVariable<bool>[] m_indicators;
 
     [SerializeField, Disable] private int m_indicatorState;
 
@@ -16,7 +14,7 @@ public class IndicatorStateTester : MonoBehaviour
         if (m_indicatorState != currentState)
         {
             m_indicatorState = currentState;
-            m_connectorManager.SendIndicatorState(currentState);
+            GameManager.Instance.ArduinoConnectorManager.SendIndicatorState(currentState);
         }
     }
 
@@ -26,7 +24,7 @@ public class IndicatorStateTester : MonoBehaviour
 
         for (int iIndicator = 0; iIndicator < m_indicators.Length; iIndicator++)
         {
-            indicatorState |= (!m_indicators[iIndicator]) ? 0 : (1 << iIndicator);
+            indicatorState |= (!m_indicators[iIndicator].Value) ? 0 : (1 << iIndicator);
         }
 
         return indicatorState;

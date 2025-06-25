@@ -1,24 +1,19 @@
 using System;
 
+using Events;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [Serializable]
-public class InputActionTrigger<T> : IDisposable
-    where T : struct
+public abstract class InputActionTrigger<TEvent> : IDisposable
+    where TEvent : BaseGameEvent
 {
-    private enum TriggerBehaviour
-    {
-        OnUpdate,
-        OnActionPerformed,
-    }
-
-    [SerializeField] private InputActionReference m_action;
-    [SerializeField] private BaseVariable<T> m_linkedVariable;
-
-    [SerializeField, EnumToggleButtons] private TriggerBehaviour m_behaviour;
+    [SerializeField] protected InputActionReference m_action;
+    [SerializeField] protected TEvent m_linkedEvent;
+    [SerializeField, EnumToggleButtons] private TriggerBehaviour m_behaviour = TriggerBehaviour.OnActionPerformed; 
 
     public void Initialize()
     {
@@ -44,16 +39,13 @@ public class InputActionTrigger<T> : IDisposable
         {
             return;
         }
-        m_linkedVariable.Value = GetActionValue();
+        UpdateEvent();
     }
 
-    private void OnActionPerformed(InputAction.CallbackContext context)
+    protected void OnActionPerformed(InputAction.CallbackContext context)
     {
-        m_linkedVariable.Value = GetActionValue();
+        UpdateEvent();
     }
 
-    private T GetActionValue()
-    {
-        return m_action.action.ReadValue<T>();
-    }
+    protected abstract void UpdateEvent();
 }
