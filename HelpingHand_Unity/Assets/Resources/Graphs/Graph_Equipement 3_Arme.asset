@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9165003346028017264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
+  m_Name: Activate Dropper
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 888, y: -248}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -9165003346028017264}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 5643508250976966138}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -9165003346028017264}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -9165003346028017264}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: 63fed377fa92d644cbb7c3fd1e942fc7, type: 2}
 --- !u!114 &-9073862530683782023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,12 +105,6 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 5643508250976966138}
         reroutePoints: []
-      - fieldName: m_in
-        node: {fileID: 517630983391893581}
-        reroutePoints: []
-      - fieldName: m_in
-        node: {fileID: 4503490425571789130}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -87,7 +144,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: e304c83bdb5109c448b7427ca325b8f2, type: 2}
 --- !u!114 &-8558994723079569041
@@ -171,7 +228,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: c48849db453be2f46987af8f17f5a5af, type: 2}
 --- !u!114 &-8164006616319629197
@@ -254,7 +311,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: fc77fc2f14924c444b28076133f1b035, type: 2}
 --- !u!114 &-7561974810636281421
@@ -338,7 +395,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 8bcd55dfdb436e84cad0939e7f52d9bd, type: 2}
 --- !u!114 &-6780642032044062901
@@ -466,6 +523,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 6873808165342556201}
         reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -561,7 +621,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 468a91b5b1f068d4b870b32f5e6c9356, type: 2}
 --- !u!114 &-4221428035599470931
@@ -645,7 +705,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 85453cd8b78a545488c2d9376902b0ac, type: 2}
 --- !u!114 &-3092390902123014714
@@ -729,9 +789,78 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: db342088657233243bf6907142d4ae57, type: 2}
+--- !u!114 &-2902469919650478386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b6018978c88fe46b453afefddba39f, type: 3}
+  m_Name: Set Global Spline Container
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 664, y: -520}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -2902469919650478386}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -2902469919650478386}
+      _typeQualifiedName: UnityEngine.Splines.SplineContainer, Unity.Splines, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: m_value
+        node: {fileID: 5671321882348569876}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -2902469919650478386}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 6822609394979491775}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: {fileID: 0}
+  m_variable: {fileID: 11400000, guid: 60ee3b3bf0ac9624881a0ffafaab0cc7, type: 2}
 --- !u!114 &-2889426668087922060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,6 +927,98 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_inValue: 0
   m_variable: {fileID: 11400000, guid: 63fed377fa92d644cbb7c3fd1e942fc7, type: 2}
+--- !u!114 &-2557069504177976473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait Duration
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1800, y: 632}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_resetKill
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -2557069504177976473}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 7259805841801606352}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -2557069504177976473}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -1935213520926339649}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_resetKill
+      _node: {fileID: -2557069504177976473}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -2557069504177976473}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4767301682375494563}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: -595576312691215898}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: -6442596502401151440}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: 2852737775932785771}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: 411043373890514811}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 1
+  m_waitTime: 1
+  m_unscaled: 0
 --- !u!114 &-2410750891733925640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,7 +1099,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: a9e5e6714f555ae4b9b5bd9b75b4d6ce, type: 2}
 --- !u!114 &-2380612825399191240
@@ -961,7 +1182,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 3dce07b442c2be2468099c031aa66744, type: 2}
 --- !u!114 &-1935213520926339649
@@ -977,7 +1198,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 5
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1752, y: 504}
+  position: {x: 2024, y: 632}
   folded: 0
   ports:
     keys:
@@ -992,7 +1213,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 7259805841801606352}
+        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1045,7 +1266,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 437447ef4b3616544bcae3834d5a55a8, type: 2}
 --- !u!114 &-595576312691215898
@@ -1087,6 +1308,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -2410750891733925640}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1152,6 +1376,11 @@ MonoBehaviour:
   - {fileID: -6780642032044062901}
   - {fileID: -2889426668087922060}
   - {fileID: 4503490425571789130}
+  - {fileID: -2557069504177976473}
+  - {fileID: -9165003346028017264}
+  - {fileID: 6822609394979491775}
+  - {fileID: -2902469919650478386}
+  - {fileID: 5671321882348569876}
 --- !u!114 &209937822675426914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,7 +1462,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 5eca753f918d1414a875ce04832c649c, type: 2}
 --- !u!114 &373245346437715838
@@ -1317,7 +1546,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: baffeabddf78f2f4a869991a5289048e, type: 2}
 --- !u!114 &411043373890514811
@@ -1362,6 +1591,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -4886479536719651972}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1431,7 +1663,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -9073862530683782023}
+        node: {fileID: 7259805841801606352}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1625,7 +1857,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: a485d2d7b8a5f76479149a1205ec8bf0, type: 2}
 --- !u!114 &1261978661638409545
@@ -1709,7 +1941,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 782774d81731bfd42b6d09686e28c88e, type: 2}
 --- !u!114 &2125340009060971186
@@ -1792,7 +2024,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 4ebdc10dd5b130c4080f24cf3145dced, type: 2}
 --- !u!114 &2852737775932785771
@@ -1838,6 +2070,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 1150451497978542743}
         reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1865,7 +2100,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 7
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2488, y: 504}
+  position: {x: 2760, y: 632}
   folded: 0
   ports:
     keys:
@@ -1930,7 +2165,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 93fb674f4f37dbb4d97de85b74cd3f2d, type: 2}
 --- !u!114 &4301911475432951302
@@ -1946,7 +2181,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 6
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2120, y: 504}
+  position: {x: 2392, y: 632}
   folded: 0
   ports:
     keys:
@@ -2014,7 +2249,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 00851e5ab30bd3044b70b22094ed3e3f, type: 2}
 --- !u!114 &4503490425571789130
@@ -2030,7 +2265,7 @@ MonoBehaviour:
   m_Name: Activate Dropper
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 648, y: -344}
+  position: {x: 1416, y: -248}
   folded: 0
   ports:
     keys:
@@ -2044,7 +2279,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -9073862530683782023}
+        node: {fileID: 7259805841801606352}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2079,7 +2314,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_inValue: 1
-  m_variable: {fileID: 11400000, guid: 63fed377fa92d644cbb7c3fd1e942fc7, type: 2}
+  m_variable: {fileID: 11400000, guid: 6e2181f9f67aa93408f22c22d714d5ae, type: 2}
 --- !u!114 &4662089034119733656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2107,6 +2342,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -9073862530683782023}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -2902469919650478386}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -2171,6 +2409,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -7561974810636281421}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -2266,7 +2507,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 9a25f83da2bdabb4db3805f39d99d998, type: 2}
 --- !u!114 &5406683442848770539
@@ -2282,7 +2523,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1016, y: 504}
+  position: {x: 984, y: 8}
   folded: 0
   ports:
     keys:
@@ -2349,7 +2590,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 0.1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 9a98a4ecf01cdad40a02bbfe2c71662d, type: 2}
 --- !u!114 &5524010347394742604
@@ -2433,7 +2674,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 4988ca8e11dabab4cb0d954eecd50010, type: 2}
 --- !u!114 &5643508250976966138
@@ -2449,7 +2690,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 648, y: 504}
+  position: {x: 616, y: 8}
   folded: 0
   ports:
     keys:
@@ -2477,6 +2718,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 5406683442848770539}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -9165003346028017264}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -2517,9 +2761,51 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 46fa91cb876eaa44e8d3b482413a586b, type: 2}
+--- !u!114 &5671321882348569876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7235aa2a35732d743beea43f00e11ba7, type: 3}
+  m_Name: Global Spline Container
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 648, y: -680}
+  folded: 0
+  ports:
+    keys:
+    - m_value
+    values:
+    - _fieldName: m_value
+      _node: {fileID: 5671321882348569876}
+      _typeQualifiedName: SplineContainerVariable, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: m_inValue
+        node: {fileID: -2902469919650478386}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_value: {fileID: 11400000, guid: 3931d890f53c1ff45b68f5e845eaa24a, type: 2}
 --- !u!114 &5914938714784293100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2601,9 +2887,61 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: cb92f40962039db42989e61b31077559, type: 2}
+--- !u!114 &6822609394979491775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20a787a6e97db45b3a9cd60a736f81, type: 3}
+  m_Name: Puppet Walk
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: -520}
+  folded: 0
+  ports:
+    keys:
+    - m_out
+    - m_in
+    values:
+    - _fieldName: m_out
+      _node: {fileID: 6822609394979491775}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_in
+      _node: {fileID: 6822609394979491775}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -2902469919650478386}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_waitForEndOfSpline: 0
 --- !u!114 &6873808165342556201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2684,7 +3022,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: c6bf4ed2c9b91e34baaf0c15e824b166, type: 2}
 --- !u!114 &7259805841801606352
@@ -2700,7 +3038,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 3 Arme 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1384, y: 504}
+  position: {x: 1352, y: 8}
   folded: 0
   ports:
     keys:
@@ -2727,7 +3065,13 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -1935213520926339649}
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -2557069504177976473}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 4503490425571789130}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -2768,7 +3112,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 5685bcceee088fc43a353b84af3bdd22, type: 2}
 --- !u!114 &7949945205169932637
@@ -2851,7 +3195,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 391bbfc90ae7fcc4fa40131eaa12951f, type: 2}
 --- !u!114 &8009394692231885117
@@ -2934,7 +3278,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: b5ca26b1f3ebe0343abaaae1285a26de, type: 2}
 --- !u!114 &8216592577177710697
@@ -3018,6 +3362,6 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 1
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 3683634554962e64ea9e7b2185bea9f6, type: 2}

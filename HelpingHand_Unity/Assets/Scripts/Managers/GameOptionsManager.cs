@@ -9,8 +9,6 @@ using UnityUtility.ObservableFields;
 public class GameOptionsManager
 {
     [Title("Options", bold: false)]
-    public ObservableField<bool> IsHighContrast = new ObservableField<bool>(false);
-    public ObservableField<float> GameSpeed = new ObservableField<float>(1.0f);
     public ObservableField<bool> IsWindowed = new ObservableField<bool>(false);
     public ObservableField<DialogueReadMode> DialogueReadMode = new ObservableField<DialogueReadMode>(global::DialogueReadMode.Auto);
     public ObservableField<SubtitleSize> SubtitleSize = new ObservableField<SubtitleSize>(global::SubtitleSize.Medium);
@@ -23,6 +21,22 @@ public class GameOptionsManager
     [SerializeField] private float m_mediumFontSize = 100.0f;
     [SerializeField] private float m_largeFontSize = 120.0f;
 
+    [Title("Resolution")]
+    [SerializeField] private int m_windowedWidth = 1920;
+    [SerializeField] private int m_windowedHeight = 1080;
+
+    private Resolution m_screenNativeResolution;
+
+    public void Initialize()
+    {
+        m_screenNativeResolution = Screen.resolutions[0];
+        IsWindowed.OnValueChanged += OnWindowedModeChanged;
+    }
+
+    public void Dispose()
+    {
+        IsWindowed.OnValueChanged -= OnWindowedModeChanged;
+    }
 
     public float ToFontSize(SubtitleSize size)
     {
@@ -33,5 +47,17 @@ public class GameOptionsManager
             global::SubtitleSize.Large => m_largeFontSize,
             _ => m_mediumFontSize,
         };
+    }
+
+    private void OnWindowedModeChanged(bool isWindowed)
+    {
+        if (!isWindowed)
+        {
+            Screen.SetResolution(m_screenNativeResolution.width, m_screenNativeResolution.height, FullScreenMode.FullScreenWindow);
+        }
+        else
+        {
+            Screen.SetResolution(m_windowedWidth, m_windowedHeight, FullScreenMode.Windowed);
+        }
     }
 }

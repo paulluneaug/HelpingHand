@@ -98,13 +98,13 @@ public class CanvasManager : MonoBehaviour
 
     public void CloseCredits()
     {
-        m_mainMenuController.OpenMainMenu();
         m_creditsMenuController.CloseCreditsMenu();
+        m_mainMenuController.OpenMainMenu();
     }
 
     public void OpenCredits()
     {
-        m_creditsMenuController.OpenCreditsMenu();
         m_mainMenuController.CloseMainMenu();
+        m_creditsMenuController.OpenCreditsMenu();
     }
 }

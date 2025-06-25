@@ -78,12 +78,12 @@ public class ActSequenceManager
 
     public void PauseSequence()
     {
-        m_currentAct.PauseAct();
+        m_currentAct?.PauseAct();
     }
 
     public void ResumeSequence()
     {
-        m_currentAct.ResumeAct();
+        m_currentAct?.ResumeAct();
     }
 
     public void UpdateSequence(float deltaTime)

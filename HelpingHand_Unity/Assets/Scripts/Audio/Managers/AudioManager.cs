@@ -301,7 +301,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         AppendIfNotIgnore("Interruption Light Intensity", interruptionLightIntensity, interruptionLightIntensityID);
         AppendIfNotIgnore("Interruption Joystick", interruptionJoystick, interruptionJoystickID);
 
-        Debug.Log(sb.ToString());
+        DebugLog(sb.ToString());
 
 
         #endregion
