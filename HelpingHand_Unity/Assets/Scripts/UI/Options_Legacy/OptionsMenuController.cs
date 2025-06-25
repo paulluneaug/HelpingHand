@@ -243,12 +243,15 @@ public class OptionsMenuController : SerializedMonoBehaviour
         m_mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
 
         m_optionWindowMode.OnValueChanged += OnOptionScreenModeChanged;
+        m_optionDialogueReadMode.OnValueChanged += OnOptionDialogueReadModeChanged;
+
+        m_optionMasterVolume.OnValueChanged += OnOptionVolumeGlobalChanged;
+        m_optionVoiceVolume.OnValueChanged += OnOptionVolumeVoiceChanged;
 
         m_optionSubtitleColor.OnValueChanged += OnOptionSubtitleColorChanged;
         m_optionSubtitleSize.OnValueChanged += OnOptionSubtitleSizeChanged;
         m_optionSubtitleBackgroundOpacity.OnValueChanged += OnOptionSubtitleBackgroundOpacityChanged;
         m_optionSubtitleBackgroundColor.OnValueChanged += OnOptionSubtitleBackgroundColorChanged;
-        m_optionDialogueReadMode.OnValueChanged += OnOptionDialogueReadModeChanged;
     }
 
     private void UnsubscribeFromEvents()
@@ -258,12 +261,15 @@ public class OptionsMenuController : SerializedMonoBehaviour
         m_mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
 
         m_optionWindowMode.OnValueChanged -= OnOptionScreenModeChanged;
+        m_optionDialogueReadMode.OnValueChanged -= OnOptionDialogueReadModeChanged;
+
+        m_optionMasterVolume.OnValueChanged -= OnOptionVolumeGlobalChanged;
+        m_optionVoiceVolume.OnValueChanged -= OnOptionVolumeVoiceChanged;
 
         m_optionSubtitleColor.OnValueChanged -= OnOptionSubtitleColorChanged;
         m_optionSubtitleSize.OnValueChanged -= OnOptionSubtitleSizeChanged;
         m_optionSubtitleBackgroundOpacity.OnValueChanged -= OnOptionSubtitleBackgroundOpacityChanged;
         m_optionSubtitleBackgroundColor.OnValueChanged -= OnOptionSubtitleBackgroundColorChanged;
-        m_optionDialogueReadMode.OnValueChanged -= OnOptionDialogueReadModeChanged;
     }
 
     private void UpdateDescriptionPanel()

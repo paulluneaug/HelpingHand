@@ -49,7 +49,7 @@ public class GameOptionsManager
         {
             global::SubtitleSize.Small => m_smallFontSize,
             global::SubtitleSize.Medium => m_mediumFontSize,
-            global::SubtitleSize.Large => m_largeBackgroundWidth,
+            global::SubtitleSize.Large => m_largeFontSize,
             _ => m_mediumFontSize,
         };
     }
@@ -60,7 +60,7 @@ public class GameOptionsManager
         {
             global::SubtitleSize.Small => m_smallBackgroundWidth,
             global::SubtitleSize.Medium => m_mediumBackgroundWidth,
-            global::SubtitleSize.Large => m_largeFontSize,
+            global::SubtitleSize.Large => m_largeBackgroundWidth,
             _ => m_mediumFontSize,
         };
     }
