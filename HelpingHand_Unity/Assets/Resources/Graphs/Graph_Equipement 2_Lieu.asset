@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 2 Lieu 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 744, y: 600}
+  position: {x: 696, y: 872}
   folded: 0
   ports:
     keys:
@@ -112,7 +112,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -6026060607056722703}
+        node: {fileID: 3660623801472503768}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -291,10 +291,13 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -6651276618880018197}
+        node: {fileID: 8797368255741970018}
         reroutePoints: []
       - fieldName: m_in
-        node: {fileID: 8797368255741970018}
+        node: {fileID: 7068259769615380931}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 3660623801472503768}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -335,7 +338,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 0
-  m_waitTime: 0.5
+  m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 59dacde7832e2c84fb3a39d54b917084, type: 2}
 --- !u!114 &-5771119419788531409
@@ -650,7 +653,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 2 Lieu 8
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2952, y: 600}
+  position: {x: 2904, y: 872}
   folded: 0
   ports:
     keys:
@@ -866,7 +869,7 @@ MonoBehaviour:
   m_Name: Graph Control
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 6648, y: -360}
+  position: {x: 6664, y: -424}
   folded: 0
   ports:
     keys:
@@ -1109,6 +1112,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_in
         node: {fileID: -5672684685040174846}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: 3660623801472503768}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1422,6 +1428,7 @@ MonoBehaviour:
   - {fileID: 7068259769615380931}
   - {fileID: 781520444711673945}
   - {fileID: 2095371326774940493}
+  - {fileID: 3660623801472503768}
 --- !u!114 &130954819415264437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,6 +1478,9 @@ MonoBehaviour:
       - fieldName: m_resetKill
         node: {fileID: 2416193092619962959}
         reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: 3660623801472503768}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1498,7 +1508,7 @@ MonoBehaviour:
   m_Name: Enable controls
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 568, y: -344}
+  position: {x: 824, y: -344}
   folded: 0
   ports:
     keys:
@@ -1600,6 +1610,9 @@ MonoBehaviour:
       - fieldName: m_resetKill
         node: {fileID: -3450583975996561983}
         reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: 3660623801472503768}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1627,7 +1640,7 @@ MonoBehaviour:
   m_Name: Enable controls
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 840, y: -344}
+  position: {x: 1096, y: -344}
   folded: 0
   ports:
     keys:
@@ -1761,6 +1774,92 @@ MonoBehaviour:
   m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 9dfbc6e05d8e4644d86580e677202fb5, type: 2}
+--- !u!114 &3660623801472503768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait Duration
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 472, y: 872}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_resetKill
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 3660623801472503768}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -6026060607056722703}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 3660623801472503768}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -6651276618880018197}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_resetKill
+      _node: {fileID: 3660623801472503768}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: 3660623801472503768}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 1974680421170638854}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: -334610959539631101}
+        reroutePoints: []
+      - fieldName: m_out
+        node: {fileID: 130954819415264437}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 1
+  m_waitTime: 1
+  m_unscaled: 0
 --- !u!114 &3718311349070727129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1774,7 +1873,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 2 Lieu 5
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1848, y: 600}
+  position: {x: 1800, y: 872}
   folded: 0
   ports:
     keys:
@@ -1952,7 +2051,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 2 Lieu 6
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2216, y: 600}
+  position: {x: 2168, y: 872}
   folded: 0
   ports:
     keys:
@@ -2051,9 +2150,6 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -6026060607056722703}
         reroutePoints: []
-      - fieldName: m_in
-        node: {fileID: 7068259769615380931}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -2091,7 +2187,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 2 Lieu 7
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2584, y: 600}
+  position: {x: 2536, y: 872}
   folded: 0
   ports:
     keys:
@@ -2279,7 +2375,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 2 Lieu 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1480, y: 600}
+  position: {x: 1432, y: 872}
   folded: 0
   ports:
     keys:
@@ -2363,7 +2459,7 @@ MonoBehaviour:
   m_Name: Enable controls
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 296, y: -344}
+  position: {x: 552, y: -344}
   folded: 0
   ports:
     keys:
@@ -2377,7 +2473,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 4662089034119733656}
+        node: {fileID: -6026060607056722703}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2429,7 +2525,7 @@ MonoBehaviour:
   m_Name: Dialogue Equipement 2 Lieu 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1112, y: 600}
+  position: {x: 1064, y: 872}
   folded: 0
   ports:
     keys:
@@ -2812,7 +2908,7 @@ MonoBehaviour:
   m_Name: Wait Switch State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2792, y: -632}
+  position: {x: 2728, y: -664}
   folded: 0
   ports:
     keys:
