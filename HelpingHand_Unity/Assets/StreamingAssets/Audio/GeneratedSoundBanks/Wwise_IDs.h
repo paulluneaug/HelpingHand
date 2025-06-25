@@ -129,6 +129,7 @@ namespace AK
         static const AkUniqueID SUPERMARKETAMB_STOP = 3548368645U;
         static const AkUniqueID SWITCHTOBATTLEMUSIC = 3383663553U;
         static const AkUniqueID SWITCHTOHORRIBLEMUSIC = 2853249254U;
+        static const AkUniqueID SWITCHTONOMUSIC = 4131411232U;
         static const AkUniqueID SWITCHTOSADMUSIC = 2202502871U;
         static const AkUniqueID SWITCHTOSUSPENSEMUSIC = 1154495047U;
         static const AkUniqueID TAVERNAMB_PLAY = 3582522998U;
