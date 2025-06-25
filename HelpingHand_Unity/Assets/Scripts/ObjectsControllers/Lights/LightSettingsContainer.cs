@@ -8,11 +8,16 @@ using UnityUtility.MathU;
 [Serializable]
 public class LightSettingsContainer : IObjectSettingsContainer
 {
+    public Light Spot => m_spot;
     [SerializeField] private Light m_spot;
 
     [SerializeField] private Gradient m_colorGradient;
     [SerializeField] private LightSettings m_minSettings;
     [SerializeField] private LightSettings m_maxSettings;
+
+    [SerializeField] private bool m_useGlobalIntensityMultiplier = false;
+
+    [NonSerialized] public float GlobalIntensityMultiplier = 1.0f;
 
 
     public void Init()
@@ -27,7 +32,7 @@ public class LightSettingsContainer : IObjectSettingsContainer
         }
 
         Color color = m_colorGradient.Evaluate(progress);
-        float intensity = MathUf.Lerp(m_minSettings.Intensity, m_maxSettings.Intensity, progress);
+        float intensity = MathUf.Lerp(m_minSettings.Intensity, m_maxSettings.Intensity, progress) * (m_useGlobalIntensityMultiplier ? GlobalIntensityMultiplier : 1.0f);
         float range = MathUf.Lerp(m_minSettings.Range, m_maxSettings.Range, progress);
         Vector2 angles = Vector2.Lerp(m_minSettings.SpotAngles, m_maxSettings.SpotAngles, progress);
 
