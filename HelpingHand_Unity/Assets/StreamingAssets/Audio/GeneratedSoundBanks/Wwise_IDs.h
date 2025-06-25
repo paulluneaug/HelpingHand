@@ -31,11 +31,14 @@ namespace AK
         static const AkUniqueID DECOR_SLIDE_HIDDEN_PLAY = 1915762278U;
         static const AkUniqueID DECOR_SLIDE_REVEAL_PLAY = 4223034519U;
         static const AkUniqueID DRAGONDUNGEONAMB_PLAY = 1884592839U;
+        static const AkUniqueID DRAGONDUNGEONAMB_STOP = 578257941U;
         static const AkUniqueID FLAMETHROWER_PLAY = 3520457680U;
         static const AkUniqueID FLAMETHROWER_POTENTIOMETER_PLAY = 241698166U;
         static const AkUniqueID FLAMETHROWER_POTENTIOMETER_STOP = 1013811976U;
         static const AkUniqueID FLAMETHROWER_SWITCHTURNOFF_PLAY = 332995207U;
         static const AkUniqueID FLAMETHROWER_SWITCHTURNON_PLAY = 3750562897U;
+        static const AkUniqueID FORGEAMB_PLAY = 1567708659U;
+        static const AkUniqueID FORGEAMB_STOP = 697830617U;
         static const AkUniqueID FROG_PLAY = 2682153788U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_PLAY = 1520116072U;
         static const AkUniqueID GEARLOOP_CLICKY_HIGHPITCH_STOP = 3856209626U;
@@ -112,7 +115,10 @@ namespace AK
         static const AkUniqueID STOP_SQUAREROCKFADEOUT = 1184221932U;
         static const AkUniqueID STOP_SQUAREROCKIMMEDIATE = 2999759669U;
         static const AkUniqueID SUN_PLAY = 3578106302U;
-        static const AkUniqueID THREEAMB_WHEEL_PLAY = 956314474U;
+        static const AkUniqueID SUPERMARKETAMB_PLAY = 523382487U;
+        static const AkUniqueID SUPERMARKETAMB_STOP = 3548368645U;
+        static const AkUniqueID TAVERNAMB_PLAY = 3582522998U;
+        static const AkUniqueID TAVERNAMB_STOP = 59669512U;
         static const AkUniqueID TOGGLE_DESACTIVATE_PLAY = 2782143696U;
         static const AkUniqueID TOGGLE_PLAY = 2942539354U;
         static const AkUniqueID TOILET_PLAY = 1126830659U;
@@ -121,6 +127,7 @@ namespace AK
         static const AkUniqueID UNTOGGLE_DESACTIVATE_PLAY = 1552092911U;
         static const AkUniqueID UNTOGGLE_PLAY = 3389532245U;
         static const AkUniqueID VILLAGEAMB_PLAY = 2034844254U;
+        static const AkUniqueID VILLAGEAMB_STOP = 3072840224U;
     } // namespace EVENTS
 
     namespace DIALOGUE_EVENTS

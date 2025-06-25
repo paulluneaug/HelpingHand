@@ -14,9 +14,6 @@
 					</PropertyList>
 					<ChildrenList>
 						<Event Name="ForgeAmb_Play" ID="{EE9E3625-9768-4288-B6FC-555DD73B6478}">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool" Value="False"/>
-							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{E7BD726E-6594-4529-A066-9C52ADF5153A}" ShortID="1054736482">
 									<PropertyList>
@@ -72,9 +69,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="SupermarketAmb_Play" ID="{D436A825-6C29-49CB-915A-5DD8FBC114C6}">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool" Value="False"/>
-							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{1F517464-B8CD-4FA9-8107-8574CEAD7A48}" ShortID="447930814">
 									<PropertyList>
@@ -111,9 +105,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="TavernAmb_Play" ID="{4C729DD3-4216-4C19-9E42-CC216BBA4750}">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool" Value="False"/>
-							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{0A819E91-A7F8-48DB-A36C-EBC2568C317B}" ShortID="499618451">
 									<PropertyList>
@@ -169,9 +160,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="TavernAmb_Stop" ID="{4FA58DA1-B663-4F4A-80C1-37CD6A265F5E}">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool" Value="False"/>
-							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{A53AF3AC-CD36-41CC-8ADE-6CACEAE573F4}" ShortID="159159299">
 									<PropertyList>
@@ -187,9 +175,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="SupermarketAmb_Stop" ID="{BA9390AC-AFB4-4252-A8B0-F8CDAA36095E}">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool" Value="False"/>
-							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{3AFF6009-0897-4731-A23C-8BC9FCCB78B3}" ShortID="785615442">
 									<PropertyList>
@@ -227,9 +212,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="ForgeAmb_Stop" ID="{3D1574AE-939A-4437-9B41-5C2373560B3D}">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool" Value="False"/>
-							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{160AE2D0-CD9C-456E-BFB0-2C294884C78C}" ShortID="273673410">
 									<PropertyList>
@@ -286,6 +268,9 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="ThreeAmb_Wheel_Play" ID="{94B494D8-CA6F-423E-9CE4-587E40CC5B8C}">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool" Value="False"/>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{676AA42A-72DB-40ED-9B71-E3D59435953F}" ShortID="372827053">
 									<PropertyList>
@@ -317,6 +302,36 @@
 							<ChildrenList>
 								<Action Name="" ID="{4994B72A-31DB-4E02-8252-E0E10FEBB315}" ShortID="361142933">
 									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Village" ID="{9203E3ED-EE10-49B8-BB2C-5F6E4D5AA1F5}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="DragonDungeonAmb_Stop" ID="{58EF381E-3885-4C85-B7B9-E277B76C7E66}">
+							<ChildrenList>
+								<Action Name="" ID="{74665178-D62A-4494-8187-F45093BFE39B}" ShortID="369046117">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Dragon" ID="{CFCDD983-ACD8-4FC8-B658-787A63B9794D}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="VillageAmb_Stop" ID="{F0972C2C-6A4C-491D-8683-87BFB21DC1B2}">
+							<ChildrenList>
+								<Action Name="" ID="{FDB1CB47-7DEE-4E4B-B1EE-4342BEB2A312}" ShortID="929856573">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
 									<ReferenceList>
