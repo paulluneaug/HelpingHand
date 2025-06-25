@@ -15,6 +15,8 @@ namespace AK
     {
         static const AkUniqueID ACHIEVEMENT_PLAY = 530013535U;
         static const AkUniqueID ARROWBUTTONCLICK_PLAY = 2803013081U;
+        static const AkUniqueID AUTOFOLLOWSPOT_TURNOFF_PLAY = 3033356147U;
+        static const AkUniqueID AUTOFOLLOWSPOT_TURNON_PLAY = 870673709U;
         static const AkUniqueID BUENDIA_PLAY = 343639240U;
         static const AkUniqueID BUTTONCLICK_PLAY = 2553422748U;
         static const AkUniqueID BUTTONPOINTERDOWN_PLAY = 588833345U;
@@ -54,6 +56,9 @@ namespace AK
         static const AkUniqueID GEARLOOP_SOFT_STOP = 3220058728U;
         static const AkUniqueID GEARTRANSITIONLOOP_PLAY = 1204435148U;
         static const AkUniqueID GEARTRANSITIONLOOP_STOP = 3174219734U;
+        static const AkUniqueID LED_TURNON_PLAY = 2316737410U;
+        static const AkUniqueID LIGHTINTENSITY_LOOP_PLAY = 2438463452U;
+        static const AkUniqueID LIGHTINTENSITY_LOOP_STOP = 1192168006U;
         static const AkUniqueID MAINGEAR_PLAY = 1290037556U;
         static const AkUniqueID MAINMUSIC_PLAY = 795638160U;
         static const AkUniqueID MAINMUSIC_STOP = 3439190578U;
@@ -63,6 +68,8 @@ namespace AK
         static const AkUniqueID NOMORE_SPOTLIGHT_BREAK_PLAY = 874823607U;
         static const AkUniqueID OPTIONSMENU_CLOSE_PLAY = 54378862U;
         static const AkUniqueID OPTIONSMENU_OPEN_PLAY = 3485407632U;
+        static const AkUniqueID PLAY_BOXERROR = 924961353U;
+        static const AkUniqueID PLAY_BOXLEAVING = 2552472107U;
         static const AkUniqueID PLAY_FADERFADEOUT = 3243193900U;
         static const AkUniqueID PLAY_FADERIMMEDIATE = 2824786805U;
         static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
@@ -101,13 +108,10 @@ namespace AK
         static const AkUniqueID SIMON_LIGHT2_TURNON_PLAY = 2523129872U;
         static const AkUniqueID SIMON_LIGHT3_TURNON_PLAY = 3688184017U;
         static const AkUniqueID SIMON_LIGHT4_TURNON_PLAY = 1553928474U;
-        static const AkUniqueID SMOKEIMPACT_PLAY = 839627559U;
-        static const AkUniqueID SOUND1_PLAY = 2143040304U;
-        static const AkUniqueID SOUND2_PLAY = 1790927701U;
-        static const AkUniqueID SOUND3_PLAY = 2960913830U;
         static const AkUniqueID SPOTLIGHT_BREAK_PLAY = 2800173644U;
         static const AkUniqueID SPOTLIGHT_OFF_PLAY = 1074187710U;
         static const AkUniqueID SPOTLIGHT_ON_PLAY = 1206761850U;
+        static const AkUniqueID STEVESUCCES_PLAY = 2803590085U;
         static const AkUniqueID STOP_CURTAINFADEOUT = 819184552U;
         static const AkUniqueID STOP_CURTAINIMMEDIATE = 2591636753U;
         static const AkUniqueID STOP_FOOTSTEPS = 2963349357U;
@@ -158,6 +162,7 @@ namespace AK
                 static const AkUniqueID INTRO_04 = 1697488976U;
                 static const AkUniqueID INTRO_05 = 1697488977U;
                 static const AkUniqueID INTRO_06 = 1697488978U;
+                static const AkUniqueID INTRO_08 = 1697488988U;
                 static const AkUniqueID INTRO_071 = 2580767384U;
                 static const AkUniqueID INTRO_072 = 2580767387U;
                 static const AkUniqueID NEXT_01 = 3504266440U;

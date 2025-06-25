@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     }
     private void Update()
     {
-        RTPCManager.RTPC_TimeOfDay.SetValue(gameObject, RTPCManager.TimeOfDay.Value);
+        RTPCManager.RTPC_TimeOfDay.SetGlobalValue(RTPCManager.TimeOfDay.Value);
     }
 
 
