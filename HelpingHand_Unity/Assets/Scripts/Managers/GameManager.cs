@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_simonManager.Initialize();
 
         LoadGlobalObjectScene();
-#if !PRODUCTION_BUILD
+#if UNITY_EDITOR
         LoadVirtualControllerScene(); // TODO disable in production build
 #endif
     }
