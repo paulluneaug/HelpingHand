@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{A97744F7-3FE7-46E3-AF1C-2567B1452CD0}",
     "Language": "SFX",
-    "Hash": "{7A1C8647-1D8C-439B-A743-BDE68454B1E0}",
+    "Hash": "{BC859FBC-CBD1-B4F8-B212-6B289953201B}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Objects",
     "ShortName": "Objects",
     "Path": "Objects.bnk",
@@ -1588,6 +1588,30 @@
       ]
      },
      {
+      "Id": "1289517845",
+      "Name": "Play_FallingAndSmoke",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_FallingAndSmoke",
+      "GUID": "{F9A08CB7-4D32-44FE-B8E2-53480BC5AEA7}",
+      "MaxAttenuation": "150",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionPostEvent": [
+       {
+        "Id": "1934872110",
+        "Name": "Play_FallingObject",
+        "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_FallingObject",
+        "GUID": "{C5AEE718-AE80-445E-A1E3-5F3750D0CF50}"
+       },
+       {
+        "Id": "3840664438",
+        "Name": "Play_Smoke_Impact",
+        "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_Smoke_Impact",
+        "GUID": "{BA74222A-593C-4134-89D6-019365F1D3DB}"
+       }
+      ]
+     },
+     {
       "Id": "1934872110",
       "Name": "Play_FallingObject",
       "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\Play_FallingObject",
@@ -2025,6 +2049,234 @@
         "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB\\MachinistRoom",
         "GUID": "{0F0EB7DE-27D7-49B7-8C42-140BD3689480}",
         "Color": "4"
+       }
+      ]
+     },
+     {
+      "Id": "1839094243",
+      "Name": "SelectedBaguette",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Weapons\\SelectedBaguette",
+      "GUID": "{BA07458E-9AAC-46E5-9CBB-FC7E0432F921}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "3893417221",
+        "Id": "3705421812",
+        "Name": "Baguette",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Weapon\\Baguette",
+        "GUID": "{B50F9ACA-C657-4652-A02F-4AC2167E1918}"
+       }
+      ]
+     },
+     {
+      "Id": "565159280",
+      "Name": "SelectedBeer",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Weapons\\SelectedBeer",
+      "GUID": "{A3F26C25-44C0-4043-8CE1-28F2CB683862}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "3893417221",
+        "Id": "1123068843",
+        "Name": "Beer",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Weapon\\Beer",
+        "GUID": "{6A2B0A20-99DF-4048-877C-6D79DF49E698}"
+       }
+      ]
+     },
+     {
+      "Id": "2387354966",
+      "Name": "SelectedBeret",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Hats\\SelectedBeret",
+      "GUID": "{41AF3757-5E9E-46E9-A3BB-A9797507472F}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "982177704",
+        "Id": "487143823",
+        "Name": "Beret",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Hat\\Beret",
+        "GUID": "{7339FB68-E355-49FE-90B8-4446F6405347}"
+       }
+      ]
+     },
+     {
+      "Id": "2195856037",
+      "Name": "SelectedBroom",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Weapons\\SelectedBroom",
+      "GUID": "{16D9551A-C3A1-4828-B4CA-39C67C90C3F6}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "3893417221",
+        "Id": "168097872",
+        "Name": "Broom",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Weapon\\Broom",
+        "GUID": "{3BE3C0CF-79FA-4552-B198-E053B641AC49}"
+       }
+      ]
+     },
+     {
+      "Id": "670521977",
+      "Name": "SelectedCarot",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Weapons\\SelectedCarot",
+      "GUID": "{8488CFA8-8B38-4A4A-954E-EA25853EE89E}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "3893417221",
+        "Id": "45405004",
+        "Name": "Carot",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Weapon\\Carot",
+        "GUID": "{DFF9BD2D-A42B-45FA-B0B4-5F269D2296E8}"
+       }
+      ]
+     },
+     {
+      "Id": "104964107",
+      "Name": "SelectedChicken",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Hats\\SelectedChicken",
+      "GUID": "{E6AB2BC8-30BD-45BD-AF40-6AA5392BD105}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "982177704",
+        "Id": "4251222990",
+        "Name": "Chicken",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Hat\\Chicken",
+        "GUID": "{20E53FA0-26D2-4540-A560-8FED0AFCC00D}"
+       }
+      ]
+     },
+     {
+      "Id": "4262416913",
+      "Name": "SelectedEmpty",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Weapons\\SelectedEmpty",
+      "GUID": "{DBE347F4-9A7B-4508-ABC9-E073235E29C3}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "3893417221",
+        "Id": "3354297748",
+        "Name": "Empty",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Weapon\\Empty",
+        "GUID": "{3326407D-EACC-4CB9-A2E1-DB3A60A44C70}"
+       }
+      ]
+     },
+     {
+      "Id": "4018946620",
+      "Name": "SelectedHatEmpty",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Hats\\SelectedHatEmpty",
+      "GUID": "{71A7A8CD-BD92-4537-B9A9-D1B39337A1EE}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "982177704",
+        "Id": "3354297748",
+        "Name": "Empty",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Hat\\Empty",
+        "GUID": "{31EFD320-C783-4402-AFC7-0B22EE9ABBB5}"
+       }
+      ]
+     },
+     {
+      "Id": "2065929111",
+      "Name": "SelectedHeadphones",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Hats\\SelectedHeadphones",
+      "GUID": "{B5D3CA46-6F7E-44D7-93F6-85ABE92C7EF8}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "982177704",
+        "Id": "880395932",
+        "Name": "Headphones",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Hat\\Headphones",
+        "GUID": "{3CDCB7BC-172F-428F-9857-3F5F1D044CD2}"
+       }
+      ]
+     },
+     {
+      "Id": "1627830865",
+      "Name": "SelectedHelmet",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Hats\\SelectedHelmet",
+      "GUID": "{4A6A9F54-98D8-43D0-8C05-39B7BA583BA2}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "982177704",
+        "Id": "2638415278",
+        "Name": "Helmet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Hat\\Helmet",
+        "GUID": "{C6044467-2EFA-4ECC-9FDA-D87F7ABDAE48}"
+       }
+      ]
+     },
+     {
+      "Id": "2443620326",
+      "Name": "SelectedRabbit",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Hats\\SelectedRabbit",
+      "GUID": "{3D86484A-37D2-4F5A-A7F2-EFFB11B4757E}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "982177704",
+        "Id": "2689485353",
+        "Name": "Rabbit",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Hat\\Rabbit",
+        "GUID": "{587AE148-5760-4B71-96FC-471C0B25E41B}"
+       }
+      ]
+     },
+     {
+      "Id": "2527379081",
+      "Name": "SelectedSword",
+      "ObjectPath": "\\Events\\Gameplay_Events\\ItemDropper\\StatesIfNeeded\\Weapons\\SelectedSword",
+      "GUID": "{85B38F3C-8B28-41D3-A321-327FDACE904A}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetSwitch": [
+       {
+        "GroupId": "3893417221",
+        "Id": "2454616260",
+        "Name": "Sword",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Weapon\\Sword",
+        "GUID": "{2C9F1113-8D72-47CF-9B6D-47E26B706D3F}"
        }
       ]
      },
@@ -2536,6 +2788,6 @@
     ]
    }
   ],
-  "FileHash": "{8C4D14D6-A2A2-AF2F-3FAE-5CC28102CB29}"
+  "FileHash": "{30E21187-5FED-EFFF-9A10-ECE3F4D9D145}"
  }
 }

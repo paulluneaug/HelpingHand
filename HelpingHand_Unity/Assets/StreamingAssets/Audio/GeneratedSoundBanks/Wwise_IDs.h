@@ -77,6 +77,7 @@ namespace AK
         static const AkUniqueID PLAY_FADERLOOP = 3688189956U;
         static const AkUniqueID PLAY_FADERMAX = 3224940184U;
         static const AkUniqueID PLAY_FADERMIN = 3359161110U;
+        static const AkUniqueID PLAY_FALLINGANDSMOKE = 1289517845U;
         static const AkUniqueID PLAY_FALLINGOBJECT = 1934872110U;
         static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
         static const AkUniqueID PLAY_FOOTSTEPS_RUN = 2983625421U;
@@ -108,6 +109,18 @@ namespace AK
         static const AkUniqueID ROTARYENCODER_DESACTIVATE_PLAY = 1971551941U;
         static const AkUniqueID ROTARYENCODER_LEFT_PLAY = 2135411543U;
         static const AkUniqueID ROTARYENCODER_RIGHT_PLAY = 643908294U;
+        static const AkUniqueID SELECTEDBAGUETTE = 1839094243U;
+        static const AkUniqueID SELECTEDBEER = 565159280U;
+        static const AkUniqueID SELECTEDBERET = 2387354966U;
+        static const AkUniqueID SELECTEDBROOM = 2195856037U;
+        static const AkUniqueID SELECTEDCAROT = 670521977U;
+        static const AkUniqueID SELECTEDCHICKEN = 104964107U;
+        static const AkUniqueID SELECTEDEMPTY = 4262416913U;
+        static const AkUniqueID SELECTEDHATEMPTY = 4018946620U;
+        static const AkUniqueID SELECTEDHEADPHONES = 2065929111U;
+        static const AkUniqueID SELECTEDHELMET = 1627830865U;
+        static const AkUniqueID SELECTEDRABBIT = 2443620326U;
+        static const AkUniqueID SELECTEDSWORD = 2527379081U;
         static const AkUniqueID SIMON_LIGHT1_TURNON_PLAY = 2438284647U;
         static const AkUniqueID SIMON_LIGHT2_TURNON_PLAY = 2523129872U;
         static const AkUniqueID SIMON_LIGHT3_TURNON_PLAY = 3688184017U;
