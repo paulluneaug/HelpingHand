@@ -127,6 +127,32 @@ public class GraphController : MonoBehaviour
         return m_graphDictionary.TryGetValue(graph, out graphRunner);
     }
 
+    public void PauseGraphs()
+    {
+        foreach (var item in m_graphDictionary)
+        {
+            GraphRunner runner = item.Value;
+            if (runner.IsInterrupted)
+            {
+                continue;
+            }
+            runner.PauseGraph();
+        }
+    }
+
+    public void ResumeGraphs()
+    {
+        foreach (var item in m_graphDictionary)
+        {
+            GraphRunner runner = item.Value;
+            if (runner.IsInterrupted)
+            {
+                continue;
+            }
+            runner.ResumeGraph();
+        }
+    }
+
     private void OnGraphEnded()
     {
         m_currentGraphRunner = null;
@@ -203,11 +229,14 @@ public class GraphController : MonoBehaviour
         if (m_currentGraphRunner != null)
         {
             m_currentGraphRunner.PauseGraph();
+            m_currentGraphRunner.IsInterrupted = true;
             GraphRunner interruptedGraph = m_currentGraphRunner;
             interruptingGraph.GraphRunner.OnGraphStopped += () =>
             {
                 m_currentGraphRunner = interruptedGraph;
+                m_currentGraphRunner.IsInterrupted = false;
                 m_currentGraphRunner.ResumeGraph();
+
             };
         }
 

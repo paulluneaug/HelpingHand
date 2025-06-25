@@ -1,15 +1,15 @@
 using System;
 
-using Events;
-
 using Cysharp.Threading.Tasks;
+
+using Events;
 
 using Sirenix.OdinInspector;
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+using UnityUtility.ObservableFields;
 using UnityUtility.SceneReference;
 using UnityUtility.Singletons;
 
@@ -26,14 +26,16 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
-    public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager ;
+    public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager;
     public SimonManager SimonManager => m_simonManager;
 
-    public InputAction SkipDialogueInput => m_skipDialogueInput.action;
+    public ButtonInputEvent SkipDialogueInput => m_skipDialogueInput;
 
     public GameState CurrentGameState => m_currentGameState;
 
     public event Action<GameState> OnGameStateChanged;
+
+    [NonSerialized] public ObservableField<bool> Paused;
 
     [Title("Act Sequence Manager")]
     [SerializeField] private ActSequenceManager m_actSequenceManager;
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [Separator]
 
     [Title("Input References")]
-    [SerializeField] private InputActionReference m_skipDialogueInput;
+    [SerializeField] private ButtonInputEvent m_skipDialogueInput;
 
     // Cache
     [NonSerialized] private Puppet m_puppet;
@@ -69,8 +71,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         base.Initialize();
 
+        Paused = new ObservableField<bool>(false);
+        Paused.OnValueChanged += OnPausedChanged;
+
         m_currentGameState = m_startGameState;
 
+        m_gameOptionsManager.Initialize();
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
         m_canvasManager.Initialize();
@@ -80,7 +86,18 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 #if !PRODUCTION_BUILD
         LoadVirtualControllerScene(); // TODO disable in production build
 #endif
-        m_skipDialogueInput.asset.Enable();
+    }
+
+    private void OnPausedChanged(bool pause)
+    {
+        if (pause)
+        {
+            m_actSequenceManager.PauseSequence();
+        }
+        else
+        {
+            m_actSequenceManager.ResumeSequence();
+        }
     }
 
     protected override void Start()
@@ -94,6 +111,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         base.OnDestroy();
         m_arduinoConnectorManager.Dispose();
         m_simonManager.Dispose();
+        m_gameOptionsManager.Dispose();
     }
 
     private async UniTask StartAsync()
@@ -121,6 +139,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         }
         
         // TODO Initialize all singletons
+
+        m_arduinoConnectorManager.SendFaderPosition(false);
 
         m_currentGameState = GameState.Gameplay;
         OnGameStateChanged?.Invoke(m_currentGameState);

@@ -1,3 +1,5 @@
+using System;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +13,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private CreditsMenuController m_creditsMenuController;
 
     [Title("Actions")]
-    [SerializeField] private InputActionReference m_pauseAction;
+    [SerializeField] private ButtonInputEvent m_pauseEvent;
+
+    [NonSerialized] private bool m_paused;
 
 
 
@@ -22,7 +26,8 @@ public class CanvasManager : MonoBehaviour
         m_creditsMenuController.CloseCreditsMenu();
 
 
-        m_pauseAction.action.performed += OnOptionActionPerformed;
+        m_pauseEvent.AddDownListener(OnPause);
+        m_paused = false;
     }
 
     private void Start()
@@ -41,7 +46,7 @@ public class CanvasManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        m_pauseAction.action.performed -= OnOptionActionPerformed;
+        m_pauseEvent.RemoveDownListener(OnPause);
     }
 
     public void StartGame()
@@ -59,26 +64,47 @@ public class CanvasManager : MonoBehaviour
     public void CloseOptions()
     {
         m_optionsMenuController.CloseOptionMenu();
+
         if (GameManager.Instance.CurrentGameState == GameManager.GameState.MainMenu)
         {
             m_mainMenuController.OpenMainMenu();
         }
     }
 
-    private void OnOptionActionPerformed(InputAction.CallbackContext context)
+    private void OnPause()
     {
-        OpenOptions();
+        GameManager gameManager = GameManager.Instance;
+        if (gameManager.CurrentGameState != GameManager.GameState.Gameplay)
+        {
+            return;
+        }
+
+        m_paused = !m_paused;
+        gameManager.Paused.Value = m_paused;
+        if (m_paused)
+        {
+            OpenOptions();
+            AudioManager.Instance.StateManager.SetGameState(GameState.Paused);
+            Debug.Log("PAUSED");
+        }
+        else
+        {
+            CloseOptions();
+            AudioManager.Instance.StateManager.SetGameState(GameState.Gameplay);
+
+            Debug.Log("GAMEPLAY");
+        }
     }
 
     public void CloseCredits()
     {
-        m_mainMenuController.OpenMainMenu();
         m_creditsMenuController.CloseCreditsMenu();
+        m_mainMenuController.OpenMainMenu();
     }
 
     public void OpenCredits()
     {
-        m_creditsMenuController.OpenCreditsMenu();
         m_mainMenuController.CloseMainMenu();
+        m_creditsMenuController.OpenCreditsMenu();
     }
 }

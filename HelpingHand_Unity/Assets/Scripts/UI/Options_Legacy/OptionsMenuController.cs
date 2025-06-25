@@ -218,7 +218,9 @@ public class OptionsMenuController : SerializedMonoBehaviour
 
     private void OnResumeButtonClicked()
     {
-        GameManager.Instance.CanvasManager.CloseOptions();
+        GameManager gameManager = GameManager.Instance;
+        gameManager.CanvasManager.CloseOptions();
+        gameManager.Paused.Value = false;
     }
 
     private void OnDefaultButtonClicked()
