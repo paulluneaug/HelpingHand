@@ -28,6 +28,8 @@ public class OptionsMenuController : SerializedMonoBehaviour
     [SerializeField] private Button m_defaultButton;
     [SerializeField] private Button m_mainMenuButton;
 
+    [SerializeField] private Selectable m_notNavigable;
+
     [Title("Description")]
     [SerializeField] private TMP_Text m_descriptionText;
     [SerializeField] private Image m_descriptionBackground;
@@ -37,7 +39,7 @@ public class OptionsMenuController : SerializedMonoBehaviour
     [SerializeField] private BaseOptionController<WindowMode> m_optionWindowMode;
     [SerializeField] private BaseOptionController<DialogueReadMode> m_optionDialogueReadMode;
 
-    [Title("Audio", separator:false)]
+    [Title("Audio", separator: false)]
     [SerializeField] private BaseOptionController<float> m_optionMasterVolume;
     [SerializeField] private BaseOptionController<float> m_optionVoiceVolume;
 
@@ -48,7 +50,7 @@ public class OptionsMenuController : SerializedMonoBehaviour
     [SerializeField] private ColorOptionController m_optionSubtitleBackgroundColor;
 
     [Space]
-    [OdinSerialize] private IOptionController[] m_additionalOptionControllers;
+    [OdinSerialize] private readonly IOptionController[] m_additionalOptionControllers;
 
 
 
@@ -142,6 +144,7 @@ public class OptionsMenuController : SerializedMonoBehaviour
         UnsubscribeFromEvents();
 
         OnMenuClosed?.Invoke();
+        m_notNavigable.Select();
 
         m_open = false;
     }

@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4172762714902102336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3212841012535011140}
+  - component: {fileID: 2012086690591795731}
+  m_Layer: 0
+  m_Name: IndicatorController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3212841012535011140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172762714902102336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7759498392667776304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2012086690591795731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172762714902102336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda3228d8b937ba458063d14fe936d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_indicators:
+  - {fileID: 11400000, guid: d1c5837f3ab29574b8ce862bbc70d825, type: 2}
+  - {fileID: 11400000, guid: 43f07a6379bcc254b8d479d2e858e661, type: 2}
+  - {fileID: 11400000, guid: 7ca36cecf7c6a40498329304b67ebd60, type: 2}
+  - {fileID: 11400000, guid: 19dcb1cef3ecc6544b056082723dc251, type: 2}
+  - {fileID: 11400000, guid: 776ff56fa8dcccd4f9a4a06130530c64, type: 2}
+  - {fileID: 11400000, guid: 246fa0a43c25a194cbba834bbe85af3a, type: 2}
+  - {fileID: 11400000, guid: 9c543cf78e3d93a4f936babb52e3dfb5, type: 2}
+  - {fileID: 11400000, guid: ffb4355b61f7e1f439fd29575907b758, type: 2}
+  - {fileID: 11400000, guid: ad05f21dce6cfd240a291e43e1991fd1, type: 2}
+  m_indicatorState: 0
 --- !u!1 &6016779573717118439
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +84,8 @@ Transform:
   m_LocalPosition: {x: 2.997732, y: 0.49695632, z: 5.9012012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3212841012535011140}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2186480663098209708
@@ -70,12 +126,21 @@ MonoBehaviour:
     m_mediumFontSize: 70
     m_largeFontSize: 80
   m_arduinoConnectorManager:
-    m_enableArduinoConnection: 0
-    m_arduinoConnector:
-      m_port: 
-      m_baud: 0
+    m_enableArduinoConnection: 1
+    m_controllerSettingsJsonPath: ControllerSettings.json
   m_canvasManager: {fileID: 0}
-  m_startGameState: 0
+  m_simonManager:
+    m_simonButtons:
+      m_keyValuePairsList:
+      - Key: 0
+        Value: {fileID: 11400000, guid: 03c269e175099da4092eb635fc95d2b2, type: 2}
+      - Key: 1
+        Value: {fileID: 11400000, guid: e1f517848d691fb46a18ac48c70c26f7, type: 2}
+      - Key: 2
+        Value: {fileID: 11400000, guid: ff754916ad9682e4b80967cd4aa4b814, type: 2}
+      - Key: 3
+        Value: {fileID: 11400000, guid: 38d4026f968fb894497e30134e0bd5c1, type: 2}
+  m_startGameState: 1
   m_globalObjectsScene:
     m_sceneAsset: {fileID: 102900000, guid: 9d212eca0c92e71478762f8c51d04e1a, type: 3}
     m_scenePath: Assets/Scenes/GlobalObjectsScene.unity

@@ -10,7 +10,7 @@ public class WaitDialogueNode : WaitNodeBase
     [SerializeField]
     [HideLabel]
     private DialogueNode m_dialogue;
-    
+
     protected override void UpdateWaitUntilTest()
     {
         m_stopWait = m_dialogue.HasBeenRead.Value;

@@ -11,7 +11,7 @@ public class ActManager : MonoBehaviour
     [SerializeField] private Transform m_puppetStart;
     [SerializeField] private GraphController m_graphController;
     [SerializeField] private bool m_autoStart = false;
-        
+
     // Cache
     [NonSerialized] private bool m_isFinished;
 

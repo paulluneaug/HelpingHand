@@ -9,7 +9,7 @@ public class ConditionListenerCallbacks : ConditionListener
 
     [SerializeField]
     private UnityEvent m_onConditionFalse;
-    
+
     protected override void OnConditionUpdated()
     {
         bool test = m_condition.Test();

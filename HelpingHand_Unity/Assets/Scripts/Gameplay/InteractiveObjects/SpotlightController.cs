@@ -73,7 +73,7 @@ public class SpotlightController : MonoBehaviour
         {
             return;
         }
-        
+
         Vector2 input = m_manualInput.Value.normalized;
         float angle = m_manualRotationSpeed * Time.deltaTime;
 
@@ -127,7 +127,7 @@ public class SpotlightController : MonoBehaviour
         if (m_spotTransform == null)
         {
             return;
-        } 
+        }
 
         Gizmos.color = Color.yellow;
         GizmosExtensions.DrawConeFromAngle(m_spotTransform.position, m_spotTransform.forward, m_coneHeight, m_spotAngle * MathUf.DEG_2_RAD);

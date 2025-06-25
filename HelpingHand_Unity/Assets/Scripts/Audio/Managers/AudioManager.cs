@@ -1,10 +1,12 @@
 using System;
 using System.Diagnostics;
+using System.Text;
 using System.Threading;
 
 using Cysharp.Threading.Tasks;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using UnityUtility.CustomAttributes;
 using UnityUtility.Singletons;
@@ -13,8 +15,6 @@ using static RTPCManager;
 
 using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
-using UnityEngine.SceneManagement;
-using System.Text;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -71,8 +71,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
                 break;
 
             default:
-               // StateManager.SetGameState(GameState.None);
-               // StateManager.SetMusicState(MusicState.None);
+                // StateManager.SetGameState(GameState.None);
+                // StateManager.SetMusicState(MusicState.None);
                 break;
         }
     }
@@ -84,8 +84,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
+    private void Update()
+    {
+        RTPCManager.RTPC_TimeOfDay.SetValue(gameObject, RTPCManager.TimeOfDay.Value);
+    }
 
- 
+
     public override void OnDestroy()
     {
         base.OnDestroy();
@@ -252,13 +256,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         #region Debug
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Dialogue State Argument Wwise :");
+        _ = sb.AppendLine("Dialogue State Argument Wwise :");
 
         void AppendIfNotIgnore(string label, string value, uint id)
         {
             if (!string.Equals(value, "IGNORE", StringComparison.OrdinalIgnoreCase))
             {
-                sb.Append($" {label}: {value}");
+                _ = sb.Append($" {label}: {value}");
             }
         }
 

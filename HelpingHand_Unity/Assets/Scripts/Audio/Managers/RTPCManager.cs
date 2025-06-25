@@ -25,6 +25,8 @@ public class RTPCManager : MonoBehaviour
 
     public RTPC RTPC_TimeOfDay;
 
+    public BaseVariable<float> TimeOfDay;
+
     #endregion
 
     [Header("Default Target Object")]

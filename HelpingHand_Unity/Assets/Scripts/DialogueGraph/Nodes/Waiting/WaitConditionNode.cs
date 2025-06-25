@@ -20,7 +20,7 @@ public class WaitConditionNode : WaitNodeBase
         base.Initialize();
         m_condition.Initialize();
     }
-    
+
     protected override void InitializeExecute(GraphRunnerHandler handler, NodePort inPort)
     {
         m_condition.OnPreconditionUpdated -= UpdateWaitUntilTest;

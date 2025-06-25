@@ -155,7 +155,7 @@ public class Dropper : MonoBehaviour
         m_displayedItems.ForEach(item => item.UpdatePosition(transitionProgress, m_transitionEasingFunction));
         m_storedMovingItem?.UpdatePosition(transitionProgress, m_transitionEasingFunction);
 
-        if (m_currentState  == DropperState.Ready)
+        if (m_currentState == DropperState.Ready)
         {
             ApplyOffsetIfNeeded();
         }

@@ -2,18 +2,19 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)] 
-[NodeTint(0f, 0.4784314f, 0.6509804f)] 
+[NodeWidth(250)]
+[NodeTint(0f, 0.4784314f, 0.6509804f)]
 [CreateNodeMenu("Data/Get/Blackboard Value")]
 public class GetBlackboardValueNode : BaseNode
 {
     [Input(ShowBackingValue.Never)]
-    private object m_inValue;
+    private readonly object m_inValue;
 
-    [Output(ShowBackingValue.Never)] [SerializeField]
+    [Output(ShowBackingValue.Never)]
+    [SerializeField]
     private object m_valueOut;
 
-    [SerializeField] 
+    [SerializeField]
     private string m_key;
 
     public override object GetValue(NodePort port)

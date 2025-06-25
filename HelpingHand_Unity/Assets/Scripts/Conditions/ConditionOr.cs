@@ -6,8 +6,8 @@ using UnityEngine;
 public class ConditionOr : ConditionBase
 {
     [SerializeField]
-    private ConditionBase[] m_preconditions = new ConditionBase[] {};
-    
+    private ConditionBase[] m_preconditions = new ConditionBase[] { };
+
     public ConditionBase[] Preconditions => m_preconditions;
 
     public override bool Test()

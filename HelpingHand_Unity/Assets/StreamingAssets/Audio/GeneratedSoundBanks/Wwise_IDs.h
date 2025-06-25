@@ -27,6 +27,8 @@ namespace AK
         static const AkUniqueID CURTAINLOOP_PLAY = 2848090300U;
         static const AkUniqueID CURTAINMAX_PLAY = 3445812898U;
         static const AkUniqueID CURTAINMIN_PLAY = 3264562480U;
+        static const AkUniqueID DECOR_SLIDE_HIDDEN_PLAY = 1915762278U;
+        static const AkUniqueID DECOR_SLIDE_REVEAL_PLAY = 4223034519U;
         static const AkUniqueID DRAGONDUNGEONAMB_PLAY = 1884592839U;
         static const AkUniqueID FLAMETHROWER_PLAY = 3520457680U;
         static const AkUniqueID FLAMETHROWER_POTENTIOMETER_PLAY = 241698166U;
@@ -86,6 +88,10 @@ namespace AK
         static const AkUniqueID ROTARYENCODER_DESACTIVATE_PLAY = 1971551941U;
         static const AkUniqueID ROTARYENCODER_LEFT_PLAY = 2135411543U;
         static const AkUniqueID ROTARYENCODER_RIGHT_PLAY = 643908294U;
+        static const AkUniqueID SIMON_LIGHT1_TURNON_PLAY = 2438284647U;
+        static const AkUniqueID SIMON_LIGHT2_TURNON_PLAY = 2523129872U;
+        static const AkUniqueID SIMON_LIGHT3_TURNON_PLAY = 3688184017U;
+        static const AkUniqueID SIMON_LIGHT4_TURNON_PLAY = 1553928474U;
         static const AkUniqueID SMOKEIMPACT_PLAY = 839627559U;
         static const AkUniqueID SOUND1_PLAY = 2143040304U;
         static const AkUniqueID SOUND2_PLAY = 1790927701U;

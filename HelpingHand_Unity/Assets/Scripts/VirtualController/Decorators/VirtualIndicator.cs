@@ -9,7 +9,7 @@ public class VirtualIndicator : MonoBehaviour
 {
     public bool Enabled => m_enabled;
 
-    [SerializeField] [Required] private IndicatorState m_state;
+    [SerializeField][Required] private IndicatorState m_state;
     [SerializeField] private Image m_image;
     [SerializeField] private Image m_glow;
 

@@ -12,7 +12,7 @@ public abstract class InterruptableNode : KillableNode
     public bool Interruptable => m_interruptable;
 
     protected bool m_hasBeenInterrupted;
-    
+
     public override void Initialize()
     {
         base.Initialize();
