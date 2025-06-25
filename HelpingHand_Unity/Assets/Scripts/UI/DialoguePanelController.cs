@@ -47,7 +47,6 @@ public class DialoguePanelController : MonoBehaviour
         m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value);
         m_subtitleText.color = m_optionsManager.SubtitleColor.Value;
         m_subtitleText.fontSize = m_optionsManager.ToFontSize(m_optionsManager.SubtitleSize.Value);
-        m_subtitleBackground.rectTransform.sizeDelta = m_subtitleBackground.rectTransform.sizeDelta.WhereX(m_optionsManager.ToBackgroundWidth(m_optionsManager.SubtitleSize.Value));
     }
 
     private void SubscribeToEvents()
@@ -84,6 +83,5 @@ public class DialoguePanelController : MonoBehaviour
     private void OnSubtitleSizeChanged(SubtitleSize subtitleSize)
     {
         m_subtitleText.fontSize = m_optionsManager.ToFontSize(subtitleSize);
-        m_subtitleBackground.rectTransform.sizeDelta = m_subtitleBackground.rectTransform.sizeDelta.WhereX(m_optionsManager.ToBackgroundWidth(subtitleSize));
     }
 }
