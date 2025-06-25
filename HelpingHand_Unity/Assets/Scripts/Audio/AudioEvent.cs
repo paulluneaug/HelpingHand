@@ -77,6 +77,22 @@ public class AudioEvent : ScriptableObject
     [LabelText("Succes")]
     [SerializeField] private SuccesState m_succesState;
 
+
+    [GUIColor(0.95f, 0.8f, 0.8f)]
+    [FoldoutGroup("Interruptions")]
+    [LabelText("Joystick (Interruption)")]
+    [SerializeField] private InterruptionJoystickState m_interruptionjoystickState;
+
+    [GUIColor(0.95f, 0.8f, 0.8f)]
+    [FoldoutGroup("Interruptions")]
+    [LabelText("Light Intensity (Interruption)")]
+    [SerializeField] private InterruptionLightIntensityState m_interruptionlightintensityState;
+
+    [GUIColor(0.7f, 1f, 0.8f)]
+    [FoldoutGroup("Acte 1")]
+    [LabelText("Combat2")]
+    [SerializeField] private Combat2State m_combat2State;
+
     public async UniTask Play(GameObject target = null, CancellationToken cancellationToken = default)
     {
         if (m_wwiseEvent != null && m_wwiseEvent.IsValid())
@@ -99,6 +115,11 @@ public class AudioEvent : ScriptableObject
                 m_equipementState.ToString(),
                 m_finState.ToString(),
                 m_succesState.ToString(),
+                m_combat2State.ToString(),
+                m_interruptionlightintensityState.ToString(),
+                m_interruptionjoystickState.ToString(),
+
+
                 target,
                 cancellationToken
             );

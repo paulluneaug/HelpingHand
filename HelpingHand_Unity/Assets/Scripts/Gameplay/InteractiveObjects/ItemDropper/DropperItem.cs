@@ -107,7 +107,7 @@ public class DropperItem : MonoBehaviour
         m_alreadyDroppedItem = true;
 
         m_fallVFX.Play();
-        // Jouer son fall + smoke (après .2sec)
+        _ = AudioManager.Instance.EventManager.Play_FallingObjectAndSmokeImpact.Post(lootbox);
         m_equipTimer.Start();
         m_previewRenderer.sprite = m_defaultSprite;
     }
