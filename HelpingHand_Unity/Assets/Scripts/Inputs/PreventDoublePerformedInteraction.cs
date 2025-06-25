@@ -18,10 +18,11 @@ public class PreventDoublePerformedInteraction : IInputInteraction
     {
         var actuation = context.ComputeMagnitude();
 
+        float now = Time.time;
 
         if (m_waitingForRelease)
         {
-            if (actuation <= ReleasePointOrDefault)
+            if (actuation <= ReleasePointOrDefault && Time.time - m_lastPerformedTime > MinDelay)
             {
                 m_waitingForRelease = false;
                 if (Mathf.Approximately(0f, actuation))
@@ -63,7 +64,5 @@ public class PreventDoublePerformedInteraction : IInputInteraction
 
     public void Reset()
     {
-        m_waitingForRelease = false;
-        m_lastPerformedTime = 0.0f;
     }
 }
