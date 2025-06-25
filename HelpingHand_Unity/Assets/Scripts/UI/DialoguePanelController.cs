@@ -44,7 +44,7 @@ public class DialoguePanelController : MonoBehaviour
 
     private void UpdateSubtitleSettings()
     {
-        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value / 100.0f);
+        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value);
         m_subtitleText.color = m_optionsManager.SubtitleColor.Value;
         m_subtitleText.fontSize = m_optionsManager.ToFontSize(m_optionsManager.SubtitleSize.Value);
     }
@@ -52,6 +52,7 @@ public class DialoguePanelController : MonoBehaviour
     private void SubscribeToEvents()
     {
         m_optionsManager.SubtitleBackgroundOpacity.OnValueChanged += OnSubtitleOpacityChanged;
+        m_optionsManager.SubtitleBackgroundColor.OnValueChanged += OnSubtitleBackgroundColorChanged;
         m_optionsManager.SubtitleColor.OnValueChanged += OnSubtitleColorChanged;
         m_optionsManager.SubtitleSize.OnValueChanged += OnSubtitleSizeChanged;
     }
@@ -59,13 +60,19 @@ public class DialoguePanelController : MonoBehaviour
     private void UnsubscribeFromEvents()
     {
         m_optionsManager.SubtitleBackgroundOpacity.OnValueChanged -= OnSubtitleOpacityChanged;
+        m_optionsManager.SubtitleBackgroundColor.OnValueChanged -= OnSubtitleBackgroundColorChanged;
         m_optionsManager.SubtitleColor.OnValueChanged -= OnSubtitleColorChanged;
         m_optionsManager.SubtitleSize.OnValueChanged -= OnSubtitleSizeChanged;
     }
 
     private void OnSubtitleOpacityChanged(float subtitleOpacity)
     {
-        m_subtitleBackground.color = m_subtitleBackground.color.WhereA(subtitleOpacity / 100.0f);
+        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value);
+    }
+
+    private void OnSubtitleBackgroundColorChanged(Color subtitleColor)
+    {
+        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value);
     }
 
     private void OnSubtitleColorChanged(Color subtitleColor)

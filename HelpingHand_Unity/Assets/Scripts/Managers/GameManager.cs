@@ -1,20 +1,19 @@
 using System;
 
-using Events;
-
 using Cysharp.Threading.Tasks;
+
+using Events;
 
 using Sirenix.OdinInspector;
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+using UnityUtility.ObservableFields;
 using UnityUtility.SceneReference;
 using UnityUtility.Singletons;
 
 using Separator = UnityUtility.CustomAttributes.SeparatorAttribute;
-using UnityUtility.ObservableFields;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
@@ -27,7 +26,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
-    public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager ;
+    public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager;
     public SimonManager SimonManager => m_simonManager;
 
     public ButtonInputEvent SkipDialogueInput => m_skipDialogueInput;
@@ -77,6 +76,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
         m_currentGameState = m_startGameState;
 
+        m_gameOptionsManager.Initialize();
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
         m_canvasManager.Initialize();
@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         base.OnDestroy();
         m_arduinoConnectorManager.Dispose();
         m_simonManager.Dispose();
+        m_gameOptionsManager.Dispose();
     }
 
     private async UniTask StartAsync()
@@ -136,6 +137,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             gameEvent.Initialize();
         }
+
+        m_arduinoConnectorManager.SendFaderPosition(false);
 
         m_currentGameState = GameState.Gameplay;
         OnGameStateChanged?.Invoke(m_currentGameState);
