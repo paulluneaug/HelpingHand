@@ -73,6 +73,37 @@
 								<State Name="_14" ID="{8F79E3AD-99F2-4DFC-945F-08D26BB42559}"/>
 							</ChildrenList>
 						</StateGroup>
+						<StateGroup Name="Interruption_Joystick" ID="{088221F0-9D68-4126-AEF2-69A97060CAA9}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{B39F148B-8B3E-4CC7-B9E2-2A62720CA773}"/>
+								<State Name="_11" ID="{42A13750-CE89-4785-835B-022ADB3394EC}"/>
+								<State Name="_12" ID="{8F6BA5D1-1A26-4DEE-BFF5-C444F5EB5695}"/>
+								<State Name="_13" ID="{0C39F11C-917A-49CF-B0BD-C683E7CB10A1}"/>
+								<State Name="_21" ID="{93B929FA-8A45-4282-A276-F57B30913CA5}"/>
+								<State Name="_22" ID="{5AD1B1E1-A2C6-4577-AE52-C24ED9098D90}"/>
+								<State Name="_31" ID="{9C66847D-71E7-4B06-9A72-CB3B1A07C31D}"/>
+								<State Name="_32" ID="{6EB3797D-E26A-4CB0-8E22-38F9CC93A994}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Interruption_LightIntensity" ID="{3B7E1FC9-5AF4-443B-8FDE-95BF40E5CD06}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{5C60963D-FA53-4CF5-A94E-6DF1D582F76E}"/>
+								<State Name="_11" ID="{F1CEAF21-B8A9-421A-B0D0-5BE86A9BD0FD}"/>
+								<State Name="_12" ID="{CED74937-232A-4BB8-B0BC-CA0DD9042FA5}"/>
+								<State Name="_21" ID="{07B12679-A4B7-4257-8D30-DD2075C3B96B}"/>
+								<State Name="_22" ID="{3B22CCDB-79DF-4A2C-8177-9604426B7A86}"/>
+								<State Name="_31" ID="{CA5455E9-9204-4338-A8D5-D825C1209DFA}"/>
+								<State Name="_32" ID="{3DB30337-B476-498F-8DF0-DC340C83A1D6}"/>
+								<State Name="_41" ID="{BB171CFB-AD80-4B64-95A3-E6CAC7851E33}"/>
+								<State Name="_42" ID="{6811D7FE-ED70-4BF8-9E84-21F159522F85}"/>
+							</ChildrenList>
+						</StateGroup>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Onboarding" ID="{E69410D9-BC5A-4253-B397-C1469291F3A2}" ShortID="617615538">
@@ -355,6 +386,10 @@
 								<State Name="Fin_59" ID="{D8F54B25-83A0-4F2C-BF00-89D9BE15532D}"/>
 								<State Name="Fin_510" ID="{D87A631C-64CB-4F91-AA9C-4F554BF79F69}"/>
 								<State Name="Fin_511" ID="{5660E9BF-483C-4744-BA27-D2E18BE7B894}"/>
+								<State Name="Transition_11" ID="{9855C248-D3C9-4FAC-84DD-31681129076D}"/>
+								<State Name="Transition_12" ID="{0C368986-8855-4364-85C3-8ABBD6FA8ED6}"/>
+								<State Name="Transition_13" ID="{51BE2493-A43E-4ADD-BE77-9FBC75CD0FC6}"/>
+								<State Name="Transition_02" ID="{946FA6E3-C905-4315-84C0-F1F43EEB6F63}"/>
 							</ChildrenList>
 						</StateGroup>
 						<StateGroup Name="Equipement" ID="{9733AD7B-2896-4B24-9F0D-C6B3DF55378A}">
@@ -463,6 +498,48 @@
 								<State Name="Equip_Whippin_10" ID="{1EE3191C-E4F7-4F4F-894A-EA5FCFB4A202}"/>
 								<State Name="Equip_Whippin_11" ID="{227AEC6F-4182-4DF3-8EE8-9F4B15100F67}"/>
 								<State Name="Equip_Whippin_12" ID="{13E9E86C-FC1D-4597-9EA5-73E5F0651AF9}"/>
+							</ChildrenList>
+						</StateGroup>
+						<StateGroup Name="Combat_2" ID="{2F556B2E-BA7A-47FC-8D6B-38FDF309A39E}">
+							<PropertyList>
+								<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<State Name="None" ID="{92E10783-DCB4-4CF4-8530-3EF9B7EF07C3}"/>
+								<State Name="Conclu_Simon_11" ID="{F229EA6D-3E9F-468C-BD45-38CF3DE84BF4}"/>
+								<State Name="Conclu_Simon_12" ID="{677695FF-55F0-4F4A-9B1C-F9D49AFAA035}"/>
+								<State Name="Conclu_Simon_13" ID="{664A499E-2592-49D5-A2B2-51AFEC062941}"/>
+								<State Name="Conclu_Simon_21" ID="{92F54E36-4B95-4673-8BBE-947011749144}"/>
+								<State Name="Conclu_Simon_22" ID="{D568306F-8569-4841-A2AC-C5DE0A268620}"/>
+								<State Name="Conclu_Simon_23" ID="{3893FB02-035A-4E03-AC53-611DAADC3FFF}"/>
+								<State Name="Conclu_Simon_31" ID="{AF40F61E-6164-45B7-9526-BD6CF0B425CF}"/>
+								<State Name="Conclu_Simon_32" ID="{F86A842C-9A74-4FBF-99FA-42E13CC0E385}"/>
+								<State Name="Conclu_Simon_33" ID="{3ED55F1C-D460-4078-9C51-E1F4ACF7E05C}"/>
+								<State Name="Conclu_Simon_41" ID="{4F987206-DC0E-4B13-9952-F1BDA22A7074}"/>
+								<State Name="Conclu_Simon_42" ID="{FBC6D7DE-6062-4207-8BE9-B19F1A5BA6B6}"/>
+								<State Name="Conclu_Simon_51" ID="{886635C4-1B98-492A-BEE1-4994C36E96C6}"/>
+								<State Name="Conclu_Simon_52" ID="{F2CF44DA-2D3F-4B30-94B5-BB4A43E0B438}"/>
+								<State Name="Conclu_Simon_53" ID="{5005B492-56C8-4F05-B773-FAB717D43516}"/>
+								<State Name="Conclu_Simon_06" ID="{44F336A7-E612-4F32-97B9-7593B6913C9D}"/>
+								<State Name="Conclu_Simon_07" ID="{F2B2F006-5FDE-4A1B-ABDD-5C823DD5E569}"/>
+								<State Name="Conclu_Simon_08" ID="{C8CDCD7F-F142-4C06-B389-82E88B449B9F}"/>
+								<State Name="Conclu_Simon_09" ID="{9C5BC0E7-9419-44FD-83B6-259031E757F3}"/>
+								<State Name="Conclu_Simon_10" ID="{FDC6AF48-708A-4D5E-8258-F4FA1093A517}"/>
+								<State Name="Conclu_Simon_01" ID="{22453058-0A09-40CC-A2D3-794BFD2BD301}"/>
+								<State Name="Conclu_Simon_02" ID="{2352DC93-8349-4D40-A2CF-DA234AE13732}"/>
+								<State Name="Conclu_Simon_03" ID="{35BF87C5-A47B-4710-8CD6-17BC2EED5260}"/>
+								<State Name="Conclu_Simon_14" ID="{FEE1D3C8-7466-48E6-9721-BABD1FFEBEFE}"/>
+								<State Name="Conclu_Simon_15" ID="{6E49794C-C49F-47EB-9BE9-52E107C5C39B}"/>
+								<State Name="Conclu_Simon_16" ID="{D9ABD510-51C2-41F4-A524-B072228DB99D}"/>
+								<State Name="Outro_01" ID="{A64C5287-D74A-4ABB-9882-903784AC1AD5}"/>
+								<State Name="Outro_02" ID="{919CDF75-4167-40E9-B792-8C6A1E6BC484}"/>
+								<State Name="Outro_03" ID="{5D62F3D2-0A9E-4016-BF0E-BA6FD167B3D3}"/>
+								<State Name="Outro_04" ID="{FB0C2FFD-5B3A-41E0-886D-45E28E43F797}"/>
+								<State Name="Outro_051" ID="{79983C69-74CF-42B8-B532-EFE9CB5A1792}"/>
+								<State Name="Outro_521" ID="{9B8C7636-5DFF-4A58-91F8-62CFAB0F1141}"/>
+								<State Name="Outro_522" ID="{3ED6CD37-D262-417E-957F-B8E39E201F13}"/>
+								<State Name="Outro_531" ID="{FD56F983-C1F8-4EB5-B148-ECD02B727D91}"/>
+								<State Name="Outro_532" ID="{C0D0B9F0-DF65-43D0-AD7F-F1085BA53C73}"/>
 							</ChildrenList>
 						</StateGroup>
 					</ChildrenList>

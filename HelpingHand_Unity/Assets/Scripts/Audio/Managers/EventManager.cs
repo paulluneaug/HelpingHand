@@ -1,3 +1,5 @@
+using System.Drawing;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -92,9 +94,17 @@ public class EventManager : MonoBehaviour
 
     #endregion
 
+    #region Ambience Events
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Town_Amb_Play;
+
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Tavern_Amb_Play;
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Armurerie_Amb_Play;
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Supermarket_Amb_Play;
+
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Volcano_Amb_Play;
+    #endregion
     #region ItemDropper Events 
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_FallingObject;
-
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_HatCatch;
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_WeaponCatch;
 
@@ -103,6 +113,8 @@ public class EventManager : MonoBehaviour
 
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Stop_ItemDropperMovingLoop_Fadeout;
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_Smoke_Impact;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_FallingObjectAndSmokeImpact;
 
 
     [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperLeaving;
