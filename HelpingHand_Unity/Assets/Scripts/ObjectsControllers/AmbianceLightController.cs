@@ -39,7 +39,7 @@ public class AmbianceLightController : MonoBehaviour
             foreach (ContinuousLightController lightController in m_lightControllers)
             {
                 lightController.SettingsContainer.Spot.gameObject.SetActive(true);
-                lightController.SettingsContainer.GlobalIntensityMultiplier = 0.0f;
+                lightController.SettingsContainer.ExternalIntensityMultiplier = 0.0f;
             }
         }
     }
@@ -64,7 +64,7 @@ public class AmbianceLightController : MonoBehaviour
             {
                 lightController.SettingsContainer.Spot.gameObject.SetActive(false);
             }
-            lightController.SettingsContainer.GlobalIntensityMultiplier = m_transitionIn ? progress : 1.0f - progress;
+            lightController.SettingsContainer.ExternalIntensityMultiplier = m_transitionIn ? progress : 1.0f - progress;
         }
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
@@ -15,7 +14,6 @@ public class SceneLightsController : MonoBehaviour
         [SerializeField] private EntityState m_entityState;
 
         [NonSerialized] public bool IsActive;
-        [NonSerialized] private List<Light> m_allLights;
 
         private EntityState m_globalLightsToggle;
 
@@ -47,53 +45,10 @@ public class SceneLightsController : MonoBehaviour
     [SerializeField] private FloatVariable m_sceneSpotsIntensity;
     [SerializeField] [Range(0, 1)] private float m_minIntensityPercentage = 0.10f;
     [SerializeField] private LightAmbiance[] m_ambiances;
-    
-    [NonSerialized] private Dictionary<Light, (float minIntensity, float maxIntensity)> m_lightSettings;
-
-    private void Awake()
-    {
-        Light[] m_allLights = GetComponentsInChildren<Light>();
-        m_lightSettings = new();
-        foreach (Light light in m_allLights)
-        {
-            // if (light.TryGetComponent(out ContinuousLightController continuous))
-            // {
-            //     m_lightSettings[light] = (Mathf.Min(continuous.SettingsContainer.MinSettings.Intensity, continuous.SettingsContainer.MaxSettings.Intensity) * m_minIntensityPercentage,
-            // }
-            // else
-            if (light.TryGetComponent(out DiscreetLightController discreet))
-            {
-                m_lightSettings[light] = (discreet.SettingsContainer.MinSettings.Intensity, discreet.SettingsContainer.MaxSettings.Intensity);
-            }
-            else
-            {
-                m_lightSettings[light] = (light.intensity * m_minIntensityPercentage, light.intensity);
-            }
-        }
-    }
 
     private void Start()
     {
         m_ambiances.ForEach(a => a.Init(m_sceneLightsActive));
-    }
-
-    private void OnEnable()
-    {
-        m_sceneSpotsIntensity.AddListener(OnIntensityChanged);
-    }
-
-    private void OnDisable()
-    {           
-        m_sceneSpotsIntensity.RemoveListener(OnIntensityChanged);
-    }
-
-
-    private void OnIntensityChanged(float value)
-    {
-        foreach (Light light in m_lightSettings.Keys)
-        {
-            light.intensity = Mathf.Lerp(m_lightSettings[light].minIntensity, m_lightSettings[light].maxIntensity, value);
-        }
     }
     
     private void Update()
