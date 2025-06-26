@@ -28,8 +28,9 @@ public class StandaloneTimer : BaseGameEvent
     private Timer m_timer;
 
     [Button("Initialize"), EnableIf("@UnityEngine.Application.isPlaying")]
-    public void Initialize()
+    public void Init()
     {
+        Elapsed = false;
         m_timer = new Timer(m_isRepeating ? m_repeatInterval : m_duration, m_isRepeating, 0);
         m_timer.OnTimerEnds += OnTimerEnded;
         StandaloneTimerSingleton.Instance.PushTimer(m_timer);
@@ -37,6 +38,7 @@ public class StandaloneTimer : BaseGameEvent
 
     private void OnTimerEnded()
     {
+        m_timer.OnTimerEnds -= OnTimerEnded;
         Elapsed = true;
         Raise();
         if (m_isRepeating)

@@ -266,6 +266,59 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_value: 0
+--- !u!114 &-6021386037147989609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2c109dd16b1f643b8ed0f9f3078f35, type: 3}
+  m_Name: Timer Control
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 56, y: 344}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -6021386037147989609}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -6021386037147989609}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_timer: {fileID: 11400000, guid: 0efa8659dbbf86645aaee452a95f7501, type: 2}
+  m_operation: 0
 --- !u!114 &-5814221944195660232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +801,7 @@ MonoBehaviour:
   - {fileID: 1547431544495795268}
   - {fileID: 4269516306848722554}
   - {fileID: -8967329815129092189}
+  - {fileID: -6021386037147989609}
 --- !u!114 &1060379355310468115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,7 +995,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_inValue: 96.266464
+  m_inValue: 4.5176487
   m_variable: {fileID: 11400000, guid: 5ea0f187a07b5814c817cade080b8851, type: 2}
 --- !u!114 &2164527267246702206
 MonoBehaviour:
@@ -1437,6 +1491,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 4269516306848722554}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -6021386037147989609}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1532,7 +1589,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 96.2664642
+      Data: 4.5176487
     - Name: 
       Entry: 8
       Data: 
