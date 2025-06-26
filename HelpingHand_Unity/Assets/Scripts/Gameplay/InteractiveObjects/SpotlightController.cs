@@ -18,6 +18,7 @@ public class SpotlightController : MonoBehaviour
     [SerializeField] private BaseVariable<bool> m_followMode;
     [SerializeField] private ButtonInputEvent m_toggleSpotlightButton;
     [SerializeField] private EntityState m_toggleFollowModeIndicator;
+    [SerializeField] private ToggleInputEvent m_followModeToggle;
     [SerializeField] private EntityState m_puppetSpotlightOn;
     [SerializeField] private EntityState m_puppetSpotlightOff;
 
@@ -45,23 +46,25 @@ public class SpotlightController : MonoBehaviour
     {
         m_transform = transform;
         m_toggleSpotlightButton.AddListener(OnSpotlightToggle);
-        m_toggleFollowModeIndicator.AddListener(OnFollowModeToggle);
+        m_followModeToggle.AddListener(OnFollowModeToggle);
         m_mode = m_followMode.Value ? SpotlightMode.FollowTarget : SpotlightMode.Manual;
         m_light.enabled = false;
         m_puppetSpotlightOn.SetValueWithoutNotify(false);
         m_puppetSpotlightOff.SetValueWithoutNotify(true);
+        m_toggleFollowModeIndicator.SetValueWithoutNotify(m_followModeToggle.Value);
     }
 
     private void OnFollowModeToggle(bool isOn)
     {
         m_mode = isOn ? SpotlightMode.FollowTarget : SpotlightMode.Manual;
         m_followMode.Value = isOn;
+        m_toggleFollowModeIndicator.Value = isOn;
     }
 
     private void OnDestroy()
     {
         m_toggleSpotlightButton.RemoveListener(OnSpotlightToggle);
-        m_toggleFollowModeIndicator.RemoveListener(OnFollowModeToggle);
+        m_followModeToggle.RemoveListener(OnFollowModeToggle);
     }
 
     private void OnSpotlightToggle()
