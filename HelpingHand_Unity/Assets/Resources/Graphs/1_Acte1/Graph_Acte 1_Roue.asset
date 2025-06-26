@@ -84,6 +84,69 @@ MonoBehaviour:
   m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: c1a80adede5738344a5177079369618c, type: 2}
+--- !u!114 &-8789819665175482823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
+  m_Name: Show village
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 744, y: -744}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -8789819665175482823}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 2272220283041489524}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -8789819665175482823}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -8789819665175482823}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: 3dc7824e94b00614a963008cc6191852, type: 2}
 --- !u!114 &-8719678051518186611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2111,6 +2174,7 @@ MonoBehaviour:
   - {fileID: -6333171369364374016}
   - {fileID: -27395171224471272}
   - {fileID: -6836562603283413820}
+  - {fileID: -8789819665175482823}
 --- !u!114 &69235015225015850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2765,6 +2829,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: m_in
         node: {fileID: -27395171224471272}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -8789819665175482823}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -3704,7 +3771,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 68.872
+      Data: 114.42878
     - Name: 
       Entry: 8
       Data: 
@@ -3861,7 +3928,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 67.31809
+      Data: 113.869629
     - Name: 
       Entry: 8
       Data: 
@@ -5445,7 +5512,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 68.6139755
+      Data: 110.861221
     - Name: 
       Entry: 8
       Data: 

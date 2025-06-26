@@ -299,6 +299,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 3660623801472503768}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 8136713366404553123}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1506,6 +1509,7 @@ MonoBehaviour:
   - {fileID: 3660623801472503768}
   - {fileID: -179178206699867834}
   - {fileID: -1410613150652361280}
+  - {fileID: 8136713366404553123}
 --- !u!114 &130954819415264437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2972,6 +2976,69 @@ MonoBehaviour:
   m_states:
   - {fileID: 11400000, guid: e05d06d024015264c9e873d144ce7d5a, type: 2}
   - {fileID: 11400000, guid: f4efc178e4fb1fe409ca618e12ae7e73, type: 2}
+--- !u!114 &8136713366404553123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
+  m_Name: Set State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 145.82094, y: -349.66013}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 8136713366404553123}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -6026060607056722703}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 8136713366404553123}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 8136713366404553123}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 0
+  m_variable: {fileID: 11400000, guid: 3dc7824e94b00614a963008cc6191852, type: 2}
 --- !u!114 &8797368255741970018
 MonoBehaviour:
   m_ObjectHideFlags: 0

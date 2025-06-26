@@ -41,19 +41,27 @@ public class PropsPackSelector : MonoBehaviour
         OnIsActiveChanged(m_active.Value);
     }
 
+    private void OnEnable()
+    {
+        m_forceTownProps.AddListener(OnBoolVariableChanged);
+        m_forceLairProps.AddListener(OnBoolVariableChanged);
+    }
+
+    private void OnDisable()
+    {
+        m_forceTownProps.RemoveListener(OnBoolVariableChanged);
+        m_forceLairProps.RemoveListener(OnBoolVariableChanged);
+    }
+
     private void OnIsActiveChanged(bool active)
     {
         UpdateSelectedPack();
 
         if (!active)
         {
-            m_forceTownProps.RemoveListener(OnBoolVariableChanged);
-            m_forceLairProps.RemoveListener(OnBoolVariableChanged);
             m_selectedPackFader.RemoveListener(OnFaderValueChanged);
             return;
         }
-        m_forceTownProps.AddListener(OnBoolVariableChanged);
-        m_forceLairProps.AddListener(OnBoolVariableChanged);
         m_selectedPackFader.AddListener(OnFaderValueChanged);
     }
 
@@ -75,11 +83,11 @@ public class PropsPackSelector : MonoBehaviour
 
     private void UpdateSelectedPack()
     {
-        if (!m_active.Value)
-        {
-            SetSelectedPack(SelectedPack.None);
-            return;
-        }
+        // if (!m_active.Value)
+        // {
+        //     SetSelectedPack(SelectedPack.None);
+        //     return;
+        // }
 
         if (m_forceLairProps.Value)
         {
