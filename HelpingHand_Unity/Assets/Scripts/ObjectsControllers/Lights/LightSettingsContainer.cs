@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 
 using UnityUtility.CustomAttributes;
+using UnityUtility.Extensions;
 using UnityUtility.MathU;
 
 [Serializable]
@@ -18,9 +19,16 @@ public class LightSettingsContainer : IObjectSettingsContainer
     [SerializeField] private LightSettings m_minSettings;
     [SerializeField] private LightSettings m_maxSettings;
 
+    [Title("Global Intensity")]
     [SerializeField] private bool m_useGlobalIntensityMultiplier = false;
+    [SerializeField] private Vector2 m_globalIntensityMultiplierRange = new Vector2(0.2f, 1.0f);
+    [SerializeField] private BaseVariable<float> m_globalIntensityVariable;
 
-    [NonSerialized] public float GlobalIntensityMultiplier = 1.0f;
+    [Title("External Intensity")]
+    [SerializeField] private bool m_useExternalIntensityMultiplier = false;
+
+
+    [NonSerialized] public float ExternalIntensityMultiplier = 1.0f;
 
 
     public void Init()
@@ -35,7 +43,16 @@ public class LightSettingsContainer : IObjectSettingsContainer
         }
 
         Color color = m_colorGradient.Evaluate(progress);
-        float intensity = MathUf.Lerp(m_minSettings.Intensity, m_maxSettings.Intensity, progress) * (m_useGlobalIntensityMultiplier ? GlobalIntensityMultiplier : 1.0f);
+        float intensity = MathUf.Lerp(m_minSettings.Intensity, m_maxSettings.Intensity, progress);
+        if (m_useExternalIntensityMultiplier)
+        {
+            intensity *= ExternalIntensityMultiplier;
+        }
+        if (m_useGlobalIntensityMultiplier)
+        {
+            intensity *= m_globalIntensityVariable.Value.RemapFrom01(m_globalIntensityMultiplierRange);
+        }
+
         float range = MathUf.Lerp(m_minSettings.Range, m_maxSettings.Range, progress);
         Vector2 angles = Vector2.Lerp(m_minSettings.SpotAngles, m_maxSettings.SpotAngles, progress);
 
