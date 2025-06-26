@@ -274,11 +274,6 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Son_1" ID="{03C3832E-F0A8-4FE7-AF05-CD7CE82B5C27}" ShortID="589337684">
 							<PropertyList>
-								<Property Name="Inclusion" Type="bool">
-									<ValueList>
-										<Value>False</Value>
-									</ValueList>
-								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -413,11 +408,6 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Son_2" ID="{C51F9BF9-23E8-4EBC-969C-8A4DA6CDB968}" ShortID="1033255067">
 							<PropertyList>
-								<Property Name="Inclusion" Type="bool">
-									<ValueList>
-										<Value>False</Value>
-									</ValueList>
-								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
 										<Value>4</Value>
@@ -579,11 +569,6 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Son_3" ID="{6F77CDC1-610A-44E5-B49E-3586ADB63886}" ShortID="750506093">
 							<PropertyList>
-								<Property Name="Inclusion" Type="bool">
-									<ValueList>
-										<Value>False</Value>
-									</ValueList>
-								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -670,7 +655,7 @@
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>13</Value>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -787,7 +772,7 @@
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>6</Value>
+										<Value>-2</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -934,7 +919,7 @@
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>13</Value>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -1021,7 +1006,7 @@
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>6</Value>
+										<Value>2</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -2282,7 +2267,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-4</Value>
+										<Value>-8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2375,6 +2360,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Flamethrower" ID="{068EF174-AAAE-40EF-9FCF-B70B128107B2}" ShortID="620335936">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
 								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
 								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
@@ -2469,7 +2459,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-5</Value>
+										<Value>-13</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -3000,6 +2990,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="LED_04" ID="{C22A87D0-B10E-4311-8C89-0BCE2EF5FF42}" ShortID="962307573">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
 										<Value>-580</Value>
@@ -3645,11 +3640,658 @@
 						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="LED_TurnOn" ID="{B1D62D6B-7980-45F6-BC4E-E9A212ACB83A}" ShortID="883812903">
+				<ActorMixer Name="Room_UI" ID="{2506C3D3-7D70-4614-A57A-2D3415614A53}" ShortID="649219530">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="Machine_Startup" ID="{69E1AADC-19E3-4255-8C49-C6936C055B50}" ShortID="251642147">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-13</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+								<Property Name="SpeakerPanning" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Machine_UI_Startup" ID="{E95480C5-2FA0-4759-BC47-056203EA16EB}" ShortID="512110501">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Machine_UI_Startup" ID="{FC11EF05-F166-40FB-B51F-E6C186C416DB}">
+											<Language>SFX</Language>
+											<AudioFile>Machine_UI_Startup.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="223564879"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Machine_UI_Startup" ID="{FC11EF05-F166-40FB-B51F-E6C186C416DB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<RandomSequenceContainer Name="Machine_UI_Loop" ID="{079F5E29-E728-4450-B1C7-04C50DB06A7F}" ShortID="915644">
+									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Machine_UI_Loop" ID="{2B3641EE-E7CE-4716-9398-FF8E609F5348}" ShortID="472702165">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Machine_UI_Loop" ID="{B68B4E59-0C2F-4AB0-A06A-9A628F2CB8A5}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Machine_UI_Loop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="669711849"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Machine_UI_Loop" ID="{B68B4E59-0C2F-4AB0-A06A-9A628F2CB8A5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="Machine_UI_Loop" ID="{2B3641EE-E7CE-4716-9398-FF8E609F5348}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+								<Sound Name="Machine_UI_Stopping" ID="{96603033-684C-44D5-89F5-C378EC6C1CE8}" ShortID="81754938">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-13</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Machine_UI_Stopping" ID="{F91DC172-F1A4-46C3-B972-C353DA6CFE4F}">
+											<Language>SFX</Language>
+											<AudioFile>Machine_UI_Stopping.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="459510153"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Machine_UI_Stopping" ID="{F91DC172-F1A4-46C3-B972-C353DA6CFE4F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{53C33F2D-9CD4-4A8C-BB2D-8486AD75459C}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="-66.4418212478921"/>
+										<Property Name="PanY" Type="Real64" Value="-56.7811934900542"/>
+									</PropertyList>
+								</Panner>
+							</PositioningInfo>
+							<ObjectLists>
+								<ObjectList Name="Playlist">
+									<Reference>
+										<ObjectRef Name="Machine_UI_Startup" ID="{E95480C5-2FA0-4759-BC47-056203EA16EB}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="Machine_UI_Loop" ID="{079F5E29-E728-4450-B1C7-04C50DB06A7F}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Machine_Clicky" ID="{F0677781-0FB9-4CB0-9F80-1771DFB715EF}" ShortID="1013764770">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-16</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="1.25"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="SpeakerPanning" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1" ID="{FB8D6A49-68D0-4356-86F0-06319E39A52D}" ShortID="241188855">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1" ID="{8962BF85-DFE0-4756-8F2E-D36316CEF3AE}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="488188615"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1" ID="{8962BF85-DFE0-4756-8F2E-D36316CEF3AE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1" ID="{A313E521-EC2B-45F4-B902-AED7719E96CD}" ShortID="727723609">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1" ID="{C0A61F63-B1FF-4961-8D72-EAD04EE4FD6C}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="776839565"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1" ID="{C0A61F63-B1FF-4961-8D72-EAD04EE4FD6C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1" ID="{2D9F4DA1-5474-4E69-A074-AEA2E0AE06D7}" ShortID="407350227">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1" ID="{72F93C18-B99D-4476-9CC4-8915DE3E1222}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="596337987"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1" ID="{72F93C18-B99D-4476-9CC4-8915DE3E1222}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1" ID="{34EDECD7-617B-4154-A734-FD0650673F73}" ShortID="268645723">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1" ID="{B956784D-AE0C-4536-AAC0-04F31991D50B}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="482683709"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1" ID="{B956784D-AE0C-4536-AAC0-04F31991D50B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1" ID="{5CC63E79-1284-4E26-9253-086453EA38B8}" ShortID="515656930">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1" ID="{5F91F14C-FC3C-4DF2-A105-2CB9E9C3D0D3}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="96351004"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1" ID="{5F91F14C-FC3C-4DF2-A105-2CB9E9C3D0D3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1" ID="{C3E61377-FC05-4DC3-A525-4948CA5DFC2C}" ShortID="761266002">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1" ID="{C6ACFCC2-BC75-48D2-A4E7-7506A0819AE1}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="841428273"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1" ID="{C6ACFCC2-BC75-48D2-A4E7-7506A0819AE1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1" ID="{DB1ADF7C-FAB5-4AEC-9A87-625E09F898BC}" ShortID="270688052">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1" ID="{DBB95EF6-F2AD-40BC-A26A-7B2FDE22C136}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="275321236"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1" ID="{DBB95EF6-F2AD-40BC-A26A-7B2FDE22C136}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1" ID="{03652672-8B2F-41F4-8687-6857EB1E7CFD}" ShortID="139674597">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1" ID="{D0DEB202-E29A-4BD6-ABF3-1ECCFA04832A}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="510170063"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1" ID="{D0DEB202-E29A-4BD6-ABF3-1ECCFA04832A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1" ID="{BF8F0B4B-7107-4359-8449-5E006982E4C3}" ShortID="285653974">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1" ID="{58A95314-E547-47B4-A3D6-31FD60EC8B78}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="994319415"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1" ID="{58A95314-E547-47B4-A3D6-31FD60EC8B78}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1" ID="{0B523FB9-9865-483D-9AB2-C50B15887908}" ShortID="250215833">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1" ID="{BC5410DA-0FA8-4D63-9445-437FAEEB1D6A}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="672114564"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1" ID="{BC5410DA-0FA8-4D63-9445-437FAEEB1D6A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1" ID="{B3B4C198-721F-4F67-A067-0D904CA4634D}" ShortID="202353796">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1" ID="{EB716228-CC1F-4182-B832-5D0746D4EF16}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="713072988"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1" ID="{EB716228-CC1F-4182-B832-5D0746D4EF16}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1" ID="{2F71B921-0859-4C46-BD76-FFBF56A1927F}" ShortID="538840847">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1" ID="{9337EDB0-BE9C-4621-822E-976F58511DB1}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="356610164"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1" ID="{9337EDB0-BE9C-4621-822E-976F58511DB1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1" ID="{27F36BD2-8D85-40B6-B7AB-FC24B99870EA}" ShortID="788758302">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1" ID="{A3DD6D7F-5C3E-4182-8960-484908B09456}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="919951118"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1" ID="{A3DD6D7F-5C3E-4182-8960-484908B09456}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1" ID="{19C4CE8B-B2C8-484F-86DD-F69494799CCB}" ShortID="567624726">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1" ID="{03CB8759-671C-45B6-A11C-B378E5E0103D}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="900403579"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1" ID="{03CB8759-671C-45B6-A11C-B378E5E0103D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1" ID="{08FF5DFA-76D8-4DE7-AE00-015B5C961824}" ShortID="213159884">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1" ID="{5A694FC3-09B1-4403-8A7A-D9CD7F39B0CB}">
+											<Language>SFX</Language>
+											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="180769912"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1" ID="{5A694FC3-09B1-4403-8A7A-D9CD7F39B0CB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{A7D192B9-1DDB-4CA2-A06E-834A5B4348B2}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="91.3996627318718"/>
+										<Property Name="PanY" Type="Real64" Value="-25.3164556962025"/>
+									</PropertyList>
+								</Panner>
+							</PositioningInfo>
+						</RandomSequenceContainer>
+						<ActorMixer Name="Machine_Alt" ID="{460BE32A-4866-4738-B1DA-A51DBA5F6E12}" ShortID="818265296">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="HH_Machine_Alt" ID="{5E35AEDC-D18E-4E28-8AB6-692AB5701E0A}" ShortID="949001481">
+									<PropertyList>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="HH_Machine_Alt_Loop" ID="{9DF23F05-D0C6-43A6-9111-73DB4F888CB7}" ShortID="744506666">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="HH_Machine_Alt_Loop" ID="{501138ED-1854-426A-B581-AB5403F13064}" ShortID="378042677">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="HH_Machine_Alt_Loop" ID="{038996CE-A0E9-4E0D-BB17-E1D9E1E2FF5F}">
+															<Language>SFX</Language>
+															<AudioFile>HH_Machine_Alt_Loop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="782864001"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="HH_Machine_Alt_Loop" ID="{038996CE-A0E9-4E0D-BB17-E1D9E1E2FF5F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Playlist">
+													<Reference>
+														<ObjectRef Name="HH_Machine_Alt_Loop" ID="{501138ED-1854-426A-B581-AB5403F13064}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</RandomSequenceContainer>
+										<Sound Name="HH_Machine_Startup_Alt" ID="{93B25A10-1C4B-4280-83D7-F5893E5EE3E6}" ShortID="744692363">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HH_Machine_Startup_Alt" ID="{FE8E65D0-347A-4FD0-83DC-D6326AEA059E}">
+													<Language>SFX</Language>
+													<AudioFile>HH_Machine_Startup_Alt.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="975437929"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HH_Machine_Startup_Alt" ID="{FE8E65D0-347A-4FD0-83DC-D6326AEA059E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="HH_Machine_Startup_Alt" ID="{93B25A10-1C4B-4280-83D7-F5893E5EE3E6}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+											<Reference>
+												<ObjectRef Name="HH_Machine_Alt_Loop" ID="{9DF23F05-D0C6-43A6-9111-73DB4F888CB7}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="Steve_Le" ID="{99883B27-D91A-4EF1-A22C-DCC8D34AC5F3}" ShortID="528507085">
 					<PropertyList>
 						<Property Name="MakeUpGain" Type="Real64">
 							<ValueList>
-								<Value>-6</Value>
+								<Value>4</Value>
 							</ValueList>
 						</Property>
 						<Property Name="UserAuxSendVolume0" Type="Real64">
@@ -3670,26 +4312,9 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<BlendContainer Name="LED_TurnOn" ID="{07D652EB-B9F7-420F-81B3-B7C263BD0326}" ShortID="783060815">
+						<RandomSequenceContainer Name="StevePoisson" ID="{721C0305-83F2-4DAA-BDA4-9B58F2177763}" ShortID="141065405">
 							<PropertyList>
-								<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
-								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
-								<Property Name="MakeUpGain" Type="Real64">
-									<ValueList>
-										<Value>-6</Value>
-									</ValueList>
-								</Property>
-								<Property Name="MaxSoundPerInstance" Type="int16">
-									<ValueList>
-										<Value>1</Value>
-									</ValueList>
-								</Property>
-								<Property Name="OverrideEffect" Type="bool" Value="True"/>
-								<Property Name="UseMaxSoundPerInstance" Type="bool">
-									<ValueList>
-										<Value>True</Value>
-									</ValueList>
-								</Property>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -3700,25 +4325,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<RandomSequenceContainer Name="RandomLED_TurnOn" ID="{F5281515-1942-4332-8222-A24C63992722}" ShortID="900050395">
-									<PropertyList>
-										<Property Name="Pitch" Type="int32">
-											<ValueList>
-												<Value>710</Value>
-											</ValueList>
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{F1E13925-CF41-4B49-A28B-3334841961CF}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-100"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
+								<Sound Name="ANM_AchievementPoissonV0" ID="{02F9B7B8-CEEA-4208-9235-5A9123DAB02C}" ShortID="210671380">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3728,111 +4335,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="ANM_LedLight_01" ID="{7640F2BF-4459-43E4-874C-3A1DE118BD2C}" ShortID="214925250">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LedLight_01" ID="{44DFB687-3D44-4196-962F-8359AA985691}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LedLight_01.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="790014301"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LedLight_01" ID="{44DFB687-3D44-4196-962F-8359AA985691}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LedLight_02" ID="{1EBE554A-9C1F-414B-8B7F-4A750E7A7A33}" ShortID="462002429">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LedLight_02" ID="{EC60F361-603C-433D-99EB-79992EB60D64}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LedLight_02.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="818209497"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LedLight_02" ID="{EC60F361-603C-433D-99EB-79992EB60D64}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LedLight_03" ID="{FFB601A6-1A28-4116-ABD9-7A8AC9A54DFA}" ShortID="466194223">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LedLight_03" ID="{F8C69FE2-6E84-477F-81F7-B375010A6C6B}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LedLight_03.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="263886193"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LedLight_03" ID="{F8C69FE2-6E84-477F-81F7-B375010A6C6B}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LedLight_04" ID="{AFC7DF46-7C9E-4F84-A480-BF94F203365C}" ShortID="730268438">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LedLight_04" ID="{C0F70FCB-55A3-45E2-ACBC-1FCC6A3E8A50}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LedLight_04.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="864225869"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LedLight_04" ID="{C0F70FCB-55A3-45E2-ACBC-1FCC6A3E8A50}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+										<AudioFileSource Name="ANM_AchievementPoissonV0" ID="{5C5FC8D1-9E8E-4EC5-86B8-4761B2AA4FE1}">
+											<Language>SFX</Language>
+											<AudioFile>ANM_AchievementPoissonV0.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="89820208"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
-								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="RandomLED_TurnOn_Melodic" ID="{951640B1-E13E-4DAB-9D07-07A1F95D9C04}" ShortID="967223941">
-									<PropertyList>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{93025ACD-7E77-431D-BE9F-B6D0291DB5A8}">
-														<PropertyList>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-100"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_AchievementPoissonV0" ID="{5C5FC8D1-9E8E-4EC5-86B8-4761B2AA4FE1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ANM_AchievementPoisson_2" ID="{70C24F79-C537-44EF-8A66-07EF0C431210}" ShortID="576432518">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3842,295 +4357,55 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="ANM_LED_TurnOn_Melodic_01" ID="{1C6D39FF-8635-46D4-9EE4-8981B948472A}" ShortID="257593582">
-											<PropertyList>
-												<Property Name="Pitch" Type="int32">
-													<ValueList>
-														<Value>300</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_01" ID="{D5A10A9D-B91E-4DD1-BBE9-7B9B7E3CF8DB}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LED_TurnOn_Melodic_01.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="417771496"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LED_TurnOn_Melodic_01" ID="{D5A10A9D-B91E-4DD1-BBE9-7B9B7E3CF8DB}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LED_TurnOn_Melodic_02" ID="{A5021818-BF59-4490-827F-8B3193C0CAD4}" ShortID="1001349487">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_02" ID="{5FBB1DA8-E3CE-4901-9B85-2A7692B1F5FA}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LED_TurnOn_Melodic_02.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="644132716"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LED_TurnOn_Melodic_02" ID="{5FBB1DA8-E3CE-4901-9B85-2A7692B1F5FA}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LED_TurnOn_Melodic_03" ID="{4A9CCC52-425B-4FC7-A547-85930980F0DE}" ShortID="890834104">
-											<PropertyList>
-												<Property Name="Pitch" Type="int32">
-													<ValueList>
-														<Value>200</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_03" ID="{6C4A0376-7D1E-45C1-8D11-5A9E9F4406EC}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LED_TurnOn_Melodic_03.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="110841641"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LED_TurnOn_Melodic_03" ID="{6C4A0376-7D1E-45C1-8D11-5A9E9F4406EC}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LED_TurnOn_Melodic_04" ID="{BA1986A7-71D6-4528-A826-97BA3B38F7E9}" ShortID="9524274">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_01" ID="{C4006D73-ECA1-4FBC-8F2A-203E760F2CE0}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LED_TurnOn_Melodic_01.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="417771496"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LED_TurnOn_Melodic_01" ID="{C4006D73-ECA1-4FBC-8F2A-203E760F2CE0}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LED_TurnOn_Melodic_05" ID="{0555BBDA-DD64-4E0B-837F-2E5ACFB22BDD}" ShortID="766170317">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_02" ID="{37B22874-7BDF-42B2-BC42-F275C44923A0}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LED_TurnOn_Melodic_02.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="644132716"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LED_TurnOn_Melodic_02" ID="{37B22874-7BDF-42B2-BC42-F275C44923A0}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_LED_TurnOn_Melodic_06" ID="{F2B2CF8A-A946-4378-B712-462F04ADBDA0}" ShortID="854879911">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_LED_TurnOn_Melodic_03" ID="{D1C338D9-5E7F-4C72-BEB1-A6D116B5691B}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_LED_TurnOn_Melodic_03.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="110841641"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_LED_TurnOn_Melodic_03" ID="{D1C338D9-5E7F-4C72-BEB1-A6D116B5691B}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+										<AudioFileSource Name="ANM_AchievementPoisson_2" ID="{9AE5FA72-77C9-4F30-9261-0AA330EC9127}">
+											<Language>SFX</Language>
+											<AudioFile>ANM_AchievementPoisson_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="212764215"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
-								</RandomSequenceContainer>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_AchievementPoisson_2" ID="{9AE5FA72-77C9-4F30-9261-0AA330EC9127}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ANM_AchievementPoisson_3" ID="{FE4581A1-740A-4B8F-97EF-CF094ACF208C}" ShortID="223289595">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ANM_AchievementPoisson_3" ID="{A8E5B544-9712-4F6A-ACBD-03B736B2A1A3}">
+											<Language>SFX</Language>
+											<AudioFile>ANM_AchievementPoisson_3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="760383166"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ANM_AchievementPoisson_3" ID="{A8E5B544-9712-4F6A-ACBD-03B736B2A1A3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 							<ObjectLists>
-								<ObjectList Name="Effects">
+								<ObjectList Name="Playlist">
 									<Reference>
-										<Local>
-											<EffectSlot Name="" ID="{D31D34F0-A092-44D9-9FA6-C7F6ED3F6705}" ShortID="71848611">
-												<ReferenceList>
-													<Reference Name="Effect" PluginName="Wwise Harmonizer" CompanyID="0" PluginID="138" PluginType="3">
-														<ObjectRef Name="Secret_message" ID="{2F5DE612-1AAD-4A84-8FB4-3E66521C920E}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-													</Reference>
-												</ReferenceList>
-											</EffectSlot>
-										</Local>
+										<ObjectRef Name="ANM_AchievementPoissonV0" ID="{02F9B7B8-CEEA-4208-9235-5A9123DAB02C}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
 									</Reference>
 									<Reference>
-										<Local>
-											<EffectSlot Name="" ID="{55F7AC51-0762-4C86-98A1-2F43B5E77AD8}" ShortID="795962759">
-												<ReferenceList>
-													<Reference Name="Effect" PluginName="Wwise Stereo Delay" CompanyID="0" PluginID="135" PluginType="3">
-														<ObjectRef Name="Let_The_Power_Fall" ID="{6C4D2827-F82F-4BE3-A8DF-F0F0FAE93630}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-													</Reference>
-												</ReferenceList>
-											</EffectSlot>
-										</Local>
+										<ObjectRef Name="ANM_AchievementPoisson_2" ID="{70C24F79-C537-44EF-8A66-07EF0C431210}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+									</Reference>
+									<Reference>
+										<ObjectRef Name="ANM_AchievementPoisson_3" ID="{FE4581A1-740A-4B8F-97EF-CF094ACF208C}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
 									</Reference>
 								</ObjectList>
 							</ObjectLists>
-						</BlendContainer>
-						<ActorMixer Name="Steve_Le" ID="{99883B27-D91A-4EF1-A22C-DCC8D34AC5F3}" ShortID="528507085">
-							<PropertyList>
-								<Property Name="MakeUpGain" Type="Real64">
-									<ValueList>
-										<Value>3</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<RandomSequenceContainer Name="StevePoisson" ID="{721C0305-83F2-4DAA-BDA4-9B58F2177763}" ShortID="141065405">
-									<PropertyList>
-										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="ANM_AchievementPoissonV0" ID="{02F9B7B8-CEEA-4208-9235-5A9123DAB02C}" ShortID="210671380">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_AchievementPoissonV0" ID="{5C5FC8D1-9E8E-4EC5-86B8-4761B2AA4FE1}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_AchievementPoissonV0.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="89820208"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_AchievementPoissonV0" ID="{5C5FC8D1-9E8E-4EC5-86B8-4761B2AA4FE1}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_AchievementPoisson_2" ID="{70C24F79-C537-44EF-8A66-07EF0C431210}" ShortID="576432518">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_AchievementPoisson_2" ID="{9AE5FA72-77C9-4F30-9261-0AA330EC9127}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_AchievementPoisson_2.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="212764215"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_AchievementPoisson_2" ID="{9AE5FA72-77C9-4F30-9261-0AA330EC9127}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="ANM_AchievementPoisson_3" ID="{FE4581A1-740A-4B8F-97EF-CF094ACF208C}" ShortID="223289595">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_AchievementPoisson_3" ID="{A8E5B544-9712-4F6A-ACBD-03B736B2A1A3}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_AchievementPoisson_3.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="760383166"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="ANM_AchievementPoisson_3" ID="{A8E5B544-9712-4F6A-ACBD-03B736B2A1A3}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="Playlist">
-											<Reference>
-												<ObjectRef Name="ANM_AchievementPoissonV0" ID="{02F9B7B8-CEEA-4208-9235-5A9123DAB02C}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
-											</Reference>
-											<Reference>
-												<ObjectRef Name="ANM_AchievementPoisson_2" ID="{70C24F79-C537-44EF-8A66-07EF0C431210}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
-											</Reference>
-											<Reference>
-												<ObjectRef Name="ANM_AchievementPoisson_3" ID="{FE4581A1-740A-4B8F-97EF-CF094ACF208C}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</RandomSequenceContainer>
-							</ChildrenList>
-						</ActorMixer>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
