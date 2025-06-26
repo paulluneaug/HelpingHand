@@ -84,6 +84,69 @@ MonoBehaviour:
   m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: fddba8164f7fe904a95520536bc861f0, type: 2}
+--- !u!114 &-8967329815129092189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f16544e025a31a4d928b8dc895765af, type: 3}
+  m_Name: Initialize whippinage count
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 408, y: -344}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -8967329815129092189}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 1547431544495795268}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -8967329815129092189}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -8967329815129092189}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 0
+  m_variable: {fileID: 11400000, guid: 183627ebe1d20404ab5fea7ec73b676e, type: 2}
 --- !u!114 &-8747472839980631825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +237,7 @@ MonoBehaviour:
   m_Name: Value Int
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 328, y: -456}
+  position: {x: -152, y: -472}
   folded: 0
   ports:
     keys:
@@ -216,7 +279,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 56, y: -456}
+  position: {x: -424, y: -472}
   folded: 0
   ports:
     keys:
@@ -509,7 +572,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e928cc46fe1085e4383f08dfdf17308a, type: 3}
-  m_Name: Graph Control
+  m_Name: Stop intro interruption
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 4120, y: -328}
@@ -684,6 +747,7 @@ MonoBehaviour:
   - {fileID: 6009036239904462868}
   - {fileID: 1547431544495795268}
   - {fileID: 4269516306848722554}
+  - {fileID: -8967329815129092189}
 --- !u!114 &1060379355310468115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,10 +884,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 861111cfcc696654fab140f1a707dc7e, type: 3}
-  m_Name: Set Global Float
+  m_Name: Initialize game start time
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: -328}
+  position: {x: 120, y: -344}
   folded: 0
   ports:
     keys:
@@ -859,7 +923,10 @@ MonoBehaviour:
       _node: {fileID: 1547431544495795268}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: m_in
+        node: {fileID: -8967329815129092189}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -874,7 +941,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_inValue: 1.5284777
+  m_inValue: 1.494438
   m_variable: {fileID: 11400000, guid: 5ea0f187a07b5814c817cade080b8851, type: 2}
 --- !u!114 &2164527267246702206
 MonoBehaviour:
@@ -886,10 +953,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d489a8263feb2438d078021d130f17, type: 3}
-  m_Name: Set Blackboard Value
+  m_Name: Initialize total errors count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 328, y: -328}
+  position: {x: -152, y: -344}
   folded: 0
   ports:
     keys:
@@ -963,7 +1030,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d489a8263feb2438d078021d130f17, type: 3}
-  m_Name: Set Blackboard Value
+  m_Name: Initialize interruption count in intro
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1224, y: -328}
@@ -1404,10 +1471,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d489a8263feb2438d078021d130f17, type: 3}
-  m_Name: Set Blackboard Value
+  m_Name: Initialize input timer start time
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 56, y: -328}
+  position: {x: -424, y: -344}
   folded: 0
   ports:
     keys:
@@ -1465,7 +1532,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 1.52847767
+      Data: 1.494438
     - Name: 
       Entry: 8
       Data: 
@@ -1568,7 +1635,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: -456}
+  position: {x: 120, y: -472}
   folded: 0
   ports:
     keys:
@@ -1691,7 +1758,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e928cc46fe1085e4383f08dfdf17308a, type: 3}
-  m_Name: Graph Control
+  m_Name: Start intro interruption
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1480, y: -328}
