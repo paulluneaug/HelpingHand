@@ -25,7 +25,7 @@ public class CanvasManager : MonoBehaviour
         m_mainMenuController.CloseMainMenu();
         m_creditsMenuController.CloseCreditsMenu();
 
-        m_optionsMenuController.InitializeAllOptionValues();
+        //m_optionsMenuController.InitializeAllOptionValues();
 
 
         m_pauseEvent.AddDownListener(OnPause);

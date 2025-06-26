@@ -79,6 +79,11 @@ public class OptionsMenuController : SerializedMonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        InitializeAllOptionValues();
+    }
+
     private void OnOptionSelected(IOptionController controller)
     {
         m_descriptionText.text = controller.Description;
