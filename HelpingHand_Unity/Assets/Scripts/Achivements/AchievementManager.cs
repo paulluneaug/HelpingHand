@@ -80,6 +80,30 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         }
 
         m_transform.localPosition = new Vector3(m_transform.localPosition.x, m_startHidden ? m_hideY : m_showY, m_transform.localPosition.z);
+
+        GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+        OnGameStateChanged(GameManager.Instance.CurrentGameState);
+    }
+
+    private void OnGameStateChanged(GameManager.GameState state)
+    {
+        switch (state)
+        {
+            case GameManager.GameState.MainMenu:
+                SetEnableAllAchievements(false);
+                break;
+            case GameManager.GameState.Gameplay:
+                SetEnableAllAchievements(true);
+                break;
+        }
+    }
+
+    private void SetEnableAllAchievements(bool isEnabled)
+    {
+        foreach (Achievement achievement in m_allAchievements)
+        {
+            achievement.IsActive = isEnabled;
+        }
     }
 
     public override void OnDestroy()
@@ -88,6 +112,7 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         {
             achievement.OnEventRaised -= m_achivementActions[achievement];
         }
+        GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
         base.OnDestroy();
     }
 

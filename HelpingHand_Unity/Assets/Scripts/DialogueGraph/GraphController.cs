@@ -257,4 +257,12 @@ public class GraphController : MonoBehaviour
         }
     }
 #endif
+    
+    public void StopAllGraphs()
+    {
+        foreach (var keyValuePair in m_graphDictionary)
+        {
+            keyValuePair.Value.StopGraph();
+        }
+    }
 }

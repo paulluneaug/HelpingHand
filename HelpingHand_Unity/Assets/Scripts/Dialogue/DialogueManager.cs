@@ -52,6 +52,16 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         OpenPanelIfNeeded();
     }
 
+    public void CloseDialoguePanel()
+    {
+        if (!m_panelOpen)
+        {
+            return;
+        }
+        m_panelController.ClosePanel();
+        m_panelOpen = false;
+    }
+
     public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationTokenSource stopCTS, CancellationTokenSource killCTS)
     {
         if (!string.IsNullOrEmpty(m_currentDialogueTitle) || string.IsNullOrEmpty(dialogueTitle) || string.IsNullOrEmpty(content))
