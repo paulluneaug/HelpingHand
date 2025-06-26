@@ -45,11 +45,14 @@ public class ActManager : MonoBehaviour
     {
         m_graphController.OnGraphSequenceFinished -= OnGraphSequenceFinished;
         m_isFinished = true;
+        // Play credits
+        GameManager.Instance.ReturnToMainMenu();
+        GameManager.Instance.CanvasManager.OpenCredits();
     }
 
     public void Dispose()
     {
-
+        m_graphController.StopAllGraphs();
     }
 
     public void PauseAct()

@@ -299,6 +299,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_canvasManager.CloseOptions();
                 m_actSequenceManager.StopSequence();
                 OnGameStateChanged?.Invoke(m_currentGameState);
+                DialogueManager.Instance.CloseDialoguePanel();
                 break;
             default:
                 break;
