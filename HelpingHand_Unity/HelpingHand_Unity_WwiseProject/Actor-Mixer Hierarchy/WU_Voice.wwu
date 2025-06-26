@@ -5940,6 +5940,10 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Fin 1_11" ID="{013E0387-EFDD-4FA8-ACE1-62C0D6655A68}" ShortID="161322399">
+											<PropertyList>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -6000,6 +6004,16 @@
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Playlist">
+													<Reference>
+														<ObjectRef Name="Fin 1_11_01" ID="{D54F1F2E-039B-423E-A272-87FBA89DC01B}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+													<Reference>
+														<ObjectRef Name="Fin 1_11_02" ID="{C392B3EC-E355-4E80-8693-31734B988BCA}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Fin 3_1" ID="{987AAAE5-5F7E-4998-957C-5B181A7274BF}" ShortID="463926343">
 											<ReferenceList>
@@ -6038,6 +6052,11 @@
 												</Sound>
 												<Sound Name="Fin 3_1_02" ID="{9BC2A0E3-654F-4569-AA4E-4FC1BF319D4E}" ShortID="750252991">
 													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
 														<Property Name="IsVoice" Type="bool" Value="True"/>
 													</PropertyList>
 													<ReferenceList>
@@ -6063,6 +6082,11 @@
 												</Sound>
 												<Sound Name="Fin 3_1_03" ID="{37B5E7CE-AE56-4211-B71F-B85E74906472}" ShortID="910701508">
 													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
 														<Property Name="IsVoice" Type="bool" Value="True"/>
 													</PropertyList>
 													<ReferenceList>
@@ -6100,6 +6124,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Fin 3_1_04" ID="{2D76CE7C-6639-4C5B-B0A9-EA02DD1F2CFD}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.15710960401687"/>
+															</PropertyList>
 															<Language>English(US)</Language>
 															<AudioFile>Fin\Fin 3.1_Random\Fin 3.1_04.wav</AudioFile>
 															<MediaIDList>
@@ -6114,6 +6143,10 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Fin 3_8" ID="{90921BFC-D60F-419F-9D76-645392B57E3A}" ShortID="432878013">
+											<PropertyList>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -6174,6 +6207,16 @@
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Playlist">
+													<Reference>
+														<ObjectRef Name="Fin 3_8_01" ID="{1308FC27-68B2-4B10-8419-AD192AD2D9C8}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+													<Reference>
+														<ObjectRef Name="Fin 3_8_02" ID="{9D06F7EC-0062-4ABE-A870-82D5E18E464F}" WorkUnitID="{5C0A6213-0C8B-425E-865E-7676765FCD26}"/>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 										</RandomSequenceContainer>
 										<Sound Name="Fin 1_1" ID="{08A9ADAB-601C-425C-A992-73A0AAF2E5F1}" ShortID="420539638">
 											<PropertyList>
@@ -6452,11 +6495,6 @@
 										</Sound>
 										<Sound Name="Fin 1_9" ID="{643A1224-6722-4CA1-A161-2155ED57BD32}" ShortID="552220338">
 											<PropertyList>
-												<Property Name="Inclusion" Type="bool">
-													<ValueList>
-														<Value>False</Value>
-													</ValueList>
-												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -6644,6 +6682,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Fin 2_6" ID="{E4506850-423D-49FE-A076-6A59C135BC30}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.136614432377098"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Fin\Fin 2.6.wav</AudioFile>
 													<MediaIDList>
