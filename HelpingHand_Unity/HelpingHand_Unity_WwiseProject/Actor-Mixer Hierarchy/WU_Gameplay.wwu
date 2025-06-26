@@ -1658,14 +1658,27 @@
 						</ActorMixer>
 						<ActorMixer Name="CoffeeMachine" ID="{6030E96F-9FB0-48C1-A875-EA9D1AF80669}" ShortID="666917912">
 							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
+								<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
+								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UserAuxSendVolume0" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1675,6 +1688,9 @@
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="Hall" ID="{168AA74E-F128-4A65-AB94-C40BE7738E4E}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -1815,6 +1831,11 @@
 						</ActorMixer>
 						<ActorMixer Name="Cat" ID="{EB0DBF72-F481-46EB-976C-4358EFFB279A}" ShortID="949794804">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -1844,6 +1865,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="ANM_Cat1_01" ID="{FBA945C1-F64F-4215-A325-D558D6C882AD}" ShortID="33969257">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1866,6 +1894,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="ANM_Cat1_02" ID="{55129167-9258-4089-85FE-DE54DCC58714}" ShortID="379569272">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -1888,6 +1923,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="ANM_Cat1_03" ID="{93CA52E5-D2BB-424E-B744-7439985A0902}" ShortID="337456651">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>

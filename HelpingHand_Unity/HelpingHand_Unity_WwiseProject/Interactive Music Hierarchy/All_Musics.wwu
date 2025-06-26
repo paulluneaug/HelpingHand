@@ -135,6 +135,11 @@
 					<ChildrenList>
 						<MusicPlaylistContainer Name="Battle_Theme" ID="{FB7558B2-F9CE-4A07-9FB0-1E61CFFAEBEF}" ShortID="111458196">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 								<Property Name="Tempo" Type="Real64" Value="170"/>
 							</PropertyList>
@@ -489,7 +494,7 @@
 							<ChildrenList>
 								<MusicSegment Name="ANM_MainMenuTheme_Part_1" ID="{4906B8AE-7418-4C31-85DC-232BDB885422}" ShortID="35136692">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="56000"/>
+										<Property Name="EndPosition" Type="Real64" Value="70981.8314622082"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -523,37 +528,11 @@
 													</Custom>
 												</Reference>
 											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ANM_MainMenuTheme_Part_1" ID="{32F317B2-C005-49C1-B034-12D8A8BD702A}">
-													<Language>SFX</Language>
-													<AudioFile>ANM_MainMenuTheme_Part_1.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="976484802"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
 													<Reference>
 														<Local>
-															<MusicTrackSequence Name="" ID="{CABC8262-F1C5-4DEE-BC4F-F8CE5BF3CA7C}">
-																<ObjectLists>
-																	<ObjectList Name="Clips">
-																		<Reference>
-																			<Local>
-																				<MusicClip Name="ANM_MainMenuTheme_Part_1" ID="{83D35B3D-A8C0-4C60-B858-67B5343A74F8}">
-																					<PropertyList>
-																						<Property Name="EndTrimOffset" Type="Real64" Value="51000"/>
-																						<Property Name="FadeInMode" Type="int16" Value="0"/>
-																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																					</PropertyList>
-																					<AudioSourceRef Name="ANM_MainMenuTheme_Part_1" ID="{32F317B2-C005-49C1-B034-12D8A8BD702A}"/>
-																				</MusicClip>
-																			</Local>
-																		</Reference>
-																	</ObjectList>
-																</ObjectLists>
-															</MusicTrackSequence>
+															<MusicTrackSequence Name="" ID="{CABC8262-F1C5-4DEE-BC4F-F8CE5BF3CA7C}"/>
 														</Local>
 													</Reference>
 												</ObjectList>
@@ -583,6 +562,13 @@
 														<MediaID ID="833450451"/>
 													</MediaIDList>
 												</AudioFileSource>
+												<AudioFileSource Name="ANM_MainMenuTheme_Part_1" ID="{32F317B2-C005-49C1-B034-12D8A8BD702A}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_MainMenuTheme_Part_1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="976484802"/>
+													</MediaIDList>
+												</AudioFileSource>
 											</ChildrenList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
@@ -600,6 +586,18 @@
 																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																					</PropertyList>
 																					<AudioSourceRef Name="ANM_MainMenuTheme_SFX" ID="{A5541D29-2CF5-4EA9-A842-08A19F7DFDE8}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="ANM_MainMenuTheme_Part_1" ID="{83D35B3D-A8C0-4C60-B858-67B5343A74F8}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="51000"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="ANM_MainMenuTheme_Part_1" ID="{32F317B2-C005-49C1-B034-12D8A8BD702A}"/>
 																				</MusicClip>
 																			</Local>
 																		</Reference>
@@ -1022,7 +1020,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-12</Value>
+										<Value>-10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
