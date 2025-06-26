@@ -8,10 +8,10 @@ using UnityEngine;
 
 using XNode;
 
-[CreateNodeMenu("Data/Add/Global Variables/Int")]
+[CreateNodeMenu("Data/Add/Global Variables/Float")]
 [NodeTint(0f, 0.4784314f, 0.6509804f)]
 [NodeWidth(250)]
-public class AddToGlobalIntNode : BaseNode
+public class AddToGlobalFloatNode : BaseNode
 {
     private enum Operation
     {
@@ -27,7 +27,7 @@ public class AddToGlobalIntNode : BaseNode
 
     [Input(ShowBackingValue.Always)]
     [SerializeField]
-    private int m_increment;
+    private float m_increment;
 
     [Output]
     [SerializeField]
@@ -35,12 +35,12 @@ public class AddToGlobalIntNode : BaseNode
 
     [Output(ShowBackingValue.Always)]
     [SerializeField]
-    private IntVariable m_variable;
+    private FloatVariable m_variable;
 
     [SerializeField] 
     [EnumToggleButtons]
     private Operation m_operation;
-    
+
     public override object GetValue(NodePort port)
     {
         return m_variable;
@@ -48,7 +48,7 @@ public class AddToGlobalIntNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (this.TryGetValueFromInputPort(nameof(m_increment), out int outValue))
+        if (this.TryGetValueFromInputPort(nameof(m_increment), out float outValue))
         {
             m_increment = outValue;
         }

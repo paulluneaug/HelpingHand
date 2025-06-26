@@ -265,4 +265,20 @@ public class GraphController : MonoBehaviour
             keyValuePair.Value.StopGraph();
         }
     }
+
+    public void StopSequence(GraphRunnerHandler handler)
+    {
+        foreach (GraphRunner graphRunner in m_graphDictionary.Values)
+        {
+            if (graphRunner == handler.GraphRunner)
+            {
+                continue;
+            }
+
+            graphRunner.OnGraphStopped -= OnGraphStopped;
+            graphRunner.OnGraphPaused -= OnGraphPaused;
+            graphRunner.OnGraphResumed -= OnGraphResumed;
+            graphRunner.StopGraph();
+        }
+    }
 }

@@ -9,7 +9,6 @@ public class ConditionTimer : ConditionBase
     public override void Initialize()
     {
         base.Initialize();
-        m_timer.Initialize();
         m_timer.RemoveListener(RaiseOnPreconditionUpdated);
         m_timer.AddListener(RaiseOnPreconditionUpdated);
     }

@@ -314,6 +314,179 @@ MonoBehaviour:
   m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: fc77fc2f14924c444b28076133f1b035, type: 2}
+--- !u!114 &-8031563264119499278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf873b0d6ebf1409baea752d4f0b76, type: 3}
+  m_Name: Wait Duration
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3192, y: 632}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_resetKill
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -8031563264119499278}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 3187848406800477549}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -8031563264119499278}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -7905975989285178836}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_resetKill
+      _node: {fileID: -8031563264119499278}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -8031563264119499278}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_states 4
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      - fieldName: m_states 3
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      - fieldName: m_states 2
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      - fieldName: m_states 1
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      - fieldName: m_states 0
+        node: {fileID: 517630983391893581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 1
+  m_waitTime: 10
+  m_unscaled: 0
+--- !u!114 &-7905975989285178836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f62899e9841a5b4699af75a5585eafa, type: 3}
+  m_Name: Dialogue Equipement 3 Arme 8
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3480, y: 632}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_resetKill
+    - m_kill
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -7905975989285178836}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -8031563264119499278}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -7905975989285178836}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_resetKill
+      _node: {fileID: -7905975989285178836}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_kill
+      _node: {fileID: -7905975989285178836}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_interruptable: 1
+  m_contentNeutral: "Il me semble que j'avais un embranchement en  croix pour le
+    c\xE2blage des bo\xEEtes. Cherche un symbole qui ressemble \xE0 une croix."
+  m_contentSatisfied: 
+  m_contentAnnoyed: 
+  m_contentPissed: 
+  m_canRepeat: 1
+  m_waitTime: 1
+  m_waitUnscaled: 0
+  m_audioEvent: {fileID: 0}
 --- !u!114 &-7561974810636281421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +656,7 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_increment: 1
   m_variable: {fileID: 11400000, guid: 02194fa957ef49c468626346fb2f70ec, type: 2}
+  m_operation: 0
 --- !u!114 &-6442596502401151440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,9 +696,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 6873808165342556201}
-        reroutePoints: []
-      - fieldName: m_kill
-        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -784,6 +955,7 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_increment: 2
   m_variable: {fileID: 11400000, guid: 183627ebe1d20404ab5fea7ec73b676e, type: 2}
+  m_operation: 0
 --- !u!114 &-3092390902123014714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,20 +1235,20 @@ MonoBehaviour:
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: m_out
-        node: {fileID: 4767301682375494563}
+      - fieldName: m_states 4
+        node: {fileID: 517630983391893581}
         reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: -595576312691215898}
+      - fieldName: m_states 3
+        node: {fileID: 517630983391893581}
         reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: -6442596502401151440}
+      - fieldName: m_states 2
+        node: {fileID: 517630983391893581}
         reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: 2852737775932785771}
+      - fieldName: m_states 1
+        node: {fileID: 517630983391893581}
         reroutePoints: []
-      - fieldName: m_out
-        node: {fileID: 411043373890514811}
+      - fieldName: m_states 0
+        node: {fileID: 517630983391893581}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1385,9 +1557,6 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -2410750891733925640}
         reroutePoints: []
-      - fieldName: m_kill
-        node: {fileID: -2557069504177976473}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1458,6 +1627,8 @@ MonoBehaviour:
   - {fileID: -2902469919650478386}
   - {fileID: 5671321882348569876}
   - {fileID: -3172624518151373514}
+  - {fileID: -8031563264119499278}
+  - {fileID: -7905975989285178836}
 --- !u!114 &209937822675426914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,9 +1840,6 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -4886479536719651972}
         reroutePoints: []
-      - fieldName: m_kill
-        node: {fileID: -2557069504177976473}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1772,6 +1940,12 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 411043373890514811}
         reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -8031563264119499278}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1783,6 +1957,12 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 2852737775932785771}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -8031563264119499278}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1796,6 +1976,12 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -6442596502401151440}
         reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -8031563264119499278}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1808,6 +1994,12 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -595576312691215898}
         reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -8031563264119499278}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1819,6 +2011,12 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 4767301682375494563}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -8031563264119499278}
+        reroutePoints: []
+      - fieldName: m_kill
+        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -2147,9 +2345,6 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 1150451497978542743}
         reroutePoints: []
-      - fieldName: m_kill
-        node: {fileID: -2557069504177976473}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -2202,7 +2397,10 @@ MonoBehaviour:
       _node: {fileID: 3187848406800477549}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: m_in
+        node: {fileID: -8031563264119499278}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -2486,9 +2684,6 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -7561974810636281421}
-        reroutePoints: []
-      - fieldName: m_kill
-        node: {fileID: -2557069504177976473}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
