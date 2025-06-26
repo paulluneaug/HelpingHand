@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 using Cysharp.Threading.Tasks;
 
@@ -26,6 +27,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         MainMenu,
         Gameplay,
+    }
+
+    [Serializable]
+    private class GeneralSettings
+    {
+        public bool EnableVirtualController;
     }
 
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
@@ -66,6 +73,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Misc")]
     [SerializeField] private Transform m_puppetStart;
+    [SerializeField] private string m_generalSettingsPath;
     
     [Title("Initialization")]
     [SerializeField]
@@ -82,6 +90,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         Paused = new ObservableField<bool>(false);
         Paused.OnValueChanged += OnPausedChanged;
 
+
         m_currentGameState = m_startGameState;
 
         m_gameOptionsManager.Initialize();
@@ -90,9 +99,18 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_canvasManager.Initialize();
 
         LoadGlobalObjectScene();
-#if UNITY_EDITOR
-        LoadVirtualControllerScene(); // TODO disable in production build
-#endif
+
+
+        string generalSettingsFullPath = Path.Combine(".", "ExternalAssets", m_generalSettingsPath);
+        if (File.Exists(generalSettingsFullPath))
+        {
+            string generalSettings = File.ReadAllText(generalSettingsFullPath);
+            GeneralSettings settings = JsonUtility.FromJson<GeneralSettings>(generalSettings);
+            if (settings.EnableVirtualController)
+            {
+                LoadVirtualControllerScene(); // TODO disable in production build
+            }
+        }
     }
 
     private void OnPausedChanged(bool pause)

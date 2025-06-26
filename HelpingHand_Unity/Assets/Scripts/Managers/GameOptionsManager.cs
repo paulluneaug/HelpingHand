@@ -34,7 +34,7 @@ public class GameOptionsManager
 
     public void Initialize()
     {
-        m_screenNativeResolution = Screen.resolutions[0];
+        m_screenNativeResolution = Screen.resolutions[^1];
         IsWindowed.OnValueChanged += OnWindowedModeChanged;
     }
 
