@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.Remoting;
 
 using Sirenix.OdinInspector;
 
@@ -32,6 +31,10 @@ public class InputActionTriggersManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.VirtualControllerEnabled)
+        {
+            return;
+        }
         m_buttonsTriggers.ForEach(trigger => trigger.Update());
         m_toggleTriggers.ForEach(trigger => trigger.Update());
         m_axisTriggers.ForEach(trigger => trigger.Update());
