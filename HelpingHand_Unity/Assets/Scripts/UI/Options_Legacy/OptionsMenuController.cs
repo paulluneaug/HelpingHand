@@ -84,11 +84,6 @@ public class OptionsMenuController : SerializedMonoBehaviour
         m_descriptionText.text = controller.Description;
     }
 
-    private void Start()
-    {
-        m_gameOptions = GameManager.Instance.GameOptionsManager;
-    }
-
     private void OnDestroy()
     {
         UnsubscribeFromEvents();
@@ -132,6 +127,8 @@ public class OptionsMenuController : SerializedMonoBehaviour
 
     public void InitializeAllOptionValues()
     {
+        m_gameOptions = GameManager.Instance.GameOptionsManager;
+
         OnOptionScreenModeChanged(m_optionWindowMode.Value);
         OnOptionDialogueReadModeChanged(m_optionDialogueReadMode.Value);
         OnOptionVolumeGlobalChanged(m_optionMasterVolume.Value);
