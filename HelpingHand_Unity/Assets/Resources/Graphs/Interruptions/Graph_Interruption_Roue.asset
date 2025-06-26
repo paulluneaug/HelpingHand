@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Name: Restart graph
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 5960, y: -632}
+  position: {x: 6200, y: -632}
   folded: 0
   ports:
     keys:
@@ -925,6 +925,83 @@ MonoBehaviour:
   m_interruptable: 0
   m_type: 3
   m_frameCount: 0
+--- !u!114 &-3072585195996871413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e928cc46fe1085e4383f08dfdf17308a, type: 3}
+  m_Name: Graph Control
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5608, y: -632}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_handlerIn
+    - m_handlerOut
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -3072585195996871413}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 3510209391612214814}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -3072585195996871413}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -2507503734160846141}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerIn
+      _node: {fileID: -3072585195996871413}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerOut
+      _node: {fileID: -3072585195996871413}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_graph: {fileID: 11400000, guid: f883e11b268f7884695c5ef90e5fffd1, type: 2}
+  m_control: 0
+  m_waitForCompletion: 1
 --- !u!114 &-2915872906229979843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,7 +1352,7 @@ MonoBehaviour:
   m_Name: Set Blackboard Value
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 5640, y: -632}
+  position: {x: 5880, y: -632}
   folded: 0
   ports:
     keys:
@@ -1289,7 +1366,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 3510209391612214814}
+        node: {fileID: -3072585195996871413}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1333,7 +1410,7 @@ MonoBehaviour:
       Data: 0|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 40.5292625
+      Data: 185.903259
     - Name: 
       Entry: 8
       Data: 
@@ -1748,6 +1825,7 @@ MonoBehaviour:
   - {fileID: -7569008594718726734}
   - {fileID: -8608085502834855801}
   - {fileID: -437300419067095329}
+  - {fileID: -3072585195996871413}
 --- !u!114 &637658005312388213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,7 +2087,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -2507503734160846141}
+        node: {fileID: -3072585195996871413}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -2044,7 +2122,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_interruptable: 0
-  m_waitTime: 2
+  m_waitTime: 0.5
   m_unscaled: 0
 --- !u!114 &3935527377422329109
 MonoBehaviour:
@@ -2828,7 +2906,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 1
+  m_value: 3
   m_values: 0100000002000000
   m_exactValues: 1
 --- !u!114 &8240787185644732172
@@ -2844,7 +2922,7 @@ MonoBehaviour:
   m_Name: Value Time Now
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 5672, y: -776}
+  position: {x: 5912, y: -776}
   folded: 0
   ports:
     keys:

@@ -83,6 +83,69 @@ MonoBehaviour:
   m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 3e12e284a02872344906caf12e0e1fa8, type: 2}
+--- !u!114 &-4786986197351439497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
+  m_Name: Show lair
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3816, y: -136}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -4786986197351439497}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 6152026463367555081}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -4786986197351439497}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -4786986197351439497}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: a0c4f898d95185d4db32a346ab173fb1, type: 2}
 --- !u!114 &-3444669357104844523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +557,7 @@ MonoBehaviour:
   - {fileID: -3444669357104844523}
   - {fileID: 6152026463367555081}
   - {fileID: 5488312680458547339}
+  - {fileID: -4786986197351439497}
 --- !u!114 &4067925675490346377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,7 +1030,7 @@ MonoBehaviour:
   m_Name: Continue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3800, y: 136}
+  position: {x: 3608, y: 136}
   folded: 0
   ports:
     keys:
@@ -1004,6 +1068,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 5488312680458547339}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: -4786986197351439497}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
