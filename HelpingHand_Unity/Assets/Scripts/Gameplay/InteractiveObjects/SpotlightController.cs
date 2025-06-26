@@ -1,7 +1,4 @@
-using System;
-
 using UnityEngine;
-using UnityEngine.Serialization;
 
 using UnityUtility.CustomAttributes;
 using UnityUtility.MathU;
@@ -18,9 +15,11 @@ public class SpotlightController : MonoBehaviour
     [SerializeField] private BaseVariable<Vector2> m_manualInput;
     [SerializeField] private BaseVariable<bool> m_targetInCone;
     [SerializeField] private BaseVariable<Transform> m_target;
-    [FormerlySerializedAs("m_autoMode")] [FormerlySerializedAs("m_manualMode")] [SerializeField] private BaseVariable<bool> m_followMode;
+    [SerializeField] private BaseVariable<bool> m_followMode;
     [SerializeField] private ButtonInputEvent m_toggleSpotlightButton;
-    [FormerlySerializedAs("m_toggleAutoModeIndicator")] [FormerlySerializedAs("m_toggleManualModeIndicator")] [SerializeField] private EntityState m_toggleFollowModeIndicator;
+    [SerializeField] private EntityState m_toggleFollowModeIndicator;
+    [SerializeField] private EntityState m_puppetSpotlightOn;
+    [SerializeField] private EntityState m_puppetSpotlightOff;
 
     [Title("Component References")]
     [SerializeField] private Transform m_spotTransform;
@@ -49,6 +48,8 @@ public class SpotlightController : MonoBehaviour
         m_toggleFollowModeIndicator.AddListener(OnFollowModeToggle);
         m_mode = m_followMode.Value ? SpotlightMode.FollowTarget : SpotlightMode.Manual;
         m_light.enabled = false;
+        m_puppetSpotlightOn.SetValueWithoutNotify(false);
+        m_puppetSpotlightOff.SetValueWithoutNotify(true);
     }
 
     private void OnFollowModeToggle(bool isOn)
@@ -66,6 +67,16 @@ public class SpotlightController : MonoBehaviour
     private void OnSpotlightToggle()
     {
         m_light.enabled = !m_light.enabled;
+        if (m_light.enabled)
+        {
+            m_puppetSpotlightOn.Set();
+            m_puppetSpotlightOff.Unset();
+        }
+        else
+        {
+            m_puppetSpotlightOn.Unset();
+            m_puppetSpotlightOff.Set();
+        }
     }
 
     private void Update()
