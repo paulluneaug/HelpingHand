@@ -162,7 +162,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 318932898162935300, guid: f18edd48dd3e451448a9f6bddc476c0c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.07
+      value: -3.268
       objectReference: {fileID: 0}
     - target: {fileID: 318932898162935300, guid: f18edd48dd3e451448a9f6bddc476c0c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -464,13 +464,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8346669645565027154}
     - target: {fileID: 2186480663098209708, guid: 03c61adcd4511004d95caa50e1fd2a64, type: 3}
-      propertyPath: m_startGameState
+      propertyPath: m_gameOptionsManager.IsWindowed.m_underlyingValue
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2186480663098209708, guid: 03c61adcd4511004d95caa50e1fd2a64, type: 3}
-      propertyPath: m_skipDialogueInput
-      value: 
-      objectReference: {fileID: 11400000, guid: 48e13a27343be6f409900f5417b71e33, type: 2}
     - target: {fileID: 6016779573717118439, guid: 03c61adcd4511004d95caa50e1fd2a64, type: 3}
       propertyPath: m_Name
       value: === GameManager ===
@@ -615,6 +611,22 @@ PrefabInstance:
     - target: {fileID: 2993456136828591498, guid: fc924abd60ea5b848a5ebd42aca1c328, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853267417908422617, guid: fc924abd60ea5b848a5ebd42aca1c328, type: 3}
+      propertyPath: m_states.Array.data[0].m_musicState
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853267417908422617, guid: fc924abd60ea5b848a5ebd42aca1c328, type: 3}
+      propertyPath: m_states.Array.data[1].m_musicState
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853267417908422617, guid: fc924abd60ea5b848a5ebd42aca1c328, type: 3}
+      propertyPath: m_states.Array.data[2].m_musicState
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853267417908422617, guid: fc924abd60ea5b848a5ebd42aca1c328, type: 3}
+      propertyPath: m_states.Array.data[3].m_musicState
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6273668227940694410, guid: fc924abd60ea5b848a5ebd42aca1c328, type: 3}
       propertyPath: m_Name
@@ -809,6 +821,10 @@ PrefabInstance:
       propertyPath: m_activateAtStart
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5634523333326515635, guid: 63277cecf76f36243a9a81441e205c1d, type: 3}
+      propertyPath: m_activateAtStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7261756935485314242, guid: 63277cecf76f36243a9a81441e205c1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -848,10 +864,6 @@ PrefabInstance:
     - target: {fileID: 7261756935485314242, guid: 63277cecf76f36243a9a81441e205c1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264921766495663952, guid: 63277cecf76f36243a9a81441e205c1d, type: 3}
-      propertyPath: m_activateAtStart
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1013,10 +1025,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6202764458624376704, guid: 26f0aecc66e82d547bef89c4d7ccc345, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1030,6 +1038,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 950050168}
     m_Modifications:
+    - target: {fileID: 1407810760546508231, guid: 7087580877155354f9a60d80accf3a0a, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1407810760546508231, guid: 7087580877155354f9a60d80accf3a0a, type: 3}
     - target: {fileID: 3094827108256888098, guid: 7087580877155354f9a60d80accf3a0a, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -3003,6 +3015,18 @@ PrefabInstance:
     - target: {fileID: 5887043186321762858, guid: c3eeb62eab375b44aa64d8841caaa13e, type: 3}
       propertyPath: m_Name
       value: === Dialogue Manager ===
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052660865986840655, guid: c3eeb62eab375b44aa64d8841caaa13e, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052660865986840655, guid: c3eeb62eab375b44aa64d8841caaa13e, type: 3}
+      propertyPath: m_fontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052660865986840655, guid: c3eeb62eab375b44aa64d8841caaa13e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8647758677704560410, guid: c3eeb62eab375b44aa64d8841caaa13e, type: 3}
       propertyPath: m_LocalPosition.x

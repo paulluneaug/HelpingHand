@@ -1,4 +1,7 @@
+using System;
+
 using UnityEngine;
+using UnityEngine.Serialization;
 
 using UnityUtility.CustomAttributes;
 using UnityUtility.MathU;
@@ -15,10 +18,13 @@ public class SpotlightController : MonoBehaviour
     [SerializeField] private BaseVariable<Vector2> m_manualInput;
     [SerializeField] private BaseVariable<bool> m_targetInCone;
     [SerializeField] private BaseVariable<Transform> m_target;
-    [SerializeField] private BaseVariable<bool> m_manualMode;
+    [FormerlySerializedAs("m_autoMode")] [FormerlySerializedAs("m_manualMode")] [SerializeField] private BaseVariable<bool> m_followMode;
+    [SerializeField] private ButtonInputEvent m_toggleSpotlightButton;
+    [FormerlySerializedAs("m_toggleAutoModeIndicator")] [FormerlySerializedAs("m_toggleManualModeIndicator")] [SerializeField] private EntityState m_toggleFollowModeIndicator;
 
     [Title("Component References")]
     [SerializeField] private Transform m_spotTransform;
+    [SerializeField] private Light m_light;
 
     [Title("Movement Settings")]
     [SerializeField, Tooltip("Degrees / sec")] private float m_manualRotationSpeed;
@@ -39,8 +45,27 @@ public class SpotlightController : MonoBehaviour
     private void Start()
     {
         m_transform = transform;
-        m_manualMode.AddListener(OnModeChanged);
-        OnModeChanged(m_manualMode.Value);
+        m_toggleSpotlightButton.AddListener(OnSpotlightToggle);
+        m_toggleFollowModeIndicator.AddListener(OnFollowModeToggle);
+        m_mode = m_followMode.Value ? SpotlightMode.FollowTarget : SpotlightMode.Manual;
+        m_light.enabled = false;
+    }
+
+    private void OnFollowModeToggle(bool isOn)
+    {
+        m_mode = isOn ? SpotlightMode.FollowTarget : SpotlightMode.Manual;
+        m_followMode.Value = isOn;
+    }
+
+    private void OnDestroy()
+    {
+        m_toggleSpotlightButton.RemoveListener(OnSpotlightToggle);
+        m_toggleFollowModeIndicator.RemoveListener(OnFollowModeToggle);
+    }
+
+    private void OnSpotlightToggle()
+    {
+        m_light.enabled = !m_light.enabled;
     }
 
     private void Update()
@@ -60,11 +85,6 @@ public class SpotlightController : MonoBehaviour
         }
 
         m_targetInCone.Value = IsTargetInCone();
-    }
-
-    public void SetMode(SpotlightMode mode)
-    {
-        m_mode = mode;
     }
 
     private void UpdateManualMovement()
@@ -112,11 +132,6 @@ public class SpotlightController : MonoBehaviour
         Vector3 toTarget = m_target.Value.position - m_spotTransform.position;
         float angleToTarget = Vector3.Angle(m_spotTransform.forward, toTarget);
         return angleToTarget < m_spotAngle;
-    }
-
-    private void OnModeChanged(bool manualMode)
-    {
-        m_mode = manualMode ? SpotlightMode.Manual : SpotlightMode.FollowTarget;
     }
 
     private void OnDrawGizmosSelected()

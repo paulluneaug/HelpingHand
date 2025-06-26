@@ -79,14 +79,14 @@ public class OptionsMenuController : SerializedMonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        InitializeAllOptionValues();
+    }
+
     private void OnOptionSelected(IOptionController controller)
     {
         m_descriptionText.text = controller.Description;
-    }
-
-    private void Start()
-    {
-        m_gameOptions = GameManager.Instance.GameOptionsManager;
     }
 
     private void OnDestroy()
@@ -130,6 +130,20 @@ public class OptionsMenuController : SerializedMonoBehaviour
         m_open = true;
     }
 
+    public void InitializeAllOptionValues()
+    {
+        m_gameOptions = GameManager.Instance.GameOptionsManager;
+
+        OnOptionScreenModeChanged(m_optionWindowMode.Value);
+        OnOptionDialogueReadModeChanged(m_optionDialogueReadMode.Value);
+        OnOptionVolumeGlobalChanged(m_optionMasterVolume.Value);
+        OnOptionVolumeVoiceChanged(m_optionVoiceVolume.Value);
+        OnOptionSubtitleColorChanged(m_optionSubtitleColor.Value);
+        OnOptionSubtitleSizeChanged(m_optionSubtitleSize.Value);
+        OnOptionSubtitleBackgroundOpacityChanged(m_optionSubtitleBackgroundOpacity.Value);
+        OnOptionSubtitleBackgroundColorChanged(m_optionSubtitleBackgroundColor.Value);
+    }
+
     public void CloseOptionMenu()
     {
         if (!m_open)
@@ -151,7 +165,7 @@ public class OptionsMenuController : SerializedMonoBehaviour
 
     private void OnOptionVolumeGlobalChanged(float value)
     {
-        AudioManager.Instance.RTPCManager.RTPC_MasterVolume.SetGlobalValue(value);
+        AudioManager.Instance.RTPCManager.RTPC_MasterVolume.SetGlobalValue(value / 100.0f);
     }
 
     //private void OnOptionVolumeSFXChanged(float value)
@@ -166,7 +180,7 @@ public class OptionsMenuController : SerializedMonoBehaviour
 
     private void OnOptionVolumeVoiceChanged(float value)
     {
-        AudioManager.Instance.RTPCManager.RTPC_VoiceVolume.SetGlobalValue(value);
+        AudioManager.Instance.RTPCManager.RTPC_VoiceVolume.SetGlobalValue(value / 100.0f);
     }
 
 
@@ -243,12 +257,15 @@ public class OptionsMenuController : SerializedMonoBehaviour
         m_mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
 
         m_optionWindowMode.OnValueChanged += OnOptionScreenModeChanged;
+        m_optionDialogueReadMode.OnValueChanged += OnOptionDialogueReadModeChanged;
+
+        m_optionMasterVolume.OnValueChanged += OnOptionVolumeGlobalChanged;
+        m_optionVoiceVolume.OnValueChanged += OnOptionVolumeVoiceChanged;
 
         m_optionSubtitleColor.OnValueChanged += OnOptionSubtitleColorChanged;
         m_optionSubtitleSize.OnValueChanged += OnOptionSubtitleSizeChanged;
         m_optionSubtitleBackgroundOpacity.OnValueChanged += OnOptionSubtitleBackgroundOpacityChanged;
         m_optionSubtitleBackgroundColor.OnValueChanged += OnOptionSubtitleBackgroundColorChanged;
-        m_optionDialogueReadMode.OnValueChanged += OnOptionDialogueReadModeChanged;
     }
 
     private void UnsubscribeFromEvents()
@@ -258,12 +275,15 @@ public class OptionsMenuController : SerializedMonoBehaviour
         m_mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
 
         m_optionWindowMode.OnValueChanged -= OnOptionScreenModeChanged;
+        m_optionDialogueReadMode.OnValueChanged -= OnOptionDialogueReadModeChanged;
+
+        m_optionMasterVolume.OnValueChanged -= OnOptionVolumeGlobalChanged;
+        m_optionVoiceVolume.OnValueChanged -= OnOptionVolumeVoiceChanged;
 
         m_optionSubtitleColor.OnValueChanged -= OnOptionSubtitleColorChanged;
         m_optionSubtitleSize.OnValueChanged -= OnOptionSubtitleSizeChanged;
         m_optionSubtitleBackgroundOpacity.OnValueChanged -= OnOptionSubtitleBackgroundOpacityChanged;
         m_optionSubtitleBackgroundColor.OnValueChanged -= OnOptionSubtitleBackgroundColorChanged;
-        m_optionDialogueReadMode.OnValueChanged -= OnOptionDialogueReadModeChanged;
     }
 
     private void UpdateDescriptionPanel()

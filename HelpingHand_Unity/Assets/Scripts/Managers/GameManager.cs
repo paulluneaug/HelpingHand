@@ -1,10 +1,16 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 using Cysharp.Threading.Tasks;
 
 using Events;
 
 using Sirenix.OdinInspector;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,11 +29,16 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         Gameplay,
     }
 
+    [Serializable]
+    private class GeneralSettings
+    {
+        public bool EnableVirtualController;
+    }
+
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
     public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager;
-    public SimonManager SimonManager => m_simonManager;
 
     public ButtonInputEvent SkipDialogueInput => m_skipDialogueInput;
 
@@ -49,9 +60,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [Title("Canvas Manager")]
     [SerializeField] private CanvasManager m_canvasManager;
 
-    [Title("Simon Manager")]
-    [SerializeField] private SimonManager m_simonManager;
-
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
 
@@ -65,6 +73,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Misc")]
     [SerializeField] private Transform m_puppetStart;
+    [SerializeField] private string m_generalSettingsPath;
+    
+    [Title("Initialization")]
+    [SerializeField]
+    private List<BaseGameEvent> m_allGameEvents;
 
     // Cache
     [NonSerialized] private Puppet m_puppet;
@@ -77,18 +90,27 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         Paused = new ObservableField<bool>(false);
         Paused.OnValueChanged += OnPausedChanged;
 
+
         m_currentGameState = m_startGameState;
 
         m_gameOptionsManager.Initialize();
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
         m_canvasManager.Initialize();
-        m_simonManager.Initialize();
 
         LoadGlobalObjectScene();
-#if !PRODUCTION_BUILD
-        LoadVirtualControllerScene(); // TODO disable in production build
-#endif
+
+
+        string generalSettingsFullPath = Path.Combine(".", "ExternalAssets", m_generalSettingsPath);
+        if (File.Exists(generalSettingsFullPath))
+        {
+            string generalSettings = File.ReadAllText(generalSettingsFullPath);
+            GeneralSettings settings = JsonUtility.FromJson<GeneralSettings>(generalSettings);
+            if (settings.EnableVirtualController)
+            {
+                LoadVirtualControllerScene(); // TODO disable in production build
+            }
+        }
     }
 
     private void OnPausedChanged(bool pause)
@@ -113,7 +135,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         base.OnDestroy();
         m_arduinoConnectorManager.Dispose();
-        m_simonManager.Dispose();
         m_gameOptionsManager.Dispose();
     }
 
@@ -131,16 +152,42 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 break;
         }
     }
-
+    
+#if UNITY_EDITOR
+    [Button("Load all game events")]
+    private void LoadGameEvents()
+    {
+        m_allGameEvents = new List<BaseGameEvent>();
+        var assetGUIDS = AssetDatabase.FindAssets("t:BaseGameEvent", new string[] { "Assets/Resources/" });
+        foreach (string assetGUID in assetGUIDS)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
+            foreach (UnityEngine.Object obj in AssetDatabase.LoadAllAssetsAtPath(assetPath))
+            {
+                if (obj is BaseGameEvent gameEvent)
+                {
+                    m_allGameEvents.Add(gameEvent);
+                }
+            }
+        }
+        AssetDatabase.SaveAssetIfDirty(this);
+    }
+#endif
+    
     public void StartGameplay()
     {
         // Initialize all variables
-        BaseGameEvent[] allEvents = Resources.LoadAll<BaseGameEvent>(string.Empty);
-        foreach (BaseGameEvent gameEvent in allEvents)
+        // BaseGameEvent[] allEvents = Resources.LoadAll<BaseGameEvent>(string.Empty);
+        // foreach (BaseGameEvent gameEvent in allEvents)
+        // {
+        //     gameEvent.Initialize();
+        // }
+        
+        foreach (BaseGameEvent gameEvent in m_allGameEvents)
         {
             gameEvent.Initialize();
         }
-        
+
         // TODO Initialize all singletons
 
         m_arduinoConnectorManager.SendFaderPosition(true);

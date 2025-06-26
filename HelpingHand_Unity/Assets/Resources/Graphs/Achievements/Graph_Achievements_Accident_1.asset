@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Graph Control
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1560, y: 8}
+  position: {x: 1832, y: 8}
   folded: 0
   ports:
     keys:
@@ -28,7 +28,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -5331700776612783641}
+        node: {fileID: -3067804375568812684}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_graph: {fileID: 11400000, guid: 92b93e19d77d9834cbed1c414e254014, type: 2}
-  m_control: 3
+  m_control: 0
   m_waitForCompletion: 0
 --- !u!114 &-5331700776612783641
 MonoBehaviour:
@@ -123,7 +123,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -7624442696477517626}
+        node: {fileID: -3067804375568812684}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
     - m_in
     - m_out
     - m_kill
+    - m_resetKill
     values:
     - _fieldName: m_in
       _node: {fileID: -4801245080659077583}
@@ -204,6 +205,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_resetKill
+      _node: {fileID: -4801245080659077583}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -228,6 +238,83 @@ MonoBehaviour:
       Data: 
   m_showDebugLog: 1
   m_interruptable: 1
+--- !u!114 &-3067804375568812684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e928cc46fe1085e4383f08dfdf17308a, type: 3}
+  m_Name: Graph Control
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1560, y: 8}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    - m_handlerIn
+    - m_handlerOut
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -3067804375568812684}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -5331700776612783641}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -3067804375568812684}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -7624442696477517626}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerIn
+      _node: {fileID: -3067804375568812684}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_handlerOut
+      _node: {fileID: -3067804375568812684}
+      _typeQualifiedName: GraphRunnerHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_graph: {fileID: 11400000, guid: f883e11b268f7884695c5ef90e5fffd1, type: 2}
+  m_control: 0
+  m_waitForCompletion: 1
 --- !u!114 &-2751932113907057705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +387,7 @@ MonoBehaviour:
     - m_in
     - m_out
     - m_kill
+    - m_resetKill
     values:
     - _fieldName: m_in
       _node: {fileID: -1834147998067772205}
@@ -334,6 +422,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: m_resetKill
+      _node: {fileID: -1834147998067772205}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -350,7 +447,7 @@ MonoBehaviour:
   m_contentAnnoyed: 
   m_contentPissed: 
   m_canRepeat: 1
-  m_waitTime: 1
+  m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 2ed4a8dc1950e9543a536c68aff6860e, type: 2}
 --- !u!114 &11400000
@@ -372,6 +469,7 @@ MonoBehaviour:
   - {fileID: -5331700776612783641}
   - {fileID: -7624442696477517626}
   - {fileID: 1864526173870263385}
+  - {fileID: -3067804375568812684}
 --- !u!114 &1864526173870263385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +490,7 @@ MonoBehaviour:
     - m_in
     - m_out
     - m_kill
+    - m_resetKill
     values:
     - _fieldName: m_in
       _node: {fileID: 1864526173870263385}
@@ -418,6 +517,15 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: m_kill
+      _node: {fileID: 1864526173870263385}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_resetKill
       _node: {fileID: 1864526173870263385}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null

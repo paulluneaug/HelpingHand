@@ -32,7 +32,7 @@ public class ColorOptionController : MonoBehaviour
     [NonSerialized] private Color m_value;
 
 
-    private void Start()
+    private void Awake()
     {
         m_svSliderBackground.material = Instantiate(m_svGradientMaterial);
 

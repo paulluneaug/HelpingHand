@@ -62,8 +62,9 @@ public abstract class BaseOptionController<T> : Selectable, IOptionController, I
     [NonSerialized] private AutoScroller m_parentAutoScroller;
 
 
-    protected override void Start()
+    protected override void Awake()
     {
+        base.Awake();
         m_rectTransform = (RectTransform)transform;
         m_parentAutoScroller = GetComponentInParent<AutoScroller>();
 
