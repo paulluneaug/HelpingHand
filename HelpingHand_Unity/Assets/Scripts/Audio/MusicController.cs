@@ -25,7 +25,6 @@ public class MusicController : MonoBehaviour
     }
 
     [Title("Input Events")]
-    [SerializeField] private RotaryEncoderInputEvent m_selectMusicInput;
     [SerializeField] private BaseVariable<bool> m_selectedMusic0;
     [SerializeField] private BaseVariable<bool> m_selectedMusic1;
     [SerializeField] private ButtonInputEvent m_playMusicEvent;
@@ -36,7 +35,6 @@ public class MusicController : MonoBehaviour
     // Cache
     [NonSerialized] private int m_selectedMusicIndex = -1;
     [NonSerialized] private int m_playingMusicIndex = -1;
-    [NonSerialized] private bool m_playingMusic = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -68,15 +66,17 @@ public class MusicController : MonoBehaviour
 
     private void Init()
     {
-        m_selectMusicInput.AddIndexListener(OnIndexChanged);
+        m_selectedMusic0.AddListener(OnIndexChanged);
+        m_selectedMusic1.AddListener(OnIndexChanged);
         m_playMusicEvent.AddDownListener(OnPlayMusicChanged);
 
-        m_selectedMusicIndex = m_selectMusicInput.Index.Value.Mod(m_states.Length);
+        OnIndexChanged();
     }
 
     private void Dispose()
     {
-        m_selectMusicInput.RemoveIndexListener(OnIndexChanged);
+        m_selectedMusic0.RemoveListener(OnIndexChanged);
+        m_selectedMusic1.RemoveListener(OnIndexChanged);
         m_playMusicEvent.RemoveListener(OnPlayMusicChanged);
     }
 
@@ -104,8 +104,10 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    private void OnIndexChanged(int index)
+    private void OnIndexChanged()
     {
-        m_selectedMusicIndex = index.Mod(m_states.Length);
+        m_selectedMusicIndex = 0;
+        m_selectedMusicIndex |= m_selectedMusic0.Value ? 1 << 0 : 0;
+        m_selectedMusicIndex |= m_selectedMusic1.Value ? 1 << 1 : 0;
     }
 }
