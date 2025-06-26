@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
 
 using Events;
 
 using Sirenix.OdinInspector;
+
+using UnityEditor;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,6 +68,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Misc")]
     [SerializeField] private Transform m_puppetStart;
+    
+    [Title("Initialization")]
+    [SerializeField]
+    private List<BaseGameEvent> m_allGameEvents;
 
     // Cache
     [NonSerialized] private Puppet m_puppet;
@@ -131,12 +138,38 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 break;
         }
     }
-
+    
+#if UNITY_EDITOR
+    [Button("Load all game events")]
+    private void LoadGameEvents()
+    {
+        m_allGameEvents = new List<BaseGameEvent>();
+        var assetGUIDS = AssetDatabase.FindAssets("t:BaseGameEvent", new string[] { "Assets/Resources/" });
+        foreach (string assetGUID in assetGUIDS)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
+            foreach (UnityEngine.Object obj in AssetDatabase.LoadAllAssetsAtPath(assetPath))
+            {
+                if (obj is BaseGameEvent gameEvent)
+                {
+                    m_allGameEvents.Add(gameEvent);
+                }
+            }
+        }
+        AssetDatabase.SaveAssetIfDirty(this);
+    }
+#endif
+    
     public void StartGameplay()
     {
         // Initialize all variables
-        BaseGameEvent[] allEvents = Resources.LoadAll<BaseGameEvent>(string.Empty);
-        foreach (BaseGameEvent gameEvent in allEvents)
+        // BaseGameEvent[] allEvents = Resources.LoadAll<BaseGameEvent>(string.Empty);
+        // foreach (BaseGameEvent gameEvent in allEvents)
+        // {
+        //     gameEvent.Initialize();
+        // }
+        
+        foreach (BaseGameEvent gameEvent in m_allGameEvents)
         {
             gameEvent.Initialize();
         }
