@@ -17,6 +17,7 @@ public abstract class InputActionTrigger<TEvent> : IDisposable
 
     public void Initialize()
     {
+        UpdateEvent();
         if (m_behaviour != TriggerBehaviour.OnActionPerformed)
         {
             return;
