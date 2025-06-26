@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public GameState CurrentGameState => m_currentGameState;
 
+    public bool VirtualControllerEnabled => m_virtualControllerEnabled;
+
     public event Action<GameState> OnGameStateChanged;
 
     [NonSerialized] public ObservableField<bool> Paused;
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     // Cache
     [NonSerialized] private Puppet m_puppet;
     [NonSerialized] private GameState m_currentGameState;
+    [NonSerialized] private bool m_virtualControllerEnabled;
 
     public override void Initialize()
     {
@@ -100,12 +103,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
         LoadGlobalObjectScene();
 
-
+        m_virtualControllerEnabled = false;
         string generalSettingsFullPath = Path.Combine(".", "ExternalAssets", m_generalSettingsPath);
         if (File.Exists(generalSettingsFullPath))
         {
             string generalSettings = File.ReadAllText(generalSettingsFullPath);
             GeneralSettings settings = JsonUtility.FromJson<GeneralSettings>(generalSettings);
+            m_virtualControllerEnabled = settings.EnableVirtualController;
             if (settings.EnableVirtualController)
             {
                 LoadVirtualControllerScene(); // TODO disable in production build

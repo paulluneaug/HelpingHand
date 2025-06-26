@@ -17,7 +17,7 @@ public class DialoguePanelController : MonoBehaviour
 
     [NonSerialized] private GameOptionsManager m_optionsManager;
 
-    private void Awake()
+    public void Initialize()
     {
         m_optionsManager = GameManager.Instance.GameOptionsManager;
     }

@@ -17,12 +17,18 @@ public abstract class InputActionTrigger<TEvent> : IDisposable
 
     public void Initialize()
     {
-        UpdateEvent();
         if (m_behaviour != TriggerBehaviour.OnActionPerformed)
         {
             return;
         }
+        m_linkedEvent.OnActivate += OnEventActivate;
         m_action.action.performed += OnActionPerformed;
+    }
+
+    private void OnEventActivate()
+    {
+        m_linkedEvent.OnActivate -= OnEventActivate;
+        UpdateEvent();
     }
 
     public void Dispose()

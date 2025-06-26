@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     protected override void Awake()
     {
         base.Start();
+        m_panelController.Initialize();
         m_panelController.ClosePanel();
         m_panelOpen = false;
     }
