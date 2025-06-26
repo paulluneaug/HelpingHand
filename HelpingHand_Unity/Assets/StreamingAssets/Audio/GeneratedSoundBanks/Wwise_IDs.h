@@ -125,6 +125,9 @@ namespace AK
         static const AkUniqueID SIMON_LIGHT2_TURNON_PLAY = 2523129872U;
         static const AkUniqueID SIMON_LIGHT3_TURNON_PLAY = 3688184017U;
         static const AkUniqueID SIMON_LIGHT4_TURNON_PLAY = 1553928474U;
+        static const AkUniqueID SOUND1_PLAY = 2143040304U;
+        static const AkUniqueID SOUND2_PLAY = 1790927701U;
+        static const AkUniqueID SOUND3_PLAY = 2960913830U;
         static const AkUniqueID SPOTLIGHT_BREAK_PLAY = 2800173644U;
         static const AkUniqueID SPOTLIGHT_OFF_PLAY = 1074187710U;
         static const AkUniqueID SPOTLIGHT_ON_PLAY = 1206761850U;

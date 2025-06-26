@@ -9,6 +9,9 @@ using UnityUtility.MathU;
 public class LightSettingsContainer : IObjectSettingsContainer
 {
     public Light Spot => m_spot;
+    public LightSettings MinSettings => m_minSettings;
+    public LightSettings MaxSettings => m_maxSettings;
+    
     [SerializeField] private Light m_spot;
 
     [SerializeField] private Gradient m_colorGradient;

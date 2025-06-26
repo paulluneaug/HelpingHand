@@ -11,6 +11,7 @@ public class DiscreetObjectController<TSettingsContainer> : MonoBehaviour, IBase
     where TSettingsContainer : IObjectSettingsContainer
 {
     public BaseVariable<bool> Variable => m_controllingVariable;
+    public TSettingsContainer SettingsContainer => m_settings;
 
     [Title("Variable")]
     [SerializeField] private BaseVariable<bool> m_controllingVariable;
