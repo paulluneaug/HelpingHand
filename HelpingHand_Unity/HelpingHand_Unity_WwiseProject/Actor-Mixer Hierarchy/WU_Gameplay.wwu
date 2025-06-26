@@ -1391,39 +1391,8 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="ANM_Roomba_TurnOff" ID="{418C7DA9-ABCE-489D-8030-9BA21ED2693B}" ShortID="744526427">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>-3</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="ANM_Roomba_TurnOff" ID="{59769E06-D7C1-4203-9095-1EA22EC6DF27}">
-											<Language>SFX</Language>
-											<AudioFile>ANM_Roomba_TurnOff.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="524438332"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="ANM_Roomba_TurnOff" ID="{59769E06-D7C1-4203-9095-1EA22EC6DF27}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 								<RandomSequenceContainer Name="Roomba" ID="{B3BF1578-3188-47E3-9720-81F4ED139929}" ShortID="198253594">
 									<PropertyList>
-										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
 										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="6"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
@@ -1440,6 +1409,11 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="Loop" ID="{99CA7EDE-A11C-4668-ABD5-1C508CA25FF2}" ShortID="163232618">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
 														<Value>3</Value>
@@ -1460,12 +1434,22 @@
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="ANM_Roomba_Cleaning_Loop" ID="{509FDDDC-0D2B-4D55-8AC9-3C501CE6FB46}" ShortID="557040902">
+													<PropertyList>
+														<Property Name="UserAuxSendVolume0" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 														</Reference>
 														<Reference Name="OutputBus">
 															<ObjectRef Name="SfxBus" ID="{2A04E057-5A03-4B6D-A72F-4641264E8BCB}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+														</Reference>
+														<Reference Name="UserAuxSend0">
+															<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
@@ -1482,13 +1466,6 @@
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Playlist">
-													<Reference>
-														<ObjectRef Name="ANM_Roomba_Cleaning_Loop" ID="{509FDDDC-0D2B-4D55-8AC9-3C501CE6FB46}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
-													</Reference>
-												</ObjectList>
-											</ObjectLists>
 										</RandomSequenceContainer>
 										<Sound Name="ANM_Roomba_CleaningStart" ID="{EE1D8966-4D59-49C8-8A73-00700B8FB0C2}" ShortID="760988225">
 											<PropertyList>
@@ -1541,6 +1518,35 @@
 												<ActiveSource Name="ANM_Roomba_TurnOn" ID="{D7DE43F8-2BD4-40D5-A22A-A4390AFDA46F}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="ANM_Roomba_TurnOff" ID="{418C7DA9-ABCE-489D-8030-9BA21ED2693B}" ShortID="744526427">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ANM_Roomba_TurnOff" ID="{59769E06-D7C1-4203-9095-1EA22EC6DF27}">
+													<Language>SFX</Language>
+													<AudioFile>ANM_Roomba_TurnOff.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="524438332"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ANM_Roomba_TurnOff" ID="{59769E06-D7C1-4203-9095-1EA22EC6DF27}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 									<ObjectLists>
 										<ObjectList Name="Playlist">
@@ -1552,6 +1558,9 @@
 											</Reference>
 											<Reference>
 												<ObjectRef Name="Loop" ID="{99CA7EDE-A11C-4668-ABD5-1C508CA25FF2}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
+											</Reference>
+											<Reference>
+												<ObjectRef Name="ANM_Roomba_TurnOff" ID="{418C7DA9-ABCE-489D-8030-9BA21ED2693B}" WorkUnitID="{27A6A8BA-2B51-4470-B0AB-D5A3028BBD4F}"/>
 											</Reference>
 										</ObjectList>
 									</ObjectLists>
@@ -2459,7 +2468,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-13</Value>
+										<Value>-10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
