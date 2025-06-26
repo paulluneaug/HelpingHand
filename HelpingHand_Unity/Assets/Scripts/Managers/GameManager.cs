@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
     public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager;
-    public SimonManager SimonManager => m_simonManager;
 
     public ButtonInputEvent SkipDialogueInput => m_skipDialogueInput;
 
@@ -48,9 +47,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     [Title("Canvas Manager")]
     [SerializeField] private CanvasManager m_canvasManager;
-
-    [Title("Simon Manager")]
-    [SerializeField] private SimonManager m_simonManager;
 
     [Title("Start")]
     [SerializeField] private GameState m_startGameState;
@@ -83,7 +79,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
         m_canvasManager.Initialize();
-        m_simonManager.Initialize();
 
         LoadGlobalObjectScene();
 #if UNITY_EDITOR
@@ -113,7 +108,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         base.OnDestroy();
         m_arduinoConnectorManager.Dispose();
-        m_simonManager.Dispose();
         m_gameOptionsManager.Dispose();
     }
 
@@ -140,7 +134,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             gameEvent.Initialize();
         }
-        
+
         // TODO Initialize all singletons
 
         m_arduinoConnectorManager.SendFaderPosition(true);
