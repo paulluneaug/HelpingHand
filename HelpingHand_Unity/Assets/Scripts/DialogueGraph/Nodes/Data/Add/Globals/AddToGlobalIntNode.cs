@@ -48,9 +48,9 @@ public class AddToGlobalIntNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (this.TryGetValueFromInputPort(nameof(m_increment), out int outValue))
+        if (this.TryGetValueFromInputPort(nameof(m_increment), out int increment))
         {
-            m_increment = outValue;
+            m_increment = increment;
         }
 
         switch (m_operation)
