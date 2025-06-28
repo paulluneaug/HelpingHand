@@ -21,6 +21,9 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     [SerializeField]
     private AK.Wwise.Event m_sfx;
 
+    [SerializeField] 
+    private float m_delayBetweenAchievements = .5f;
+
     [SerializeField]
     private IntVariable m_achievementsCount;
 
@@ -65,18 +68,16 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     private Ease m_hideAnimationEase = Ease.InQuad;
 
     private Achievement[] m_allAchievements;
-    private Dictionary<Achievement, Action> m_achivementActions;
+    private Queue<Achievement> m_achievementsQueue;
+    private Achievement m_currentShowingAchievement;
 
     protected override void Start()
     {
-        m_achivementActions = new Dictionary<Achievement, Action>();
+        m_achievementsQueue = new Queue<Achievement>();
         m_allAchievements = Resources.LoadAll<Achievement>("Achievements");
         foreach (Achievement achievement in m_allAchievements)
         {
             achievement.Init();
-            Achievement a = achievement;
-            m_achivementActions[achievement] = () => OnAchievementSet(a);
-            achievement.OnEventRaised += m_achivementActions[achievement];
         }
 
         m_transform.localPosition = new Vector3(m_transform.localPosition.x, m_startHidden ? m_hideY : m_showY, m_transform.localPosition.z);
@@ -108,34 +109,15 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
 
     public override void OnDestroy()
     {
-        foreach (Achievement achievement in m_allAchievements)
-        {
-            achievement.OnEventRaised -= m_achivementActions[achievement];
-        }
         GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
         base.OnDestroy();
     }
 
     private void OnAchievementSet(Achievement achievement)
     {
-        SetAchievement(achievement).Forget();
-        ShowAchievement(achievement).Forget();
     }
 
-    private async UniTaskVoid SetAchievement(Achievement achievement)
-    {
-        SetAchievementTexts(achievement);
-        m_achievementsCount.Value++;
-        await UniTask.Delay(200);
-        _ = m_sfx.Post(gameObject);
-    }
 
-    private async UniTaskVoid ShowAchievement(Achievement achievement)
-    {
-        await ShowPanel();
-        await UniTask.Delay((int)m_showDuration * 1000);
-        await HidePanel();
-    }
 
     private void SetAchievementTexts(Achievement achievement)
     {
@@ -151,5 +133,38 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     private async UniTask HidePanel()
     {
         await m_transform.DOLocalMoveY(m_hideY, m_hideAnimationDuration).SetEase(m_hideAnimationEase).ToUniTask();
+    }
+
+    public void TrySetAchievement(Achievement achievement)
+    {
+        if (m_currentShowingAchievement != null)
+        {
+            m_achievementsQueue.Enqueue(achievement);
+        }
+        else
+        {
+            SetAchievement(achievement);
+        }
+    }
+
+    private void SetAchievement(Achievement achievement)
+    {
+        SetAchievementAsync(achievement).Forget();
+    }
+    
+    private async UniTaskVoid SetAchievementAsync(Achievement achievement)
+    {
+        SetAchievementTexts(achievement);
+        m_achievementsCount.Value++;
+        m_sfx.Post(gameObject);
+        await ShowPanel();
+        achievement.Set();
+        await UniTask.Delay((int)m_showDuration * 1000);
+        await HidePanel();
+        if (m_achievementsQueue.Count > 0)
+        {
+            await UniTask.Delay((int)m_delayBetweenAchievements * 1000);
+            SetAchievementAsync(m_achievementsQueue.Dequeue()).Forget();
+        }
     }
 }
