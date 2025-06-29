@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Activate Dropper
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 888, y: -248}
+  position: {x: 984, y: -232}
   folded: 0
   ports:
     keys:
@@ -1050,10 +1050,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05b6018978c88fe46b453afefddba39f, type: 3}
-  m_Name: Set Global Spline Container
+  m_Name: Set spline weapon
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 664, y: -520}
+  position: {x: 520, y: -504}
   folded: 0
   ports:
     keys:
@@ -1067,7 +1067,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 4662089034119733656}
+        node: {fileID: 3890154489244867192}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1629,6 +1629,7 @@ MonoBehaviour:
   - {fileID: -3172624518151373514}
   - {fileID: -8031563264119499278}
   - {fileID: -7905975989285178836}
+  - {fileID: 3890154489244867192}
 --- !u!114 &209937822675426914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,6 +2444,62 @@ MonoBehaviour:
   m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: 93fb674f4f37dbb4d97de85b74cd3f2d, type: 2}
+--- !u!114 &3890154489244867192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20a787a6e97db45b3a9cd60a736f81, type: 3}
+  m_Name: Puppet Stop
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 280, y: -504}
+  folded: 0
+  ports:
+    keys:
+    - m_out
+    - m_in
+    values:
+    - _fieldName: m_out
+      _node: {fileID: 3890154489244867192}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -2902469919650478386}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_in
+      _node: {fileID: 3890154489244867192}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_action: 1
+  m_waitForEndOfSpline: 0
 --- !u!114 &4301911475432951302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2619,7 +2676,7 @@ MonoBehaviour:
         node: {fileID: -9073862530683782023}
         reroutePoints: []
       - fieldName: m_in
-        node: {fileID: -2902469919650478386}
+        node: {fileID: 3890154489244867192}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -3046,10 +3103,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7235aa2a35732d743beea43f00e11ba7, type: 3}
-  m_Name: Global Spline Container
+  m_Name: Get spline weapon
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 648, y: -680}
+  position: {x: 504, y: -664}
   folded: 0
   ports:
     keys:
@@ -3175,7 +3232,7 @@ MonoBehaviour:
   m_Name: Puppet Walk
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 936, y: -520}
+  position: {x: 792, y: -504}
   folded: 0
   ports:
     keys:
@@ -3213,6 +3270,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
+  m_action: 0
   m_waitForEndOfSpline: 0
 --- !u!114 &6873808165342556201
 MonoBehaviour:

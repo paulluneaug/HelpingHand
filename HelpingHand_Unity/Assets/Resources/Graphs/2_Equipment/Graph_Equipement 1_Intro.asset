@@ -212,6 +212,62 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_inValue: 1
   m_variable: {fileID: 11400000, guid: 10fca6554206a424ba865d0a66a4465a, type: 2}
+--- !u!114 &-6625501862604732842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20a787a6e97db45b3a9cd60a736f81, type: 3}
+  m_Name: Puppet Stop
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 616, y: -520}
+  folded: 0
+  ports:
+    keys:
+    - m_out
+    - m_in
+    values:
+    - _fieldName: m_out
+      _node: {fileID: -6625501862604732842}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -6077136499283414352}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_in
+      _node: {fileID: -6625501862604732842}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_action: 1
+  m_waitForEndOfSpline: 0
 --- !u!114 &-6077136499283414352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,10 +278,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05b6018978c88fe46b453afefddba39f, type: 3}
-  m_Name: Set Global Spline Container
+  m_Name: Set Spline 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 616, y: -504}
+  position: {x: 856, y: -520}
   folded: 0
   ports:
     keys:
@@ -239,7 +295,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 4662089034119733656}
+        node: {fileID: -6625501862604732842}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -294,7 +350,7 @@ MonoBehaviour:
   m_Name: Puppet Walk
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 888, y: -504}
+  position: {x: 1144, y: -520}
   folded: 0
   ports:
     keys:
@@ -332,6 +388,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
+  m_action: 0
   m_waitForEndOfSpline: 0
 --- !u!114 &-1207314565680297436
 MonoBehaviour:
@@ -527,6 +584,7 @@ MonoBehaviour:
   - {fileID: 7184954076842435224}
   - {fileID: 444943229068638161}
   - {fileID: -8941985184421362687}
+  - {fileID: -6625501862604732842}
 --- !u!114 &444943229068638161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,7 +934,7 @@ MonoBehaviour:
         node: {fileID: 4275117668715451316}
         reroutePoints: []
       - fieldName: m_in
-        node: {fileID: -6077136499283414352}
+        node: {fileID: -6625501862604732842}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -912,10 +970,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7235aa2a35732d743beea43f00e11ba7, type: 3}
-  m_Name: Global Spline Container
+  m_Name: Get Spline 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 696, y: -648}
+  position: {x: 824, y: -664}
   folded: 0
   ports:
     keys:

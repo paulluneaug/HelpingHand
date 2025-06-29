@@ -49,7 +49,8 @@ public class Puppet : MonoBehaviour, ILateAwaker
     [NonSerialized] private float m_splineLength = 0.0f;
     [NonSerialized] private Spline m_currentSpline = null;
 
-
+    public bool IsWalking => m_isWalking;
+    
     public void LateAwake()
     {
         GameManager.Instance.RegisterPuppet(this);
@@ -95,7 +96,6 @@ public class Puppet : MonoBehaviour, ILateAwaker
         {
             m_hasReachedEndOfSpline = true;
         }
-
     }
 
     [DisableIf("m_isWalking")]
@@ -126,6 +126,12 @@ public class Puppet : MonoBehaviour, ILateAwaker
         SetWalkState(false);
         m_hasReachedEndOfSpline = false;
         m_progressAlongSpline = 0.0f;
+    }
+
+    public void GoToEndOfSpline()
+    {
+        m_progressAlongSpline = 1;
+        UpdatePositionAndRotation(m_progressAlongSpline);
     }
 
     public void PauseWalk()
