@@ -14,7 +14,6 @@ public class Achievement : EntityState
         if (m_condition != null)
         {
             m_condition.Initialize();
-            m_condition.OnPreconditionUpdated -= OnConditionUpdated;
             m_condition.OnPreconditionUpdated += OnConditionUpdated;
         }
     }

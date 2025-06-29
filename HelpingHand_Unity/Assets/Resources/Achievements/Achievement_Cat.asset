@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3795372d0b6e64943a315cdc5da9cd80, type: 3}
-  m_Name: Achievement_Flush
+  m_Name: Achievement_Cat
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: e1f517848d691fb46a18ac48c70c26f7, type: 2}
     - {fileID: 11400000, guid: f0e9ba0bf01bf1140bf9bfaf01fcefcc, type: 2}
     - {fileID: 11400000, guid: 89cedc610a29ba849b0d8655561c650e, type: 2}
     - {fileID: 11400000, guid: 6104715c2ab4ab44ca0deb95a9216f30, type: 2}
+    - {fileID: 11400000, guid: ff754916ad9682e4b80967cd4aa4b814, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -45,19 +45,25 @@ MonoBehaviour:
       Data: 1
     - Name: m_trigger
       Entry: 7
-      Data: 3|ButtonInputTrigger, Assembly-CSharp
+      Data: 3|ToggleInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
       Entry: 5
       Data: true
     - Name: m_reactivateTime
       Entry: 4
       Data: 0
-    - Name: m_buttonEvent
+    - Name: m_toggleVariable
       Entry: 10
       Data: 0
+    - Name: m_triggerIfTrue
+      Entry: 5
+      Data: false
     - Name: m_timeToTrigger
       Entry: 4
       Data: 0.05
+    - Name: m_isImmediate
+      Entry: 5
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -138,25 +144,19 @@ MonoBehaviour:
       Data: 1
     - Name: m_trigger
       Entry: 7
-      Data: 9|ToggleInputTrigger, Assembly-CSharp
+      Data: 9|ButtonInputTrigger, Assembly-CSharp
     - Name: m_canReactivate
       Entry: 5
       Data: true
     - Name: m_reactivateTime
       Entry: 4
       Data: 0
-    - Name: m_toggleVariable
+    - Name: m_buttonEvent
       Entry: 10
       Data: 3
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: false
     - Name: m_timeToTrigger
       Entry: 4
       Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -174,5 +174,5 @@ MonoBehaviour:
       Data: 
   m_isActive: 1
   m_value: 0
-  title: Flush
-  body: This is not Balatro
+  title: "F\xE9lin pour l'autre"
+  body: "R\xE9veiller le pr\xE9dateur"
