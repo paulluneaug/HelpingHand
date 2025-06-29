@@ -631,17 +631,21 @@ namespace AK
             {
                 static const AkUniqueID BATTLE_THEME = 3421098005U;
                 static const AkUniqueID DEFEAT = 1593864692U;
+                static const AkUniqueID FORGE_THEME = 199860092U;
                 static const AkUniqueID HORRIBLEMUSIC_THEME = 2538596653U;
                 static const AkUniqueID MAINMENU = 3604647259U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PAUSEMENU = 3494343696U;
                 static const AkUniqueID SAD_THEME = 3255068793U;
+                static const AkUniqueID SUPERMARKET_THEME = 2642702240U;
                 static const AkUniqueID SUSPENSE_THEME = 3591643255U;
+                static const AkUniqueID TAVERN_THEME = 14185097U;
                 static const AkUniqueID UNBOARDING = 3056272968U;
                 static const AkUniqueID UNBOARDING_2 = 2754831415U;
                 static const AkUniqueID UNBOARDING_3 = 2754831414U;
                 static const AkUniqueID UNBOARDING_4 = 2754831409U;
                 static const AkUniqueID VICTORY = 2716678721U;
+                static const AkUniqueID VILLAGE_THEME = 121857569U;
             } // namespace STATE
         } // namespace MUSICSTATE
 
