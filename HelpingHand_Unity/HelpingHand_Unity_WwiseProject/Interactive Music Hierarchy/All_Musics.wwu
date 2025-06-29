@@ -1611,6 +1611,292 @@
 								</MusicSegment>
 							</ChildrenList>
 						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Village_Theme" ID="{F837C259-0E49-40EA-8617-5CA3F4C40A4C}" ShortID="1008143619">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-16</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+								<Property Name="Tempo" Type="Real64" Value="170"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{78CE6F9C-57A1-4D70-84F5-22DDC5FEF3E1}" ShortID="119182155">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{40236BDF-FB43-4BF9-982E-7C70E5094F26}" ShortID="239631944">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="the-britons-127687" ID="{9B0E26EF-D204-429D-83CC-D22FB76D07D3}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{B6B16BF9-DE8E-4E32-9CD6-F7773FBAE3A0}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{CB3D73B9-C323-4AA1-B13F-A30F900460B1}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="the-britons-127687" ID="{9B0E26EF-D204-429D-83CC-D22FB76D07D3}" ShortID="827111540">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="306755.918367347"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="the-britons-127687" ID="{FD9E6FF2-D26B-407B-9A65-3F8BB5487593}" ShortID="175117190">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{99CC5BAD-7F29-450E-93EE-A726A5AA0AFB}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="the-britons-127687" ID="{096BBB85-F399-4B24-8DD4-1DB3F153C56C}">
+													<Language>SFX</Language>
+													<AudioFile>the-britons-127687.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="412517594"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{865A8DEF-1DD6-41F0-9F12-70E66EDE761C}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="the-britons-127687" ID="{1731E008-2AC7-4E1B-B888-78D32726FA38}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="306755.918367347"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="the-britons-127687" ID="{096BBB85-F399-4B24-8DD4-1DB3F153C56C}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{A4091D43-FE0C-4503-BD37-EB55AE5DF208}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{713F69A5-C458-420B-886A-97EA98BB79A6}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="306755.918367347"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Other_Theme" ID="{FCA85E2A-4E55-4B57-BB8F-ACF9B5FE9270}" ShortID="249242347">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-25</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+								<Property Name="Tempo" Type="Real64" Value="170"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{207DA4FB-145B-432D-AE22-856D6C5CED82}" ShortID="212427486">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{14E149A5-D924-4BCD-A0DE-005CCEF24083}" ShortID="565439289">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="medieval-background-196571" ID="{4D40A6F1-2075-4196-9D6C-3E550BEB86D2}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{DD4243CD-E739-48E5-A04B-512A5A41DF4A}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{72735024-C5DF-4561-A132-B1E73A816E19}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="medieval-background-196571" ID="{4D40A6F1-2075-4196-9D6C-3E550BEB86D2}" ShortID="1036027663">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="230530.612244898"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="medieval-background-196571" ID="{D7A1A114-5C76-478B-863A-C4B7B6BDA6C2}" ShortID="35165409">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{7A5BA2BB-ED97-4F33-9804-2843D255C945}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="medieval-background-196571" ID="{63F79EF5-6A28-4A94-BEDA-A9A852978485}">
+													<Language>SFX</Language>
+													<AudioFile>medieval-background-196571.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="584768600"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{B2FA5B15-56BB-40DB-9AFE-743EB2C7EEE6}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="medieval-background-196571" ID="{EDC7E71F-CFD0-4A83-83FA-1B2D9899D39E}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="230530.612244898"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="medieval-background-196571" ID="{63F79EF5-6A28-4A94-BEDA-A9A852978485}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{FCAA56DC-6F12-4ECD-AC8F-023A48FB38C0}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{3C6817FC-1848-470F-A133-C596C9DB8A8C}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="230530.612244898"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+						</MusicPlaylistContainer>
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="Arguments">
@@ -1788,6 +2074,78 @@
 											<ObjectList Name="EntryPath">
 												<Reference>
 													<ObjectRef Name="Unboarding_4" ID="{AB2CD0BB-EA34-4998-AB92-20655D366AF7}" WorkUnitID="{22C30C11-8221-445C-A271-F47A5E00DF88}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{31A40CF0-65EA-4030-B50D-BCBE4A17D118}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Village_Theme" ID="{F837C259-0E49-40EA-8617-5CA3F4C40A4C}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Village_Theme" ID="{87BD3C03-AE1B-444A-9406-03E36ECB189D}" WorkUnitID="{22C30C11-8221-445C-A271-F47A5E00DF88}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{1FA57A52-C3B3-4F19-A96E-0241BA87916D}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Other_Theme" ID="{FCA85E2A-4E55-4B57-BB8F-ACF9B5FE9270}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Forge_Theme" ID="{F81509E0-F4AA-4F04-83E9-A5732E6738BA}" WorkUnitID="{22C30C11-8221-445C-A271-F47A5E00DF88}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{FCF8C225-30DA-4D9C-9B13-444AC12D2758}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Other_Theme" ID="{FCA85E2A-4E55-4B57-BB8F-ACF9B5FE9270}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Tavern_Theme" ID="{9CD1D191-375A-4943-A417-70C0A7A21DD0}" WorkUnitID="{22C30C11-8221-445C-A271-F47A5E00DF88}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{A2163516-5AC3-403A-BB5A-64D29AFCFDBE}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Other_Theme" ID="{FCA85E2A-4E55-4B57-BB8F-ACF9B5FE9270}" WorkUnitID="{25AE949B-0EFB-413C-BE92-8683CB235DC9}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Supermarket_Theme" ID="{E11D9DC3-EC5E-4FEE-85AA-A5BB52C61CC8}" WorkUnitID="{22C30C11-8221-445C-A271-F47A5E00DF88}"/>
 												</Reference>
 											</ObjectList>
 										</ObjectLists>
