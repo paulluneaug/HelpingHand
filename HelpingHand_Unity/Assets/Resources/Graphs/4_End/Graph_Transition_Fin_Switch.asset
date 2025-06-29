@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Get whippinages count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -40, y: 152}
+  position: {x: 248, y: 168}
   folded: 0
   ports:
     keys:
@@ -68,7 +68,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 74172928109191158}
+        node: {fileID: 2533648169973998827}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: Start Fin 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: 600}
+  position: {x: 888, y: 616}
   folded: 0
   ports:
     keys:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: Start Fin 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: -8}
+  position: {x: 888, y: 8}
   folded: 0
   ports:
     keys:
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: Start Fin 5
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: 1240}
+  position: {x: 888, y: 1256}
   folded: 0
   ports:
     keys:
@@ -334,6 +334,7 @@ MonoBehaviour:
   - {fileID: -1311176111853853413}
   - {fileID: 74172928109191158}
   - {fileID: -6750115854483991171}
+  - {fileID: 2533648169973998827}
 --- !u!114 &74172928109191158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +348,7 @@ MonoBehaviour:
   m_Name: Switch on whippinage count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: 312}
+  position: {x: 216, y: 328}
   folded: 0
   ports:
     keys:
@@ -366,7 +367,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -4132167626653715605}
+        node: {fileID: 2533648169973998827}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -464,6 +465,60 @@ MonoBehaviour:
   m_value: 20
   m_values: 0000000004000000080000000c000000
   m_exactValues: 0
+--- !u!114 &2533648169973998827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ff65c6d6ea09340939e68d6c8788b2, type: 3}
+  m_Name: Stop All Graphs
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -88, y: 328}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 2533648169973998827}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -4132167626653715605}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 2533648169973998827}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 74172928109191158}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &2945028200860356155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +532,7 @@ MonoBehaviour:
   m_Name: Start Fin 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: 904}
+  position: {x: 888, y: 920}
   folded: 0
   ports:
     keys:
@@ -551,7 +606,7 @@ MonoBehaviour:
   m_Name: Start Fin 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: 296}
+  position: {x: 888, y: 312}
   folded: 0
   ports:
     keys:

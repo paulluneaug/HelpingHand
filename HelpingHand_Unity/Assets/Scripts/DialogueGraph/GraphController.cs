@@ -83,9 +83,13 @@ public class GraphController : MonoBehaviour
 
     private async UniTaskVoid StartLevelAsync()
     {
-        StartMainSequenceGraph(m_graphQueue.Dequeue()).Forget();
+        if (m_graphQueue.TryDequeue(out SimpleGraph firstGraph))
+        {
+            StartMainSequenceGraph(firstGraph).Forget();
+        }
         foreach (SimpleGraph graph in m_parallelExecution)
         {
+            Debug.Assert(graph != null);
             GraphRunner graphRunner = await CreateGraphRunner(graph);
             graphRunner.StartGraph();
         }

@@ -91,10 +91,9 @@ public class Puppet : MonoBehaviour, ILateAwaker
         float addedProgress = m_speedAlongSpline.Value / m_splineLength * Time.deltaTime;
         m_progressAlongSpline = MathUf.Clamp(m_progressAlongSpline + addedProgress, 0.0f, 1.0f);
         UpdatePositionAndRotation(m_progressAlongSpline);
-        if (m_progressAlongSpline >= 1.0f)
+        if (m_progressAlongSpline >= 0.999f)
         {
             m_hasReachedEndOfSpline = true;
-            StopWalk();
         }
 
     }

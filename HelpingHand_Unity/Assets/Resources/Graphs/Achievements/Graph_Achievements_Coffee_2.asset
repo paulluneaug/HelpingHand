@@ -92,7 +92,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 7407727578366959452}
+        node: {fileID: 7799729022579155300}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -243,6 +243,8 @@ MonoBehaviour:
   - {fileID: 7407727578366959452}
   - {fileID: 1570455343509530661}
   - {fileID: 8361279176596857293}
+  - {fileID: 7799729022579155300}
+  - {fileID: 3690638098835078132}
 --- !u!114 &1570455343509530661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +273,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 9053323761774251727}
+        node: {fileID: 3690638098835078132}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -317,6 +319,72 @@ MonoBehaviour:
   m_graph: {fileID: 11400000, guid: 5e6f6544f4006304ca21b7769f568155, type: 2}
   m_control: 0
   m_waitForCompletion: 0
+--- !u!114 &3690638098835078132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508bc7cf1f42a74ba96239205aca96d, type: 3}
+  m_Name: Unset Is Achievement Playing
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1816, y: -216}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 3690638098835078132}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 9053323761774251727}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 3690638098835078132}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 3690638098835078132}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 1570455343509530661}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 0
+  m_variable: {fileID: 11400000, guid: b56b52e3ff2741143b047ed95c55e059, type: 2}
 --- !u!114 &7407727578366959452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +395,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd1e7cf526b3f084c9fcf02dd36fbf5e, type: 3}
-  m_Name: Add To Global Int
+  m_Name: Increment coffee count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 648, y: 8}
@@ -345,7 +413,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -2240632459415470819}
+        node: {fileID: 7799729022579155300}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -393,6 +461,73 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_increment: 1
   m_variable: {fileID: 11400000, guid: ab7bfb8cd366d964eab721c61d982cdf, type: 2}
+  m_operation: 0
+--- !u!114 &7799729022579155300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508bc7cf1f42a74ba96239205aca96d, type: 3}
+  m_Name: Set Is Achievement Playing
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 466.68085, y: -256.2298}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 7799729022579155300}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -2240632459415470819}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 7799729022579155300}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 7799729022579155300}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 7407727578366959452}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: b56b52e3ff2741143b047ed95c55e059, type: 2}
 --- !u!114 &8361279176596857293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +645,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 1570455343509530661}
+        node: {fileID: 3690638098835078132}
         reroutePoints: []
       _direction: 1
       _connectionType: 0

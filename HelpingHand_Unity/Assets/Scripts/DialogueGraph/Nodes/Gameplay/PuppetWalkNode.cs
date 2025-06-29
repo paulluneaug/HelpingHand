@@ -1,3 +1,5 @@
+using System;
+
 using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
@@ -42,10 +44,10 @@ public class PuppetWalkNode : BaseNode
 
     private async UniTask WalkAsync(GraphRunnerHandler handler)
     {
-        DebugLog($"BeginWalk");
+        DebugLog($"Starting puppet walk");
         m_puppet.BeginWalk();
         await HandleCancellation(handler);
-        DebugLog($"StopWalk");
+        DebugLog($"Puppet finished walking");
         m_puppet.StopWalk();
     }
 
@@ -57,16 +59,19 @@ public class PuppetWalkNode : BaseNode
             // Test if paused
             if (handler.PauseToken.IsCancellationRequested)
             {
+                DebugLog($"Pausing puppet walk");
                 m_puppet.PauseWalk();
                 await UniTask.WaitUntilCanceled(handler.ResumeToken);
-
+                DebugLog($"Resuming puppet walk");
                 m_puppet.ResumeWalk();
                 await HandleCancellation(handler);
                 return;
             }
-            else // Cancelled => need to move back?
+            if (handler.StopToken.IsCancellationRequested) // Stopped => need to move back?
             {
-
+                DebugLog($"Stopping puppet walk");
+                m_puppet.StopWalk();
+                throw new OperationCanceledException(handler.StopToken);
             }
         }
         DebugLog($"End of spline reached");

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Switch on whippinage count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 312}
+  position: {x: 216, y: 328}
   folded: 0
   ports:
     keys:
@@ -31,7 +31,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -4132167626653715605}
+        node: {fileID: -4963402845088119404}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: Dialogue Transition Fin 1.1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 584, y: -264}
+  position: {x: 824, y: -248}
   folded: 0
   ports:
     keys:
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: Dialogue Transition Fin 1.2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 584, y: 248}
+  position: {x: 824, y: 264}
   folded: 0
   ports:
     keys:
@@ -285,6 +285,60 @@ MonoBehaviour:
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: bffac18bf9f05d845bafdd8f4a0b5a23, type: 2}
+--- !u!114 &-4963402845088119404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ff65c6d6ea09340939e68d6c8788b2, type: 3}
+  m_Name: Stop All Graphs
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -72, y: 328}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -4963402845088119404}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -4132167626653715605}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -4963402845088119404}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -7279069711514163548}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
 --- !u!114 &-4728109265034336902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +352,7 @@ MonoBehaviour:
   m_Name: Dialogue Transition Fin 1.3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 584, y: 760}
+  position: {x: 824, y: 776}
   folded: 0
   ports:
     keys:
@@ -395,7 +449,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: -7279069711514163548}
+        node: {fileID: -4963402845088119404}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -434,7 +488,7 @@ MonoBehaviour:
   m_Name: Get whippinages count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 8, y: 152}
+  position: {x: 248, y: 168}
   folded: 0
   ports:
     keys:
@@ -483,6 +537,7 @@ MonoBehaviour:
   - {fileID: -7279069711514163548}
   - {fileID: -2244329173250583289}
   - {fileID: 2849814871584342294}
+  - {fileID: -4963402845088119404}
 --- !u!114 &2849814871584342294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +551,7 @@ MonoBehaviour:
   m_Name: Graph Control
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1144, y: 344}
+  position: {x: 1384, y: 360}
   folded: 0
   ports:
     keys:
