@@ -32,7 +32,11 @@ public class InputGroup : MonoBehaviour, ILateStarter
 
     public void SetActive(bool isActive)
     {
-        m_indicatorState.Value = isActive;
+        if (m_indicatorState != null)
+        {
+            m_indicatorState.Value = isActive;
+        }
+
         foreach (BaseGameEvent input in m_inputs)
         {
             input.IsActive = isActive;
