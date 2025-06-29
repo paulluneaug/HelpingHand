@@ -40,7 +40,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 683200274613783311}
+        node: {fileID: -1051435304635566571}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -140,6 +140,72 @@ MonoBehaviour:
     SerializationNodes: []
   m_showDebugLog: 1
   m_priority: 20
+--- !u!114 &-2625878812192868259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508bc7cf1f42a74ba96239205aca96d, type: 3}
+  m_Name: Unset Is Achievement Playing
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1784, y: -216}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -2625878812192868259}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -1177551321402287780}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -2625878812192868259}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -2625878812192868259}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 827241309650935666}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 0
+  m_variable: {fileID: 11400000, guid: b56b52e3ff2741143b047ed95c55e059, type: 2}
 --- !u!114 &-1177551321402287780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +246,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_in
-        node: {fileID: 827241309650935666}
+        node: {fileID: -2625878812192868259}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -224,6 +290,72 @@ MonoBehaviour:
   m_waitTime: 1
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: cfaa1b9c470f41a40b97c6e1ec29c059, type: 2}
+--- !u!114 &-1051435304635566571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508bc7cf1f42a74ba96239205aca96d, type: 3}
+  m_Name: Set Is Achievement Playing
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 472, y: -216}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: -1051435304635566571}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: -7607800480315148795}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: -1051435304635566571}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: -1051435304635566571}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 683200274613783311}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: b56b52e3ff2741143b047ed95c55e059, type: 2}
 --- !u!114 &-828962108161034119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +460,8 @@ MonoBehaviour:
   - {fileID: 683200274613783311}
   - {fileID: 827241309650935666}
   - {fileID: 2920847866038820815}
+  - {fileID: -1051435304635566571}
+  - {fileID: -2625878812192868259}
 --- !u!114 &683200274613783311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +472,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd1e7cf526b3f084c9fcf02dd36fbf5e, type: 3}
-  m_Name: Add To Global Int
+  m_Name: Increment coffee count
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 632, y: 8}
@@ -356,7 +490,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -7607800480315148795}
+        node: {fileID: -1051435304635566571}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -404,6 +538,7 @@ MonoBehaviour:
   m_showDebugLog: 1
   m_increment: 1
   m_variable: {fileID: 11400000, guid: ab7bfb8cd366d964eab721c61d982cdf, type: 2}
+  m_operation: 0
 --- !u!114 &827241309650935666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +567,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: -1177551321402287780}
+        node: {fileID: -2625878812192868259}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

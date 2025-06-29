@@ -24,6 +24,16 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     [SerializeField]
     private IntVariable m_achievementsCount;
 
+    [SerializeField]
+    private BoolVariable m_isAchievementPlanelIsShowing;
+
+    [SerializeField]
+    private BoolVariable m_isAchievementDialogueIsPlaying;
+
+    public bool IsAchievementIsPlaying => m_isAchievementPlanelIsShowing.Value;
+    
+    public bool IsAchievementDialogueIsPlaying => m_isAchievementDialogueIsPlaying.Value;
+
     [FoldoutGroup("Texts")]
     [SerializeField]
     private TMP_Text m_titleText;
@@ -66,7 +76,7 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
 
     private Achievement[] m_allAchievements;
     private Dictionary<Achievement, Action> m_achivementActions;
-
+  
     protected override void Start()
     {
         m_achivementActions = new Dictionary<Achievement, Action>();
@@ -118,23 +128,19 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
 
     private void OnAchievementSet(Achievement achievement)
     {
-        SetAchievement(achievement).Forget();
-        ShowAchievement(achievement).Forget();
+        SetAchievementAsync(achievement).Forget();
     }
 
-    private async UniTaskVoid SetAchievement(Achievement achievement)
+    private async UniTaskVoid SetAchievementAsync(Achievement achievement)
     {
+        m_isAchievementPlanelIsShowing.Value = true;
         SetAchievementTexts(achievement);
         m_achievementsCount.Value++;
-        await UniTask.Delay(200);
-        _ = m_sfx.Post(gameObject);
-    }
-
-    private async UniTaskVoid ShowAchievement(Achievement achievement)
-    {
+        m_sfx.Post(gameObject);
         await ShowPanel();
         await UniTask.Delay((int)m_showDuration * 1000);
         await HidePanel();
+        m_isAchievementPlanelIsShowing.Value = false;
     }
 
     private void SetAchievementTexts(Achievement achievement)
