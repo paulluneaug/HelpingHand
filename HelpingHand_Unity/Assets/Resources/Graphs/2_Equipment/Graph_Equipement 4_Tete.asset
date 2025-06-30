@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Name: Puppet Walk
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 472, y: -456}
+  position: {x: 776, y: -520}
   folded: 0
   ports:
     keys:
@@ -856,6 +856,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
+  m_action: 0
   m_waitForEndOfSpline: 0
 --- !u!114 &-3544227656078433520
 MonoBehaviour:
@@ -1315,10 +1316,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7235aa2a35732d743beea43f00e11ba7, type: 3}
-  m_Name: Global Spline Container
+  m_Name: Get spline head armor
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 184, y: -616}
+  position: {x: 488, y: -680}
   folded: 0
   ports:
     keys:
@@ -1574,10 +1575,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05b6018978c88fe46b453afefddba39f, type: 3}
-  m_Name: Set Global Spline Container
+  m_Name: Get spline head armor
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 200, y: -456}
+  position: {x: 504, y: -520}
   folded: 0
   ports:
     keys:
@@ -1591,7 +1592,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: m_out
-        node: {fileID: 4662089034119733656}
+        node: {fileID: 2008242178486126092}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -2120,6 +2121,7 @@ MonoBehaviour:
   - {fileID: 1611359344054807485}
   - {fileID: 8296700989920577835}
   - {fileID: -2387888649931267549}
+  - {fileID: 2008242178486126092}
 --- !u!114 &33514329723960915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2659,6 +2661,62 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
+--- !u!114 &2008242178486126092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20a787a6e97db45b3a9cd60a736f81, type: 3}
+  m_Name: Puppet Stop
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 264, y: -520}
+  folded: 0
+  ports:
+    keys:
+    - m_out
+    - m_in
+    values:
+    - _fieldName: m_out
+      _node: {fileID: 2008242178486126092}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: -1118730006855745350}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_in
+      _node: {fileID: 2008242178486126092}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_action: 1
+  m_waitForEndOfSpline: 0
 --- !u!114 &2160616734823514111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3355,7 +3413,7 @@ MonoBehaviour:
         node: {fileID: -9073862530683782023}
         reroutePoints: []
       - fieldName: m_in
-        node: {fileID: -1118730006855745350}
+        node: {fileID: 2008242178486126092}
         reroutePoints: []
       _direction: 1
       _connectionType: 0

@@ -1131,6 +1131,10 @@ MonoBehaviour:
   - {fileID: -7622910945185963426}
   - {fileID: -7768478443108506172}
   - {fileID: 7885688300285667752}
+  - {fileID: 620374774539795788}
+  - {fileID: 1819163181265613138}
+  - {fileID: 982332720108274538}
+  - {fileID: 1206236129495930548}
 --- !u!114 &161351092556119221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,6 +1306,157 @@ MonoBehaviour:
   m_waitTime: 0
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: f2711e2be3afe9840987f90e57703283, type: 2}
+--- !u!114 &620374774539795788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20a787a6e97db45b3a9cd60a736f81, type: 3}
+  m_Name: Puppet Walk
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 744, y: -328}
+  folded: 0
+  ports:
+    keys:
+    - m_out
+    - m_in
+    values:
+    - _fieldName: m_out
+      _node: {fileID: 620374774539795788}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_in
+      _node: {fileID: 620374774539795788}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 1819163181265613138}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_action: 0
+  m_waitForEndOfSpline: 0
+--- !u!114 &982332720108274538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7235aa2a35732d743beea43f00e11ba7, type: 3}
+  m_Name: Get spline monster
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 456, y: -488}
+  folded: 0
+  ports:
+    keys:
+    - m_value
+    values:
+    - _fieldName: m_value
+      _node: {fileID: 982332720108274538}
+      _typeQualifiedName: SplineContainerVariable, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: m_inValue
+        node: {fileID: 1819163181265613138}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_value: {fileID: 11400000, guid: 3931d890f53c1ff45b68f5e845eaa24a, type: 2}
+--- !u!114 &1206236129495930548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20a787a6e97db45b3a9cd60a736f81, type: 3}
+  m_Name: Puppet Stop
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 232, y: -328}
+  folded: 0
+  ports:
+    keys:
+    - m_out
+    - m_in
+    values:
+    - _fieldName: m_out
+      _node: {fileID: 1206236129495930548}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 1819163181265613138}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_in
+      _node: {fileID: 1206236129495930548}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_action: 1
+  m_waitForEndOfSpline: 0
 --- !u!114 &1611940509691046523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,6 +1598,75 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
+--- !u!114 &1819163181265613138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b6018978c88fe46b453afefddba39f, type: 3}
+  m_Name: Set spline monster
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 472, y: -328}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 1819163181265613138}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 1206236129495930548}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 1819163181265613138}
+      _typeQualifiedName: UnityEngine.Splines.SplineContainer, Unity.Splines, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: m_value
+        node: {fileID: 982332720108274538}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 1819163181265613138}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_in
+        node: {fileID: 620374774539795788}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: {fileID: 0}
+  m_variable: {fileID: 11400000, guid: 60ee3b3bf0ac9624881a0ffafaab0cc7, type: 2}
 --- !u!114 &3714664022799012682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,6 +2230,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -7987180786979725745}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 1206236129495930548}
         reroutePoints: []
       _direction: 1
       _connectionType: 0

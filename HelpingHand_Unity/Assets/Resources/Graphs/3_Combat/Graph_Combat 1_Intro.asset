@@ -558,6 +558,7 @@ MonoBehaviour:
   - {fileID: 6152026463367555081}
   - {fileID: 5488312680458547339}
   - {fileID: -4786986197351439497}
+  - {fileID: 8305085453005510078}
 --- !u!114 &4067925675490346377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,6 +752,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: 5260766055326406536}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 8305085453005510078}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1086,6 +1090,59 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
+--- !u!114 &8305085453005510078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20a787a6e97db45b3a9cd60a736f81, type: 3}
+  m_Name: Puppet Walk
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 264, y: -232}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 8305085453005510078}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_out
+        node: {fileID: 4662089034119733656}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 8305085453005510078}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_action: 1
+  m_waitForEndOfSpline: 0
 --- !u!114 &8555547085714217843
 MonoBehaviour:
   m_ObjectHideFlags: 0
