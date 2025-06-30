@@ -10,7 +10,6 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 using UnityUtility.ObservableFields;
 
