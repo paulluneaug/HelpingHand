@@ -3760,34 +3760,9 @@
 														<ActiveSource Name="Equipement_Lapin 1_01" ID="{2AC7086C-00D4-4F6E-BE60-050CD96186EB}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="Equipement_Lapin 1_02" ID="{730C2129-1BAA-45EC-BA42-FDFD74989478}" ShortID="415885532">
-													<PropertyList>
-														<Property Name="IsVoice" Type="bool" Value="True"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="Equipement_Lapin 1_02" ID="{B935BD27-9C5B-439A-A952-67ADF25509C0}">
-															<Language>English(US)</Language>
-															<AudioFile>Equipement\Equipement_Lapin 1_Random\Equipement_Lapin 1_02.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="269774258"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="Equipement_Lapin 1_02" ID="{B935BD27-9C5B-439A-A952-67ADF25509C0}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
-										<RandomSequenceContainer Name="Equipement_Lapin 3_Random" ID="{2E0C9CD8-0987-43B7-B36F-153A73C61AA1}" ShortID="157911490">
+										<RandomSequenceContainer Name="Equipement_Lapin 4" ID="{2E0C9CD8-0987-43B7-B36F-153A73C61AA1}" ShortID="157911490">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3849,7 +3824,7 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
-										<RandomSequenceContainer Name="Equipement_Lapin 4_Random" ID="{6F8F6619-BCA3-4238-A9B1-812D93DEF26C}" ShortID="188896241">
+										<RandomSequenceContainer Name="Equipement_Lapin 5_1" ID="{6F8F6619-BCA3-4238-A9B1-812D93DEF26C}" ShortID="188896241">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -3907,6 +3882,37 @@
 													</ChildrenList>
 													<ActiveSourceList>
 														<ActiveSource Name="Equipement_Lapin 4_02" ID="{8DF10A0D-7488-46B9-BB47-6E325BE3111B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Equipement_Lapin 5_1" ID="{D0E13F1A-F154-4DEC-8E71-A3918238B776}" ShortID="746444618">
+													<PropertyList>
+														<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+														<Property Name="Priority" Type="int16">
+															<ValueList>
+																<Value>100</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Equipement_Lapin 5_1" ID="{F1185A5C-083E-4CEB-B3CD-3901DFD280F2}">
+															<Language>English(US)</Language>
+															<AudioFile>Equipement\Equipement_Lapin 5.1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="580816388"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Equipement_Lapin 5_1" ID="{F1185A5C-083E-4CEB-B3CD-3901DFD280F2}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
@@ -5472,6 +5478,10 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="Equipement_Lapin 2" ID="{69A0019B-5E44-4338-A6BD-9E2A9F6DBFB7}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="5.30501815094636"/>
+													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Equipement\Equipement_Lapin 2.wav</AudioFile>
 													<MediaIDList>
@@ -5481,31 +5491,6 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="Equipement_Lapin 2" ID="{69A0019B-5E44-4338-A6BD-9E2A9F6DBFB7}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Equipement_Lapin 5_1" ID="{D0E13F1A-F154-4DEC-8E71-A3918238B776}" ShortID="746444618">
-											<PropertyList>
-												<Property Name="IsVoice" Type="bool" Value="True"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Equipement_Lapin 5_1" ID="{F1185A5C-083E-4CEB-B3CD-3901DFD280F2}">
-													<Language>English(US)</Language>
-													<AudioFile>Equipement\Equipement_Lapin 5.1.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="580816388"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Equipement_Lapin 5_1" ID="{F1185A5C-083E-4CEB-B3CD-3901DFD280F2}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Equipement_Lapin 5_2" ID="{3253EF4E-253E-4045-904E-77484F7FF78C}" ShortID="911752244">
@@ -5906,6 +5891,72 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="Equipement_Vide 2" ID="{8B34B478-00AF-481C-B7C1-E113517815DB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Equipement_Lapin 2_01" ID="{730C2129-1BAA-45EC-BA42-FDFD74989478}" ShortID="415885532">
+											<PropertyList>
+												<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Priority" Type="int16">
+													<ValueList>
+														<Value>100</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Voice" ID="{F32496B8-F0B5-41A8-9049-2B4680B4130E}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VoiceBus" ID="{885A9AFA-38F3-428E-9F93-414DA2023D0C}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Equipement_Lapin 1_02" ID="{B935BD27-9C5B-439A-A952-67ADF25509C0}">
+													<Language>English(US)</Language>
+													<AudioFile>Equipement\Equipement_Lapin 1_Random\Equipement_Lapin 1_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="269774258"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Equipement_Lapin 1_02" ID="{B935BD27-9C5B-439A-A952-67ADF25509C0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Equipement_Lapin 3" ID="{29C22CEC-610B-4C39-A113-40DFC1D660EC}" ShortID="844918662">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Equipement_Lapin 2" ID="{F8C083D7-8DBD-4633-A0C0-B28412C59D69}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="5.29020013365635"/>
+														<Property Name="TrimEnd" Type="Real64" Value="8.04643838827528"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Equipement\Equipement_Lapin 2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="313003602"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Equipement_Lapin 2" ID="{F8C083D7-8DBD-4633-A0C0-B28412C59D69}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
