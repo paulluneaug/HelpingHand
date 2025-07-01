@@ -33,12 +33,19 @@ public class StandaloneTimer : BaseGameEvent
         Elapsed = false;
         m_timer = new Timer(m_isRepeating ? m_repeatInterval : m_duration, m_isRepeating, 0);
         m_timer.OnTimerEnds += OnTimerEnded;
+        GameManager.Instance.Paused.OnValueChanged += OnPauseChanged;
         StandaloneTimerSingleton.Instance.PushTimer(m_timer);
+    }
+
+    private void OnPauseChanged(bool isPaused)
+    {
+        m_timer.Pause(isPaused);
     }
 
     private void OnTimerEnded()
     {
         m_timer.OnTimerEnds -= OnTimerEnded;
+        GameManager.Instance.Paused.OnValueChanged -= OnPauseChanged;
         Elapsed = true;
         Raise();
         if (m_isRepeating)
@@ -78,6 +85,7 @@ public class StandaloneTimer : BaseGameEvent
     private void OnDisable()
     {
         StandaloneTimerSingleton.Instance.RemoveTimer(m_timer);
+        GameManager.Instance.Paused.OnValueChanged += OnPauseChanged;
         m_timer = null;
     }
 }
