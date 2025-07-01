@@ -106,6 +106,7 @@ public class MusicController : MonoBehaviour
 
     private void OnIndexChanged()
     {
+        AudioManager.Instance.StateManager.SetMusicState(MusicState.None);
         m_selectedMusicIndex = 0;
         m_selectedMusicIndex |= m_selectedMusic0.Value ? 1 << 0 : 0;
         m_selectedMusicIndex |= m_selectedMusic1.Value ? 1 << 1 : 0;
