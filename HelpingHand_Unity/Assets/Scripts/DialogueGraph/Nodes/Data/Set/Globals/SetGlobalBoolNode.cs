@@ -7,6 +7,7 @@ public class SetGlobalBoolNode : SetGlobalVariableNode<bool>
 {
     [SerializeField]
     [InlineEditor]
+    [HideLabel]
     private BoolVariable m_variable;
 
     protected override BaseVariable<bool> Variable => m_variable;

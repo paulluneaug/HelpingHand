@@ -651,7 +651,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 20
+  m_value: 0
   m_values: 0000000005000000
   m_exactValues: 0
 --- !u!114 &-1587786266326866886
@@ -789,6 +789,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: 4376374889300980580}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 2953958592036031158}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -800,6 +803,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -7754591723596269966}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 2953958592036031158}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -815,7 +821,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 20
+  m_value: 0
   m_values: 0000000005000000
   m_exactValues: 0
 --- !u!114 &-218599491495388423
@@ -937,6 +943,8 @@ MonoBehaviour:
   - {fileID: -5198655352767874384}
   - {fileID: 5878494393724350534}
   - {fileID: 5531237358345543626}
+  - {fileID: 5786077682013631469}
+  - {fileID: 2953958592036031158}
 --- !u!114 &1017578865107521240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,7 +1046,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 1
+  m_value: 0
   m_values: 0000000005000000
   m_exactValues: 0
 --- !u!114 &1562744052216072627
@@ -1209,6 +1217,72 @@ MonoBehaviour:
   m_waitTime: 0.5
   m_waitUnscaled: 0
   m_audioEvent: {fileID: 11400000, guid: b6d8a8fbed056c44ca69592d7d7f9281, type: 2}
+--- !u!114 &2953958592036031158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508bc7cf1f42a74ba96239205aca96d, type: 3}
+  m_Name: Set Global Bool
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4216, y: -312}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 2953958592036031158}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_values 0
+        node: {fileID: -1452725856463331114}
+        reroutePoints: []
+      - fieldName: m_values 1
+        node: {fileID: -1452725856463331114}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 2953958592036031158}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 2953958592036031158}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 0
+  m_variable: {fileID: 11400000, guid: 5d9aad4a7356b23448db78100a31a353, type: 2}
 --- !u!114 &4376374889300980580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,6 +1579,72 @@ MonoBehaviour:
   m_interruptable: 1
   m_waitTime: 3
   m_unscaled: 0
+--- !u!114 &5786077682013631469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508bc7cf1f42a74ba96239205aca96d, type: 3}
+  m_Name: Set Global Bool
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1272, y: -296}
+  folded: 0
+  ports:
+    keys:
+    - m_in
+    - m_inValue
+    - m_out
+    values:
+    - _fieldName: m_in
+      _node: {fileID: 5786077682013631469}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: m_values 0
+        node: {fileID: 6882314410359278054}
+        reroutePoints: []
+      - fieldName: m_values 1
+        node: {fileID: 6882314410359278054}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_inValue
+      _node: {fileID: 5786077682013631469}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_out
+      _node: {fileID: 5786077682013631469}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_showDebugLog: 1
+  m_inValue: 1
+  m_variable: {fileID: 11400000, guid: 5d9aad4a7356b23448db78100a31a353, type: 2}
 --- !u!114 &5878494393724350534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,6 +1870,9 @@ MonoBehaviour:
       - fieldName: m_in
         node: {fileID: -7571490039543233883}
         reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 5786077682013631469}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1741,6 +1884,9 @@ MonoBehaviour:
       connections:
       - fieldName: m_in
         node: {fileID: -218599491495388423}
+        reroutePoints: []
+      - fieldName: m_in
+        node: {fileID: 5786077682013631469}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1756,7 +1902,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_value: 1
+  m_value: 0
   m_values: 0000000005000000
   m_exactValues: 0
 --- !u!114 &9165861408820686531

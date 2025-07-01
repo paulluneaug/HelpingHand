@@ -1509,13 +1509,12 @@ MonoBehaviour:
   - {fileID: 3777699645899872831}
   - {fileID: 5190316368414269628}
   - {fileID: 7068259769615380931}
-  - {fileID: 781520444711673945}
-  - {fileID: 2095371326774940493}
   - {fileID: 3660623801472503768}
   - {fileID: -179178206699867834}
   - {fileID: -1410613150652361280}
   - {fileID: 8136713366404553123}
   - {fileID: 4185011738245355605}
+  - {fileID: 2085558179996105113}
 --- !u!114 &130954819415264437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,72 +1581,6 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
---- !u!114 &781520444711673945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
-  m_Name: Enable controls
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 824, y: -344}
-  folded: 0
-  ports:
-    keys:
-    - m_in
-    - m_inValue
-    - m_out
-    values:
-    - _fieldName: m_in
-      _node: {fileID: 781520444711673945}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: 7068259769615380931}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_inValue
-      _node: {fileID: 781520444711673945}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: m_out
-      _node: {fileID: 781520444711673945}
-      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 2095371326774940493}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  m_showDebugLog: 1
-  m_inValue: 1
-  m_variable: {fileID: 11400000, guid: d0bfbc8261805d04c965dbb81dd86a93, type: 2}
 --- !u!114 &1974680421170638854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,7 +1647,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
---- !u!114 &2095371326774940493
+--- !u!114 &2085558179996105113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1723,41 +1656,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
-  m_Name: Enable controls
+  m_Script: {fileID: 11500000, guid: 2a86bdaa6e1abd74f91429016d714b50, type: 3}
+  m_Name: Loop
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1096, y: -344}
+  position: {x: 2748.888, y: 1561.9089}
   folded: 0
   ports:
     keys:
     - m_in
-    - m_inValue
+    - m_breakLoop
     - m_out
     values:
     - _fieldName: m_in
-      _node: {fileID: 2095371326774940493}
+      _node: {fileID: 2085558179996105113}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: m_out
-        node: {fileID: 781520444711673945}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: m_inValue
-      _node: {fileID: 2095371326774940493}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
+    - _fieldName: m_breakLoop
+      _node: {fileID: 2085558179996105113}
+      _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: m_out
-      _node: {fileID: 2095371326774940493}
+      _node: {fileID: 2085558179996105113}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -1775,8 +1705,6 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_showDebugLog: 1
-  m_inValue: 1
-  m_variable: {fileID: 11400000, guid: 17c5e6d3f6213b94889bab9feda45e29, type: 2}
 --- !u!114 &2416193092619962959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2602,7 +2530,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36307a7a41348074ca2ff0061fbab375, type: 3}
-  m_Name: Enable controls
+  m_Name: "Activate d\xE9cors 1"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 552, y: -344}
@@ -2638,10 +2566,7 @@ MonoBehaviour:
       _node: {fileID: 7068259769615380931}
       _typeQualifiedName: DialogueFlow, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: m_in
-        node: {fileID: 781520444711673945}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
