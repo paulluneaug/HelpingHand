@@ -84,6 +84,10 @@ public class StandaloneTimer : BaseGameEvent
 
     private void OnDisable()
     {
+        if (!Application.isPlaying)
+        {
+            return;
+        }
         StandaloneTimerSingleton.Instance.RemoveTimer(m_timer);
         GameManager.Instance.Paused.OnValueChanged += OnPauseChanged;
         m_timer = null;

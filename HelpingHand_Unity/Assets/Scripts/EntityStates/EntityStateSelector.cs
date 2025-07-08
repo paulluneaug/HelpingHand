@@ -1,3 +1,5 @@
+using System;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -5,8 +7,6 @@ using UnityEngine.Events;
 
 public class EntityStateSelector : SerializedMonoBehaviour
 {
-    [SerializeField] private IntVariable m_rotaryEncoderIndex;
-
     [SerializeField]
     [PropertySpace(0, 4)]
     private EntityState[] m_states;
@@ -44,18 +44,55 @@ public class EntityStateSelector : SerializedMonoBehaviour
         {
             entityState.SetValueWithoutNotify(false);
         }
-        m_currentIndex = m_rotaryEncoderEvent.Index.Value.Mod(m_states.Length);
-        m_states[m_currentIndex].SetValueWithoutNotify(true);
-        m_rotaryEncoderEvent.AddIndexListener(OnIndexChanged);
+        m_currentIndex = m_selectedIndex;
+        if (m_rotaryEncoderEvent.IsActive)
+        {
+            m_states[m_currentIndex].Set();
+            m_rotaryEncoderEvent.AddStepLeftListener(OnStepLeft);
+            m_rotaryEncoderEvent.AddStepRightListener(OnStepRight);
+        }
+
+        m_rotaryEncoderEvent.OnActivate += OnEventActivate;
+        m_rotaryEncoderEvent.OnDeactivate += OnEventDeactivate;
     }
 
-    private void OnIndexChanged(int index)
+    private void OnDestroy()
+    {
+        m_rotaryEncoderEvent.OnActivate -= OnEventActivate;
+        m_rotaryEncoderEvent.OnDeactivate -= OnEventDeactivate;
+    }
+
+    private void OnEventDeactivate()
+    {
+        m_rotaryEncoderEvent.RemoveStepLeftListener(OnStepLeft);
+        m_rotaryEncoderEvent.RemoveStepRightListener(OnStepRight);
+    }
+
+    private void OnEventActivate()
+    {
+        m_rotaryEncoderEvent.AddStepLeftListener(OnStepLeft);
+        m_rotaryEncoderEvent.AddStepRightListener(OnStepRight);
+    }
+
+    private void OnStepRight()
+    {
+        int newIndex = (m_currentIndex + 1).Mod(m_states.Length);
+        OnIndexChanged(newIndex);
+    }
+
+    private void OnStepLeft()
+    {
+        int newIndex = (m_currentIndex - 1).Mod(m_states.Length);
+        OnIndexChanged(newIndex);
+    }
+
+    private void OnIndexChanged(int newIndex)
     {
         m_states[m_currentIndex].Unset();
         m_onStateUnset?.Invoke(m_states[m_currentIndex]);
         m_onStateChanged?.Invoke(m_states[m_currentIndex], false);
 
-        m_currentIndex = index.Mod(m_states.Length);
+        m_currentIndex = newIndex;
 
         m_states[m_currentIndex].Set();
         m_onStateSet?.Invoke(m_states[m_currentIndex]);

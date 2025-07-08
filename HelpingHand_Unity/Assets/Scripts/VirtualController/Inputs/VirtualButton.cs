@@ -14,6 +14,7 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
     protected override BaseVariable<bool> InputEvent => m_event.ButtonState;
 
     [SerializeField][Required] private ButtonInputEvent m_event;
+    [SerializeField][Required] private BaseVariable<bool> m_buttonIndicatorState;
 
     [SerializeField] private Color m_buttonReleasedColor;
     [SerializeField] private Color m_buttonPressedColor;
@@ -29,6 +30,11 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
         m_transitionTimer = new Timer(m_transitionTime, false);
     }
 
+    private void Start()
+    {
+        m_buttonIndicatorState.AddListener(OnButtonPressed);
+    }
+
     private void Update()
     {
         if (!m_transitionTimer.IsRunning)
@@ -38,12 +44,12 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
         if (m_transitionTimer.Update(Time.deltaTime))
         {
             m_transitionTimer.Stop();
-            m_background.color = GetButtonColor(Value);
+            m_background.color = GetButtonColor(m_buttonIndicatorState.Value);
             return;
         }
 
-        Color currentButtonColor = GetButtonColor(Value);
-        Color otherButtonColor = GetButtonColor(!Value);
+        Color currentButtonColor = GetButtonColor(m_buttonIndicatorState.Value);
+        Color otherButtonColor = GetButtonColor(!m_buttonIndicatorState.Value);
 
         float lerpFactor = Easings.Ease(m_transitionTimer.Progress, m_transitionEasing);
         m_background.color = Color.Lerp(otherButtonColor, currentButtonColor, lerpFactor);
@@ -62,13 +68,11 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
     public void OnPointerDown(PointerEventData eventData)
     {
         m_event.RaiseDown();
-        OnButtonPressed(true);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         m_event.RaiseUp();
-        OnButtonPressed(false);
     }
 
     private Color GetButtonColor(bool state)
@@ -78,8 +82,6 @@ public class VirtualButton : VirtualInput<bool>, IPointerDownHandler, IPointerUp
 
     private void OnButtonPressed(bool buttonValue)
     {
-        SetValue(buttonValue);
-
         if (m_transitionTimer.IsRunning)
         {
             float timeToTarget = (1.0f - m_transitionTimer.Progress) * m_transitionTimer.Duration;

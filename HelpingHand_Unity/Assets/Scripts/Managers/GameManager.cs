@@ -90,6 +90,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         base.Initialize();
 
+        Application.targetFrameRate = 60;
+
         Paused = new ObservableField<bool>(false);
         Paused.OnValueChanged += OnPausedChanged;
 
