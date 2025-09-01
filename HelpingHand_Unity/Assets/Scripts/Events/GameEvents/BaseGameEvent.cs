@@ -13,6 +13,8 @@ namespace Events
         [ReadOnly]
         protected bool m_isActive = true;
 
+        public virtual void Initialize() { }
+
         public bool IsActive
         {
             get => m_isActive;
@@ -49,7 +51,7 @@ namespace Events
         public virtual void Raise()
         {
             RaiseEvent();
-            
+
             if (!IsActive)
             {
                 return;
@@ -113,7 +115,7 @@ namespace Events
         public void Raise(T value)
         {
             Raise();
-            
+
             if (!IsActive)
             {
                 return;

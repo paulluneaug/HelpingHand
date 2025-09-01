@@ -7,7 +7,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 using XNode;
-[CreateNodeMenu("Waiting/Wait Frame")] [NodeTint(0.2f, 0.1f, .3f)]
+[CreateNodeMenu("Waiting/Wait Frame")]
+[NodeTint(0.2f, 0.1f, .3f)]
 public class WaitFrameNode : InterruptableNode
 {
     private enum WaitType
@@ -18,21 +19,24 @@ public class WaitFrameNode : InterruptableNode
         [LabelText("Next frame")] NextFrame,
         [LabelText("Frame count")] FrameCount,
     }
-    
+
     [Input]
     public DialogueFlow m_in;
 
     [Output]
     public DialogueFlow m_out;
 
-    [SerializeField] [LabelWidth(50)]
+    [SerializeField]
+    [LabelWidth(50)]
     private WaitType m_type;
 
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_type == WaitType.FrameCount")]
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_type == WaitType.FrameCount")]
     private int m_frameCount;
 
     protected override string Infos => "Wait for n seconds before resuming the flow. Loops back if interrupted";
-    
+
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
         while (!m_hasBeenKilled)
@@ -42,7 +46,7 @@ public class WaitFrameNode : InterruptableNode
             {
                 break;
             }
-            
+
             UniTask task;
             switch (m_type)
             {
@@ -54,7 +58,7 @@ public class WaitFrameNode : InterruptableNode
                     break;
                 case WaitType.EndOfFrame:
                     DebugLog($"Waiting for end of frame");
-                    task = UniTask.WaitForEndOfFrame(m_killStopCTS.Token); 
+                    task = UniTask.WaitForEndOfFrame(m_killStopCTS.Token);
                     break;
                 case WaitType.NextFrame:
                     DebugLog($"Waiting for next frame");
@@ -75,7 +79,7 @@ public class WaitFrameNode : InterruptableNode
                 await HandlePauseStop(handler);
                 continue;
             }
-            
+
             DebugLog($"Wait done");
             break;
         }

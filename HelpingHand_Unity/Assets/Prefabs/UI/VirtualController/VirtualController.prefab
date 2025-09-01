@@ -308,7 +308,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2560, y: 956.38}
+  m_SizeDelta: {x: 2560, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2182823107688039051
 GameObject:
@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 7100022508872133709}
   - component: {fileID: 1836496416599920895}
   - component: {fileID: 2222950260179725673}
+  - component: {fileID: 7502177977409792686}
   m_Layer: 31
   m_Name: VirtualController
   m_TagString: Untagged
@@ -471,7 +472,7 @@ Canvas:
   m_GameObject: {fileID: 2567414268694397375}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -484,7 +485,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
 --- !u!114 &1836496416599920895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +503,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -525,6 +526,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
+--- !u!114 &7502177977409792686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567414268694397375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466238222b004784b80ca4ef2178776e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2668325724729633767
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +626,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3227203933481479768}
-  - component: {fileID: 3643726348951660504}
   m_Layer: 31
   m_Name: Toggle Group 2 Blue
   m_TagString: Untagged
@@ -642,62 +654,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -70.5}
   m_SizeDelta: {x: 211.5, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3643726348951660504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956283763124252835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 89cedc610a29ba849b0d8655561c650e, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionTrigger, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_trigger
-      Entry: 7
-      Data: 1|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: true
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: aeb8820ce6c7fe841ab093ea694ff031, type: 2}
 --- !u!1 &2968296031644028436
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +739,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7782833023924513005}
-  - component: {fileID: 2416530887059441917}
   m_Layer: 31
   m_Name: Toggle Group 1
   m_TagString: Untagged
@@ -817,110 +772,6 @@ RectTransform:
   m_AnchoredPosition: {x: 337.75, y: -57}
   m_SizeDelta: {x: 205.5, y: 332.5}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &2416530887059441917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356413427184814068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5109a54dc2600547888ad14c9f56c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 135777a591be66a47a6e37334e3b0cd0, type: 2}
-    - {fileID: 11400000, guid: b9e3d544aed655c4c94d8ba56ae5055d, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionAnd, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_preconditions
-      Entry: 7
-      Data: 1|ConditionBase[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 2|ConditionEntityState, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_state
-      Entry: 10
-      Data: 0
-    - Name: m_mustBeSet
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 3|ConditionEntityState, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_state
-      Entry: 10
-      Data: 1
-    - Name: m_mustBeSet
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_onConditionTrue:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 816dac3bdc0d21d4f8d536bf6bf0eed2, type: 2}
-        m_TargetAssemblyTypeName: EntityState, Assembly-CSharp
-        m_MethodName: Set
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_onConditionFalse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 816dac3bdc0d21d4f8d536bf6bf0eed2, type: 2}
-        m_TargetAssemblyTypeName: EntityState, Assembly-CSharp
-        m_MethodName: Unset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3800395202739685175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +861,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6933223350964202010}
-  - component: {fileID: 9072879637260078831}
   m_Layer: 31
   m_Name: Toggle Group 2 Red
   m_TagString: Untagged
@@ -1039,62 +889,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 70.5}
   m_SizeDelta: {x: 211.5, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9072879637260078831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4408912470740043660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 6104715c2ab4ab44ca0deb95a9216f30, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionTrigger, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_trigger
-      Entry: 7
-      Data: 1|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: true
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: b9e3d544aed655c4c94d8ba56ae5055d, type: 2}
 --- !u!1 &4736937927314031334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1091,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8884234608372164261}
-  - component: {fileID: 7338070521499396263}
   m_Layer: 31
   m_Name: Toggle Group 2 Green
   m_TagString: Untagged
@@ -1326,62 +1119,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 211.5, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7338070521499396263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704525176219745960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: f0e9ba0bf01bf1140bf9bfaf01fcefcc, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionTrigger, Assembly-CSharp
-    - Name: m_scoreMult
-      Entry: 3
-      Data: 1
-    - Name: m_trigger
-      Entry: 7
-      Data: 1|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: true
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: c2bc68d3c9bd5884488d73a242b3eea2, type: 2}
 --- !u!1 &5880674319781871106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,45 +1566,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3037490371115998475}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
---- !u!1 &4707367045778678562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-  m_PrefabInstance: {fileID: 137588852242838807}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3037490371115998475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4707367045778678562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c87c6895d4257447bd875c8f0b4287d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_doUnregisterOnDisable: 1
-  m_event: {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-  m_response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fa366f79a572c2f449f280f02a532161, type: 2}
-        m_TargetAssemblyTypeName: BaseVariable`1[[System.Boolean, mscorlib
-        m_MethodName: set_Value
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &5997716849762524916 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5968672378203712483, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
@@ -3269,7 +2969,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7206837904995988117, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
       propertyPath: m_Name
-      value: IndicatorGreen FTStep2
+      value: IndicatorRed FTStep2
       objectReference: {fileID: 0}
     - target: {fileID: 7242885141992770811, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
       propertyPath: m_Pivot.x
@@ -3355,6 +3055,30 @@ PrefabInstance:
       propertyPath: m_state
       value: 
       objectReference: {fileID: 11400000, guid: bccc2e26b6d677546a01c384c571ff8b, type: 2}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_litColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_litColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_unlitColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_unlitColor.r
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581957021731791001, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581957021731791001, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4419,6 +4143,10 @@ PrefabInstance:
       propertyPath: m_inputEvent
       value: 
       objectReference: {fileID: 11400000, guid: 2870e462f05c7f840a69a898ed132997, type: 2}
+    - target: {fileID: 4106811856878963346, guid: a5d15e41283a0af43a159cbce534c40a, type: 3}
+      propertyPath: m_startValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4415211960894079692, guid: a5d15e41283a0af43a159cbce534c40a, type: 3}
       propertyPath: m_Name
       value: Potentiometer DayNight Wheel
@@ -4441,6 +4169,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7175779304024711736}
     m_Modifications:
+    - target: {fileID: 3970275514698700104, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970275514698700104, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5895039028262193531, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4525,9 +4261,25 @@ PrefabInstance:
       propertyPath: m_event
       value: 
       objectReference: {fileID: 11400000, guid: 28d8ff42b8ed73f48a19badd18211e22, type: 2}
+    - target: {fileID: 6602753582904584736, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
+      propertyPath: m_buttonPressedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602753582904584736, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
+      propertyPath: m_buttonPressedColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602753582904584736, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
+      propertyPath: m_buttonReleasedColor.g
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602753582904584736, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
+      propertyPath: m_buttonReleasedColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7668801741304409483, guid: 5d58a57996f4c6d439b7d75c24e75bf5, type: 3}
       propertyPath: m_Name
-      value: ButtonRoundRed FTStep3
+      value: ButtonRoundGreen FTStep3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5161,6 +4913,10 @@ PrefabInstance:
       propertyPath: m_inputEvent
       value: 
       objectReference: {fileID: 11400000, guid: 401f5d6b6259f1c46bc74812efd01c10, type: 2}
+    - target: {fileID: 4106811856878963346, guid: a5d15e41283a0af43a159cbce534c40a, type: 3}
+      propertyPath: m_startValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4415211960894079692, guid: a5d15e41283a0af43a159cbce534c40a, type: 3}
       propertyPath: m_Name
       value: Potentiometer Scene Spots
@@ -5291,7 +5047,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7206837904995988117, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
       propertyPath: m_Name
-      value: IndicatorGreen Puppet Spot Toggle
+      value: IndicatorBlue Puppet Spot Toggle
       objectReference: {fileID: 0}
     - target: {fileID: 7242885141992770811, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
       propertyPath: m_Pivot.x
@@ -5377,6 +5133,30 @@ PrefabInstance:
       propertyPath: m_state
       value: 
       objectReference: {fileID: 11400000, guid: 28ec90a296b3e5e4998923972bc67536, type: 2}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_litColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_litColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_unlitColor.b
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_unlitColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581957021731791001, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581957021731791001, guid: 3d7df18a0b242d84e8c77b1ea99811bc, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6520,9 +6300,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4106811856878963346, guid: a5d15e41283a0af43a159cbce534c40a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106811856878963346, guid: a5d15e41283a0af43a159cbce534c40a, type: 3}
       propertyPath: m_inputEvent
       value: 
-      objectReference: {fileID: 11400000, guid: a9d9a698f59d6a849b54ee472d87f5c0, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4415211960894079692, guid: a5d15e41283a0af43a159cbce534c40a, type: 3}
       propertyPath: m_Name
       value: Potentiometer FTStep2
@@ -6636,45 +6420,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4486365906045148593}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
---- !u!1 &2382976574594211299 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4664389141913949749, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
-  m_PrefabInstance: {fileID: 7037214886354193366}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4486365906045148593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2382976574594211299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c87c6895d4257447bd875c8f0b4287d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_doUnregisterOnDisable: 1
-  m_event: {fileID: 11400000, guid: 7fc07124ba808d44f81f7851abfa5c1c, type: 2}
-  m_response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 28ec90a296b3e5e4998923972bc67536, type: 2}
-        m_TargetAssemblyTypeName: BaseVariable`1[[System.Boolean, mscorlib
-        m_MethodName: set_Value
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &3710348442678009909 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5968672378203712483, guid: d8b0e5fb9e8dc9946b7a8603c5298879, type: 3}
@@ -6802,6 +6549,10 @@ PrefabInstance:
       propertyPath: m_event
       value: 
       objectReference: {fileID: 11400000, guid: f6ac82cc968eccd46b957e674e4a51d7, type: 2}
+    - target: {fileID: 4980448432979925699, guid: c4c9395e6d27d4743afe5eaaa04fee5c, type: 3}
+      propertyPath: m_stepCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7810142620730459098, guid: c4c9395e6d27d4743afe5eaaa04fee5c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6885,13 +6636,48 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1920763257095268313, guid: c4c9395e6d27d4743afe5eaaa04fee5c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 505684303465459600}
   m_SourcePrefab: {fileID: 100100000, guid: c4c9395e6d27d4743afe5eaaa04fee5c, type: 3}
 --- !u!224 &1130025685415513511 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7810142620730459098, guid: c4c9395e6d27d4743afe5eaaa04fee5c, type: 3}
   m_PrefabInstance: {fileID: 7191574650579930749}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2797721066048197822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4980448432979925699, guid: c4c9395e6d27d4743afe5eaaa04fee5c, type: 3}
+  m_PrefabInstance: {fileID: 7191574650579930749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8748936118257084836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30821a0db7dbf20409d2f75f5562cc3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8748936118257084836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1920763257095268313, guid: c4c9395e6d27d4743afe5eaaa04fee5c, type: 3}
+  m_PrefabInstance: {fileID: 7191574650579930749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &505684303465459600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8748936118257084836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcc5ec678afe134c92e3c4ef7f40803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_musicRotary: {fileID: 2797721066048197822}
+  m_musicSelection0: {fileID: 11400000, guid: 851b35bcaf575224a9fa4b23180f220c, type: 2}
+  m_musicSelection1: {fileID: 11400000, guid: 069fa2ea36b40e549aac99ea93c6e76f, type: 2}
+  m_selectedMusic: 0
 --- !u!1001 &7191645193093226390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7098,7 +6884,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7206837904995988117, guid: ec827c67362c4184d934db0945f12a53, type: 3}
       propertyPath: m_Name
-      value: IndicatorRed FTStep3
+      value: IndicatorGreen FTStep3
       objectReference: {fileID: 0}
     - target: {fileID: 7242885141992770811, guid: ec827c67362c4184d934db0945f12a53, type: 3}
       propertyPath: m_Pivot.x
@@ -7184,6 +6970,30 @@ PrefabInstance:
       propertyPath: m_state
       value: 
       objectReference: {fileID: 11400000, guid: a4eacc1d942657642aabf8e4392602e2, type: 2}
+    - target: {fileID: 7453769401966696174, guid: ec827c67362c4184d934db0945f12a53, type: 3}
+      propertyPath: m_litColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: ec827c67362c4184d934db0945f12a53, type: 3}
+      propertyPath: m_litColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: ec827c67362c4184d934db0945f12a53, type: 3}
+      propertyPath: m_unlitColor.g
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453769401966696174, guid: ec827c67362c4184d934db0945f12a53, type: 3}
+      propertyPath: m_unlitColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581957021731791001, guid: ec827c67362c4184d934db0945f12a53, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581957021731791001, guid: ec827c67362c4184d934db0945f12a53, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

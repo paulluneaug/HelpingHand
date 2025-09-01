@@ -6,6 +6,7 @@
 				<ActorMixer Name="Gears" ID="{3B18D28E-7C6F-427E-929E-21FC3EEB61DA}" ShortID="641884">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.2"/>
 						<Property Name="BelowThresholdBehavior" Type="int16" Value="1"/>
 						<Property Name="MakeUpGain" Type="Real64">
 							<ValueList>
@@ -389,8 +390,9 @@
 												<BlendTrackAssoc>
 													<ItemRef Name="HH_Gears_Loop_Speed_1" ID="{553B64C0-F467-4A89-886D-FB4D59923183}"/>
 													<CrossfadingInfo>
-														<LeftEdgePos>0.0445190901856273</LeftEdgePos>
-														<LeftFadingMode>Automatic</LeftFadingMode>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>Manual</LeftFadingMode>
+														<LeftFadingPos>0.0713153724247227</LeftFadingPos>
 														<RightEdgePos>0.216636129772547</RightEdgePos>
 														<RightFadingMode>Automatic</RightFadingMode>
 													</CrossfadingInfo>
@@ -436,8 +438,18 @@
 													<CrossfadingInfo>
 														<LeftEdgePos>0.834180373278829</LeftEdgePos>
 														<LeftFadingMode>Automatic</LeftFadingMode>
-														<RightEdgePos>1</RightEdgePos>
+														<RightEdgePos>0.945126146406585</RightEdgePos>
 														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="HH_Gears_Loop_Speed_1" ID="{553B64C0-F467-4A89-886D-FB4D59923183}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0.895485087263319</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>1</RightEdgePos>
+														<RightFadingMode>Manual</RightFadingMode>
+														<RightFadingPos>0.945126146406585</RightFadingPos>
 													</CrossfadingInfo>
 												</BlendTrackAssoc>
 											</BlendTrackAssocList>
@@ -464,6 +476,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<BlendContainer Name="GearLoop_VariousSpeed" ID="{7954FCA0-287D-4037-A30F-5576DA29CE5A}" ShortID="932645904">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -915,9 +934,21 @@
 								</BlendContainer>
 								<Sound Name="HH_Gears_Loop_Speed_Stop" ID="{58EE3F0E-AD91-47FE-81C0-401276AA82C8}" ShortID="497582208">
 									<PropertyList>
+										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
-												<Value>-4</Value>
+												<Value>-9</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -932,9 +963,9 @@
 									<ChildrenList>
 										<AudioFileSource Name="HH_Gears_Loop_Speed_Stop" ID="{6B24A9E7-7A1E-45F4-99DD-648D0F6B013A}">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.430249874392337"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.367538111010379"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.430249874392337"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.367538111010379"/>
 											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>HH_Gears_Loop_Speed_Stop.wav</AudioFile>

@@ -19,20 +19,18 @@ public enum EquipementState
     Lieu_07,
     Lieu_08,
 
-    Armurerie_01,
-    Armurerie_02,
-    Armurerie_03,
+    Amurerie_01,
+    Amurerie_02,
+    Amurerie_03,
 
     Taverne_01,
     Taverne_02,
     Taverne_03,
     Taverne_04,
 
-    Supermarché_01,
-    Supermarché_02,
-    Supermarché_03,
-
-    Equipement_03,
+    Supermarche_01,
+    Supermarche_02,
+    Supermarche_03,
 
     Arme_01,
     Arme_02,
@@ -94,7 +92,6 @@ public enum EquipementState
     Beret_01,
     Beret_02,
     Beret_031,
-    Beret_04,
     Beret_032,
 
     CasqueAudio_01,
@@ -102,7 +99,7 @@ public enum EquipementState
     CasqueAudio_03,
     CasqueAudio_041,
     CasqueAudio_042,
-    CasqueAudio_05,
+    CasqueAudio_050,
 
     Equip_Classique_01,
     Equip_Classique_02,

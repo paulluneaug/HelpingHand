@@ -21,13 +21,16 @@ public class GraphRunner : MonoBehaviour
     public event Action OnGraphResumed;
 
     public GraphRunnerHandler Handler => m_graphRunnerHandler;
-    
+
     public SimpleGraph Graph => m_graph;
+
+    public bool IsInterrupted = false;
 
     private GraphRunnerHandler m_graphRunnerHandler;
 
     [SerializeField]
     private SimpleGraph m_graph;
+
 
     public void SetGraph(SimpleGraph graph)
     {
@@ -108,6 +111,8 @@ public class GraphRunner : MonoBehaviour
             DebugLog($"[StartGraph] Graph is not running", LogType.Warning);
             return;
         }
+
+        IsInterrupted = false;
 
         DebugLog($"Initialize");
         m_graph.Initialize();

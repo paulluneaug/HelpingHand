@@ -18,7 +18,7 @@ public class ConditionIntValue : ConditionBase
     [SerializeField]
     [EnumToggleButtons]
     private ValueType m_valueType;
-    
+
     [SerializeField]
     [ShowIf("@m_valueType == ValueType.GlobalVariable")]
     [LabelWidth(100)]
@@ -29,7 +29,7 @@ public class ConditionIntValue : ConditionBase
     [ShowIf("@m_valueType == ValueType.Blackboard")]
     [LabelWidth(100)]
     private string m_key;
-    
+
     [SerializeField]
     [LabelWidth(100)]
     private ComparisonOperation m_comparison;
@@ -105,7 +105,7 @@ public class ConditionIntValue : ConditionBase
         if (m_valueType == ValueType.GlobalVariable)
         {
             return m_variable.Value;
-        } 
+        }
         else if (m_valueType == ValueType.Blackboard)
         {
             if (GraphBlackboard.Instance.TryGetValue(m_key, out int value))

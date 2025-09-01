@@ -17,7 +17,7 @@ public class DialoguePanelController : MonoBehaviour
 
     [NonSerialized] private GameOptionsManager m_optionsManager;
 
-    private void Awake()
+    public void Initialize()
     {
         m_optionsManager = GameManager.Instance.GameOptionsManager;
     }
@@ -44,14 +44,16 @@ public class DialoguePanelController : MonoBehaviour
 
     private void UpdateSubtitleSettings()
     {
-        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value / 100.0f);
+        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value);
         m_subtitleText.color = m_optionsManager.SubtitleColor.Value;
         m_subtitleText.fontSize = m_optionsManager.ToFontSize(m_optionsManager.SubtitleSize.Value);
+        m_subtitleBackground.rectTransform.sizeDelta = m_subtitleBackground.rectTransform.sizeDelta.WhereX(m_optionsManager.ToBackgroundWidth(m_optionsManager.SubtitleSize.Value));
     }
 
     private void SubscribeToEvents()
     {
         m_optionsManager.SubtitleBackgroundOpacity.OnValueChanged += OnSubtitleOpacityChanged;
+        m_optionsManager.SubtitleBackgroundColor.OnValueChanged += OnSubtitleBackgroundColorChanged;
         m_optionsManager.SubtitleColor.OnValueChanged += OnSubtitleColorChanged;
         m_optionsManager.SubtitleSize.OnValueChanged += OnSubtitleSizeChanged;
     }
@@ -59,13 +61,19 @@ public class DialoguePanelController : MonoBehaviour
     private void UnsubscribeFromEvents()
     {
         m_optionsManager.SubtitleBackgroundOpacity.OnValueChanged -= OnSubtitleOpacityChanged;
+        m_optionsManager.SubtitleBackgroundColor.OnValueChanged -= OnSubtitleBackgroundColorChanged;
         m_optionsManager.SubtitleColor.OnValueChanged -= OnSubtitleColorChanged;
         m_optionsManager.SubtitleSize.OnValueChanged -= OnSubtitleSizeChanged;
     }
 
     private void OnSubtitleOpacityChanged(float subtitleOpacity)
     {
-        m_subtitleBackground.color = m_subtitleBackground.color.WhereA(subtitleOpacity / 100.0f);
+        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value);
+    }
+
+    private void OnSubtitleBackgroundColorChanged(Color subtitleColor)
+    {
+        m_subtitleBackground.color = m_optionsManager.SubtitleBackgroundColor.Value.WhereA(m_optionsManager.SubtitleBackgroundOpacity.Value);
     }
 
     private void OnSubtitleColorChanged(Color subtitleColor)
@@ -76,5 +84,6 @@ public class DialoguePanelController : MonoBehaviour
     private void OnSubtitleSizeChanged(SubtitleSize subtitleSize)
     {
         m_subtitleText.fontSize = m_optionsManager.ToFontSize(subtitleSize);
+        m_subtitleBackground.rectTransform.sizeDelta = m_subtitleBackground.rectTransform.sizeDelta.WhereX(m_optionsManager.ToBackgroundWidth(subtitleSize));
     }
 }

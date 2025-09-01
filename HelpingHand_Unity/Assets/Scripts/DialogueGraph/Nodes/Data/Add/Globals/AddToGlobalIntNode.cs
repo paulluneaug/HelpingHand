@@ -1,3 +1,5 @@
+using System;
+
 using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
@@ -11,6 +13,14 @@ using XNode;
 [NodeWidth(250)]
 public class AddToGlobalIntNode : BaseNode
 {
+    private enum Operation
+    {
+        [LabelText("+")] Add,
+        [LabelText("-")] Remove,
+        [LabelText("*")] Mult,
+        [LabelText("/")] Div,
+    }
+    
     [Input(ShowBackingValue.Never)]
     [SerializeField]
     private DialogueFlow m_in;
@@ -25,9 +35,12 @@ public class AddToGlobalIntNode : BaseNode
 
     [Output(ShowBackingValue.Always)]
     [SerializeField]
-    [InlineEditor]
     private IntVariable m_variable;
 
+    [SerializeField] 
+    [EnumToggleButtons]
+    private Operation m_operation;
+    
     public override object GetValue(NodePort port)
     {
         return m_variable;
@@ -35,12 +48,28 @@ public class AddToGlobalIntNode : BaseNode
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
     {
-        if (this.TryGetValueFromInputPort(nameof(m_increment), out int outValue))
+        if (this.TryGetValueFromInputPort(nameof(m_increment), out int increment))
         {
-            m_increment = outValue;
+            m_increment = increment;
         }
 
-        m_variable.Value += m_increment;
+        switch (m_operation)
+        {
+            case Operation.Add:
+                m_variable.Value += m_increment;
+                break;
+            case Operation.Remove:
+                m_variable.Value -= m_increment;
+                break;
+            case Operation.Mult:
+                m_variable.Value *= m_increment;
+                break;
+            case Operation.Div:
+                m_variable.Value /= m_increment;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
 
         await UniTask.CompletedTask;
     }

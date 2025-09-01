@@ -25,6 +25,7 @@ public enum MusicState
     Onboarding_1,
     Onboarding_2,
     Onboarding_3,
+    Onboarding_4,
     BattleTheme,
     SadTheme,
     SuspenseTheme,
@@ -52,6 +53,7 @@ public class StateManager : MonoBehaviour
     [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Unboarding_1;
     [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Unboarding_2;
     [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Unboarding_3;
+    [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_Unboarding_4;
 
     [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_MainMenu;
     [FoldoutGroup("Music States")][LabelWidth(200)][SerializeField] private WwiseState m_music_LevelLose;
@@ -100,7 +102,9 @@ public class StateManager : MonoBehaviour
     public void SetMusicState(MusicState MusicState)
     {
         if (MusicState == CurrentMusicState)
+        {
             return;
+        }
 
         switch (MusicState)
         {
@@ -128,6 +132,11 @@ public class StateManager : MonoBehaviour
                 m_music_Unboarding_3.SetValue();
                 break;
 
+            case MusicState.Onboarding_4:
+                m_music_Unboarding_4.SetValue();
+                break;
+
+
             case MusicState.BattleTheme:
                 m_music_BattleTheme.SetValue();
                 break;
@@ -143,7 +152,8 @@ public class StateManager : MonoBehaviour
             case MusicState.HorribleMusicTheme:
                 m_music_HorribleMusicTheme.SetValue();
                 break;
-
+            case MusicState.PauseMenu:
+                break;
             case MusicState.None:
             default:
                 m_music_None.SetValue();

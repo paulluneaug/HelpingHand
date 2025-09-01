@@ -16,7 +16,7 @@ public class ExecuteTimesNode : BaseNode
     private int m_times = 1;
 
     private int m_executionCount;
-    
+
     protected override string Infos => "Continue the flow for a set number of times";
 
     public override void Initialize()

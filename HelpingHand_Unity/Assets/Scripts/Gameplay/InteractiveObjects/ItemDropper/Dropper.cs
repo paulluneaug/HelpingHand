@@ -112,6 +112,10 @@ public class Dropper : MonoBehaviour
                 break;
             case DropperState.TransitionOut:
                 UpdateTransitionOut();
+
+                // @TODO Play transition de fin (tout le monde part)
+                // Ben du coup non
+                //_ = AudioManager.Instance.EventManager.Play_ItemDropperLeaving.Post(gameObject);
                 break;
             default:
                 break;
@@ -138,6 +142,9 @@ public class Dropper : MonoBehaviour
         if (m_transitionTimer.Update(Time.deltaTime))
         {
             m_currentState = DropperState.Ready;
+
+            // @TODO Stop transition sound
+            _ = AudioManager.Instance.EventManager.Stop_ItemDropperMovingLoop_Fadeout.Post(gameObject);
             transitionProgress = 1.0f;
         }
         else
@@ -148,7 +155,7 @@ public class Dropper : MonoBehaviour
         m_displayedItems.ForEach(item => item.UpdatePosition(transitionProgress, m_transitionEasingFunction));
         m_storedMovingItem?.UpdatePosition(transitionProgress, m_transitionEasingFunction);
 
-        if (m_currentState  == DropperState.Ready)
+        if (m_currentState == DropperState.Ready)
         {
             ApplyOffsetIfNeeded();
         }
@@ -165,6 +172,9 @@ public class Dropper : MonoBehaviour
         if (m_transitionTimer.Update(Time.deltaTime))
         {
             m_currentState = DropperState.Inactive;
+
+            // @TODO Stop transition sound
+            _ = AudioManager.Instance.EventManager.Stop_ItemDropperMovingLoop_Fadeout.Post(gameObject);
             transitionProgress = 1.0f;
         }
         else
@@ -210,6 +220,8 @@ public class Dropper : MonoBehaviour
     {
         m_currentState = DropperState.Transition;
 
+        // @TODO Play transition sound (loop)
+        _ = AudioManager.Instance.EventManager.Play_ItemDropperMovingLoop.Post(gameObject);
         m_selectorInput.AddStepLeftListener(OnSelectionChangedLeft);
         m_selectorInput.AddStepRightListener(OnSelectionChangedRight);
         m_validationInput.AddListener(OnValidateInput);
@@ -259,6 +271,10 @@ public class Dropper : MonoBehaviour
         m_transitionTimer.Start();
 
         m_currentState = DropperState.TransitionOut;
+
+        // @TODO Play loop transition (les caisses partent)
+        //Je crois qu'il se joue au tout début du jeu
+       // _ = AudioManager.Instance.EventManager.Play_ItemDropperLeaving.Post(gameObject);
     }
 
     private void OnSelectionChangedLeft()
@@ -283,6 +299,9 @@ public class Dropper : MonoBehaviour
 
     private void ApplyOffset(int offset)
     {
+
+        // @TODO Play transition sound (loop)
+        _ = AudioManager.Instance.EventManager.Play_ItemDropperMovingLoop.Post(gameObject);
         m_currentState = DropperState.Transition;
         int optionsCount = m_choices.Length;
         m_currentIndex = (m_currentIndex + offset + optionsCount) % optionsCount;
@@ -331,9 +350,12 @@ public class Dropper : MonoBehaviour
         if (m_currentState != DropperState.Ready)
         {
             // @TODO Play error sound
+
+            _ = AudioManager.Instance.EventManager.Play_ItemDropperError.Post(gameObject);
             return;
         }
 
-        m_displayedItems.At(m_selectedItemIndex).DropItem();
+        m_displayedItems.At(m_selectedItemIndex).DropItem(gameObject);
+
     }
 }

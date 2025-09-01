@@ -21,6 +21,12 @@ public class WaitSwitchStateNode : WaitNodeBase
     private List<NodePort> m_continuePortList;
     private readonly bool m_isTimeout;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        m_continuePortList = new List<NodePort>();
+    }
+
     protected override void InitializeExecute(GraphRunnerHandler handler, NodePort inPort)
     {
         foreach (EntityState state in m_states)
@@ -41,7 +47,7 @@ public class WaitSwitchStateNode : WaitNodeBase
     public override void Dispose()
     {
         base.Dispose();
-        
+
         foreach (EntityState state in m_states)
         {
             state.RemoveListener(UpdateWaitUntilTest);
@@ -79,7 +85,7 @@ public class WaitSwitchStateNode : WaitNodeBase
         {
             return;
         }
-        
+
         if (IsTimeout)
         {
             DebugLog($"Has timeout");

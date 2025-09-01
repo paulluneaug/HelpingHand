@@ -10,7 +10,7 @@ using XNode;
 
 [CreateNodeMenu("Graph/Controls")]
 [NodeTint(0.6078432f, 0.2627451f, 0.6235294f)]
-[NodeWidth(200)]
+[NodeWidth(250)]
 public class GraphControlNode : BaseNode
 {
     [Input]
@@ -70,7 +70,7 @@ public class GraphControlNode : BaseNode
             Debug.Assert(m_graph != null);
             DebugLog($"[{GetInstanceID()}] Using graph: {m_graph.name}");
         }
-        
+
         switch (m_control)
         {
             case GraphControlsEnum.Start:

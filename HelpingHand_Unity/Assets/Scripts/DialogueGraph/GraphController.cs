@@ -83,9 +83,13 @@ public class GraphController : MonoBehaviour
 
     private async UniTaskVoid StartLevelAsync()
     {
-        StartMainSequenceGraph(m_graphQueue.Dequeue()).Forget();
+        if (m_graphQueue.TryDequeue(out SimpleGraph firstGraph))
+        {
+            StartMainSequenceGraph(firstGraph).Forget();
+        }
         foreach (SimpleGraph graph in m_parallelExecution)
         {
+            Debug.Assert(graph != null);
             GraphRunner graphRunner = await CreateGraphRunner(graph);
             graphRunner.StartGraph();
         }
@@ -93,8 +97,9 @@ public class GraphController : MonoBehaviour
 
     private async UniTaskVoid StartMainSequenceGraph(SimpleGraph graph)
     {
+        Debug.Log($"[{Time.frameCount}] <color=red>Starting main sequence {graph.name}</color>");
         GraphRunner graphRunner = await CreateGraphRunner(graph);
-        graphRunner.OnGraphEnded += OnGraphEnded;
+        graphRunner.OnGraphStopped += OnGraphStopped;
         graphRunner.OnGraphPaused += OnGraphPaused;
         graphRunner.OnGraphResumed += OnGraphResumed;
         graphRunner.StartGraph();
@@ -103,6 +108,7 @@ public class GraphController : MonoBehaviour
 
     public async UniTask<GraphRunner> CreateGraphRunner(SimpleGraph graph)
     {
+        Debug.Assert(graph != null);
         // If graph is already running, wait for its completion
         if (m_graphDictionary.TryGetValue(graph, out GraphRunner existingRunner))
         {
@@ -113,7 +119,7 @@ public class GraphController : MonoBehaviour
                 await UniTask.WaitUntil(() => isRunning == false);
             }
         }
-        
+
         GraphRunner graphRunner = new GameObject($"GraphRunner [{graph.name}]").AddComponent<GraphRunner>();
         graphRunner.SetGraph(graph);
         m_graphDictionary[graph] = graphRunner;
@@ -126,8 +132,35 @@ public class GraphController : MonoBehaviour
         return m_graphDictionary.TryGetValue(graph, out graphRunner);
     }
 
-    private void OnGraphEnded()
+    public void PauseGraphs()
     {
+        foreach (var item in m_graphDictionary)
+        {
+            GraphRunner runner = item.Value;
+            if (runner.IsInterrupted)
+            {
+                continue;
+            }
+            runner.PauseGraph();
+        }
+    }
+
+    public void ResumeGraphs()
+    {
+        foreach (var item in m_graphDictionary)
+        {
+            GraphRunner runner = item.Value;
+            if (runner.IsInterrupted)
+            {
+                continue;
+            }
+            runner.ResumeGraph();
+        }
+    }
+
+    private void OnGraphStopped()
+    {
+        Debug.Log($"[{Time.frameCount}] <color=red>{m_currentGraphRunner.Graph.name} stopped</color>");
         m_currentGraphRunner = null;
         if (m_graphQueue.TryDequeue(out SimpleGraph graph))
         {
@@ -177,11 +210,6 @@ public class GraphController : MonoBehaviour
                 HandleInterruptionQueue();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartSequence();
-        }
     }
 
     private void HandleInterruptionQueue()
@@ -207,11 +235,14 @@ public class GraphController : MonoBehaviour
         if (m_currentGraphRunner != null)
         {
             m_currentGraphRunner.PauseGraph();
+            m_currentGraphRunner.IsInterrupted = true;
             GraphRunner interruptedGraph = m_currentGraphRunner;
             interruptingGraph.GraphRunner.OnGraphStopped += () =>
             {
                 m_currentGraphRunner = interruptedGraph;
+                m_currentGraphRunner.IsInterrupted = false;
                 m_currentGraphRunner.ResumeGraph();
+
             };
         }
 
@@ -230,4 +261,28 @@ public class GraphController : MonoBehaviour
         }
     }
 #endif
+    
+    public void StopAllGraphs()
+    {
+        foreach (var keyValuePair in m_graphDictionary)
+        {
+            keyValuePair.Value.StopGraph();
+        }
+    }
+
+    public void StopSequence(GraphRunnerHandler handler)
+    {
+        foreach (GraphRunner graphRunner in m_graphDictionary.Values)
+        {
+            if (graphRunner == handler.GraphRunner)
+            {
+                continue;
+            }
+
+            graphRunner.OnGraphStopped -= OnGraphStopped;
+            graphRunner.OnGraphPaused -= OnGraphPaused;
+            graphRunner.OnGraphResumed -= OnGraphResumed;
+            graphRunner.StopGraph();
+        }
+    }
 }

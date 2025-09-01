@@ -46,7 +46,7 @@ public class AddToIntValueNode : BaseNode
         {
             m_currentValue = val;
         }
-        
+
         if (this.TryGetValueFromInputPort(nameof(m_increment), out int increment))
         {
             m_increment = increment;

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 using Cysharp.Threading.Tasks;
 
-using UnityEngine;
 using DG.Tweening;
 
 using Sirenix.OdinInspector;
 
 using TMPro;
+
+using UnityEngine;
 
 using UnityUtility.Singletons;
 
@@ -18,27 +19,37 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     private bool m_startHidden = true;
 
     [SerializeField]
-    private Light m_light;
-
-    [SerializeField] 
     private AK.Wwise.Event m_sfx;
+
+    [SerializeField]
+    private IntVariable m_achievementsCount;
+
+    [SerializeField]
+    private BoolVariable m_isAchievementPlanelIsShowing;
+
+    [SerializeField]
+    private BoolVariable m_isAchievementDialogueIsPlaying;
+
+    public bool IsAchievementIsPlaying => m_isAchievementPlanelIsShowing.Value;
     
-    [FoldoutGroup("Texts")] 
+    public bool IsAchievementDialogueIsPlaying => m_isAchievementDialogueIsPlaying.Value;
+
+    [FoldoutGroup("Texts")]
     [SerializeField]
     private TMP_Text m_titleText;
-    
-    [FoldoutGroup("Texts")] 
+
+    [FoldoutGroup("Texts")]
     [SerializeField]
     private TMP_Text m_bodyText;
 
-    [FoldoutGroup("Animations")] 
+    [FoldoutGroup("Animations")]
     [SerializeField]
     private float m_showDuration = 2f;
 
-    [FoldoutGroup("Animations")] 
+    [FoldoutGroup("Animations")]
     [SerializeField]
     private Transform m_transform;
-    
+
     [BoxGroup("Animations/Show")]
     [SerializeField]
     private float m_showY = 2.6f;
@@ -50,11 +61,11 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     [BoxGroup("Animations/Show")]
     [SerializeField]
     private Ease m_showAnimationEase = Ease.OutBounce;
-    
+
     [BoxGroup("Animations/Hide")]
     [SerializeField]
     private float m_hideY = 5f;
-    
+
     [BoxGroup("Animations/Hide")]
     [SerializeField]
     private float m_hideAnimationDuration = .5f;
@@ -62,10 +73,10 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
     [BoxGroup("Animations/Hide")]
     [SerializeField]
     private Ease m_hideAnimationEase = Ease.InQuad;
-    
+
     private Achievement[] m_allAchievements;
     private Dictionary<Achievement, Action> m_achivementActions;
-
+  
     protected override void Start()
     {
         m_achivementActions = new Dictionary<Achievement, Action>();
@@ -79,7 +90,30 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         }
 
         m_transform.localPosition = new Vector3(m_transform.localPosition.x, m_startHidden ? m_hideY : m_showY, m_transform.localPosition.z);
-        m_light.enabled = !m_startHidden;
+
+        GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+        OnGameStateChanged(GameManager.Instance.CurrentGameState);
+    }
+
+    private void OnGameStateChanged(GameManager.GameState state)
+    {
+        switch (state)
+        {
+            case GameManager.GameState.MainMenu:
+                SetEnableAllAchievements(false);
+                break;
+            case GameManager.GameState.Gameplay:
+                SetEnableAllAchievements(true);
+                break;
+        }
+    }
+
+    private void SetEnableAllAchievements(bool isEnabled)
+    {
+        foreach (Achievement achievement in m_allAchievements)
+        {
+            achievement.IsActive = isEnabled;
+        }
     }
 
     public override void OnDestroy()
@@ -88,21 +122,25 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         {
             achievement.OnEventRaised -= m_achivementActions[achievement];
         }
+        GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
         base.OnDestroy();
     }
 
     private void OnAchievementSet(Achievement achievement)
     {
-        SetAchievement(achievement).Forget();
-        m_sfx.Post(gameObject);
+        SetAchievementAsync(achievement).Forget();
     }
 
-    private async UniTaskVoid SetAchievement(Achievement achievement)
+    private async UniTaskVoid SetAchievementAsync(Achievement achievement)
     {
+        m_isAchievementPlanelIsShowing.Value = true;
         SetAchievementTexts(achievement);
+        m_achievementsCount.Value++;
+        m_sfx.Post(gameObject);
         await ShowPanel();
         await UniTask.Delay((int)m_showDuration * 1000);
         await HidePanel();
+        m_isAchievementPlanelIsShowing.Value = false;
     }
 
     private void SetAchievementTexts(Achievement achievement)
@@ -111,19 +149,13 @@ public class AchievementManager : MonoBehaviourSingleton<AchievementManager>
         m_bodyText.text = achievement.body;
     }
 
-    [HorizontalGroup("Buttons")]
-    [Button("Show")]
     private async UniTask ShowPanel()
     {
-        m_light.enabled = true;
         await m_transform.DOLocalMoveY(m_showY, m_showAnimationDuration).SetEase(m_showAnimationEase).ToUniTask();
     }
 
-    [HorizontalGroup("Buttons")]
-    [Button("Hide")]
     private async UniTask HidePanel()
     {
-        m_light.enabled = false;
         await m_transform.DOLocalMoveY(m_hideY, m_hideAnimationDuration).SetEase(m_hideAnimationEase).ToUniTask();
     }
 }

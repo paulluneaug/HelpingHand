@@ -20,7 +20,7 @@
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-7</Value>
+										<Value>-5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -199,13 +199,13 @@
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>-39.95349</XPos>
-																		<YPos>-2.36646</YPos>
+																		<XPos>-40.18044</XPos>
+																		<YPos>-4.17103</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>0</XPos>
-																		<YPos>-200</YPos>
+																		<YPos>-8.38259</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -228,6 +228,7 @@
 									</ValueList>
 								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="SpeakerPanning" Type="int16" Value="2"/>
 							</PropertyList>
 							<ChildrenList>
 								<Bus Name="UI_MenusBus" ID="{C3D61355-00D3-4E6F-B379-D338E09B589F}">
@@ -244,6 +245,14 @@
 									</DuckingList>
 								</Bus>
 							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{981F5148-F8AD-4857-9164-C8C1EB9CDE09}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="-100"/>
+										<Property Name="PanY" Type="Real64" Value="-100"/>
+									</PropertyList>
+								</Panner>
+							</PositioningInfo>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
 									<Reference>
@@ -368,8 +377,8 @@
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>-34.62731</XPos>
-																		<YPos>-4</YPos>
+																		<XPos>-35.01286</XPos>
+																		<YPos>-6.08972</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
@@ -569,12 +578,12 @@
 								<Property Name="Color" Type="int16" Value="26"/>
 								<Property Name="Highpass" Type="int16">
 									<ValueList>
-										<Value>30</Value>
+										<Value>20</Value>
 									</ValueList>
 								</Property>
-								<Property Name="MakeUpGain" Type="Real64">
+								<Property Name="Lowpass" Type="int16">
 									<ValueList>
-										<Value>-2</Value>
+										<Value>26</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -585,13 +594,13 @@
 								</Property>
 								<Property Name="UserAuxSendVolume0" Type="Real64">
 									<ValueList>
-										<Value>-12</Value>
+										<Value>-14</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="UserAuxSend0">
-									<ObjectRef Name="Hall" ID="{168AA74E-F128-4A65-AB94-C40BE7738E4E}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+									<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
 								</Reference>
 							</ReferenceList>
 							<ObjectLists>

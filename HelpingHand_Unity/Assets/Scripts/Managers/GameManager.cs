@@ -1,11 +1,21 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+
+using Cysharp.Threading.Tasks;
+
+using Events;
 
 using Sirenix.OdinInspector;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+using UnityUtility.ObservableFields;
 using UnityUtility.SceneReference;
 using UnityUtility.Singletons;
 
@@ -19,13 +29,26 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         Gameplay,
     }
 
+    [Serializable]
+    private class GeneralSettings
+    {
+        public bool EnableVirtualController;
+    }
+
     public ActSequenceManager ActSequenceManager => m_actSequenceManager;
     public GameOptionsManager GameOptionsManager => m_gameOptionsManager;
     public CanvasManager CanvasManager => m_canvasManager;
+    public ArduinoConnectorManager ArduinoConnectorManager => m_arduinoConnectorManager;
 
-    public InputAction SkipDialogueInput => m_skipDialogueInput.action;
+    public ButtonInputEvent SkipDialogueInput => m_skipDialogueInput;
 
     public GameState CurrentGameState => m_currentGameState;
+
+    public bool VirtualControllerEnabled => m_virtualControllerEnabled;
+
+    public event Action<GameState> OnGameStateChanged;
+
+    [NonSerialized] public ObservableField<bool> Paused;
 
     [Title("Act Sequence Manager")]
     [SerializeField] private ActSequenceManager m_actSequenceManager;
@@ -48,32 +71,82 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [Separator]
 
     [Title("Input References")]
-    [SerializeField] private InputActionReference m_skipDialogueInput;
+    [SerializeField] private ButtonInputEvent m_skipDialogueInput;
+
+    [Title("Misc")]
+    [SerializeField] private Transform m_puppetStart;
+    [SerializeField] private string m_generalSettingsPath;
+    
+    [Title("Initialization")]
+    [SerializeField]
+    private List<BaseGameEvent> m_allGameEvents;
 
     // Cache
     [NonSerialized] private Puppet m_puppet;
     [NonSerialized] private GameState m_currentGameState;
+    [NonSerialized] private bool m_virtualControllerEnabled;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        Application.targetFrameRate = 60;
+
+        Paused = new ObservableField<bool>(false);
+        Paused.OnValueChanged += OnPausedChanged;
+
+
         m_currentGameState = m_startGameState;
 
+        m_gameOptionsManager.Initialize();
         m_actSequenceManager.Initialize();
         m_arduinoConnectorManager.Initialize();
         m_canvasManager.Initialize();
 
         LoadGlobalObjectScene();
-#if !PRODUCTION_BUILD
-        LoadVirtualControllerScene(); // TODO disable in production build
-#endif
-        m_skipDialogueInput.asset.Enable();
+
+        m_virtualControllerEnabled = false;
+        string generalSettingsFullPath = Path.Combine(".", "ExternalAssets", m_generalSettingsPath);
+        if (File.Exists(generalSettingsFullPath))
+        {
+            string generalSettings = File.ReadAllText(generalSettingsFullPath);
+            GeneralSettings settings = JsonUtility.FromJson<GeneralSettings>(generalSettings);
+            m_virtualControllerEnabled = settings.EnableVirtualController;
+            if (settings.EnableVirtualController)
+            {
+                LoadVirtualControllerScene(); // TODO disable in production build
+            }
+        }
+    }
+
+    private void OnPausedChanged(bool pause)
+    {
+        if (pause)
+        {
+            m_actSequenceManager.PauseSequence();
+        }
+        else
+        {
+            m_actSequenceManager.ResumeSequence();
+        }
     }
 
     protected override void Start()
     {
         base.Start();
+        StartAsync().Forget();
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        m_arduinoConnectorManager.Dispose();
+        m_gameOptionsManager.Dispose();
+    }
+
+    private async UniTask StartAsync()
+    {
+        await UniTask.WaitUntil(() => m_arduinoConnectorManager.IsReady);
         switch (m_currentGameState)
         {
             case GameState.MainMenu:
@@ -85,16 +158,50 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 break;
         }
     }
-
-    public override void OnDestroy()
+    
+#if UNITY_EDITOR
+    [Button("Load all game events")]
+    private void LoadGameEvents()
     {
-        base.OnDestroy();
-        m_arduinoConnectorManager.Dispose();
+        m_allGameEvents = new List<BaseGameEvent>();
+        var assetGUIDS = AssetDatabase.FindAssets("t:BaseGameEvent", new string[] { "Assets/Resources/" });
+        foreach (string assetGUID in assetGUIDS)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
+            foreach (UnityEngine.Object obj in AssetDatabase.LoadAllAssetsAtPath(assetPath))
+            {
+                if (obj is BaseGameEvent gameEvent)
+                {
+                    m_allGameEvents.Add(gameEvent);
+                }
+            }
+        }
+        AssetDatabase.SaveAssetIfDirty(this);
     }
-
+#endif
+    
     public void StartGameplay()
     {
+        // Initialize all variables
+        // BaseGameEvent[] allEvents = Resources.LoadAll<BaseGameEvent>(string.Empty);
+        // foreach (BaseGameEvent gameEvent in allEvents)
+        // {
+        //     gameEvent.Initialize();
+        // }
+        
+        foreach (BaseGameEvent gameEvent in m_allGameEvents)
+        {
+            gameEvent.Initialize();
+        }
+
+        // TODO Initialize all singletons
+
+        m_arduinoConnectorManager.SendFaderPosition(true);
+
+        m_puppet.transform.SetPositionAndRotation(m_puppetStart.position, m_puppetStart.rotation);
+
         m_currentGameState = GameState.Gameplay;
+        OnGameStateChanged?.Invoke(m_currentGameState);
 
         DialogueManager.Instance.OpenDialoguePanel();
 
@@ -142,7 +249,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         SceneManager.LoadScene(m_virtualControllerScene, LoadSceneMode.Additive);
 #endif
     }
-    
+
     #endregion
 
     #region Updates
@@ -197,6 +304,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_currentGameState = GameState.MainMenu;
                 m_canvasManager.CloseOptions();
                 m_actSequenceManager.StopSequence();
+                OnGameStateChanged?.Invoke(m_currentGameState);
+                DialogueManager.Instance.CloseDialoguePanel();
+                break;
+            default:
                 break;
         }
     }

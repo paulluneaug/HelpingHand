@@ -1,10 +1,12 @@
-using System;
+    using System;
 using System.Diagnostics;
+using System.Text;
 using System.Threading;
 
 using Cysharp.Threading.Tasks;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using UnityUtility.CustomAttributes;
 using UnityUtility.Singletons;
@@ -13,8 +15,6 @@ using static RTPCManager;
 
 using Debug = UnityEngine.Debug;
 using WwiseEvent = AK.Wwise.Event;
-using UnityEngine.SceneManagement;
-using System.Text;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public override void Initialize()
     {
+        SoundbankManager.LoadAllSoundbanks(); //Charge toutes les soundbanks: temporaire ! Load les soundbanks au fur et à mesure pour optimiser
         _ = AkUnitySoundEngine.RegisterGameObj(gameObject, "AudioManager");
         //RTPCManager.InitRtpcDictionaries(); //Initialise les RTPC
         SwitchManager.InitSwitchDictionaries(); //Initialise les switchs
@@ -62,38 +63,22 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
                 _ = EventManager.MainMusic_Play.Post(gameObject);
                 DebugLog("EntryScene - MainMenu music playing");
                 break;
-
-            case "0_Onboarding":
-                StateManager.SetGameState(GameState.Gameplay);
-                StateManager.SetMusicState(MusicState.Onboarding_1);
-                Debug.Log("Switched music to Onboarding 1st theme");
-                break;
-
-            default:
-               // StateManager.SetGameState(GameState.None);
-               // StateManager.SetMusicState(MusicState.None);
-                break;
         }
     }
     #endregion
 
-    private void Awake()
-    {
-        SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-    }
-
     protected override void Start()
     {
-       // SoundbankManager.LoadStartupSoundbanks(); //Charge les soundbanks de début
-
-        //On joue la musique principale dès que la scène se lance
-
         // Ambiances de pièces qui se jouent dès le début
         _ = EventManager.RoomMachinist_Ambience_Play.Post(gameObject);
         _ = EventManager.Theater_Ambience_Play.Post(gameObject);
     }
+    private void Update()
+    {
+        RTPCManager.RTPC_TimeOfDay.SetGlobalValue(RTPCManager.TimeOfDay.Value);
+    }
 
- 
+
     public override void OnDestroy()
     {
         base.OnDestroy();
@@ -182,6 +167,16 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             _ = EventManager.Untoggle_Play.Post(targetObject);
         }
     }
+
+    public void PlayUINavigationSound()
+    {
+        _ = EventManager.OnUINavigation_Play.Post(gameObject);
+    }
+
+    public void PlayUISubmitSound()
+    {
+        _ = EventManager.OnUISubmit_Play.Post(gameObject);
+    }
     #endregion
     // Méthode qui joue un Dialogue Event avec série de string qui représentent le nom des States, gameObject sur lequel les sons sont joués, token d'annulation
     public async UniTask PlayDialogueWithStatesAsync(
@@ -197,11 +192,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         string equipementState,
         string finState,
         string successState,
+        string combat2State,
+        string interruptionLightIntensity,
+        string interruptionJoystick,
         GameObject targetObject = null,
         CancellationToken cancellationToken = default)
     {
-        //DebugLog($"PlayDialogueWithStatesAsync: {onboardingIntro}, {onboardingCurtain}, {onboardingSpots}, {interruptionCurtain}, {interruptionSpots}, {roueState}, {combatState}");
-
+        
         //Récupération de l’ID Wwise de l’event Dialogue_Event -> sensible à la casse
         uint dialogueEventId = AkUnitySoundEngine.GetIDFromString("Dialogue_Event");
 
@@ -228,6 +225,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         uint SuccesID = AkUnitySoundEngine.GetIDFromString(successState);
 
+        uint combat2StateID = AkUnitySoundEngine.GetIDFromString(combat2State);
+        uint interruptionLightIntensityID = AkUnitySoundEngine.GetIDFromString(interruptionLightIntensity);
+        uint interruptionJoystickID = AkUnitySoundEngine.GetIDFromString(interruptionJoystick);
+
+
+
         //Tableau d'argument  qui contient la liste des ID qui correspondent à chaque valeur (State) de monDialogue Event -> même ordre que dans Wwise!
         uint[] args = new uint[]
         {
@@ -246,17 +249,22 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         finStateID,
 
         SuccesID,
+
+        combat2StateID,
+        interruptionLightIntensityID,
+        interruptionJoystickID,
+
         };
 
         #region Debug
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Dialogue State Argument Wwise :");
+        _ = sb.AppendLine("Dialogue State Argument Wwise :");
 
         void AppendIfNotIgnore(string label, string value, uint id)
         {
             if (!string.Equals(value, "IGNORE", StringComparison.OrdinalIgnoreCase))
             {
-                sb.Append($" {label}: {value}");
+                _ = sb.Append($" {label}: {value}");
             }
         }
 
@@ -275,7 +283,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         AppendIfNotIgnore("Fin", finState, finStateID);
         AppendIfNotIgnore("Succès", successState, SuccesID);
 
-        Debug.Log(sb.ToString());
+        // Ajout des 3 nouveaux états
+        AppendIfNotIgnore("Combat 2", combat2State, combat2StateID);
+        AppendIfNotIgnore("Interruption Light Intensity", interruptionLightIntensity, interruptionLightIntensityID);
+        AppendIfNotIgnore("Interruption Joystick", interruptionJoystick, interruptionJoystickID);
+
+        DebugLog(sb.ToString());
 
 
         #endregion

@@ -19,9 +19,6 @@ using Object = UnityEngine.Object;
 public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountListenerSingleton>
 {
     [SerializeField]
-    private float m_window = 15f;
-
-    [SerializeField]
     private List<BaseGameEvent> m_inputEvents;
 
     [SerializeField]
@@ -32,7 +29,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
 
     private readonly Dictionary<BaseGameEvent, Action> m_eventActions = new();
     private readonly Dictionary<BaseGameEvent, List<float>> m_eventTimes = new();
-    private float m_nextWindowTime;
+    private readonly float m_nextWindowTime;
 
     public override void Initialize()
     {
@@ -65,7 +62,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
 #endif
 
     /// <summary>
-    /// How many triggers from this input in the time window provided?
+    /// How many triggers from these inputs, for any input, in the time window provided?
     /// </summary>
     public int GetInputCount(IEnumerable<BaseGameEvent> inputEvents, float sinceTime, bool countAllTriggers = false)
     {
@@ -89,6 +86,32 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
         }
 
         return count;
+    }
+
+
+    /// <summary>
+    /// How many triggers from these inputs, for each inputs, in the time window provided?
+    /// </summary>
+    public List<(BaseGameEvent inputEvent, int count)> GetInputCounts(IEnumerable<BaseGameEvent> inputEvents, float sinceTime)
+    {
+        List<(BaseGameEvent inputEvent, int count)> result = new();
+        foreach (BaseGameEvent inputEvent in inputEvents)
+        {
+            int count = 0;
+            if (m_eventTimes.TryGetValue(inputEvent, out List<float> times))
+            {
+                foreach (float time in times)
+                {
+                    if (time > sinceTime)
+                    {
+                        count++;
+                    }
+                }
+            }
+            result.Add((inputEvent, count));
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -116,7 +139,7 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
         foreach (BaseGameEvent inputEvent in m_inputEvents)
         {
             BaseGameEvent evt = inputEvent;
-            m_eventActions[evt] = () => OnInputUsed(evt); 
+            m_eventActions[evt] = () => OnInputUsed(evt);
             evt.OnEventRaised -= m_eventActions[evt];
             evt.OnEventRaised += m_eventActions[evt];
         }
@@ -127,21 +150,6 @@ public class InputCountListenerSingleton : MonoBehaviourSingleton<InputCountList
         foreach (BaseGameEvent inputEvent in m_inputEvents)
         {
             inputEvent.OnEventRaised -= m_eventActions[inputEvent];
-        }
-    }
-
-    private void Update()
-    {
-        if (Time.time > m_nextWindowTime)
-        {
-            var keys = m_eventTimes.Keys.ToArray();
-            foreach (BaseGameEvent gameEvent in keys)
-            {
-                List<float> times = m_eventTimes[gameEvent];
-                m_eventTimes[gameEvent] = times.Where(t => (Time.time - t) < m_window).ToList();
-            }
-
-            m_nextWindowTime = Time.time + m_window;
         }
     }
 

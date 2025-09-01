@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8325547765033240409}
   - component: {fileID: 4455951781864335487}
   - component: {fileID: 6281898932800781368}
-  - component: {fileID: 7810370740998112813}
-  - component: {fileID: 8401163694374535240}
   m_Layer: 0
   m_Name: Spot
   m_TagString: Untagged
@@ -28,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2231680736863580252}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00000017881392, y: 0.2660777, z: 0.061182268, w: 0.962008}
+  m_LocalPosition: {x: -2.07, y: -0.06999998, z: -0.020000111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1586044841112392188}
-  m_LocalEulerAnglesHint: {x: 120.783005, y: 93.3, z: -5.1539917}
+  m_LocalEulerAnglesHint: {x: -1.866, y: 30.811, z: 6.764}
 --- !u!108 &4455951781864335487
 Light:
   m_ObjectHideFlags: 0
@@ -42,17 +40,17 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2231680736863580252}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 30
-  m_Range: 12.5
-  m_SpotAngle: 39.210037
-  m_InnerSpotAngle: 28.291792
+  m_Intensity: 79.6
+  m_Range: 5.3
+  m_SpotAngle: 30.598366
+  m_InnerSpotAngle: 22.489016
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -123,215 +121,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &7810370740998112813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2231680736863580252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-    - {fileID: 11400000, guid: 28d8ff42b8ed73f48a19badd18211e22, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionAnd, Assembly-CSharp
-    - Name: m_preconditions
-      Entry: 7
-      Data: 1|ConditionBase[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 2|ConditionTrigger, Assembly-CSharp
-    - Name: m_trigger
-      Entry: 7
-      Data: 3|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: true
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|ConditionTrigger, Assembly-CSharp
-    - Name: m_trigger
-      Entry: 7
-      Data: 5|ButtonInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_buttonEvent
-      Entry: 10
-      Data: 1
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: 1576433b4c8227d4f99159a1b9dcfe77, type: 2}
-  m_onStateSet:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4455951781864335487}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  m_onStateUnset:
-    m_PersistentCalls:
-      m_Calls: []
-  m_onStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &8401163694374535240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2231680736863580252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c242badf36d4ba6f11a8c7a42ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: a1d323537fb71dd43a51685b03d8b5a8, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_condition
-      Entry: 7
-      Data: 0|ConditionAnd, Assembly-CSharp
-    - Name: m_preconditions
-      Entry: 7
-      Data: 1|ConditionBase[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 2|ConditionTrigger, Assembly-CSharp
-    - Name: m_trigger
-      Entry: 7
-      Data: 3|ToggleInputTrigger, Assembly-CSharp
-    - Name: m_canReactivate
-      Entry: 5
-      Data: true
-    - Name: m_reactivateTime
-      Entry: 4
-      Data: 0
-    - Name: m_toggleVariable
-      Entry: 10
-      Data: 0
-    - Name: m_triggerIfTrue
-      Entry: 5
-      Data: false
-    - Name: m_timeToTrigger
-      Entry: 4
-      Data: 0.05
-    - Name: m_isImmediate
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_state: {fileID: 11400000, guid: 8b7fbd99dae02fa4596040428d637d2f, type: 2}
-  m_onStateSet:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4455951781864335487}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_onStateUnset:
-    m_PersistentCalls:
-      m_Calls: []
-  m_onStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3473090691928195896
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,10 +169,16 @@ MonoBehaviour:
   m_manualInput: {fileID: 11400000, guid: 45a536cd441fd3b40bed52ef55742510, type: 2}
   m_targetInCone: {fileID: 11400000, guid: b3d76fa779579954e9789b46d20df70e, type: 2}
   m_target: {fileID: 11400000, guid: 919b0e40eed72df44a24e4b976fc29b2, type: 2}
-  m_manualMode: {fileID: 11400000, guid: 608b7321bd0ade642a31170c1bead35d, type: 2}
+  m_followMode: {fileID: 11400000, guid: 1576433b4c8227d4f99159a1b9dcfe77, type: 2}
+  m_toggleSpotlightButton: {fileID: 11400000, guid: 56e3a9795234a3f44968c9ad06309c61, type: 2}
+  m_toggleFollowModeIndicator: {fileID: 11400000, guid: 28ec90a296b3e5e4998923972bc67536, type: 2}
+  m_followModeToggle: {fileID: 11400000, guid: 7fc07124ba808d44f81f7851abfa5c1c, type: 2}
+  m_puppetSpotlightOn: {fileID: 11400000, guid: 3ff1619b82cab62439cf8d4a2932144e, type: 2}
+  m_puppetSpotlightOff: {fileID: 11400000, guid: 8608696c3062bd14f8025d64b0475464, type: 2}
   m_spotTransform: {fileID: 8325547765033240409}
-  m_manualRotationSpeed: 30
-  m_followTargetRotationSpeed: 30
+  m_light: {fileID: 4455951781864335487}
+  m_manualRotationSpeed: 50
+  m_followTargetRotationSpeed: 3050
   m_spotMaxRange: 70
   m_spotAngle: 17.5
   m_coneHeight: 12

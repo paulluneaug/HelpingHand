@@ -60,5 +60,10 @@ public enum FinState
     Fin_58,
     Fin_59,
     Fin_510,
-    Fin_511
+    Fin_511, 
+    
+    Transition_02,
+    Transition_11,
+    Transition_12,
+    Transition_13,
 }

@@ -25,6 +25,7 @@ public class FloatObjectAudioContainer
 
     [Title("Parameters")]
     [SerializeField] private float m_valueTolerance = 0.05f;
+    [SerializeField] private float m_fadoutMinSpeed = 0.2f;
 
     [Tooltip("Delay (in seconds) before stopping sound when slider is idle")]
     [SerializeField] private float m_fadeoutDelay = 0.2f;
@@ -36,7 +37,7 @@ public class FloatObjectAudioContainer
 
     [NonSerialized] private bool m_init = false;
 
-    [NonSerialized] private uint m_playingEventID;
+    [NonSerialized] private bool m_playingLoop;
     [NonSerialized] private bool m_tiggeredMinValueEvent;
     [NonSerialized] private bool m_tiggeredMaxValueEvent;
 
@@ -65,6 +66,7 @@ public class FloatObjectAudioContainer
         m_speed = m_speedFilter.Filter(0.0f, 0.0f);
 
         m_init = true;
+        m_playingLoop = false;
     }
 
     public void Update(float deltaTime)
@@ -78,10 +80,10 @@ public class FloatObjectAudioContainer
         m_valueRTPC.SetValue(m_audioSource, m_floatVariable.Value);
         m_speedRTPC.SetValue(m_audioSource, speed);
 
-        if (m_fadeoutTimer.Update(deltaTime) && m_playingEventID != AkUnitySoundEngine.AK_INVALID_PLAYING_ID)
+        if ((!m_fadeoutTimer.IsRunning || m_fadeoutTimer.Update(deltaTime)) && m_playingLoop)
         {
-            _ = m_stopFadoutEvent.PostEvent(m_floatVariable.IsActive, m_audioSource);
-            m_playingEventID = AkUnitySoundEngine.AK_INVALID_PLAYING_ID;
+            _ = m_stopFadoutEvent.PostEvent(m_floatVariable.IsActive, m_audioSource); 
+            m_playingLoop = false;
         }
     }
 
@@ -95,10 +97,6 @@ public class FloatObjectAudioContainer
     {
         float sliderValue = m_floatVariable.Value;
 
-        if (m_playingEventID == AkUnitySoundEngine.AK_INVALID_PLAYING_ID)
-        {
-            m_playingEventID = m_loopEvent.PostEvent(m_floatVariable.IsActive, m_audioSource);
-        }
 
         // Slider at the min value
         _ = TriggerSliderValueEvents(
@@ -119,9 +117,17 @@ public class FloatObjectAudioContainer
             m_stopImmediateEvent);
 
 
+        if (m_speed > m_fadoutMinSpeed)
+        {
+            if (!m_playingLoop)
+            {
+                _ = m_loopEvent.PostEvent(m_floatVariable.IsActive, m_audioSource);
+                m_playingLoop = true;
+            }
 
-        m_fadeoutTimer.Reset();
-        m_fadeoutTimer.Start();
+            m_fadeoutTimer.Reset();
+            m_fadeoutTimer.Start();
+        }
     }
 
     private bool TriggerSliderValueEvents(float sliderValue, float targetValue, ref bool alreadyTriggered, params WwiseInputEventPair[] eventsToTrigger)

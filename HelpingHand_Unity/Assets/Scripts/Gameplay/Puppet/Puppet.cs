@@ -49,7 +49,8 @@ public class Puppet : MonoBehaviour, ILateAwaker
     [NonSerialized] private float m_splineLength = 0.0f;
     [NonSerialized] private Spline m_currentSpline = null;
 
-
+    public bool IsWalking => m_isWalking;
+    
     public void LateAwake()
     {
         GameManager.Instance.RegisterPuppet(this);
@@ -91,12 +92,10 @@ public class Puppet : MonoBehaviour, ILateAwaker
         float addedProgress = m_speedAlongSpline.Value / m_splineLength * Time.deltaTime;
         m_progressAlongSpline = MathUf.Clamp(m_progressAlongSpline + addedProgress, 0.0f, 1.0f);
         UpdatePositionAndRotation(m_progressAlongSpline);
-        if (m_progressAlongSpline >= 1.0f)
+        if (m_progressAlongSpline >= 0.999f)
         {
             m_hasReachedEndOfSpline = true;
-            StopWalk();
         }
-
     }
 
     [DisableIf("m_isWalking")]
@@ -129,6 +128,12 @@ public class Puppet : MonoBehaviour, ILateAwaker
         m_progressAlongSpline = 0.0f;
     }
 
+    public void GoToEndOfSpline()
+    {
+        m_progressAlongSpline = 1;
+        UpdatePositionAndRotation(m_progressAlongSpline);
+    }
+
     public void PauseWalk()
     {
         if (m_isWalking)
@@ -145,12 +150,50 @@ public class Puppet : MonoBehaviour, ILateAwaker
         }
     }
 
+    public bool IsHoldingObjectInHand()
+    {
+        return m_objectInHand.HeldObject != ObjectInHand.None;
+    }
+
+    public bool IsWearingObjectOnHead()
+    {
+        return m_objectOnHead.WornObject != ObjectOnHead.None;
+    }
+
     public void HoldObjectInHand(DroppableHandProp handObject)
     {
         handObject.transform.SetParent(m_objectInHandParent);
         handObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
         m_objectInHand.OnPuppetHeldObjectChanged(handObject.ObjectType);
+
+
+        _ = AudioManager.Instance.EventManager.Play_WeaponCatch.Post(gameObject);
+
+        switch (handObject.ObjectType)
+        {
+            case ObjectInHand.None:
+                _ = AudioManager.Instance.EventManager.SelectedEmpty.Post(null);
+                break;
+            case ObjectInHand.Sword:
+                _ = AudioManager.Instance.EventManager.SelectedSword.Post(null);
+                break;
+            case ObjectInHand.Broom:
+                _ = AudioManager.Instance.EventManager.SelectedBroom.Post(null);
+                break;
+            case ObjectInHand.Carrot:
+                _ = AudioManager.Instance.EventManager.SelectedCarot.Post(null);
+                break;
+            case ObjectInHand.Mug:
+                _ = AudioManager.Instance.EventManager.SelectedBeer.Post(null);
+                break;
+            case ObjectInHand.Baguette:
+                _ = AudioManager.Instance.EventManager.SelectedBaguette.Post(null);
+                break;
+            default:
+                break;
+                //Pour jouer des sons différents selon l'objet, quand la marionnette ATTRAPE L'OBJET
+        }
     }
 
     public void WearObjectOnHead(DroppableHeadProp headObject)
@@ -159,6 +202,34 @@ public class Puppet : MonoBehaviour, ILateAwaker
         headObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
         m_objectOnHead.OnPuppetWornObjectChanged(headObject.ObjectType);
+
+
+        _ = AudioManager.Instance.EventManager.Play_HatCatch.Post(gameObject);
+
+        switch (headObject.ObjectType)
+        {
+            case ObjectOnHead.None:
+                _ = AudioManager.Instance.EventManager.SelectedHatEmpty.Post(null);
+                break;
+            case ObjectOnHead.Helmet:
+                _ = AudioManager.Instance.EventManager.SelectedHelmet.Post(null);
+                break;
+            case ObjectOnHead.BunnyEars:
+                _ = AudioManager.Instance.EventManager.SelectedRabbit.Post(null);
+                break;
+            case ObjectOnHead.ChickenHat:
+                _ = AudioManager.Instance.EventManager.SelectedChicken.Post(null);
+                break;
+            case ObjectOnHead.Headphone:
+                _ = AudioManager.Instance.EventManager.SelectedHeadphones.Post(null);
+                break;
+            case ObjectOnHead.Beret:
+                _ = AudioManager.Instance.EventManager.SelectedBeret.Post(null);
+                break;
+            default:
+                break;
+                //Pour jouer des sons différents selon l'objet, quand la marionnette ATTRAPE L'OBJET
+        }
     }
 
     private void UpdatePositionAndRotation(float time)

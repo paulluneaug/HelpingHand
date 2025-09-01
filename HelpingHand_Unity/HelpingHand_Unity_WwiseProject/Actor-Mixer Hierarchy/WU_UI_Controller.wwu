@@ -966,7 +966,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>10</Value>
+										<Value>-96</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1033,7 +1033,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>12</Value>
+										<Value>-96</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -4112,10 +4112,7 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="Room_UI" ID="{2506C3D3-7D70-4614-A57A-2D3415614A53}" ShortID="649219530">
-					<PropertyList>
-						<Property Name="3DSpatialization" Type="int16" Value="2"/>
-					</PropertyList>
+				<ActorMixer Name="SettingsButton_Click_UI" ID="{FF0C244E-ED5F-4115-968B-967E9F7BDA4B}" ShortID="703910427">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -4125,18 +4122,13 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="Machine_Startup" ID="{69E1AADC-19E3-4255-8C49-C6936C055B50}" ShortID="251642147">
+						<RandomSequenceContainer Name="Click_Metallic" ID="{99518C32-D953-4F6E-93D9-3440320D88DC}" ShortID="997563593">
 							<PropertyList>
-								<Property Name="MakeUpGain" Type="Real64">
+								<Property Name="Inclusion" Type="bool">
 									<ValueList>
-										<Value>-13</Value>
+										<Value>False</Value>
 									</ValueList>
 								</Property>
-								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-								<Property Name="SpeakerPanning" Type="int16" Value="2"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -4147,10 +4139,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Machine_UI_Startup" ID="{E95480C5-2FA0-4759-BC47-056203EA16EB}" ShortID="512110501">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-									</PropertyList>
+								<Sound Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S00" ID="{83BD05A2-4615-419F-A396-91A902078268}" ShortID="1018556885">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -4160,24 +4149,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Machine_UI_Startup" ID="{FC11EF05-F166-40FB-B51F-E6C186C416DB}">
+										<AudioFileSource Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S00" ID="{A0E41FC5-FF7F-4F78-AC5F-9D37F6D203DB}">
 											<Language>SFX</Language>
-											<AudioFile>Machine_UI_Startup.wav</AudioFile>
+											<AudioFile>Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S00.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="223564879"/>
+												<MediaID ID="427326209"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Machine_UI_Startup" ID="{FC11EF05-F166-40FB-B51F-E6C186C416DB}" Platform="Linked"/>
+										<ActiveSource Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S00" ID="{A0E41FC5-FF7F-4F78-AC5F-9D37F6D203DB}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<RandomSequenceContainer Name="Machine_UI_Loop" ID="{079F5E29-E728-4450-B1C7-04C50DB06A7F}" ShortID="915644">
-									<PropertyList>
-										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-									</PropertyList>
+								<Sound Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S01" ID="{23449B1B-8418-42A9-820E-37DE8D319AA4}" ShortID="503157600">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -4187,576 +4171,42 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Machine_UI_Loop" ID="{2B3641EE-E7CE-4716-9398-FF8E609F5348}" ShortID="472702165">
-											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Machine_UI_Loop" ID="{B68B4E59-0C2F-4AB0-A06A-9A628F2CB8A5}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Machine_UI_Loop.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="669711849"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Machine_UI_Loop" ID="{B68B4E59-0C2F-4AB0-A06A-9A628F2CB8A5}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="Playlist">
-											<Reference>
-												<ObjectRef Name="Machine_UI_Loop" ID="{2B3641EE-E7CE-4716-9398-FF8E609F5348}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</RandomSequenceContainer>
-								<Sound Name="Machine_UI_Stopping" ID="{96603033-684C-44D5-89F5-C378EC6C1CE8}" ShortID="81754938">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>-13</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Machine_UI_Stopping" ID="{F91DC172-F1A4-46C3-B972-C353DA6CFE4F}">
+										<AudioFileSource Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S01" ID="{8D8768D4-82A1-4632-A5BF-A793B108A352}">
 											<Language>SFX</Language>
-											<AudioFile>Machine_UI_Stopping.wav</AudioFile>
+											<AudioFile>Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S01.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="459510153"/>
+												<MediaID ID="653512429"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Machine_UI_Stopping" ID="{F91DC172-F1A4-46C3-B972-C353DA6CFE4F}" Platform="Linked"/>
+										<ActiveSource Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S01" ID="{8D8768D4-82A1-4632-A5BF-A793B108A352}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S02" ID="{C2385D0A-B217-417D-926F-998CD9454AAA}" ShortID="843365900">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S02" ID="{3AAD7D4A-E5A8-42A9-BE3B-8A464EC8DD71}">
+											<Language>SFX</Language>
+											<AudioFile>Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="979799008"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Mechanical, Click, Metal Click, Rattle, Close Variations 02 SND130425 S02" ID="{3AAD7D4A-E5A8-42A9-BE3B-8A464EC8DD71}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<PositioningInfo>
-								<Panner Name="" ID="{53C33F2D-9CD4-4A8C-BB2D-8486AD75459C}">
-									<PropertyList>
-										<Property Name="PanX" Type="Real64" Value="-66.4418212478921"/>
-										<Property Name="PanY" Type="Real64" Value="-56.7811934900542"/>
-									</PropertyList>
-								</Panner>
-							</PositioningInfo>
-							<ObjectLists>
-								<ObjectList Name="Playlist">
-									<Reference>
-										<ObjectRef Name="Machine_UI_Startup" ID="{E95480C5-2FA0-4759-BC47-056203EA16EB}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
-									</Reference>
-									<Reference>
-										<ObjectRef Name="Machine_UI_Loop" ID="{079F5E29-E728-4450-B1C7-04C50DB06A7F}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
 						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="Machine_Clicky" ID="{F0677781-0FB9-4CB0-9F80-1771DFB715EF}" ShortID="1013764770">
-							<PropertyList>
-								<Property Name="MakeUpGain" Type="Real64">
-									<ValueList>
-										<Value>-16</Value>
-									</ValueList>
-								</Property>
-								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="1.25"/>
-								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-								<Property Name="SpeakerPanning" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-								</Reference>
-								<Reference Name="UserAuxSend0">
-									<ObjectRef Name="MachinistRoom" ID="{0F0EB7DE-27D7-49B7-8C42-140BD3689480}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1" ID="{FB8D6A49-68D0-4356-86F0-06319E39A52D}" ShortID="241188855">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1" ID="{8962BF85-DFE0-4756-8F2E-D36316CEF3AE}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="488188615"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S00 1" ID="{8962BF85-DFE0-4756-8F2E-D36316CEF3AE}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1" ID="{A313E521-EC2B-45F4-B902-AED7719E96CD}" ShortID="727723609">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1" ID="{C0A61F63-B1FF-4961-8D72-EAD04EE4FD6C}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="776839565"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S01 1" ID="{C0A61F63-B1FF-4961-8D72-EAD04EE4FD6C}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1" ID="{2D9F4DA1-5474-4E69-A074-AEA2E0AE06D7}" ShortID="407350227">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1" ID="{72F93C18-B99D-4476-9CC4-8915DE3E1222}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="596337987"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S02 1" ID="{72F93C18-B99D-4476-9CC4-8915DE3E1222}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1" ID="{34EDECD7-617B-4154-A734-FD0650673F73}" ShortID="268645723">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1" ID="{B956784D-AE0C-4536-AAC0-04F31991D50B}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="482683709"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S03 1" ID="{B956784D-AE0C-4536-AAC0-04F31991D50B}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1" ID="{5CC63E79-1284-4E26-9253-086453EA38B8}" ShortID="515656930">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1" ID="{5F91F14C-FC3C-4DF2-A105-2CB9E9C3D0D3}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="96351004"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S04 1" ID="{5F91F14C-FC3C-4DF2-A105-2CB9E9C3D0D3}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1" ID="{C3E61377-FC05-4DC3-A525-4948CA5DFC2C}" ShortID="761266002">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1" ID="{C6ACFCC2-BC75-48D2-A4E7-7506A0819AE1}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="841428273"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S05 1" ID="{C6ACFCC2-BC75-48D2-A4E7-7506A0819AE1}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1" ID="{DB1ADF7C-FAB5-4AEC-9A87-625E09F898BC}" ShortID="270688052">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1" ID="{DBB95EF6-F2AD-40BC-A26A-7B2FDE22C136}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="275321236"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S06 1" ID="{DBB95EF6-F2AD-40BC-A26A-7B2FDE22C136}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1" ID="{03652672-8B2F-41F4-8687-6857EB1E7CFD}" ShortID="139674597">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1" ID="{D0DEB202-E29A-4BD6-ABF3-1ECCFA04832A}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="510170063"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S07 1" ID="{D0DEB202-E29A-4BD6-ABF3-1ECCFA04832A}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1" ID="{BF8F0B4B-7107-4359-8449-5E006982E4C3}" ShortID="285653974">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1" ID="{58A95314-E547-47B4-A3D6-31FD60EC8B78}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="994319415"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S08 1" ID="{58A95314-E547-47B4-A3D6-31FD60EC8B78}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1" ID="{0B523FB9-9865-483D-9AB2-C50B15887908}" ShortID="250215833">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1" ID="{BC5410DA-0FA8-4D63-9445-437FAEEB1D6A}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="672114564"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S09 1" ID="{BC5410DA-0FA8-4D63-9445-437FAEEB1D6A}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1" ID="{B3B4C198-721F-4F67-A067-0D904CA4634D}" ShortID="202353796">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1" ID="{EB716228-CC1F-4182-B832-5D0746D4EF16}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="713072988"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S10 1" ID="{EB716228-CC1F-4182-B832-5D0746D4EF16}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1" ID="{2F71B921-0859-4C46-BD76-FFBF56A1927F}" ShortID="538840847">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1" ID="{9337EDB0-BE9C-4621-822E-976F58511DB1}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="356610164"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S11 1" ID="{9337EDB0-BE9C-4621-822E-976F58511DB1}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1" ID="{27F36BD2-8D85-40B6-B7AB-FC24B99870EA}" ShortID="788758302">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1" ID="{A3DD6D7F-5C3E-4182-8960-484908B09456}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="919951118"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S12 1" ID="{A3DD6D7F-5C3E-4182-8960-484908B09456}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1" ID="{19C4CE8B-B2C8-484F-86DD-F69494799CCB}" ShortID="567624726">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1" ID="{03CB8759-671C-45B6-A11C-B378E5E0103D}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="900403579"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S13 1" ID="{03CB8759-671C-45B6-A11C-B378E5E0103D}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1" ID="{08FF5DFA-76D8-4DE7-AE00-015B5C961824}" ShortID="213159884">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1" ID="{5A694FC3-09B1-4403-8A7A-D9CD7F39B0CB}">
-											<Language>SFX</Language>
-											<AudioFile>Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="180769912"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Tools, Hand, Cheese Slicer, On Pipe Wrench, Mechanical Clinking, Rolling, Sequence 02 SND117182 S14 1" ID="{5A694FC3-09B1-4403-8A7A-D9CD7F39B0CB}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-							<PositioningInfo>
-								<Panner Name="" ID="{A7D192B9-1DDB-4CA2-A06E-834A5B4348B2}">
-									<PropertyList>
-										<Property Name="PanX" Type="Real64" Value="91.3996627318718"/>
-										<Property Name="PanY" Type="Real64" Value="-25.3164556962025"/>
-									</PropertyList>
-								</Panner>
-							</PositioningInfo>
-						</RandomSequenceContainer>
-						<ActorMixer Name="Machine_Alt" ID="{460BE32A-4866-4738-B1DA-A51DBA5F6E12}" ShortID="818265296">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<RandomSequenceContainer Name="HH_Machine_Alt" ID="{5E35AEDC-D18E-4E28-8AB6-692AB5701E0A}" ShortID="949001481">
-									<PropertyList>
-										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
-										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3"/>
-										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<RandomSequenceContainer Name="HH_Machine_Alt_Loop" ID="{9DF23F05-D0C6-43A6-9111-73DB4F888CB7}" ShortID="744506666">
-											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="2"/>
-												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<Sound Name="HH_Machine_Alt_Loop" ID="{501138ED-1854-426A-B581-AB5403F13064}" ShortID="378042677">
-													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="2"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="HH_Machine_Alt_Loop" ID="{038996CE-A0E9-4E0D-BB17-E1D9E1E2FF5F}">
-															<Language>SFX</Language>
-															<AudioFile>HH_Machine_Alt_Loop.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="782864001"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="HH_Machine_Alt_Loop" ID="{038996CE-A0E9-4E0D-BB17-E1D9E1E2FF5F}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Playlist">
-													<Reference>
-														<ObjectRef Name="HH_Machine_Alt_Loop" ID="{501138ED-1854-426A-B581-AB5403F13064}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
-													</Reference>
-												</ObjectList>
-											</ObjectLists>
-										</RandomSequenceContainer>
-										<Sound Name="HH_Machine_Startup_Alt" ID="{93B25A10-1C4B-4280-83D7-F5893E5EE3E6}" ShortID="744692363">
-											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="HH_Machine_Startup_Alt" ID="{FE8E65D0-347A-4FD0-83DC-D6326AEA059E}">
-													<Language>SFX</Language>
-													<AudioFile>HH_Machine_Startup_Alt.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="975437929"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="HH_Machine_Startup_Alt" ID="{FE8E65D0-347A-4FD0-83DC-D6326AEA059E}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="Playlist">
-											<Reference>
-												<ObjectRef Name="HH_Machine_Startup_Alt" ID="{93B25A10-1C4B-4280-83D7-F5893E5EE3E6}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
-											</Reference>
-											<Reference>
-												<ObjectRef Name="HH_Machine_Alt_Loop" ID="{9DF23F05-D0C6-43A6-9111-73DB4F888CB7}" WorkUnitID="{26CEFBDF-B2C2-4DA2-B1AC-ED51F2BB0FEA}"/>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</RandomSequenceContainer>
-							</ChildrenList>
-						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

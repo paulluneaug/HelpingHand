@@ -9,7 +9,9 @@ public abstract class ConditionBase : IDisposable
 {
     public event Action OnPreconditionUpdated;
 
-    [SerializeField] [LabelWidth(100)] [PropertySpace(0, 8)]
+    [SerializeField]
+    [LabelWidth(100)]
+    [PropertySpace(0, 8)]
     protected int m_scoreMult = 1;
 
     protected void RaiseOnPreconditionUpdated()
@@ -29,5 +31,8 @@ public abstract class ConditionBase : IDisposable
         OnPreconditionUpdated = null;
     }
 
-    public virtual int Score() => 1 * m_scoreMult;
+    public virtual int Score()
+    {
+        return 1 * m_scoreMult;
+    }
 }

@@ -10,9 +10,7 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-using UnityUtility.Extensions;
 using UnityUtility.ObservableFields;
 
 using XNode;
@@ -48,17 +46,17 @@ public class DialogueNode : InterruptableNode
     [Required]
     [SerializeField]
     private string m_contentNeutral;
-    
+
     [TabGroup("Content", "Satisfied")]
     [HideLabel, Multiline(3)]
     [SerializeField]
     private string m_contentSatisfied;
-    
+
     [TabGroup("Content", "Annoyed")]
     [HideLabel, Multiline(3)]
     [SerializeField]
     private string m_contentAnnoyed;
-    
+
     [TabGroup("Content", "Pissed")]
     [HideLabel, Multiline(3)]
     [SerializeField]
@@ -98,7 +96,7 @@ public class DialogueNode : InterruptableNode
     [SerializeField]
     private AudioEvent m_audioEvent;
 
-    [BoxGroup("Debug")] 
+    [BoxGroup("Debug")]
     [ShowInInspector]
     [LabelWidth(100)]
     [ReadOnly]
@@ -111,7 +109,7 @@ public class DialogueNode : InterruptableNode
     private int m_readCount;
 
     protected override string Infos => "Display dialogue content with 4 variations. Re-execute from the beginings if interrupted.";
-	// Cache
+    // Cache
     [NonSerialized] private DialogueNodeState m_currentState;
     [NonSerialized] private CancellationTokenSource m_audioSkipCTS;
     [NonSerialized] private CancellationTokenSource m_audioLinkedCTS;
@@ -138,7 +136,7 @@ public class DialogueNode : InterruptableNode
             DebugLog($"Has been killed");
             return;
         }
-        
+
         if (m_hasBeenInterrupted)
         {
             DebugLog($"Has been interrupted");
@@ -162,7 +160,7 @@ public class DialogueNode : InterruptableNode
             DebugLog($"Dialogue has already been killed");
             return;
         }
-        
+
         DebugLog($"Play");
         StartDialogueNode();
 
@@ -177,7 +175,7 @@ public class DialogueNode : InterruptableNode
 
         m_displayTask = DialogueManager.Instance.PlayDialogAsync(name, GetContent(), handler.StopSource, m_killCTS);
         m_audioTask = m_audioEvent ?
-            MakeSkippable(m_audioEvent.Play(null, m_audioLinkedCTS.Token), m_audioSkipCTS, m_audioLinkedCTS) :
+            MakeSkippable(m_audioEvent.Play(null, m_audioLinkedCTS.Token), m_audioSkipCTS, m_audioLinkedCTS, m_killStopCTS) :
             UniTask.CompletedTask;
 
         UniTask task = UniTask.WhenAll(m_displayTask, m_audioTask).ContinueWith(GetWaitingTask);
@@ -212,11 +210,11 @@ public class DialogueNode : InterruptableNode
             return;
         }
 
-        
+
         // We signal the skip token to stop skip tasks from running
         m_waitingSkipCTS.Cancel();
         m_audioSkipCTS.Cancel();
-        
+
         m_hasBeenRead.Value = true;
         m_readCount++;
         EndDialogueNode();
@@ -234,7 +232,7 @@ public class DialogueNode : InterruptableNode
                 _ => throw new ArgumentOutOfRangeException(),
             };
 
-            return MakeSkippable(followingTask, m_waitingSkipCTS, m_waitingLinkedCTS);
+            return MakeSkippable(followingTask, m_waitingSkipCTS, m_waitingLinkedCTS, m_killStopCTS);
         }
     }
 
@@ -242,21 +240,20 @@ public class DialogueNode : InterruptableNode
     {
         m_hasBeenInterrupted = false;
         m_currentState = DialogueNodeState.Started;
-        GameManager.Instance.SkipDialogueInput.performed += OnSkipDialogue;
+        GameManager.Instance.SkipDialogueInput.AddDownListener(OnSkipDialogue);
     }
 
     private void EndDialogueNode()
     {
-        DialogueManager.Instance.SetDialogueKillCTS(null);
-        
         if (GameManager.ApplicationIsQuitting)
         {
             return;
         }
-        GameManager.Instance.SkipDialogueInput.performed -= OnSkipDialogue;
+        DialogueManager.Instance.SetDialogueKillCTS(null);
+        GameManager.Instance.SkipDialogueInput.RemoveDownListener(OnSkipDialogue);
     }
 
-    private void OnSkipDialogue(InputAction.CallbackContext context)
+    private void OnSkipDialogue()
     {
         m_skipPressed = true;
         switch (m_currentState)
@@ -266,7 +263,7 @@ public class DialogueNode : InterruptableNode
                 m_currentState = DialogueNodeState.Displayed;
                 if (m_displayTask.Status != UniTaskStatus.Pending) // If the text is already displayed
                 {
-                    OnSkipDialogue(context);
+                    OnSkipDialogue();
                     return;
                 }
 
@@ -277,7 +274,7 @@ public class DialogueNode : InterruptableNode
                 m_currentState = DialogueNodeState.Waiting;
                 if (m_audioTask.Status != UniTaskStatus.Pending) // If the audio is already finished
                 {
-                    OnSkipDialogue(context);
+                    OnSkipDialogue();
                     return;
                 }
                 m_audioSkipCTS.Cancel();
@@ -292,18 +289,26 @@ public class DialogueNode : InterruptableNode
         }
     }
 
-    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource linkedSkipCTS)
+    private async UniTask MakeSkippable(UniTask task, CancellationTokenSource skipCTS, CancellationTokenSource skipStopCTS, CancellationTokenSource killStopCTS)
     {
-        UniTask skipTask = UniTask.WaitUntilCanceled(linkedSkipCTS.Token);
+        // UniTask skipTask = UniTask.WaitUntilCanceled(linkedSkipCTS.Token);
+        UniTask skipTask = UniTask.WaitUntilCanceled(skipStopCTS.Token);
+        UniTask killStopTask = UniTask.WaitUntilCanceled(killStopCTS.Token);
 
-        (bool isCancelled, int _) = await UniTask.WhenAny(task, skipTask).SuppressCancellationThrow();
+        (bool isCancelled, int _) = await UniTask.WhenAny(task, skipTask, killStopTask).SuppressCancellationThrow();
+
+        if (killStopCTS.IsCancellationRequested)
+        {
+            DebugLog($"MakeSkippable: Killed or stopped");
+            throw new OperationCanceledException();
+        }
 
         if (skipCTS.IsCancellationRequested) // The skip token was cancelled
         {
             DebugLog($"Main task skipped");
             throw new OperationCanceledException();
         }
-        
+
         if (!isCancelled) // The main task succeeded
         {
             DebugLog($"Main task succeeded");
@@ -315,7 +320,7 @@ public class DialogueNode : InterruptableNode
         DebugLog($"MakeSkippable: Killed or stopped");
         throw new OperationCanceledException();
     }
-    
+
     private string GetContent()
     {
         NarratorState narratorState = DialogueManager.Instance.NarratorState;
@@ -323,12 +328,12 @@ public class DialogueNode : InterruptableNode
         {
             return string.IsNullOrEmpty(m_contentSatisfied) ? m_contentNeutral : m_contentSatisfied;
         }
-        
+
         if (narratorState.Annoyed.IsSet)
         {
             return string.IsNullOrEmpty(m_contentAnnoyed) ? m_contentNeutral : m_contentAnnoyed;
         }
-        
+
         if (narratorState.Pissed.IsSet)
         {
             return string.IsNullOrEmpty(m_contentPissed) ? m_contentNeutral : m_contentPissed;
@@ -340,7 +345,7 @@ public class DialogueNode : InterruptableNode
     public override void Dispose()
     {
         base.Dispose();
-        
+
         m_audioSkipCTS?.Dispose();
         m_audioLinkedCTS?.Dispose();
         m_waitingSkipCTS?.Dispose();

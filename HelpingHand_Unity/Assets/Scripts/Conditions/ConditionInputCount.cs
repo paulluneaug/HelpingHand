@@ -9,6 +9,7 @@ using Events;
 using Sirenix.OdinInspector;
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class ConditionInputCount : ConditionBase
@@ -22,8 +23,20 @@ public class ConditionInputCount : ConditionBase
 
     private enum InputType
     {
-        [LabelText("Triggers count")] Triggers,
-        [LabelText("Inputs count")] Inputs,
+        [LabelText("Count all triggers")] CountAllTriggers,
+        [LabelText("Count single trigger")] CountSingleTrigger,
+    }
+
+    private enum CountType
+    {
+        [LabelText("Together")] Together,
+        [LabelText("Individually")] Individually,
+    }
+
+    private enum TruthType
+    {
+        [LabelText("For any input")] ForAny,
+        [LabelText("For all inputs")] ForAll,
     }
 
     private enum TimeType
@@ -37,26 +50,37 @@ public class ConditionInputCount : ConditionBase
         [LabelText("Global variable")] GlobalVariable,
         [LabelText("Blackboard")] Blackboard
     }
-    
-    [SerializeField] [LabelWidth(100)]
-    private int m_count;
 
-    [SerializeField] [LabelWidth(100)] [EnumToggleButtons]
+    [SerializeField]
+    [LabelWidth(100)]
+    [EnumToggleButtons]
     private TimeType m_timeType;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeWindow")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_timeType == TimeType.TimeWindow")]
     private float m_timeWindow;
 
-    [SerializeField] [LabelWidth(100)] [EnumToggleButtons] [ShowIf("@m_timeType == TimeType.TimeStart")]
+    [SerializeField]
+    [LabelWidth(100)]
+    [EnumToggleButtons]
+    [ShowIf("@m_timeType == TimeType.TimeStart")]
     private StartTimeType m_startTimeType;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.GlobalVariable")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.GlobalVariable")]
     private FloatVariable m_floatVariable;
-    
-    [SerializeField] [LabelWidth(100)] [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.Blackboard")]
+
+    [SerializeField]
+    [LabelWidth(100)]
+    [ShowIf("@m_timeType == TimeType.TimeStart && m_startTimeType == StartTimeType.Blackboard")]
     private string m_blackboardKey;
 
-    [SerializeField] [EnumToggleButtons] [LabelWidth(100)] [OnValueChanged("OnTypeChanged")]
+    [SerializeField]
+    [EnumToggleButtons]
+    [LabelWidth(100)]
+    [OnValueChanged("OnTypeChanged")]
     private InputListType m_type;
 
     private void OnTypeChanged()
@@ -82,15 +106,33 @@ public class ConditionInputCount : ConditionBase
     [PropertySpace(8, 8)]
     private BaseGameEvent[] m_anyButEvents = Array.Empty<BaseGameEvent>();
 
+    [FormerlySerializedAs("m_counttType")]
     [SerializeField]
     [EnumToggleButtons]
+    [LabelWidth(100)]
+    private CountType m_countType;
+
+    [SerializeField]
+    [EnumToggleButtons]
+    [ShowIf("@m_countType == CountType.Individually")]
+    [LabelWidth(100)]
+    private TruthType m_truthType;
+
+    [SerializeField]
+    [EnumToggleButtons]
+    [ShowIf("@m_countType == CountType.Together")]
     [LabelWidth(100)]
     private InputType m_inputType;
 
+    [FormerlySerializedAs("m_countType")]
     [SerializeField]
     [LabelWidth(100)]
     [EnumToggleButtons]
-    private ComparisonOperation m_countType;
+    private ComparisonOperation m_operation;
+
+    [SerializeField]
+    [LabelWidth(100)]
+    private int m_count;
 
     private IEnumerable<BaseGameEvent> m_effectiveInputList;
 
@@ -137,9 +179,29 @@ public class ConditionInputCount : ConditionBase
     {
         float sinceTime = m_timeType == TimeType.TimeWindow ? Time.time - m_timeWindow :
             m_startTimeType == StartTimeType.GlobalVariable ? m_floatVariable.Value : (float)GraphBlackboard.Instance.Blackboard[m_blackboardKey];
-        
-        int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, sinceTime, m_inputType == InputType.Triggers);
-        return m_countType switch
+
+        if (m_countType == CountType.Individually)
+        {
+            List<(BaseGameEvent inputEvent, int count)> inputCounts = InputCountListenerSingleton.Instance.GetInputCounts(m_effectiveInputList, sinceTime);
+            if (m_truthType == TruthType.ForAll)
+            {
+                return inputCounts.TrueForAll(inputCount => TestInputCount(inputCount.count));
+            }
+            else
+            {
+                return inputCounts.Any(inputCount => TestInputCount(inputCount.count));
+            }
+        }
+        else
+        {
+            int inputCount = InputCountListenerSingleton.Instance.GetInputCount(m_effectiveInputList, sinceTime, m_inputType == InputType.CountAllTriggers);
+            return TestInputCount(inputCount);
+        }
+    }
+
+    private bool TestInputCount(int inputCount)
+    {
+        return m_operation switch
         {
             ComparisonOperation.Equal => inputCount == m_count,
             ComparisonOperation.NotEqual => inputCount != m_count,

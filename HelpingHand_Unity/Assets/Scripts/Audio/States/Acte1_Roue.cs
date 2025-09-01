@@ -7,8 +7,8 @@ public enum Acte1RoueState
     Intro_04,
     Intro_05,
     Intro_06,
-    Intro_07,
-    Intro_08,
+    Intro_071,
+    Intro_072,
 
     No_Inputs_01,
     No_Inputs_21,
@@ -20,9 +20,9 @@ public enum Acte1RoueState
     Bad_Inputs_2,
     Bad_Inputs_3,
 
-    Bad_Inputs_4,
-    Bad_Inputs_41,
-    Bad_Inputs_42,
+    Good_Inputs_1,
+    Good_Inputs_2,
+    Good_Inputs_3,
 
     Validated_01,
     Validated_02,
@@ -31,7 +31,13 @@ public enum Acte1RoueState
 
     Next_01,
     Next_02,
-    Next_03,
-    Next_04
+    Next_031,
+    Next_032,
+
+    Intro_001,
+    Intro_002,
+    Intro_003,
+
+    Intro_08
 
 }

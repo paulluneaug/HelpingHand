@@ -1,3 +1,5 @@
+using System.Drawing;
+
 using Sirenix.OdinInspector;
 
 using UnityEngine;
@@ -66,6 +68,9 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent ArrowButtonClick_Play;
     [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OptionsTopButtonClick_Play;
 
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OnUISubmit_Play;
+    [FoldoutGroup("UI Events/Menu Events")][LabelWidth(200)] public WwiseEvent OnUINavigation_Play;
+
     #endregion
     #region Puppet Events
     [FoldoutGroup("Puppet Events")][LabelWidth(200)] public WwiseEvent Footsteps_Play;
@@ -75,10 +80,6 @@ public class EventManager : MonoBehaviour
     #region Ambience Events
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent RoomMachinist_Ambience_Play;
     [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent Theater_Ambience_Play;
-    #endregion
-
-    #region Dialogue Events
-    [FoldoutGroup("Ambience Events")][LabelWidth(200)] public WwiseEvent DialogueEvent_Play;
     #endregion
 
     #region Gears Events
@@ -91,7 +92,56 @@ public class EventManager : MonoBehaviour
     [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToSuspenseMusic;
     [FoldoutGroup("Music Events")][LabelWidth(200)] public WwiseEvent SwitchToHorribleMusic;
 
+    #endregion
+
+    #region Ambience Events
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Town_Amb_Play;
+
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Tavern_Amb_Play;
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Armurerie_Amb_Play;
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Supermarket_Amb_Play;
+
+    [FoldoutGroup("Ambience Events/Gameplay")][LabelWidth(200)] public WwiseEvent Volcano_Amb_Play;
+    #endregion
+    #region ItemDropper Events 
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_FallingObject;
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_HatCatch;
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_WeaponCatch;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperBox_Open;
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperMovingLoop;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Stop_ItemDropperMovingLoop_Fadeout;
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_Smoke_Impact;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_FallingObjectAndSmokeImpact;
+
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperLeaving;
+
+    [FoldoutGroup("ItemDropper Events")][LabelWidth(200)] public WwiseEvent Play_ItemDropperError;
+
+    //Hat
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedBeret;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedChicken;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedHatEmpty;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedHeadphones;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedHelmet;
+    [FoldoutGroup("ItemDropper Events/Hat")][LabelWidth(200)] public WwiseEvent SelectedRabbit;
+
+    //Weapon
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedBaguette;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedBeer;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedBroom;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedCarot;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedEmpty;
+    [FoldoutGroup("ItemDropper Events/Weapon")][LabelWidth(200)] public WwiseEvent SelectedSword;
+
+
+
     #endregion 
+
+
     [System.Obsolete]
     public uint PostWithCallback(GameObject gameObject, WwiseEvent wwiseEvent, AkCallbackType callbackType, AkCallbackManager.EventCallback callback, object cookie = null)
     {

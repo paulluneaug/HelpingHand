@@ -4,15 +4,18 @@ Dialogue Event	ID	Name			Wwise Object Path	Notes
 State Group	ID	Name			Wwise Object Path	Notes
 	626838023	Succes			\Default Work Unit\Dialogue_States\Succes\Succes	
 	646348293	Interruption_Succes			\Default Work Unit\Dialogue_States\Interruptions\Interruption_Succes	
+	647819320	Interruption_LightIntensity			\Default Work Unit\Dialogue_States\Interruptions\Interruption_LightIntensity	
 	669047086	Onboarding_3_Spots			\Default Work Unit\Dialogue_States\Onboarding\Onboarding_3_Spots	
 	945788466	Onboarding_2_Curtain			\Default Work Unit\Dialogue_States\Onboarding\Onboarding_2_Curtain	
 	959251877	Onboarding_1_Intro			\Default Work Unit\Dialogue_States\Onboarding\Onboarding_1_Intro	
 	1049582392	Fin			\Default Work Unit\Dialogue_States\Gameplay\Fin	
 	1102487479	Interruption_Curtain			\Default Work Unit\Dialogue_States\Interruptions\Interruption_Curtain	
+	1369786921	Interruption_Joystick			\Default Work Unit\Dialogue_States\Interruptions\Interruption_Joystick	
 	1869134688	Interruption_Roue			\Default Work Unit\Dialogue_States\Interruptions\Interruption_Roue	
 	2764240573	Combat			\Default Work Unit\Dialogue_States\Gameplay\Combat	
 	2995846792	Equipement			\Default Work Unit\Dialogue_States\Gameplay\Equipement	
 	3379008648	Acte_1_Roue			\Default Work Unit\Dialogue_States\Gameplay\Acte_1_Roue	
+	3389506874	Combat_2			\Default Work Unit\Dialogue_States\Gameplay\Combat_2	
 	3481119610	Interruption_Spots			\Default Work Unit\Dialogue_States\Interruptions\Interruption_Spots	
 
 State	ID	Name	State Group			Notes
@@ -58,6 +61,15 @@ State	ID	Name	State Group			Notes
 	1644366929	_12	Interruption_Succes			
 	1644366930	_11	Interruption_Succes			
 	1644366935	_14	Interruption_Succes			
+	748895195	None	Interruption_LightIntensity			
+	1644366929	_12	Interruption_LightIntensity			
+	1644366930	_11	Interruption_LightIntensity			
+	1661144516	_22	Interruption_LightIntensity			
+	1661144519	_21	Interruption_LightIntensity			
+	1677922232	_31	Interruption_LightIntensity			
+	1677922235	_32	Interruption_LightIntensity			
+	1694699821	_41	Interruption_LightIntensity			
+	1694699822	_42	Interruption_LightIntensity			
 	748895195	None	Onboarding_3_Spots			
 	1245885950	Bad_Inputs_21	Onboarding_3_Spots			
 	1262663504	Bad_Inputs_12	Onboarding_3_Spots			
@@ -132,66 +144,68 @@ State	ID	Name	State Group			Notes
 	2815039989	Interruption_Intro_1101	Onboarding_1_Intro			
 	2831817574	Interruption_Intro_1111	Onboarding_1_Intro			
 	748895195	None	Fin			
-	819202534	_411	Fin			
-	819202535	_410	Fin			
-	886460042	_510	Fin			
-	886460043	_511	Fin			
-	1627589345	_01	Fin			
-	1644366928	_13	Fin			
-	1644366929	_12	Fin			
-	1644366930	_11	Fin			
-	1644366932	_17	Fin			
-	1644366933	_16	Fin			
-	1644366934	_15	Fin			
-	1644366935	_14	Fin			
-	1644366938	_19	Fin			
-	1644366939	_18	Fin			
-	1661144512	_26	Fin			
-	1661144513	_27	Fin			
-	1661144514	_24	Fin			
-	1661144515	_25	Fin			
-	1661144516	_22	Fin			
-	1661144517	_23	Fin			
-	1661144519	_21	Fin			
-	1661144526	_28	Fin			
-	1661144527	_29	Fin			
-	1677922225	_38	Fin			
-	1677922232	_31	Fin			
-	1677922234	_33	Fin			
-	1677922235	_32	Fin			
-	1677922236	_35	Fin			
-	1677922237	_34	Fin			
-	1677922238	_37	Fin			
-	1677922239	_36	Fin			
-	1694699812	_48	Fin			
-	1694699813	_49	Fin			
-	1694699816	_44	Fin			
-	1694699817	_45	Fin			
-	1694699818	_46	Fin			
-	1694699819	_47	Fin			
-	1694699821	_41	Fin			
-	1694699822	_42	Fin			
-	1694699823	_43	Fin			
-	1711477398	_59	Fin			
-	1711477399	_58	Fin			
-	1711477400	_57	Fin			
-	1711477401	_56	Fin			
-	1711477402	_55	Fin			
-	1711477403	_54	Fin			
-	1711477404	_53	Fin			
-	1711477405	_52	Fin			
-	1711477406	_51	Fin			
-	2630640928	_116	Fin			
-	2630640930	_114	Fin			
-	2630640931	_115	Fin			
-	2630640932	_112	Fin			
-	2630640933	_113	Fin			
-	2630640934	_110	Fin			
-	2630640935	_111	Fin			
-	2765009013	_210	Fin			
+	820920145	Fin_116	Fin			
+	820920146	Fin_115	Fin			
+	820920147	Fin_114	Fin			
+	820920148	Fin_113	Fin			
+	820920149	Fin_112	Fin			
+	820920150	Fin_111	Fin			
+	820920151	Fin_110	Fin			
+	2565101042	Fin_511	Fin			
+	2565101043	Fin_510	Fin			
+	2632358550	Fin_410	Fin			
+	2632358551	Fin_411	Fin			
+	2700454732	Fin_210	Fin			
+	2711860853	Transition_11	Fin			
+	2711860854	Transition_12	Fin			
+	2711860855	Transition_13	Fin			
+	2728638437	Transition_02	Fin			
+	3671832849	Fin_51	Fin			
+	3671832850	Fin_52	Fin			
+	3671832851	Fin_53	Fin			
+	3671832852	Fin_54	Fin			
+	3671832853	Fin_55	Fin			
+	3671832854	Fin_56	Fin			
+	3671832855	Fin_57	Fin			
+	3671832856	Fin_58	Fin			
+	3671832857	Fin_59	Fin			
+	3688610432	Fin_43	Fin			
+	3688610433	Fin_42	Fin			
+	3688610434	Fin_41	Fin			
+	3688610436	Fin_47	Fin			
+	3688610437	Fin_46	Fin			
+	3688610438	Fin_45	Fin			
+	3688610439	Fin_44	Fin			
+	3688610442	Fin_49	Fin			
+	3688610443	Fin_48	Fin			
+	3738943316	Fin_18	Fin			
+	3738943317	Fin_19	Fin			
+	3738943320	Fin_14	Fin			
+	3738943321	Fin_15	Fin			
+	3738943322	Fin_16	Fin			
+	3738943323	Fin_17	Fin			
+	3738943325	Fin_11	Fin			
+	3738943326	Fin_12	Fin			
+	3738943327	Fin_13	Fin			
+	3772498592	Fin_32	Fin			
+	3772498593	Fin_33	Fin			
+	3772498595	Fin_31	Fin			
+	3772498596	Fin_36	Fin			
+	3772498597	Fin_37	Fin			
+	3772498598	Fin_34	Fin			
+	3772498599	Fin_35	Fin			
+	3772498602	Fin_38	Fin			
+	3789276176	Fin_25	Fin			
+	3789276177	Fin_24	Fin			
+	3789276178	Fin_27	Fin			
+	3789276179	Fin_26	Fin			
+	3789276180	Fin_21	Fin			
+	3789276182	Fin_23	Fin			
+	3789276183	Fin_22	Fin			
+	3789276188	Fin_29	Fin			
+	3789276189	Fin_28	Fin			
 	684834457	_311	Interruption_Curtain			
 	684834458	_312	Interruption_Curtain			
-	718389759	_331	Interruption_Curtain			
 	735167312	_321	Interruption_Curtain			
 	748895195	None	Interruption_Curtain			
 	2613863346	_121	Interruption_Curtain			
@@ -200,6 +214,14 @@ State	ID	Name	State Group			Notes
 	2714676157	_221	Interruption_Curtain			
 	2765009012	_211	Interruption_Curtain			
 	2765009015	_212	Interruption_Curtain			
+	748895195	None	Interruption_Joystick			
+	1644366928	_13	Interruption_Joystick			
+	1644366929	_12	Interruption_Joystick			
+	1644366930	_11	Interruption_Joystick			
+	1661144516	_22	Interruption_Joystick			
+	1661144519	_21	Interruption_Joystick			
+	1677922232	_31	Interruption_Joystick			
+	1677922235	_32	Interruption_Joystick			
 	748895195	None	Interruption_Roue			
 	1644366928	_13	Interruption_Roue			
 	1644366929	_12	Interruption_Roue			
@@ -390,6 +412,7 @@ State	ID	Name	State Group			Notes
 	1697488981	Intro_01	Acte_1_Roue			
 	1697488982	Intro_02	Acte_1_Roue			
 	1697488983	Intro_03	Acte_1_Roue			
+	1697488988	Intro_08	Acte_1_Roue			
 	2564133324	Next_032	Acte_1_Roue			
 	2564133327	Next_031	Acte_1_Roue			
 	2580767384	Intro_071	Acte_1_Roue			
@@ -402,6 +425,41 @@ State	ID	Name	State Group			Notes
 	4283854440	Good_Input_2	Acte_1_Roue			
 	4283854441	Good_Input_3	Acte_1_Roue			
 	4283854443	Good_Input_1	Acte_1_Roue			
+	404771065	Conclu_Simon_51	Combat_2			
+	404771066	Conclu_Simon_52	Combat_2			
+	404771067	Conclu_Simon_53	Combat_2			
+	421548649	Conclu_Simon_42	Combat_2			
+	421548650	Conclu_Simon_41	Combat_2			
+	471881504	Conclu_Simon_14	Combat_2			
+	471881505	Conclu_Simon_15	Combat_2			
+	471881506	Conclu_Simon_16	Combat_2			
+	471881508	Conclu_Simon_10	Combat_2			
+	471881509	Conclu_Simon_11	Combat_2			
+	471881510	Conclu_Simon_12	Combat_2			
+	471881511	Conclu_Simon_13	Combat_2			
+	488659088	Conclu_Simon_07	Combat_2			
+	488659089	Conclu_Simon_06	Combat_2			
+	488659092	Conclu_Simon_03	Combat_2			
+	488659093	Conclu_Simon_02	Combat_2			
+	488659094	Conclu_Simon_01	Combat_2			
+	488659102	Conclu_Simon_09	Combat_2			
+	488659103	Conclu_Simon_08	Combat_2			
+	505436680	Conclu_Simon_32	Combat_2			
+	505436681	Conclu_Simon_33	Combat_2			
+	505436683	Conclu_Simon_31	Combat_2			
+	522214396	Conclu_Simon_21	Combat_2			
+	522214398	Conclu_Simon_23	Combat_2			
+	522214399	Conclu_Simon_22	Combat_2			
+	748895195	None	Combat_2			
+	1438368029	Outro_521	Combat_2			
+	1438368030	Outro_522	Combat_2			
+	1455145613	Outro_532	Combat_2			
+	1455145614	Outro_531	Combat_2			
+	2681056577	Outro_04	Combat_2			
+	2681056580	Outro_01	Combat_2			
+	2681056582	Outro_03	Combat_2			
+	2681056583	Outro_02	Combat_2			
+	3502750705	Outro_051	Combat_2			
 	684834457	_311	Interruption_Spots			
 	684834458	_312	Interruption_Spots			
 	684834459	_313	Interruption_Spots			

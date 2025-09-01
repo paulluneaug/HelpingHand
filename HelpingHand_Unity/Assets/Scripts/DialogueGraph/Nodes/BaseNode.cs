@@ -138,7 +138,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
             }
         }
 
-        handler.CurrentNodes.Remove(this);
+        _ = handler.CurrentNodes.Remove(this);
         await UniTask.WhenAll(tasks);
     }
 
@@ -154,7 +154,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
     {
         return $"[{Time.frameCount}] <color=cyan>[{graph.name}]</color> <color=yellow>[{GetType().Name}]</color> ({name})";
     }
-    
+
     /// <summary>
     /// Debug log with header
     /// TODO: move it project-wise 
@@ -162,7 +162,7 @@ public abstract class BaseNode : SerializableNode, IDisposable
     [Conditional("UNITY_EDITOR")]
     protected void DebugLog(string log, LogType logType = LogType.Log, GameObject source = null)
     {
-        
+
         if (!m_showDebugLog)
         {
             return;

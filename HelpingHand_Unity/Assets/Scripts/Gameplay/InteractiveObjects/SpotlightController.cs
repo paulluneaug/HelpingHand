@@ -15,10 +15,16 @@ public class SpotlightController : MonoBehaviour
     [SerializeField] private BaseVariable<Vector2> m_manualInput;
     [SerializeField] private BaseVariable<bool> m_targetInCone;
     [SerializeField] private BaseVariable<Transform> m_target;
-    [SerializeField] private BaseVariable<bool> m_manualMode;
+    [SerializeField] private BaseVariable<bool> m_followMode;
+    [SerializeField] private ButtonInputEvent m_toggleSpotlightButton;
+    [SerializeField] private EntityState m_toggleFollowModeIndicator;
+    [SerializeField] private ToggleInputEvent m_followModeToggle;
+    [SerializeField] private EntityState m_puppetSpotlightOn;
+    [SerializeField] private EntityState m_puppetSpotlightOff;
 
     [Title("Component References")]
     [SerializeField] private Transform m_spotTransform;
+    [SerializeField] private Light m_light;
 
     [Title("Movement Settings")]
     [SerializeField, Tooltip("Degrees / sec")] private float m_manualRotationSpeed;
@@ -39,8 +45,41 @@ public class SpotlightController : MonoBehaviour
     private void Start()
     {
         m_transform = transform;
-        m_manualMode.AddListener(OnModeChanged);
-        OnModeChanged(m_manualMode.Value);
+        m_toggleSpotlightButton.AddListener(OnSpotlightToggle);
+        m_followModeToggle.AddListener(OnFollowModeToggle);
+        m_mode = m_followMode.Value ? SpotlightMode.FollowTarget : SpotlightMode.Manual;
+        m_light.enabled = false;
+        m_puppetSpotlightOn.SetValueWithoutNotify(false);
+        m_puppetSpotlightOff.SetValueWithoutNotify(true);
+        m_toggleFollowModeIndicator.SetValueWithoutNotify(m_followModeToggle.Value);
+    }
+
+    private void OnFollowModeToggle(bool isOn)
+    {
+        m_mode = isOn ? SpotlightMode.FollowTarget : SpotlightMode.Manual;
+        m_followMode.Value = isOn;
+        m_toggleFollowModeIndicator.Value = isOn;
+    }
+
+    private void OnDestroy()
+    {
+        m_toggleSpotlightButton.RemoveListener(OnSpotlightToggle);
+        m_followModeToggle.RemoveListener(OnFollowModeToggle);
+    }
+
+    private void OnSpotlightToggle()
+    {
+        m_light.enabled = !m_light.enabled;
+        if (m_light.enabled)
+        {
+            m_puppetSpotlightOn.Set();
+            m_puppetSpotlightOff.Unset();
+        }
+        else
+        {
+            m_puppetSpotlightOn.Unset();
+            m_puppetSpotlightOff.Set();
+        }
     }
 
     private void Update()
@@ -62,18 +101,13 @@ public class SpotlightController : MonoBehaviour
         m_targetInCone.Value = IsTargetInCone();
     }
 
-    public void SetMode(SpotlightMode mode)
-    {
-        m_mode = mode;
-    }
-
     private void UpdateManualMovement()
     {
         if (!m_manualInput.IsActive)
         {
             return;
         }
-        
+
         Vector2 input = m_manualInput.Value.normalized;
         float angle = m_manualRotationSpeed * Time.deltaTime;
 
@@ -94,8 +128,7 @@ public class SpotlightController : MonoBehaviour
     {
         if (m_target == null || m_target.Value == null)
         {
-            Debug.LogError($"No target assigned");
-            Debug.Break();
+            Debug.LogWarning($"No target assigned");
             return;
         }
         float angle = m_followTargetRotationSpeed * Time.deltaTime;
@@ -104,17 +137,18 @@ public class SpotlightController : MonoBehaviour
 
     private bool IsTargetInCone()
     {
+        if (m_target == null || m_target.Value == null)
+        {
+            Debug.LogWarning($"No target assigned");
+            return false;
+        }
+
         Vector3 toTarget = m_target.Value.position - m_spotTransform.position;
         float angleToTarget = Vector3.Angle(m_spotTransform.forward, toTarget);
         return angleToTarget < m_spotAngle;
     }
 
-    private void OnModeChanged(bool manualMode)
-    {
-        m_mode = manualMode ? SpotlightMode.Manual : SpotlightMode.FollowTarget;
-    }
-
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         GizmosExtensions.DrawConeFromAngle(transform.position, transform.forward, m_coneHeight, m_spotMaxRange * MathUf.DEG_2_RAD);
@@ -122,7 +156,7 @@ public class SpotlightController : MonoBehaviour
         if (m_spotTransform == null)
         {
             return;
-        } 
+        }
 
         Gizmos.color = Color.yellow;
         GizmosExtensions.DrawConeFromAngle(m_spotTransform.position, m_spotTransform.forward, m_coneHeight, m_spotAngle * MathUf.DEG_2_RAD);

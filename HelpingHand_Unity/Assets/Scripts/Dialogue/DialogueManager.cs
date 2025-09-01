@@ -33,7 +33,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
 
     public NarratorState NarratorState => m_narratorState;
 
-    private DialogueNode m_currentDialogue;
+    private readonly DialogueNode m_currentDialogue;
     private string m_currentDialogueTitle;
     private CancellationTokenSource m_dialogueKillCTS;
     private CancellationTokenSource m_currentCTS;
@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     protected override void Awake()
     {
         base.Start();
+        m_panelController.Initialize();
         m_panelController.ClosePanel();
         m_panelOpen = false;
     }
@@ -52,11 +53,27 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         OpenPanelIfNeeded();
     }
 
-    public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationTokenSource stopCTS, CancellationTokenSource killCTS)
+    public void CloseDialoguePanel()
     {
-        if (!string.IsNullOrEmpty(m_currentDialogueTitle) || string.IsNullOrEmpty(dialogueTitle) || string.IsNullOrEmpty(content))
+        if (!m_panelOpen)
         {
             return;
+        }
+        m_panelController.ClosePanel();
+        m_panelOpen = false;
+    }
+
+    public async UniTask PlayDialogAsync(string dialogueTitle, string content, CancellationTokenSource stopCTS, CancellationTokenSource killCTS)
+    {
+        if (string.IsNullOrEmpty(dialogueTitle) || string.IsNullOrEmpty(content))
+        {
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(m_currentDialogueTitle))
+        {
+            KillCurrentDialogue();
+            await UniTask.NextFrame();
         }
 
         OpenPanelIfNeeded();
@@ -66,13 +83,13 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         m_dialogueKillCTS = killCTS;
         m_currentCTS?.Dispose();
         m_currentCTS = CancellationTokenSource.CreateLinkedTokenSource(m_dialogueKillCTS.Token, stopCTS.Token);
-        
+
         DebugLog($"Showing content: \"{content.Truncate(30)}\"");
-        
+
         m_typewriter.onTextShowed.AddListener(OnTextShowed);
         bool isTextShowed = false;
         m_typewriter.ShowText(content);
-        
+
         OnDialogueStarted?.Invoke();
 
         if (await UniTask.WaitUntil(() => isTextShowed, PlayerLoopTiming.Update, m_currentCTS.Token).SuppressCancellationThrow())
@@ -94,7 +111,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
             DebugLog($"Bubble up");
             throw new OperationCanceledException();
         }
-        
+
         void OnTextShowed()
         {
             DebugLog($"On Text Showed");
@@ -118,7 +135,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
     {
         m_dialogueKillCTS = killCTS;
     }
-    
+
     public void KillCurrentDialogue()
     {
         m_dialogueKillCTS?.Cancel();
@@ -150,7 +167,7 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
         {
             return $"[{Time.frameCount}] <color=#ff55ff>[DialogueManager]</color> [{(!string.IsNullOrEmpty(m_currentDialogueTitle) ? m_currentDialogueTitle : "null")}]";
         }
-        
+
         switch (logType)
         {
             case LogType.Error:
@@ -161,6 +178,12 @@ public class DialogueManager : MonoBehaviourSingleton<DialogueManager>
                 break;
             case LogType.Log:
                 Debug.Log($"{GetLogHeader()} {log}", source);
+                break;
+            case LogType.Assert:
+                break;
+            case LogType.Exception:
+                break;
+            default:
                 break;
         }
     }

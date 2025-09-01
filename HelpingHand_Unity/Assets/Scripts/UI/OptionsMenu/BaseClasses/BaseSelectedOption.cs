@@ -95,7 +95,7 @@ public abstract class BaseSelectedOption<T> : Selectable, ISubmitHandler
         m_value = value;
         if (m_valueText != null)
         {
-            m_valueText.text = ValueToDisplayString(value); 
+            m_valueText.text = ValueToDisplayString(value);
         }
 
     }

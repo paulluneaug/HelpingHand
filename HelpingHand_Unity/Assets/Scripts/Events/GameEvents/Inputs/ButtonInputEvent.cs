@@ -48,11 +48,14 @@ public class ButtonInputEvent : BaseGameEvent
     {
         m_buttonDownEvent.Raise();
         Raise();
+
+        m_buttonState.Value = true;
     }
 
     public void RaiseUp()
     {
         m_buttonUpEvent.Raise();
+        m_buttonState.Value = false;
     }
 
     public void AddDownListener(GameEventListener listener)

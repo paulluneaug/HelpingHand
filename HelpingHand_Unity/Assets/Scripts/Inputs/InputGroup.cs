@@ -32,20 +32,26 @@ public class InputGroup : MonoBehaviour, ILateStarter
 
     public void SetActive(bool isActive)
     {
-        m_indicatorState.Value = isActive;
+        if (m_indicatorState != null)
+        {
+            m_indicatorState.Value = isActive;
+        }
+
         foreach (BaseGameEvent input in m_inputs)
         {
             input.IsActive = isActive;
         }
     }
 
-    [Button("Enable")] [HorizontalGroup("Buttons")]
+    [Button("Enable")]
+    [HorizontalGroup("Buttons")]
     public void Enable()
     {
         SetActive(true);
     }
 
-    [Button("Disable")] [HorizontalGroup("Buttons")]
+    [Button("Disable")]
+    [HorizontalGroup("Buttons")]
     public void Disable()
     {
         SetActive(false);

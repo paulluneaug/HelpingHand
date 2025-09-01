@@ -4,21 +4,24 @@ using UnityEngine;
 
 using XNode;
 
-[NodeWidth(250)] 
-[NodeTint(0f, 0.4784314f, 0.6509804f)] 
+[NodeWidth(250)]
+[NodeTint(0f, 0.4784314f, 0.6509804f)]
 [CreateNodeMenu("Data/Set/Blackboard Value")]
 public class SetBlackboardValueNode : BaseNode
 {
-    [Input(ShowBackingValue.Never)] [SerializeField]
+    [Input(ShowBackingValue.Never)]
+    [SerializeField]
     private DialogueFlow m_in;
 
-    [Input(ShowBackingValue.Unconnected)] [SerializeField]
+    [Input(ShowBackingValue.Unconnected)]
+    [SerializeField]
     private object m_inValue;
 
-    [Output] [SerializeField]
+    [Output]
+    [SerializeField]
     private DialogueFlow m_out;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private string m_key;
 
     protected override async UniTask ExecuteNode(GraphRunnerHandler handler, NodePort inPort)
