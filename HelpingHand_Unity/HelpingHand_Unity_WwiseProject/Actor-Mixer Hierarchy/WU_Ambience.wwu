@@ -672,12 +672,178 @@
 										</ObjectList>
 									</ObjectLists>
 								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="ForestNight" ID="{03A3B241-7BD6-40D7-9F56-D13D9FD2A634}" ShortID="781216331">
+									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="4"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Ambience, Forest, Night, Wind In Trees, Quiet, Distant Rumbling Bass SND78910" ID="{030F6D17-82CB-4F8C-9A98-EF64230392AB}" ShortID="982418184">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="CenterPercentage" Type="int32">
+													<ValueList>
+														<Value>100</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Ambiances" ID="{13CAD373-25C5-4374-864C-8A71C7E90AC0}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="AmbBus" ID="{1808A7C8-6E5F-4188-ADEF-CF7E64F64B42}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ambience, Forest, Night, Wind In Trees, Quiet, Distant Rumbling Bass SND78910" ID="{E5B4AFE5-19BE-4B42-BDC5-FA03113E70CC}">
+													<Language>SFX</Language>
+													<AudioFile>Ambience, Forest, Night, Wind In Trees, Quiet, Distant Rumbling Bass SND78910.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="496330287"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ambience, Forest, Night, Wind In Trees, Quiet, Distant Rumbling Bass SND78910" ID="{E5B4AFE5-19BE-4B42-BDC5-FA03113E70CC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="Ambience, Forest, Night, Wind In Trees, Quiet, Distant Rumbling Bass SND78910" ID="{030F6D17-82CB-4F8C-9A98-EF64230392AB}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="ForestNight_Cricket" ID="{2A88D14B-E976-4593-9D89-45D167F6DC67}" ShortID="784831794">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="4"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Ambience, Insect, Forest, Crickets, Wind, Night 02 SND7962" ID="{0B873719-A36F-47F2-BF82-37AD1E5F5832}" ShortID="335414702">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ambience, Insect, Forest, Crickets, Wind, Night 02 SND7962" ID="{12AD18F1-E317-41A1-9CE7-63CF082F28CC}">
+													<Language>SFX</Language>
+													<AudioFile>Ambience, Insect, Forest, Crickets, Wind, Night 02 SND7962.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="854318107"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ambience, Insect, Forest, Crickets, Wind, Night 02 SND7962" ID="{12AD18F1-E317-41A1-9CE7-63CF082F28CC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Playlist">
+											<Reference>
+												<ObjectRef Name="Ambience, Insect, Forest, Crickets, Wind, Night 02 SND7962" ID="{0B873719-A36F-47F2-BF82-37AD1E5F5832}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</RandomSequenceContainer>
 							</ChildrenList>
 							<BlendTrackList>
 								<BlendTrack Name="New Blend Track" ID="{64528809-3476-4423-A399-A454077085CD}" ShortID="745932550">
 									<PropertyList>
 										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
 									</PropertyList>
+									<ReferenceList>
+										<Reference Name="LayerCrossFadeControlInput">
+											<ObjectRef Name="RTPC_TimeOfDay" ID="{17A3DA49-E996-4475-941E-EEC36D853682}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+									<BlendTrackAssocList>
+										<BlendTrackAssoc>
+											<ItemRef Name="Loop_01" ID="{0AFD87A8-1878-4224-8CDE-C5E638DB836B}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>0.796803652968037</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+										<BlendTrackAssoc>
+											<ItemRef Name="ForestNight" ID="{03A3B241-7BD6-40D7-9F56-D13D9FD2A634}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0.222167808219178</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>1</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+									</BlendTrackAssocList>
+								</BlendTrack>
+								<BlendTrack Name="New Blend Track_01" ID="{01E760E4-54FB-49F3-BFFF-56E25E3034F2}" ShortID="43337317">
+									<PropertyList>
+										<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="LayerCrossFadeControlInput">
+											<ObjectRef Name="RTPC_TimeOfDay" ID="{17A3DA49-E996-4475-941E-EEC36D853682}" WorkUnitID="{5756D9B6-056D-4026-8C8E-51719127ADDC}"/>
+										</Reference>
+									</ReferenceList>
+									<BlendTrackAssocList>
+										<BlendTrackAssoc>
+											<ItemRef Name="Loop" ID="{6BA7A66D-D997-41CC-B927-BC77D3612BBB}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0</LeftEdgePos>
+												<LeftFadingMode>Automatic</LeftFadingMode>
+												<RightEdgePos>0.50025</RightEdgePos>
+												<RightFadingMode>Manual</RightFadingMode>
+												<RightFadingPos>0.342332922839377</RightFadingPos>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+										<BlendTrackAssoc>
+											<ItemRef Name="ForestNight_Cricket" ID="{2A88D14B-E976-4593-9D89-45D167F6DC67}"/>
+											<CrossfadingInfo>
+												<LeftEdgePos>0.612861192331539</LeftEdgePos>
+												<LeftFadingMode>Manual</LeftFadingMode>
+												<LeftFadingPos>0.852048783704521</LeftFadingPos>
+												<RightEdgePos>1</RightEdgePos>
+												<RightFadingMode>Automatic</RightFadingMode>
+											</CrossfadingInfo>
+										</BlendTrackAssoc>
+									</BlendTrackAssocList>
 								</BlendTrack>
 							</BlendTrackList>
 						</BlendContainer>

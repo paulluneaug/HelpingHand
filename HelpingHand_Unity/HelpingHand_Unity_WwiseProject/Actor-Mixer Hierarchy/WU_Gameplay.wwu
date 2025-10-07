@@ -645,8 +645,16 @@
 				<ActorMixer Name="Spotlight" ID="{0361D9B2-AA47-4AE1-870E-F32A6BFA4470}" ShortID="778634047">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Attenuation_50m" ID="{6EF2C4D3-7F20-4D9B-A084-618804DFF3FD}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
 						</Reference>
@@ -658,11 +666,8 @@
 						<RandomSequenceContainer Name="Spotlight_On" ID="{E7C45127-1E2C-4DF3-9ACF-49256DDACC99}" ShortID="112106503">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
-								<Property Name="MakeUpGain" Type="Real64">
-									<ValueList>
-										<Value>4</Value>
-									</ValueList>
-								</Property>
+								<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
+								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
@@ -672,7 +677,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
-									<ObjectRef Name="Attenuation_20m" ID="{D4611497-0313-43A7-B599-AED0829A8BB2}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
+									<ObjectRef Name="Attenuation_50m" ID="{6EF2C4D3-7F20-4D9B-A084-618804DFF3FD}" WorkUnitID="{9A6B7D5D-6ED5-41FD-A476-77E5FE3B8EA6}"/>
 								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
@@ -775,6 +780,7 @@
 						<RandomSequenceContainer Name="Spotlight_Off" ID="{47FCEEC3-57E0-4386-A103-D2A9EDC76BCC}" ShortID="1031661802">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
 										<Value>-2</Value>
@@ -922,9 +928,10 @@
 						<RandomSequenceContainer Name="Spotlight_Puppet_On" ID="{208A67D6-DCF7-478D-A684-25416C646737}" ShortID="980284240">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>4</Value>
+										<Value>-3</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -1009,9 +1016,10 @@
 						<RandomSequenceContainer Name="Spotlight_Puppet_Off" ID="{0502367F-25A7-4571-B890-62A6134529F0}" ShortID="71285161">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>2</Value>
+										<Value>-2</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -2627,7 +2635,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>6</Value>
+										<Value>10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2729,12 +2737,12 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-96</Value>
+										<Value>8</Value>
 									</ValueList>
 								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
-										<Value>-1130</Value>
+										<Value>800</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -3315,7 +3323,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-9</Value>
+										<Value>-12</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -3330,6 +3338,11 @@
 							<ChildrenList>
 								<RandomSequenceContainer Name="Light_Increase" ID="{C4DE5FC6-18AC-4122-8EDA-DD6E19DB71B4}" ShortID="126467287">
 									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
@@ -3613,7 +3626,7 @@
 									<PropertyList>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
-												<Value>-3</Value>
+												<Value>-6</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
