@@ -794,19 +794,21 @@
 									</ReferenceList>
 									<BlendTrackAssocList>
 										<BlendTrackAssoc>
-											<ItemRef Name="Loop_01" ID="{0AFD87A8-1878-4224-8CDE-C5E638DB836B}"/>
+											<ItemRef Name="ForestNight" ID="{03A3B241-7BD6-40D7-9F56-D13D9FD2A634}"/>
 											<CrossfadingInfo>
 												<LeftEdgePos>0</LeftEdgePos>
 												<LeftFadingMode>Automatic</LeftFadingMode>
-												<RightEdgePos>0.796803652968037</RightEdgePos>
+												<RightEdgePos>0.742927945887004</RightEdgePos>
 												<RightFadingMode>Automatic</RightFadingMode>
+												<RightFadingSegmentShape>Exp2</RightFadingSegmentShape>
 											</CrossfadingInfo>
 										</BlendTrackAssoc>
 										<BlendTrackAssoc>
-											<ItemRef Name="ForestNight" ID="{03A3B241-7BD6-40D7-9F56-D13D9FD2A634}"/>
+											<ItemRef Name="Loop_01" ID="{0AFD87A8-1878-4224-8CDE-C5E638DB836B}"/>
 											<CrossfadingInfo>
-												<LeftEdgePos>0.222167808219178</LeftEdgePos>
+												<LeftEdgePos>0.236957796633272</LeftEdgePos>
 												<LeftFadingMode>Automatic</LeftFadingMode>
+												<LeftFadingSegmentShape>Log2</LeftFadingSegmentShape>
 												<RightEdgePos>1</RightEdgePos>
 												<RightFadingMode>Automatic</RightFadingMode>
 											</CrossfadingInfo>
@@ -824,23 +826,25 @@
 									</ReferenceList>
 									<BlendTrackAssocList>
 										<BlendTrackAssoc>
-											<ItemRef Name="Loop" ID="{6BA7A66D-D997-41CC-B927-BC77D3612BBB}"/>
+											<ItemRef Name="ForestNight_Cricket" ID="{2A88D14B-E976-4593-9D89-45D167F6DC67}"/>
 											<CrossfadingInfo>
 												<LeftEdgePos>0</LeftEdgePos>
-												<LeftFadingMode>Automatic</LeftFadingMode>
-												<RightEdgePos>0.50025</RightEdgePos>
+												<LeftFadingMode>Manual</LeftFadingMode>
+												<LeftFadingPos>0</LeftFadingPos>
+												<RightEdgePos>0.511158208106068</RightEdgePos>
 												<RightFadingMode>Manual</RightFadingMode>
-												<RightFadingPos>0.342332922839377</RightFadingPos>
+												<RightFadingPos>0.129068655867262</RightFadingPos>
 											</CrossfadingInfo>
 										</BlendTrackAssoc>
 										<BlendTrackAssoc>
-											<ItemRef Name="ForestNight_Cricket" ID="{2A88D14B-E976-4593-9D89-45D167F6DC67}"/>
+											<ItemRef Name="Loop" ID="{6BA7A66D-D997-41CC-B927-BC77D3612BBB}"/>
 											<CrossfadingInfo>
-												<LeftEdgePos>0.612861192331539</LeftEdgePos>
+												<LeftEdgePos>0.527931342009848</LeftEdgePos>
 												<LeftFadingMode>Manual</LeftFadingMode>
-												<LeftFadingPos>0.852048783704521</LeftFadingPos>
+												<LeftFadingPos>0.847334327084475</LeftFadingPos>
 												<RightEdgePos>1</RightEdgePos>
-												<RightFadingMode>Automatic</RightFadingMode>
+												<RightFadingMode>Manual</RightFadingMode>
+												<RightFadingPos>1</RightFadingPos>
 											</CrossfadingInfo>
 										</BlendTrackAssoc>
 									</BlendTrackAssocList>
@@ -2955,6 +2959,67 @@
 						</BlendContainer>
 					</ChildrenList>
 				</ActorMixer>
+				<RandomSequenceContainer Name="Start and Stop" ID="{F962F107-6B72-431C-9A19-0EFE3C54E5DD}" ShortID="506212692">
+					<PropertyList>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="New Silence" ID="{2B3DB124-D4AC-438D-9E91-664CD92215AA}" ShortID="986542985">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0E8357AC-144E-40E8-96F5-76532B59F290}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1C551DA5-BF66-45EC-94BD-12BDACF37727}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Silence" ID="{B640DA2C-CACA-47D6-A822-44B9BC851C6C}" ShortID="54080842" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Silence" ID="{B640DA2C-CACA-47D6-A822-44B9BC851C6C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<Reference>
+								<Local>
+									<EffectSlot Name="" ID="{4D27CBF4-43BF-4428-AD9D-C21A5EC6F132}" ShortID="479710325">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Recorder (Custom)" ID="{45FD03BF-94C5-4C68-9BD3-D37409584DD8}" ShortID="313130260" PluginName="Wwise Recorder" CompanyID="0" PluginID="132" PluginType="3">
+														<PropertyList>
+															<Property Name="AuthoringFilename" Type="string" Value="C:\Users\ELE66df04a172365\Videos\VIDEOS\Record.wav"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</Local>
+							</Reference>
+						</ObjectList>
+						<ObjectList Name="Playlist">
+							<Reference>
+								<ObjectRef Name="New Silence" ID="{2B3DB124-D4AC-438D-9E91-664CD92215AA}" WorkUnitID="{4AFCEE13-E9DE-447E-ADF4-FA06A3E918E3}"/>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
